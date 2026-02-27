@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electrical Measurements | EE Formula Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body data-page-category="measurements">
+
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation">
+        <a href="index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="circuit.html">Circuit Theory</a></li>
+            <li><a href="machines.html">Machines</a></li>
+            <li><a href="measurements.html">Measurements</a></li>
+            <li><a href="power.html">Power Systems</a></li>
+            <li><a href="control.html">Control Systems</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="signals.html">Signals</a></li>
+            <li><a href="micro.html">μP & μC</a></li>
+            <li><a href="estimation.html">Estimation</a></li>
+        </ul>
+        <div class="navbar__actions">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Search page..." autocomplete="off" />
+            </div>
+            <button id="bookmarks-toggle" class="theme-toggle" title="Bookmarks" style="font-size:0.9rem;">★</button>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">☀️</button>
+        </div>
+    </nav>
+
+    <!-- Bookmarks Panel -->
+    <aside id="bookmarks-panel" class="bookmarks-panel">
+        <h3>★ Bookmarked Formulas</h3>
+        <div id="bookmarks-list"></div>
+    </aside>
+
+    <!-- Spacer for fixed navbar -->
+    <div style="height: 100px;"></div>
+
+    <!-- Formula Sections Container -->
+    <main id="formula-sections"></main>
+
+    <!-- No Search Results -->
+    <div id="no-results" class="no-results">
+        <p>😕 No formulas found on this page. Try a different search term.</p>
+    </div>
+
+    <!-- Calculator Modal -->
+    <div class="calc-modal" role="dialog" aria-modal="true">
+        <div class="calc-modal__content">
+            <button class="calc-modal__close" aria-label="Close">✕</button>
+            <h3>Calculator</h3>
+            <div class="calc-modal__formula-display"
+                style="margin-bottom:16px;padding:12px;background:rgba(0,240,255,0.04);border-radius:8px;text-align:center;min-height:40px;">
+            </div>
+            <div class="calc-modal__inputs"></div>
+            <button class="calc-modal__btn">CALCULATE</button>
+            <div class="calc-modal__result"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/formulas.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

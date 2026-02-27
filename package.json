@@ -1,0 +1,14 @@
+{
+  "name": "ee-formula-hub",
+  "version": "1.0.0",
+  "description": "Electrical Engineering Formula Reference Web App",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server . -p 8080 --cors"
+  },
+  "author": "Rahul",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

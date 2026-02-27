@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EE Formula Hub — Electrical Engineering Formulas</title>
+  <meta name="description"
+    content="Comprehensive electrical engineering formula reference — Ohm's Law, Kirchhoff, AC circuits, Maxwell's equations, power systems, semiconductors, op-amps, Laplace transforms, control systems, and digital logic." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css?v=2" />
+</head>
+
+<body data-page-category="hub">
+
+  <!-- ============ Loading Screen ============ -->
+  <div id="loading-screen">
+    <svg viewBox="0 0 200 200">
+      <path class="circuit-path"
+        d="M20,100 L60,100 L60,60 L100,60 L100,100 L140,100 L140,140 L180,140 L180,100 L160,100 M60,100 L60,140 L100,140 L100,100 M140,100 L140,60 L180,60" />
+      <circle cx="60" cy="100" r="4" fill="#00f0ff" opacity="0.8">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="100" cy="100" r="4" fill="#00f0ff" opacity="0.8">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="140" cy="100" r="4" fill="#00f0ff" opacity="0.8">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+    </svg>
+    <p>Initializing Circuits…</p>
+  </div>
+
+  <!-- ============ Navbar ============ -->
+  <nav class="navbar" role="navigation">
+    <a href="#" class="navbar__logo">⚡ EE Hub</a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+    <ul class="navbar__links">
+      <li><a href="circuit.html" target="_blank">Circuit Theory</a></li>
+      <li><a href="machines.html" target="_blank">Machines</a></li>
+      <li><a href="measurements.html" target="_blank">Measurements</a></li>
+      <li><a href="power.html" target="_blank">Power Systems</a></li>
+      <li><a href="control.html" target="_blank">Control Systems</a></li>
+      <li><a href="electronics.html" target="_blank">Electronics</a></li>
+      <li><a href="signals.html" target="_blank">Signals</a></li>
+      <li><a href="micro.html" target="_blank">μP & μC</a></li>
+      <li><a href="estimation.html" target="_blank">Estimation</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search formulas…" autocomplete="off" />
+      </div>
+      <button id="bookmarks-toggle" class="theme-toggle" title="Bookmarks" style="font-size:0.9rem;">★</button>
+      <button id="theme-toggle" class="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </nav>
+
+  <!-- ============ Bookmarks Side Panel ============ -->
+  <aside id="bookmarks-panel" class="bookmarks-panel">
+    <h3>★ Bookmarked Formulas</h3>
+    <div id="bookmarks-list"></div>
+  </aside>
+
+  <!-- ============ Hero Section ============ -->
+  <header class="hero">
+    <!-- Lightning SVG -->
+    <svg class="hero__lightning" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path
+        d="M0,60 L120,58 L180,20 L220,80 L300,55 L420,62 L500,30 L550,70 L650,50 L720,65 L800,25 L860,75 L960,45 L1020,68 L1100,35 L1160,72 L1250,40 L1320,65 L1440,60" />
+    </svg>
+
+    <h1 class="hero__title">EE Formula <span>Hub</span></h1>
+    <p class="hero__author">by Rahul</p>
+    <p class="hero__subtitle" id="typewriter"></p>
+    <a href="#hub-sections" class="hero__cta" id="cta-btn">
+      ⚡ Explore Formulas
+    </a>
+
+    <!-- Formula Ticker -->
+    <div class="ticker">
+      <div class="ticker__track">
+        <span>V = IR</span>
+        <span>P = VI</span>
+        <span>Z = R + jX</span>
+        <span>∇ × E = −∂B/∂t</span>
+        <span>f₀ = 1/(2π√LC)</span>
+        <span>τ = RC</span>
+        <span>I_C = βI_B</span>
+        <span>A_v = −R_f/R_in</span>
+        <span>F(s) = ∫f(t)e⁻ˢᵗdt</span>
+        <span>H(s) = Y(s)/X(s)</span>
+        <span>A̅·B̅ = (A+B)̅</span>
+        <span>Φ = BAcosθ</span>
+        <span>P₃ϕ = √3·V_L·I_L·cosϕ</span>
+        <span>X_L = 2πfL</span>
+        <span>Q = (1/R)√(L/C)</span>
+        <!-- Duplicate for seamless loop -->
+        <span>V = IR</span>
+        <span>P = VI</span>
+        <span>Z = R + jX</span>
+        <span>∇ × E = −∂B/∂t</span>
+        <span>f₀ = 1/(2π√LC)</span>
+        <span>τ = RC</span>
+        <span>I_C = βI_B</span>
+        <span>A_v = −R_f/R_in</span>
+        <span>F(s) = ∫f(t)e⁻ˢᵗdt</span>
+        <span>H(s) = Y(s)/X(s)</span>
+        <span>A̅·B̅ = (A+B)̅</span>
+        <span>Φ = BAcosθ</span>
+        <span>P₃ϕ = √3·V_L·I_L·cosϕ</span>
+        <span>X_L = 2πfL</span>
+        <span>Q = (1/R)√(L/C)</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ Formula Sections Container ============ -->
+  <main id="formula-sections"></main>
+
+  <!-- No Search Results -->
+  <div id="no-results" class="no-results">
+    <p>😕 No formulas found. Try a different search term.</p>
+  </div>
+
+  <!-- ============ Calculator Modal ============ -->
+  <div class="calc-modal" role="dialog" aria-modal="true">
+    <div class="calc-modal__content">
+      <button class="calc-modal__close" aria-label="Close">✕</button>
+      <h3>Calculator</h3>
+      <div class="calc-modal__formula-display"
+        style="margin-bottom:16px;padding:12px;background:rgba(0,240,255,0.04);border-radius:8px;text-align:center;min-height:40px;">
+      </div>
+      <div class="calc-modal__inputs"></div>
+      <button class="calc-modal__btn">CALCULATE</button>
+      <div class="calc-modal__result"></div>
+    </div>
+  </div>
+
+  <!-- ============ Footer ============ -->
+  <footer class="footer">
+    <svg class="footer__circuit-line" viewBox="0 0 1440 40" preserveAspectRatio="none">
+      <path
+        d="M0,20 L200,20 L240,5 L280,35 L320,20 L500,20 L540,5 L580,35 L620,20 L800,20 L840,5 L880,35 L920,20 L1100,20 L1140,5 L1180,35 L1220,20 L1440,20" />
+    </svg>
+    <div class="footer__content">
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <a href="circuit.html">Circuit Theory</a>
+        <a href="machines.html">Electrical Machines</a>
+        <a href="measurements.html">Measurements</a>
+        <a href="power.html">Power Systems</a>
+        <a href="control.html">Control Systems</a>
+      </div>
+      <div class="footer__col">
+        <h4>Resources</h4>
+        <a href="electronics.html">Electronics</a>
+        <a href="signals.html">Signals & Systems</a>
+        <a href="micro.html">Microprocessor & μC</a>
+        <a href="estimation.html">Estimation & Costing</a>
+      </div>
+    </div>
+    <div class="footer__socials">
+      <a href="#" title="GitHub">⌨</a>
+      <a href="#" title="LinkedIn">🔗</a>
+      <a href="#" title="Email">✉</a>
+    </div>
+    <p class="footer__tagline">Built for Engineers, by Engineers</p>
+    <p class="footer__copy">© 2026 EE Formula Hub. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts (order matters) -->
+  <script src="js/formulas.js?v=2"></script>
+  <script src="js/calculator.js?v=2"></script>
+  <script src="js/app.js?v=2"></script>
+  <script src="js/animations.js"></script>
+</body>
+
+</html>

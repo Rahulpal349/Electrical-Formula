@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electrical Circuits | EE Formula Hub</title>
+    <meta name="description" content="Complete Formula Reference · Animated · Interactive" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+    <!-- AOS (Animate on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Three.js & GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Chart.js & D3 (for later sections) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css?v=3" />
+    <link rel="stylesheet" href="css/circuit.css?v=1" />
+</head>
+
+<body data-page-category="circuit" class="custom-page dark-mode">
+
+    <!-- Unified Navbar -->
+    <nav class="navbar" role="navigation">
+        <a href="index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="circuit.html" class="active">Circuit Theory</a></li>
+            <li><a href="machines.html" target="_blank">Machines</a></li>
+            <li><a href="measurements.html" target="_blank">Measurements</a></li>
+            <li><a href="power.html" target="_blank">Power Systems</a></li>
+            <li><a href="control.html" target="_blank">Control Systems</a></li>
+            <li><a href="electronics.html" target="_blank">Electronics</a></li>
+            <li><a href="signals.html" target="_blank">Signals</a></li>
+            <li><a href="micro.html" target="_blank">μP & μC</a></li>
+            <li><a href="estimation.html" target="_blank">Estimation</a></li>
+        </ul>
+        <div class="navbar__actions">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="circuit-search" placeholder="Search formulas..." autocomplete="off" />
+            </div>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">☀️</button>
+        </div>
+    </nav>
+
+    <!-- Custom Hero Section for Circuit Theory -->
+    <header class="circuit-hero">
+        <canvas id="hero-canvas"></canvas>
+
+        <!-- Animated Lightning Bolt SVG Overlay -->
+        <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10" />
+        </svg>
+
+        <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+            <h1 class="circuit-hero__title">
+                Electrical <span class="neon-text">Circuits</span>
+            </h1>
+            <p class="circuit-hero__subtitle" id="circuit-typewriter"></p>
+
+            <!-- Floating Icons -->
+            <div class="hero-icons">
+                <div class="hero-icon resistor-icon" data-aos="zoom-in" data-aos-delay="500">▱</div>
+                <div class="hero-icon capacitor-icon" data-aos="zoom-in" data-aos-delay="700">⏸</div>
+                <div class="hero-icon inductor-icon" data-aos="zoom-in" data-aos-delay="900">➰</div>
+                <div class="hero-icon src-icon" data-aos="zoom-in" data-aos-delay="1100">±</div>
+            </div>
+
+            <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+                <a href="#fundamental-concepts" class="hero__cta neon-btn">⚡ Explore Formulas</a>
+                <a href="#" class="hero__cta outline-btn">📄 Download PDF</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Internal Page Navigation -->
+    <nav class="circuit-nav" id="circuit-nav">
+        <ul>
+            <li><a href="#fundamental-concepts">1. Fundamental Concepts</a></li>
+            <li><a href="#dc-ac-analysis">2. DC & AC Analysis</a></li>
+            <li><a href="#network-theorems">3. Network Theorems</a></li>
+            <li><a href="#transient-frequency">4. Transient & Frequency</a></li>
+            <li><a href="#advanced-topics">5. Advanced Topics</a></li>
+        </ul>
+    </nav>
+
+    <main class="circuit-main">
+        <!-- Sections will go here -->
+        <section id="fundamental-concepts" class="circuit-section">
+            <div class="section__header" data-aos="fade-up">
+                <h2>Fundamental Concepts & Circuit Elements</h2>
+                <p>The foundational building blocks of all electrical networks.</p>
+            </div>
+
+            <!-- SUB-SECTION: Definitions -->
+            <div class="subsection" data-aos="fade-up">
+                <h3 class="subsection__title">1. Definitions & Classifications</h3>
+
+                <div class="flip-card-grid">
+                    <!-- Network vs Circuit -->
+                    <div class="flip-card" data-aos="flip-left" data-aos-delay="100">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front card-panel">
+                                <h4>Network vs. Circuit</h4>
+                                <svg viewBox="0 0 100 50" class="neon-svg">
+                                    <rect x="10" y="10" width="30" height="30" fill="none" stroke="var(--neon-cyan)"
+                                        stroke-width="2" />
+                                    <circle cx="70" cy="25" r="15" fill="none" stroke="var(--electric-yellow)"
+                                        stroke-width="2" />
+                                    <path d="M40,25 L55,25" stroke="var(--text-secondary)" stroke-width="2"
+                                        stroke-dasharray="4,4" />
+                                </svg>
+                                <p class="flip-hint">Hover to compare</p>
+                            </div>
+                            <div class="flip-card-back card-panel">
+                                <p><strong>Network:</strong> Any interconnection of electrical elements (may or may not
+                                    be closed).</p>
+                                <p><strong>Circuit:</strong> A network containing at least one closed path for current
+                                    to flow.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active vs Passive -->
+                    <div class="flip-card" data-aos="flip-left" data-aos-delay="200">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front card-panel">
+                                <h4>Active vs. Passive</h4>
+                                <div class="icon-split">
+                                    <span style="color:var(--electric-yellow)">⚡</span> vs <span
+                                        style="color:var(--text-muted)">▱</span>
+                                </div>
+                                <p class="flip-hint">Hover to reveal</p>
+                            </div>
+                            <div class="flip-card-back card-panel">
+                                <p><strong>Active:</strong> Can deliver power indefinitely (Battery, Generator, Op-Amp).
+                                </p>
+                                <p><strong>Passive:</strong> Only consumes or stores energy (R, L, C).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linear vs Non-Linear -->
+                    <div class="flip-card" data-aos="flip-left" data-aos-delay="300">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front card-panel">
+                                <h4>Linear vs. Non-Linear</h4>
+                                <svg viewBox="0 0 100 50" class="neon-svg">
+                                    <line x1="20" y1="40" x2="80" y2="10" stroke="var(--neon-cyan)" stroke-width="2" />
+                                    <path d="M20,40 Q50,40 80,10" fill="none" stroke="var(--electric-yellow)"
+                                        stroke-width="2" stroke-dasharray="4,4" />
+                                </svg>
+                                <p class="flip-hint">Hover to reveal</p>
+                            </div>
+                            <div class="flip-card-back card-panel">
+                                <p><strong>Linear:</strong> Follows Ohm's Law strictly; V-I characteristic is a straight
+                                    line through origin (Resistor).</p>
+                                <p><strong>Non-Linear:</strong> V-I relationship changes (Diode, Transistor).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-SECTION: Parameters -->
+            <div class="subsection" data-aos="fade-up">
+                <h3 class="subsection__title">2. Fundamental Parameters</h3>
+                <div class="parameter-grid">
+
+                    <!-- Resistance -->
+                    <div class="param-card card-panel" data-aos="fade-up" data-aos-delay="100">
+                        <div class="param-header">
+                            <h4>Resistance (R)</h4>
+                            <span class="unit">Ω (Ohms)</span>
+                        </div>
+                        <div class="param-formula">
+                            $$ R = \rho \frac{L}{A} $$
+                        </div>
+                        <div class="param-animation">
+                            <!-- Gradient bar animation -->
+                            <div class="resistor-bar-anim">
+                                <div class="current-particles"></div>
+                                <div class="restriction-zone"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inductance -->
+                    <div class="param-card card-panel" data-aos="fade-up" data-aos-delay="200">
+                        <div class="param-header">
+                            <h4>Inductance (L)</h4>
+                            <span class="unit">H (Henrys)</span>
+                        </div>
+                        <div class="param-formula">
+                            $$ V = L \frac{di}{dt} \quad W = \frac{1}{2}LI^2 $$
+                        </div>
+                        <div class="param-animation">
+                            <!-- Magnetic field lines pulsing -->
+                            <svg class="inductor-anim" viewBox="0 0 100 50">
+                                <path d="M10,25 Q20,5 30,25 T50,25 T70,25 T90,25" fill="none" stroke="var(--neon-cyan)"
+                                    stroke-width="3" />
+                                <ellipse class="mag-field" cx="30" cy="25" rx="15" ry="20" fill="none"
+                                    stroke="var(--electric-yellow)" stroke-width="1" />
+                                <ellipse class="mag-field" cx="50" cy="25" rx="15" ry="20" fill="none"
+                                    stroke="var(--electric-yellow)" stroke-width="1" />
+                                <ellipse class="mag-field" cx="70" cy="25" rx="15" ry="20" fill="none"
+                                    stroke="var(--electric-yellow)" stroke-width="1" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Capacitance -->
+                    <div class="param-card card-panel" data-aos="fade-up" data-aos-delay="300">
+                        <div class="param-header">
+                            <h4>Capacitance (C)</h4>
+                            <span class="unit">F (Farads)</span>
+                        </div>
+                        <div class="param-formula">
+                            $$ I = C \frac{dv}{dt} \quad W = \frac{1}{2}CV^2 $$
+                        </div>
+                        <div class="param-animation">
+                            <!-- Charge/Discharge plates -->
+                            <div class="capacitor-anim">
+                                <div class="plate top-plate">
+                                    <span class="charge charge-pos">+</span><span
+                                        class="charge charge-pos">+</span><span class="charge charge-pos">+</span>
+                                </div>
+                                <div class="dielectric"></div>
+                                <div class="plate bottom-plate">
+                                    <span class="charge charge-neg">-</span><span
+                                        class="charge charge-neg">-</span><span class="charge charge-neg">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SUB-SECTION: Sources -->
+            <div class="subsection" data-aos="fade-up">
+                <h3 class="subsection__title">3. Energy Sources</h3>
+                <div class="sources-container">
+                    <div class="source-types card-panel" data-aos="fade-right">
+                        <h4>Ideal Sources</h4>
+                        <div class="source-item">
+                            <svg viewBox="0 0 40 40" class="src-icon-svg voltage-src">
+                                <circle cx="20" cy="20" r="15" fill="none" stroke="var(--neon-cyan)" stroke-width="2" />
+                                <text x="20" y="16" text-anchor="middle" fill="var(--neon-cyan)" font-size="12">+</text>
+                                <text x="20" y="30" text-anchor="middle" fill="var(--neon-cyan)" font-size="12">-</text>
+                            </svg>
+                            <span>Independent Voltage<br><small>V = constant</small></span>
+                        </div>
+                        <div class="source-item">
+                            <svg viewBox="0 0 40 40" class="src-icon-svg current-src">
+                                <circle cx="20" cy="20" r="15" fill="none" stroke="var(--electric-yellow)"
+                                    stroke-width="2" />
+                                <line x1="20" y1="28" x2="20" y2="12" stroke="var(--electric-yellow)" stroke-width="2"
+                                    marker-end="url(#arrow)" />
+                            </svg>
+                            <span>Independent Current<br><small>I = constant</small></span>
+                        </div>
+                        <div class="source-item">
+                            <svg viewBox="0 0 40 40" class="src-icon-svg dependent-src">
+                                <polygon points="20,5 35,20 20,35 5,20" fill="none" stroke="#ff5252" stroke-width="2" />
+                                <text x="20" y="24" text-anchor="middle" fill="#ff5252" font-size="14">kV</text>
+                            </svg>
+                            <span>Dependent (VCVS, etc.)<br><small>V/I depends on network</small></span>
+                        </div>
+                    </div>
+
+                    <div class="source-transform card-panel" data-aos="fade-left">
+                        <h4>Source Transformation</h4>
+                        <p class="text-sm">Any practical voltage source in series with a resistor can be transformed
+                            into a current source in parallel with that same resistor, and vice versa.</p>
+                        <div class="transform-formula">$$ V_s = I_s \times R \quad \leftrightarrow \quad I_s =
+                            \frac{V_s}{R} $$</div>
+                        <div class="transform-anim-container" id="transform-anim">
+                            <!-- GSAP will animate this morphing -->
+                            <div class="tr-vs">
+                                <svg viewBox="0 0 60 60">
+                                    <circle cx="30" cy="30" r="20" fill="none" stroke="var(--neon-cyan)"
+                                        stroke-width="2" /><text x="30" y="25" fill="var(--neon-cyan)"
+                                        text-anchor="middle" font-size="14">+</text><text x="30" y="44"
+                                        fill="var(--neon-cyan)" text-anchor="middle" font-size="14">-</text>
+                                </svg>
+                                <span>Series R</span>
+                            </div>
+                            <div class="tr-arrow">⇄</div>
+                            <div class="tr-is">
+                                <svg viewBox="0 0 60 60">
+                                    <circle cx="30" cy="30" r="20" fill="none" stroke="var(--electric-yellow)"
+                                        stroke-width="2" />
+                                    <line x1="30" y1="40" x2="30" y2="20" stroke="var(--electric-yellow)"
+                                        stroke-width="2" />
+                                    <polygon points="30,15 25,22 35,22" fill="var(--electric-yellow)" />
+                                </svg>
+                                <span>Parallel R</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-SECTION: Network Topology -->
+            <div class="subsection" data-aos="fade-up">
+                <h3 class="subsection__title">4. Network Topology & Graph Theory</h3>
+                <div class="topology-container card-panel">
+                    <div class="topology-text">
+                        <ul class="topo-list">
+                            <li data-target="topo-nodes" class="topo-hover"><span class="topo-dot"></span> <strong>Nodes
+                                    (n):</strong> Meeting point of 2 or more elements.</li>
+                            <li data-target="topo-branches" class="topo-hover"><span class="topo-line"></span>
+                                <strong>Branches (b):</strong> Single element representing a path between two nodes.
+                            </li>
+                            <li data-target="topo-loops" class="topo-hover"><span class="topo-dash"></span>
+                                <strong>Loops (l):</strong> Any closed path in a circuit.</li>
+                            <li data-target="topo-meshes" class="topo-hover"><span class="topo-fill"></span>
+                                <strong>Meshes:</strong> A loop that contains no other loops inside it.</li>
+                        </ul>
+                        <div class="topo-formulas mt-4">
+                            <p><strong>Fundamental Theorem of Network Topology:</strong></p>
+                            $$ b = l + n - 1 $$
+                            $$ \text{No. of KVL mesh equations} = b - n + 1 $$
+                        </div>
+                    </div>
+                    <!-- Interactive SVG Graph -->
+                    <div class="topology-diagram">
+                        <svg viewBox="0 0 200 150" class="topo-svg" id="topo-svg">
+                            <defs>
+                                <pattern id="mesh-pattern" width="10" height="10" patternUnits="userSpaceOnUse">
+                                    <path d="M 0,10 L 10,0 M -1,1 L 1,-1 M 9,11 L 11,9" stroke="rgba(0, 245, 255, 0.2)"
+                                        stroke-width="1" />
+                                </pattern>
+                            </defs>
+                            <!-- Meshes -->
+                            <rect x="20" y="20" width="80" height="110" fill="url(#mesh-pattern)" stroke="none"
+                                class="t-elem topo-meshes" />
+                            <rect x="100" y="20" width="80" height="110" fill="url(#mesh-pattern)" stroke="none"
+                                class="t-elem topo-meshes" />
+                            <!-- Loops -->
+                            <path d="M 15,15 L 185,15 L 185,135 L 15,135 Z" fill="none" stroke="var(--electric-yellow)"
+                                stroke-width="2" stroke-dasharray="2,2" class="t-elem topo-loops" opacity="0" />
+                            <!-- Branches (lines with components) -->
+                            <line x1="20" y1="20" x2="100" y2="20" stroke="var(--text-secondary)" stroke-width="2"
+                                class="t-elem topo-branches" />
+                            <line x1="100" y1="20" x2="180" y2="20" stroke="var(--text-secondary)" stroke-width="2"
+                                class="t-elem topo-branches" />
+                            <line x1="20" y1="20" x2="20" y2="130" stroke="var(--text-secondary)" stroke-width="2"
+                                class="t-elem topo-branches" />
+                            <line x1="100" y1="20" x2="100" y2="130" stroke="var(--text-secondary)" stroke-width="2"
+                                class="t-elem topo-branches" />
+                            <line x1="180" y1="20" x2="180" y2="130" stroke="var(--text-secondary)" stroke-width="2"
+                                class="t-elem topo-branches" />
+                            <line x1="20" y1="130" x2="100" y2="130" stroke="var(--text-secondary)" stroke-width="2"
+                                class="t-elem topo-branches" />
+                            <line x1="100" y1="130" x2="180" y2="130" stroke="var(--text-secondary)" stroke-width="2"
+                                class="t-elem topo-branches" />
+                            <!-- Resistor zigzag representations -->
+                            <path d="M40,20 L45,15 L55,25 L65,15 L75,25 L80,20" fill="none"
+                                stroke="var(--text-secondary)" stroke-width="2" class="t-elem topo-branches" />
+                            <path d="M120,20 L125,15 L135,25 L145,15 L155,25 L160,20" fill="none"
+                                stroke="var(--text-secondary)" stroke-width="2" class="t-elem topo-branches" />
+                            <!-- Nodes -->
+                            <circle cx="20" cy="20" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                            <circle cx="100" cy="20" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                            <circle cx="180" cy="20" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                            <circle cx="20" cy="130" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                            <circle cx="100" cy="130" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                            <circle cx="180" cy="130" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                        </svg>
+                        <p class="text-center text-sm flip-hint mt-2">Hover over terms to highlight diagram</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dc-ac-analysis" class="circuit-section" data-aos="fade-up">
+            <div class="section__header">
+                <h2>DC & AC Circuit Analysis</h2>
+                <p>Fundamental laws, solving techniques, and alternating current properties.</p>
+            </div>
+            <div
+                style="height: 50vh; display: flex; align-items:center; justify-content:center; color: var(--text-muted);">
+                Section 2 Content TBD
+            </div>
+        </section>
+
+        <!-- More sections... -->
+    </main>
+
+    <script src="js/circuit.js?v=1"></script>
+</body>
+
+</html>
