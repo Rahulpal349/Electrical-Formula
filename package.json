@@ -4,7 +4,7 @@
   "description": "Electrical Engineering Formula Reference Web App",
   "main": "index.html",
   "scripts": {
-    "dev": "http-server . -p 8080 --cors"
+    "dev": "npx -y http-server . -p 4000 --cors"
   },
   "author": "Rahul",
   "license": "ISC",
