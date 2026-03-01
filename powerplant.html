@@ -662,12 +662,899 @@
 
                 </div>
             </section>
-            <section id="mod4" class="module-section"></section>
-            <section id="mod5" class="module-section"></section>
-            <section id="mod6" class="module-section"></section>
-            <section id="mod7" class="module-section"></section>
-            <section id="mod8" class="module-section"></section>
-            <section id="mod9" class="module-section"></section>
+            <section id="mod4" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 4 <span class="module-subtitle">— Hydro Power Stations</span></h2>
+                    <div class="module-line"
+                        style="background: var(--mod4-color); box-shadow: 0 0 10px var(--mod4-color);"></div>
+                </div>
+
+                <div class="card-grid">
+
+                    <!-- Card 4.2: Formulas and Calculations -->
+                    <div class="machine-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod4-color);"></div>
+                        <div class="card-header">
+                            <h3>4.2 Hydro Power Plant Layout & Performance</h3>
+                        </div>
+
+                        <div class="formula-zone"
+                            style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+                            <div style="flex:1; min-width:300px;">
+                                <h4 class="text-sm" style="color:var(--mod4-color);">Power Equation</h4>
+                                <div>$$ P_{output} = \eta_{overall} \times 9.81 Q H \text{ (kW)} $$</div>
+                                <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">Q = flow (m³/s), H = net
+                                    head (m)</div>
+
+                                <h4 class="text-sm" style="color:var(--mod4-color); margin-top:10px;">Specific Speed
+                                    ($N_s$)</h4>
+                                <div>$$ N_s = \frac{N\sqrt{P}}{H^{5/4}} $$</div>
+                                <div class="text-xs"
+                                    style="color:#e2e8f0; margin-top:5px; background:rgba(0,0,0,0.2); padding:5px; border-radius:4px;">
+                                    <div>$N_s < 60$: Pelton (Impulse)</div>
+                                            <div>$60 < N_s < 400$: Francis (Reaction)</div>
+                                                    <div>$300 < N_s < 900$: Kaplan (Axial)</div>
+                                                    </div>
+
+                                                    <h4 class="text-sm"
+                                                        style="color:var(--mod4-color); margin-top:10px;">Pumped Storage
+                                                    </h4>
+                                                    <div>$$ \eta_{ps} = \eta_{pump} \times \eta_{turbine} $$</div>
+                                                    <div>$$ E_{stored} = \rho g V_{water} H $$</div>
+                                            </div>
+
+                                            <div style="flex:1.5; min-width:350px;">
+                                                <div class="anim-zone"
+                                                    style="height:350px; background: rgba(0,0,0,0.2); border-radius: 8px; position:relative;">
+                                                    <!-- Hydro Plant Diagram -->
+                                                    <svg id="hydro-plant-svg" viewBox="0 0 800 350" width="100%"
+                                                        height="100%">
+                                                        <!-- Dam Structure -->
+                                                        <path
+                                                            d="M 300 300 L 400 300 L 400 50 L 350 50 Q 300 200 300 300 Z"
+                                                            fill="#475569" stroke="#94a3b8" stroke-width="2" />
+
+                                                        <!-- Reservoir Water -->
+                                                        <path id="water-reservoir"
+                                                            d="M 50 100 L 375 100 L 375 300 L 50 300 Z"
+                                                            fill="rgba(59, 130, 246, 0.6)" />
+
+                                                        <!-- Penstock -->
+                                                        <path d="M 375 250 L 550 250" stroke="#1e293b" stroke-width="20"
+                                                            fill="none" />
+                                                        <path d="M 375 250 L 550 250" stroke="var(--mod4-color)"
+                                                            stroke-width="14" stroke-dasharray="15 15"
+                                                            class="water-flow" fill="none" />
+
+                                                        <!-- Turbine House -->
+                                                        <rect x="550" y="200" width="150" height="100" fill="#1e293b"
+                                                            stroke="#facc15" stroke-width="3" />
+                                                        <text x="625" y="225" fill="#facc15" font-size="12"
+                                                            text-anchor="middle"
+                                                            font-family="Orbitron">POWERHOUSE</text>
+
+                                                        <!-- Turbine -->
+                                                        <circle cx="625" cy="260" r="25" fill="#0f172a" stroke="#fff"
+                                                            stroke-width="2" />
+                                                        <g id="hydro-turbine">
+                                                            <line x1="625" y1="235" x2="625" y2="285"
+                                                                stroke="var(--mod4-color)" stroke-width="4" />
+                                                            <line x1="600" y1="260" x2="650" y2="260"
+                                                                stroke="var(--mod4-color)" stroke-width="4" />
+                                                            <line x1="607" y1="242" x2="643" y2="278"
+                                                                stroke="var(--mod4-color)" stroke-width="4" />
+                                                            <line x1="607" y1="278" x2="643" y2="242"
+                                                                stroke="var(--mod4-color)" stroke-width="4" />
+                                                        </g>
+
+                                                        <!-- Generator & Line -->
+                                                        <rect x="610" y="160" width="30" height="40" fill="#ef4444"
+                                                            rx="3" />
+                                                        <line x1="625" y1="200" x2="625" y2="235" stroke="#fff"
+                                                            stroke-width="4" />
+                                                        <path d="M 625 160 L 625 100 L 750 100" stroke="#facc15"
+                                                            stroke-width="4" fill="none" />
+
+                                                        <!-- Tailrace -->
+                                                        <path d="M 700 280 L 800 280 L 800 300 L 550 300 Z"
+                                                            fill="rgba(59, 130, 246, 0.4)" />
+                                                    </svg>
+
+                                                    <!-- Interactive Overlay -->
+                                                    <div
+                                                        style="position:absolute; top:10px; left:10px; background:rgba(0,0,0,0.8); padding:10px; border-radius:8px;">
+                                                        <label
+                                                            style="font-size:0.85rem; color:#e2e8f0; display:block;">Water
+                                                            Head (H): <span id="head-val">100</span> m</label>
+                                                        <input type="range" id="head-slider" min="10" max="300"
+                                                            value="100" style="width:150px; margin-top:5px;">
+                                                        <div
+                                                            style="font-size:0.8rem; color:#94a3b8; display:flex; justify-content:space-between; margin-top:5px;">
+                                                            <span>Mode:</span>
+                                                            <button id="btn-pump-storage" class="theme-toggle"
+                                                                style="background:none; border:1px solid var(--mod4-color); color:var(--mod4-color); padding:2px 5px; border-radius:3px; cursor:pointer;">Generate</button>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.8); padding:10px; border-radius:8px;">
+                                                        <label
+                                                            style="font-size:0.85rem; color:#e2e8f0; display:block;">Power
+                                                            Output</label>
+                                                        <div id="hydro-power-out"
+                                                            style="font-size:1.5rem; color:var(--mod4-color); font-family:'Orbitron', sans-serif;">
+                                                            --- MW</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <!-- Major Hydro Power Stations Table -->
+                                <div class="machine-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                                    <div class="card-strip" style="background: var(--mod4-color);"></div>
+                                    <div class="card-header">
+                                        <h3>Major Hydro Power Stations in India</h3>
+                                    </div>
+                                    <div class="formula-zone">
+                                        <div class="table-container" style="overflow-x:auto;">
+                                            <table
+                                                style="width:100%; border-collapse:collapse; text-align:left; font-size:0.85rem; color:#e2e8f0;">
+                                                <tr
+                                                    style="border-bottom: 1px solid rgba(59,130,246,0.3); color:var(--mod4-color);">
+                                                    <th style="padding:8px;">Station</th>
+                                                    <th style="padding:8px;">State</th>
+                                                    <th style="padding:8px;">Capacity</th>
+                                                    <th style="padding:8px;">Units</th>
+                                                </tr>
+                                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                                    <td style="padding:8px;">Tehri Dam</td>
+                                                    <td style="padding:8px;">Uttarakhand</td>
+                                                    <td style="padding:8px;">2400 MW</td>
+                                                    <td style="padding:8px;">4×250</td>
+                                                </tr>
+                                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                                    <td style="padding:8px;">Bhakra Nangal</td>
+                                                    <td style="padding:8px;">H.P./Punjab</td>
+                                                    <td style="padding:8px;">1325 MW</td>
+                                                    <td style="padding:8px;">Multiple</td>
+                                                </tr>
+                                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                                    <td style="padding:8px;">Sardar Sarovar</td>
+                                                    <td style="padding:8px;">Gujarat</td>
+                                                    <td style="padding:8px;">1450 MW</td>
+                                                    <td style="padding:8px;">6×200 + 5×50</td>
+                                                </tr>
+                                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                                    <td style="padding:8px;">Koyna</td>
+                                                    <td style="padding:8px;">Maharashtra</td>
+                                                    <td style="padding:8px;">1960 MW</td>
+                                                    <td style="padding:8px;">Multiple Stages</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+            </section>
+            <section id="mod5" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 5 <span class="module-subtitle">— Diesel Electric Power
+                            Stations</span></h2>
+                    <div class="module-line"
+                        style="background: var(--mod5-color); box-shadow: 0 0 10px var(--mod5-color);"></div>
+                </div>
+
+                <div class="card-grid">
+
+                    <!-- Card 5.1: Engine Basics -->
+                    <div class="machine-card" style="grid-column: span 1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod5-color);"></div>
+                        <div class="card-header">
+                            <h3>5.1 4-Stroke Engine Principles</h3>
+                        </div>
+
+                        <div class="anim-zone"
+                            style="height:250px; background: rgba(0,0,0,0.2); border-radius: 8px; position:relative; display:flex; justify-content:center; align-items:center;">
+                            <!-- 4-Stroke Engine SVG -->
+                            <svg id="diesel-engine-svg" viewBox="0 0 200 250" width="100%" height="100%">
+                                <!-- Cylinder -->
+                                <rect x="70" y="50" width="60" height="120" fill="none" stroke="#e2e8f0"
+                                    stroke-width="4" />
+                                <path d="M 70 50 L 100 20 L 130 50" fill="none" stroke="#e2e8f0" stroke-width="4" />
+
+                                <!-- Valves -->
+                                <line x1="85" y1="20" x2="85" y2="40" stroke="#facc15" stroke-width="3"
+                                    id="intake-valve" />
+                                <line x1="115" y1="20" x2="115" y2="40" stroke="#facc15" stroke-width="3"
+                                    id="exhaust-valve" />
+
+                                <!-- Combustion Chamber glow -->
+                                <rect x="72" y="50" width="56" height="40" fill="transparent" id="combustion-glow" />
+
+                                <!-- Piston -->
+                                <g id="piston-group">
+                                    <rect x="75" y="55" width="50" height="30" fill="#94a3b8" rx="2" />
+                                    <!-- Connecting Rod -->
+                                    <line x1="100" y1="85" x2="100" y2="150" stroke="#fff" stroke-width="6"
+                                        id="conn-rod" />
+                                </g>
+
+                                <!-- Crankshaft -->
+                                <circle cx="100" cy="180" r="30" fill="none" stroke="#78716c" stroke-width="4" />
+                                <circle cx="100" cy="180" r="5" fill="#fff" />
+                                <line x1="100" y1="180" x2="100" y2="150" stroke="#78716c" stroke-width="8"
+                                    id="crank-arm" />
+                            </svg>
+                            <div id="stroke-label"
+                                style="position:absolute; bottom:10px; width:100%; text-align:center; font-family:'Orbitron', sans-serif; color:var(--mod5-color);">
+                                1. INTAKE</div>
+                        </div>
+
+                        <div class="formula-zone">
+                            <h4 class="text-sm" style="color:var(--mod5-color);">Engine Power Forms</h4>
+                            <div>$$ \text{I.P.} = \frac{P_m L A N k}{60} $$</div>
+                            <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">I.P = Indicated Power, $P_m$
+                                = mean eff. pressure, $N$ = RPM ($N/2$ for 4-stroke), $k$ = cylinders</div>
+
+                            <div>$$ \text{B.P.} = \frac{2 \pi N T}{60} $$</div>
+                            <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">B.P = Brake Power (Actual
+                                output at shaft), $T$ = torque</div>
+
+                            <div>$$ \text{F.P.} = \text{I.P.} - \text{B.P.} $$</div>
+                            <div class="text-xs" style="color:#94a3b8;">F.P = Friction Power</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5.3: Plant Support Systems -->
+                    <div class="machine-card" style="grid-column: span 1;" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod5-color);"></div>
+                        <div class="card-header">
+                            <h3>5.3 Plant Layout & Auxiliaries</h3>
+                        </div>
+
+                        <div class="anim-zone"
+                            style="height:250px; background: rgba(0,0,0,0.2); border-radius: 8px; position:relative;">
+                            <svg viewBox="0 0 350 250" width="100%" height="100%">
+                                <!-- Central Engine/Gen -->
+                                <rect x="125" y="100" width="100" height="80" fill="#1e293b" stroke="var(--mod5-color)"
+                                    stroke-width="3" rx="5" />
+                                <text x="175" y="140" fill="#e2e8f0" font-size="12" text-anchor="middle"
+                                    font-family="Orbitron">DIESEL SET</text>
+
+                                <!-- Fuel System -->
+                                <rect x="20" y="20" width="60" height="60" fill="#1e293b" stroke="#facc15"
+                                    stroke-width="2" rx="3" />
+                                <text x="50" y="55" fill="#facc15" font-size="10" text-anchor="middle">FUEL S.</text>
+                                <path d="M 50 80 L 50 140 L 125 140" stroke="#facc15" stroke-width="2" fill="none"
+                                    stroke-dasharray="5 5" class="aux-flow" />
+
+                                <!-- Air Intake -->
+                                <rect x="270" y="20" width="60" height="60" fill="#1e293b" stroke="#3b82f6"
+                                    stroke-width="2" rx="3" />
+                                <text x="300" y="55" fill="#3b82f6" font-size="10" text-anchor="middle">AIR IN</text>
+                                <path d="M 300 80 L 300 120 L 225 120" stroke="#3b82f6" stroke-width="2" fill="none"
+                                    stroke-dasharray="5 5" class="aux-flow" />
+
+                                <!-- Exhaust -->
+                                <rect x="270" y="170" width="60" height="60" fill="#1e293b" stroke="#ef4444"
+                                    stroke-width="2" rx="3" />
+                                <text x="300" y="205" fill="#ef4444" font-size="10" text-anchor="middle">EXHAUST</text>
+                                <path d="M 225 160 L 300 160 L 300 170" stroke="#ef4444" stroke-width="2" fill="none"
+                                    stroke-dasharray="5 5" class="aux-flow" />
+
+                                <!-- Cooling -->
+                                <rect x="20" y="170" width="60" height="60" fill="#1e293b" stroke="#00f5ff"
+                                    stroke-width="2" rx="3" />
+                                <text x="50" y="205" fill="#00f5ff" font-size="10" text-anchor="middle">COOLING</text>
+                                <path d="M 50 170 L 50 160 L 125 160" stroke="#00f5ff" stroke-width="2" fill="none"
+                                    stroke-dasharray="5 5" class="aux-flow" />
+                            </svg>
+                        </div>
+
+                        <div class="formula-zone">
+                            <h4 class="text-sm" style="color:var(--mod5-color);">Efficiencies & Fuel</h4>
+                            <div>$$ \eta_{mech} = \frac{\text{B.P.}}{\text{I.P.}} \times 100\% $$</div>
+                            <div>$$ \eta_{thermal} = \frac{\text{B.P.} \times 3600}{m_f \times C_v} $$</div>
+
+                            <h4 class="text-sm" style="color:var(--mod5-color); margin-top:10px;">Specific Fuel
+                                Consumption (SFC)</h4>
+                            <div>$$ \text{SFC} = \frac{\text{Fuel consumed (kg/hr)}}{\text{Brake Power (kW)}} $$</div>
+                            <div class="text-xs" style="color:#94a3b8;">Lower SFC implies better efficiency.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <section id="mod6" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 6 <span class="module-subtitle">— Gas Turbine Power Plants</span>
+                    </h2>
+                    <div class="module-line"
+                        style="background: var(--mod6-color); box-shadow: 0 0 10px var(--mod6-color);"></div>
+                </div>
+
+                <div class="card-grid">
+
+                    <!-- Card 6.2: Brayton Cycle -->
+                    <div class="machine-card" style="grid-column: span 1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod6-color);"></div>
+                        <div class="card-header">
+                            <h3>6.1 Brayton Cycle & Efficiency</h3>
+                        </div>
+                        <div class="anim-zone" style="height:250px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                            <svg id="brayton-ts-svg" viewBox="0 0 300 250" width="100%" height="100%">
+                                <!-- Axes -->
+                                <line x1="30" y1="220" x2="280" y2="220" stroke="#fff" stroke-width="2" />
+                                <line x1="30" y1="220" x2="30" y2="20" stroke="#fff" stroke-width="2" />
+                                <text x="270" y="240" fill="#fff" font-size="12">s (Entropy)</text>
+                                <text x="5" y="30" fill="#fff" font-size="12">T</text>
+
+                                <!-- Constant Pressure lines (Isobaric) -->
+                                <path d="M 50 180 Q 150 150, 250 80" stroke="#94a3b8" stroke-width="1" fill="none"
+                                    stroke-dasharray="2 2" />
+                                <path d="M 50 200 Q 150 190, 250 160" stroke="#94a3b8" stroke-width="1" fill="none"
+                                    stroke-dasharray="2 2" />
+
+                                <!-- Brayton Cycle Path -->
+                                <!-- 1->2 Isentropic Comp, 2->3 Isobaric Heat Add, 3->4 Isentropic Exp, 4->1 Isobaric Heat Reject -->
+                                <path id="brayton-path"
+                                    d="M 120 185 L 120 100 Q 180 80, 220 50 L 220 135 Q 160 165, 120 185"
+                                    stroke="var(--mod6-color)" stroke-width="3" fill="none" stroke-dasharray="500"
+                                    stroke-dashoffset="500" />
+
+                                <circle cx="120" cy="185" r="3" fill="#fff" /><text x="105" y="195" fill="#fff"
+                                    font-size="10">1</text>
+                                <circle cx="120" cy="100" r="3" fill="#fff" /><text x="105" y="100" fill="#fff"
+                                    font-size="10">2</text>
+                                <circle cx="220" cy="50" r="3" fill="#fff" /><text x="225" y="45" fill="#fff"
+                                    font-size="10">3</text>
+                                <circle cx="220" cy="135" r="3" fill="#fff" /><text x="225" y="145" fill="#fff"
+                                    font-size="10">4</text>
+                            </svg>
+                        </div>
+                        <div class="formula-zone text-center">
+                            <button id="btn-draw-brayton" class="theme-toggle"
+                                style="margin-top:10px; background:none; border:1px solid var(--mod6-color); color:var(--mod6-color); padding:5px 10px; border-radius:4px; cursor:pointer;">Draw
+                                Brayton Cycle</button>
+                        </div>
+                        <div class="formula-zone">
+                            <h4 class="text-sm" style="color:var(--mod6-color);">Thermal Efficiency</h4>
+                            <div>$$ \eta_{Brayton} = 1 - \frac{1}{(r_p)^{\frac{\gamma-1}{\gamma}}} $$</div>
+                            <div class="text-xs" style="color:#94a3b8;">$r_p = P_2/P_1$ = Pressure ratio, $\gamma =
+                                C_p/C_v$</div>
+
+                            <h4 class="text-sm" style="color:var(--mod6-color); margin-top:10px;">Optimum Pressure Ratio
+                                (Max Work)</h4>
+                            <div>$$ r_{p,opt} = \left(\frac{T_3}{T_1}\right)^{\frac{\gamma}{2(\gamma-1)}} $$</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6.3: Setup & Components -->
+                    <div class="machine-card" style="grid-column: span 1;" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod6-color);"></div>
+                        <div class="card-header">
+                            <h3>6.2 Gas Turbine Layout (Open Cycle)</h3>
+                        </div>
+                        <div class="anim-zone"
+                            style="height:350px; background: rgba(0,0,0,0.2); border-radius: 8px; position:relative; overflow:hidden;">
+                            <svg viewBox="0 0 400 350" width="100%" height="100%">
+                                <!-- Shaft linking compressor, turbine and gen -->
+                                <line x1="50" y1="180" x2="350" y2="180" stroke="#fff" stroke-width="4" id="gt-shaft"
+                                    stroke-dasharray="10 5" />
+
+                                <!-- Compressor (Converging nozzle shape) -->
+                                <polygon points="50,150 150,165 150,195 50,210" fill="#1e293b" stroke="#3b82f6"
+                                    stroke-width="2" />
+                                <text x="100" y="145" fill="#3b82f6" font-size="10"
+                                    text-anchor="middle">COMPRESSOR</text>
+
+                                <!-- Combustion Chamber -->
+                                <rect x="180" y="90" width="60" height="60" fill="#1e293b" stroke="#facc15"
+                                    stroke-width="2" rx="10" />
+                                <text x="210" y="80" fill="#facc15" font-size="10" text-anchor="middle">CC</text>
+                                <path d="M 200 130 Q 210 100, 220 130" stroke="#ef4444" stroke-width="2" fill="#facc15"
+                                    id="gt-flame" />
+
+                                <!-- Turbine (Diverging shape) -->
+                                <polygon points="270,165 330,150 330,210 270,195" fill="#1e293b" stroke="#ef4444"
+                                    stroke-width="2" />
+                                <text x="300" y="145" fill="#ef4444" font-size="10" text-anchor="middle">TURBINE</text>
+
+                                <!-- Flows -->
+                                <!-- Air intake -->
+                                <path d="M 20 180 L 40 180" stroke="#3b82f6" stroke-width="3"
+                                    marker-end="url(#gt-arrow-blue)" class="gt-flow" />
+                                <!-- Comp to CC -->
+                                <path d="M 150 180 Q 180 180, 180 130" stroke="#60a5fa" stroke-width="3" fill="none"
+                                    stroke-dasharray="4 4" class="gt-flow" />
+                                <!-- CC to Turbine -->
+                                <path d="M 240 130 Q 240 180, 270 180" stroke="#ef4444" stroke-width="3" fill="none"
+                                    stroke-dasharray="4 4" class="gt-flow" />
+                                <!-- Exhaust -->
+                                <path d="M 330 180 L 360 180" stroke="#ef4444" stroke-width="3"
+                                    marker-end="url(#gt-arrow-red)" class="gt-flow" />
+
+                                <!-- Generator -->
+                                <rect x="350" y="160" width="30" height="40" fill="#1e293b" stroke="#00f5ff"
+                                    stroke-width="2" />
+                                <text x="365" y="155" fill="#00f5ff" font-size="10" text-anchor="middle">GEN</text>
+
+                                <!-- Definitions -->
+                                <defs>
+                                    <marker id="gt-arrow-blue" markerWidth="6" markerHeight="4" refX="5" refY="2"
+                                        orient="auto">
+                                        <polygon points="0 0, 6 2, 0 4" fill="#3b82f6" />
+                                    </marker>
+                                    <marker id="gt-arrow-red" markerWidth="6" markerHeight="4" refX="5" refY="2"
+                                        orient="auto">
+                                        <polygon points="0 0, 6 2, 0 4" fill="#ef4444" />
+                                    </marker>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="formula-zone">
+                            <h4 class="text-sm" style="color:var(--mod6-color);">Work Ratio</h4>
+                            <div>$$ W_R = \frac{\text{Net Work}}{\text{Turbine Work}} = \frac{W_T - W_C}{W_T} $$</div>
+                            <div class="text-xs" style="color:#94a3b8; margin-top:5px;">
+                                Unlike steam turbines, $W_C$ (compressor work) takes up ~50-60% of $W_T$, resulting in a
+                                low work ratio.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <section id="mod7" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 7 <span class="module-subtitle">— Non-Conventional Energy</span>
+                    </h2>
+                    <div class="module-line"
+                        style="background: var(--mod7-color); box-shadow: 0 0 10px var(--mod7-color);"></div>
+                </div>
+
+                <div class="card-grid">
+
+                    <!-- Card 7.1: Solar Power -->
+                    <div class="machine-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod7-color);"></div>
+                        <div class="card-header">
+                            <h3>7.1 Solar Power (PV & Thermal)</h3>
+                        </div>
+                        <div class="formula-zone"
+                            style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+                            <div style="flex:1; min-width:300px;">
+                                <h4 class="text-sm" style="color:var(--mod7-color);">PV Cell Performance</h4>
+                                <div>$$ FF = \frac{V_m I_m}{V_{oc} I_{sc}} $$</div>
+                                <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">FF = Fill Factor, $V_m,
+                                    I_m$ = max power point, $V_{oc}$ = open circuit voltage, $I_{sc}$ = short circuit
+                                    current</div>
+
+                                <div>$$ \eta_{PV} = \frac{V_m I_m}{P_{in} A} \times 100\% = \frac{V_{oc} I_{sc}
+                                    FF}{I_{rr} A} \times 100\% $$</div>
+                                <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">$I_{rr}$ = Solar
+                                    Irradiance ($W/m^2$)</div>
+
+                                <div class="anim-zone"
+                                    style="height:200px; background: rgba(0,0,0,0.2); border-radius: 8px; position:relative; overflow:hidden; margin-top:20px;">
+                                    <svg viewBox="0 0 300 200" width="100%" height="100%">
+                                        <!-- Sun -->
+                                        <circle cx="50" cy="50" r="20" fill="#facc15" id="solar-sun" />
+                                        <path d="M 50 20 L 50 10 M 50 80 L 50 90 M 20 50 L 10 50 M 80 50 L 90 50"
+                                            stroke="#facc15" stroke-width="2" class="sun-ray" />
+                                        <path d="M 30 30 L 20 20 M 70 70 L 80 80 M 30 70 L 20 80 M 70 30 L 80 20"
+                                            stroke="#facc15" stroke-width="2" class="sun-ray" />
+
+                                        <!-- Rays to Panel -->
+                                        <path d="M 70 60 L 150 110 M 60 70 L 120 130" stroke="#facc15" stroke-width="2"
+                                            stroke-dasharray="5 5" class="photon-ray" />
+
+                                        <!-- PV Panel -->
+                                        <g transform="translate(100, 100) rotate(-20)">
+                                            <rect x="0" y="0" width="100" height="60" fill="#1e293b" stroke="#3b82f6"
+                                                stroke-width="3" />
+                                            <!-- Grid lines -->
+                                            <line x1="25" y1="0" x2="25" y2="60" stroke="#3b82f6" stroke-width="1" />
+                                            <line x1="50" y1="0" x2="50" y2="60" stroke="#3b82f6" stroke-width="1" />
+                                            <line x1="75" y1="0" x2="75" y2="60" stroke="#3b82f6" stroke-width="1" />
+                                            <line x1="0" y1="20" x2="100" y2="20" stroke="#3b82f6" stroke-width="1" />
+                                            <line x1="0" y1="40" x2="100" y2="40" stroke="#3b82f6" stroke-width="1" />
+                                        </g>
+
+                                        <!-- Output line -->
+                                        <path d="M 190 150 L 250 150 L 250 180" stroke="#00f5ff" stroke-width="3"
+                                            fill="none" class="dc-flow" stroke-dasharray="10 5" />
+                                        <rect x="235" y="180" width="30" height="15" fill="#ef4444" rx="2" />
+                                        <text x="250" y="190" fill="#fff" font-size="8" text-anchor="middle">LOAD</text>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div style="flex:1; min-width:300px; display:flex; flex-direction:column;">
+                                <h4 class="text-sm" style="color:var(--mod7-color);">Interactive I-V Curve</h4>
+                                <div style="flex:1; background:rgba(0,0,0,0.2); border-radius:8px; padding:10px;">
+                                    <canvas id="solar-iv-chart"></canvas>
+                                </div>
+                                <div
+                                    style="margin-top:10px; display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
+                                    <div style="flex:1; padding-right:10px;">
+                                        <label style="font-size:0.8rem; color:#e2e8f0; display:block;">Irradiance
+                                            ($W/m^2$): <span id="irr-val">1000</span></label>
+                                        <input type="range" id="irr-slider" min="200" max="1200" value="1000"
+                                            style="width:100%;">
+                                    </div>
+                                    <div
+                                        style="flex:1; padding-left:10px; border-left:1px solid rgba(255,255,255,0.1);">
+                                        <label style="font-size:0.8rem; color:#e2e8f0; display:block;">Temp (°C): <span
+                                                id="temp-val">25</span></label>
+                                        <input type="range" id="temp-slider" min="0" max="80" value="25"
+                                            style="width:100%;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7.3: Wind Power -->
+                    <div class="machine-card" style="grid-column: span 1;" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod7-color);"></div>
+                        <div class="card-header">
+                            <h3>7.3 Wind Power</h3>
+                        </div>
+                        <div class="anim-zone"
+                            style="height:250px; background: rgba(0,0,0,0.2); border-radius: 8px; position:relative; overflow:hidden;">
+                            <svg viewBox="0 0 300 250" width="100%" height="100%">
+                                <!-- Tower -->
+                                <polygon points="140,250 160,250 152,100 148,100" fill="#94a3b8" />
+                                <!-- Nacelle -->
+                                <rect x="135" y="85" width="40" height="20" fill="#1e293b" rx="5" />
+
+                                <!-- Rotor/Blades -->
+                                <g id="wind-rotor" transform="translate(140, 95)">
+                                    <circle cx="0" cy="0" r="5" fill="#facc15" />
+                                    <!-- Blade 1 -->
+                                    <path d="M 0 0 C -5 -30, -5 -60, 0 -80 C 5 -60, 5 -30, 0 0" fill="#e2e8f0" />
+                                    <!-- Blade 2 (120 deg) -->
+                                    <g transform="rotate(120)">
+                                        <path d="M 0 0 C -5 -30, -5 -60, 0 -80 C 5 -60, 5 -30, 0 0" fill="#e2e8f0" />
+                                    </g>
+                                    <!-- Blade 3 (240 deg) -->
+                                    <g transform="rotate(240)">
+                                        <path d="M 0 0 C -5 -30, -5 -60, 0 -80 C 5 -60, 5 -30, 0 0" fill="#e2e8f0" />
+                                    </g>
+                                </g>
+
+                                <!-- Wind lines -->
+                                <path d="M 10 50 L 60 50" stroke="#00f5ff" stroke-width="2" stroke-dasharray="5 5"
+                                    class="wind-flow" />
+                                <path d="M 20 100 L 80 100" stroke="#00f5ff" stroke-width="2" stroke-dasharray="5 5"
+                                    class="wind-flow" />
+                                <path d="M 5 150 L 50 150" stroke="#00f5ff" stroke-width="2" stroke-dasharray="5 5"
+                                    class="wind-flow" />
+                            </svg>
+                            <div
+                                style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.8); padding:10px; border-radius:8px; width:calc(100% - 20px);">
+                                <label
+                                    style="font-size:0.8rem; color:#e2e8f0; display:flex; justify-content:space-between;">
+                                    <span>Wind Speed ($v$): <span id="wind-val">10</span> m/s</span>
+                                    <span
+                                        style="color:var(--mod7-color); font-weight:bold; font-family:'Orbitron', sans-serif;"><span
+                                            id="wind-power-val">0.59</span> MW</span>
+                                </label>
+                                <input type="range" id="wind-slider" min="3" max="25" value="10"
+                                    style="width:100%; margin-top:5px;">
+                            </div>
+                        </div>
+
+                        <div class="formula-zone">
+                            <h4 class="text-sm" style="color:var(--mod7-color);">Wind Power Equation</h4>
+                            <div>$$ P = \frac{1}{2} \rho A v^3 C_p $$</div>
+                            <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">
+                                $\rho$ = air density (~$1.225 \text{ kg/m}^3$), $A$ = swept area ($\pi r^2$), $v$ = wind
+                                speed, $C_p$ = coeff. of performance.
+                            </div>
+                            <h4 class="text-sm" style="color:var(--mod7-color);">Betz Limit</h4>
+                            <div>$$ C_{p,max} = \frac{16}{27} \approx 0.593 \text{ (59.3\%)} $$</div>
+                            <div class="text-xs" style="color:#94a3b8;">Max theoretical efficiency of a wind turbine.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7.7: Other Renewables -->
+                    <div class="machine-card" style="grid-column: span 1;" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-strip" style="background: var(--mod7-color);"></div>
+                        <div class="card-header">
+                            <h3>7.7 Tidal & Biomass</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <h4 class="text-sm" style="color:var(--mod7-color);">Tidal Energy (Potential)</h4>
+                            <div>$$ E = \frac{1}{2} \rho A g R^2 $$</div>
+                            <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">
+                                $R$ = Tidal range (head), $A$ = basin area, $\rho$ = seawater density (~$1025 \text{
+                                kg/m}^3$). Works on two-way generation.
+                            </div>
+
+                            <h4 class="text-sm" style="color:var(--mod7-color);">Biomass & Biogas</h4>
+                            <div class="text-sm" style="color:#e2e8f0; line-height:1.6; margin-bottom:10px;">
+                                Biomass energy is extracted through direct combustion, gasification, or anaerobic
+                                digestion.
+                            </div>
+                            <div>$$ \text{Biogas } \approx 55\text{-}70\% \text{ Methane (CH}_4\text{)} $$</div>
+                            <div>$$ \text{Cal. Value } \approx 20 \text{-} 25 \text{ MJ/m}^3 $$</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <section id="mod8" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 8 <span class="module-subtitle">— Economics of Power
+                            Generation</span></h2>
+                    <div class="module-line"
+                        style="background: var(--mod8-color); box-shadow: 0 0 10px var(--mod8-color);"></div>
+                </div>
+
+                <div class="card-grid">
+
+                    <!-- Card 8.1: Load Curves & Factors -->
+                    <div class="machine-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod8-color);"></div>
+                        <div class="card-header">
+                            <h3>8.1 Load Curves & System Factors</h3>
+                        </div>
+
+                        <div class="formula-zone"
+                            style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+                            <div style="flex:1; min-width:300px;">
+                                <h4 class="text-sm" style="color:var(--mod8-color);">Essential Factors</h4>
+                                <div>$$ \text{Load Factor } (LF) = \frac{\text{Average Load}}{\text{Max Demand}} =
+                                    \frac{\text{Units Generated in } T}{\text{Max Demand} \times T} $$</div>
+                                <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">Usually < 1. Higher is
+                                        better for economics.</div>
+
+                                        <div>$$ \text{Capacity Factor } (CF) = \frac{\text{Average Load}}{\text{Plant
+                                            Capacity}} = \text{LF} \times \frac{\text{Max Demand}}{\text{Plant
+                                            Capacity}} $$</div>
+                                        <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">Indicator of
+                                            reserve capacity unused.</div>
+
+                                        <div>$$ \text{Diversity Factor} = \frac{\sum \text{Individual Max
+                                            Demands}}{\text{Simultaneous Max Demand of system}} $$</div>
+                                        <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">Always > 1.
+                                            Helps lower overall capital cost.</div>
+
+                                        <div>$$ \text{Plant Use Factor} = \frac{\text{Actual Energy
+                                            Generated}}{\text{Plant Capacity} \times \text{Hours in Use}} $$</div>
+                                </div>
+
+                                <div style="flex:1; min-width:300px; display:flex; flex-direction:column;">
+                                    <h4 class="text-sm" style="color:var(--mod8-color);">Daily Load Curve</h4>
+                                    <div
+                                        style="flex:1; background:rgba(0,0,0,0.2); border-radius:8px; padding:10px; position:relative;">
+                                        <canvas id="load-curve-chart"></canvas>
+                                        <div style="position:absolute; bottom:40px; right:20px; text-align:right;">
+                                            <div style="font-size:0.75rem; color:#f43f5e;"><span
+                                                    style="display:inline-block; width:10px; height:10px; background:#f43f5e; margin-right:5px;"></span>Peak
+                                                Load (Peaking Plants)</div>
+                                            <div style="font-size:0.75rem; color:#8b5cf6;"><span
+                                                    style="display:inline-block; width:10px; height:10px; background:#8b5cf6; margin-right:5px;"></span>Base
+                                                Load (Thermal/Nuclear)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 8.2: Cost & Tariffs -->
+                        <div class="machine-card" style="grid-column: span 1;" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card-strip" style="background: var(--mod8-color);"></div>
+                            <div class="card-header">
+                                <h3>8.2 Tariffs & Power Factor Penalty</h3>
+                            </div>
+                            <div class="formula-zone">
+                                <h4 class="text-sm" style="color:var(--mod8-color);">Two-Part Tariff (Hopkinson Demand
+                                    Rate)</h4>
+                                <div>$$ C = a \times (\text{kW}) + b \times (\text{kWh}) $$</div>
+                                <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">
+                                    $a$ = Charge per kW of Max Demand (Fixed cost recovery)<br>
+                                    $b$ = Charge per kWh of energy consumed (Running cost recovery)
+                                </div>
+
+                                <h4 class="text-sm" style="color:var(--mod8-color);">Power Factor Tariff</h4>
+                                <div class="text-xs" style="color:#e2e8f0; line-height:1.6; margin-bottom:10px;">
+                                    Low power factor requires larger kVA rating for the same kW, increasing capital cost
+                                    of alternator/transformers and increasing $I^2R$ copper losses.
+                                </div>
+                                <div>$$ \text{kVA tariff: } C = a \times \text{kVA}_{max} + b \times \text{kWh} $$</div>
+                                <div>$$ \text{Since } \text{kVA} = \frac{\text{kW}}{\cos\phi} $$</div>
+                                <div class="text-xs" style="color:#f43f5e;">A direct penalty is applied if PF drops
+                                    below a threshold (e.g., 0.85).</div>
+                            </div>
+                        </div>
+
+                        <!-- Card 8.5: Depreciation -->
+                        <div class="machine-card" style="grid-column: span 1;" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card-strip" style="background: var(--mod8-color);"></div>
+                            <div class="card-header">
+                                <h3>8.5 Depreciation Calculation</h3>
+                            </div>
+                            <div class="formula-zone">
+                                <h4 class="text-sm" style="color:var(--mod8-color);">Straight Line Method</h4>
+                                <div>$$ d = \frac{P - S}{n} $$</div>
+                                <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">
+                                    $P$ = Initial cost, $S$ = Salvage value, $n$ = useful life in years.<br>
+                                    Equal amount written off every year.
+                                </div>
+
+                                <h4 class="text-sm" style="color:var(--mod8-color);">Sinking Fund Method</h4>
+                                <div>$$ q = \frac{(P - S) \cdot r}{(1+r)^n - 1} $$</div>
+                                <div class="text-xs" style="color:#94a3b8; margin-bottom:10px;">
+                                    $q$ = Annual deposit into a fund earning interest rate $r$.
+                                </div>
+
+                                <!-- Interactive Depreciation Calculator -->
+                                <div
+                                    style="background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; border:1px solid rgba(255,255,255,0.1);">
+                                    <h4
+                                        style="font-size:0.8rem; color:var(--mod8-color); margin-bottom:5px; text-transform:uppercase;">
+                                        Quick Calculator</h4>
+                                    <div
+                                        style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.8rem;">
+                                        <div><label style="color:#94a3b8;">Cost P ($):</label><input type="number"
+                                                id="dep-p" value="100000"
+                                                style="width:100%; background:none; border:1px solid #475569; color:#e2e8f0; padding:2px 5px;">
+                                        </div>
+                                        <div><label style="color:#94a3b8;">Salvage S ($):</label><input type="number"
+                                                id="dep-s" value="10000"
+                                                style="width:100%; background:none; border:1px solid #475569; color:#e2e8f0; padding:2px 5px;">
+                                        </div>
+                                        <div><label style="color:#94a3b8;">Life n (yrs):</label><input type="number"
+                                                id="dep-n" value="20"
+                                                style="width:100%; background:none; border:1px solid #475569; color:#e2e8f0; padding:2px 5px;">
+                                        </div>
+                                        <div><label style="color:#94a3b8;">Rate r (%):</label><input type="number"
+                                                id="dep-r" value="5"
+                                                style="width:100%; background:none; border:1px solid #475569; color:#e2e8f0; padding:2px 5px;">
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="margin-top:10px; display:flex; justify-content:space-between; color:#e2e8f0; font-size:0.8rem;">
+                                        <div>SLM dep/yr: <span id="out-slm"
+                                                style="color:var(--mod8-color); font-weight:bold;">$4500</span></div>
+                                        <div>SF deposit/yr: <span id="out-sfm"
+                                                style="color:var(--mod8-color); font-weight:bold;">$2721.84</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+            </section>
+            <section id="mod9" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 9 <span class="module-subtitle">— Interconnected Power
+                            Systems</span></h2>
+                    <div class="module-line"
+                        style="background: var(--mod9-color); box-shadow: 0 0 10px var(--mod9-color);"></div>
+                </div>
+
+                <div class="card-grid">
+
+                    <!-- Card 9.1: Plant Types -->
+                    <div class="machine-card" style="grid-column: span 1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod9-color);"></div>
+                        <div class="card-header">
+                            <h3>9.1 Base vs Peak Load Plants</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <table
+                                style="width:100%; border-collapse:collapse; text-align:left; font-size:0.85rem; color:#e2e8f0;">
+                                <tr style="border-bottom: 1px solid rgba(0,245,255,0.3); color:var(--mod9-color);">
+                                    <th style="padding:8px;">Base Load Plants</th>
+                                    <th style="padding:8px;">Peak Load Plants</th>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding:8px;"><span style="color:#facc15;">&#9679;</span> Nuclear Power
+                                    </td>
+                                    <td style="padding:8px;"><span style="color:#ef4444;">&#9679;</span> Gas Turbines
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding:8px;"><span style="color:#facc15;">&#9679;</span> Large
+                                        Coal/Thermal</td>
+                                    <td style="padding:8px;"><span style="color:#ef4444;">&#9679;</span> Pumped Storage
+                                        Hydro</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding:8px;"><span style="color:#facc15;">&#9679;</span> Run-of-river
+                                        Hydro</td>
+                                    <td style="padding:8px;"><span style="color:#ef4444;">&#9679;</span> Diesel Sets
+                                    </td>
+                                </tr>
+                                <tr style="color:#94a3b8; font-size:0.75rem;">
+                                    <td style="padding:8px;">Operate at high LF. Slow to start but cheap to run.</td>
+                                    <td style="padding:8px;">Operate at low LF. Quick to start, expensive to run.</td>
+                                </tr>
+                            </table>
+
+                            <h4 class="text-sm" style="color:var(--mod9-color); margin-top:20px;">Advantages of
+                                Interconnection</h4>
+                            <ul style="color:#94a3b8; font-size:0.85rem; padding-left:20px;">
+                                <li>Exchange of peak loads (flattening the curve).</li>
+                                <li>Use of older, less efficient plants primarily for peaks.</li>
+                                <li>Increased diversity factor reduces required combined capacity.</li>
+                                <li>Improved system reliability and stability.</li>
+                                <li>Economic operation (merit-order dispatch).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 9.3: Grid Network SVG -->
+                    <div class="machine-card" style="grid-column: span 1;" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod9-color);"></div>
+                        <div class="card-header">
+                            <h3>9.2 The National Grid</h3>
+                        </div>
+                        <div class="anim-zone"
+                            style="height:350px; background: rgba(0,0,0,0.2); border-radius: 8px; position:relative; overflow:hidden; display:flex; justify-content:center; align-items:center;">
+                            <!-- Interconnected Grid SVG -->
+                            <svg viewBox="0 0 400 350" width="100%" height="100%">
+                                <!-- Transmisison Lines -->
+                                <path d="M 80 80 L 200 175 L 320 80" stroke="#475569" stroke-width="3" fill="none" />
+                                <path d="M 200 175 L 200 300" stroke="#475569" stroke-width="3" fill="none" />
+
+                                <!-- Power Flow Animations -->
+                                <path d="M 80 80 L 200 175 L 320 80" stroke="#00f5ff" stroke-width="3" fill="none"
+                                    stroke-dasharray="10 10" class="grid-power-flow" />
+                                <path d="M 200 175 L 200 300" stroke="#00f5ff" stroke-width="3" fill="none"
+                                    stroke-dasharray="10 10" class="grid-power-flow" />
+
+                                <!-- Node 1: Thermal Plant -->
+                                <g transform="translate(80, 80)">
+                                    <circle cx="0" cy="0" r="30" fill="#1e293b" stroke="#facc15" stroke-width="3" />
+                                    <path d="M -15 10 L -5 -10 L 5 10 M 15 10 L 5 -10" stroke="#facc15" stroke-width="2"
+                                        fill="none" />
+                                    <text x="0" y="-35" fill="#facc15" font-size="10" text-anchor="middle">THERMAL
+                                        (BASE)</text>
+                                    <circle cx="0" cy="0" r="35" fill="none" stroke="#facc15" stroke-width="1"
+                                        stroke-dasharray="4 4" class="grid-pulse" />
+                                </g>
+
+                                <!-- Node 2: Hydro Plant -->
+                                <g transform="translate(320, 80)">
+                                    <circle cx="0" cy="0" r="30" fill="#1e293b" stroke="#3b82f6" stroke-width="3" />
+                                    <path d="M -15 0 Q 0 -15 15 0 Q 0 15 -15 0" stroke="#3b82f6" stroke-width="2"
+                                        fill="none" />
+                                    <text x="0" y="-35" fill="#3b82f6" font-size="10" text-anchor="middle">HYDRO
+                                        (PEAK)</text>
+                                    <circle cx="0" cy="0" r="35" fill="none" stroke="#3b82f6" stroke-width="1"
+                                        stroke-dasharray="4 4" class="grid-pulse" />
+                                </g>
+
+                                <!-- Node 3: Center Substation / Grid Control -->
+                                <g transform="translate(200, 175)">
+                                    <rect x="-25" y="-25" width="50" height="50" fill="#0f172a" stroke="#00f5ff"
+                                        stroke-width="3" rx="5" />
+                                    <line x1="-15" y1="-15" x2="15" y2="15" stroke="#00f5ff" stroke-width="2" />
+                                    <line x1="-15" y1="15" x2="15" y2="-15" stroke="#00f5ff" stroke-width="2" />
+                                    <text x="0" y="-35" fill="#00f5ff" font-size="10" text-anchor="middle"
+                                        font-family="Orbitron">GRID MANAGER</text>
+                                </g>
+
+                                <!-- Node 4: City Load -->
+                                <g transform="translate(200, 300)">
+                                    <path
+                                        d="M -20 10 L -20 -10 L -10 -20 L 0 -10 L 0 -25 L 10 -25 L 10 -5 L 20 -5 L 20 10 Z"
+                                        fill="#94a3b8" />
+                                    <text x="0" y="25" fill="#e2e8f0" font-size="10" text-anchor="middle">URBAN LOAD
+                                        CENTER</text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
 
         </main>
     </div>

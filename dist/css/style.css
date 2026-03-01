@@ -165,7 +165,9 @@ body::before {
   top: 0;
   left: 0;
   right: 0;
-  height: var(--nav-height);
+  min-height: var(--nav-height);
+  height: auto;
+  padding: 10px 32px;
   background: rgba(10, 14, 39, 0.92);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -173,7 +175,6 @@ body::before {
   z-index: 1000;
   display: flex;
   align-items: center;
-  padding: 0 32px;
   transition: background var(--transition);
 }
 
@@ -196,9 +197,9 @@ body.light-mode .navbar {
   display: flex;
   list-style: none;
   gap: 4px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scrollbar-width: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: visible;
   flex: 1;
 }
 
