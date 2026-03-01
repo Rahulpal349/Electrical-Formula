@@ -584,3 +584,21 @@ input[type=range]::-webkit-slider-thumb {
     stroke-width: 4 !important;
     filter: drop-shadow(0 0 5px var(--mod7-color));
 }
+/* --- Module 6: Electronic & Special Instruments --- */
+
+@keyframes pulseHeat {
+    0% {
+        r: 10;
+        opacity: 0.8;
+    }
+
+    100% {
+        r: 25;
+        opacity: 0.2;
+    }
+}
+
+#strain-svg {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
