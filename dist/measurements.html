@@ -930,6 +930,243 @@
 
     </div>
 </section>
+<!-- MODULE 6: Electronic & Special Instruments -->
+<section id="mod6" class="module-section">
+    <div class="module-header" data-aos="fade-right">
+        <h2 class="module-title">MODULE 6 <span class="module-subtitle">— Electronic Instruments</span></h2>
+        <div class="module-line" style="background: var(--mod6-color); box-shadow: 0 0 10px var(--mod6-color);"></div>
+    </div>
+
+    <div class="card-grid">
+
+        <!-- Card 6.1: Digital Voltmeter (DVM) -->
+        <div class="machine-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+            <div class="card-strip" style="background: var(--mod6-color);"></div>
+            <div class="card-header">
+                <h3>6.1 Digital Voltmeter (DVM - Dual Slope)</h3>
+            </div>
+            <div class="formula-zone" style="display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px;">
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px; text-align:center;">Resolution</h4>
+                    <div class="formula text-sm">$$ \text{Res} = \frac{\text{FS}}{10^n} \quad (n=\text{digits}) $$</div>
+                    <div class="formula text-sm">$$ \text{Res} = \frac{V_{FS}}{2^n} \quad (n=\text{bits}) $$</div>
+                </div>
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px; text-align:center;">Dual Slope Conversion</h4>
+                    <div class="formula text-sm">$$ t = \frac{V_{in}}{V_{ref}} \times T_1 $$</div>
+                </div>
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px; text-align:center;">Quantization Error</h4>
+                    <div class="formula text-sm">$$ \pm Q = \pm \frac{V_{FS}}{2^{n+1}} $$</div>
+                </div>
+            </div>
+            <div class="anim-zone" style="flex-direction:row; height:250px; justify-content:space-around;">
+
+                <!-- ADC Block Visual -->
+                <div style="text-align:center; display:flex; flex-direction:column; align-items:center;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <div
+                            style="background:#1e293b; padding:10px; border:1px solid #475569; border-radius:5px; font-size:10px; color:#fff;">
+                            Analog In<br>~</div>
+                        <div style="color:var(--mod6-color);">➔</div>
+                        <div
+                            style="background:#1e293b; padding:10px; border:1px solid #475569; border-radius:5px; font-size:10px; color:#fff;">
+                            S/H<br>Circuit</div>
+                        <div style="color:var(--mod6-color);">➔</div>
+                        <div
+                            style="background:#1e293b; padding:10px; border:1px solid #475569; border-radius:5px; font-size:10px; color:#fff;">
+                            ADC DVM</div>
+                    </div>
+                    <div
+                        style="background:#000; border:2px solid #333; border-radius:10px; padding:10px 20px; margin-top:15px; box-shadow:inset 0 0 10px rgba(0,0,0,0.8);">
+                        <div class="orbitron" id="dvm-display"
+                            style="color:var(--mod1-color); font-size:2rem; text-shadow:0 0 10px var(--mod1-color);">
+                            00.00 V</div>
+                    </div>
+                </div>
+
+                <!-- D3 Graph Area for Dual Slope Integrating -->
+                <div style="display:flex; flex-direction:column; align-items:center; width:40%;">
+                    <div id="dvm-chart"
+                        style="width:100%; height:150px; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.1);">
+                    </div>
+                    <div class="interactive-slider-group mt-2" style="justify-content:center; width:100%;">
+                        <label style="color:#fff;">Vin:</label>
+                        <input type="range" id="vin-slider" min="1" max="10" step="1" value="5">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Card 6.2: Cathode Ray Oscilloscope -->
+        <div class="machine-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+            <div class="card-strip" style="background: var(--mod6-color);"></div>
+            <div class="card-header">
+                <h3>6.2 Cathode Ray Oscilloscope (CRO)</h3>
+            </div>
+            <div class="formula-zone" style="display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px;">
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px; text-align:center;">General Measurements</h4>
+                    <div class="formula text-sm">$$ V_{pp} = \text{Divs} \times \text{V/div} $$</div>
+                    <div class="formula text-sm">$$ T = \text{Divs} \times \text{Time/div} $$</div>
+                    <div class="formula text-sm">$$ S = D/V \quad \text{(Sensitivity)} $$</div>
+                </div>
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px; text-align:center;">Lissajous Phase / Freq</h4>
+                    <div class="formula text-sm">$$ \phi = \sin^{-1}(Y_0 / Y_{max}) $$</div>
+                    <div class="formula text-sm">$$ \frac{f_y}{f_x} = \frac{\text{tangents (H)}}{\text{tangents (V)}} $$
+                    </div>
+                </div>
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px; text-align:center;">Electrostatic Deflection</h4>
+                    <div class="formula text-sm">$$ D = \frac{L l V_d}{2 d V_a} $$</div>
+                </div>
+            </div>
+            <div class="anim-zone" style="flex-direction:row; height:300px; padding:20px; gap:20px;">
+
+                <!-- CRO Screen SVG -->
+                <div
+                    style="position:relative; width: 250px; height: 250px; background:#022c22; border:10px solid #1e293b; border-radius:15px; overflow:hidden; box-shadow:0 0 20px rgba(0,0,0,0.5);">
+                    <!-- Graticule -->
+                    <svg width="100%" height="100%" viewBox="0 0 100 100"
+                        style="position:absolute; top:0; left:0; pointer-events:none;">
+                        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" />
+                        </pattern>
+                        <rect width="100" height="100" fill="url(#grid)" />
+                        <line x1="50" y1="0" x2="50" y2="100" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" />
+                        <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" />
+                    </svg>
+
+                    <!-- Waveform Path updated by JS -->
+                    <svg width="100%" height="100%" viewBox="0 0 100 100" style="position:absolute; top:0; left:0;">
+                        <path id="cro-beam" d="" fill="none" stroke="#00ff88" stroke-width="1.5"
+                            style="filter:drop-shadow(0 0 2px #00ff88);" />
+                        <!-- A sweeping point -->
+                        <circle id="cro-dot" cx="0" cy="50" r="1.5" fill="#00ff88"
+                            style="filter:drop-shadow(0 0 5px #fff);" />
+                    </svg>
+                </div>
+
+                <!-- Controls -->
+                <div style="display:flex; flex-direction:column; justify-content:center; gap:15px; flex:1;">
+                    <div class="interactive-slider-group">
+                        <button class="toggle-btn active" id="cro-mode-sweep" style="flex:1;">Sweep (Y-T)</button>
+                        <button class="toggle-btn" id="cro-mode-xy" style="flex:1;">Lissajous (X-Y)</button>
+                    </div>
+                    <div id="sweep-controls">
+                        <div class="interactive-slider-group">
+                            <label>Freq (Hz):</label>
+                            <input type="range" id="cro-f-slider" min="1" max="5" value="2">
+                        </div>
+                        <div class="interactive-slider-group mt-2">
+                            <label>Amp (V):</label>
+                            <input type="range" id="cro-a-slider" min="10" max="40" value="20">
+                        </div>
+                    </div>
+                    <div id="xy-controls" style="display:none;">
+                        <div class="interactive-slider-group">
+                            <label>Ratio fx:fy</label>
+                            <select id="cro-ratio-select"
+                                style="flex:1; background:rgba(255,255,255,0.1); color:#fff; padding:5px; border:none; outline:none; border-radius:5px;">
+                                <option value="1:1">1:1 (Phase 0)</option>
+                                <option value="1:1_90">1:1 (Phase 90°)</option>
+                                <option value="1:2">1:2 (Figure-8)</option>
+                                <option value="2:3">2:3 (Pretzel)</option>
+                            </select>
+                        </div>
+                        <div class="text-xs text-muted mt-2">X-Y Mode renders parametric functions plotting $Vx(t)$
+                            against $Vy(t)$.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Card 6.3: Strain Gauge -->
+        <div class="machine-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-strip" style="background: var(--mod6-color);"></div>
+            <div class="card-header">
+                <h3>6.3 Strain Gauge Transducer</h3>
+            </div>
+            <div class="formula-zone">
+                <div class="formula text-sm mb-2">$$ GF = \frac{\Delta R/R}{\Delta L/L} = \frac{\Delta R/R}{\varepsilon}
+                    $$</div>
+                <div class="formula text-sm mb-3">Bridge Vout: $$ V = V_{ex} \cdot GF \cdot \varepsilon $$</div>
+                <div class="text-xs text-muted text-center">Active gauge changes R. Dummy gauge compensates for temp.
+                </div>
+            </div>
+            <div class="anim-zone" style="flex-direction:column; position:relative;">
+                <svg viewBox="0 0 200 150" width="100%" height="150" id="strain-svg">
+                    <!-- Base anchor -->
+                    <rect x="10" y="50" width="20" height="50" fill="#475569" />
+
+                    <!-- Cantilever beam -->
+                    <path id="cantilever" d="M 30 70 L 170 70 L 170 80 L 30 80 Z" fill="#94a3b8"
+                        style="transform-origin: 30px 75px; transition: d 0.2s;" />
+
+                    <!-- Strain Gauge -->
+                    <rect id="strain-grid" x="50" y="68" width="30" height="4" fill="var(--mod1-color)" rx="1" />
+
+                    <!-- Force Vector -->
+                    <g id="force-arrow" style="transform: translateY(0);">
+                        <line x1="160" y1="20" x2="160" y2="65" stroke="var(--mod6-color)" stroke-width="3"
+                            marker-end="url(#arrow)" />
+                        <text x="170" y="40" fill="#fff" font-size="12">Force</text>
+                    </g>
+                </svg>
+                <div class="interactive-slider-group mt-2">
+                    <label>Apply Load:</label>
+                    <input type="range" id="strain-load-slider" min="-30" max="30" value="0">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6.4: Thermocouple -->
+        <div class="machine-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-strip" style="background: var(--mod6-color);"></div>
+            <div class="card-header">
+                <h3>6.4 Thermocouple (Seebeck Effect)</h3>
+            </div>
+            <div class="formula-zone">
+                <div class="formula text-sm mb-2">$$ E = \alpha (T_{hot} - T_{cold}) $$</div>
+                <div class="text-xs text-muted text-center mb-2">$\alpha \approx 41 \mu V/^\circ C$ (Type K)</div>
+                <div class="formula text-sm">$$ E_{corr} = E_{meas} + E_{ref} $$</div>
+            </div>
+            <div class="anim-zone" style="flex-direction:column;">
+                <svg viewBox="0 0 200 150" width="100%" height="120">
+                    <!-- Metal A (Chromel) -->
+                    <path d="M 50 40 L 150 40" stroke="#fb7185" stroke-width="4" />
+                    <text x="100" y="30" fill="#fb7185" font-size="10" text-anchor="middle">Metal A (+)</text>
+
+                    <!-- Metal B (Alumel) -->
+                    <path d="M 50 110 L 150 110" stroke="#3b82f6" stroke-width="4" />
+                    <text x="100" y="125" fill="#3b82f6" font-size="10" text-anchor="middle">Metal B (-)</text>
+
+                    <!-- Hot Junction -->
+                    <circle cx="50" cy="75" r="5" fill="#ef4444" />
+                    <path d="M 50 40 Q 30 75 50 110" fill="none" stroke="#e2e8f0" stroke-width="2" />
+                    <circle cx="50" cy="75" r="15" fill="rgba(239, 68, 68, 0.4)" id="thermo-heat"
+                        style="animation: pulseHeat 1s infinite alternate;" />
+
+                    <!-- Voltmeter (Cold junction) -->
+                    <rect x="140" y="60" width="20" height="30" fill="var(--bg-dark)" stroke="#facc15"
+                        stroke-width="2" />
+                    <line x1="150" y1="40" x2="150" y2="60" stroke="#e2e8f0" stroke-width="2" />
+                    <line x1="150" y1="110" x2="150" y2="90" stroke="#e2e8f0" stroke-width="2" />
+                    <text x="150" y="79" fill="#facc15" font-size="10" text-anchor="middle">V</text>
+                </svg>
+                <div class="interactive-slider-group mt-2">
+                    <label style="min-width:60px;">Temp:</label>
+                    <input type="range" id="thermo-slider" min="0" max="1000" value="0">
+                </div>
+                <div class="text-xs text-center mt-1" style="color:var(--mod3-color);" id="thermo-v-out">0.00 mV</div>
+            </div>
+        </div>
+
+    </div>
+</section>
 <!-- MODULE 7: Range Extension -->
 <section id="mod7" class="module-section" style="margin-bottom:2rem;">
     <div class="module-header" data-aos="fade-right">

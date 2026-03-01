@@ -800,3 +800,187 @@ if (tSlider && tVout) {
 }
 
 });
+
+
+// --- MODULE 6: Electronic & Special Instruments ---
+
+// 6.1 DVM Dual Slope
+const dvmVin = document.getElementById('vin-slider');
+const dvmDisplay = document.getElementById('dvm-display');
+const dvmChartCont = document.getElementById('dvm-chart');
+
+if (dvmChartCont && dvmVin) {
+    const cw = dvmChartCont.clientWidth;
+    const ch = dvmChartCont.clientHeight;
+    const dvmSvg = d3.select('#dvm-chart').append('svg').attr('width', cw).attr('height', ch);
+
+    // Base axis
+    dvmSvg.append("line").attr("x1", 10).attr("y1", ch - 20).attr("x2", cw - 10).attr("y2", ch - 20).attr("stroke", "#475569");
+    dvmSvg.append("line").attr("x1", 10).attr("y1", 10).attr("x2", 10).attr("y2", ch - 20).attr("stroke", "#475569");
+
+    const pathLine = dvmSvg.append("path").attr("fill", "none").attr("stroke", "var(--mod6-color)").attr("stroke-width", 2);
+    const t1Line = dvmSvg.append("line").attr("y1", 10).attr("y2", ch - 20).attr("stroke", "#fff").attr("stroke-dasharray", "2 2");
+    const t2Line = dvmSvg.append("line").attr("y1", 10).attr("y2", ch - 20).attr("stroke", "var(--mod1-color)").attr("stroke-dasharray", "2 2");
+
+    dvmSvg.append("text").attr("x", 40).attr("y", ch - 5).attr("fill", "#fff").attr("font-size", 10).text("T1 (Fixed)");
+    const t2Text = dvmSvg.append("text").attr("y", ch - 5).attr("fill", "var(--mod1-color)").attr("font-size", 10).text("T2 (Variable)");
+
+    function updateDVM() {
+        let vin = parseFloat(dvmVin.value);
+        dvmDisplay.innerText = vin.toFixed(2).padStart(5, '0') + " V";
+        // T1 is fixed time (e.g. 50% width).
+        let t1_x = cw / 2;
+        let slopeUp = vin * 3; // pixels per unit x
+        let peakY = (ch - 20) - slopeUp;
+
+        // T2 depends on ratio Vin/Vref. Vref fixed = 10.
+        let vref = 10;
+        // T2 = (Vin/Vref)*T1
+        let t2_width = (vin / vref) * (cw / 2 - 20);
+        let t2_x = t1_x + t2_width;
+
+        t1Line.attr("x1", t1_x).attr("x2", t1_x);
+        t2Line.attr("x1", t2_x).attr("x2", t2_x);
+        t2Text.attr("x", t1_x + t2_width / 2 - 20);
+
+        let d = `M 10 ${ch - 20} L ${t1_x} ${peakY} L ${t2_x} ${ch - 20}`;
+        pathLine.transition().duration(200).attr("d", d);
+    }
+    dvmVin.addEventListener('input', updateDVM);
+    updateDVM();
+}
+
+// 6.2 CRO interactions
+const croModeSweep = document.getElementById('cro-mode-sweep');
+const croModeXy = document.getElementById('cro-mode-xy');
+const croSweepCtrl = document.getElementById('sweep-controls');
+const croXYCtrl = document.getElementById('xy-controls');
+
+const croBeam = document.getElementById('cro-beam');
+const croDot = document.getElementById('cro-dot');
+const croFSlide = document.getElementById('cro-f-slider');
+const croASlide = document.getElementById('cro-a-slider');
+const croRatio = document.getElementById('cro-ratio-select');
+
+let croMode = 'sweep'; // 'sweep' or 'xy'
+let croTime = 0;
+
+if (croModeSweep && croBeam) {
+    croModeSweep.addEventListener('click', () => {
+        croMode = 'sweep';
+        croModeSweep.classList.add('active');
+        croModeXy.classList.remove('active');
+        croSweepCtrl.style.display = 'block';
+        croXYCtrl.style.display = 'none';
+    });
+
+    croModeXy.addEventListener('click', () => {
+        croMode = 'xy';
+        croModeXy.classList.add('active');
+        croModeSweep.classList.remove('active');
+        croSweepCtrl.style.display = 'none';
+        croXYCtrl.style.display = 'block';
+    });
+
+    function renderCRO() {
+        croTime += 0.05;
+        if (croMode === 'sweep') {
+            let f = parseFloat(croFSlide.value);
+            let A = parseFloat(croASlide.value);
+
+            let path = "M 0 50 ";
+            for (let x = 0; x <= 100; x += 2) {
+                let y = 50 - A * Math.sin(f * (x / 100) * Math.PI * 2 + croTime);
+                path += `L ${x} ${y} `;
+            }
+            croBeam.setAttribute('d', path);
+
+            // Sweep dot (trigger emulation)
+            let dotX = (croTime * 50) % 100;
+            let dotY = 50 - A * Math.sin(f * (dotX / 100) * Math.PI * 2 + croTime);
+            croDot.setAttribute('cx', dotX);
+            croDot.setAttribute('cy', dotY);
+            croDot.setAttribute('opacity', 1);
+
+        } else if (croMode === 'xy') {
+            let ratio = croRatio.value;
+            let fx = 1, fy = 1, phi = 0;
+            if (ratio === '1:1') { fx = 1; fy = 1; phi = 0; }
+            else if (ratio === '1:1_90') { fx = 1; fy = 1; phi = Math.PI / 2; }
+            else if (ratio === '1:2') { fx = 1; fy = 2; phi = 0; }
+            else if (ratio === '2:3') { fx = 2; fy = 3; phi = Math.PI / 2; }
+
+            let path = "";
+            let A = 40; // fills screen
+            for (let t = 0; t <= Math.PI * 2.1; t += 0.05) {
+                let x = 50 + A * Math.sin(fx * t);
+                let y = 50 - A * Math.sin(fy * t + phi);
+                if (t === 0) path += `M ${x} ${y} `;
+                else path += `L ${x} ${y} `;
+            }
+            croBeam.setAttribute('d', path);
+            croDot.setAttribute('opacity', 0); // hide sweeping dot in XY
+        }
+        requestAnimationFrame(renderCRO);
+    }
+    renderCRO();
+}
+
+// 6.3 Strain Gauge
+const sgLoad = document.getElementById('strain-load-slider');
+const cantilever = document.getElementById('cantilever');
+const forceArrow = document.getElementById('force-arrow');
+const strainGrid = document.getElementById('strain-grid');
+
+if (sgLoad && cantilever) {
+    sgLoad.addEventListener('input', (e) => {
+        let load = parseInt(e.target.value); // -30 to 30
+        // M 30 70 L 170 70 L 170 80 L 30 80 Z (default)
+        // Bend right side up/down
+        let tipY1 = 70 + load;
+        let tipY2 = 80 + load;
+
+        // Q control points for a smooth curve
+        let d = `M 30 70 Q 100 ${70 + load / 2} 170 ${tipY1} L 170 ${tipY2} Q 100 ${80 + load / 2} 30 80 Z`;
+        cantilever.setAttribute('d', d);
+
+        forceArrow.style.transform = `translateY(${load}px)`;
+
+        // Stretch/Compress Grid color
+        if (load > 0) {
+            // Tension -> R increases -> Reddish
+            strainGrid.setAttribute('fill', '#ef4444');
+            strainGrid.setAttribute('width', 30 + (load / 5)); // visual elongate
+        } else if (load < 0) {
+            // Compression -> R decreases -> Blueish
+            strainGrid.setAttribute('fill', '#3b82f6');
+            strainGrid.setAttribute('width', 30 + (load / 5)); // visual shrink
+        } else {
+            strainGrid.setAttribute('fill', 'var(--mod1-color)');
+            strainGrid.setAttribute('width', 30);
+        }
+    });
+}
+
+// 6.4 Thermocouple
+const tSlider = document.getElementById('thermo-slider');
+const tVout = document.getElementById('thermo-v-out');
+const tHeatCircle = document.getElementById('thermo-heat');
+
+if (tSlider && tVout) {
+    tSlider.addEventListener('input', (e) => {
+        let temp = parseInt(e.target.value);
+        // Type K approx 41 uV/C -> 0.041 mV/C
+        let mv = temp * 0.041;
+        tVout.innerText = mv.toFixed(2) + " mV";
+
+        // Visual heat effect intensity
+        if (temp === 0) {
+            tHeatCircle.style.animation = 'none';
+            tHeatCircle.setAttribute('fill', 'rgba(239, 68, 68, 0)');
+        } else {
+            tHeatCircle.style.animation = `pulseHeat ${1000 / temp}s infinite alternate`;
+            tHeatCircle.setAttribute('fill', `rgba(239, 68, 68, ${temp / 1000})`);
+        }
+    });
+}
