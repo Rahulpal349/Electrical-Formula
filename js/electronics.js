@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+    }
     // ----------------------------------------------------------------------
     // MODULE 1: Basic Electronics Components
     // ----------------------------------------------------------------------
@@ -509,18 +512,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------------------------
 
     // CARD 5.1: Block Diagram Animation
-    const psSvg = document.getElementById('ps-block-diagram');
+    const psSvgNode = document.getElementById('ps-block-diagram');
     const psDesc = document.getElementById('ps-stage-desc');
 
-    if (psSvg) {
+    if (psSvgNode) {
+        const d3Svg = d3.select(psSvgNode);
+
         const blocks = [
             { id: "tx", label: "Transformer", x: 50, w: 120, desc: "Steps down 230V AC to required low voltage AC." },
             { id: "rect", label: "Rectifier", x: 250, w: 100, desc: "Converts AC to pulsating DC (HWR, FWR, Bridge)." },
             { id: "filt", label: "Filter", x: 430, w: 100, desc: "Removes AC ripples, provides smooth DC voltage." },
             { id: "reg", label: "Regulator", x: 610, w: 120, desc: "Maintains constant output DC voltage despite load/line variations." }
         ];
-
-        let svgHtml = '';
 
         // Draw connections and signals
         const signals = [
@@ -532,7 +535,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         signals.forEach(sig => {
-            svgHtml += `<line x1="${sig.x1}" y1="100" x2="${sig.x2}" y2="100" stroke="#475569" stroke-width="2" marker-end="url(#hall-arrow)"/>`;
+            d3Svg.append("line")
+                .attr("x1", sig.x1).attr("y1", 100).attr("x2", sig.x2).attr("y2", 100)
+                .attr("stroke", "#475569").attr("stroke-width", 2).attr("marker-end", "url(#hall-arrow)");
 
             // Draw tiny waveforms above lines
             let wavePath = '';
@@ -545,23 +550,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 case "smooth": wavePath = `M ${mx} ${my - 10} L ${mx + 10} ${my - 15} L ${mx + 20} ${my - 10} L ${mx + 30} ${my - 15}`; break;
                 case "pure_dc": wavePath = `M ${mx} ${my - 15} L ${mx + 30} ${my - 15}`; break;
             }
-            svgHtml += `<path d="${wavePath}" fill="none" stroke="var(--mod1-color)" stroke-width="2" class="glow-effect" />`;
+            d3Svg.append("path").attr("d", wavePath).attr("fill", "none")
+                .attr("stroke", "var(--mod1-color)").attr("stroke-width", 2).attr("class", "glow-effect");
         });
 
         // Draw blocks
         blocks.forEach((b, i) => {
-            svgHtml += `
-                <g class="ps-block" data-idx="${i}" style="cursor:pointer;">
-                    <rect x="${b.x}" y="60" width="${b.w}" height="80" rx="8" fill="rgba(0,0,0,0.5)" stroke="var(--mod1-color)" stroke-width="2" class="glow-effect"/>
-                    <text x="${b.x + b.w / 2}" y="105" fill="#fff" font-size="14" font-family="Orbitron" text-anchor="middle">${b.label}</text>
-                </g>
-            `;
+            const g = d3Svg.append("g").attr("class", "ps-block").attr("data-idx", i).attr("style", "cursor:pointer;");
+            g.append("rect").attr("x", b.x).attr("y", 60).attr("width", b.w).attr("height", 80).attr("rx", 8)
+                .attr("fill", "rgba(0,0,0,0.5)").attr("stroke", "var(--mod1-color)").attr("stroke-width", 2).attr("class", "glow-effect");
+            g.append("text").attr("x", b.x + b.w / 2).attr("y", 105).attr("fill", "#fff")
+                .attr("font-size", "14").attr("font-family", "Orbitron").attr("text-anchor", "middle").text(b.label);
         });
 
-        psSvg.innerHTML += svgHtml;
-
         // Hover events
-        const blockEls = psSvg.querySelectorAll('.ps-block');
+        const blockEls = psSvgNode.querySelectorAll('.ps-block');
         blockEls.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 const idx = el.getAttribute('data-idx');
@@ -574,10 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        gsap.from(".ps-block", {
-            scrollTrigger: { trigger: "#ps-block-diagram", start: "top 85%" },
-            y: -50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "back.out"
-        });
+        // Block animation removed for stability; they will just render statically.
     }
 
     // CARD 5.2: Rectifiers Table & Waveforms
@@ -616,18 +616,26 @@ document.addEventListener('DOMContentLoaded', () => {
         tbody.innerHTML = html;
         if (window.renderMathInElement) renderMathInElement(tbody);
 
-        // Update SVG Waveform
-        rectWave.innerHTML = `
-            <line x1="10" y1="60" x2="290" y2="60" stroke="#475569" stroke-dasharray="2"/>
-            <path d="${data.wave}" fill="none" stroke="${data.color}" stroke-width="3" class="glow-effect"/>
-        `;
+        // Update SVG Waveform using D3 instead of innerHTML
+        const svgW = d3.select(rectWave);
+        svgW.selectAll("*").remove(); // Clear previous
+
+        svgW.append("line")
+            .attr("x1", 10).attr("y1", 60).attr("x2", 290).attr("y2", 60)
+            .attr("stroke", "#475569").attr("stroke-dasharray", "2");
+
+        const path = svgW.append("path")
+            .attr("d", data.wave)
+            .attr("fill", "none")
+            .attr("stroke", data.color)
+            .attr("stroke-width", 3)
+            .attr("class", "glow-effect");
 
         // Anim path
-        const path = rectWave.querySelector('path');
-        const len = path.getTotalLength();
-        path.style.strokeDasharray = len;
-        path.style.strokeDashoffset = len;
-        gsap.to(path, { strokeDashoffset: 0, duration: 1, ease: "power1.inOut" });
+        const pathNode = path.node();
+        if (pathNode) {
+            gsap.to(pathNode, { strokeDashoffset: 0, duration: 1, ease: "power1.inOut" });
+        }
     };
 
     // Initialize
@@ -642,119 +650,113 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-});
+    // ----------------------------------------------------------------------
+    // MODULE 6: Bipolar Junction Transistor (BJT)
+    // ----------------------------------------------------------------------
 
-// ----------------------------------------------------------------------
-// MODULE 6: Bipolar Junction Transistor (BJT)
-// ----------------------------------------------------------------------
+    // CARD 6.1: BJT Structure Animation
+    const bjtAnim = document.getElementById('bjt-anim');
+    if (bjtAnim) {
+        // Create electron particles moving from Emitter to Collector (and a few to Base)
+        let particlesHtml = '';
+        for (let i = 0; i < 15; i++) {
+            particlesHtml += `<circle class="bjt-electron-main" cx="0" cy="0" r="3" fill="var(--mod3-color)" filter="url(#glow)" />`;
+        }
+        for (let i = 0; i < 3; i++) {
+            particlesHtml += `<circle class="bjt-electron-base" cx="0" cy="0" r="2" fill="var(--mod2-color)" />`;
+        }
+        bjtAnim.innerHTML += particlesHtml;
 
-// CARD 6.1: BJT Structure Animation
-const bjtAnim = document.getElementById('bjt-anim');
-if (bjtAnim) {
-    // Create electron particles moving from Emitter to Collector (and a few to Base)
-    let particlesHtml = '';
-    for (let i = 0; i < 15; i++) {
-        particlesHtml += `<circle class="bjt-electron-main" cx="0" cy="0" r="3" fill="var(--mod3-color)" filter="url(#glow)"/>`;
-    }
-    for (let i = 0; i < 3; i++) {
-        particlesHtml += `<circle class="bjt-electron-base" cx="0" cy="0" r="2" fill="var(--mod2-color)"/>`;
-    }
-    bjtAnim.innerHTML += particlesHtml;
-
-    const mainEls = bjtAnim.querySelectorAll('.bjt-electron-main');
-    mainEls.forEach(el => {
-        gsap.set(el, { x: 50 + Math.random() * 50, y: 60 + Math.random() * 80 });
-        gsap.to(el, {
-            x: 250 + Math.random() * 50, // Move to collector
-            duration: 1.5 + Math.random(),
-            repeat: -1,
-            ease: "power1.inOut",
-            delay: Math.random()
+        const mainEls = bjtAnim.querySelectorAll('.bjt-electron-main');
+        mainEls.forEach(el => {
+            gsap.set(el, { x: 50 + Math.random() * 50, y: 60 + Math.random() * 80 });
+            gsap.to(el, {
+                x: 250 + Math.random() * 50, // Move to collector
+                duration: 1.5 + Math.random(),
+                repeat: -1,
+                ease: "power1.inOut",
+                delay: Math.random()
+            });
         });
-    });
 
-    const baseEls = bjtAnim.querySelectorAll('.bjt-electron-base');
-    baseEls.forEach(el => {
-        gsap.set(el, { x: 100 + Math.random() * 30, y: 60 + Math.random() * 80 });
-        gsap.to(el, {
-            x: 155, // Move to base region
-            y: 160 + Math.random() * 20, // exit via base terminal
-            duration: 2 + Math.random(),
-            repeat: -1,
-            ease: "power1.inOut",
-            delay: Math.random()
+        const baseEls = bjtAnim.querySelectorAll('.bjt-electron-base');
+        baseEls.forEach(el => {
+            gsap.set(el, { x: 100 + Math.random() * 30, y: 60 + Math.random() * 80 });
+            gsap.to(el, {
+                x: 155, // Move to base region
+                y: 160 + Math.random() * 20, // exit via base terminal
+                duration: 2 + Math.random(),
+                repeat: -1,
+                ease: "power1.inOut",
+                delay: Math.random()
+            });
         });
-    });
-}
+    } // Closing brace for if (bjtAnim)
 
-// CARD 6.3: CE Output Characteristics (D3)
-if (document.getElementById('ce-curve-chart')) {
-    const svgCE = d3.select("#ce-curve-chart").append("svg")
-        .attr("viewBox", "0 0 400 250").attr("width", "100%").attr("height", "100%");
+    // CARD 6.3: CE Output Characteristics (D3)
+    if (document.getElementById('ce-curve-chart')) {
+        const svgCE = d3.select("#ce-curve-chart").append("svg")
+            .attr("viewBox", "0 0 400 250").attr("width", "100%").attr("height", "100%");
 
-    const gce = svgCE.append("g").attr("transform", "translate(40, 210)");
+        const gce = svgCE.append("g").attr("transform", "translate(40, 210)");
 
-    // Axes
-    gce.append("line").attr("x1", 0).attr("x2", 340).attr("y1", 0).attr("y2", 0).attr("stroke", "#475569").attr("stroke-width", 2); // Vce
-    gce.append("line").attr("x1", 0).attr("x2", 0).attr("y1", 0).attr("y2", -190).attr("stroke", "#475569").attr("stroke-width", 2); // Ic
+        // Axes
+        gce.append("line").attr("x1", 0).attr("x2", 340).attr("y1", 0).attr("y2", 0).attr("stroke", "#475569").attr("stroke-width", 2); // Vce
+        gce.append("line").attr("x1", 0).attr("x2", 0).attr("y1", 0).attr("y2", -190).attr("stroke", "#475569").attr("stroke-width", 2); // Ic
 
-    // Labels
-    gce.append("text").attr("x", 320).attr("y", -10).fill("#94a3b8").text("Vce (V)").style("font-size", "12px");
-    gce.append("text").attr("x", 10).attr("y", -180).fill("#94a3b8").text("Ic (mA)").style("font-size", "12px");
+        // Labels
+        gce.append("text").attr("x", 320).attr("y", -10).fill("#94a3b8").text("Vce (V)").style("font-size", "12px");
+        gce.append("text").attr("x", 10).attr("y", -180).fill("#94a3b8").text("Ic (mA)").style("font-size", "12px");
 
-    // Generate curves for different Ib values
-    const numCurves = 5;
-    const lineCe = d3.line().x(d => d[0]).y(d => d[1]).curve(d3.curveMonotoneX);
+        // Generate curves for different Ib values
+        const numCurves = 5;
+        const lineCe = d3.line().x(d => d[0]).y(d => d[1]).curve(d3.curveMonotoneX);
 
-    for (let i = 1; i <= numCurves; i++) {
-        const points = [];
-        const saturationVce = 10 + i * 2; // arbitrary scale for visual
-        const activeIc = -i * 30; // higher Ib -> higher Ic (negative y is upward in SVG)
+        for (let i = 1; i <= numCurves; i++) {
+            const points = [];
+            const saturationVce = 10 + i * 2; // arbitrary scale for visual
+            const activeIc = -i * 30; // higher Ib -> higher Ic (negative y is upward in SVG)
 
-        for (let v = 0; v <= 300; v += 5) {
-            if (v < saturationVce) {
-                points.push([v, activeIc * (v / saturationVce)]);
-            } else {
-                // Early effect slope (slight upward tilt)
-                points.push([v, activeIc - ((v - saturationVce) * 0.05 * i)]);
+            for (let v = 0; v <= 300; v += 5) {
+                if (v < saturationVce) {
+                    points.push([v, activeIc * (v / saturationVce)]);
+                } else {
+                    // Early effect slope (slight upward tilt)
+                    points.push([v, activeIc - ((v - saturationVce) * 0.05 * i)]);
+                }
+            }
+
+            const path = gce.append("path")
+                .attr("d", lineCe(points))
+                .attr("fill", "none")
+                .attr("stroke", i === numCurves ? "var(--mod2-color)" : `rgba(0, 245, 255, ${0.2 + 0.15 * i})`)
+                .attr("stroke-width", 2)
+                .attr("class", i === numCurves ? "glow-effect" : "");
+
+            // Label the curve
+            gce.append("text")
+                .attr("x", 305)
+                .attr("y", points[points.length - 1][1] - 5)
+                .fill(i === numCurves ? "var(--mod2-color)" : "#94a3b8")
+                .text(`Ib${i} `)
+                .style("font-size", "10px");
+
+            // Render curve statically without animation to ensure visibility
+            const pathNode = path.node();
+            if (pathNode) {
+                // path is fully visible by default
             }
         }
 
-        const path = gce.append("path")
-            .attr("d", lineCe(points))
-            .attr("fill", "none")
-            .attr("stroke", i === numCurves ? "var(--mod2-color)" : `rgba(0, 245, 255, ${0.2 + 0.15 * i})`)
-            .attr("stroke-width", 2)
-            .attr("class", i === numCurves ? "glow-effect" : "");
+        // Highlight Regions
+        gce.append("rect").attr("x", 0).attr("y", -190).attr("width", 25).attr("height", 190).attr("fill", "rgba(0, 255, 136, 0.1)");
+        gce.append("text").attr("x", 5).attr("y", -90).fill("var(--mod1-color)").text("Sat.").style("font-size", "9px").attr("transform", "rotate(-90 5,-90)");
 
-        // Label the curve
-        gce.append("text")
-            .attr("x", 305)
-            .attr("y", points[points.length - 1][1] - 5)
-            .fill(i === numCurves ? "var(--mod2-color)" : "#94a3b8")
-            .text(`Ib${i}`)
-            .style("font-size", "10px");
+        gce.append("rect").attr("x", 25).attr("y", -190).attr("width", 315).attr("height", 190).attr("fill", "rgba(0, 245, 255, 0.05)");
+        gce.append("text").attr("x", 150).attr("y", -90).fill("var(--mod3-color)").text("Active Region").style("font-size", "12px").style("opacity", "0.5");
 
-        // Animate draw
-        const len = path.node().getTotalLength();
-        path.attr("stroke-dasharray", len).attr("stroke-dashoffset", len);
+        gce.append("rect").attr("x", 0).attr("y", 0).attr("width", 340).attr("height", 20).attr("fill", "rgba(239, 68, 68, 0.1)");
+        gce.append("text").attr("x", 150).attr("y", 15).fill("rgba(239, 68, 68, 0.8)").text("Cutoff Region").style("font-size", "10px");
+    } // Closing brace for if (document.getElementById('ce-curve-chart'))
 
-        gsap.to(path.node(), {
-            scrollTrigger: { trigger: "#ce-curve-chart", start: "top 85%" },
-            strokeDashoffset: 0,
-            duration: 1.5,
-            delay: i * 0.2,
-            ease: "power2.out"
-        });
-    }
-
-    // Highlight Regions
-    gce.append("rect").attr("x", 0).attr("y", -190).attr("width", 25).attr("height", 190).attr("fill", "rgba(0, 255, 136, 0.1)");
-    gce.append("text").attr("x", 5).attr("y", -90).fill("var(--mod1-color)").text("Sat.").style("font-size", "9px").attr("transform", "rotate(-90 5,-90)");
-
-    gce.append("rect").attr("x", 25).attr("y", -190).attr("width", 315).attr("height", 190).attr("fill", "rgba(0, 245, 255, 0.05)");
-    gce.append("text").attr("x", 150).attr("y", -90).fill("var(--mod3-color)").text("Active Region").style("font-size", "12px").style("opacity", "0.5");
-
-    gce.append("rect").attr("x", 0).attr("y", 0).attr("width", 340).attr("height", 20).attr("fill", "rgba(239, 68, 68, 0.1)");
-    gce.append("text").attr("x", 150).attr("y", 15).fill("rgba(239, 68, 68, 0.8)").text("Cutoff Region").style("font-size", "10px");
-}
+}); // Closing brace for DOMContentLoaded
