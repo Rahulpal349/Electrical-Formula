@@ -917,7 +917,6 @@ function init8051Architecture() {
                 .attr("marker-end", "url(#bus-arrow)")
                 .attr("marker-start", "url(#bus-arrow)");
         }
-    }
     });
 }
 
