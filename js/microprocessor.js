@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     init8085Architecture();
     initALU();
     initRegisters8085();
-    initInterrupts8085();
+    // initInterrupts8085(); // TODO: Implement
     initPins8085();
     initTimingDiagram();
 
@@ -47,20 +47,20 @@ document.addEventListener("DOMContentLoaded", () => {
     initProgramSimulator();
 
     // --- UNIT 3: MICROPROCESSOR APPLICATIONS ---
-    initDACSimulator();
+    // initDACSimulator(); // TODO: Implement
     initOscilloscope();
-    initMotorPWM();
+    // initMotorPWM(); // TODO: Implement
     // --- UNIT 4: MICROCONTROLLER BASICS (8051) ---
     init8051Architecture();
 
     // --- UNIT 5: 8051 INSTRUCTIONS ---
-    initIndexedAddressing();
+    // initIndexedAddressing(); // TODO: Implement
 
     // --- UNIT 6: INTERRUPTS & TIMERS ---
     initTimerCalculator();
 
     // --- UNIT 7: MICROCONTROLLER APPLICATIONS ---
-    initMotorPWM8051();
+    // initMotorPWM8051(); // TODO: Implement
 
     // Additional module init functions can be called here as they are built
 });
@@ -120,13 +120,15 @@ function init8085Architecture() {
     const container = d3.select("#arch-8085-svg-container");
     if (container.empty()) return;
 
-    const width = container.node().getBoundingClientRect().width || 400;
+    // Use a fixed logical width for the viewBox so the drawing math works, then CSS scales it
+    const width = 500;
     const height = 350;
 
     const svg = container.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .style("width", "100%")
-        .style("height", "100%");
+        .style("height", "100%")
+        .style("overflow", "visible");
 
     // Gradient defs
     const defs = svg.append("defs");
@@ -156,8 +158,8 @@ function init8085Architecture() {
     const descBox = document.getElementById("arch-8085-desc");
 
     // Draw lines
-    svg.append("line").attr("x1", width * 0.45).attr("y1", 90).attr("x2", width * 0.55).attr("y2", 90).attr("stroke", "#e2e8f0").attr("stroke-width", 3).attr("marker-end", "url(#arrow)");
-    svg.append("line").attr("x1", width * 0.45).attr("y1", 120).attr("x2", width * 0.55).attr("y2", 120).attr("stroke", "#e2e8f0").attr("stroke-width", 3).attr("marker-start", "url(#arrow-start)");
+    svg.append("line").attr("x1", width * 0.45).attr("y1", 90).attr("x2", width * 0.55).attr("y2", 90).attr("stroke", "#e2e8f0").attr("stroke-width", 3);
+    svg.append("line").attr("x1", width * 0.45).attr("y1", 120).attr("x2", width * 0.55).attr("y2", 120).attr("stroke", "#e2e8f0").attr("stroke-width", 3);
 
     // Draw internal data bus connecting everything
     svg.append("path")
@@ -210,24 +212,33 @@ function initRegisters8085() {
     const svg = d3.select("#reg-map-svg");
     if (svg.empty()) return;
 
+    const w = 300, h = 220; // Internal logical bounds
+
+    // Explicitly set the viewBox for scaling
+    svg.attr("viewBox", `0 0 ${w} ${h}`)
+        .style("width", "100%")
+        .style("height", "100%")
+        .style("overflow", "visible");
+
     const defs = svg.append("defs");
     const regGrad = defs.append("linearGradient").attr("id", "reg-box").attr("x1", "0%").attr("y1", "0%").attr("x2", "0%").attr("y2", "100%");
     regGrad.append("stop").attr("offset", "0%").style("stop-color", "#0f172a");
     regGrad.append("stop").attr("offset", "100%").style("stop-color", "#1e293b");
 
-    const w = 140, h = 35, gap = 10, startX = 5, startY = 10;
+    const gap = 10, startX = 5, startY = 10;
+    const boxW = 140, boxH = 35;
 
     const regs = [
-        { id: "A", x: startX, y: startY, w: w, text: "Accumulator (A)", role: "8-bit", color: "#00f5ff" },
-        { id: "F", x: startX + w + gap, y: startY, w: w, text: "Flag Reg (F)", role: "8-bit", color: "#00f5ff" },
-        { id: "B", x: startX, y: startY + h + gap, w: w, text: "Register B", role: "8-bit", color: "#00ff88" },
-        { id: "C", x: startX + w + gap, y: startY + h + gap, w: w, text: "Register C", role: "8-bit", color: "#00ff88" },
-        { id: "D", x: startX, y: startY + (h + gap) * 2, w: w, text: "Register D", role: "8-bit", color: "#00ff88" },
-        { id: "E", x: startX + w + gap, y: startY + (h + gap) * 2, w: w, text: "Register E", role: "8-bit", color: "#00ff88" },
-        { id: "H", x: startX, y: startY + (h + gap) * 3, w: w, text: "Register H", role: "8-bit", color: "#00ff88" },
-        { id: "L", x: startX + w + gap, y: startY + (h + gap) * 3, w: w, text: "Register L", role: "8-bit", color: "#00ff88" },
-        { id: "SP", x: startX, y: startY + (h + gap) * 4, w: w * 2 + gap, text: "Stack Pointer (SP)", role: "16-bit", color: "#facc15" },
-        { id: "PC", x: startX, y: startY + (h + gap) * 5, w: w * 2 + gap, text: "Program Counter (PC)", role: "16-bit", color: "#facc15" }
+        { id: "A", x: startX, y: startY, w: boxW, text: "Accumulator (A)", role: "8-bit", color: "#00f5ff" },
+        { id: "F", x: startX + boxW + gap, y: startY, w: boxW, text: "Flag Reg (F)", role: "8-bit", color: "#00f5ff" },
+        { id: "B", x: startX, y: startY + boxH + gap, w: boxW, text: "Register B", role: "8-bit", color: "#00ff88" },
+        { id: "C", x: startX + boxW + gap, y: startY + boxH + gap, w: boxW, text: "Register C", role: "8-bit", color: "#00ff88" },
+        { id: "D", x: startX, y: startY + (boxH + gap) * 2, w: boxW, text: "Register D", role: "8-bit", color: "#00ff88" },
+        { id: "E", x: startX + boxW + gap, y: startY + (boxH + gap) * 2, w: boxW, text: "Register E", role: "8-bit", color: "#00ff88" },
+        { id: "H", x: startX, y: startY + (boxH + gap) * 3, w: boxW, text: "Register H", role: "8-bit", color: "#00ff88" },
+        { id: "L", x: startX + boxW + gap, y: startY + (boxH + gap) * 3, w: boxW, text: "Register L", role: "8-bit", color: "#00ff88" },
+        { id: "SP", x: startX, y: startY + (boxH + gap) * 4, w: boxW * 2 + gap, text: "Stack Pointer (SP)", role: "16-bit", color: "#facc15" },
+        { id: "PC", x: startX, y: startY + (boxH + gap) * 5, w: boxW * 2 + gap, text: "Program Counter (PC)", role: "16-bit", color: "#facc15" }
     ];
 
     const descBox = document.getElementById("reg-desc");
@@ -248,7 +259,7 @@ function initRegisters8085() {
         .attr("x", d => d.x)
         .attr("y", d => d.y)
         .attr("width", d => d.w)
-        .attr("height", h)
+        .attr("height", boxH)
         .attr("rx", 4)
         .style("fill", "url(#reg-box)")
         .style("stroke", "#475569")
@@ -256,7 +267,7 @@ function initRegisters8085() {
 
     boxes.append("text")
         .attr("x", d => d.x + d.w / 2)
-        .attr("y", d => d.y + h / 2)
+        .attr("y", d => d.y + boxH / 2)
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
         .attr("fill", d => d.color)
@@ -277,16 +288,23 @@ function getRegDesc(id) {
     }
 }
 function initPins8085() {
-    const svg = d3.select("#pin-8085-svg");
-    if (svg.empty()) return;
+    const container = d3.select("#pin-8085-svg-container");
+    if (container.empty()) return;
+
+    container.html(''); // Clear previous drawings
 
     const w = 400, h = 350;
     const cw = 120, ch = 300; // Chip width and height
     const cx = (w - cw) / 2;
     const cy = (h - ch) / 2;
 
-    // Explicitly set width to 100% to guarantee visibility inside the flex box
-    svg.attr("width", "100%").attr("height", "100%");
+    const svg = container.append("svg")
+        .attr("viewBox", `0 0 ${w} ${h}`)
+        .style("position", "absolute")
+        .style("top", "0").style("left", "0")
+        .style("width", "100%")
+        .style("height", "100%")
+        .style("overflow", "visible");
 
     // Draw Chip Body
     svg.append("rect")
@@ -408,6 +426,12 @@ function initTimingDiagram() {
 
     const w = 400, h = 150;
 
+    // Explicitly set viewBox to ensure it scales correctly
+    svg.attr("viewBox", `0 0 ${w} ${h}`)
+        .style("width", "100%")
+        .style("height", "100%")
+        .style("overflow", "visible");
+
     // Grid lines for T-states
     for (let i = 0; i <= 4; i++) {
         const x = 50 + i * 80;
@@ -457,17 +481,25 @@ function initTimingDiagram() {
 // --- Unit 2 Implementations ---
 
 function initAddressingModes() {
-    const svg = d3.select("#addr-mode-svg");
-    if (svg.empty()) return;
-
+    const container = d3.select("#addr-mode-svg-container");
     const descBox = document.getElementById("addr-desc-box");
     const tabs = document.querySelectorAll(".addr-tab");
+    if (container.empty() || !descBox || tabs.length === 0) return;
 
+    container.html(''); // Clear existing
     const w = 500, h = 250;
+
+    const svg = container.append("svg")
+        .attr("viewBox", `0 0 ${w} ${h}`)
+        .style("position", "absolute")
+        .style("top", "0").style("left", "0")
+        .style("width", "100%")
+        .style("height", "100%")
+        .style("overflow", "visible");
 
     // Defs for arrows and gradients
     const defs = svg.append("defs");
-    defs.append("marker").attr("id", "addr-arrow").attr("viewBox", "0 0 10 10").attr("refX", "10").attr("refY", "5").attr("markerWidth", "6").attr("markerHeight", "6").attr("orient", "auto-start-reverse").append("path").attr("d", "M 0 0 L 10 5 L 0 10 z").attr("fill", "#00f5ff");
+    defs.append("marker").attr("id", "addr-arrow-mode").attr("viewBox", "0 0 10 10").attr("refX", "10").attr("refY", "5").attr("markerWidth", "6").attr("markerHeight", "6").attr("orient", "auto-start-reverse").append("path").attr("d", "M 0 0 L 10 5 L 0 10 z").attr("fill", "#00f5ff");
 
     // Reusable drawing functions
     const drawBlock = (x, y, w, h, text, color, id) => {
@@ -478,7 +510,7 @@ function initAddressingModes() {
     };
 
     const drawLine = (x1, y1, x2, y2) => {
-        svg.append("line").attr("class", "addr-elem").attr("x1", x1).attr("y1", y1).attr("x2", x2).attr("y2", y2).attr("stroke", "#00f5ff").attr("stroke-width", 2).attr("marker-end", "url(#addr-arrow)");
+        svg.append("line").attr("class", "addr-elem").attr("x1", x1).attr("y1", y1).attr("x2", x2).attr("y2", y2).attr("stroke", "#00f5ff").attr("stroke-width", 2).attr("marker-end", "url(#addr-arrow-mode)");
     };
 
     const renderMode = (mode) => {
@@ -497,7 +529,7 @@ function initAddressingModes() {
             drawBlock(280, 50, 80, 50, "Reg B", "#00ff88", "regB");
             drawBlock(280, 150, 80, 50, "Reg A", "#00f5ff", "regA");
 
-            svg.append("path").attr("class", "addr-elem").attr("d", "M 280 75 Q 240 112 280 175").attr("fill", "none").attr("stroke", "#00f5ff").attr("stroke-width", 2).attr("marker-end", "url(#addr-arrow)");
+            svg.append("path").attr("class", "addr-elem").attr("d", "M 280 75 Q 240 112 280 175").attr("fill", "none").attr("stroke", "#00f5ff").attr("stroke-width", 2).attr("marker-end", "url(#addr-arrow-mode)");
             svg.append("text").attr("class", "addr-elem").attr("x", 245).attr("y", 125).attr("text-anchor", "middle").style("fill", "#94a3b8").style("font-size", "0.8rem").text("Copy");
         } else if (mode === 'dir') {
             descBox.innerHTML = "<strong>Direct Addressing:</strong> The 16-bit memory address of the operand is given in the instruction. Ex: <code>LDA 2050H</code> (Load Accumulator with data at memory 2050H).";
@@ -529,8 +561,8 @@ function initAddressingModes() {
             drawBlock(100, 100, 140, 50, "Instr: CMA", "#facc15", "inst");
             drawBlock(280, 100, 120, 50, "Reg A (In/Out)", "#00f5ff", "regA");
 
-            svg.append("path").attr("class", "addr-elem").attr("d", "M 240 115 C 260 90, 270 90, 280 115").attr("fill", "none").attr("stroke", "#00f5ff").attr("stroke-width", 2).attr("marker-end", "url(#addr-arrow)");
-            svg.append("path").attr("class", "addr-elem").attr("d", "M 280 135 C 270 160, 260 160, 240 135").attr("fill", "none").attr("stroke", "#00ff88").attr("stroke-width", 2).attr("marker-end", "url(#addr-arrow)");
+            svg.append("path").attr("class", "addr-elem").attr("d", "M 240 115 C 260 90, 270 90, 280 115").attr("fill", "none").attr("stroke", "#00f5ff").attr("stroke-width", 2).attr("marker-end", "url(#addr-arrow-mode)");
+            svg.append("path").attr("class", "addr-elem").attr("d", "M 280 135 C 270 160, 260 160, 240 135").attr("fill", "none").attr("stroke", "#00ff88").attr("stroke-width", 2).attr("marker-end", "url(#addr-arrow-mode)");
         }
     };
 
@@ -677,12 +709,22 @@ function initDACSimulator() {
 }
 
 function initOscilloscope() {
-    const svg = d3.select("#oscilloscope-svg");
+    const container = d3.select("#oscilloscope-svg");
     const select = document.getElementById("wave-type");
-    if (svg.empty() || !select) return;
+    if (container.empty() || !select) return;
+
+    container.html(''); // Clear existing content correctly without destroying the container
 
     let width = 300;
     let height = 120;
+
+    const svg = container.append("svg")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .style("position", "absolute")
+        .style("top", "0").style("left", "0")
+        .style("width", "100%")
+        .style("height", "100%");
+
     const midY = height / 2;
 
     // Grid
@@ -788,11 +830,14 @@ function init8051Architecture() {
     const container = d3.select("#arch-8051-svg-container");
     if (container.empty()) return;
 
-    // Use viewBox to make it responsive
+    container.html(''); // Safe clear
+
     const svg = container.append("svg")
-        .attr("viewBox", "0 0 500 350")
-        .attr("width", "100%")
-        .attr("height", "100%")
+        .attr("viewBox", `0 0 500 350`)
+        .style("position", "absolute")
+        .style("top", "0").style("left", "0")
+        .style("width", "100%")
+        .style("height", "100%")
         .style("overflow", "visible");
 
     // Defs for gradients/arrows

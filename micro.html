@@ -420,10 +420,9 @@
                             <h3>1.6 8085 Pin Description (40-pin DIP)</h3>
                         </div>
                         <div class="formula-zone">
-                            <div class="anim-zone" style="height:350px; background:transparent;">
-                                <svg id="pin-8085-svg" viewBox="0 0 400 350" width="100%" height="100%">
-                                    <!-- Drawn via JS -->
-                                </svg>
+                            <div class="anim-zone" id="pin-8085-svg-container"
+                                style="height:350px; background:transparent;">
+                                <!-- Drawn via JS -->
                             </div>
                             <div id="pin-desc"
                                 style="text-align:center; color:#94a3b8; font-size:0.85rem; margin-top:10px; min-height:40px;">
@@ -591,10 +590,9 @@
                                     <button class="addr-tab" data-mode="impl"
                                         style="flex:1; padding:8px; background:var(--bg-main); border:1px solid #475569; color:var(--text-main); font-family:'Inter'; cursor:pointer; border-radius:4px;">Implicit</button>
                                 </div>
-                                <div class="anim-zone" style="height:250px; background:transparent;">
-                                    <svg id="addr-mode-svg" viewBox="0 0 500 250" width="100%" height="100%">
-                                        <!-- Drawn via JS -->
-                                    </svg>
+                                <div class="anim-zone" id="addr-mode-svg-container"
+                                    style="height:250px; background:transparent;">
+                                    <!-- Drawn via JS -->
                                 </div>
                                 <div id="addr-desc-box"
                                     style="padding:15px; background:rgba(0,0,0,0.4); border-radius:8px; border-left:3px solid var(--mod2-color); color:#e2e8f0; font-size:0.9rem;">
@@ -875,10 +873,10 @@
                                             <option value="saw">Sawtooth Wave</option>
                                         </select>
                                     </div>
-                                    <svg id="oscilloscope-svg" viewBox="0 0 300 120" width="100%" height="120"
-                                        style="background:#000; border:1px solid #334155; border-radius:4px;">
+                                    <div id="oscilloscope-svg"
+                                        style="width:100%; height:120px; background:#000; border:1px solid #334155; border-radius:4px;">
                                         <!-- Drawn via JS -->
-                                    </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
