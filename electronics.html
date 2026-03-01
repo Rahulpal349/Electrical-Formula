@@ -1,22 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Electronics | EE Formula Hub</title>
+    <title>Electronics Engineering | EE Formula Hub</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+
+    <!-- CRITICAL KaTeX Setup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- D3 & Chart.js & GSAP -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/style.css?v=5" />
+    <link rel="stylesheet" href="css/electronics.css?v=1" />
 </head>
 
 <body data-page-category="electronics">
-
     <!-- Navbar -->
     <nav class="navbar" role="navigation">
         <a href="index.html" class="navbar__logo">⚡ EE Hub</a>
@@ -28,56 +55,1211 @@
             <li><a href="power.html">Power Systems</a></li>
             <li><a href="powerplant.html">Power Plant</a></li>
             <li><a href="control.html">Control Systems</a></li>
-            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="electronics.html" class="active">Electronics</a></li>
             <li><a href="signals.html">Signals</a></li>
             <li><a href="micro.html">μP & μC</a></li>
             <li><a href="estimation.html">Estimation</a></li>
         </ul>
         <div class="navbar__actions">
-            <div class="search-box">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="search-input" placeholder="Search page..." autocomplete="off" />
-            </div>
-            <button id="bookmarks-toggle" class="theme-toggle" title="Bookmarks" style="font-size:0.9rem;">★</button>
-            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">☀️</button>
+            <button id="bookmarks-toggle" class="theme-toggle" title="Bookmarks" style="font-size: 0.9rem">🔖</button>
         </div>
     </nav>
 
     <!-- Bookmarks Panel -->
     <aside id="bookmarks-panel" class="bookmarks-panel">
-        <h3>★ Bookmarked Formulas</h3>
+        <h3>🔖 Saved Cards</h3>
         <div id="bookmarks-list"></div>
     </aside>
 
-    <!-- Spacer for fixed navbar -->
-    <div style="height: 100px;"></div>
+    <div style="height: 80px"></div>
 
-    <!-- Formula Sections Container -->
-    <main id="formula-sections"></main>
+    <div class="page-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-nav">
+            <h3 class="orbitron" style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.2rem;">ELECTRONICS
+            </h3>
+            <ul class="sidebar-links">
+                <li><a href="#mod1" style="border-left-color: var(--mod1-color)">1. Basic Components</a></li>
+                <li><a href="#mod2" style="border-left-color: var(--mod2-color)">2. Semiconductor Fund.</a></li>
+                <li><a href="#mod3" style="border-left-color: var(--mod3-color)">3. PN Junction Diode</a></li>
+                <li><a href="#mod4" style="border-left-color: var(--mod4-color)">4. Special Diodes</a></li>
+                <li><a href="#mod5" style="border-left-color: var(--mod5-color)">5. Power Supply</a></li>
+                <li><a href="#mod6" style="border-left-color: var(--mod6-color)">6. BJT</a></li>
+            </ul>
+        </aside>
 
-    <!-- No Search Results -->
-    <div id="no-results" class="no-results">
-        <p>😕 No formulas found on this page. Try a different search term.</p>
+        <!-- Main Content (Formula Cards) -->
+        <main class="main-content" id="formula-container">
+
+            <!-- MODULE 1: Basic Electronics Components -->
+            <section id="mod1" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 1 <span class="module-subtitle">— Basic Electronics
+                            Components</span></h2>
+                    <div class="module-line"
+                        style="background: var(--mod1-color); box-shadow: 0 0 10px var(--mod1-color);"></div>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Card 1.1: Electronic Component Symbols -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color)"></div>
+                        <div class="card-header">
+                            <h3>1.1 Electronic Component Symbols</h3>
+                        </div>
+                        <div class="anim-zone" style="flex-direction: column; height: auto; min-height: 250px;">
+                            <div id="symbols-gallery"
+                                style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; width: 100%; padding: 20px;">
+                                <!-- SVGs will be injected and animated by js -->
+                            </div>
+                            <div id="symbol-tooltip"
+                                style="margin-top:20px; color: var(--mod3-color); text-align:center; min-height: 40px; font-family: 'Orbitron', sans-serif;">
+                                Hover over a symbol to see details
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 1.2: Comparison of Resistors -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color)"></div>
+                        <div class="card-header">
+                            <h3>1.2 Comparison of Resistor Types</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="table-container" style="overflow-x: auto">
+                                <table
+                                    style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; color: #e2e8f0;">
+                                    <thead>
+                                        <tr
+                                            style="border-bottom: 2px solid var(--mod1-color); color: var(--mod1-color);">
+                                            <th style="padding: 10px">Type</th>
+                                            <th style="padding: 10px">Material</th>
+                                            <th style="padding: 10px">Range</th>
+                                            <th style="padding: 10px">Power</th>
+                                            <th style="padding: 10px">Tolerance</th>
+                                            <th style="padding: 10px">Noise</th>
+                                            <th style="padding: 10px">HF Response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="resistor-table-body">
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);"
+                                            class="table-row-anim">
+                                            <td style="padding: 10px; font-weight: bold">Carbon Composition</td>
+                                            <td style="padding: 10px">Carbon-Clay</td>
+                                            <td style="padding: 10px">upto 20MΩ</td>
+                                            <td style="padding: 10px">upto 2W</td>
+                                            <td style="padding: 10px">±5% to ±20%</td>
+                                            <td style="padding: 10px">Low</td>
+                                            <td style="padding: 10px">Better</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);"
+                                            class="table-row-anim">
+                                            <td style="padding: 10px; font-weight: bold">Carbon & Metal Film</td>
+                                            <td style="padding: 10px">Carbon/metal film</td>
+                                            <td style="padding: 10px">upto 20MΩ</td>
+                                            <td style="padding: 10px">> Carbon</td>
+                                            <td style="padding: 10px">±1% to ±5%</td>
+                                            <td style="padding: 10px">High</td>
+                                            <td style="padding: 10px">Normal</td>
+                                        </tr>
+                                        <tr class="table-row-anim">
+                                            <td style="padding: 10px; font-weight: bold">Wire Wound</td>
+                                            <td style="padding: 10px">Wire on core</td>
+                                            <td style="padding: 10px">upto 100kΩ</td>
+                                            <td style="padding: 10px">upto 200W</td>
+                                            <td style="padding: 10px">≈ ±1%</td>
+                                            <td style="padding: 10px">Very Low</td>
+                                            <td style="padding: 10px">Poor</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 1.3: Comparison of Capacitors -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color)"></div>
+                        <div class="card-header">
+                            <h3>1.3 Comparison of Capacitor Types</h3>
+                        </div>
+                        <div class="anim-zone"
+                            style="height: 120px; display:flex; justify-content:center; align-items:center;">
+                            <div id="cap-anim-container" style="display:flex; gap: 30px;">
+                                <!-- Dynamic SVGs updated on hover -->
+                                <svg viewBox="0 0 100 100" width="80" height="80" id="cap-svg-display">
+                                    <path d="M 20 50 L 40 50 M 40 20 L 40 80 M 60 20 L 60 80 M 60 50 L 80 50"
+                                        stroke="var(--mod3-color)" stroke-width="4" fill="none" class="glow-effect" />
+                                </svg>
+                                <div id="cap-feature-text"
+                                    style="color:#fff; display:flex; align-items:center; font-size:1.1rem; width:200px;">
+                                    Hover over a row to see structure
+                                </div>
+                            </div>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="table-container" style="overflow-x: auto">
+                                <table
+                                    style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; color: #e2e8f0;">
+                                    <thead>
+                                        <tr
+                                            style="border-bottom: 2px solid var(--mod1-color); color: var(--mod1-color);">
+                                            <th style="padding: 10px">Type</th>
+                                            <th style="padding: 10px">Dielectric (K)</th>
+                                            <th style="padding: 10px">Range</th>
+                                            <th style="padding: 10px">Voltage Rating</th>
+                                            <th style="padding: 10px">Polarity</th>
+                                            <th style="padding: 10px">Application</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);" class="cap-row"
+                                            data-type="paper">
+                                            <td style="padding: 10px; font-weight: bold">Paper/Polyester</td>
+                                            <td style="padding: 10px">Polyester (2.0)</td>
+                                            <td style="padding: 10px">0.0005μF to 10μF</td>
+                                            <td style="padding: 10px">upto 2000V</td>
+                                            <td style="padding: 10px">No</td>
+                                            <td style="padding: 10px">AC, DC, Tuned</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);" class="cap-row"
+                                            data-type="ceramic">
+                                            <td style="padding: 10px; font-weight: bold">Ceramic</td>
+                                            <td style="padding: 10px">Ceramic (80-1200)</td>
+                                            <td style="padding: 10px">3pF to 2μF</td>
+                                            <td style="padding: 10px">3V to 6000V</td>
+                                            <td style="padding: 10px">No</td>
+                                            <td style="padding: 10px">Coupling, Bypass</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);" class="cap-row"
+                                            data-type="mica">
+                                            <td style="padding: 10px; font-weight: bold">Mica</td>
+                                            <td style="padding: 10px">Mica (3-8)</td>
+                                            <td style="padding: 10px">1pF to 1μF</td>
+                                            <td style="padding: 10px">500V, 40kV HF</td>
+                                            <td style="padding: 10px">No</td>
+                                            <td style="padding: 10px">Temp varying</td>
+                                        </tr>
+                                        <tr class="cap-row" data-type="electro">
+                                            <td style="padding: 10px; font-weight: bold">Electrolyte</td>
+                                            <td style="padding: 10px">Al Oxide (7)</td>
+                                            <td style="padding: 10px">1μF - thousands μF</td>
+                                            <td style="padding: 10px">1V to 500V</td>
+                                            <td style="padding: 10px">Yes (+)</td>
+                                            <td style="padding: 10px">Filter, Coupling</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE 2: Semiconductor Fundamentals -->
+            <section id="mod2" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 2 <span class="module-subtitle">— Semiconductor Fundamentals</span>
+                    </h2>
+                    <div class="module-line"
+                        style="background: var(--mod2-color); box-shadow: 0 0 10px var(--mod2-color);"></div>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Card 2.1: Energy Bandgap -->
+                    <div class="machine-card" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>2.1 Energy Bandgap</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="formula text-sm">$$ E_g = E_c - E_v $$</div>
+                            <div style="font-size: 0.85rem; color: #94a3b8; margin: 10px 0;">
+                                $E_c$ = Cond. band, $E_v$ = Val. band
+                            </div>
+
+                            <div class="table-container" style="overflow-x: auto; margin-top:10px;">
+                                <table
+                                    style="width: 100%; border-collapse: collapse; text-align: center; font-size: 0.85rem; color: #e2e8f0;">
+                                    <thead>
+                                        <tr
+                                            style="border-bottom: 2px solid var(--mod2-color); color: var(--mod2-color);">
+                                            <th style="padding: 6px">Material</th>
+                                            <th style="padding: 6px">Ge</th>
+                                            <th style="padding: 6px">Si</th>
+                                            <th style="padding: 6px">GaAs</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 6px; font-weight: bold">$E_{g0K}$</td>
+                                            <td style="padding: 6px">0.785 eV</td>
+                                            <td style="padding: 6px">1.21 eV</td>
+                                            <td style="padding: 6px">1.52 eV</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 6px; font-weight: bold">$E_{g300K}$</td>
+                                            <td style="padding: 6px">0.72 eV</td>
+                                            <td style="padding: 6px">1.1 eV</td>
+                                            <td style="padding: 6px">1.42 eV</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height: 200px; flex-direction:column; gap:10px;">
+                            <svg id="bandgap-svg" viewBox="0 0 300 150" width="100%" height="150"
+                                style="overflow:visible;">
+                                <!-- Conductor -->
+                                <rect x="20" y="20" width="60" height="60" fill="var(--mod3-color)" opacity="0.6" />
+                                <rect x="20" y="60" width="60" height="60" fill="var(--mod4-color)" opacity="0.6" />
+                                <text x="50" y="140" fill="#fff" font-size="12" text-anchor="middle">Conductor</text>
+
+                                <!-- Semiconductor -->
+                                <rect x="120" y="20" width="60" height="40" fill="var(--mod3-color)" opacity="0.8" />
+                                <rect x="120" y="80" width="60" height="40" fill="var(--mod4-color)" opacity="0.8" />
+                                <text x="150" y="70" fill="var(--mod1-color)" font-size="10" text-anchor="middle">Eg
+                                    &lt; 5eV</text>
+                                <text x="150" y="140" fill="#fff" font-size="12"
+                                    text-anchor="middle">Semiconductor</text>
+
+                                <!-- Insulator -->
+                                <rect x="220" y="20" width="60" height="30" fill="var(--mod3-color)" opacity="0.8" />
+                                <rect x="220" y="90" width="60" height="30" fill="var(--mod4-color)" opacity="0.8" />
+                                <rect x="220" y="50" width="60" height="40" fill="var(--mod2-color)" opacity="0.3" />
+                                <text x="250" y="70" fill="var(--mod2-color)" font-size="10" text-anchor="middle">Eg
+                                    &gt; 5eV</text>
+                                <text x="250" y="140" fill="#fff" font-size="12" text-anchor="middle">Insulator</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Card 2.2: Fermi Level -->
+                    <div class="machine-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>2.2 Fermi Level</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="formula text-sm">$$ F(E) = \frac{1}{1 + e^{(E - E_F)/KT}} $$</div>
+
+                            <div class="formula text-sm mt-2" id="fermi-eq-display">$$ E_F = \frac{E_c + E_v}{2} -
+                                \frac{KT}{2}\ln\left(\frac{N_c}{N_v}\right) $$</div>
+                            <div class="toggle-group mt-3" style="display:flex; justify-content:center; gap:10px;">
+                                <button class="toggle-btn active" id="btn-intrinsic">Intrinsic</button>
+                                <button class="toggle-btn" id="btn-ntype">N-Type</button>
+                                <button class="toggle-btn" id="btn-ptype">P-Type</button>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height: 180px; position:relative;">
+                            <svg id="fermi-svg" viewBox="0 0 200 150" width="100%" height="100%">
+                                <!-- Bands -->
+                                <rect x="20" y="20" width="160" height="30" fill="var(--mod3-color)" opacity="0.5" />
+                                <rect x="20" y="100" width="160" height="30" fill="var(--mod4-color)" opacity="0.5" />
+                                <text x="100" y="40" fill="#fff" font-size="10" text-anchor="middle">Conduction Band
+                                    (Ec)</text>
+                                <text x="100" y="120" fill="#fff" font-size="10" text-anchor="middle">Valence Band
+                                    (Ev)</text>
+
+                                <!-- Fermi Level Line -->
+                                <line id="fermi-line" x1="20" y1="75" x2="180" y2="75" stroke="var(--mod1-color)"
+                                    stroke-dasharray="4" stroke-width="2" class="glow-effect"
+                                    style="transition: all 0.5s ease;" />
+                                <text id="fermi-text" x="100" y="70" fill="var(--mod1-color)" font-size="10"
+                                    text-anchor="middle" style="transition: all 0.5s ease;">EF (Intrinsic)</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Card 2.3: Doping -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>2.3 Doping & Conductivity</h3>
+                        </div>
+                        <div class="formula-zone"
+                            style="display:flex; justify-content: space-between; flex-wrap:wrap; gap:20px;">
+                            <div style="flex:1;">
+                                <div class="formula text-sm">$$ N_D + p = N_A + n \quad \text{(Neutrality)} $$</div>
+                                <ul
+                                    style="color:#94a3b8; font-size:0.85rem; padding-left:20px; list-style-type: disc; margin-top: 15px;">
+                                    <li><strong>Heavy doping</strong> (1:$10^3$) → $N^+, P^+$</li>
+                                    <li><strong>Moderate</strong> (1:$10^6$) → $N, P$</li>
+                                    <li><strong>Light</strong> (1:$10^{11}$) → $N^-, P^-$</li>
+                                </ul>
+                                <div class="interactive-slider-group" style="margin-top:20px;">
+                                    <label style="min-width:60px;">Ratio 1:</label>
+                                    <input type="range" id="doping-slider" min="3" max="11" value="8" step="1">
+                                </div>
+                                <div id="doping-disp" class="text-xs text-center mt-2"
+                                    style="color:var(--mod2-color);font-family:'Orbitron',sans-serif;">Moderate Doping |
+                                    10^8</div>
+                            </div>
+                            <div
+                                style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                                <!-- Doping Lattice SVG -->
+                                <div class="anim-zone" style="height:200px; padding:0; border:none; width:100%;">
+                                    <svg viewBox="0 0 200 200" width="100%" height="100%" id="lattice-svg"
+                                        style="max-height:180px;">
+                                        <!-- Bonds will be rendered via JS -->
+                                    </svg>
+                                </div>
+                                <div class="toggle-group mt-2" style="display:flex; justify-content:center; gap:10px;">
+                                    <button class="toggle-btn" id="btn-lattice-p">P-Type (Boron)</button>
+                                    <button class="toggle-btn active" id="btn-lattice-i">Intrinsic (Si)</button>
+                                    <button class="toggle-btn" id="btn-lattice-n">N-Type (Phos)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2.4: Mass Action Law -->
+                    <div class="machine-card" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>2.4 Mass Action Law</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="formula text-sm mb-3">$$ n \cdot p = n_i^2 $$</div>
+                            <div class="formula text-sm mb-3">$$ n_i = \sqrt{A_0} T^{3/2} e^{-E_g/2KT} $$</div>
+                            <div class="formula text-sm">$$ \text{Minority} = \frac{n_i^2}{\text{Majority}} $$</div>
+                        </div>
+                        <div class="anim-zone" style="height: 120px; text-align:center;">
+                            <div style="color: #e2e8f0; font-size:0.9rem;">
+                                Intrinsic Concentration at 300K:<br><br>
+                                <span style="color:var(--mod3-color); font-weight:bold;">Si: $1.5 \times 10^{10} \text{
+                                    cm}^{-3}$</span><br>
+                                <span style="color:var(--mod4-color); font-weight:bold;">Ge: $2.5 \times 10^{13} \text{
+                                    cm}^{-3}$</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2.5: Thermal Voltage & Einstein Relation -->
+                    <div class="machine-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>2.5 Thermal Voltage (VT)</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="formula text-sm mb-3">$$ V_T = \frac{KT}{q} = \frac{T}{11600} $$</div>
+                            <div class="formula text-sm">$$ \frac{D_n}{\mu_n} = \frac{D_p}{\mu_p} = V_T $$</div>
+                        </div>
+                        <div class="anim-zone" style="height: 120px; flex-direction:column;">
+                            <div class="interactive-slider-group" style="width:80%; margin-top:0;">
+                                <label style="min-width:60px;">Temp(K):</label>
+                                <input type="range" id="temp-vt-slider" min="200" max="400" value="300" step="10">
+                            </div>
+                            <div id="vt-display" class="orbitron mt-3"
+                                style="font-size:1.5rem; color:var(--mod1-color); text-shadow:0 0 8px currentColor;">
+                                V<sub>T</sub> = 25.86 mV
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2.6: Drift & Diffusion -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>2.6 Drift & Diffusion Currents</h3>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; gap:20px;">
+                            <div style="flex:1;">
+                                <h4 style="color:#fff; margin-bottom:10px; text-align:center;">Drift (Electric Field)
+                                </h4>
+                                <div class="formula text-sm mb-2">$$ J_n(\text{drift}) = nq\mu_n E $$</div>
+                                <div class="formula text-sm mt-2">$$ J_p(\text{drift}) = pq\mu_p E $$</div>
+                            </div>
+                            <div style="flex:1;">
+                                <h4 style="color:#fff; margin-bottom:10px; text-align:center;">Diffusion (Gradient)</h4>
+                                <div class="formula text-sm mb-2">$$ J_n(\text{diff}) = +qD_n\frac{dn}{dx} $$</div>
+                                <div class="formula text-sm mt-2">$$ J_p(\text{diff}) = -qD_p\frac{dp}{dx} $$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone"
+                            style="height: 150px; flex-direction:row; justify-content:space-around; align-items:center;">
+                            <!-- Drift Anim -->
+                            <div id="drift-anim"
+                                style="width:40%; height:80px; position:relative; background:rgba(0,0,0,0.3); border-radius:8px; border:1px solid rgba(255,255,255,0.1); overflow:hidden;">
+                                <div
+                                    style="position:absolute; top:2px; left:5px; font-size:0.7rem; color:#94a3b8; z-index:2;">
+                                    E Field ➔</div>
+                                <!-- Particles injected via JS -->
+                            </div>
+                            <div
+                                style="color:#e2e8f0; font-size:1.5rem; font-family:'Orbitron',sans-serif; font-weight:bold;">
+                                vs</div>
+                            <!-- Diff Anim -->
+                            <div id="diff-anim"
+                                style="width:40%; height:80px; position:relative; background:rgba(0,0,0,0.3); border-radius:8px; border:1px solid rgba(255,255,255,0.1); overflow:hidden;">
+                                <div
+                                    style="position:absolute; top:2px; right:5px; font-size:0.7rem; color:#94a3b8; z-index:2;">
+                                    High ➔ Low</div>
+                                <div
+                                    style="position:absolute; top:0; left:0; width:60%; height:100%; background:linear-gradient(90deg, rgba(167,139,250,0.3) 0%, transparent 100%);">
+                                </div>
+                                <!-- Particles injected via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2.7 & 2.8: Mobility and Hall Effect -->
+                    <div class="machine-card" style="grid-column:1 / 2;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>2.7 Mobility (μ)</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="formula text-sm mb-3">$$ \mu = \frac{v_d}{E} \quad [m^2/V\cdot s] $$</div>
+                            <div class="formula text-sm">$$ \mu \propto T^{-m} $$</div>
+                            <div class="text-xs mt-3" style="color:#94a3b8; line-height:1.5;">
+                                <strong>e⁻ mobility ($cm^2/Vs$):</strong><br> Ge: 3800 | Si: 1300 | GaAs: 8500
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2.8 Hall Effect -->
+                    <div class="machine-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>2.8 Hall Effect</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="formula text-sm mb-3">$$ V_H = \frac{BI}{\rho W} = R_H \frac{BI}{W} $$</div>
+                            <div class="formula text-sm">$$ R_H = \frac{1}{nq} \text{ (n-type)} $$</div>
+                        </div>
+                        <div class="anim-zone" style="height: 150px; position:relative;">
+                            <svg viewBox="0 0 200 120" width="100%" height="100%">
+                                <!-- 3D Slab approx -->
+                                <polygon points="50,90 150,90 170,60 70,60" fill="rgba(0, 245, 255, 0.2)"
+                                    stroke="var(--mod3-color)" stroke-width="1" />
+                                <polygon points="50,90 50,110 150,110 150,90" fill="rgba(0, 245, 255, 0.4)"
+                                    stroke="var(--mod3-color)" stroke-width="1" />
+                                <polygon points="150,90 150,110 170,80 170,60" fill="rgba(0, 245, 255, 0.3)"
+                                    stroke="var(--mod3-color)" stroke-width="1" />
+
+                                <!-- B Field (Z axis) -->
+                                <g id="hall-bfield" stroke="var(--mod1-color)" fill="none" class="glow-effect"
+                                    stroke-width="2">
+                                    <line x1="110" y1="20" x2="110" y2="70" marker-end="url(#hall-arrow)" />
+                                    <text x="115" y="30" font-size="12" fill="var(--mod1-color)" stroke="none">B</text>
+                                </g>
+                                <!-- I (X axis) -->
+                                <g id="hall-ifield" stroke="var(--mod2-color)" fill="none" class="glow-effect"
+                                    stroke-width="2">
+                                    <line x1="10" y1="100" x2="50" y2="100" marker-end="url(#hall-arrow-red)" />
+                                    <text x="20" y="115" font-size="12" fill="var(--mod2-color)" stroke="none">I</text>
+                                </g>
+                                <!-- VH (Y axis) -->
+                                <text x="90" y="105" fill="#fff" font-size="10">+ VH -</text>
+
+                                <defs>
+                                    <marker id="hall-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3"
+                                        orient="auto">
+                                        <polygon points="0 0, 6 3, 0 6" fill="var(--mod1-color)" />
+                                    </marker>
+                                    <marker id="hall-arrow-red" markerWidth="6" markerHeight="6" refX="5" refY="3"
+                                        orient="auto">
+                                        <polygon points="0 0, 6 3, 0 6" fill="var(--mod2-color)" />
+                                    </marker>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE 3: PN Junction Diode -->
+            <section id="mod3" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 3 <span class="module-subtitle">— PN Junction Diode</span></h2>
+                    <div class="module-line"
+                        style="background: var(--mod3-color); box-shadow: 0 0 10px var(--mod3-color);"></div>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Card 3.1: PN Junction Formation -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod3-color)"></div>
+                        <div class="card-header">
+                            <h3>3.1 PN Junction Formation & Depletion Layer</h3>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; gap:20px;">
+                            <div style="flex:1; min-width:300px;">
+                                <div class="formula text-sm mb-3">$$ W = \\sqrt{\\frac{2\\varepsilon V_0}{q}
+                                    \\left(\\frac{N_A + N_D}{N_A \\cdot N_D}\\right)} $$</div>
+                                <div class="formula text-sm">$$ V_0 = V_T \\ln\\left(\\frac{N_A N_D}{n_i^2}\\right) $$
+                                </div>
+                                <ul style="color:#e2e8f0; font-size:0.85rem; margin-top:15px; padding-left:20px;">
+                                    <li><strong>Width (W)</strong> inversely proportional to $\\sqrt{\\text{Doping}}$
+                                    </li>
+                                    <li><strong>Reverse Bias:</strong> $V_0 \\rightarrow |V_0 + V|$ (W increases)</li>
+                                    <li><strong>Forward Bias:</strong> W decreases</li>
+                                </ul>
+                            </div>
+                            <div
+                                style="flex:1; display:flex; flex-direction:column; align-items:center; min-width:300px;">
+                                <div class="anim-zone" style="height:200px; width:100%; border-radius:8px;">
+                                    <svg id="pn-junction-svg" viewBox="0 0 300 200" width="100%" height="100%">
+                                        <!-- P region -->
+                                        <rect x="20" y="50" width="100" height="100" fill="rgba(167,139,250,0.3)"
+                                            stroke="var(--mod2-color)" />
+                                        <text x="70" y="105" fill="#fff" text-anchor="middle">P-Type</text>
+                                        <!-- N region -->
+                                        <rect x="180" y="50" width="100" height="100" fill="rgba(0,245,255,0.3)"
+                                            stroke="var(--mod3-color)" />
+                                        <text x="230" y="105" fill="#fff" text-anchor="middle">N-Type</text>
+                                        <!-- Depletion Region -->
+                                        <rect id="depletion-region" x="120" y="50" width="60" height="100"
+                                            fill="rgba(255,255,255,0.1)" stroke="#94a3b8" stroke-dasharray="4" />
+                                        <text id="depletion-text" x="150" y="105" fill="#94a3b8" font-size="10"
+                                            text-anchor="middle">Depletion</text>
+
+                                        <!-- E-Field Arrow -->
+                                        <g id="e-field-arrow" stroke="var(--mod1-color)" stroke-width="2" fill="none">
+                                            <line x1="170" y1="30" x2="130" y2="30" marker-end="url(#hall-arrow)" />
+                                            <text x="150" y="20" font-size="12" fill="var(--mod1-color)"
+                                                text-anchor="middle" stroke="none">E-field</text>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="interactive-slider-group" style="width:80%;">
+                                    <label style="min-width:40px;">Bias:</label>
+                                    <input type="range" id="bias-slider" min="-10" max="10" value="0" step="1">
+                                </div>
+                                <div id="bias-display" class="text-xs text-center mt-2" style="color:#94a3b8">Zero Bias
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3.2: Diode Current Equation -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod3-color)"></div>
+                        <div class="card-header">
+                            <h3>3.2 Diode Current Characteristic (I-V curve)</h3>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; gap:20px;">
+                            <div style="flex:1; min-width:300px;">
+                                <div class="formula text-sm mb-3">$$ I_f = I_0\\left[e^{V_d/\\eta V_T} - 1\\right] $$
+                                </div>
+                                <ul style="color:#e2e8f0; font-size:0.85rem; padding-left:20px; line-height:1.6;">
+                                    <li>$\\eta = 1$ for Ge, $\\eta = 2$ for Si</li>
+                                    <li>$I_0(T_2) = I_0(T_1) \\times 2^{\\frac{T_2 - T_1}{10}}$ (doubles every 10°C)
+                                    </li>
+                                    <li>1°C rise → 7% increase in $I_0$</li>
+                                    <li>$\\frac{dv}{dt} = -2.5 \\text{ mV/°C}$</li>
+                                </ul>
+                            </div>
+                            <div style="flex:1; display:flex; flex-direction:column; min-width:300px;">
+                                <div class="anim-zone" style="height:250px; background:transparent; padding:0;">
+                                    <!-- D3 Chart container -->
+                                    <div id="iv-chart" class="chart-container" style="height:100%;"></div>
+                                </div>
+                                <div class="toggle-group mt-3" style="display:flex; justify-content:center; gap:10px;">
+                                    <button class="toggle-btn active" id="btn-iv-si">Silicon (0.7V)</button>
+                                    <button class="toggle-btn" id="btn-iv-ge">Germanium (0.3V)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3.3: Resistance -->
+                    <div class="machine-card" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod3-color)"></div>
+                        <div class="card-header">
+                            <h3>3.3 Diode Resistance</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="formula text-sm mb-3">$$ R_f = \\frac{V}{I} \\text{ (Static/DC)} $$</div>
+                            <div class="formula text-sm mb-3">$$ r = \\frac{\\eta V_T}{I_f} \\text{ (Dynamic/AC)} $$
+                            </div>
+                            <div style="color:#e2e8f0; font-size:0.85rem; margin-top:10px;">
+                                $R_f$ is ALWAYS greater than $r$.
+                                Forward resistance typically 10Ω - 100Ω.
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height: 120px;">
+                            <svg viewBox="0 0 200 100" width="100%" height="100%">
+                                <!-- Visualizing AC/DC res on a curve -->
+                                <path d="M 20 80 Q 100 80 160 20" fill="none" stroke="var(--mod3-color)"
+                                    stroke-width="2" />
+                                <circle cx="120" cy="50" r="4" fill="var(--mod1-color)" />
+                                <line x1="20" y1="80" x2="120" y2="50" stroke="#fff" stroke-dasharray="2"
+                                    stroke-width="1" />
+                                <line x1="90" y1="75" x2="150" y2="25" stroke="var(--mod4-color)" stroke-width="1" />
+                                <text x="60" y="60" fill="#fff" font-size="10">DC</text>
+                                <text x="140" y="35" fill="var(--mod4-color)" font-size="10">AC</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Card 3.4: Junction Capacitance -->
+                    <div class="machine-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod3-color)"></div>
+                        <div class="card-header">
+                            <h3>3.4 Junction Capacitance</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="formula text-sm mb-3">$$ C_T \\propto \\frac{1}{\\sqrt[n]{V_{RB}}} \\quad
+                                \\text{(Transition)} $$</div>
+                            <div class="formula text-sm mb-3">$$ C_D = \\frac{\\tau I_f}{\\eta V_T} \\quad
+                                \\text{(Diffusion)} $$</div>
+                            <ul style="color:#e2e8f0; font-size:0.85rem; padding-left:20px;">
+                                <li>$C_T$ operates in <strong>Reverse Bias</strong></li>
+                                <li>$C_D$ operates in <strong>Forward Bias</strong></li>
+                                <li>$C_D \\gg C_T$ always</li>
+                            </ul>
+                        </div>
+                        <div class="anim-zone" style="height: 120px; position:relative;">
+                            <!-- Capacitor anim -->
+                            <div
+                                style="width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
+                                <div id="cap-plates-anim" style="width:100px; height:60px; position:relative;">
+                                    <div id="plate-left"
+                                        style="position:absolute; left:20px; top:0; width:10px; height:100%; background:var(--mod3-color); transition: left 0.5s;">
+                                    </div>
+                                    <div id="plate-right"
+                                        style="position:absolute; right:20px; top:0; width:10px; height:100%; background:var(--mod3-color); transition: right 0.5s;">
+                                    </div>
+                                    <div class="text-center"
+                                        style="position:absolute; width:100%; top:25px; font-size:10px; color:#fff;">
+                                        Dielectric</div>
+                                </div>
+                            </div>
+                            <div id="cap-text" class="text-xs text-center"
+                                style="position:absolute; bottom:5px; width:100%; color:var(--mod1-color);">Reverse
+                                Bias: Plates separate</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE 4: Special Diodes -->
+            <section id="mod4" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 4 <span class="module-subtitle">— Special Purpose Diodes</span></h2>
+                    <div class="module-line"
+                        style="background: var(--mod4-color); box-shadow: 0 0 10px var(--mod4-color);"></div>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Card 4.1: Zener Diode -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod4-color)"></div>
+                        <div class="card-header">
+                            <h3>4.1 Zener Diode (Voltage Regulator)</h3>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; gap:20px;">
+                            <div style="flex:1;">
+                                <div class="formula text-sm mb-3">$$ I_Z = I_S - I_L $$</div>
+                                <div class="formula text-sm mb-3">$$ V_Z = V_{Z0} + I_Z R_Z $$</div>
+                                <ul style="color:#e2e8f0; font-size:0.85rem; padding-left:20px; line-height:1.6;">
+                                    <li>Heavily doped (1:10⁵), very thin depletion layer (< 10⁻⁶ m)</li>
+                                    <li><strong>Zener Breakdown:</strong> $< 6V$, strong E-field, Negative Temp
+                                            Coefficient</li>
+                                    <li><strong>Avalanche Breakdown:</strong> $> 6V$, collisions, Positive Temp
+                                        Coefficient</li>
+                                </ul>
+                            </div>
+                            <div style="flex:1; display:flex; flex-direction:column; align-items:center;">
+                                <div class="anim-zone"
+                                    style="height:200px; width:100%; border-radius:8px; display:flex;">
+                                    <div
+                                        style="width:40%; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                                        <!-- Zener Symbol -->
+                                        <svg viewBox="0 0 100 50" width="80%" height="80px">
+                                            <path
+                                                d="M 10 25 L 40 25 M 40 10 L 70 25 L 40 40 Z M 70 10 L 70 40 M 70 10 L 80 10 M 70 40 L 60 40 M 70 25 L 90 25"
+                                                stroke="var(--mod4-color)" stroke-width="3" fill="none"
+                                                class="glow-effect" />
+                                        </svg>
+                                        <div class="circuit-diagram mt-2"
+                                            style="font-size:0.75rem; color:#94a3b8; text-align:center;">
+                                            Operates in<br>Reverse Bias
+                                        </div>
+                                    </div>
+                                    <div style="width:60%; height:100%;" id="zener-chart-container">
+                                        <!-- Chart rendered by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4.2: Tunnel Diode -->
+                    <div class="machine-card" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod4-color)"></div>
+                        <div class="card-header">
+                            <h3>4.2 Tunnel Diode</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <ul style="color:#e2e8f0; font-size:0.85rem; padding-left:20px; margin-bottom:15px;">
+                                <li>Extremely heavily doped (1:10³)</li>
+                                <li>Used as high frequency oscillator</li>
+                                <li>Exhibits <strong>Negative Resistance</strong></li>
+                            </ul>
+                            <div class="formula text-sm mb-3">$$ I_p / I_v \\approx 10 \\text{ (Ge)} $$</div>
+                        </div>
+                        <div class="anim-zone"
+                            style="height: 150px; display:flex; justify-content:center; align-items:center;">
+                            <svg viewBox="0 0 200 120" width="100%" height="100%">
+                                <!-- I-V Curve for Tunnel Diode -->
+                                <line x1="20" y1="100" x2="180" y2="100" stroke="#475569" />
+                                <line x1="40" y1="20" x2="40" y2="110" stroke="#475569" />
+                                <text x="170" y="115" fill="#94a3b8" font-size="10">V</text>
+                                <text x="25" y="30" fill="#94a3b8" font-size="10">I</text>
+
+                                <path id="tunnel-curve" d="M 40 100 Q 50 20 70 30 Q 90 90 110 80 Q 150 20 170 10"
+                                    fill="none" stroke="var(--mod1-color)" stroke-width="2" class="glow-effect" />
+
+                                <circle cx="70" cy="30" r="4" fill="#fff" />
+                                <text x="60" y="20" fill="#fff" font-size="10">Peak</text>
+                                <circle cx="110" cy="80" r="4" fill="#fff" />
+                                <text x="100" y="95" fill="#fff" font-size="10">Valley</text>
+
+                                <!-- Negative resistance highlight -->
+                                <line x1="70" y1="30" x2="110" y2="80" stroke="var(--mod2-color)" stroke-width="4"
+                                    opacity="0.5" />
+                                <text x="120" y="60" fill="var(--mod2-color)" font-size="10">-ve Resistance</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Card 4.3: Varactor Diode -->
+                    <div class="machine-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod4-color)"></div>
+                        <div class="card-header">
+                            <h3>4.3 Varactor Diode</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="formula text-sm mb-3">$$ C_T = \\frac{K}{(V_k + V_R)^n} $$</div>
+                            <ul style="color:#e2e8f0; font-size:0.85rem; padding-left:20px;">
+                                <li>Voltage-Variable Capacitor (VVC)</li>
+                                <li>Operates in Reverse Bias mode</li>
+                                <li>$n \\approx 1/2$ (alloy), $n \\approx 1/3$ (diffused)</li>
+                            </ul>
+                        </div>
+                        <div class="anim-zone"
+                            style="height: 150px; flex-direction:column; justify-content:space-around;">
+                            <div class="interactive-slider-group" style="width:90%; margin-top:0;">
+                                <label style="min-width:100px; font-size:0.8rem;">Reverse Volts (VR):</label>
+                                <input type="range" id="varactor-slider" min="0" max="20" value="0" step="1">
+                            </div>
+                            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+                                <svg viewBox="0 0 100 50" width="80px" height="40px">
+                                    <path
+                                        d="M 10 25 L 40 25 M 40 10 L 60 25 L 40 40 Z M 60 10 L 60 40 M 70 10 L 70 40 M 70 25 L 90 25"
+                                        stroke="var(--mod3-color)" stroke-width="3" fill="none" class="glow-effect" />
+                                </svg>
+                                <div id="varactor-cap-display" class="orbitron"
+                                    style="font-size:1.5rem; color:var(--mod3-color); text-shadow:0 0 8px currentColor;">
+                                    C = 50.0 pF
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4.4: Optoelectronics (LED, Photo, Solar) -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod4-color)"></div>
+                        <div class="card-header">
+                            <h3>4.4 Optoelectronic Diodes</h3>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; gap:15px;">
+                            <!-- LED section -->
+                            <div
+                                style="flex:1; min-width:200px; background:rgba(0,0,0,0.2); padding:15px; border-radius:8px;">
+                                <h4 style="color:var(--mod1-color); margin-bottom:10px;"><i
+                                        class="fas fa-lightbulb"></i> LED (Light Emitting Diode)</h4>
+                                <div class="formula text-sm mb-2">$$ \\lambda = \\frac{hc}{E_g} =
+                                    \\frac{1.24}{E_g\\text{(eV)}} \\mu m $$</div>
+                                <ul style="color:#e2e8f0; font-size:0.8rem; padding-left:15px;">
+                                    <li>Forward Bias operation</li>
+                                    <li>Direct bandgap materials (GaAs, GaP)</li>
+                                </ul>
+                            </div>
+                            <!-- Photodiode section -->
+                            <div
+                                style="flex:1; min-width:200px; background:rgba(0,0,0,0.2); padding:15px; border-radius:8px;">
+                                <h4 style="color:var(--mod3-color); margin-bottom:10px;"><i class="fas fa-eye"></i>
+                                    Photodiode</h4>
+                                <div class="formula text-sm mb-2">$$ I_{photo} = \\Re P_{in} = \\left(\\frac{\\eta
+                                    q}{h\\nu}\\right) P_{in} $$</div>
+                                <ul style="color:#e2e8f0; font-size:0.8rem; padding-left:15px;">
+                                    <li>Reverse Bias operation</li>
+                                    <li>Current proportional to light intensity</li>
+                                </ul>
+                            </div>
+                            <!-- Solar Cell section -->
+                            <div
+                                style="flex:1; min-width:200px; background:rgba(0,0,0,0.2); padding:15px; border-radius:8px;">
+                                <h4 style="color:var(--mod2-color); margin-bottom:10px;"><i
+                                        class="fas fa-solar-panel"></i> Solar Cell</h4>
+                                <div class="formula text-sm mb-2">$$ FF = \\frac{P_{max}}{V_{OC} I_{SC}} $$</div>
+                                <ul style="color:#e2e8f0; font-size:0.8rem; padding-left:15px;">
+                                    <li>No external bias (Zero Bias)</li>
+                                    <li>Generates V/I from photons</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4.5: Other Special Diodes -->
+                    <div class="machine-card"
+                        style="grid-column: 1 / -1; display:flex; flex-direction:row; flex-wrap:wrap; align-items:center;"
+                        data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod4-color)"></div>
+                        <div style="flex:1; padding-right:20px;">
+                            <div class="card-header">
+                                <h3>4.5 Schottky & PIN Diodes</h3>
+                            </div>
+                            <div class="formula-zone">
+                                <h4 style="color:var(--mod1-color);">Schottky Diode</h4>
+                                <ul style="color:#e2e8f0; font-size:0.85rem; padding-left:20px; margin-bottom:15px;">
+                                    <li>Metal-Semiconductor junction (Hot-carrier diode)</li>
+                                    <li>Unipolar device (majority carriers only)</li>
+                                    <li>High switching speed, very low forward voltage drop ($0.15 - 0.45V$)</li>
+                                    <li>No reverse recovery time</li>
+                                </ul>
+                                <h4 style="color:var(--mod4-color);">PIN Diode</h4>
+                                <ul style="color:#e2e8f0; font-size:0.85rem; padding-left:20px;">
+                                    <li>Intrinsic layer between P and N regions</li>
+                                    <li>Acts as variable resistor at RF/Microwave frequencies</li>
+                                    <li>High frequency switching, phase shifters, attenuators</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div
+                            style="flex:1; display:flex; gap:10px; justify-content:center; align-items:center; min-width:250px;">
+                            <!-- Schottky Symbol -->
+                            <div
+                                style="background:rgba(0,0,0,0.3); padding:15px; border-radius:8px; text-align:center;">
+                                <svg viewBox="0 0 100 50" width="80" height="40">
+                                    <path
+                                        d="M 10 25 L 40 25 M 40 10 L 70 25 L 40 40 Z M 70 10 L 70 40 M 70 10 L 80 10 M 80 10 L 80 15 M 70 40 L 60 40 M 60 40 L 60 35 M 70 25 L 90 25"
+                                        stroke="var(--mod1-color)" stroke-width="2" fill="none" class="glow-effect" />
+                                </svg>
+                                <div class="text-xs text-slate-400 mt-2">Schottky Symbol</div>
+                            </div>
+                            <!-- PIN Symbol -->
+                            <div
+                                style="background:rgba(0,0,0,0.3); padding:15px; border-radius:8px; text-align:center;">
+                                <svg viewBox="0 0 120 50" width="100" height="40">
+                                    <path
+                                        d="M 0 25 L 30 25 M 30 10 L 60 25 L 30 40 Z M 60 10 L 60 40 M 60 25 L 90 25 M 90 10 L 90 40 M 90 25 L 120 25"
+                                        stroke="var(--mod4-color)" stroke-width="2" fill="none" class="glow-effect" />
+                                    <text x="75" y="20" fill="var(--mod4-color)" font-size="10">I</text>
+                                </svg>
+                                <div class="text-xs text-slate-400 mt-2">PIN Structure</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE 5: Power Supply -->
+            <section id="mod5" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 5 <span class="module-subtitle">— Regulated Power Supply</span></h2>
+                    <div class="module-line"
+                        style="background: var(--mod1-color); box-shadow: 0 0 10px var(--mod1-color);"></div>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Card 5.1: Block Diagram -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color)"></div>
+                        <div class="card-header">
+                            <h3>5.1 Power Supply Block Diagram</h3>
+                        </div>
+                        <div class="anim-zone"
+                            style="height: 250px; background:rgba(0,0,0,0.3); padding:20px; border-radius:8px;">
+                            <!-- Animated Block Diagram SVG will be rendered by JS -->
+                            <svg id="ps-block-diagram" viewBox="0 0 800 200" width="100%" height="100%"
+                                style="overflow:visible;">
+                                <!-- Blocks and signals drawn in JS -->
+                            </svg>
+                            <div id="ps-stage-desc" class="text-center mt-3"
+                                style="color:var(--mod1-color); font-size:1rem; font-family:'Orbitron',sans-serif; text-shadow:0 0 5px currentColor;">
+                                Hover over a block to see details
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5.2: Rectifiers Comparison -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color)"></div>
+                        <div class="card-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3>5.2 Rectifier Configurations</h3>
+                            <div class="toggle-group" style="display:flex; gap:10px;">
+                                <button class="toggle-btn active" id="btn-rect-hwr">Half-Wave (HWR)</button>
+                                <button class="toggle-btn" id="btn-rect-ct">Center-Tap (FWR)</button>
+                                <button class="toggle-btn" id="btn-rect-br">Bridge (FWR)</button>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; gap:20px;">
+                            <div style="flex:1; min-width:300px;">
+                                <div class="table-container" style="overflow-x: auto;">
+                                    <table
+                                        style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; color: #e2e8f0;">
+                                        <tbody id="rect-table-body">
+                                            <!-- Filled by JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div style="flex:1; display:flex; flex-direction:column; min-width:300px;">
+                                <div class="anim-zone" style="height:150px; background:rgba(0,0,0,0.2);">
+                                    <svg id="rect-wave-svg" viewBox="0 0 300 120" width="100%" height="100%">
+                                        <!-- Waveforms drawn by JS -->
+                                    </svg>
+                                </div>
+                                <div style="text-align:center; color:#94a3b8; font-size:0.8rem; margin-top:5px;">Input
+                                    vs Output Voltage Waveform</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5.3: Ripple Factor & Regulation -->
+                    <div class="machine-card" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color)"></div>
+                        <div class="card-header">
+                            <h3>5.3 Ripple & Regulation</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <h4 style="color:var(--mod3-color);"><i class="fas fa-water"></i> Ripple Factor (γ)</h4>
+                            <div class="formula text-sm mb-2">$$ \\gamma = \\frac{I_{RMS}'}{I_{DC}} =
+                                \\sqrt{\\left(\\frac{I_{RMS}}{I_{DC}}\\right)^2 - 1} $$</div>
+                            <ul style="color:#e2e8f0; font-size:0.85rem; padding-left:20px; margin-bottom:15px;">
+                                <li>HWR: $\\gamma = 1.21$ (121%)</li>
+                                <li>FWR: $\\gamma = 0.48$ (48%)</li>
+                            </ul>
+
+                            <h4 style="color:var(--mod4-color);"><i class="fas fa-balance-scale-right"></i> Voltage
+                                Regulation</h4>
+                            <div class="formula text-sm mb-2">$$ \\% V_R = \\frac{V_{NL} - V_{FL}}{V_{FL}} \\times 100
+                                $$</div>
+                            <div style="color:#94a3b8; font-size:0.8rem;">Ideal regulation is 0%. Smaller value is
+                                better.</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5.4: Filters -->
+                    <div class="machine-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod1-color)"></div>
+                        <div class="card-header">
+                            <h3>5.4 Filters (Smoothing)</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <ul style="color:#e2e8f0; font-size:0.85rem; padding-left:20px;">
+                                <li><strong style="color:var(--mod1-color);">Shunt Capacitor (C-Filter):</strong> Allows
+                                    AC to bypass, blocks DC. Used for high load resistance (light load).</li>
+                                <li><strong style="color:var(--mod2-color);">Series Inductor (L-Filter):</strong> Blocks
+                                    AC ripple, passes DC. Used for heavy loads.</li>
+                                <li><strong style="color:var(--mod3-color);">LC Filter (L-section):</strong> Better
+                                    regulation. Ripple factor independent of load.</li>
+                                <li><strong style="color:var(--mod4-color);">π-Filter (C-L-C):</strong> Best smoothing,
+                                    highest output DC voltage, but poor voltage regulation.</li>
+                            </ul>
+                        </div>
+                        <div class="anim-zone" style="height: 120px; position:relative;">
+                            <!-- Filtering visual -->
+                            <svg viewBox="0 0 200 80" width="100%" height="100%">
+                                <!-- Unfiltered -->
+                                <path d="M 10 70 Q 25 10 40 70 Q 55 10 70 70" fill="none" stroke="#475569"
+                                    stroke-width="2" />
+                                <!-- Arrow -->
+                                <polygon points="85,45 95,40 85,35" fill="var(--mod1-color)" />
+                                <line x1="75" y1="40" x2="90" y2="40" stroke="var(--mod1-color)" stroke-width="2" />
+                                <text x="85" y="25" fill="var(--mod1-color)" font-size="10"
+                                    text-anchor="middle">Filter</text>
+                                <!-- Filtered -->
+                                <path d="M 110 30 Q 125 40 140 30 Q 155 40 170 30" fill="none"
+                                    stroke="var(--mod1-color)" stroke-width="2" class="glow-effect" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE 6: BJT -->
+            <section id="mod6" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 6 <span class="module-subtitle">— Bipolar Junction Transistor
+                            (BJT)</span></h2>
+                    <div class="module-line"
+                        style="background: var(--mod2-color); box-shadow: 0 0 10px var(--mod2-color);"></div>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Card 6.1: BJT Fundamentals -->
+                    <div class="machine-card" style="grid-column: 1 / -1" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>6.1 BJT Fundamentals</h3>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; gap:20px;">
+                            <div style="flex:1; min-width:300px;">
+                                <div class="formula text-sm mb-3">$$ I_E = I_B + I_C $$</div>
+                                <div class="formula text-sm mb-3">$$ I_C = \\alpha I_E + I_{CBO} $$</div>
+                                <div class="formula text-sm mb-3">$$ I_C = \\beta I_B + I_{CEO} $$</div>
+                                <div class="formula text-sm">$$ \\alpha = \\frac{\\beta}{1+\\beta} \\quad \\beta =
+                                    \\frac{\\alpha}{1-\\alpha} \\quad \\gamma = 1+\\beta $$</div>
+                            </div>
+                            <div style="flex:1; min-width:300px;">
+                                <h4 style="color:#fff; margin-bottom:10px;">Regions of Operation</h4>
+                                <table
+                                    style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; color: #e2e8f0;">
+                                    <thead>
+                                        <tr
+                                            style="border-bottom: 2px solid var(--mod2-color); color: var(--mod2-color);">
+                                            <th style="padding: 6px">Region</th>
+                                            <th style="padding: 6px">EBJ</th>
+                                            <th style="padding: 6px">CBJ</th>
+                                            <th style="padding: 6px">Application</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 6px">Active</td>
+                                            <td style="padding: 6px">Forward</td>
+                                            <td style="padding: 6px">Reverse</td>
+                                            <td style="padding: 6px">Amplifier</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 6px">Saturation</td>
+                                            <td style="padding: 6px">Forward</td>
+                                            <td style="padding: 6px">Forward</td>
+                                            <td style="padding: 6px">Closed Switch</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 6px">Cutoff</td>
+                                            <td style="padding: 6px">Reverse</td>
+                                            <td style="padding: 6px">Reverse</td>
+                                            <td style="padding: 6px">Open Switch</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 6px">Inverse Act.</td>
+                                            <td style="padding: 6px">Reverse</td>
+                                            <td style="padding: 6px">Forward</td>
+                                            <td style="padding: 6px">Attenuator</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="anim-zone"
+                            style="height: 200px; display:flex; justify-content:center; align-items:center;">
+                            <!-- Animated NPN Structure -->
+                            <svg id="bjt-anim" viewBox="0 0 400 200" width="100%" height="100%">
+                                <rect x="50" y="50" width="100" height="100" fill="rgba(0,245,255,0.3)"
+                                    stroke="var(--mod3-color)" />
+                                <rect x="150" y="50" width="10" height="100" fill="rgba(167,139,250,0.5)"
+                                    stroke="var(--mod2-color)" />
+                                <rect x="160" y="50" width="150" height="100" fill="rgba(0,245,255,0.2)"
+                                    stroke="var(--mod3-color)" />
+
+                                <text x="100" y="105" fill="#fff" text-anchor="middle">Emitter (N++)</text>
+                                <text x="155" y="40" fill="#fff" text-anchor="middle" font-size="10">Base (P)</text>
+                                <text x="235" y="105" fill="#fff" text-anchor="middle">Collector (N)</text>
+
+                                <!-- Terminals -->
+                                <line x1="50" y1="100" x2="20" y2="100" stroke="#fff" stroke-width="2" />
+                                <text x="10" y="105" fill="#fff" font-size="12">E</text>
+
+                                <line x1="155" y1="150" x2="155" y2="180" stroke="#fff" stroke-width="2" />
+                                <text x="155" y="195" fill="#fff" font-size="12" text-anchor="middle">B</text>
+
+                                <line x1="310" y1="100" x2="340" y2="100" stroke="#fff" stroke-width="2" />
+                                <text x="350" y="105" fill="#fff" font-size="12">C</text>
+
+                                <!-- Particles to be added by JS -->
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Card 6.2: Config Comparisons -->
+                    <div class="machine-card" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>6.2 CB, CE, CC Configurations</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="table-container" style="overflow-x: auto;">
+                                <table
+                                    style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.8rem; color: #e2e8f0;">
+                                    <thead>
+                                        <tr
+                                            style="border-bottom: 2px solid var(--mod2-color); color: var(--mod2-color);">
+                                            <th style="padding: 6px">Feature</th>
+                                            <th style="padding: 6px">CB ($\\alpha$)</th>
+                                            <th style="padding: 6px">CE ($\\beta$)</th>
+                                            <th style="padding: 6px">CC ($\\gamma$)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 6px">Input Z</td>
+                                            <td style="padding: 6px">Very Low (~20Ω)</td>
+                                            <td style="padding: 6px">Medium (~1kΩ)</td>
+                                            <td style="padding: 6px">High (~500kΩ)</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 6px">Output Z</td>
+                                            <td style="padding: 6px">High (~1MΩ)</td>
+                                            <td style="padding: 6px">Medium (~40kΩ)</td>
+                                            <td style="padding: 6px">Low (~50Ω)</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 6px">Voltage Gain</td>
+                                            <td style="padding: 6px">High</td>
+                                            <td style="padding: 6px">High</td>
+                                            <td style="padding: 6px">~1</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 6px">Current Gain</td>
+                                            <td style="padding: 6px">
+                                                < 1</td>
+                                            <td style="padding: 6px">High</td>
+                                            <td style="padding: 6px">High</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 6px">Phase Shift</td>
+                                            <td style="padding: 6px">0°</td>
+                                            <td style="padding: 6px">180°</td>
+                                            <td style="padding: 6px">0°</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6.3: Output Characteristic CE -->
+                    <div class="machine-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod2-color)"></div>
+                        <div class="card-header">
+                            <h3>6.3 CE Output Characteristics</h3>
+                        </div>
+                        <div class="anim-zone" style="height: 250px; position:relative;">
+                            <!-- D3 CE Curve container -->
+                            <div id="ce-curve-chart" class="chart-container" style="height:100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
     </div>
 
-    <!-- Calculator Modal -->
-    <div class="calc-modal" role="dialog" aria-modal="true">
-        <div class="calc-modal__content">
-            <button class="calc-modal__close" aria-label="Close">✕</button>
-            <h3>Calculator</h3>
-            <div class="calc-modal__formula-display"
-                style="margin-bottom:16px;padding:12px;background:rgba(0,240,255,0.04);border-radius:8px;text-align:center;min-height:40px;">
-            </div>
-            <div class="calc-modal__inputs"></div>
-            <button class="calc-modal__btn">CALCULATE</button>
-            <div class="calc-modal__result"></div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="js/formulas.js"></script>
-    <script src="js/calculator.js"></script>
-    <script src="js/app.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/electronics.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+    </script>
 </body>
 
 </html>

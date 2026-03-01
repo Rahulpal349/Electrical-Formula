@@ -1,0 +1,345 @@
+/* ==========================================================================
+   ELECTRONICS ENGINEERING SPECIFIC STYLES - EE Formula Hub
+   Dark Futuristic Theme (Navy #0a0e1a / Neon Green #00ff88 / Cyan #00f5ff)
+   ========================================================================== */
+
+:root {
+    --mod1-color: #facc15;
+    /* Gold */
+    --mod2-color: #a78bfa;
+    /* Purple */
+    --mod3-color: #00f5ff;
+    /* Cyan */
+    --mod4-color: #00ff88;
+    /* Green */
+    --mod5-color: #f97316;
+    /* Orange */
+    --mod6-color: #fb7185;
+    /* Rose */
+}
+
+body[data-page-category="electronics"] {
+    background-color: #0a0e1a;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 245, 255, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+}
+
+.table-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+/* Page Layout Structure */
+.page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 30px;
+}
+
+/* Sticky Sidebar Navigation */
+.sidebar-nav {
+    flex: 0 0 250px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 120px);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+}
+
+.sidebar-links li a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    display: block;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0 8px 8px 0;
+}
+
+.sidebar-links li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-links li a.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Module Section Header */
+.module-section {
+    position: relative;
+    scroll-margin-top: 100px;
+}
+
+.module-header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.module-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.module-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.module-line {
+    height: 3px;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+/* Card Grid Layout */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+}
+
+/* The Formula/Machine Card */
+.machine-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.machine-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+}
+
+.card-header {
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+/* Interactive SVG & Animation Zone */
+.anim-zone {
+    padding: 20px;
+    background: #020617;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Mathematical Formula Zone */
+.formula-zone {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formula {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
+    border-radius: 8px;
+    border-left: 3px solid var(--power-accent-1);
+    overflow-x: auto;
+}
+
+/* Interactive Elements */
+.interactive-slider-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 15px;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.interactive-slider-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    min-width: 80px;
+    flex-shrink: 0;
+}
+
+input[type=range] {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.toggle-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.toggle-btn.active {
+    color: #000;
+    font-weight: 600;
+}
+
+.glow-effect {
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+.chart-container {
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+
+/* Animations */
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .page-layout {
+        flex-direction: column;
+    }
+
+    .sidebar-nav {
+        position: static;
+        height: auto;
+        flex: none;
+        max-height: 200px;
+    }
+
+    .sidebar-links {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+
+    .sidebar-links li {
+        flex: 0 0 auto;
+    }
+
+    .sidebar-links li a {
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 8px 8px 0 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .module-title {
+        font-size: 1.4rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .anim-zone {
+        padding: 10px;
+    }
+}
