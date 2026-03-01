@@ -1,0 +1,34 @@
+:root {
+    --mod1-color: #facc15;
+    /* Gold */
+    --mod2-color: #ef4444;
+    /* Fire Red */
+    --mod3-color: #a78bfa;
+    /* Purple */
+    --mod4-color: #3b82f6;
+    /* Blue */
+    --mod5-color: #78716c;
+    /* Gray */
+    --mod6-color: #f97316;
+    /* Orange */
+    --mod7-color: #22c55e;
+    /* Green */
+    --mod8-color: #eab308;
+    /* Yellow */
+    --mod9-color: #06b6d4;
+    /* Cyan */
+}
+
+body[data-page-category="powerplant"] {
+    background-color: #0a0e1a;
+    color: var(--text-primary);
+}
+
+.table-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
