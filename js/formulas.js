@@ -656,50 +656,183 @@ const FORMULA_DATA = [
     },
     {
         id: "kwh", name: "Energy in kWh (Unit)", category: "estimation",
-        latex: "\\text{kWh} = \\frac{P (\\text{W}) \\times t (\\text{hr})}{1000}",
+        latex: "\\text{kWh} = \\frac{P\\;(\\text{W}) \\times t\\;(\\text{hr})}{1000}",
         description: "One kWh (unit) = 1000 watts consumed for 1 hour. Basis of electricity billing.",
         units: "1 kWh = 1 Unit",
-        variables: [
-            { sym: "P", label: "Power (W)", unit: "W" },
-            { sym: "t", label: "Time (hours)", unit: "hr" }
-        ],
-        calc: (vars) => {
-            if (vars.P && vars.t) return { result: (vars.P * vars.t) / 1000, unit: "kWh", label: "Energy" };
-            return null;
-        }
+        variables: [{ sym: "P", label: "Power (W)", unit: "W" }, { sym: "t", label: "Time (hours)", unit: "hr" }],
+        calc: (vars) => { if (vars.P && vars.t) return { result: (vars.P * vars.t) / 1000, unit: "kWh", label: "Energy" }; return null; }
+    },
+    {
+        id: "total-cost", name: "Total Estimated Cost", category: "estimation",
+        latex: "C_{total} = C_{mat} + C_{lab} + C_{OH} + C_{cont} + C_{profit}",
+        description: "Sum of all cost components — material, labor, overhead, contingency, and profit.",
+        units: "C = ₹ (Currency)"
+    },
+    {
+        id: "tender-price", name: "Tender Price (with GST)", category: "estimation",
+        latex: "\\text{Tender} = C_{total} \\times 1.18",
+        description: "Final tender price including 18% GST.",
+        units: "₹",
+        variables: [{ sym: "Ctot", label: "Total Cost (₹)", unit: "₹" }],
+        calc: (vars) => { if (vars.Ctot) return { result: vars.Ctot * 1.18, unit: "₹", label: "Tender Price" }; return null; }
+    },
+    {
+        id: "material-cost", name: "Material Cost", category: "estimation",
+        latex: "C_{mat} = \\sum_{i=1}^{n} Q_i \\times R_i",
+        description: "Total material cost = sum of (quantity × rate) for each material item.",
+        units: "C = ₹, Q = units, R = ₹/unit"
+    },
+    {
+        id: "labor-cost", name: "Labor Cost", category: "estimation",
+        latex: "C_{lab} = \\sum_{j=1}^{m} H_j \\times W_j",
+        description: "Total labor cost = sum of (hours × wage rate) for each labor type.",
+        units: "C = ₹, H = hours, W = ₹/hr"
+    },
+    {
+        id: "overhead-cost", name: "Overhead Charges", category: "estimation",
+        latex: "C_{OH} = \\%_{OH} \\times C_{direct}",
+        description: "Overhead charges as percentage of direct cost (typical: 10-15%).",
+        units: "Percentage of direct cost"
     },
     {
         id: "demand-factor", name: "Demand Factor", category: "estimation",
-        latex: "\\text{DF} = \\frac{\\text{Maximum Demand}}{\\text{Total Connected Load}}",
+        latex: "DF = \\frac{\\text{Maximum Demand}}{\\text{Total Connected Load}}",
         description: "Ratio of maximum demand to total connected load of an installation.",
         units: "DF = dimensionless (< 1)"
     },
     {
         id: "diversity-fac", name: "Diversity Factor", category: "estimation",
-        latex: "\\text{Diversity Factor} = \\frac{\\sum \\text{Individual Max Demands}}{\\text{Simultaneous Max Demand}}",
+        latex: "DiF = \\frac{\\sum \\text{Individual MD}}{\\text{Simultaneous MD}} \\geq 1",
         description: "Ratio of sum of individual maximum demands to the combined maximum demand.",
         units: "Diversity Factor ≥ 1"
     },
     {
         id: "load-factor", name: "Load Factor", category: "estimation",
-        latex: "\\text{LF} = \\frac{\\text{Average Load}}{\\text{Maximum Demand}}",
+        latex: "LF = \\frac{\\text{Average Load}}{\\text{Maximum Demand}}",
         description: "Ratio of average load to peak load over a period; indicates load utilization.",
         units: "LF = dimensionless (0 to 1)"
     },
     {
-        id: "cable-size", name: "Cable Current Capacity", category: "estimation",
-        latex: "I = \\frac{P}{V \\cdot \\cos\\phi} \\quad (\\text{1-phase})",
+        id: "cable-size", name: "Cable Current (1-Phase)", category: "estimation",
+        latex: "I = \\frac{P}{V \\cdot \\cos\\phi}",
         description: "Current-carrying capacity needed for cable sizing in single-phase loads.",
-        units: "I = Amperes, P = Watts, V = Volts",
-        variables: [
-            { sym: "P", label: "Power (W)", unit: "W" },
-            { sym: "V", label: "Voltage (V)", unit: "V" },
-            { sym: "cosphi", label: "Power Factor", unit: "" }
-        ],
-        calc: (vars) => {
-            if (vars.P && vars.V && vars.cosphi) return { result: vars.P / (vars.V * vars.cosphi), unit: "A", label: "Current" };
-            return null;
-        }
+        units: "I = A, P = W, V = V",
+        variables: [{ sym: "P", label: "Power (W)", unit: "W" }, { sym: "V", label: "Voltage (V)", unit: "V" }, { sym: "cosphi", label: "cos φ", unit: "" }],
+        calc: (vars) => { if (vars.P && vars.V && vars.cosphi) return { result: vars.P / (vars.V * vars.cosphi), unit: "A", label: "Current" }; return null; }
+    },
+    {
+        id: "cable-3ph", name: "Cable Current (3-Phase)", category: "estimation",
+        latex: "I = \\frac{P}{\\sqrt{3} \\cdot V_L \\cdot \\cos\\phi}",
+        description: "Line current for 3-phase loads for cable sizing.",
+        units: "I = A, P = W, V_L = Line Voltage",
+        variables: [{ sym: "P", label: "Power (W)", unit: "W" }, { sym: "VL", label: "V_Line (V)", unit: "V" }, { sym: "cosphi", label: "cos φ", unit: "" }],
+        calc: (vars) => { if (vars.P && vars.VL && vars.cosphi) return { result: vars.P / (Math.sqrt(3) * vars.VL * vars.cosphi), unit: "A", label: "I_line" }; return null; }
+    },
+    {
+        id: "vdrop-1ph", name: "Voltage Drop (1-Phase)", category: "estimation",
+        latex: "\\Delta V = \\frac{2\\rho L I}{A}",
+        description: "Voltage drop in a single-phase 2-wire cable run. Must be ≤ 5%.",
+        units: "ΔV = Volts, ρ = Ω·m, L = m, A = m²",
+        variables: [{ sym: "rho", label: "Resistivity (Ω·m)", unit: "Ω·m" }, { sym: "L", label: "Length (m)", unit: "m" }, { sym: "I", label: "Current (A)", unit: "A" }, { sym: "A", label: "CSA (mm²)", unit: "mm²" }],
+        calc: (vars) => { if (vars.rho && vars.L && vars.I && vars.A) return { result: 2 * vars.rho * vars.L * vars.I / (vars.A * 1e-6), unit: "V", label: "ΔV" }; return null; }
+    },
+    {
+        id: "cable-csa", name: "Minimum Cable CSA", category: "estimation",
+        latex: "A_{min} = \\frac{2\\rho L I}{\\Delta V_{allowed}}",
+        description: "Minimum cable cross-section area to stay within voltage drop limit.",
+        units: "A = mm², ρ = Ω·m"
+    },
+    {
+        id: "npv", name: "Net Present Value", category: "estimation",
+        latex: "NPV = \\sum_{t=0}^{n} \\frac{C_t}{(1+r)^t}",
+        description: "Present value of all future project costs using discount rate r.",
+        units: "NPV = ₹, r = decimal"
+    },
+    {
+        id: "payback", name: "Payback Period", category: "estimation",
+        latex: "PBP = \\frac{\\text{Initial Investment}}{\\text{Annual Savings}}",
+        description: "Time to recover the initial investment from annual savings.",
+        units: "PBP = years",
+        variables: [{ sym: "I", label: "Investment (₹)", unit: "₹" }, { sym: "S", label: "Annual Savings (₹)", unit: "₹" }],
+        calc: (vars) => { if (vars.I && vars.S) return { result: vars.I / vars.S, unit: "years", label: "Payback" }; return null; }
+    },
+    {
+        id: "roi", name: "Return on Investment", category: "estimation",
+        latex: "ROI = \\frac{\\text{Net Profit}}{\\text{Total Investment}} \\times 100\\%",
+        description: "Percentage return on the invested capital.",
+        units: "ROI = %"
+    },
+    {
+        id: "pole-count", name: "Pole Quantity (OH Line)", category: "estimation",
+        latex: "N_{poles} = \\frac{L_{line}}{S_{span}} + 1",
+        description: "Number of poles needed for an overhead line route.",
+        units: "N = nos, L = m, S = m",
+        variables: [{ sym: "L", label: "Line Length (m)", unit: "m" }, { sym: "S", label: "Span (m)", unit: "m" }],
+        calc: (vars) => { if (vars.L && vars.S) return { result: Math.floor(vars.L / vars.S) + 1, unit: "poles", label: "N_poles" }; return null; }
+    },
+    {
+        id: "sag-formula", name: "Sag Calculation", category: "estimation",
+        latex: "S = \\frac{wl^2}{8T}",
+        description: "Sag at mid-span for an overhead conductor.",
+        units: "S = m, w = kg/m, l = m, T = kg",
+        variables: [{ sym: "w", label: "Weight (kg/m)", unit: "kg/m" }, { sym: "l", label: "Span (m)", unit: "m" }, { sym: "T", label: "Tension (kg)", unit: "kg" }],
+        calc: (vars) => { if (vars.w && vars.l && vars.T) return { result: (vars.w * vars.l * vars.l) / (8 * vars.T), unit: "m", label: "Sag" }; return null; }
+    },
+    {
+        id: "trafo-sizing", name: "Transformer Sizing", category: "estimation",
+        latex: "kVA \\geq \\frac{MD}{\\cos\\phi}",
+        description: "Minimum transformer rating based on maximum demand and power factor.",
+        units: "kVA, kW",
+        variables: [{ sym: "MD", label: "Max Demand (kW)", unit: "kW" }, { sym: "pf", label: "Power Factor", unit: "" }],
+        calc: (vars) => { if (vars.MD && vars.pf) return { result: vars.MD / vars.pf, unit: "kVA", label: "kVA required" }; return null; }
+    },
+    {
+        id: "earth-pipe", name: "Pipe Earth Resistance", category: "estimation",
+        latex: "R = \\frac{\\rho}{2\\pi L} \\ln\\left(\\frac{4L}{d}\\right)",
+        description: "Earth resistance of a pipe electrode. Standard: 50mm dia GI pipe, 3m long.",
+        units: "R = Ω, ρ = Ω·m",
+        variables: [{ sym: "rho", label: "Soil Resistivity (Ω·m)", unit: "Ω·m" }, { sym: "L", label: "Pipe Length (m)", unit: "m" }, { sym: "d", label: "Pipe Diameter (m)", unit: "m" }],
+        calc: (vars) => { if (vars.rho && vars.L && vars.d) return { result: (vars.rho / (2 * Math.PI * vars.L)) * Math.log(4 * vars.L / vars.d), unit: "Ω", label: "R_earth" }; return null; }
+    },
+    {
+        id: "lumen-method", name: "Lumen Method", category: "estimation",
+        latex: "N = \\frac{E \\times A}{\\phi \\times n \\times UF \\times MF}",
+        description: "Number of luminaires required for a given illuminance level.",
+        units: "E = lux, A = m², φ = lumens"
+    },
+    {
+        id: "room-index", name: "Room Index", category: "estimation",
+        latex: "K = \\frac{L \\times W}{H_m(L+W)}",
+        description: "Room index for lighting design; determines utilization factor.",
+        units: "K = dimensionless"
+    },
+    {
+        id: "motor-feeder", name: "Motor Feeder Cable", category: "estimation",
+        latex: "I_{cable} \\geq 1.25 \\times I_{FL}",
+        description: "IE Rules: motor feeder cable must carry 125% of full load current.",
+        units: "I = Amperes"
+    },
+    {
+        id: "oee", name: "Overall Equipment Effectiveness", category: "estimation",
+        latex: "OEE = A \\times P \\times Q",
+        description: "Product of Availability, Performance, and Quality ratios.",
+        units: "OEE = decimal (0 to 1)",
+        variables: [{ sym: "A", label: "Availability", unit: "" }, { sym: "P", label: "Performance", unit: "" }, { sym: "Q", label: "Quality", unit: "" }],
+        calc: (vars) => { if (vars.A && vars.P && vars.Q) return { result: vars.A * vars.P * vars.Q * 100, unit: "%", label: "OEE" }; return null; }
+    },
+    {
+        id: "depreciation", name: "Depreciation (SLM)", category: "estimation",
+        latex: "D = \\frac{C_{purchase} - C_{salvage}}{L_{life}}",
+        description: "Annual depreciation by straight line method.",
+        units: "D = ₹/year",
+        variables: [{ sym: "Cp", label: "Purchase Cost (₹)", unit: "₹" }, { sym: "Cs", label: "Salvage Value (₹)", unit: "₹" }, { sym: "L", label: "Useful Life (yrs)", unit: "years" }],
+        calc: (vars) => { if (vars.Cp !== undefined && vars.Cs !== undefined && vars.L) return { result: (vars.Cp - vars.Cs) / vars.L, unit: "₹/yr", label: "Depreciation" }; return null; }
+    },
+    {
+        id: "lcc", name: "Life Cycle Cost", category: "estimation",
+        latex: "LCC = C_{purch} + C_{inst} + C_{oper} + C_{maint} - C_{salv}",
+        description: "Total cost of equipment ownership over its entire life.",
+        units: "LCC = ₹"
     },
     {
         id: "elec-bill", name: "Electricity Bill", category: "estimation",

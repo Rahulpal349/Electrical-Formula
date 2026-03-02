@@ -1,0 +1,713 @@
+/* ==========================================================================
+   UTILIZATION OF ELECTRICAL ENERGY — Page-Specific Styles
+   ========================================================================== */
+
+:root {
+    --unit1-color: #f97316;
+    /* Electric Drives — Orange */
+    --unit2-color: #facc15;
+    /* Illumination — Gold */
+    --unit3-color: #ef4444;
+    /* Heating & Welding — Red */
+    --unit4-color: #00f5ff;
+    /* Electric Traction — Cyan */
+    --unit5-color: #a78bfa;
+    /* Electrolytic — Purple */
+    --unit6-color: #60a5fa;
+    /* Refrigeration/AC — Blue */
+}
+
+/* Body Override */
+body[data-page-category="utilization"] {
+    background-color: #0a0e1a;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 245, 255, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+}
+
+/* ====================== Unit Tabs ====================== */
+.unit-tabs {
+    position: sticky;
+    top: var(--nav-height, 70px);
+    z-index: 500;
+    display: flex;
+    gap: 4px;
+    padding: 10px 20px;
+    background: rgba(10, 14, 26, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.unit-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.unit-tab {
+    flex: 0 0 auto;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.unit-tab:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+}
+
+.unit-tab.active {
+    color: #fff;
+    font-weight: 700;
+}
+
+.unit-tab[data-unit="1"].active {
+    border-color: var(--unit1-color);
+    background: rgba(249, 115, 22, 0.12);
+    color: var(--unit1-color);
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.2);
+}
+
+.unit-tab[data-unit="2"].active {
+    border-color: var(--unit2-color);
+    background: rgba(250, 204, 21, 0.12);
+    color: var(--unit2-color);
+    box-shadow: 0 0 12px rgba(250, 204, 21, 0.2);
+}
+
+.unit-tab[data-unit="3"].active {
+    border-color: var(--unit3-color);
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--unit3-color);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.2);
+}
+
+.unit-tab[data-unit="4"].active {
+    border-color: var(--unit4-color);
+    background: rgba(0, 245, 255, 0.12);
+    color: var(--unit4-color);
+    box-shadow: 0 0 12px rgba(0, 245, 255, 0.2);
+}
+
+.unit-tab[data-unit="5"].active {
+    border-color: var(--unit5-color);
+    background: rgba(167, 139, 250, 0.12);
+    color: var(--unit5-color);
+    box-shadow: 0 0 12px rgba(167, 139, 250, 0.2);
+}
+
+.unit-tab[data-unit="6"].active {
+    border-color: var(--unit6-color);
+    background: rgba(96, 165, 250, 0.12);
+    color: var(--unit6-color);
+    box-shadow: 0 0 12px rgba(96, 165, 250, 0.2);
+}
+
+/* ====================== Page Layout ====================== */
+.page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 30px;
+}
+
+/* ====================== Sidebar ====================== */
+.sidebar-nav {
+    flex: 0 0 240px;
+    position: sticky;
+    top: 140px;
+    height: calc(100vh - 160px);
+    background: var(--bg-card, #111a42);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 20px 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+}
+
+.sidebar-nav h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-links li a {
+    text-decoration: none;
+    color: var(--text-secondary, #9fa8da);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    display: block;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0 8px 8px 0;
+    line-height: 1.4;
+}
+
+.sidebar-links li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-links li a.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* ====================== Main Content ====================== */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Module Section */
+.module-section {
+    position: relative;
+    scroll-margin-top: 150px;
+    display: none;
+}
+
+.module-section.active {
+    display: block;
+}
+
+.module-header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.module-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.module-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-secondary, #9fa8da);
+    font-weight: 300;
+}
+
+.module-line {
+    height: 3px;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+/* ====================== Card Grid ====================== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+}
+
+.machine-card {
+    background: var(--bg-card, #111a42);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.machine-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+}
+
+.card-header {
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+/* ====================== Animation Zone ====================== */
+.anim-zone {
+    padding: 20px;
+    background: #020617;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    position: relative;
+}
+
+/* ====================== Formula Zone ====================== */
+.formula-zone {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.formula-zone .text-sm {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.formula-zone .text-xs {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* ====================== Info Cards (Classification) ====================== */
+.info-cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.info-card h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.info-card p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+
+/* ====================== Comparison Tables ====================== */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.85rem;
+    color: #e2e8f0;
+}
+
+.comparison-table thead tr {
+    border-bottom: 2px solid currentColor;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 10px 12px;
+}
+
+.comparison-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background 0.2s;
+}
+
+.comparison-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* ====================== Interactive Sliders ====================== */
+.slider-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.slider-group label {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    min-width: 70px;
+    flex-shrink: 0;
+}
+
+.slider-group input[type=range] {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.slider-group input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.slider-group .slider-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    min-width: 60px;
+    text-align: right;
+}
+
+/* ====================== Calculator Panel ====================== */
+.calc-panel {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 12px;
+}
+
+.calc-panel h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.calc-row label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 120px;
+}
+
+.calc-row input[type="number"],
+.calc-row select {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.calc-row input:focus,
+.calc-row select:focus {
+    border-color: var(--neon-cyan, #00f0ff);
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+}
+
+.calc-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #000;
+    font-weight: 700;
+}
+
+.calc-btn:hover {
+    filter: brightness(1.15);
+    transform: scale(1.03);
+}
+
+.calc-result {
+    margin-top: 10px;
+    padding: 12px;
+    background: rgba(0, 245, 255, 0.05);
+    border: 1px solid rgba(0, 245, 255, 0.15);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    min-height: 40px;
+    display: none;
+}
+
+.calc-result.show {
+    display: block;
+}
+
+/* ====================== Tab Buttons (Braking, Lamps, etc.) ====================== */
+.tab-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+.tab-btn.active {
+    color: #000;
+    font-weight: 600;
+}
+
+/* ====================== Chart Container ====================== */
+.chart-container {
+    width: 100%;
+    height: 280px;
+    position: relative;
+}
+
+/* ====================== Table Container ====================== */
+.table-container {
+    overflow-x: auto;
+}
+
+.table-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+/* ====================== SVG Specific Animations ====================== */
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes flowRight {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+}
+
+@keyframes ionFloat {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200px);
+    }
+}
+
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.flow-particle {
+    animation: flowRight 2s ease-in-out infinite;
+}
+
+.spin-anim {
+    animation: spinSlow 4s linear infinite;
+}
+
+/* ====================== Responsive ====================== */
+@media (max-width: 1200px) {
+    .page-layout {
+        flex-direction: column;
+    }
+
+    .sidebar-nav {
+        position: static;
+        height: auto;
+        flex: none;
+        max-height: 180px;
+    }
+
+    .sidebar-links {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 8px;
+        padding-bottom: 8px;
+    }
+
+    .sidebar-links li {
+        flex: 0 0 auto;
+    }
+
+    .sidebar-links li a {
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 8px 8px 0 0;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .module-title {
+        font-size: 1.3rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .anim-zone {
+        padding: 10px;
+    }
+
+    .unit-tabs {
+        padding: 8px 12px;
+    }
+
+    .unit-tab {
+        padding: 8px 14px;
+        font-size: 0.7rem;
+    }
+
+    .info-cards-row {
+        grid-template-columns: 1fr;
+    }
+
+    .calc-row {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-layout {
+        padding: 10px;
+    }
+
+    .formula-zone {
+        padding: 14px;
+    }
+
+    .card-header {
+        padding: 12px 14px;
+    }
+
+    .card-header h3 {
+        font-size: 0.95rem;
+    }
+}
