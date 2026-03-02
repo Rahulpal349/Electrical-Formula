@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Electrical Circuits | EE Formula Hub</title>
@@ -44,18 +44,18 @@
         <a href="index.html" class="navbar__logo">⚡ EE Hub</a>
         <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
         <ul class="navbar__links">
-      <li><a href="circuit.html" class="active">Circuit Theory</a></li>
-      <li><a href="machines.html">Machines</a></li>
-      <li><a href="measurements.html">Measurements</a></li>
-      <li><a href="power.html">Power Systems</a></li>
-      <li><a href="powerplant.html">Power Plant</a></li>
-      <li><a href="control.html">Control Systems</a></li>
-      <li><a href="electronics.html">Electronics</a></li>
-      <li><a href="signals.html">Signals</a></li>
-      <li><a href="micro.html">μP & μC</a></li>
-      <li><a href="estimation.html">Estimation</a></li>
-      <li><a href="utilization.html">Utilization</a></li>
-    </ul>
+            <li><a href="circuit.html" class="active">Circuit Theory</a></li>
+            <li><a href="machines.html">Machines</a></li>
+            <li><a href="measurements.html">Measurements</a></li>
+            <li><a href="power.html">Power Systems</a></li>
+            <li><a href="powerplant.html">Power Plant</a></li>
+            <li><a href="control.html">Control Systems</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="signals.html">Signals</a></li>
+            <li><a href="micro.html">μP & μC</a></li>
+            <li><a href="estimation.html">Estimation</a></li>
+            <li><a href="utilization.html">Utilization</a></li>
+        </ul>
         <div class="navbar__actions">
             <div class="search-box">
                 <span class="search-icon">🔍</span>
@@ -286,6 +286,12 @@
                         </div>
                         <div class="source-item">
                             <svg viewBox="0 0 40 40" class="src-icon-svg current-src">
+                                <defs>
+                                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6"
+                                        markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--electric-yellow)" />
+                                    </marker>
+                                </defs>
                                 <circle cx="20" cy="20" r="15" fill="none" stroke="var(--electric-yellow)"
                                     stroke-width="2" />
                                 <line x1="20" y1="28" x2="20" y2="12" stroke="var(--electric-yellow)" stroke-width="2"
@@ -328,7 +334,7 @@
                                         stroke-width="2" />
                                     <line x1="30" y1="40" x2="30" y2="20" stroke="var(--electric-yellow)"
                                         stroke-width="2" />
-                                    <polygon points="30,15 25,22 35,22" fill="var(--electric-yellow)" />
+                                    <polygon points="25,25 35,25 30,15" fill="var(--electric-yellow)" />
                                 </svg>
                                 <span>Parallel R</span>
                             </div>
@@ -937,7 +943,7 @@
                                     class="n-src-label">V_th</text>
 
                                 <path d="M 80,80 L 80,50 L 150,50" fill="none" class="n-wire-1"
-                                    stroke="var(--text-secondary)" stroke-width="2" />
+                                    stroke="var(--neon-cyan)" stroke-width="2" />
 
                                 <path d="M 150,50 L 155,40 L 175,60 L 195,40 L 215,60 L 220,50" fill="none"
                                     stroke="var(--electric-yellow)" stroke-width="2" class="n-resistor" />
@@ -945,10 +951,10 @@
                                     style="font-size: 14px; font-weight: bold; font-family: inherit;"
                                     class="n-res-label">R_th</text>
 
-                                <path d="M 220,50 L 300,50" fill="none" class="n-wire-2" stroke="var(--text-secondary)"
+                                <path d="M 220,50 L 300,50" fill="none" class="n-wire-2" stroke="var(--neon-cyan)"
                                     stroke-width="2" />
                                 <path d="M 80,120 L 80,150 L 300,150" fill="none" class="n-wire-bottom"
-                                    stroke="var(--text-secondary)" stroke-width="2" />
+                                    stroke="var(--neon-cyan)" stroke-width="2" />
 
                                 <circle cx="300" cy="50" r="4" fill="#fff" />
                                 <circle cx="300" cy="150" r="4" fill="#fff" />
@@ -1171,356 +1177,394 @@
         </section>
 
         <!-- Section 4: Transient & Frequency Response -->
-<section id="transient-frequency" class="section-container">
-    <h2 class="section-title neon-text" data-aos="fade-down"
-        style="font-size: 2.5rem; margin-bottom: 30px; text-transform: uppercase;">
-        4. Transient & Frequency Response
-    </h2>
-    <p class="text-muted text-center mb-5" data-aos="fade-up">Analyze circuit behavior over time and frequency domains.
-    </p>
+        <section id="transient-frequency" class="section-container">
+            <h2 class="section-title neon-text" data-aos="fade-down"
+                style="font-size: 2.5rem; margin-bottom: 30px; text-transform: uppercase;">
+                4. Transient & Frequency Response
+            </h2>
+            <p class="text-muted text-center mb-5" data-aos="fade-up">Analyze circuit behavior over time and frequency
+                domains.
+            </p>
 
-    <!-- SUB-SECTION: Transient Analysis -->
-    <div class="subsection" data-aos="fade-up">
-        <h3 class="subsection__title" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-            SUB-SECTION: Transient Analysis</h3>
+            <!-- SUB-SECTION: Transient Analysis -->
+            <div class="subsection" data-aos="fade-up">
+                <h3 class="subsection__title"
+                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                    SUB-SECTION: Transient Analysis</h3>
 
-        <div class="theorem-grid mt-4">
-            <!-- First Order RC -->
-            <div class="theorem-card card-panel"
-                style="display:flex; flex-direction:column; justify-content:space-between;">
-                <div>
-                    <h4 style="color:var(--neon-cyan); text-transform:uppercase;">FIRST ORDER — RC CIRCUIT</h4>
-                    <div class="formula mt-3">$$ v(t) = V_f + (V_i - V_f)e^{-t/\tau} $$</div>
-                    <div class="formula mt-2">$$ \tau = RC \text{ (time constant)} $$</div>
-                    <p class="text-sm text-muted mt-2 text-center">At $t = \tau$: reaches 63.2% of final value</p>
-                </div>
-                <div class="anim-container mt-3"
-                    style="text-align: center; height: 120px; position:relative; overflow:hidden; border-radius:8px; background:rgba(0,0,0,0.3);">
-                    <svg viewBox="0 0 200 100" style="width: 100%; height: 100%;">
-                        <path d="M 20 80 Q 60 80, 80 40 T 180 20" fill="none" class="rc-curve anim-path"
-                            stroke="var(--neon-cyan)" stroke-width="3" />
-                        <!-- Capacitor symbol -->
-                        <line x1="20" y1="50" x2="35" y2="50" stroke="var(--text-secondary)" stroke-width="2" />
-                        <line x1="35" y1="35" x2="35" y2="65" stroke="var(--text-secondary)" stroke-width="3" />
-                        <line x1="45" y1="35" x2="45" y2="65" stroke="var(--text-secondary)" stroke-width="3" />
-                        <line x1="45" y1="50" x2="60" y2="50" stroke="var(--text-secondary)" stroke-width="2" />
-                        <!-- Capacitor glowing fill representation -->
-                        <rect x="36" y="35" width="8" height="30" fill="var(--neon-cyan)" class="cap-fill" />
-                    </svg>
-                </div>
-            </div>
-
-            <!-- First Order RL -->
-            <div class="theorem-card card-panel"
-                style="display:flex; flex-direction:column; justify-content:space-between;">
-                <div>
-                    <h4 style="color:var(--electric-yellow); text-transform:uppercase;">FIRST ORDER — RL CIRCUIT</h4>
-                    <div class="formula mt-3">$$ i(t) = I_f + (I_i - I_f)e^{-t/\tau} $$</div>
-                    <div class="formula mt-2">$$ \tau = L/R $$</div>
-                </div>
-                <div class="anim-container mt-3"
-                    style="text-align: center; height: 120px; position:relative; overflow:hidden; border-radius:8px; background:rgba(0,0,0,0.3);">
-                    <svg viewBox="0 0 200 100" style="width: 100%; height: 100%;">
-                        <path d="M 20 80 Q 60 80, 80 40 T 180 20" fill="none" class="rl-curve anim-path"
-                            stroke="var(--electric-yellow)" stroke-width="3" />
-                        <!-- Inductor symbol -->
-                        <path d="M 20 50 L 30 50 Q 35 35, 40 50 Q 45 35, 50 50 Q 55 35, 60 50 L 70 50" fill="none"
-                            class="rl-inductor" stroke="var(--text-secondary)" stroke-width="2" />
-                        <!-- Magnetic Field flux lines -->
-                        <ellipse cx="45" cy="50" rx="15" ry="25" fill="none" stroke="var(--electric-yellow)"
-                            stroke-width="1.5" class="mag-flux flux-1" />
-                        <ellipse cx="45" cy="50" rx="25" ry="35" fill="none" stroke="var(--electric-yellow)"
-                            stroke-width="1" class="mag-flux flux-2" />
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Second Order RLC -->
-            <div class="theorem-card card-panel" style="grid-column: 1 / -1;">
-                <h4 style="color:#ff5252; text-transform:uppercase;">SECOND ORDER — RLC CIRCUIT</h4>
-                <div class="formula mt-3">$$ \frac{d^2v}{dt^2} + \frac{R}{L}\frac{dv}{dt} + \frac{v}{LC} =
-                    \frac{V_s}{LC} $$</div>
-
-                <div class="grid"
-                    style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; align-items: start;">
-                    <div class="p-3 mt-2"
-                        style="background: rgba(255, 82, 82, 0.05); border: 1px dashed rgba(255, 82, 82, 0.2); border-radius: 8px;">
-                        <p class="text-sm font-bold mb-2">Characteristic equation: <br>$s^2 + 2\alpha s + \omega_0^2 =
-                            0$</p>
-                        <p class="text-sm mt-1">$\alpha = \frac{R}{2L}$ (damping coeff)</p>
-                        <p class="text-sm">$\omega_0 = \frac{1}{\sqrt{LC}}$ (natural freq)</p>
+                <div class="theorem-grid mt-4">
+                    <!-- First Order RC -->
+                    <div class="theorem-card card-panel"
+                        style="display:flex; flex-direction:column; justify-content:space-between;">
+                        <div>
+                            <h4 style="color:var(--neon-cyan); text-transform:uppercase;">FIRST ORDER — RC CIRCUIT</h4>
+                            <div class="formula mt-3">$$ v(t) = V_f + (V_i - V_f)e^{-t/\tau} $$</div>
+                            <div class="formula mt-2">$$ \tau = RC \text{ (time constant)} $$</div>
+                            <p class="text-sm text-muted mt-2 text-center">At $t = \tau$: reaches 63.2% of final value
+                            </p>
+                        </div>
+                        <div class="anim-container mt-3"
+                            style="text-align: center; height: 120px; position:relative; overflow:hidden; border-radius:8px; background:rgba(0,0,0,0.3);">
+                            <svg viewBox="0 0 200 100" style="width: 100%; height: 100%;">
+                                <path d="M 20 80 Q 60 80, 80 40 T 180 20" fill="none" class="rc-curve anim-path"
+                                    stroke="var(--neon-cyan)" stroke-width="3" />
+                                <!-- Capacitor symbol -->
+                                <line x1="20" y1="50" x2="35" y2="50" stroke="var(--text-secondary)" stroke-width="2" />
+                                <line x1="35" y1="35" x2="35" y2="65" stroke="var(--text-secondary)" stroke-width="3" />
+                                <line x1="45" y1="35" x2="45" y2="65" stroke="var(--text-secondary)" stroke-width="3" />
+                                <line x1="45" y1="50" x2="60" y2="50" stroke="var(--text-secondary)" stroke-width="2" />
+                                <!-- Capacitor glowing fill representation -->
+                                <rect x="36" y="35" width="8" height="30" fill="var(--neon-cyan)" class="cap-fill" />
+                            </svg>
+                        </div>
                     </div>
-                    <div class="p-3 mt-2">
-                        <p class="text-sm font-bold mb-2">Cases:</p>
-                        <ul class="text-sm" style="padding-left:15px; line-height:1.6;">
-                            <li><span style="color:#5c6bc0; font-weight:bold;">Overdamped:</span> $\alpha > \omega_0
-                                \quad (\alpha^2 > \omega_0^2)$</li>
-                            <li><span style="color:#42a5f5; font-weight:bold;">Critically Damped:</span> $\alpha =
-                                \omega_0$</li>
-                            <li><span style="color:#ff5252; font-weight:bold;">Underdamped:</span> $\alpha < \omega_0$
-                                    <br>
-                                    &nbsp;&nbsp;&nbsp;$\rightarrow \omega_d = \sqrt{\omega_0^2 - \alpha^2}$ (damped
-                                    freq)
-                            </li>
-                        </ul>
+
+                    <!-- First Order RL -->
+                    <div class="theorem-card card-panel"
+                        style="display:flex; flex-direction:column; justify-content:space-between;">
+                        <div>
+                            <h4 style="color:var(--electric-yellow); text-transform:uppercase;">FIRST ORDER — RL CIRCUIT
+                            </h4>
+                            <div class="formula mt-3">$$ i(t) = I_f + (I_i - I_f)e^{-t/\tau} $$</div>
+                            <div class="formula mt-2">$$ \tau = L/R $$</div>
+                        </div>
+                        <div class="anim-container mt-3"
+                            style="text-align: center; height: 120px; position:relative; overflow:hidden; border-radius:8px; background:rgba(0,0,0,0.3);">
+                            <svg viewBox="0 0 200 100" style="width: 100%; height: 100%;">
+                                <path d="M 20 80 Q 60 80, 80 40 T 180 20" fill="none" class="rl-curve anim-path"
+                                    stroke="var(--electric-yellow)" stroke-width="3" />
+                                <!-- Inductor symbol -->
+                                <path d="M 20 50 L 30 50 Q 35 35, 40 50 Q 45 35, 50 50 Q 55 35, 60 50 L 70 50"
+                                    fill="none" class="rl-inductor" stroke="var(--text-secondary)" stroke-width="2" />
+                                <!-- Magnetic Field flux lines -->
+                                <ellipse cx="45" cy="50" rx="15" ry="25" fill="none" stroke="var(--electric-yellow)"
+                                    stroke-width="1.5" class="mag-flux flux-1" />
+                                <ellipse cx="45" cy="50" rx="25" ry="35" fill="none" stroke="var(--electric-yellow)"
+                                    stroke-width="1" class="mag-flux flux-2" />
+                            </svg>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Interactive Overlapping Waveforms -->
-                <div class="mt-4 p-3" style="background: rgba(0,0,0,0.5); border-radius:8px;">
-                    <p class="text-sm text-center mb-3" style="color:var(--text-secondary);">Animation: Three
-                        overlapping waveforms (solid line is active state based on slider)</p>
-                    <div class="input-group text-center mb-3">
-                        <label style="display:inline-block; font-weight:bold; margin-right:15px; color:#ff5252;">Adjust
-                            R, L, C to shift dominant response:</label>
-                        <input type="range" id="rlc-overlay-r" min="1" max="100" value="20"
-                            style="vertical-align:middle; width:200px;">
-                    </div>
-                    <!-- Canvas containing all 3 superimposed graphs -->
-                    <div style="position:relative; height: 250px; width:100%;">
-                        <canvas id="rlcOverlayChart" style="width:100%; height:100%; max-height:250px;"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <!-- Second Order RLC -->
+                    <div class="theorem-card card-panel" style="grid-column: 1 / -1;">
+                        <h4 style="color:#ff5252; text-transform:uppercase;">SECOND ORDER — RLC CIRCUIT</h4>
+                        <div class="formula mt-3">$$ \frac{d^2v}{dt^2} + \frac{R}{L}\frac{dv}{dt} + \frac{v}{LC} =
+                            \frac{V_s}{LC} $$</div>
 
-    <!-- SUB-SECTION: Frequency Response -->
-    <div class="subsection mt-5" data-aos="fade-up">
-        <h3 class="subsection__title" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-            SUB-SECTION: Frequency Response</h3>
+                        <div class="grid"
+                            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; align-items: start;">
+                            <div class="p-3 mt-2"
+                                style="background: rgba(255, 82, 82, 0.05); border: 1px dashed rgba(255, 82, 82, 0.2); border-radius: 8px;">
+                                <p class="text-sm font-bold mb-2">Characteristic equation: <br>$s^2 + 2\alpha s +
+                                    \omega_0^2 =
+                                    0$</p>
+                                <p class="text-sm mt-1">$\alpha = \frac{R}{2L}$ (damping coeff)</p>
+                                <p class="text-sm">$\omega_0 = \frac{1}{\sqrt{LC}}$ (natural freq)</p>
+                            </div>
+                            <div class="p-3 mt-2">
+                                <p class="text-sm font-bold mb-2">Cases:</p>
+                                <ul class="text-sm" style="padding-left:15px; line-height:1.6;">
+                                    <li><span style="color:#5c6bc0; font-weight:bold;">Overdamped:</span> $\alpha >
+                                        \omega_0
+                                        \quad (\alpha^2 > \omega_0^2)$</li>
+                                    <li><span style="color:#42a5f5; font-weight:bold;">Critically Damped:</span> $\alpha
+                                        =
+                                        \omega_0$</li>
+                                    <li><span style="color:#ff5252; font-weight:bold;">Underdamped:</span> $\alpha <
+                                            \omega_0$ <br>
+                                            &nbsp;&nbsp;&nbsp;$\rightarrow \omega_d = \sqrt{\omega_0^2 - \alpha^2}$
+                                            (damped
+                                            freq)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
-        <div class="theorem-grid mt-4">
-            <!-- Series Resonance -->
-            <div class="theorem-card card-panel">
-                <h4 style="color:#b388ff; text-transform:uppercase;">SERIES RESONANCE</h4>
-                <div class="formula mt-3">$$ \omega_0 = 1/\sqrt{LC} \quad\quad f_0 = \frac{1}{2\pi\sqrt{LC}} $$</div>
-                <p class="text-sm text-muted text-center mt-2">$$ Z_{min} = R \text{ (at resonance)} $$</p>
-                <div class="formula mt-2">$$ Q = \frac{\omega_0 L}{R} = \frac{1}{\omega_0 CR} =
-                    \frac{1}{R}\sqrt{\frac{L}{C}} $$</div>
-                <div class="formula mt-2">$$ BW = \omega_0 / Q = R/L $$</div>
-                <div class="anim-container mt-4"
-                    style="text-align: center; height: 150px; background:rgba(0,0,0,0.3); border-radius:8px;">
-                    <!-- Impedance vs Frequency Curve -->
-                    <svg viewBox="0 0 200 100" style="width: 100%; height: 100%; padding:10px;">
-                        <path d="M 10 20 Q 100 90, 190 20" fill="none" stroke="#b388ff" stroke-width="3"
-                            class="z-curve" />
-                        <circle cx="100" cy="55" r="4" fill="#fff" class="z-peak" filter="drop-shadow(0 0 8px #fff)" />
-                        <line x1="100" y1="55" x2="100" y2="90" stroke="#fff" stroke-dasharray="2" class="z-line" />
-                        <text x="100" y="100" fill="#fff" font-size="10" font-family="inherit"
-                            text-anchor="middle">f₀</text>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Parallel Resonance -->
-            <div class="theorem-card card-panel">
-                <h4 style="color:#00e676; text-transform:uppercase;">PARALLEL RESONANCE</h4>
-                <div class="formula mt-3">$$ \omega_0 = 1/\sqrt{LC} \quad\quad Z_{max} = R \text{ (at res)} $$</div>
-                <div class="formula mt-2">$$ Q = \frac{R}{\omega_0 L} = \omega_0 CR = R\sqrt{\frac{C}{L}} $$</div>
-                <div class="formula mt-2">$$ BW = \omega_0 / Q = 1/RC $$</div>
-                <div class="anim-container mt-4"
-                    style="text-align: center; height: 150px; background:rgba(0,0,0,0.3); border-radius:8px;">
-                    <!-- Admittance Dip / Impedance Peak -->
-                    <svg viewBox="0 0 200 100" style="width: 100%; height: 100%; padding:10px;">
-                        <path d="M 10 80 Q 100 10, 190 80" fill="none" stroke="#00e676" stroke-width="3"
-                            class="y-curve" />
-                        <circle cx="100" cy="45" r="4" fill="#fff" class="y-peak" filter="drop-shadow(0 0 8px #fff)" />
-                        <line x1="100" y1="45" x2="100" y2="90" stroke="#fff" stroke-dasharray="2" class="y-line" />
-                        <text x="100" y="100" fill="#fff" font-size="10" font-family="inherit"
-                            text-anchor="middle">f₀</text>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Bandwidth & Q Factor -->
-            <div class="theorem-card card-panel"
-                style="grid-column: 1 / -1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-                <h4 style="color:#29b6f6; text-transform:uppercase; width:100%; text-align:left;">BANDWIDTH & Q FACTOR
-                </h4>
-                <div class="w-100"
-                    style="display:flex; width:100%; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px;">
-                    <div style="flex:1; min-width:300px;">
-                        <div class="formula mt-3">$$ BW = f_2 - f_1 \text{ (half-power frequencies)} $$</div>
-                        <div class="formula mt-2">$$ Q = f_0 / BW $$</div>
-                        <p class="text-sm text-muted mt-2 text-center">At $f_1, f_2$: Power = $P_{max}/2 \quad (-3dB)$
-                        </p>
-                    </div>
-                    <div class="anim-container mt-3"
-                        style="flex:1; min-width:300px; text-align: center; height: 180px; position:relative; background:rgba(0,0,0,0.3); border-radius:8px; padding:10px;">
-                        <svg viewBox="0 0 400 160" style="width: 100%; height: 100%;">
-                            <!-- Bell Curve -->
-                            <path d="M 50 140 Q 200 -40, 350 140" fill="none" class="bell-curve" stroke="#29b6f6"
-                                stroke-width="4" />
-
-                            <!-- Half-power line -->
-                            <line x1="80" y1="80" x2="320" y2="80" stroke="rgba(255,255,255,0.4)" stroke-dasharray="6"
-                                stroke-width="2" />
-
-                            <!-- Pulsing Points -->
-                            <circle cx="120" cy="80" r="6" fill="#facc15" class="bw-pt bw-1"
-                                filter="drop-shadow(0 0 6px #facc15)" />
-                            <circle cx="280" cy="80" r="6" fill="#facc15" class="bw-pt bw-2"
-                                filter="drop-shadow(0 0 6px #facc15)" />
-
-                            <!-- Labels -->
-                            <text x="120" y="65" fill="#fff" font-size="14" font-family="inherit" font-weight="bold"
-                                text-anchor="middle">-3dB (f₁)</text>
-                            <text x="280" y="65" fill="#fff" font-size="14" font-family="inherit" font-weight="bold"
-                                text-anchor="middle">-3dB (f₂)</text>
-
-                            <!-- BW Bracket Animation -->
-                            <path d="M 120 100 L 120 115 L 280 115 L 280 100" fill="none" stroke="var(--neon-cyan)"
-                                stroke-width="3" class="bw-bracket" />
-                            <text x="200" y="140" fill="var(--neon-cyan)" font-size="20" font-family="inherit"
-                                text-anchor="middle" font-weight="bold">BW</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<!-- SUB-SECTION: Laplace Transform -->
-<div class="subsection mt-5" data-aos="fade-up">
-    <h3 class="subsection__title" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-        SUB-SECTION: Laplace Transform</h3>
-
-    <div class="formula mt-4 text-center">$$ \mathcal{L}\{f(t)\} = F(s) = \int_0^\infty f(t)e^{-st}dt $$</div>
-
-    <div class="theorem-grid mt-4">
-        <!-- Key Pairs Table -->
-        <div class="theorem-card card-panel">
-            <h4 style="color:#f48fb1; text-transform:uppercase;">Key Pairs Table (Animated Flip Cards)</h4>
-            <p class="text-sm text-center text-muted mb-3">Hover or tap cards to flip from Time-Domain to s-Domain</p>
-            <div class="laplace-grid">
-                <!-- Flip Card 1 -->
-                <div class="flip-card l-card">
-                    <div class="flip-inner">
-                        <div class="flip-front" style="display:flex; align-items:center; justify-content:center;">
-                            $$u(t)$$</div>
-                        <div class="flip-back" style="display:flex; align-items:center; justify-content:center;">
-                            $$\frac{1}{s}$$</div>
-                    </div>
-                </div>
-                <!-- Flip Card 2 -->
-                <div class="flip-card l-card">
-                    <div class="flip-inner">
-                        <div class="flip-front" style="display:flex; align-items:center; justify-content:center;">
-                            $$\delta(t)$$</div>
-                        <div class="flip-back" style="display:flex; align-items:center; justify-content:center;">$$1$$
+                        <!-- Interactive Overlapping Waveforms -->
+                        <div class="mt-4 p-3" style="background: rgba(0,0,0,0.5); border-radius:8px;">
+                            <p class="text-sm text-center mb-3" style="color:var(--text-secondary);">Animation: Three
+                                overlapping waveforms (solid line is active state based on slider)</p>
+                            <div class="input-group text-center mb-3">
+                                <label
+                                    style="display:inline-block; font-weight:bold; margin-right:15px; color:#ff5252;">Adjust
+                                    R, L, C to shift dominant response:</label>
+                                <input type="range" id="rlc-overlay-r" min="1" max="100" value="20"
+                                    style="vertical-align:middle; width:200px;">
+                            </div>
+                            <!-- Canvas containing all 3 superimposed graphs -->
+                            <div style="position:relative; height: 250px; width:100%;">
+                                <canvas id="rlcOverlayChart"
+                                    style="width:100%; height:100%; max-height:250px;"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Flip Card 3 -->
-                <div class="flip-card l-card">
-                    <div class="flip-inner">
-                        <div class="flip-front" style="display:flex; align-items:center; justify-content:center;">
-                            $$e^{-at}$$</div>
-                        <div class="flip-back" style="display:flex; align-items:center; justify-content:center;">
-                            $$\frac{1}{s+a}$$</div>
+            </div>
+
+            <!-- SUB-SECTION: Frequency Response -->
+            <div class="subsection mt-5" data-aos="fade-up">
+                <h3 class="subsection__title"
+                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                    SUB-SECTION: Frequency Response</h3>
+
+                <div class="theorem-grid mt-4">
+                    <!-- Series Resonance -->
+                    <div class="theorem-card card-panel">
+                        <h4 style="color:#b388ff; text-transform:uppercase;">SERIES RESONANCE</h4>
+                        <div class="formula mt-3">$$ \omega_0 = 1/\sqrt{LC} \quad\quad f_0 = \frac{1}{2\pi\sqrt{LC}} $$
+                        </div>
+                        <p class="text-sm text-muted text-center mt-2">$$ Z_{min} = R \text{ (at resonance)} $$</p>
+                        <div class="formula mt-2">$$ Q = \frac{\omega_0 L}{R} = \frac{1}{\omega_0 CR} =
+                            \frac{1}{R}\sqrt{\frac{L}{C}} $$</div>
+                        <div class="formula mt-2">$$ BW = \omega_0 / Q = R/L $$</div>
+                        <div class="anim-container mt-4"
+                            style="text-align: center; height: 150px; background:rgba(0,0,0,0.3); border-radius:8px;">
+                            <!-- Impedance vs Frequency Curve -->
+                            <svg viewBox="0 0 200 100" style="width: 100%; height: 100%; padding:10px;">
+                                <path d="M 10 20 Q 100 90, 190 20" fill="none" stroke="#b388ff" stroke-width="3"
+                                    class="z-curve" />
+                                <circle cx="100" cy="55" r="4" fill="#fff" class="z-peak"
+                                    filter="drop-shadow(0 0 8px #fff)" />
+                                <line x1="100" y1="55" x2="100" y2="90" stroke="#fff" stroke-dasharray="2"
+                                    class="z-line" />
+                                <text x="100" y="100" fill="#fff" font-size="10" font-family="inherit"
+                                    text-anchor="middle">f₀</text>
+                            </svg>
+                        </div>
                     </div>
-                </div>
-                <!-- Flip Card 4 -->
-                <div class="flip-card l-card">
-                    <div class="flip-inner">
-                        <div class="flip-front" style="display:flex; align-items:center; justify-content:center;">$$t
-                            \cdot e^{-at}$$</div>
-                        <div class="flip-back" style="display:flex; align-items:center; justify-content:center;">
-                            $$\frac{1}{(s+a)^2}$$</div>
+
+                    <!-- Parallel Resonance -->
+                    <div class="theorem-card card-panel">
+                        <h4 style="color:#00e676; text-transform:uppercase;">PARALLEL RESONANCE</h4>
+                        <div class="formula mt-3">$$ \omega_0 = 1/\sqrt{LC} \quad\quad Z_{max} = R \text{ (at res)} $$
+                        </div>
+                        <div class="formula mt-2">$$ Q = \frac{R}{\omega_0 L} = \omega_0 CR = R\sqrt{\frac{C}{L}} $$
+                        </div>
+                        <div class="formula mt-2">$$ BW = \omega_0 / Q = 1/RC $$</div>
+                        <div class="anim-container mt-4"
+                            style="text-align: center; height: 150px; background:rgba(0,0,0,0.3); border-radius:8px;">
+                            <!-- Admittance Dip / Impedance Peak -->
+                            <svg viewBox="0 0 200 100" style="width: 100%; height: 100%; padding:10px;">
+                                <path d="M 10 80 Q 100 10, 190 80" fill="none" stroke="#00e676" stroke-width="3"
+                                    class="y-curve" />
+                                <circle cx="100" cy="45" r="4" fill="#fff" class="y-peak"
+                                    filter="drop-shadow(0 0 8px #fff)" />
+                                <line x1="100" y1="45" x2="100" y2="90" stroke="#fff" stroke-dasharray="2"
+                                    class="y-line" />
+                                <text x="100" y="100" fill="#fff" font-size="10" font-family="inherit"
+                                    text-anchor="middle">f₀</text>
+                            </svg>
+                        </div>
                     </div>
-                </div>
-                <!-- Flip Card 5 -->
-                <div class="flip-card l-card">
-                    <div class="flip-inner">
-                        <div class="flip-front" style="display:flex; align-items:center; justify-content:center;">
-                            $$\sin(\omega t)$$</div>
-                        <div class="flip-back" style="display:flex; align-items:center; justify-content:center;">
-                            $$\frac{\omega}{s^2+\omega^2}$$</div>
-                    </div>
-                </div>
-                <!-- Flip Card 6 -->
-                <div class="flip-card l-card">
-                    <div class="flip-inner">
-                        <div class="flip-front" style="display:flex; align-items:center; justify-content:center;">
-                            $$\cos(\omega t)$$</div>
-                        <div class="flip-back" style="display:flex; align-items:center; justify-content:center;">
-                            $$\frac{s}{s^2+\omega^2}$$</div>
+
+                    <!-- Bandwidth & Q Factor -->
+                    <div class="theorem-card card-panel"
+                        style="grid-column: 1 / -1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                        <h4 style="color:#29b6f6; text-transform:uppercase; width:100%; text-align:left;">BANDWIDTH & Q
+                            FACTOR
+                        </h4>
+                        <div class="w-100"
+                            style="display:flex; width:100%; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px;">
+                            <div style="flex:1; min-width:300px;">
+                                <div class="formula mt-3">$$ BW = f_2 - f_1 \text{ (half-power frequencies)} $$</div>
+                                <div class="formula mt-2">$$ Q = f_0 / BW $$</div>
+                                <p class="text-sm text-muted mt-2 text-center">At $f_1, f_2$: Power = $P_{max}/2 \quad
+                                    (-3dB)$
+                                </p>
+                            </div>
+                            <div class="anim-container mt-3"
+                                style="flex:1; min-width:300px; text-align: center; height: 180px; position:relative; background:rgba(0,0,0,0.3); border-radius:8px; padding:10px;">
+                                <svg viewBox="0 0 400 160" style="width: 100%; height: 100%;">
+                                    <!-- Bell Curve -->
+                                    <path d="M 50 140 Q 200 -40, 350 140" fill="none" class="bell-curve"
+                                        stroke="#29b6f6" stroke-width="4" />
+
+                                    <!-- Half-power line -->
+                                    <line x1="80" y1="80" x2="320" y2="80" stroke="rgba(255,255,255,0.4)"
+                                        stroke-dasharray="6" stroke-width="2" />
+
+                                    <!-- Pulsing Points -->
+                                    <circle cx="120" cy="80" r="6" fill="#facc15" class="bw-pt bw-1"
+                                        filter="drop-shadow(0 0 6px #facc15)" />
+                                    <circle cx="280" cy="80" r="6" fill="#facc15" class="bw-pt bw-2"
+                                        filter="drop-shadow(0 0 6px #facc15)" />
+
+                                    <!-- Labels -->
+                                    <text x="120" y="65" fill="#fff" font-size="14" font-family="inherit"
+                                        font-weight="bold" text-anchor="middle">-3dB (f₁)</text>
+                                    <text x="280" y="65" fill="#fff" font-size="14" font-family="inherit"
+                                        font-weight="bold" text-anchor="middle">-3dB (f₂)</text>
+
+                                    <!-- BW Bracket Animation -->
+                                    <path d="M 120 100 L 120 115 L 280 115 L 280 100" fill="none"
+                                        stroke="var(--neon-cyan)" stroke-width="3" class="bw-bracket" />
+                                    <text x="200" y="140" fill="var(--neon-cyan)" font-size="20" font-family="inherit"
+                                        text-anchor="middle" font-weight="bold">BW</text>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Circuit Elements Morphing -->
-        <div class="theorem-card card-panel" style="display:flex; flex-direction:column; justify-content:start;">
-            <h4 style="color:#ce93d8; text-transform:uppercase;">Circuit Elements in s-domain</h4>
+            <!-- SUB-SECTION: Laplace Transform -->
+            <div class="subsection mt-5" data-aos="fade-up">
+                <h3 class="subsection__title"
+                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                    SUB-SECTION: Laplace Transform</h3>
 
-            <div style="display:flex; flex-direction:column; gap:20px;">
-                <div class="s-domain-elements mt-3 p-3"
-                    style="background:rgba(255,255,255,0.05); border-left: 3px solid #ce93d8; width:100%;">
-                    <div
-                        style="display:grid; grid-template-columns: auto auto 1fr; gap: 15px 20px; align-items:center;">
-                        <div style="font-weight:bold; font-size:1.1rem; text-align:right;">$$R$$</div>
-                        <div>$\rightarrow$</div>
-                        <div>$$R$$</div>
+                <div class="formula mt-4 text-center">$$ \mathcal{L}\{f(t)\} = F(s) = \int_0^\infty f(t)e^{-st}dt $$
+                </div>
 
-                        <div style="font-weight:bold; font-size:1.1rem; text-align:right;">$$L$$</div>
-                        <div>$\rightarrow$</div>
-                        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                            <div>$$sL$$</div>
-                            <span class="text-sm text-muted">(initial: $-Li(0)$ series voltage)</span>
+                <div class="theorem-grid mt-4">
+                    <!-- Key Pairs Table -->
+                    <div class="theorem-card card-panel">
+                        <h4 style="color:#f48fb1; text-transform:uppercase;">Key Pairs Table (Animated Flip Cards)</h4>
+                        <p class="text-sm text-center text-muted mb-3">Hover or tap cards to flip from Time-Domain to
+                            s-Domain</p>
+                        <div class="laplace-grid">
+                            <!-- Flip Card 1 -->
+                            <div class="flip-card l-card">
+                                <div class="flip-inner">
+                                    <div class="flip-front"
+                                        style="display:flex; align-items:center; justify-content:center;">
+                                        $$u(t)$$</div>
+                                    <div class="flip-back"
+                                        style="display:flex; align-items:center; justify-content:center;">
+                                        $$\frac{1}{s}$$</div>
+                                </div>
+                            </div>
+                            <!-- Flip Card 2 -->
+                            <div class="flip-card l-card">
+                                <div class="flip-inner">
+                                    <div class="flip-front"
+                                        style="display:flex; align-items:center; justify-content:center;">
+                                        $$\delta(t)$$</div>
+                                    <div class="flip-back"
+                                        style="display:flex; align-items:center; justify-content:center;">$$1$$
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Flip Card 3 -->
+                            <div class="flip-card l-card">
+                                <div class="flip-inner">
+                                    <div class="flip-front"
+                                        style="display:flex; align-items:center; justify-content:center;">
+                                        $$e^{-at}$$</div>
+                                    <div class="flip-back"
+                                        style="display:flex; align-items:center; justify-content:center;">
+                                        $$\frac{1}{s+a}$$</div>
+                                </div>
+                            </div>
+                            <!-- Flip Card 4 -->
+                            <div class="flip-card l-card">
+                                <div class="flip-inner">
+                                    <div class="flip-front"
+                                        style="display:flex; align-items:center; justify-content:center;">$$t
+                                        \cdot e^{-at}$$</div>
+                                    <div class="flip-back"
+                                        style="display:flex; align-items:center; justify-content:center;">
+                                        $$\frac{1}{(s+a)^2}$$</div>
+                                </div>
+                            </div>
+                            <!-- Flip Card 5 -->
+                            <div class="flip-card l-card">
+                                <div class="flip-inner">
+                                    <div class="flip-front"
+                                        style="display:flex; align-items:center; justify-content:center;">
+                                        $$\sin(\omega t)$$</div>
+                                    <div class="flip-back"
+                                        style="display:flex; align-items:center; justify-content:center;">
+                                        $$\frac{\omega}{s^2+\omega^2}$$</div>
+                                </div>
+                            </div>
+                            <!-- Flip Card 6 -->
+                            <div class="flip-card l-card">
+                                <div class="flip-inner">
+                                    <div class="flip-front"
+                                        style="display:flex; align-items:center; justify-content:center;">
+                                        $$\cos(\omega t)$$</div>
+                                    <div class="flip-back"
+                                        style="display:flex; align-items:center; justify-content:center;">
+                                        $$\frac{s}{s^2+\omega^2}$$</div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
 
-                        <div style="font-weight:bold; font-size:1.1rem; text-align:right;">$$C$$</div>
-                        <div>$\rightarrow$</div>
-                        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                            <div>$$\frac{1}{sC}$$</div>
-                            <span class="text-sm text-muted">(initial: $\frac{v(0)}{s}$ series voltage)</span>
+                    <!-- Circuit Elements Morphing -->
+                    <div class="theorem-card card-panel"
+                        style="display:flex; flex-direction:column; justify-content:start;">
+                        <h4 style="color:#ce93d8; text-transform:uppercase;">Circuit Elements in s-domain</h4>
+
+                        <div style="display:flex; flex-direction:column; gap:20px;">
+                            <div class="s-domain-elements mt-3 p-3"
+                                style="background:rgba(255,255,255,0.05); border-left: 3px solid #ce93d8; width:100%;">
+                                <div
+                                    style="display:grid; grid-template-columns: auto auto 1fr; gap: 15px 20px; align-items:center;">
+                                    <div style="font-weight:bold; font-size:1.1rem; text-align:right;">$$R$$</div>
+                                    <div>$\rightarrow$</div>
+                                    <div>$$R$$</div>
+
+                                    <div style="font-weight:bold; font-size:1.1rem; text-align:right;">$$L$$</div>
+                                    <div>$\rightarrow$</div>
+                                    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                                        <div>$$sL$$</div>
+                                        <span class="text-sm text-muted">(initial: $-Li(0)$ series voltage)</span>
+                                    </div>
+
+                                    <div style="font-weight:bold; font-size:1.1rem; text-align:right;">$$C$$</div>
+                                    <div>$\rightarrow$</div>
+                                    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                                        <div>$$\frac{1}{sC}$$</div>
+                                        <span class="text-sm text-muted">(initial: $\frac{v(0)}{s}$ series
+                                            voltage)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center anim-container p-3"
+                                style="background:rgba(0,0,0,0.3); border-radius:8px; width:100%;">
+                                <button id="morph-laplace-btn" class="hero__cta mb-3"
+                                    style="padding: 10px 20px; font-size: 0.9rem;">Morph Time-Domain $L$ to s-Domain
+                                    ▶</button>
+                                <svg viewBox="0 0 300 120" style="width: 100%; height: auto; max-height:120px;">
+                                    <!-- Time Domain L -->
+                                    <g id="l-td-group">
+                                        <path
+                                            d="M 20 60 L 80 60 Q 90 30, 100 60 Q 110 30, 120 60 Q 130 30, 140 60 Q 150 30, 160 60 L 220 60"
+                                            fill="none" stroke="#ce93d8" stroke-width="4" />
+                                        <text x="120" y="95" fill="#fff" font-size="16" font-family="inherit"
+                                            text-anchor="middle" font-weight="bold">L, i(0)</text>
+                                    </g>
+                                    <!-- s-Domain Equivalent: Impedance box + source -->
+                                    <g id="l-sd-group" style="opacity:0;">
+                                        <path d="M 20 60 L 50 60" fill="none" stroke="#ce93d8" stroke-width="4" />
+                                        <rect x="50" y="40" width="80" height="40" fill="rgba(206, 147, 216, 0.2)"
+                                            stroke="#ce93d8" stroke-width="2" />
+                                        <text x="90" y="60" fill="#fff" font-size="16" font-family="inherit"
+                                            text-anchor="middle" font-weight="bold" dominant-baseline="middle">sL</text>
+
+                                        <path d="M 130 60 L 150 60" fill="none" stroke="#ce93d8" stroke-width="4" />
+                                        <!-- Voltage Source for initial condition -->
+                                        <circle cx="170" cy="60" r="20" fill="none" stroke="#facc15" stroke-width="2" />
+                                        <text x="170" y="55" fill="#facc15" font-size="20" font-family="inherit"
+                                            text-anchor="middle" dominant-baseline="middle">-</text>
+                                        <text x="170" y="70" fill="#facc15" font-size="16" font-family="inherit"
+                                            text-anchor="middle" dominant-baseline="middle">+</text>
+
+                                        <path d="M 190 60 L 220 60" fill="none" stroke="#ce93d8" stroke-width="4" />
+
+                                        <text x="170" y="100" fill="#facc15" font-size="14" font-family="inherit"
+                                            text-anchor="middle" font-weight="bold">Li(0)</text>
+                                    </g>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="text-center anim-container p-3"
-                    style="background:rgba(0,0,0,0.3); border-radius:8px; width:100%;">
-                    <button id="morph-laplace-btn" class="hero__cta mb-3"
-                        style="padding: 10px 20px; font-size: 0.9rem;">Morph Time-Domain $L$ to s-Domain ▶</button>
-                    <svg viewBox="0 0 300 120" style="width: 100%; height: auto; max-height:120px;">
-                        <!-- Time Domain L -->
-                        <g id="l-td-group">
-                            <path
-                                d="M 20 60 L 80 60 Q 90 30, 100 60 Q 110 30, 120 60 Q 130 30, 140 60 Q 150 30, 160 60 L 220 60"
-                                fill="none" stroke="#ce93d8" stroke-width="4" />
-                            <text x="120" y="95" fill="#fff" font-size="16" font-family="inherit" text-anchor="middle"
-                                font-weight="bold">L, i(0)</text>
-                        </g>
-                        <!-- s-Domain Equivalent: Impedance box + source -->
-                        <g id="l-sd-group" style="opacity:0;">
-                            <path d="M 20 60 L 50 60" fill="none" stroke="#ce93d8" stroke-width="4" />
-                            <rect x="50" y="40" width="80" height="40" fill="rgba(206, 147, 216, 0.2)" stroke="#ce93d8"
-                                stroke-width="2" />
-                            <text x="90" y="60" fill="#fff" font-size="16" font-family="inherit" text-anchor="middle"
-                                font-weight="bold" dominant-baseline="middle">sL</text>
-
-                            <path d="M 130 60 L 150 60" fill="none" stroke="#ce93d8" stroke-width="4" />
-                            <!-- Voltage Source for initial condition -->
-                            <circle cx="170" cy="60" r="20" fill="none" stroke="#facc15" stroke-width="2" />
-                            <text x="170" y="55" fill="#facc15" font-size="20" font-family="inherit"
-                                text-anchor="middle" dominant-baseline="middle">-</text>
-                            <text x="170" y="70" fill="#facc15" font-size="16" font-family="inherit"
-                                text-anchor="middle" dominant-baseline="middle">+</text>
-
-                            <path d="M 190 60 L 220 60" fill="none" stroke="#ce93d8" stroke-width="4" />
-
-                            <text x="170" y="100" fill="#facc15" font-size="14" font-family="inherit"
-                                text-anchor="middle" font-weight="bold">Li(0)</text>
-                        </g>
-                    </svg>
-                </div>
             </div>
-        </div>
-    </div>
-</div>
-</section>
+        </section>
         <!-- Section 5: Advanced Topics -->
         <section id="advanced-topics" class="section-container">
             <h2 class="section-title neon-text" data-aos="fade-down" style="font-size: 2.5rem; margin-bottom: 30px;">

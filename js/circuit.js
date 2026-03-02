@@ -364,168 +364,168 @@ document.addEventListener('DOMContentLoaded', () => {
         spAll.classList.add('active'); // set initial
     }
 
-// 16. RLC Transient Overlay Simulator
-if (document.getElementById('rlcOverlayChart')) {
-    const ctxTR = document.getElementById('rlcOverlayChart').getContext('2d');
-    const rInp = document.getElementById('rlc-overlay-r');
+    // 16. RLC Transient Overlay Simulator
+    if (document.getElementById('rlcOverlayChart')) {
+        const ctxTR = document.getElementById('rlcOverlayChart').getContext('2d');
+        const rInp = document.getElementById('rlc-overlay-r');
 
-    window.rlcOverlayChart = new Chart(ctxTR, {
-        type: 'line',
-        data: {
-            labels: Array.from({ length: 200 }, (_, i) => (i * 0.05).toFixed(2)), // Time 0 to 10s
-            datasets: [
-                {
-                    label: 'Underdamped',
-                    data: [],
-                    borderColor: '#ff5252',
-                    backgroundColor: 'transparent',
-                    borderWidth: 2,
-                    tension: 0.1,
-                    pointRadius: 0
-                },
-                {
-                    label: 'Critically Damped',
-                    data: [],
-                    borderColor: '#42a5f5',
-                    backgroundColor: 'transparent',
-                    borderWidth: 2,
-                    tension: 0.1,
-                    pointRadius: 0
-                },
-                {
-                    label: 'Overdamped',
-                    data: [],
-                    borderColor: '#5c6bc0',
-                    backgroundColor: 'transparent',
-                    borderWidth: 2,
-                    tension: 0.1,
-                    pointRadius: 0
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: { title: { display: true, text: 'Time (s)', color: '#aaa' }, ticks: { color: '#aaa' }, grid: { color: '#333' } },
-                y: { title: { display: true, text: 'Voltage (V)', color: '#aaa' }, ticks: { color: '#aaa' }, grid: { color: '#333' }, min: 0, max: 15 }
+        window.rlcOverlayChart = new Chart(ctxTR, {
+            type: 'line',
+            data: {
+                labels: Array.from({ length: 200 }, (_, i) => (i * 0.05).toFixed(2)), // Time 0 to 10s
+                datasets: [
+                    {
+                        label: 'Underdamped',
+                        data: [],
+                        borderColor: '#ff5252',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        tension: 0.1,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Critically Damped',
+                        data: [],
+                        borderColor: '#42a5f5',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        tension: 0.1,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Overdamped',
+                        data: [],
+                        borderColor: '#5c6bc0',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        tension: 0.1,
+                        pointRadius: 0
+                    }
+                ]
             },
-            plugins: { legend: { labels: { color: '#fff' } } },
-            animation: { duration: 0 } // Live update without chart animation delay
-        }
-    });
-
-    function updateTransientOverlay() {
-        const R = parseFloat(rInp.value);
-        const L = 10; // fixed
-        const C = 0.1; // fixed (100mF)
-
-        const w0 = 1 / Math.sqrt(L * C);
-        const Vs = 10;
-
-        const dataUnder = [];
-        const dataCrit = [];
-        const dataOver = [];
-
-        const R_crit = 2 * Math.sqrt(L / C); // 2 * sqrt(10 / 0.1) = 20 ohms
-
-        // Generate "ideal" curves for reference
-        const alpha_under = 5 / (2 * L); // R=5
-        const wd = Math.sqrt(w0 * w0 - alpha_under * alpha_under);
-
-        const alpha_over = 40 / (2 * L); // R=40
-        const s1 = -alpha_over + Math.sqrt(alpha_over * alpha_over - w0 * w0);
-        const s2 = -alpha_over - Math.sqrt(alpha_over * alpha_over - w0 * w0);
-
-        for (let i = 0; i < 200; i++) {
-            const t = i * 0.05;
-
-            // Under
-            const phi_under = Math.atan(alpha_under / wd);
-            const A_under = -Vs / Math.cos(phi_under);
-            dataUnder.push(Vs + A_under * Math.exp(-alpha_under * t) * Math.cos(wd * t - phi_under));
-
-            // Crit (R = 20)
-            dataCrit.push(Vs - Vs * (1 + w0 * t) * Math.exp(-w0 * t));
-
-            // Over
-            const A1_over = -Vs / (s1 - s2) * s2;
-            const A2_over = Vs / (s1 - s2) * s1;
-            dataOver.push(Vs + A1_over * Math.exp(s1 * t) + A2_over * Math.exp(s2 * t));
-        }
-
-        // Now, adjust Opacities based on current Slider R
-        // If R < 20 (Under), If R == 20 (Crit), If R > 20 (Over)
-        let opUnder, opCrit, opOver;
-
-        // dynamically calculating current curve based on actual slider R
-        const currentData = [];
-        const alpha = R / (2 * L);
-        const zeta = alpha / w0;
-
-        for (let i = 0; i < 200; i++) {
-            const t = i * 0.05;
-            if (zeta > 1) { // Overdamped
-                const current_s1 = -alpha + Math.sqrt(alpha * alpha - w0 * w0);
-                const current_s2 = -alpha - Math.sqrt(alpha * alpha - w0 * w0);
-                const A1 = -Vs / (current_s1 - current_s2) * current_s2;
-                const A2 = Vs / (current_s1 - current_s2) * current_s1;
-                currentData.push(Vs + A1 * Math.exp(current_s1 * t) + A2 * Math.exp(current_s2 * t));
-            } else if (Math.abs(zeta - 1) < 0.05) { // Critically damped
-                currentData.push(Vs - Vs * (1 + w0 * t) * Math.exp(-w0 * t));
-            } else { // Underdamped
-                const current_wd = Math.sqrt(w0 * w0 - alpha * alpha);
-                const phi = Math.atan(alpha / current_wd);
-                const A = -Vs / Math.cos(phi);
-                currentData.push(Vs + A * Math.exp(-alpha * t) * Math.cos(current_wd * t - phi));
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { title: { display: true, text: 'Time (s)', color: '#aaa' }, ticks: { color: '#aaa' }, grid: { color: '#333' } },
+                    y: { title: { display: true, text: 'Voltage (V)', color: '#aaa' }, ticks: { color: '#aaa' }, grid: { color: '#333' }, min: 0, max: 15 }
+                },
+                plugins: { legend: { labels: { color: '#fff' } } },
+                animation: { duration: 0 } // Live update without chart animation delay
             }
+        });
+
+        function updateTransientOverlay() {
+            const R = parseFloat(rInp.value);
+            const L = 10; // fixed
+            const C = 0.1; // fixed (100mF)
+
+            const w0 = 1 / Math.sqrt(L * C);
+            const Vs = 10;
+
+            const dataUnder = [];
+            const dataCrit = [];
+            const dataOver = [];
+
+            const R_crit = 2 * Math.sqrt(L / C); // 2 * sqrt(10 / 0.1) = 20 ohms
+
+            // Generate "ideal" curves for reference
+            const alpha_under = 5 / (2 * L); // R=5
+            const wd = Math.sqrt(w0 * w0 - alpha_under * alpha_under);
+
+            const alpha_over = 40 / (2 * L); // R=40
+            const s1 = -alpha_over + Math.sqrt(alpha_over * alpha_over - w0 * w0);
+            const s2 = -alpha_over - Math.sqrt(alpha_over * alpha_over - w0 * w0);
+
+            for (let i = 0; i < 200; i++) {
+                const t = i * 0.05;
+
+                // Under
+                const phi_under = Math.atan(alpha_under / wd);
+                const A_under = -Vs / Math.cos(phi_under);
+                dataUnder.push(Vs + A_under * Math.exp(-alpha_under * t) * Math.cos(wd * t - phi_under));
+
+                // Crit (R = 20)
+                dataCrit.push(Vs - Vs * (1 + w0 * t) * Math.exp(-w0 * t));
+
+                // Over
+                const A1_over = -Vs / (s1 - s2) * s2;
+                const A2_over = Vs / (s1 - s2) * s1;
+                dataOver.push(Vs + A1_over * Math.exp(s1 * t) + A2_over * Math.exp(s2 * t));
+            }
+
+            // Now, adjust Opacities based on current Slider R
+            // If R < 20 (Under), If R == 20 (Crit), If R > 20 (Over)
+            let opUnder, opCrit, opOver;
+
+            // dynamically calculating current curve based on actual slider R
+            const currentData = [];
+            const alpha = R / (2 * L);
+            const zeta = alpha / w0;
+
+            for (let i = 0; i < 200; i++) {
+                const t = i * 0.05;
+                if (zeta > 1) { // Overdamped
+                    const current_s1 = -alpha + Math.sqrt(alpha * alpha - w0 * w0);
+                    const current_s2 = -alpha - Math.sqrt(alpha * alpha - w0 * w0);
+                    const A1 = -Vs / (current_s1 - current_s2) * current_s2;
+                    const A2 = Vs / (current_s1 - current_s2) * current_s1;
+                    currentData.push(Vs + A1 * Math.exp(current_s1 * t) + A2 * Math.exp(current_s2 * t));
+                } else if (Math.abs(zeta - 1) < 0.05) { // Critically damped
+                    currentData.push(Vs - Vs * (1 + w0 * t) * Math.exp(-w0 * t));
+                } else { // Underdamped
+                    const current_wd = Math.sqrt(w0 * w0 - alpha * alpha);
+                    const phi = Math.atan(alpha / current_wd);
+                    const A = -Vs / Math.cos(phi);
+                    currentData.push(Vs + A * Math.exp(-alpha * t) * Math.cos(current_wd * t - phi));
+                }
+            }
+
+            // We will just draw the current curve onto the chart, colored appropriately
+            if (zeta > 1) { opUnder = 0.2; opCrit = 0.2; opOver = 1.0; }
+            else if (Math.abs(zeta - 1) < 0.05) { opUnder = 0.2; opCrit = 1.0; opOver = 0.2; }
+            else { opUnder = 1.0; opCrit = 0.2; opOver = 0.2; }
+
+            // Apply faint reference lines
+            window.rlcOverlayChart.data.datasets[0].data = dataUnder;
+            window.rlcOverlayChart.data.datasets[0].borderColor = `rgba(255, 82, 82, ${opUnder === 1 ? 1 : 0.15})`;
+
+            window.rlcOverlayChart.data.datasets[1].data = dataCrit;
+            window.rlcOverlayChart.data.datasets[1].borderColor = `rgba(66, 165, 245, ${opCrit === 1 ? 1 : 0.15})`;
+
+            window.rlcOverlayChart.data.datasets[2].data = dataOver;
+            window.rlcOverlayChart.data.datasets[2].borderColor = `rgba(92, 107, 192, ${opOver === 1 ? 1 : 0.15})`;
+
+            // Override the active logic to replace the highlighted curve data entirely with the EXACT slider curve
+            if (opUnder === 1) { window.rlcOverlayChart.data.datasets[0].data = currentData; window.rlcOverlayChart.data.datasets[0].borderWidth = 4; } else { window.rlcOverlayChart.data.datasets[0].borderWidth = 2; }
+            if (opCrit === 1) { window.rlcOverlayChart.data.datasets[1].data = currentData; window.rlcOverlayChart.data.datasets[1].borderWidth = 4; } else { window.rlcOverlayChart.data.datasets[1].borderWidth = 2; }
+            if (opOver === 1) { window.rlcOverlayChart.data.datasets[2].data = currentData; window.rlcOverlayChart.data.datasets[2].borderWidth = 4; } else { window.rlcOverlayChart.data.datasets[2].borderWidth = 2; }
+
+            window.rlcOverlayChart.update();
         }
 
-        // We will just draw the current curve onto the chart, colored appropriately
-        if (zeta > 1) { opUnder = 0.2; opCrit = 0.2; opOver = 1.0; }
-        else if (Math.abs(zeta - 1) < 0.05) { opUnder = 0.2; opCrit = 1.0; opOver = 0.2; }
-        else { opUnder = 1.0; opCrit = 0.2; opOver = 0.2; }
-
-        // Apply faint reference lines
-        window.rlcOverlayChart.data.datasets[0].data = dataUnder;
-        window.rlcOverlayChart.data.datasets[0].borderColor = `rgba(255, 82, 82, ${opUnder === 1 ? 1 : 0.15})`;
-
-        window.rlcOverlayChart.data.datasets[1].data = dataCrit;
-        window.rlcOverlayChart.data.datasets[1].borderColor = `rgba(66, 165, 245, ${opCrit === 1 ? 1 : 0.15})`;
-
-        window.rlcOverlayChart.data.datasets[2].data = dataOver;
-        window.rlcOverlayChart.data.datasets[2].borderColor = `rgba(92, 107, 192, ${opOver === 1 ? 1 : 0.15})`;
-
-        // Override the active logic to replace the highlighted curve data entirely with the EXACT slider curve
-        if (opUnder === 1) { window.rlcOverlayChart.data.datasets[0].data = currentData; window.rlcOverlayChart.data.datasets[0].borderWidth = 4; } else { window.rlcOverlayChart.data.datasets[0].borderWidth = 2; }
-        if (opCrit === 1) { window.rlcOverlayChart.data.datasets[1].data = currentData; window.rlcOverlayChart.data.datasets[1].borderWidth = 4; } else { window.rlcOverlayChart.data.datasets[1].borderWidth = 2; }
-        if (opOver === 1) { window.rlcOverlayChart.data.datasets[2].data = currentData; window.rlcOverlayChart.data.datasets[2].borderWidth = 4; } else { window.rlcOverlayChart.data.datasets[2].borderWidth = 2; }
-
-        window.rlcOverlayChart.update();
+        rInp.addEventListener('input', updateTransientOverlay);
+        updateTransientOverlay();
     }
 
-    rInp.addEventListener('input', updateTransientOverlay);
-    updateTransientOverlay();
-}
-
-// 17. Laplace Circuit Morphing Animation
-const morphLapBtn = document.getElementById('morph-laplace-btn');
-if (morphLapBtn) {
-    let isSDomain = false;
-    morphLapBtn.addEventListener('click', () => {
-        if (!isSDomain) {
-            morphLapBtn.textContent = 'Morph s-Domain back to Time-Domain ▶';
-            gsap.to('#l-td-group', { opacity: 0, y: -20, duration: 0.5 });
-            gsap.fromTo('#l-sd-group', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.2 });
-            isSDomain = true;
-        } else {
-            morphLapBtn.textContent = 'Morph Time-Domain L to s-Domain ▶';
-            gsap.to('#l-sd-group', { opacity: 0, y: 20, duration: 0.5 });
-            gsap.fromTo('#l-td-group', { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.2 });
-            isSDomain = false;
-        }
-    });
-}
+    // 17. Laplace Circuit Morphing Animation
+    const morphLapBtn = document.getElementById('morph-laplace-btn');
+    if (morphLapBtn) {
+        let isSDomain = false;
+        morphLapBtn.addEventListener('click', () => {
+            if (!isSDomain) {
+                morphLapBtn.textContent = 'Morph s-Domain back to Time-Domain ▶';
+                gsap.to('#l-td-group', { opacity: 0, y: -20, duration: 0.5 });
+                gsap.fromTo('#l-sd-group', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.2 });
+                isSDomain = true;
+            } else {
+                morphLapBtn.textContent = 'Morph Time-Domain L to s-Domain ▶';
+                gsap.to('#l-sd-group', { opacity: 0, y: 20, duration: 0.5 });
+                gsap.fromTo('#l-td-group', { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.2 });
+                isSDomain = false;
+            }
+        });
+    }
 
 
     // 18. Interactive Op-Amp Calculator
@@ -573,6 +573,9 @@ if (morphLapBtn) {
             }
         });
     }
+
+    // 19. Initialize Phasor Canvas Animation
+    initPhasorCanvas();
 
 });
 
