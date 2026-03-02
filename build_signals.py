@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+import os
+
+html_template = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -73,7 +75,18 @@
                 </p>
             </header>
 
-            
+            {UNITS}
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/signals.js"></script>
+</body>
+</html>
+"""
+
+unit1 = """
             <!-- UNIT 1: INTRODUCTION -->
             <section id="unit1" class="module-section">
                 <div class="module-header">
@@ -89,10 +102,10 @@
                             <h3>1.1 Signal Classification & Definitions</h3>
                         </div>
                         <div class="formula-zone">
-                            <div class="formula">$ x(t), \quad t \in \mathbb{R} \quad \text{(Continuous-Time)} $</div>
-                            <div class="formula">$ x[n], \quad n \in \mathbb{Z} \quad \text{(Discrete-Time)} $</div>
+                            <div class="formula">$$ x(t), \quad t \in \mathbb{R} \quad \text{(Continuous-Time)} $$</div>
+                            <div class="formula">$$ x[n], \quad n \in \mathbb{Z} \quad \text{(Discrete-Time)} $$</div>
                             <h4 style="color:var(--mod1-color); margin-top:20px;">Relationship (sampling):</h4>
-                            <div class="formula">$ x[n] = x(nT_s) = x\left(\frac{n}{f_s}\right) $</div>
+                            <div class="formula">$$ x[n] = x(nT_s) = x\\left(\\frac{n}{f_s}\\right) $$</div>
                             <p style="color:var(--text-muted); font-size:0.9rem;">Where $T_s$ = sampling period, $f_s$ = sampling frequency.</p>
                         </div>
                     </div>
@@ -104,14 +117,12 @@
                             <h3>1.2 Periodic vs Aperiodic Signals</h3>
                         </div>
                         <div class="formula-zone">
-                            <div class="formula text-sm">$ x(t) = x(t + T_0) \quad \forall t \; (CT) $</div>
-                            <div class="formula text-sm">$ x[n] = x[n + N] \quad \forall n \; (DT) $</div>
+                            <div class="formula text-sm">$$ x(t) = x(t + T_0) \quad \\forall t \\; (CT) $$</div>
+                            <div class="formula text-sm">$$ x[n] = x[n + N] \quad \\forall n \\; (DT) $$</div>
                             <h4 style="color:var(--mod1-color); margin-bottom:10px;">DT Sinusoid Periodicity:</h4>
-                            <div class="formula text-sm">$ x[n] = A\cos(\Omega_0 n + \phi) $</div>
-                            <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;">Periodic only if $\frac{\Omega_0}{2\pi} = \frac{m}{N}$ is a rational number.</p>
-                            <div class="anim-zone" id="periodic-anim-container">
-                                <canvas id="periodic-canvas" width="400" height="200" style="width:100%; height:100%; object-fit:contain;"></canvas>
-                            </div>
+                            <div class="formula text-sm">$$ x[n] = A\\cos(\\Omega_0 n + \\phi) $$</div>
+                            <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;">Periodic only if $\\frac{\\Omega_0}{2\\pi} = \\frac{m}{N}$ is a rational number.</p>
+                            <div class="anim-zone" id="periodic-anim-container"></div>
                         </div>
                     </div>
 
@@ -123,18 +134,18 @@
                         </div>
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
-                                <div class="formula text-sm mb-2">$ E_x = \int_{-\infty}^{\infty} |x(t)|^2 \, dt \quad (CT) $</div>
-                                <div class="formula text-sm mb-2">$ P_x = \lim_{T\to\infty} \frac{1}{2T} \int_{-T}^{T} |x(t)|^2 \, dt \quad (CT) $</div>
+                                <div class="formula text-sm mb-2">$$ E_x = \\int_{-\\infty}^{\\infty} |x(t)|^2 \\, dt \\quad (CT) $$</div>
+                                <div class="formula text-sm mb-2">$$ P_x = \\lim_{T\\to\\infty} \\frac{1}{2T} \\int_{-T}^{T} |x(t)|^2 \\, dt \\quad (CT) $$</div>
                                 <ul style="color:var(--text-muted); font-size:0.85rem; padding-left:20px; line-height:1.6;">
-                                    <li>$E_x < \infty \rightarrow$ <strong>Energy Signal</strong> ($P_x = 0$)</li>
-                                    <li>$P_x < \infty, >0 \rightarrow$ <strong>Power Signal</strong> ($E_x = \infty$)</li>
+                                    <li>$E_x < \\infty \\rightarrow$ <strong>Energy Signal</strong> ($P_x = 0$)</li>
+                                    <li>$P_x < \\infty, >0 \\rightarrow$ <strong>Power Signal</strong> ($E_x = \\infty$)</li>
                                 </ul>
                             </div>
                             <div style="flex:1; min-width:300px; padding:15px; display:flex; flex-direction:column;">
                                 <div class="anim-zone" id="energy-power-anim-container" style="flex:1; margin-bottom:10px;"></div>
                                 <div style="display:flex; justify-content:center; gap:10px;">
-                                    <button onclick="window.setEnergyMode && window.setEnergyMode('energy')" style="background:rgba(0,245,255,0.2); border:1px solid #00f5ff; color:#00f5ff; padding:5px 10px; border-radius:4px; cursor:pointer;">Energy</button>
-                                    <button onclick="window.setEnergyMode && window.setEnergyMode('power')" style="background:rgba(0,245,255,0.2); border:1px solid #00f5ff; color:#00f5ff; padding:5px 10px; border-radius:4px; cursor:pointer;">Power</button>
+                                    <button onclick="window.setEnergyMode('energy')" style="background:rgba(0,245,255,0.2); border:1px solid #00f5ff; color:#00f5ff; padding:5px 10px; border-radius:4px; cursor:pointer;">Energy</button>
+                                    <button onclick="window.setEnergyMode('power')" style="background:rgba(0,245,255,0.2); border:1px solid #00f5ff; color:#00f5ff; padding:5px 10px; border-radius:4px; cursor:pointer;">Power</button>
                                 </div>
                             </div>
                         </div>
@@ -147,10 +158,10 @@
                             <h3>1.4 Even & Odd Decomposition</h3>
                         </div>
                         <div class="formula-zone">
-                            <div class="formula text-sm mb-2">$ x(t) = x_e(t) + x_o(t) $</div>
-                            <div class="formula text-sm mb-2">$ x_e(t) = \frac{1}{2}\left[x(t) + x(-t)\right] $</div>
-                            <div class="formula text-sm mb-4">$ x_o(t) = \frac{1}{2}\left[x(t) - x(-t)\right] $</div>
-                            <div class="anim-zone" id="even-odd-anim-container" style="min-height:280px;"></div>
+                            <div class="formula text-sm mb-2">$$ x(t) = x_e(t) + x_o(t) $$</div>
+                            <div class="formula text-sm mb-2">$$ x_e(t) = \\frac{1}{2}\\left[x(t) + x(-t)\\right] $$</div>
+                            <div class="formula text-sm mb-4">$$ x_o(t) = \\frac{1}{2}\\left[x(t) - x(-t)\\right] $$</div>
+                            <div class="anim-zone" id="even-odd-anim-container"></div>
                         </div>
                     </div>
 
@@ -161,18 +172,11 @@
                             <h3>1.5 Elementary Signals</h3>
                         </div>
                         <div class="formula-zone">
-                            <div class="formula text-sm mb-2">$ \delta(t) = 0 \; (t \neq 0), \; \int \delta(t)dt = 1 $</div>
-                            <div class="formula text-sm mb-2">$ u(t) = 1 \; (t>0), \; 0 \; (t<0) $</div>
-                            <div class="formula text-sm mb-2">$ \text{rect}(t/\tau) = u(t+\tau/2) - u(t-\tau/2) $</div>
-                            <div class="formula text-sm mb-4">$ \text{sinc}(t) = \frac{\sin(\pi t)}{\pi t} $</div>
-                            <div class="anim-zone" id="elementary-anim-container" style="min-height:280px; position:relative;">
-                                <div style="position:absolute; bottom:10px; display:flex; gap:10px; justify-content:center; width:100%;">
-                                    <button onclick="window.drawElemSignal('impulse')" style="background:rgba(0,245,255,0.2); border:1px solid #00f5ff; color:#00f5ff; padding:2px 6px; border-radius:4px;">δ(t)</button>
-                                    <button onclick="window.drawElemSignal('step')" style="background:rgba(0,245,255,0.2); border:1px solid #00f5ff; color:#00f5ff; padding:2px 6px; border-radius:4px;">u(t)</button>
-                                    <button onclick="window.drawElemSignal('rect')" style="background:rgba(0,245,255,0.2); border:1px solid #00f5ff; color:#00f5ff; padding:2px 6px; border-radius:4px;">rect(t)</button>
-                                    <button onclick="window.drawElemSignal('sinc')" style="background:rgba(0,245,255,0.2); border:1px solid #00f5ff; color:#00f5ff; padding:2px 6px; border-radius:4px;">sinc(t)</button>
-                                </div>
-                            </div>
+                            <div class="formula text-sm mb-2">$$ \\delta(t) = 0 \\; (t \\neq 0), \\; \\int \\delta(t)dt = 1 $$</div>
+                            <div class="formula text-sm mb-2">$$ u(t) = 1 \\; (t>0), \\; 0 \\; (t<0) $$</div>
+                            <div class="formula text-sm mb-2">$$ \\text{rect}(t/\\tau) = u(t+\\tau/2) - u(t-\\tau/2) $$</div>
+                            <div class="formula text-sm mb-4">$$ \\text{sinc}(t) = \\frac{\\sin(\\pi t)}{\\pi t} $$</div>
+                            <div class="anim-zone" id="elementary-anim-container"></div>
                         </div>
                     </div>
                     
@@ -184,24 +188,25 @@
                         </div>
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
-                                <div class="formula text-sm">$ x(t - t_0) \rightarrow \text{Time Shift} $</div>
-                                <div class="formula text-sm">$ x(at) \rightarrow \text{Time Scale} $</div>
-                                <div class="formula text-sm">$ x(-t) \rightarrow \text{Time Reversal} $</div>
-                                <p style="color:var(--text-muted); font-size:0.85rem;">Step 1: Shift first $\rightarrow x(t - b/a)$<br>Step 2: Scale $\rightarrow x(at - b)$</p>
+                                <div class="formula text-sm">$$ x(t - t_0) \\rightarrow \\text{Time Shift} $$</div>
+                                <div class="formula text-sm">$$ x(at) \\rightarrow \\text{Time Scale} $$</div>
+                                <div class="formula text-sm">$$ x(-t) \\rightarrow \\text{Time Reversal} $$</div>
+                                <p style="color:var(--text-muted); font-size:0.85rem;">Step 1: Shift first $\\rightarrow x(t - b/a)$<br>Step 2: Scale $\\rightarrow x(at - b)$</p>
                             </div>
                             <div style="flex:1.5; min-width:300px; padding:15px; display:flex; flex-direction:column;">
-                                <div class="anim-zone" id="transform-anim-container" style="flex:1; margin-bottom:10px; min-height:250px;"></div>
-                                <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+                                <div class="anim-zone" id="transform-anim-container" style="flex:1; margin-bottom:10px;"></div>
+                                <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
                                     <label style="color:#e2e8f0; font-size:0.8rem; display:flex; align-items:center; gap:5px;">Shift (b): <input type="range" id="shift-slider" min="-3" max="3" step="0.5" value="0"></label>
-                                    <label style="color:#e2e8f0; font-size:0.8rem; display:flex; align-items:center; gap:5px;">Scale (a): <input type="range" id="scale-slider" min="0.5" max="3" step="0.5" value="1"></label>
-                                    <button onclick="window.toggleTimeReversal && window.toggleTimeReversal()" style="background:rgba(0,245,255,0.2); border:1px solid #00f5ff; color:#00f5ff; padding:2px 6px; border-radius:4px;">Flip -t</button>
+                                    <label style="color:#e2e8f0; font-size:0.8rem; display:flex; align-items:center; gap:5px;">Scale (a): <input type="range" id="scale-slider" min="-2" max="2" step="0.5" value="1"></label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+"""
 
+unit2 = """
             <!-- UNIT 2: LTI SYSTEMS -->
             <section id="unit2" class="module-section">
                 <div class="module-header">
@@ -219,12 +224,12 @@
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
                                 <h4 style="color:var(--mod2-color); margin-bottom:10px; font-size:0.9rem;">Linearity</h4>
-                                <div class="formula text-sm mb-3">$ ax_1(t)+bx_2(t) \rightarrow ay_1(t)+by_2(t) $</div>
+                                <div class="formula text-sm mb-3">$$ ax_1(t)+bx_2(t) \\rightarrow ay_1(t)+by_2(t) $$</div>
                                 <h4 style="color:var(--mod2-color); margin-bottom:10px; font-size:0.9rem;">Time Invariance</h4>
-                                <div class="formula text-sm mb-3">$ x(t-t_0) \rightarrow y(t-t_0) $</div>
+                                <div class="formula text-sm mb-3">$$ x(t-t_0) \\rightarrow y(t-t_0) $$</div>
                                 <h4 style="color:var(--mod2-color); margin-bottom:10px; font-size:0.9rem;">Causality & Stability</h4>
-                                <div class="formula text-sm mb-1">$ y(t) \text{ depends only on } \tau \leq t $</div>
-                                <div class="formula text-sm">$ |x(t)| \leq M_x \Rightarrow |y(t)| \leq M_y $</div>
+                                <div class="formula text-sm mb-1">$$ y(t) \\text{ depends only on } \\tau \\leq t $$</div>
+                                <div class="formula text-sm">$$ |x(t)| \\leq M_x \\Rightarrow |y(t)| \\leq M_y $$</div>
                             </div>
                             <div style="flex:1.5; min-width:300px; padding:15px; display:flex; flex-direction:column; background:#0a0e1a;">
                                 <h4 style="color:#fff; margin-bottom:15px; text-align:center;">Interactive Property Tester</h4>
@@ -243,28 +248,29 @@
                         </div>
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
-                                <div class="formula text-sm mb-3" style="overflow-x:auto;">$ y(t) = x(t) * h(t) = \int_{-\infty}^{\infty} x(\tau)h(t-\tau) \, d\tau $</div>
+                                <div class="formula text-sm mb-3">$$ y(t) = x(t) * h(t) = \\int_{-\\infty}^{\\infty} x(\\tau)h(t-\\tau) \\, d\\tau $$</div>
                                 <h4 style="color:var(--mod2-color); margin-bottom:10px;">Properties:</h4>
                                 <ul style="color:var(--text-muted); font-size:0.85rem; padding-left:20px;">
                                     <li>Commutative: $x * h = h * x$</li>
                                     <li>Distributive: $x * (h_1 + h_2) = x*h_1 + x*h_2$</li>
                                     <li>Associative: $x * (h_1 * h_2) = (x*h_1) * h_2$</li>
-                                    <li>Sifting: $x(t) * \delta(t-t_0) = x(t-t_0)$</li>
+                                    <li>Sifting: $x(t) * \\delta(t-t_0) = x(t-t_0)$</li>
                                 </ul>
                             </div>
                             <div style="flex:1.5; min-width:400px; padding:15px; display:flex; flex-direction:column;">
-                                <div class="anim-zone" id="convolution-anim-container" style="flex:1; margin-bottom:10px; min-height:400px;"></div>
+                                <div class="anim-zone" id="convolution-anim-container" style="flex:1; margin-bottom:10px;"></div>
                                 <div style="display:flex; justify-content:center; gap:10px;">
-                                    <button onclick="window.stepConvolution && window.stepConvolution('flip')" style="background:rgba(0,255,136,0.2); border:1px solid #00ff88; color:#00ff88; padding:5px 10px; border-radius:4px; cursor:pointer;"><i class="fas fa-undo"></i> Flip h(τ)</button>
-                                    <button onclick="window.stepConvolution && window.stepConvolution('slide')" style="background:rgba(0,255,136,0.2); border:1px solid #00ff88; color:#00ff88; padding:5px 10px; border-radius:4px; cursor:pointer;"><i class="fas fa-play"></i> Slide & Integrate</button>
-                                    <button onclick="window.stepConvolution && window.stepConvolution('reset')" style="background:rgba(255,68,68,0.2); border:1px solid #ff4444; color:#ff4444; padding:5px 10px; border-radius:4px; cursor:pointer;"><i class="fas fa-trash"></i> Reset</button>
+                                    <button onclick="window.stepConvolution('flip')" style="background:rgba(0,255,136,0.2); border:1px solid #00ff88; color:#00ff88; padding:5px 10px; border-radius:4px; cursor:pointer;"><i class="fas fa-undo"></i> Flip h(τ)</button>
+                                    <button onclick="window.stepConvolution('slide')" style="background:rgba(0,255,136,0.2); border:1px solid #00ff88; color:#00ff88; padding:5px 10px; border-radius:4px; cursor:pointer;"><i class="fas fa-play"></i> Slide & Integrate</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+"""
 
+unit3 = """
             <!-- UNIT 3: FOURIER SERIES -->
             <section id="unit3" class="module-section">
                 <div class="module-header">
@@ -281,14 +287,14 @@
                         <div style="display:flex; flex-wrap:wrap; gap:20px; padding:1.5rem; background:#0d1117;">
                             <div style="flex:1; min-width:300px;">
                                 <h4 style="color:var(--mod3-color); margin-bottom:10px;">Trigonometric Form:</h4>
-                                <div class="formula text-sm mb-2" style="overflow-x:auto;">$ x(t) = a_0 + \sum_{n=1}^{\infty} [a_n\cos(n\omega_0 t) + b_n\sin(n\omega_0 t)] $</div>
-                                <div class="formula text-xs mb-1" style="overflow-x:auto;">$ a_n = \frac{2}{T_0}\int_{T_0} x(t)\cos(n\omega_0 t) \, dt $</div>
+                                <div class="formula text-sm mb-2">$$ x(t) = a_0 + \\sum_{n=1}^{\\infty} [a_n\\cos(n\\omega_0 t) + b_n\\sin(n\\omega_0 t)] $$</div>
+                                <div class="formula text-xs mb-1">$$ a_n = \\frac{2}{T_0}\\int_{T_0} x(t)\\cos(n\\omega_0 t) \\, dt $$</div>
                             </div>
                             <div style="flex:1; min-width:300px;">
                                 <h4 style="color:var(--mod3-color); margin-bottom:10px;">Complex Exponential Form:</h4>
-                                <div class="formula text-sm mb-2">$ x(t) = \sum_{n=-\infty}^{\infty} c_n e^{jn\omega_0 t} $</div>
-                                <div class="formula text-xs mb-1">$ c_n = \frac{1}{T_0}\int_{T_0} x(t)e^{-jn\omega_0 t} \, dt $</div>
-                                <div class="formula text-xs" style="overflow-x:auto;">$ |c_n| = \frac{1}{2}\sqrt{a_n^2 + b_n^2}, \quad c_n = \frac{a_n - jb_n}{2} $</div>
+                                <div class="formula text-sm mb-2">$$ x(t) = \\sum_{n=-\\infty}^{\\infty} c_n e^{jn\\omega_0 t} $$</div>
+                                <div class="formula text-xs mb-1">$$ c_n = \\frac{1}{T_0}\\int_{T_0} x(t)e^{-jn\\omega_0 t} \\, dt $$</div>
+                                <div class="formula text-xs">$$ |c_n| = \\frac{1}{2}\\sqrt{a_n^2 + b_n^2}, \\quad c_n = \\frac{a_n - jb_n}{2} $$</div>
                             </div>
                         </div>
                     </div>
@@ -302,15 +308,15 @@
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
                                 <h4 style="color:var(--mod3-color); margin-bottom:5px;">Square Wave:</h4>
-                                <div class="formula text-sm mb-3">$ c_n = \frac{A\tau}{T_0}\text{sinc}(n f_0 \tau) $</div>
+                                <div class="formula text-sm mb-3">$$ c_n = \\frac{A\\tau}{T_0}\\text{sinc}(n f_0 \\tau) $$</div>
                                 <h4 style="color:var(--mod3-color); margin-bottom:5px;">Triangular Wave:</h4>
-                                <div class="formula text-sm mb-3" style="overflow-x:auto;">$ c_n = \begin{cases} \frac{4A}{(n\pi)^2} & n \text{ odd} \\ 0 & n \text{ even} \end{cases} $</div>
+                                <div class="formula text-sm mb-3">$$ c_n = \\begin{cases} \\frac{4A}{(n\\pi)^2} & n \\text{ odd} \\\\ 0 & n \\text{ even} \\end{cases} $$</div>
                                 <h4 style="color:var(--mod3-color); margin-bottom:5px;">Sawtooth Wave:</h4>
-                                <div class="formula text-sm mb-1">$ c_n = \frac{jA}{2\pi n} \quad (n \neq 0) $</div>
+                                <div class="formula text-sm mb-1">$$ c_n = \\frac{jA}{2\\pi n} \\quad (n \\neq 0) $$</div>
                             </div>
                             <div style="flex:1.5; min-width:400px; padding:15px; display:flex; flex-direction:column; background:#0a0e1a;">
-                                <h4 style="color:#fff; margin-bottom:10px; text-align:center;">Gibbs Phenomenon & Harmonical Synthesis</h4>
-                                <div class="anim-zone" id="fs-anim-container" style="flex:1; margin-bottom:10px; background:transparent; min-height:300px;"></div>
+                                <h4 style="color:#fff; margin-bottom:10px; text-align:center;">Gibbs Phenomenon & Synthesis</h4>
+                                <div class="anim-zone" id="fs-anim-container" style="flex:1; margin-bottom:10px; background:transparent;"></div>
                                 <div style="display:flex; flex-direction:column; align-items:center;">
                                     <label style="color:#facc15; font-size:0.9rem;">Harmonics (N): <span id="harmonics-val">1</span></label>
                                     <input type="range" id="harmonics-slider" min="1" max="50" step="1" value="1" style="width:80%; margin-top:10px;">
@@ -320,7 +326,9 @@
                     </div>
                 </div>
             </section>
+"""
 
+unit4 = """
             <!-- UNIT 4: CTFT -->
             <section id="unit4" class="module-section">
                 <div class="module-header">
@@ -336,16 +344,16 @@
                         </div>
                         <div style="display:flex; flex-wrap:wrap; padding:1.5rem; background:#0d1117;">
                             <div style="flex:1; min-width:300px; padding-right:10px;">
-                                <div class="formula text-sm" style="overflow-x:auto;">$ X(j\omega) = \int_{-\infty}^{\infty} x(t)e^{-j\omega t} \, dt $</div>
-                                <div class="formula text-xs mb-3">$ \delta(t) \xleftrightarrow{\mathcal{F}} 1 $</div>
-                                <div class="formula text-xs mb-3">$ u(t) \xleftrightarrow{\mathcal{F}} \pi\delta(\omega) + \frac{1}{j\omega} $</div>
-                                <div class="formula text-xs mb-3">$ e^{-at}u(t) \xleftrightarrow{\mathcal{F}} \frac{1}{a+j\omega} $</div>
+                                <div class="formula text-sm">$$ X(j\\omega) = \\int_{-\\infty}^{\\infty} x(t)e^{-j\\omega t} \\, dt $$</div>
+                                <div class="formula text-xs mb-3">$$ \\delta(t) \\xleftrightarrow{\\mathcal{F}} 1 $$</div>
+                                <div class="formula text-xs mb-3">$$ u(t) \\xleftrightarrow{\\mathcal{F}} \\pi\\delta(\\omega) + \\frac{1}{j\\omega} $$</div>
+                                <div class="formula text-xs mb-3">$$ e^{-at}u(t) \\xleftrightarrow{\\mathcal{F}} \\frac{1}{a+j\\omega} $$</div>
                             </div>
                             <div style="flex:1; min-width:300px;">
-                                <div class="formula text-sm" style="overflow-x:auto;">$ x(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} X(j\omega)e^{j\omega t} \, d\omega $</div>
-                                <div class="formula text-xs mb-3" style="overflow-x:auto;">$ \text{rect}\left(\frac{t}{\tau}\right) \xleftrightarrow{\mathcal{F}} \tau\text{sinc}\left(\frac{\omega\tau}{2\pi}\right) $</div>
-                                <div class="formula text-xs mb-3" style="overflow-x:auto;">$ \cos(\omega_0 t) \xleftrightarrow{\mathcal{F}} \pi[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)] $</div>
-                                <div class="formula text-xs mb-3" style="overflow-x:auto;">$ \text{sinc}(Wt) \xleftrightarrow{\mathcal{F}} \frac{\pi}{W}\text{rect}\left(\frac{\omega}{2W}\right) $</div>
+                                <div class="formula text-sm">$$ x(t) = \\frac{1}{2\\pi}\\int_{-\\infty}^{\\infty} X(j\\omega)e^{j\\omega t} \\, d\\omega $$</div>
+                                <div class="formula text-xs mb-3">$$ \\text{rect}\\left(\\frac{t}{\\tau}\\right) \\xleftrightarrow{\\mathcal{F}} \\tau\\text{sinc}\\left(\\frac{\\omega\\tau}{2\\pi}\\right) $$</div>
+                                <div class="formula text-xs mb-3">$$ \\cos(\\omega_0 t) \\xleftrightarrow{\\mathcal{F}} \\pi[\\delta(\\omega-\\omega_0)+\\delta(\\omega+\\omega_0)] $$</div>
+                                <div class="formula text-xs mb-3">$$ \\text{sinc}(Wt) \\xleftrightarrow{\\mathcal{F}} \\frac{\\pi}{W}\\text{rect}\\left(\\frac{\\omega}{2W}\\right) $$</div>
                             </div>
                         </div>
                     </div>
@@ -358,26 +366,29 @@
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
                                 <h4 style="color:var(--mod4-color); font-size:0.9rem; margin-bottom:5px;">Time Shifting:</h4>
-                                <div class="formula text-xs mb-2">$ x(t-t_0) \xleftrightarrow{\mathcal{F}} e^{-j\omega t_0}X(j\omega) $</div>
+                                <div class="formula text-xs mb-2">$$ x(t-t_0) \\xleftrightarrow{\\mathcal{F}} e^{-j\\omega t_0}X(j\\omega) $$</div>
                                 <h4 style="color:var(--mod4-color); font-size:0.9rem; margin-bottom:5px;">Modulation:</h4>
-                                <div class="formula text-xs mb-2" style="overflow-x:auto;">$ x(t)\cos(\omega_0 t) \xleftrightarrow{\mathcal{F}} \frac{1}{2}[X(j(\omega-\omega_0))+... $</div>
+                                <div class="formula text-xs mb-2">$$ x(t)\\cos(\\omega_0 t) \\xleftrightarrow{\\mathcal{F}} \\frac{1}{2}[X(j(\\omega-\\omega_0))+X(j(\\omega+\\omega_0))] $$</div>
                                 <h4 style="color:var(--mod4-color); font-size:0.9rem; margin-bottom:5px;">Duality:</h4>
-                                <div class="formula text-xs mb-2">$ X(t) \xleftrightarrow{\mathcal{F}} 2\pi x(-\omega) $</div>
+                                <div class="formula text-xs mb-2">$$ X(t) \\xleftrightarrow{\\mathcal{F}} 2\\pi x(-\\omega) $$</div>
                                 <h4 style="color:var(--mod4-color); font-size:0.9rem; margin-bottom:5px;">Convolution:</h4>
-                                <div class="formula text-xs">$ x(t)*y(t) \xleftrightarrow{\mathcal{F}} X(j\omega)Y(j\omega) $</div>
+                                <div class="formula text-xs">$$ x(t)*y(t) \\xleftrightarrow{\\mathcal{F}} X(j\\omega)Y(j\\omega) $$</div>
                             </div>
                             <div style="flex:1.5; min-width:400px; padding:15px; display:flex; flex-direction:column; background:#0a0e1a;">
                                 <div style="display:flex; justify-content:center; gap:10px; margin-bottom:10px;">
-                                    <button onclick="window.setFTDemo && window.setFTDemo('duality')" style="background:rgba(249,115,22,0.2); border:1px solid #f97316; color:#f97316; padding:5px 10px; border-radius:4px; cursor:pointer;">Rect/Sinc Duality</button>
-                                    <button onclick="window.setFTDemo && window.setFTDemo('mod')" style="background:rgba(249,115,22,0.2); border:1px solid #f97316; color:#f97316; padding:5px 10px; border-radius:4px; cursor:pointer;">Modulation</button>
+                                    <button onclick="window.setFTDemo('duality')" style="background:rgba(249,115,22,0.2); border:1px solid #f97316; color:#f97316; padding:5px 10px; border-radius:4px; cursor:pointer;">Rect/Sinc Duality</button>
+                                    <button onclick="window.setFTDemo('mod')" style="background:rgba(249,115,22,0.2); border:1px solid #f97316; color:#f97316; padding:5px 10px; border-radius:4px; cursor:pointer;">Modulation</button>
                                 </div>
-                                <div class="anim-zone" id="ft-anim-container" style="flex:1; background:transparent; min-height:280px;"></div>
+                                <div class="anim-zone" id="ft-anim-container" style="flex:1; background:transparent;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-<!-- UNIT 5: DTFT & DFT -->
+"""
+
+unit5_6_7 = """
+            <!-- UNIT 5: DTFT & DFT -->
             <section id="unit5" class="module-section">
                 <div class="module-header">
                     <h2 class="module-title" style="color: var(--mod5-color);">UNIT 5 <span class="module-subtitle">— DTFT, DFT & FFT</span></h2>
@@ -392,13 +403,13 @@
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
                                 <h4 style="color:var(--mod5-color); margin-bottom:10px;">N-point DFT:</h4>
-                                <div class="formula text-sm mb-3" style="overflow-x:auto;">$ X[k] = \sum_{n=0}^{N-1} x[n]W_N^{kn}, \quad W_N = e^{-j2\pi/N} $</div>
+                                <div class="formula text-sm mb-3">$$ X[k] = \\sum_{n=0}^{N-1} x[n]W_N^{kn}, \\quad W_N = e^{-j2\\pi/N} $$</div>
                                 <h4 style="color:var(--mod5-color); margin-bottom:10px;">Operations Count:</h4>
-                                <div class="formula text-xs mb-1">$ \text{DFT: } O(N^2) $</div>
-                                <div class="formula text-xs mb-3">$ \text{FFT: } O(N\log_2 N) $</div>
-                                <div class="formula text-xs">$ \text{Speedup} = \frac{N}{\log_2 N} $</div>
+                                <div class="formula text-xs mb-1">$$ \\text{DFT: } O(N^2) $$</div>
+                                <div class="formula text-xs mb-3">$$ \\text{FFT: } O(N\\log_2 N) $$</div>
+                                <div class="formula text-xs">$$ \\text{Speedup} = \\frac{N}{\\log_2 N} $$</div>
                             </div>
-                            <div style="flex:1.5; min-width:350px; padding:15px; position:relative;">
+                            <div style="flex:1; min-width:350px; padding:15px; position:relative;">
                                 <div class="anim-zone" id="fft-anim-container" style="height:280px;"></div>
                             </div>
                         </div>
@@ -420,14 +431,14 @@
                         </div>
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
-                                <div class="formula text-sm mb-3" style="overflow-x:auto;">$ X(s) = \int_{-\infty}^{\infty} x(t)e^{-st} \, dt, \quad s = \sigma + j\omega $</div>
+                                <div class="formula text-sm mb-3">$$ X(s) = \\int_{-\\infty}^{\\infty} x(t)e^{-st} \\, dt, \\quad s = \\sigma + j\\omega $$</div>
                                 <h4 style="color:var(--mod6-color); margin-bottom:10px;">Stability & ROC:</h4>
                                 <ul style="color:var(--text-muted); font-size:0.85rem; padding-left:20px;">
                                     <li><strong>Causal:</strong> ROC is Re(s) > rightmost pole.</li>
-                                    <li><strong>Stable LTI:</strong> ROC strictly includes $j\omega$ axis.</li>
+                                    <li><strong>Stable LTI:</strong> ROC strictly includes $j\\omega$ axis.</li>
                                     <li><strong>Causal Stable:</strong> All poles in Left Half Plane (LHP).</li>
                                 </ul>
-                                <div class="formula text-xs mt-3" style="overflow-x:auto;">$ \lim_{t\to\infty} x(t) = \lim_{s\to 0} sX(s) \quad \text{(Final Value)} $</div>
+                                <div class="formula text-xs mt-3">$$ \\lim_{t\\to\\infty} x(t) = \\lim_{s\\to 0} sX(s) \\quad \\text{(Final Value)} $$</div>
                             </div>
                             <div style="flex:1.5; min-width:400px; padding:15px; background:#0a0e1a; position:relative;">
                                 <p style="color:#fff; text-align:center; font-size:0.9rem; margin-bottom:10px;">Drag the <span style="color:#ef4444; font-weight:bold;">× poles</span> to observe stability.</p>
@@ -452,14 +463,14 @@
                         </div>
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
-                                <div class="formula text-sm mb-3">$ X(z) = \sum_{n=-\infty}^{\infty} x[n]z^{-n}, \quad z = re^{j\Omega} $</div>
+                                <div class="formula text-sm mb-3">$$ X(z) = \\sum_{n=-\\infty}^{\\infty} x[n]z^{-n}, \\quad z = re^{j\\Omega} $$</div>
                                 <h4 style="color:var(--mod7-color); margin-bottom:10px;">Stability & ROC:</h4>
                                 <ul style="color:var(--text-muted); font-size:0.85rem; padding-left:20px;">
                                     <li><strong>Causal:</strong> ROC is $|z| > r_{max}$ (outside largest pole).</li>
                                     <li><strong>Stable LTI:</strong> ROC strictly includes Unit Circle $(|z|=1)$.</li>
                                     <li><strong>Causal Stable:</strong> All poles INSIDE unit circle $(|p_k| < 1)$.</li>
                                 </ul>
-                                <div class="formula text-xs mt-3">$ a^n u[n] \xleftrightarrow{\mathcal{Z}} \frac{z}{z-a}, \quad |z|>|a| $</div>
+                                <div class="formula text-xs mt-3">$$ a^n u[n] \\xleftrightarrow{\\mathcal{Z}} \\frac{z}{z-a}, \\quad |z|>|a| $$</div>
                             </div>
                             <div style="flex:1.5; min-width:400px; padding:15px; background:#0a0e1a; position:relative;">
                                 <p style="color:#fff; text-align:center; font-size:0.9rem; margin-bottom:10px;">Drag pole out of the Unit Circle to break stability.</p>
@@ -469,7 +480,9 @@
                     </div>
                 </div>
             </section>
+"""
 
+unit8_9_10 = """
             <!-- UNIT 8: SAMPLING -->
             <section id="unit8" class="module-section">
                 <div class="module-header">
@@ -484,10 +497,10 @@
                         </div>
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
-                                <div class="formula text-sm mb-3">$ f_s \geq 2f_{max} = f_{Nyquist} $</div>
+                                <div class="formula text-sm mb-3">$$ f_s \\geq 2f_{max} = f_{Nyquist} $$</div>
                                 <h4 style="color:var(--mod8-color); margin-bottom:10px;">Reconstruction:</h4>
-                                <div class="formula text-xs mb-3" style="overflow-x:auto;">$ x(t) = \sum_{n=-\infty}^{\infty} x[n]\cdot \text{sinc}\left(\frac{t-nT_s}{T_s}\right) $</div>
-                                <div class="formula text-xs">$ f_{alias} = |f_{signal} - k f_s| $</div>
+                                <div class="formula text-xs mb-3">$$ x(t) = \\sum_{n=-\\infty}^{\\infty} x[n]\\cdot \\text{sinc}\\left(\\frac{t-nT_s}{T_s}\\right) $$</div>
+                                <div class="formula text-xs">$$ f_{alias} = |f_{signal} - k f_s| $$</div>
                             </div>
                             <div style="flex:1.5; min-width:400px; padding:15px; display:flex; flex-direction:column; background:#0a0e1a;">
                                 <div class="anim-zone" id="aliasing-anim-container" style="flex:1; min-height:280px; background:transparent;"></div>
@@ -515,13 +528,13 @@
                         </div>
                         <div style="display:flex; flex-wrap:wrap;">
                             <div class="formula-zone" style="flex:1; min-width:300px;">
-                                <div class="formula text-sm mb-2">$ \dot{\mathbf{x}}(t) = A\mathbf{x}(t) + B\mathbf{u}(t) $</div>
-                                <div class="formula text-sm mb-4">$ \mathbf{y}(t) = C\mathbf{x}(t) + D\mathbf{u}(t) $</div>
+                                <div class="formula text-sm mb-2">$$ \\dot{\\mathbf{x}}(t) = A\\mathbf{x}(t) + B\\mathbf{u}(t) $$</div>
+                                <div class="formula text-sm mb-4">$$ \\mathbf{y}(t) = C\\mathbf{x}(t) + D\\mathbf{u}(t) $$</div>
                                 <h4 style="color:var(--mod9-color); margin-bottom:10px;">Transfer Matrix / Eigenvalues:</h4>
-                                <div class="formula text-xs mb-2">$ H(s) = C(sI - A)^{-1}B + D $</div>
-                                <div class="formula text-xs">$ \det(sI - A) = 0 \quad \text{(Poles)} $</div>
+                                <div class="formula text-xs mb-2">$$ H(s) = C(sI - A)^{-1}B + D $$</div>
+                                <div class="formula text-xs">$$ \\det(sI - A) = 0 \\quad \\text{(Poles)} $$</div>
                             </div>
-                            <div style="flex:1.5; min-width:400px; padding:15px;">
+                            <div style="flex:1; min-width:400px; padding:15px;">
                                 <div class="anim-zone" id="statespace-anim-container" style="height:100%; min-height:250px;"></div>
                             </div>
                         </div>
@@ -542,18 +555,18 @@
                             <h3>10.1 FIR/IIR Design & Window Functions</h3>
                         </div>
                         <div style="display:flex; flex-wrap:wrap;">
-                            <div class="formula-zone" style="flex:1; min-width:300px;">
+                            <div class="formula-zone" style="flex:1; min-width:350px;">
                                 <h4 style="color:var(--mod10-color); margin-bottom:10px;">FIR Window Method:</h4>
-                                <div class="formula text-xs mb-3">$ h[n] = h_{ideal}[n] \cdot w[n] $</div>
+                                <div class="formula text-xs mb-3">$$ h[n] = h_{ideal}[n] \\cdot w[n] $$</div>
                                 <h4 style="color:var(--mod10-color); margin-bottom:10px;">IIR Bilinear Transform:</h4>
-                                <div class="formula text-xs mb-3">$ s = \frac{2}{T_s}\cdot\frac{1-z^{-1}}{1+z^{-1}} $</div>
-                                <div class="formula text-xs">$ \Omega = 2\arctan\left(\frac{\omega T_s}{2}\right) $</div>
+                                <div class="formula text-xs mb-3">$$ s = \\frac{2}{T_s}\\cdot\\frac{1-z^{-1}}{1+z^{-1}} $$</div>
+                                <div class="formula text-xs">$$ \\Omega = 2\\arctan\\left(\\frac{\\omega T_s}{2}\\right) $$</div>
                             </div>
                             <div style="flex:1.5; min-width:400px; padding:15px; background:#0a0e1a;">
                                 <div style="display:flex; justify-content:center; gap:10px; margin-bottom:10px;">
-                                    <button onclick="window.setFilterWindow && window.setFilterWindow('rect')" style="background:rgba(251,191,36,0.2); border:1px solid var(--mod10-color); color:var(--mod10-color); padding:5px; border-radius:4px; font-size:0.8rem; cursor:pointer;">Rectangular</button>
-                                    <button onclick="window.setFilterWindow && window.setFilterWindow('hann')" style="background:rgba(251,191,36,0.2); border:1px solid var(--mod10-color); color:var(--mod10-color); padding:5px; border-radius:4px; font-size:0.8rem; cursor:pointer;">Hanning</button>
-                                    <button onclick="window.setFilterWindow && window.setFilterWindow('hamm')" style="background:rgba(251,191,36,0.2); border:1px solid var(--mod10-color); color:var(--mod10-color); padding:5px; border-radius:4px; font-size:0.8rem; cursor:pointer;">Hamming</button>
+                                    <button onclick="window.setFilterWindow('rect')" style="background:rgba(251,191,36,0.2); border:1px solid var(--mod10-color); color:var(--mod10-color); padding:5px; border-radius:4px; font-size:0.8rem; cursor:pointer;">Rectangular</button>
+                                    <button onclick="window.setFilterWindow('hann')" style="background:rgba(251,191,36,0.2); border:1px solid var(--mod10-color); color:var(--mod10-color); padding:5px; border-radius:4px; font-size:0.8rem; cursor:pointer;">Hanning</button>
+                                    <button onclick="window.setFilterWindow('hamm')" style="background:rgba(251,191,36,0.2); border:1px solid var(--mod10-color); color:var(--mod10-color); padding:5px; border-radius:4px; font-size:0.8rem; cursor:pointer;">Hamming</button>
                                 </div>
                                 <div class="anim-zone" id="filter-anim-container" style="height:280px; background:var(--bg-card); border-radius:8px;"></div>
                             </div>
@@ -561,12 +574,9 @@
                     </div>
                 </div>
             </section>
+"""
 
+with open("signals.html", "w", encoding="utf-8") as f:
+    f.write(html_template.replace("{UNITS}", unit1 + unit2 + unit3 + unit4 + unit5_6_7 + unit8_9_10))
 
-        </main>
-    </div>
-
-    <!-- Scripts -->
-    <script src="js/signals.js"></script>
-</body>
-</html>
+print("Created signals.html successfully.")
