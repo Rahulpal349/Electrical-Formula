@@ -1,17 +1,16 @@
 {
   "name": "ee-formula-hub",
-  "version": "1.0.0",
-  "description": "Electrical Engineering Formula Reference Web App",
+  "version": "2.0.0",
+  "description": "Electrical Engineering Formula Reference Web App — 11 subjects, 500+ formulas, interactive calculators",
   "main": "index.html",
   "scripts": {
-    "dev": "npx -y http-server . -p 4000 --cors",
-    "build": "node build.js"
+    "dev": "npx -y http-server . -p 4000 --cors -c-1",
+    "build": "node build.js",
+    "clean": "node -e \"const fs=require('fs');if(fs.existsSync('dist')){fs.rmSync('dist',{recursive:true});console.log('dist/ cleaned')}\""
   },
   "author": "Rahul",
   "license": "ISC",
   "dependencies": {
-    "http-server": "^14.1.1",
-    "jsdom": "^28.1.0",
-    "puppeteer": "^24.37.5"
+    "http-server": "^14.1.1"
   }
 }

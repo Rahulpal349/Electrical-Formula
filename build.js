@@ -1,28 +1,33 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log("Building static assets into dist/ directory...");
+console.log('🔧 EE Formula Hub — Build Script\n');
 
-if (!fs.existsSync('dist')) {
-    fs.mkdirSync('dist');
+// 1. Clean dist/
+if (fs.existsSync('dist')) {
+    fs.rmSync('dist', { recursive: true });
+    console.log('🗑  Cleaned old dist/');
 }
+fs.mkdirSync('dist');
 
-// Copy HTML files
-const files = fs.readdirSync('.');
-files.forEach(file => {
-    if (file.endsWith('.html')) {
-        fs.copyFileSync(file, path.join('dist', file));
-        console.log(`Copied ${file}`);
-    }
+// 2. Copy HTML files
+const htmlFiles = fs.readdirSync('.').filter(f => f.endsWith('.html'));
+htmlFiles.forEach(file => {
+    fs.copyFileSync(file, path.join('dist', file));
 });
+console.log(`📄 Copied ${htmlFiles.length} HTML files`);
 
-// Copy directories
-const folders = ['css', 'js', 'images', 'assets'];
+// 3. Copy asset directories
+const folders = ['css', 'js', 'images'];
 folders.forEach(folder => {
     if (fs.existsSync(folder)) {
         fs.cpSync(folder, path.join('dist', folder), { recursive: true });
-        console.log(`Copied ${folder}/`);
+        const count = fs.readdirSync(path.join('dist', folder)).length;
+        console.log(`📁 Copied ${folder}/ (${count} files)`);
     }
 });
 
-console.log("Build complete! Deploy 'dist' directory via Cloudflare Pages.");
+// 4. Summary
+const totalFiles = fs.readdirSync('dist', { recursive: true }).length;
+console.log(`\n✅ Build complete! ${totalFiles} files in dist/`);
+console.log('   Deploy the dist/ directory to Cloudflare Pages.');

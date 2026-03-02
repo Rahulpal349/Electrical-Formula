@@ -81,7 +81,7 @@
 
     /* ---------- Render Hub Page ---------- */
     function renderHub(container) {
-        const catOrder = ['circuit', 'machines', 'measurements', 'power', 'control', 'electronics', 'signals', 'micro', 'estimation'];
+        const catOrder = ['circuit', 'machines', 'measurements', 'power', 'control', 'electronics', 'signals', 'micro', 'estimation', 'powerplant', 'utilization'];
 
         const section = document.createElement('section');
         section.className = 'section';
@@ -121,7 +121,9 @@
             electronics: 'Analog and digital solid-state devices — diodes, BJTs, MOSFETs, and op-amp applications.',
             signals: 'Continuous and discrete-time signals, filtering, and system transforms (Laplace, Fourier, Z-transform).',
             micro: 'Architecture, programming, and interfacing of microprocessors and microcontrollers.',
-            estimation: 'Load calculations, energy billing, tariff structures, and electrical installation design.'
+            estimation: 'Load calculations, energy billing, tariff structures, and electrical installation design.',
+            powerplant: 'Thermal, hydro, nuclear, solar, and wind power generation — Rankine cycle, turbines, and efficiency.',
+            utilization: 'Electric drives, illumination, heating & welding, traction, electrolysis, and refrigeration systems.'
         };
         return descs[cat] || '';
     }

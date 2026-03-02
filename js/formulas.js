@@ -852,5 +852,7 @@ const CATEGORIES = {
     electronics: { name: "Electronics", icon: "🔬", color: "var(--cat-electronics)" },
     signals: { name: "Signals and Systems", icon: "〰️", color: "var(--cat-signals)" },
     micro: { name: "Microprocessor & Microcontroller", icon: "💻", color: "var(--cat-micro)" },
-    estimation: { name: "Electrical Estimation & Costing", icon: "📊", color: "var(--cat-estimation)" }
+    estimation: { name: "Electrical Estimation & Costing", icon: "📊", color: "var(--cat-estimation)" },
+    powerplant: { name: "Power Plant Engineering", icon: "🔥", color: "#ef4444" },
+    utilization: { name: "Utilization of Electrical Energy", icon: "⚡", color: "#f97316" }
 };
