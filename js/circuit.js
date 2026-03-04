@@ -1623,6 +1623,231 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // ═══════ CARD 0.23: RLC Three-Panel Comparison ═══════
+    const rlcThreePanel = document.getElementById('rlc-three-panel');
+    if (rlcThreePanel && typeof d3 !== 'undefined') {
+        const m = { top: 20, right: 20, bottom: 30, left: 40 };
+        const w = rlcThreePanel.clientWidth - m.left - m.right;
+        const h = rlcThreePanel.clientHeight - m.top - m.bottom;
+        const svg3 = d3.select("#rlc-three-panel").append("svg")
+            .attr("width", w + m.left + m.right).attr("height", h + m.top + m.bottom)
+            .append("g").attr("transform", `translate(${m.left},${m.top})`);
+        const x3 = d3.scaleLinear().domain([0, 15]).range([0, w]);
+        const y3 = d3.scaleLinear().domain([-0.3, 1.5]).range([h, 0]);
+        svg3.append("g").attr("transform", `translate(0,${y3(0)})`).call(d3.axisBottom(x3).ticks(5).tickFormat(d => d + "s"));
+        svg3.append("g").call(d3.axisLeft(y3).ticks(5));
+
+        function genRLCData(zeta) {
+            let data = [], w0 = 1;
+            for (let t = 0; t <= 15; t += 0.1) {
+                let v = 0;
+                if (zeta < 1) { let wd = w0 * Math.sqrt(1 - zeta * zeta); v = 1 - Math.exp(-zeta * w0 * t) * (Math.cos(wd * t) + (zeta / Math.sqrt(1 - zeta * zeta)) * Math.sin(wd * t)); }
+                else if (zeta === 1) { v = 1 - Math.exp(-w0 * t) * (1 + w0 * t); }
+                else { let s1 = -w0 * (zeta - Math.sqrt(zeta * zeta - 1)), s2 = -w0 * (zeta + Math.sqrt(zeta * zeta - 1)); v = 1 - (s2 * Math.exp(s1 * t) - s1 * Math.exp(s2 * t)) / (s2 - s1); }
+                data.push({ t, v });
+            }
+            return data;
+        }
+        const line3 = d3.line().x(d => x3(d.t)).y(d => y3(d.v)).curve(d3.curveMonotoneX);
+        [{ z: 1.5, c: "#f97316" }, { z: 1, c: "#facc15" }, { z: 0.3, c: "#00f5ff" }].forEach(cfg => {
+            svg3.append("path").datum(genRLCData(cfg.z)).attr("fill", "none").attr("stroke", cfg.c).attr("stroke-width", 2).attr("d", line3);
+        });
+        // Steady-state line
+        svg3.append("line").attr("x1", 0).attr("x2", w).attr("y1", y3(1)).attr("y2", y3(1)).attr("stroke", "#555").attr("stroke-dasharray", "4,4");
+    }
+
+    // ═══════ CARD 0.23: RLC Classifier ═══════
+    const btnClassify = document.getElementById('btn-rlc-classify');
+    if (btnClassify) {
+        btnClassify.addEventListener('click', function () {
+            const R = parseFloat(document.getElementById('rlc-class-r').value) || 10;
+            const L = parseFloat(document.getElementById('rlc-class-l').value) || 1;
+            const C = parseFloat(document.getElementById('rlc-class-c').value) || 0.01;
+            const alpha = R / (2 * L);
+            const w0 = 1 / Math.sqrt(L * C);
+            const zeta = alpha / w0;
+            const threshold = 4 * L / (R * R);
+            let caseType, caseColor;
+            if (zeta > 1) { caseType = "OVERDAMPED"; caseColor = "#f97316"; }
+            else if (Math.abs(zeta - 1) < 0.01) { caseType = "CRITICALLY DAMPED"; caseColor = "#facc15"; }
+            else { caseType = "UNDERDAMPED"; caseColor = "#00f5ff"; }
+
+            const resultDiv = document.getElementById('rlc-class-result');
+            resultDiv.innerHTML = `
+                <p style="color:${caseColor}; font-size:1.2rem; font-weight:bold; margin:0 0 8px;">${caseType}</p>
+                <p style="margin:2px 0;">$\\alpha = ${alpha.toFixed(3)}$, $\\omega_0 = ${w0.toFixed(3)}$</p>
+                <p style="margin:2px 0;">$\\zeta = ${zeta.toFixed(4)}$</p>
+                <p style="margin:2px 0; color:var(--text-muted);">C = ${C} vs $4L/R^2$ = ${threshold.toFixed(6)}</p>
+            `;
+            if (typeof renderMathInElement === 'function') renderMathInElement(resultDiv);
+
+            // ζ gauge arrow position (0 to 100%)
+            const arrow = document.getElementById('rlc-zeta-arrow');
+            if (arrow) {
+                let pct = Math.min(zeta / 2, 1) * 100; // 0→0%, 2→100%
+                arrow.style.left = pct + '%';
+            }
+        });
+    }
+
+    // ═══════ CARD 0.24: Step Response Decomposition Chart ═══════
+    const stepDecompChart = document.getElementById('step-decomp-chart');
+    if (stepDecompChart && typeof d3 !== 'undefined') {
+        const m = { top: 15, right: 15, bottom: 25, left: 35 };
+        const w = stepDecompChart.clientWidth - m.left - m.right;
+        const h = stepDecompChart.clientHeight - m.top - m.bottom;
+        const svgD = d3.select("#step-decomp-chart").append("svg")
+            .attr("width", w + m.left + m.right).attr("height", h + m.top + m.bottom)
+            .append("g").attr("transform", `translate(${m.left},${m.top})`);
+        const xD = d3.scaleLinear().domain([0, 12]).range([0, w]);
+        const yD = d3.scaleLinear().domain([-0.3, 1.5]).range([h, 0]);
+        svgD.append("g").attr("transform", `translate(0,${h})`).call(d3.axisBottom(xD).ticks(4));
+        svgD.append("g").call(d3.axisLeft(yD).ticks(4));
+        const lineD = d3.line().x(d => xD(d.t)).y(d => yD(d.v)).curve(d3.curveMonotoneX);
+
+        // Forced (DC steady-state) = horizontal line at 1
+        let forced = []; for (let t = 0; t <= 12; t += 0.2) forced.push({ t, v: 1 });
+        svgD.append("path").datum(forced).attr("fill", "none").attr("stroke", "#00ff88").attr("stroke-width", 1.5).attr("stroke-dasharray", "5,3").attr("d", lineD);
+
+        // Natural (transient, decays to 0)
+        let natural = []; let zeta2 = 0.3, w02 = 1, wd2 = w02 * Math.sqrt(1 - zeta2 * zeta2);
+        for (let t = 0; t <= 12; t += 0.1) {
+            let v = -Math.exp(-zeta2 * w02 * t) * (Math.cos(wd2 * t) + (zeta2 / Math.sqrt(1 - zeta2 * zeta2)) * Math.sin(wd2 * t));
+            natural.push({ t, v });
+        }
+        svgD.append("path").datum(natural).attr("fill", "none").attr("stroke", "#fb7185").attr("stroke-width", 1.5).attr("stroke-dasharray", "3,3").attr("d", lineD);
+
+        // Complete = Forced + Natural
+        let complete = []; for (let t = 0; t <= 12; t += 0.1) {
+            let vn = -Math.exp(-zeta2 * w02 * t) * (Math.cos(wd2 * t) + (zeta2 / Math.sqrt(1 - zeta2 * zeta2)) * Math.sin(wd2 * t));
+            complete.push({ t, v: 1 + vn });
+        }
+        svgD.append("path").datum(complete).attr("fill", "none").attr("stroke", "var(--electric-yellow)").attr("stroke-width", 2.5).attr("d", lineD);
+
+        // Legend
+        [{ y: 10, c: "#00ff88", t: "Forced" }, { y: 25, c: "#fb7185", t: "Natural" }, { y: 40, c: "#facc15", t: "Complete" }].forEach(l => {
+            svgD.append("line").attr("x1", w - 80).attr("x2", w - 60).attr("y1", l.y).attr("y2", l.y).attr("stroke", l.c).attr("stroke-width", 2);
+            svgD.append("text").attr("x", w - 55).attr("y", l.y + 4).attr("fill", l.c).attr("font-size", "10px").text(l.t);
+        });
+    }
+
+    // ═══════ CARD 0.26: KCL Interactive Solver ═══════
+    const kclI1 = document.getElementById('kcl-i1');
+    const kclI2 = document.getElementById('kcl-i2');
+    const kclI3 = document.getElementById('kcl-i3');
+    if (kclI1 && kclI2 && kclI3) {
+        function updateKCL() {
+            const i1 = parseFloat(kclI1.value);
+            const i2 = parseFloat(kclI2.value);
+            const i3 = parseFloat(kclI3.value);
+            const i4 = i1 - i2 - i3;
+            document.getElementById('kcl-i1-val').textContent = i1.toFixed(1) + ' A';
+            document.getElementById('kcl-i2-val').textContent = i2.toFixed(1) + ' A';
+            document.getElementById('kcl-i3-val').textContent = i3.toFixed(1) + ' A';
+            document.getElementById('kcl-i4-val').textContent = i4.toFixed(1);
+            // SVG labels
+            const l1 = document.getElementById('kcl-label-i1'); if (l1) l1.textContent = 'I₁=' + i1.toFixed(1);
+            const l2 = document.getElementById('kcl-label-i2'); if (l2) l2.textContent = 'I₂=' + i2.toFixed(1);
+            const l3 = document.getElementById('kcl-label-i3'); if (l3) l3.textContent = 'I₃=' + i3.toFixed(1);
+            const l4 = document.getElementById('kcl-label-i4'); if (l4) l4.textContent = 'I₄=' + i4.toFixed(1);
+            const eq = document.getElementById('kcl-equation-svg'); if (eq) eq.textContent = `${i1.toFixed(1)} = ${i2.toFixed(1)} + ${i3.toFixed(1)} + ${i4.toFixed(1)}`;
+            const meter = document.getElementById('kcl-balance-meter');
+            if (meter) { meter.style.background = 'rgba(0,255,100,0.08)'; meter.style.color = '#00ff64'; meter.textContent = '✓ BALANCED — ΣI = 0'; }
+        }
+        kclI1.addEventListener('input', updateKCL);
+        kclI2.addEventListener('input', updateKCL);
+        kclI3.addEventListener('input', updateKCL);
+        updateKCL();
+    }
+
+    // ═══════ CARD 0.27: KVL Interactive Solver ═══════
+    const kvlV1 = document.getElementById('kvl-v1');
+    const kvlR1 = document.getElementById('kvl-r1');
+    const kvlR2 = document.getElementById('kvl-r2');
+    const kvlR3 = document.getElementById('kvl-r3');
+    if (kvlV1 && kvlR1 && kvlR2 && kvlR3) {
+        function updateKVL() {
+            const v1 = parseFloat(kvlV1.value);
+            const r1 = parseFloat(kvlR1.value);
+            const r2 = parseFloat(kvlR2.value);
+            const r3 = parseFloat(kvlR3.value);
+            const rTotal = r1 + r2 + r3;
+            const I = v1 / rTotal;
+            const vr1 = I * r1, vr2 = I * r2, vr3 = I * r3;
+            document.getElementById('kvl-v1-val').textContent = v1.toFixed(1) + ' V';
+            document.getElementById('kvl-r1-val').textContent = r1 + ' Ω';
+            document.getElementById('kvl-r2-val').textContent = r2 + ' Ω';
+            document.getElementById('kvl-r3-val').textContent = r3 + ' Ω';
+            document.getElementById('kvl-current').textContent = I.toFixed(2);
+            document.getElementById('kvl-vr1').textContent = vr1.toFixed(1);
+            document.getElementById('kvl-vr2').textContent = vr2.toFixed(1);
+            document.getElementById('kvl-vr3').textContent = vr3.toFixed(1);
+            const sum = (-v1 + vr1 + vr2 + vr3).toFixed(2);
+            document.getElementById('kvl-sum').textContent = `✓ −V₁ + VR₁ + VR₂ + VR₃ = ${sum} V`;
+        }
+        kvlV1.addEventListener('input', updateKVL);
+        kvlR1.addEventListener('input', updateKVL);
+        kvlR2.addEventListener('input', updateKVL);
+        kvlR3.addEventListener('input', updateKVL);
+        updateKVL();
+    }
+
+    // ═══════ CARD 0.28: Source V-I Chart & MPT ═══════
+    const srcRSlider = document.getElementById('src-r-slider');
+    const srcViChart = document.getElementById('src-vi-chart');
+    if (srcRSlider && srcViChart && typeof d3 !== 'undefined') {
+        const Vs = 12;
+        const m = { top: 15, right: 15, bottom: 30, left: 40 };
+        const w = srcViChart.clientWidth - m.left - m.right;
+        const h = srcViChart.clientHeight - m.top - m.bottom;
+        const svgS = d3.select("#src-vi-chart").append("svg")
+            .attr("width", w + m.left + m.right).attr("height", h + m.top + m.bottom)
+            .append("g").attr("transform", `translate(${m.left},${m.top})`);
+        const xS = d3.scaleLinear().domain([0, 15]).range([0, w]);
+        const yS = d3.scaleLinear().domain([0, 20]).range([h, 0]);
+        svgS.append("g").attr("transform", `translate(0,${h})`).call(d3.axisBottom(xS).ticks(5).tickFormat(d => d + 'A'));
+        svgS.append("g").call(d3.axisLeft(yS).ticks(5));
+        const lineS = d3.line().x(d => xS(d.i)).y(d => yS(d.v)).curve(d3.curveMonotoneX);
+
+        // V-I characteristic line
+        const viPath = svgS.append("path").attr("fill", "none").attr("stroke", "#fb7185").attr("stroke-width", 2);
+        // Power curve
+        const pPath = svgS.append("path").attr("fill", "none").attr("stroke", "var(--electric-yellow)").attr("stroke-width", 2);
+        // MPT dot
+        const mptDot = svgS.append("circle").attr("r", 5).attr("fill", "red");
+
+        function drawSourceChart() {
+            const r = parseFloat(srcRSlider.value) || 2;
+            document.getElementById('src-r-val').textContent = r.toFixed(1) + ' Ω';
+            const isc = r > 0 ? Vs / r : 999;
+            document.getElementById('src-voc').textContent = Vs.toFixed(1);
+            document.getElementById('src-isc').textContent = isc.toFixed(1);
+            const pmax = r > 0 ? (Vs * Vs) / (4 * r) : 0;
+            document.getElementById('src-pmax').textContent = pmax.toFixed(1);
+
+            // V-I data
+            let viData = [];
+            for (let i = 0; i <= isc && i <= 15; i += 0.2) { viData.push({ i, v: Vs - i * r }); }
+            viPath.datum(viData).attr("d", lineS);
+
+            // P_L vs I: P_L = I^2 * R_L, R_L = (Vs - I*r)/I = Vs/I - r
+            let pData = [];
+            for (let rl = 0.1; rl <= 30; rl += 0.3) {
+                let il = Vs / (rl + r);
+                let pl = il * il * rl;
+                if (il <= 15 && pl <= 20) pData.push({ i: il, v: pl });
+            }
+            pData.sort((a, b) => a.i - b.i);
+            pPath.datum(pData).attr("d", lineS);
+
+            // MPT dot at RL = r
+            let iMpt = Vs / (2 * r);
+            mptDot.attr("cx", xS(iMpt)).attr("cy", yS(pmax));
+        }
+        srcRSlider.addEventListener('input', drawSourceChart);
+        drawSourceChart();
+    }
+
     // 19. Initialize Phasor Canvas Animation
     initPhasorCanvas();
 
