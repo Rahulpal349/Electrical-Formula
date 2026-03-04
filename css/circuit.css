@@ -1527,3 +1527,28 @@
         transform: translateY(-5px);
     }
 }
+
+/* --- Capacitor Key Points Animations (Card 0.15) --- */
+.e-field-lines {
+    animation: flowLines 1.5s linear infinite;
+}
+
+@keyframes flowLines {
+    0% {
+        stroke-dashoffset: 8;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.polarity-arrow-c {
+    stroke-dasharray: 4, 4;
+    animation: flowLines 1s linear infinite reverse;
+}
+
+.polarity-arrow-d {
+    stroke-dasharray: 4, 4;
+    animation: flowLines 1s linear infinite;
+}

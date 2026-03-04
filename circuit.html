@@ -1305,49 +1305,51 @@
                             </div>
                         </div>
 
-                        <div class="row mt-3">
-                            <div class="col-md-5 text-center">
+                        <div
+                            style="display: flex; flex-direction: row; gap: 20px; align-items: flex-start; margin-top: 15px; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 250px; text-align: center;">
                                 <!-- Interactive Circuit SVG -->
-                                <svg viewBox="0 0 150 85" width="100%" height="100%">
+                                <svg viewBox="0 0 150 120" width="100%"
+                                    style="max-height: 180px; max-width: 250px; margin: 0 auto; display: block;">
                                     <!-- Source -->
-                                    <circle cx="20" cy="45" r="10" fill="none" stroke="var(--text-primary)"
+                                    <circle cx="20" cy="60" r="12" fill="none" stroke="var(--text-primary)"
                                         stroke-width="2" />
-                                    <text x="20" y="48" font-size="9" fill="var(--text-primary)"
+                                    <text x="20" y="64" font-size="10" fill="var(--text-primary)"
                                         text-anchor="middle">Vs</text>
 
                                     <!-- Switch -->
-                                    <path d="M 20 35 v -20 h 25" stroke="var(--text-primary)" stroke-width="2" />
-                                    <circle cx="45" cy="15" r="2" fill="var(--neon-cyan)" />
+                                    <path d="M 20 48 v -28 h 25" stroke="var(--text-primary)" stroke-width="2" />
+                                    <circle cx="45" cy="20" r="2" fill="var(--neon-cyan)" />
                                     <!-- Switch Blade (animated via JS) -->
-                                    <line id="rc-switch-blade" x1="45" y1="15" x2="65" y2="15"
+                                    <line id="rc-switch-blade" x1="45" y1="20" x2="65" y2="20"
                                         stroke="var(--electric-yellow)" stroke-width="2"
-                                        style="transform-origin: 45px 15px; transition: transform 0.3s;" />
+                                        style="transform-origin: 45px 20px; transition: transform 0.3s;" />
 
-                                    <circle cx="67" cy="15" r="2" fill="var(--neon-cyan)" />
-                                    <text x="55" y="8" font-size="8" fill="var(--text-muted)">t=0</text>
+                                    <circle cx="67" cy="20" r="2" fill="var(--neon-cyan)" />
+                                    <text x="55" y="10" font-size="8" fill="var(--text-muted)">t=0</text>
 
                                     <!-- Resistor -->
                                     <path
-                                        d="M 67 15 h 15 L 85 10 L 90 20 L 95 10 L 100 20 L 105 10 L 110 20 L 115 15 M 115 15 h 15"
+                                        d="M 67 20 h 15 L 85 15 L 90 25 L 95 15 L 100 25 L 105 15 L 110 25 L 115 20 M 115 20 h 15"
                                         stroke="var(--neon-purple)" stroke-width="2" fill="none" />
-                                    <text x="100" y="8" font-size="9" fill="var(--neon-purple)"
+                                    <text x="100" y="10" font-size="10" fill="var(--neon-purple)"
                                         text-anchor="middle">R</text>
 
                                     <!-- Capacitor -->
                                     <path
-                                        d="M 130 15 v 18 M 120 33 h 20 M 120 38 h 20 M 130 38 v 32 M 130 70 h -110 M 20 55 v 15"
+                                        d="M 130 20 v 30 M 120 50 h 20 M 120 55 h 20 M 130 55 v 45 M 130 100 h -110 M 20 72 v 28"
                                         stroke="var(--neon-cyan)" stroke-width="2" />
-                                    <text x="142" y="38" font-size="9" fill="var(--neon-cyan)"
+                                    <text x="145" y="55" font-size="10" fill="var(--neon-cyan)"
                                         text-anchor="middle">C</text>
 
                                     <!-- Discharge Loop Line -->
-                                    <path d="M 45 35 h 22 v -20" stroke="var(--text-secondary)"
+                                    <path d="M 45 40 h 22 v -20" stroke="var(--text-secondary)"
                                         stroke-dasharray="2,2" />
-                                    <circle cx="45" cy="35" r="2" fill="var(--text-secondary)" />
-                                    <path d="M 45 35 v 35" stroke="var(--text-secondary)" stroke-width="2" />
+                                    <circle cx="45" cy="40" r="2" fill="var(--text-secondary)" />
+                                    <path d="M 45 40 v 60" stroke="var(--text-secondary)" stroke-width="2" />
                                 </svg>
 
-                                <div class="mt-2 text-start px-3">
+                                <div class="mt-2" style="text-align: left; padding: 0 15px;">
                                     <label class="text-sm">Time Constant ($\tau = RC$)</label>
                                     <input type="range" id="rc-tau-slider" min="1" max="10" value="3"
                                         class="neon-slider">
@@ -1355,7 +1357,7 @@
                                             id="rc-tau-val" style="color:#fff;">3.0</span> s</div>
                                 </div>
                             </div>
-                            <div class="col-md-7">
+                            <div style="flex: 2; min-width: 300px;">
                                 <!-- D3 Graph Container -->
                                 <div id="rc-chart-container"
                                     style="width:100%; height:180px; background:rgba(0,0,0,0.3); border-radius:8px; position:relative;">
@@ -1368,314 +1370,1112 @@
                 </div>
             </div>
 
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">1. Definitions & Classifications</h3>
+            <!-- CARD 0.15: Capacitor Key Points -->
+            <div class="subsection mt-5" id="cap-behavior-points" data-aos="fade-up">
+                <h4 class="subsection__title" style="color: var(--neon-cyan); border-left-color: var(--neon-cyan);">0.15
+                    Important Points: Capacitor Behaviour</h4>
 
-                <div class="flip-card-grid">
-                    <!-- Network vs Circuit -->
-                    <div class="flip-card" data-aos="flip-left" data-aos-delay="100">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front card-panel">
-                                <h4>Network vs. Circuit</h4>
-                                <svg viewBox="0 0 100 50" class="neon-svg">
-                                    <rect x="10" y="10" width="30" height="30" fill="none" stroke="var(--neon-cyan)"
-                                        stroke-width="2" />
-                                    <circle cx="70" cy="25" r="15" fill="none" stroke="var(--electric-yellow)"
-                                        stroke-width="2" />
-                                    <path d="M40,25 L55,25" stroke="var(--text-secondary)" stroke-width="2"
-                                        stroke-dasharray="4,4" />
-                                </svg>
-                                <p class="flip-hint">Hover to compare</p>
-                            </div>
-                            <div class="flip-card-back card-panel">
-                                <p><strong>Network:</strong> Any interconnection of electrical elements (may or may
-                                    not
-                                    be closed).</p>
-                                <p><strong>Circuit:</strong> A network containing at least one closed path for
-                                    current
-                                    to flow.</p>
-                            </div>
+                <div class="card-grid-2 mt-4">
+                    <!-- Point (a) -->
+                    <div class="card-panel" data-aos="fade-up">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="info-badge"
+                                style="background: rgba(0,240,255,0.1); color: var(--neon-cyan); padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(a)
+                                Voltage Opposition</span>
+                            <h5 style="margin:0; font-size:1rem;">Capacitor OPPOSES change of voltage</h5>
                         </div>
-                    </div>
-
-                    <!-- Active vs Passive -->
-                    <div class="flip-card" data-aos="flip-left" data-aos-delay="200">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front card-panel">
-                                <h4>Active vs. Passive</h4>
-                                <div class="icon-split">
-                                    <span style="color:var(--electric-yellow)">⚡</span> vs <span
-                                        style="color:var(--text-muted)">▱</span>
-                                </div>
-                                <p class="flip-hint">Hover to reveal</p>
-                            </div>
-                            <div class="flip-card-back card-panel">
-                                <p><strong>Active:</strong> Can deliver power indefinitely (Battery, Generator,
-                                    Op-Amp).
-                                </p>
-                                <p><strong>Passive:</strong> Only consumes or stores energy (R, L, C).</p>
-                            </div>
+                        <div class="text-center mb-3" style="font-size: 0.9rem;">
+                            $$ V_C(0^+) = V_C(0^-) $$
+                            <small class="text-muted">(voltage cannot jump instantaneously)</small>
                         </div>
-                    </div>
-
-                    <!-- Linear vs Non-Linear -->
-                    <div class="flip-card" data-aos="flip-left" data-aos-delay="300">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front card-panel">
-                                <h4>Linear vs. Non-Linear</h4>
-                                <svg viewBox="0 0 100 50" class="neon-svg">
-                                    <line x1="20" y1="40" x2="80" y2="10" stroke="var(--neon-cyan)" stroke-width="2" />
-                                    <path d="M20,40 Q50,40 80,10" fill="none" stroke="var(--electric-yellow)"
-                                        stroke-width="2" stroke-dasharray="4,4" />
-                                </svg>
-                                <p class="flip-hint">Hover to reveal</p>
-                            </div>
-                            <div class="flip-card-back card-panel">
-                                <p><strong>Linear:</strong> Follows Ohm's Law strictly; V-I characteristic is a
-                                    straight
-                                    line through origin (Resistor).</p>
-                                <p><strong>Non-Linear:</strong> V-I relationship changes (Diode, Transistor).</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SUB-SECTION: Parameters -->
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">2. Fundamental Parameters</h3>
-                <div class="parameter-grid">
-
-                    <!-- Resistance -->
-                    <div class="param-card card-panel" data-aos="fade-up" data-aos-delay="100">
-                        <div class="param-header">
-                            <h4>Resistance (R)</h4>
-                            <span class="unit">Ω (Ohms)</span>
-                        </div>
-                        <div class="param-formula">
-                            <div class="formula">$$ R = \rho \frac{L}{A} $$</div>
-                        </div>
-                        <div class="param-animation">
-                            <!-- Gradient bar animation -->
-                            <div class="resistor-bar-anim">
-                                <div class="current-particles"></div>
-                                <div class="restriction-zone"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Inductance -->
-                    <div class="param-card card-panel" data-aos="fade-up" data-aos-delay="200">
-                        <div class="param-header">
-                            <h4>Inductance (L)</h4>
-                            <span class="unit">H (Henrys)</span>
-                        </div>
-                        <div class="param-formula">
-                            <div class="formula">$$ V = L \frac{di}{dt} $$</div>
-                            <div class="formula">$$ W = \frac{1}{2}LI^2 $$</div>
-                        </div>
-                        <div class="inductor-visuals">
-                            <!-- Synced Animation -->
-                            <div class="inductor-anim-container">
-                                <svg class="inductor-anim" viewBox="0 0 200 100">
-                                    <!-- Current Wave (Sine) -->
-                                    <path class="current-wave"
-                                        d="M -50,50 Q -25,0 0,50 T 50,50 T 100,50 T 150,50 T 200,50 T 250,50"
-                                        fill="none" stroke="var(--electric-yellow)" stroke-width="2" />
-                                    <!-- Coil -->
-                                    <path class="coil"
-                                        d="M 40,75 C 20,25 80,25 60,75 C 40,25 100,25 80,75 C 60,25 120,25 100,75 C 80,25 140,25 120,75 C 100,25 160,25 140,75"
-                                        fill="none" stroke="var(--neon-cyan)" stroke-width="4" />
-                                    <!-- Pulsing Magnetic Fields -->
-                                    <ellipse class="mag-field" cx="60" cy="50" rx="30" ry="40" fill="none"
-                                        stroke="rgba(0, 245, 255, 0.8)" stroke-width="1" />
-                                    <ellipse class="mag-field" cx="100" cy="50" rx="30" ry="40" fill="none"
-                                        stroke="rgba(0, 245, 255, 0.8)" stroke-width="1" />
-                                    <ellipse class="mag-field" cx="140" cy="50" rx="30" ry="40" fill="none"
-                                        stroke="rgba(0, 245, 255, 0.8)" stroke-width="1" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Capacitance -->
-                    <div class="param-card card-panel" data-aos="fade-up" data-aos-delay="300">
-                        <div class="param-header">
-                            <h4>Capacitance (C)</h4>
-                            <span class="unit">F (Farads)</span>
-                        </div>
-                        <div class="param-formula">
-                            <div class="formula">$$ I = C \frac{dv}{dt} $$</div>
-                            <div class="formula">$$ W = \frac{1}{2}CV^2 $$</div>
-                        </div>
-                        <div class="param-animation">
-                            <!-- Charge/Discharge plates -->
-                            <div class="capacitor-anim">
-                                <div class="plate top-plate">
-                                    <span class="charge charge-pos">+</span><span
-                                        class="charge charge-pos">+</span><span class="charge charge-pos">+</span>
-                                </div>
-                                <div class="dielectric"></div>
-                                <div class="plate bottom-plate">
-                                    <span class="charge charge-neg">-</span><span
-                                        class="charge charge-neg">-</span><span class="charge charge-neg">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- SUB-SECTION: Sources -->
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">3. Energy Sources</h3>
-                <div class="sources-container">
-                    <div class="source-types card-panel" data-aos="fade-right">
-                        <h4>Ideal Sources</h4>
-                        <div class="source-item">
-                            <svg viewBox="0 0 40 40" class="src-icon-svg voltage-src">
-                                <circle cx="20" cy="20" r="15" fill="none" stroke="var(--neon-cyan)" stroke-width="2" />
-                                <text x="20" y="16" text-anchor="middle" fill="var(--neon-cyan)" font-size="12">+</text>
-                                <text x="20" y="30" text-anchor="middle" fill="var(--neon-cyan)" font-size="12">-</text>
-                            </svg>
-                            <span>Independent Voltage<br><small>V = constant</small></span>
-                        </div>
-                        <div class="source-item">
-                            <svg viewBox="0 0 40 40" class="src-icon-svg current-src">
-                                <defs>
-                                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6"
-                                        markerHeight="6" orient="auto-start-reverse">
-                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--electric-yellow)" />
-                                    </marker>
-                                </defs>
-                                <circle cx="20" cy="20" r="15" fill="none" stroke="var(--electric-yellow)"
-                                    stroke-width="2" />
-                                <line x1="20" y1="28" x2="20" y2="12" stroke="var(--electric-yellow)" stroke-width="2"
-                                    marker-end="url(#arrow)" />
-                            </svg>
-                            <span>Independent Current<br><small>I = constant</small></span>
-                        </div>
-                        <div class="source-item">
-                            <svg viewBox="0 0 40 40" class="src-icon-svg dependent-src">
-                                <polygon points="20,5 35,20 20,35 5,20" fill="none" stroke="#ff5252" stroke-width="2" />
-                                <text x="20" y="24" text-anchor="middle" fill="#ff5252" font-size="14">kV</text>
-                            </svg>
-                            <span>Dependent (VCVS, etc.)<br><small>V/I depends on network</small></span>
-                        </div>
-                    </div>
-
-                    <div class="source-transform card-panel" data-aos="fade-left">
-                        <h4>Source Transformation</h4>
-                        <p class="text-sm">Any practical voltage source in series with a resistor can be transformed
-                            into a current source in parallel with that same resistor, and vice versa.</p>
-                        <div class="transform-formula">
-                            <div class="formula">$$ V_s = I_s \times R \quad \leftrightarrow \quad I_s =
-                                \frac{V_s}{R}
-                                $$</div>
-                        </div>
-                        <div class="transform-anim-container" id="transform-anim">
-                            <!-- GSAP will animate this morphing -->
-                            <div class="tr-vs">
-                                <svg viewBox="0 0 60 60">
-                                    <circle cx="30" cy="30" r="20" fill="none" stroke="var(--neon-cyan)"
-                                        stroke-width="2" /><text x="30" y="25" fill="var(--neon-cyan)"
-                                        text-anchor="middle" font-size="14">+</text><text x="30" y="44"
-                                        fill="var(--neon-cyan)" text-anchor="middle" font-size="14">-</text>
-                                </svg>
-                                <span>Series R</span>
-                            </div>
-                            <div class="tr-arrow">⇄</div>
-                            <div class="tr-is">
-                                <svg viewBox="0 0 60 60">
-                                    <circle cx="30" cy="30" r="20" fill="none" stroke="var(--electric-yellow)"
-                                        stroke-width="2" />
-                                    <line x1="30" y1="40" x2="30" y2="20" stroke="var(--electric-yellow)"
-                                        stroke-width="2" />
-                                    <polygon points="25,25 35,25 30,15" fill="var(--electric-yellow)" />
-                                </svg>
-                                <span>Parallel R</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SUB-SECTION: Network Topology -->
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">4. Network Topology & Graph Theory</h3>
-                <div class="topology-container card-panel">
-                    <div class="topology-text">
-                        <ul class="topo-list">
-                            <li data-target="topo-nodes" class="topo-hover"><span class="topo-dot"></span>
-                                <strong>Nodes
-                                    (n):</strong> Meeting point of 2 or more elements.
-                            </li>
-                            <li data-target="topo-branches" class="topo-hover"><span class="topo-line"></span>
-                                <strong>Branches (b):</strong> Single element representing a path between two nodes.
-                            </li>
-                            <li data-target="topo-loops" class="topo-hover"><span class="topo-dash"></span>
-                                <strong>Loops (l):</strong> Any closed path in a circuit.
-                            </li>
-                            <li data-target="topo-meshes" class="topo-hover"><span class="topo-fill"></span>
-                                <strong>Meshes:</strong> A loop that contains no other loops inside it.
-                            </li>
-                        </ul>
-                        <div class="topo-formulas mt-4">
-                            <p><strong>Fundamental Theorem of Network Topology:</strong></p>
-                            <div class="formula">$$ b = l + n - 1 $$</div>
-                            <div class="formula">$$ \text{No. of KVL mesh equations} = b - n + 1 $$</div>
-                        </div>
-                    </div>
-                    <!-- Interactive SVG Graph -->
-                    <div class="topology-diagram">
-                        <svg viewBox="0 0 200 150" class="topo-svg" id="topo-svg">
-                            <defs>
-                                <pattern id="mesh-pattern" width="10" height="10" patternUnits="userSpaceOnUse">
-                                    <path d="M 0,10 L 10,0 M -1,1 L 1,-1 M 9,11 L 11,9" stroke="rgba(0, 245, 255, 0.2)"
-                                        stroke-width="1" />
-                                </pattern>
-                            </defs>
-                            <!-- Meshes -->
-                            <rect x="20" y="20" width="80" height="110" fill="url(#mesh-pattern)" stroke="none"
-                                class="t-elem topo-meshes" />
-                            <rect x="100" y="20" width="80" height="110" fill="url(#mesh-pattern)" stroke="none"
-                                class="t-elem topo-meshes" />
-                            <!-- Loops -->
-                            <path d="M 15,15 L 185,15 L 185,135 L 15,135 Z" fill="none" stroke="var(--electric-yellow)"
-                                stroke-width="2" stroke-dasharray="2,2" class="t-elem topo-loops" opacity="0" />
-                            <!-- Branches (lines with components) -->
-                            <line x1="20" y1="20" x2="100" y2="20" stroke="var(--text-secondary)" stroke-width="2"
-                                class="t-elem topo-branches" />
-                            <line x1="100" y1="20" x2="180" y2="20" stroke="var(--text-secondary)" stroke-width="2"
-                                class="t-elem topo-branches" />
-                            <line x1="20" y1="20" x2="20" y2="130" stroke="var(--text-secondary)" stroke-width="2"
-                                class="t-elem topo-branches" />
-                            <line x1="100" y1="20" x2="100" y2="130" stroke="var(--text-secondary)" stroke-width="2"
-                                class="t-elem topo-branches" />
-                            <line x1="180" y1="20" x2="180" y2="130" stroke="var(--text-secondary)" stroke-width="2"
-                                class="t-elem topo-branches" />
-                            <line x1="20" y1="130" x2="100" y2="130" stroke="var(--text-secondary)" stroke-width="2"
-                                class="t-elem topo-branches" />
-                            <line x1="100" y1="130" x2="180" y2="130" stroke="var(--text-secondary)" stroke-width="2"
-                                class="t-elem topo-branches" />
-                            <!-- Resistor zigzag representations -->
-                            <path d="M40,20 L45,15 L55,25 L65,15 L75,25 L80,20" fill="none"
-                                stroke="var(--text-secondary)" stroke-width="2" class="t-elem topo-branches" />
-                            <path d="M120,20 L125,15 L135,25 L145,15 L155,25 L160,20" fill="none"
-                                stroke="var(--text-secondary)" stroke-width="2" class="t-elem topo-branches" />
-                            <!-- Nodes -->
-                            <circle cx="20" cy="20" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
-                            <circle cx="100" cy="20" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
-                            <circle cx="180" cy="20" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
-                            <circle cx="20" cy="130" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
-                            <circle cx="100" cy="130" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
-                            <circle cx="180" cy="130" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                        <svg viewBox="0 0 200 80" width="100%" height="80">
+                            <!-- Axes -->
+                            <path d="M 20 70 L 180 70 M 20 70 L 20 10" stroke="#444" stroke-width="1" />
+                            <!-- Step Input (dashed) -->
+                            <path d="M 20 70 L 60 70 L 60 20 L 160 20" stroke="var(--text-muted)" stroke-width="1"
+                                stroke-dasharray="4,4" />
+                            <text x="165" y="20" fill="var(--text-muted)" font-size="8">Step Input</text>
+                            <!-- Capacitor Voltage (smooth) -->
+                            <path d="M 20 70 L 60 70 Q 100 70 160 20" stroke="var(--neon-cyan)" stroke-width="2"
+                                fill="none" />
+                            <text x="165" y="30" fill="var(--neon-cyan)" font-size="8">V_c(t)</text>
                         </svg>
-                        <p class="text-center text-sm flip-hint mt-2">Hover over terms to highlight diagram</p>
+                    </div>
+
+                    <!-- Point (b) -->
+                    <div class="card-panel" data-aos="fade-up" data-aos-delay="100">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="info-badge"
+                                style="background: rgba(188,19,254,0.1); color: var(--neon-purple); padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(b)
+                                Energy Storage</span>
+                            <h5 style="margin:0; font-size:1rem;">Stores energy in ELECTRIC FIELD</h5>
+                        </div>
+                        <div class="text-center mb-3" style="font-size: 0.9rem;">
+                            $$ E = \frac{1}{2}CV^2 = \frac{Q^2}{2C} = \frac{1}{2}QV \text{ J} $$
+                        </div>
+                        <svg viewBox="0 0 200 80" width="100%" height="80">
+                            <!-- Capacitor Plates -->
+                            <rect x="70" y="10" width="10" height="60" fill="var(--electric-yellow)" />
+                            <rect x="120" y="10" width="10" height="60" fill="var(--readonly-bg)" />
+                            <!-- Electric Field Lines (animated via CSS/JS later) -->
+                            <g stroke="var(--neon-cyan)" stroke-width="1.5" stroke-dasharray="4,4"
+                                class="e-field-lines">
+                                <line x1="85" y1="20" x2="115" y2="20" />
+                                <line x1="85" y1="40" x2="115" y2="40" />
+                                <line x1="85" y1="60" x2="115" y2="60" />
+                            </g>
+                            <rect x="80" y="35" width="40" height="10" fill="rgba(0,240,255,0.3)" />
+                            <text x="100" y="43" fill="#fff" font-size="8" text-anchor="middle">Energy</text>
+                        </svg>
+                    </div>
+
+                    <!-- Point (c) -->
+                    <div class="card-panel" data-aos="fade-up">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="info-badge"
+                                style="background: rgba(0,255,100,0.1); color: #00ff64; padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(c)
+                                Charging</span>
+                            <h5 style="margin:0; font-size:1rem;">$I_C(t)$ must be POSITIVE</h5>
+                        </div>
+                        <div class="text-center mb-2" style="font-size: 0.85rem;">
+                            $$ I_C(t) = C\frac{dV_C}{dt} \Rightarrow \frac{dV_C}{dt} > 0 \Rightarrow I_C > 0 $$
+                        </div>
+                        <svg viewBox="0 0 200 80" width="100%" height="80">
+                            <path d="M 20 60 L 180 60 M 20 80 L 20 10" stroke="#444" stroke-width="1" />
+                            <!-- Vc rising -->
+                            <path d="M 20 60 Q 60 60 160 20" stroke="var(--neon-cyan)" stroke-width="2" fill="none" />
+                            <text x="165" y="20" font-size="8" fill="var(--neon-cyan)">V_c \uparrow</text>
+                            <!-- Ic positive -->
+                            <path d="M 20 20 Q 50 10 160 55" stroke="var(--electric-yellow)" stroke-width="2"
+                                stroke-dasharray="2,2" fill="none" />
+                            <text x="165" y="55" font-size="8" fill="var(--electric-yellow)">+I_c</text>
+                        </svg>
+                    </div>
+
+                    <!-- Point (d) -->
+                    <div class="card-panel" data-aos="fade-up" data-aos-delay="100">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="info-badge"
+                                style="background: rgba(255,50,50,0.1); color: #ff3232; padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(d)
+                                Discharging</span>
+                            <h5 style="margin:0; font-size:1rem;">$I_C(t)$ must be NEGATIVE</h5>
+                        </div>
+                        <div class="text-center mb-2" style="font-size: 0.85rem;">
+                            $$ I_C(t) = C\frac{dV_C}{dt} \Rightarrow \frac{dV_C}{dt} < 0 \Rightarrow I_C < 0 $$ </div>
+                                <svg viewBox="0 0 200 80" width="100%" height="80">
+                                    <!-- Shift axis up for negative -->
+                                    <path d="M 20 40 L 180 40 M 20 80 L 20 10" stroke="#444" stroke-width="1" />
+                                    <!-- Vc falling -->
+                                    <path d="M 20 10 Q 60 40 160 40" stroke="var(--neon-purple)" stroke-width="2"
+                                        fill="none" />
+                                    <text x="165" y="38" font-size="8" fill="var(--neon-purple)">V_c \downarrow</text>
+                                    <!-- Ic negative -->
+                                    <path d="M 20 70 Q 50 75 160 45" stroke="var(--electric-yellow)" stroke-width="2"
+                                        stroke-dasharray="2,2" fill="none" />
+                                    <text x="165" y="48" font-size="8" fill="var(--electric-yellow)">-I_c</text>
+                                </svg>
+                        </div>
+
+                        <!-- Point (e) -->
+                        <div class="card-panel" data-aos="fade-up">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="info-badge"
+                                    style="background: rgba(255,255,255,0.1); color: #fff; padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(e)
+                                    Fixed Polarity</span>
+                                <h5 style="margin:0; font-size:1rem;">DC voltages NEVER change polarity</h5>
+                            </div>
+                            <div class="text-center mb-3" style="font-size: 0.85rem;">
+                                <span class="text-muted">While capacitor charges/discharges</span>
+                            </div>
+                            <svg viewBox="0 0 200 80" width="100%" height="80">
+                                <rect x="70" y="20" width="60" height="40" rx="4" fill="none" stroke="var(--neon-cyan)"
+                                    stroke-width="2" />
+                                <text x="100" y="45" fill="var(--neon-cyan)" font-size="14"
+                                    text-anchor="middle">C</text>
+                                <circle cx="60" cy="40" r="10" fill="var(--neon-pink)" />
+                                <text x="60" y="44" fill="#fff" font-size="12" text-anchor="middle">+</text>
+                                <circle cx="140" cy="40" r="10" fill="var(--neon-purple)" />
+                                <text x="140" y="44" fill="#fff" font-size="12" text-anchor="middle">-</text>
+
+                                <!-- Animated arrows -->
+                                <path d="M 40 20 Q 100 0 160 20" stroke="var(--electric-yellow)" stroke-width="1.5"
+                                    fill="none" class="polarity-arrow-c" />
+                                <text x="100" y="10" fill="var(--electric-yellow)" font-size="7"
+                                    text-anchor="middle">Charge</text>
+                                <path d="M 160 60 Q 100 80 40 60" stroke="#00ff64" stroke-width="1.5" fill="none"
+                                    class="polarity-arrow-d" />
+                                <text x="100" y="75" fill="#00ff64" font-size="7" text-anchor="middle">Discharge</text>
+                            </svg>
+                        </div>
+
+                        <!-- Point (f) -->
+                        <div class="card-panel" data-aos="fade-up" data-aos-delay="100">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="info-badge"
+                                    style="background: rgba(255,215,0,0.1); color: var(--electric-yellow); padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(f)
+                                    Live Energy</span>
+                                <h5 style="margin:0; font-size:1rem;">$E = \frac{1}{2}CV^2$</h5>
+                            </div>
+                            <div class="row align-items-center mt-3">
+                                <div class="col-8">
+                                    <label class="text-sm">Voltage (V): <span id="cap-f-v-val"
+                                            style="color:#fff;">10</span> V</label>
+                                    <input type="range" id="cap-f-v-slide" min="0" max="20" step="1" value="10"
+                                        class="neon-slider">
+                                    <div class="text-sm mt-1" style="color:var(--text-muted);">Assumes $C = 1\text{ F}$
+                                    </div>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">Energy</div>
+                                    <div id="cap-f-e-val"
+                                        style="font-size: 1.3rem; color: var(--electric-yellow); font-family: 'Orbitron', sans-serif;">
+                                        50 J</div>
+                                </div>
+                            </div>
+                            <!-- Dynamic Gauge -->
+                            <div
+                                style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-top: 15px; overflow: hidden;">
+                                <div id="cap-f-e-gauge"
+                                    style="height: 100%; width: 25%; background: var(--electric-yellow); transition: width 0.2s, background-color 0.2s;">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- CARD 0.16: Inductor Fundamentals -->
+                <div class="subsection mt-5" id="inductor-fundamentals" data-aos="fade-up">
+                    <h3 class="subsection__title" style="color: var(--neon-cyan); border-left-color: var(--neon-cyan);">
+                        0.16 Inductor Fundamentals</h3>
+
+                    <div class="card-panel mb-4 text-center">
+                        <h4 style="color:var(--electric-yellow);">Faraday's Law for Inductor</h4>
+                        $$ V_L = L\frac{di}{dt} \quad \text{and} \quad i(t) = \frac{1}{L}\int i\,dt + i(0^-) $$
+                        <div class="text-muted text-sm mt-3">Where $V_L$ = Voltage (V), $L$ = Inductance (Henry),
+                            $\frac{di}{dt}$ = Rate of current change (A/s)</div>
+                    </div>
+
+                    <!-- Self Inductance (a) -->
+                    <div class="card-panel mb-4" data-aos="fade-up">
+                        <h4 style="color:var(--neon-cyan);">(a) Coefficient of Self Inductance ($L$)</h4>
+                        <div class="row align-items-center">
+                            <div class="col-md-7 text-center">
+                                $$ L = \frac{N\phi}{i} = \frac{V_L}{di/dt} = \frac{N^2}{\mathcal{S}} = \frac{\mu_0\mu_r
+                                N^2 A}{\ell} \text{ Henry} $$
+                                <div class="text-sm text-start text-muted mt-3"
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                                    <div>$N$ = Number of turns</div>
+                                    <div>$\phi$ = Magnetic flux (Wb)</div>
+                                    <div>$\mathcal{S}$ = Reluctance</div>
+                                    <div>$A$ = Core area (m²)</div>
+                                    <div>$\ell$ = Coil length (m)</div>
+                                    <div>$\mu_0 = 4\pi\times10^{-7}$ H/m</div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 text-center mt-3 mt-md-0">
+                                <svg viewBox="0 0 150 120" width="100%"
+                                    style="max-width: 200px; margin: 0 auto; display: block;">
+                                    <!-- Core -->
+                                    <rect x="30" y="20" width="90" height="80" rx="10" fill="none"
+                                        stroke="rgba(255,255,255,0.2)" stroke-width="15" />
+                                    <rect x="45" y="35" width="60" height="50" rx="5" fill="#0b0f19" />
+
+                                    <!-- Coil representation -->
+                                    <path d="M 20 60 Q 35 40 50 60 Q 65 40 80 60 Q 95 40 110 60 L 130 60"
+                                        stroke="var(--electric-yellow)" stroke-width="3" fill="none" />
+
+                                    <!-- Flux lines (animated) -->
+                                    <ellipse cx="65" cy="60" rx="50" ry="25" fill="none" class="e-field-lines"
+                                        stroke="var(--neon-cyan)" stroke-width="1.5" stroke-dasharray="4,4" />
+                                    <ellipse cx="65" cy="60" rx="40" ry="20" fill="none" class="e-field-lines"
+                                        stroke="var(--neon-cyan)" stroke-width="1" stroke-dasharray="4,4" />
+
+                                    <text x="65" y="100" fill="var(--neon-cyan)" font-size="10"
+                                        text-anchor="middle">Magnetic Flux $\phi$</text>
+                                    <text x="10" y="55" fill="#fff" font-size="10">i</text>
+                                    <text x="140" y="55" fill="#fff" font-size="10">V_L</text>
+                                </svg>
+                                <div class="mt-2 text-start px-2">
+                                    <label class="text-sm">Rate of Change ($\frac{di}{dt}$)</label>
+                                    <input type="range" id="slide-di-dt" min="0" max="100" value="50"
+                                        class="neon-slider">
+                                    <div class="text-sm mt-1" style="color:var(--electric-yellow);">Induced $V_L$: <span
+                                            id="val-vL">50</span> V</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mutual Inductance (b) -->
+                    <div class="card-panel mb-4" data-aos="fade-up">
+                        <h4 style="color:var(--neon-purple);">(b) Coefficient of Mutual Inductance ($M$)</h4>
+                        <div class="row align-items-center">
+                            <div class="col-md-7 text-center">
+                                $$ M = \frac{N_2\phi_1}{i_1} = \frac{V_{L2}}{di_1/dt} = \frac{\mu_0\mu_r N_1 N_2
+                                A}{\ell} \text{ Henry} $$
+                                <div class="my-3 text-sm">
+                                    $$ \text{Coupling Factor, } K = \frac{M}{\sqrt{L_1 L_2}} \quad (0 \leq K \leq 1) $$
+                                    $$ M_{max} = \sqrt{L_1 L_2} \quad \text{(when } K=1 \text{)} $$
+                                </div>
+                            </div>
+                            <div class="col-md-5 text-center mt-3 mt-md-0">
+                                <svg viewBox="0 0 200 120" width="100%"
+                                    style="max-width: 250px; margin: 0 auto; display: block;">
+                                    <!-- Coil 1 -->
+                                    <text x="50" y="20" fill="var(--electric-yellow)" font-size="10"
+                                        text-anchor="middle">Coil 1 ($L_1$)</text>
+                                    <path d="M 20 60 Q 30 40 40 60 Q 50 40 60 60 Q 70 40 80 60 L 90 60"
+                                        stroke="var(--electric-yellow)" stroke-width="3" fill="none" />
+
+                                    <!-- Coil 2 -->
+                                    <text x="150" y="20" fill="var(--neon-purple)" font-size="10"
+                                        text-anchor="middle">Coil 2 ($L_2$)</text>
+                                    <path d="M 110 60 L 120 60 Q 130 40 140 60 Q 150 40 160 60 Q 170 40 180 60 L 190 60"
+                                        stroke="var(--neon-purple)" stroke-width="3" fill="none" />
+
+                                    <!-- Mutual Flux Lines -->
+                                    <path d="M 50 50 Q 100 -20 150 50" stroke="var(--neon-cyan)" stroke-width="1.5"
+                                        stroke-dasharray="4,4" fill="none" class="e-field-lines" />
+                                    <path d="M 50 70 Q 100 140 150 70" stroke="var(--neon-cyan)" stroke-width="1.5"
+                                        stroke-dasharray="4,4" fill="none" class="e-field-lines" />
+                                    <text x="100" y="30" fill="var(--neon-cyan)" font-size="9"
+                                        text-anchor="middle">Mutual Flux $\phi_m$</text>
+
+                                    <!-- Olympic rings for K (intersection) -->
+                                    <g id="k-rings" style="transform-origin: 100px 90px;">
+                                        <circle cx="85" cy="95" r="10" fill="none" stroke="var(--electric-yellow)"
+                                            stroke-width="2" />
+                                        <circle cx="115" cy="95" r="10" fill="none" stroke="var(--neon-purple)"
+                                            stroke-width="2" id="k-ring-2" style="transition: transform 0.2s;" />
+                                    </g>
+                                    <text x="100" y="115" fill="var(--text-muted)" font-size="8"
+                                        text-anchor="middle">Coupling rings</text>
+                                </svg>
+                                <div class="mt-2 text-start px-2">
+                                    <label class="text-sm">Coupling Factor ($K$) <span id="val-k" class="float-end"
+                                            style="color:#fff;">0.50</span></label>
+                                    <input type="range" id="slide-k" min="0" max="1" step="0.01" value="0.5"
+                                        class="neon-slider">
+                                    <div class="text-sm mt-1" style="color:var(--neon-cyan);">Mutual Inductance $M =
+                                        K\sqrt{L_1L_2}$</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 0.17: Inductor Initial Condition -->
+                <div class="subsection mt-5" id="inductor-initial" data-aos="fade-up">
+                    <h4 class="subsection__title" style="color: var(--neon-cyan); border-left-color: var(--neon-cyan);">
+                        0.17 Inductor with Initial Condition</h4>
+
+                    <div class="card-grid-2 mb-4">
+                        <div class="card-panel" data-aos="fade-up">
+                            <h5 style="color:var(--neon-purple);">(a) WITH initial condition — $I_L(0^-) = I_0$</h5>
+                            <div class="text-center mt-3" style="font-size: 0.9rem;">
+                                $$ \text{At } t = 0^+: $$
+                                $$ I_L(0^+) = I_L(0^-) = I_0 $$
+                                <div class="info-badge mt-2"
+                                    style="background: rgba(255,215,0,0.1); color: var(--electric-yellow); display:inline-block;">
+                                    Acts as CURRENT SOURCE of value $I_0$</div>
+                                <br><br>
+                                $$ \text{At } t \rightarrow \infty \rightarrow \text{acts as SHORT CIRCUIT} $$
+                            </div>
+                        </div>
+                        <div class="card-panel" data-aos="fade-up" data-aos-delay="100">
+                            <h5 style="color:var(--neon-cyan);">(b) WITHOUT initial condition — $I_L(0^-) = 0$</h5>
+                            <div class="text-center mt-3" style="font-size: 0.9rem;">
+                                $$ \text{At } t = 0^+: I_L(0^+) = 0 $$
+                                <div class="info-badge mt-2"
+                                    style="background: rgba(0,240,255,0.1); color: var(--neon-cyan); display:inline-block;">
+                                    Acts as OPEN CIRCUIT at $t=0^+$</div>
+                                <br><br>
+                                $$ \text{At } t \rightarrow \infty \rightarrow \text{acts as SHORT CIRCUIT} $$
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flip Cards Summary Table -->
+                    <h5 class="text-center mb-3">Transient Behaviour Summary</h5>
+                    <div class="flip-card-grid">
+                        <!-- Row 1 -->
+                        <div class="flip-card" data-aos="flip-left">
+                            <div class="flip-card-inner">
+                                <div
+                                    class="flip-card-front card-panel d-flex justify-content-center align-items-center">
+                                    <h6>Inductor at $t=0^+$ ($I_0 \neq 0$)</h6>
+                                </div>
+                                <div class="flip-card-back card-panel d-flex justify-content-center align-items-center">
+                                    <p><strong>Current Source</strong><br><span class="text-muted">(value =
+                                            $I_0$)</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Row 2 -->
+                        <div class="flip-card" data-aos="flip-left" data-aos-delay="50">
+                            <div class="flip-card-inner">
+                                <div
+                                    class="flip-card-front card-panel d-flex justify-content-center align-items-center">
+                                    <h6>Inductor at $t=0^+$ ($I_0 = 0$)</h6>
+                                </div>
+                                <div class="flip-card-back card-panel d-flex justify-content-center align-items-center">
+                                    <p><strong>Open Circuit</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Row 3 -->
+                        <div class="flip-card" data-aos="flip-left" data-aos-delay="100">
+                            <div class="flip-card-inner">
+                                <div
+                                    class="flip-card-front card-panel d-flex justify-content-center align-items-center">
+                                    <h6>Inductor at $t\rightarrow\infty$ (DC)</h6>
+                                </div>
+                                <div class="flip-card-back card-panel d-flex justify-content-center align-items-center">
+                                    <p><strong>Short Circuit</strong><br><span class="text-muted">(wire)</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Row 4 -->
+                        <div class="flip-card" data-aos="flip-left" data-aos-delay="150">
+                            <div class="flip-card-inner">
+                                <div
+                                    class="flip-card-front card-panel d-flex justify-content-center align-items-center">
+                                    <h6>Capacitor at $t=0^+$ ($V_0 \neq 0$)</h6>
+                                </div>
+                                <div class="flip-card-back card-panel d-flex justify-content-center align-items-center">
+                                    <p><strong>Voltage Source</strong><br><span class="text-muted">(value =
+                                            $V_0$)</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Row 5 -->
+                        <div class="flip-card" data-aos="flip-left" data-aos-delay="200">
+                            <div class="flip-card-inner">
+                                <div
+                                    class="flip-card-front card-panel d-flex justify-content-center align-items-center">
+                                    <h6>Capacitor at $t=0^+$ ($V_0 = 0$)</h6>
+                                </div>
+                                <div class="flip-card-back card-panel d-flex justify-content-center align-items-center">
+                                    <p><strong>Short Circuit</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Row 6 -->
+                        <div class="flip-card" data-aos="flip-left" data-aos-delay="250">
+                            <div class="flip-card-inner">
+                                <div
+                                    class="flip-card-front card-panel d-flex justify-content-center align-items-center">
+                                    <h6>Capacitor at $t\rightarrow\infty$ (DC)</h6>
+                                </div>
+                                <div class="flip-card-back card-panel d-flex justify-content-center align-items-center">
+                                    <p><strong>Open Circuit</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4" data-aos="zoom-in">
+                        <div class="info-badge"
+                            style="background: rgba(255,255,255,0.05); border: 1px solid var(--electric-yellow); border-radius: 8px; font-size: 1.1rem; padding: 10px 20px; display:inline-block;">
+                            $$ \boxed{I_L \text{ cannot change instantaneously}} $$
+                            <br>
+                            $$ \boxed{V_C \text{ cannot change instantaneously}} $$
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 0.18: Energy Stored in Inductor -->
+                <div class="subsection mt-5" id="inductor-energy" data-aos="fade-up">
+                    <h4 class="subsection__title"
+                        style="color: var(--electric-yellow); border-left-color: var(--electric-yellow);">0.18 Energy
+                        Stored in Inductor</h4>
+                    <div class="card-panel text-center">
+                        $$ E = \frac{1}{2}LI^2 \quad \text{Joules} $$
+                        <div class="text-sm text-muted mt-2">Where $L$ = Inductance (Henry), $I$ = Current (A)</div>
+                        <div class="info-badge mt-3"
+                            style="background: rgba(188,19,254,0.1); color: var(--neon-purple); display: inline-block;">
+                            Inductor stores energy in MAGNETIC FIELD<br>
+                            <small>(Compare: Capacitor stores in ELECTRIC FIELD)</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 0.19: Important Points (Inductor Behaviour) -->
+                <div class="subsection mt-5" id="inductor-points" data-aos="fade-up">
+                    <h4 class="subsection__title" style="color: var(--neon-cyan); border-left-color: var(--neon-cyan);">
+                        0.19 Important Points: Inductor Behaviour</h4>
+
+                    <div class="card-grid-2 mt-4">
+                        <!-- Point a -->
+                        <div class="card-panel" data-aos="fade-up">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="info-badge"
+                                    style="background: rgba(0,240,255,0.1); color: var(--neon-cyan); padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(a)
+                                    Linear & Passive</span>
+                            </div>
+                            <h5 style="margin:0; font-size:1rem;">Inductor is LINEAR, BILATERAL and PASSIVE</h5>
+                        </div>
+                        <!-- Point b -->
+                        <div class="card-panel" data-aos="fade-up" data-aos-delay="50">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="info-badge"
+                                    style="background: rgba(255,215,0,0.1); color: var(--electric-yellow); padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(b)
+                                    Current Opposition</span>
+                                <h5 style="margin:0; font-size:1rem;">OPPOSES sudden change of current</h5>
+                            </div>
+                            <div class="text-center" style="font-size: 0.9rem;">
+                                $$ I_L(0^+) = I_L(0^-) $$
+                                <small class="text-muted">(current cannot jump instantaneously)</small>
+                            </div>
+                            <svg viewBox="0 0 200 60" width="100%"
+                                style="max-height: 80px; display: block; margin: 0 auto;">
+                                <!-- Axes -->
+                                <path d="M 20 50 L 180 50 M 20 50 L 20 10" stroke="#444" stroke-width="1" />
+                                <!-- Step Input (dashed) -->
+                                <path d="M 20 50 L 60 50 L 60 15 L 160 15" stroke="var(--text-muted)" stroke-width="1"
+                                    stroke-dasharray="4,4" />
+                                <text x="165" y="15" fill="var(--text-muted)" font-size="7">Step Input</text>
+                                <!-- Inductor Current (smooth) -->
+                                <path d="M 20 50 L 60 50 Q 100 50 160 15" stroke="var(--electric-yellow)"
+                                    stroke-width="2" fill="none" />
+                                <text x="165" y="25" fill="var(--electric-yellow)" font-size="7">I_L(t)</text>
+                            </svg>
+                        </div>
+                        <!-- Point c -->
+                        <div class="card-panel" data-aos="fade-up" data-aos-delay="100">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="info-badge"
+                                    style="background: rgba(188,19,254,0.1); color: var(--neon-purple); padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(c)
+                                    Energy Storage</span>
+                            </div>
+                            <h5 style="margin:0; font-size:1rem;">Inductor is an ENERGY STORAGE element</h5>
+                            <div class="text-center mt-2">
+                                $$ E = \frac{1}{2}LI^2 $$
+                            </div>
+                        </div>
+                        <!-- Point d -->
+                        <div class="card-panel" data-aos="fade-up" data-aos-delay="150">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="info-badge"
+                                    style="background: rgba(0,255,100,0.1); color: #00ff64; padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(d)
+                                    Zero Power</span>
+                                <h5 style="margin:0; font-size:1rem;">Does NOT dissipate any power</h5>
+                            </div>
+                            <div class="text-center" style="font-size: 0.9rem;">
+                                $$ P_{avg} = 0 \quad \text{(ideal inductor)} $$
+                            </div>
+                            <svg viewBox="0 0 200 60" width="100%"
+                                style="max-height: 80px; display: block; margin: 0 auto;">
+                                <!-- Axis -->
+                                <path d="M 10 30 L 190 30" stroke="#444" stroke-width="1" />
+                                <!-- Let's do a distinct alternating wave -->
+                                <path d="M 20 30 Q 35 10 50 30 T 80 30 T 110 30 T 140 30 T 170 30"
+                                    stroke="var(--neon-cyan)" stroke-width="2" fill="none" />
+                                <!-- Shade areas to show Pavg = 0 -->
+                                <path d="M 20 30 Q 35 10 50 30 Z" fill="rgba(0,240,255,0.2)" />
+                                <path d="M 50 30 Q 65 50 80 30 Z" fill="rgba(188,19,254,0.2)" />
+                                <path d="M 80 30 Q 95 10 110 30 Z" fill="rgba(0,240,255,0.2)" />
+                                <path d="M 110 30 Q 125 50 140 30 Z" fill="rgba(188,19,254,0.2)" />
+                                <text x="175" y="25" fill="var(--neon-cyan)" font-size="7">P(t)</text>
+                            </svg>
+                        </div>
+                        <!-- Point e -->
+                        <div class="card-panel" data-aos="fade-up" data-aos-delay="200"
+                            style="grid-column: 1 / -1; text-align: center;">
+                            <div class="d-inline-flex align-items-center justify-content-center mb-3">
+                                <span class="info-badge"
+                                    style="background: rgba(255,255,255,0.1); color: #fff; padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">(e)
+                                    Memory</span>
+                                <h5 style="margin:0; font-size:1rem;">Initial condition: $I_L(0^-) = I_L(0^+)$</h5>
+                            </div>
+                            <div class="text-center text-muted">
+                                (inductor remembers the current flowing through it)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 0.20: Magnetic Coupling (Dots Notation & Equivalent L) -->
+                <div class="subsection mt-5" id="magnetic-coupling" data-aos="fade-up">
+                    <h4 class="subsection__title" style="color: var(--neon-cyan); border-left-color: var(--neon-cyan);">
+                        0.20 Magnetic Coupling & Equivalent Inductance</h4>
+
+                    <div class="row">
+                        <!-- Series Combination -->
+                        <div class="col-md-6 mb-4" data-aos="fade-up">
+                            <div class="card-panel h-100">
+                                <h5 style="color:var(--electric-yellow);">Series Aiding vs Opposing</h5>
+
+                                <!-- SVG Visualization -->
+                                <div class="text-center my-3">
+                                    <svg viewBox="0 0 250 80" width="100%" style="max-width: 300px;">
+                                        <!-- Aiding Example -->
+                                        <path d="M 20 40 L 40 40 Q 50 20 60 40 Q 70 20 80 40 L 100 40"
+                                            stroke="var(--electric-yellow)" stroke-width="2" fill="none" />
+                                        <circle cx="45" cy="20" r="3" fill="#fff" id="dot-series-1" />
+                                        <text x="60" y="60" fill="var(--electric-yellow)" font-size="10"
+                                            text-anchor="middle">L1</text>
+
+                                        <path d="M 100 40 L 150 40 Q 160 20 170 40 Q 180 20 190 40 L 230 40"
+                                            stroke="var(--neon-purple)" stroke-width="2" fill="none" />
+                                        <circle cx="155" cy="20" r="3" fill="#fff" id="dot-series-2"
+                                            style="transition: cx 0.3s;" />
+                                        <text x="170" y="60" fill="var(--neon-purple)" font-size="10"
+                                            text-anchor="middle">L2</text>
+
+                                        <path d="M 60 15 Q 115 -10 170 15" stroke="var(--neon-cyan)" stroke-width="1.5"
+                                            stroke-dasharray="2,2" fill="none" class="e-field-lines" />
+                                        <text x="115" y="10" fill="var(--neon-cyan)" font-size="8"
+                                            text-anchor="middle">Mutual M</text>
+                                    </svg>
+                                </div>
+
+                                <div class="d-flex justify-content-center align-items-center mb-3">
+                                    <span class="me-3 text-sm">Opposing</span>
+                                    <label class="switch">
+                                        <input type="checkbox" id="toggle-series-dots" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <span class="ms-3 text-sm text-neon-cyan" id="lbl-series-aid">Aiding</span>
+                                </div>
+
+                                <div class="text-center">
+                                    $$ L_{eq} = L_1 + L_2 \pm 2M $$
+                                    <div class="info-badge mt-2" id="formula-series-leq"
+                                        style="background: rgba(0,240,255,0.1); color: var(--neon-cyan);">
+                                        $$ L_{eq} = L_1 + L_2 + 2M $$
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Parallel Combination -->
+                        <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card-panel h-100">
+                                <h5 style="color:var(--neon-purple);">Parallel Aiding vs Opposing</h5>
+
+                                <!-- SVG Visualization -->
+                                <div class="text-center my-3">
+                                    <svg viewBox="0 0 200 120" width="100%" style="max-width: 250px;">
+                                        <!-- Parallel Branches -->
+                                        <path
+                                            d="M 20 60 L 50 60 L 50 30 L 70 30 Q 80 10 90 30 Q 100 10 110 30 L 150 30 L 150 60 L 180 60"
+                                            stroke="#aaa" stroke-width="1.5" fill="none" />
+                                        <circle cx="75" cy="10" r="3" fill="#fff" id="dot-para-1" />
+                                        <text x="90" y="45" fill="var(--electric-yellow)" font-size="10"
+                                            text-anchor="middle">L1</text>
+                                        <path d="M 70 30 Q 80 10 90 30 Q 100 10 110 30" stroke="var(--electric-yellow)"
+                                            stroke-width="2" fill="none" />
+
+                                        <path
+                                            d="M 50 60 L 50 90 L 70 90 Q 80 70 90 90 Q 100 70 110 90 L 150 90 L 150 60"
+                                            stroke="#aaa" stroke-width="1.5" fill="none" />
+                                        <circle cx="75" cy="70" r="3" fill="#fff" id="dot-para-2"
+                                            style="transition: cx 0.3s;" />
+                                        <text x="90" y="105" fill="var(--neon-purple)" font-size="10"
+                                            text-anchor="middle">L2</text>
+                                        <path d="M 70 90 Q 80 70 90 90 Q 100 70 110 90" stroke="var(--neon-purple)"
+                                            stroke-width="2" fill="none" />
+
+                                        <path d="M 90 40 Q 130 60 90 80" stroke="var(--neon-cyan)" stroke-width="1.5"
+                                            stroke-dasharray="2,2" fill="none" class="e-field-lines" />
+                                        <text x="120" y="62" fill="var(--neon-cyan)" font-size="8"
+                                            text-anchor="middle">Mutual M</text>
+                                    </svg>
+                                </div>
+
+                                <div class="d-flex justify-content-center align-items-center mb-3">
+                                    <span class="me-3 text-sm">Opposing</span>
+                                    <label class="switch">
+                                        <input type="checkbox" id="toggle-para-dots" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <span class="ms-3 text-sm text-neon-purple" id="lbl-para-aid">Aiding</span>
+                                </div>
+
+                                <div class="text-center" style="font-size: 0.9rem;">
+                                    $$ L_{eq} = \frac{L_1 L_2 - M^2}{L_1 + L_2 \mp 2M} $$
+                                    <div class="info-badge mt-2" id="formula-para-leq"
+                                        style="background: rgba(188,19,254,0.1); color: var(--neon-purple);">
+                                        $$ L_{eq} = \frac{L_1 L_2 - M^2}{L_1 + L_2 - 2M} $$
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 0.21: RL Transients -->
+                <div class="subsection mt-5" id="rl-transients" data-aos="fade-up">
+                    <h4 class="subsection__title"
+                        style="color: var(--electric-yellow); border-left-color: var(--electric-yellow);">0.21 RL
+                        Circuit Transients</h4>
+                    <div class="card-panel">
+                        <div class="row">
+                            <!-- Left: Controls & Circuit -->
+                            <div class="col-md-5 mb-4 mb-md-0">
+                                <h5 style="color:var(--text-primary); font-size:1rem;">DC Source with R & L</h5>
+
+                                <!-- RL Circuit SVG -->
+                                <div class="d-flex justify-content-center my-3 text-center">
+                                    <svg viewBox="0 0 300 180" width="100%"
+                                        style="max-width: 280px; background: rgba(0,0,0,0.2); border-radius: 8px; border: 1px solid #333;">
+                                        <!-- Wires -->
+                                        <path d="M 50 140 L 50 40 L 100 40" stroke="#aaa" stroke-width="2"
+                                            fill="none" />
+                                        <path d="M 200 40 L 250 40 L 250 140 L 50 140" stroke="#aaa" stroke-width="2"
+                                            fill="none" />
+
+                                        <!-- DC Source -->
+                                        <circle cx="50" cy="90" r="15" fill="#0b0f19" stroke="var(--neon-cyan)"
+                                            stroke-width="2" />
+                                        <text x="50" y="85" fill="#fff" font-size="12" text-anchor="middle">+</text>
+                                        <text x="50" y="102" fill="#fff" font-size="15" text-anchor="middle">-</text>
+                                        <text x="25" y="94" fill="var(--neon-cyan)" font-size="12">Vs</text>
+
+                                        <!-- Switch -->
+                                        <circle cx="100" cy="40" r="3" fill="#fff" />
+                                        <circle cx="140" cy="40" r="3" fill="#fff" />
+                                        <!-- Switch Blade (animated) -->
+                                        <line x1="100" y1="40" x2="135" y2="25" stroke="var(--electric-yellow)"
+                                            stroke-width="3" id="rl-switch-blade"
+                                            style="transform-origin: 100px 40px; transition: transform 0.3s ease;" />
+                                        <!-- Discharge path -->
+                                        <path d="M 100 40 L 100 90 L 250 90" stroke="#555" stroke-width="2" fill="none"
+                                            stroke-dasharray="4,4" />
+                                        <text x="120" y="25" fill="#fff" font-size="10">Switch</text>
+
+                                        <!-- Resistor -->
+                                        <path
+                                            d="M 140 40 L 150 40 L 155 30 L 165 50 L 175 30 L 185 50 L 190 40 L 200 40"
+                                            stroke="var(--neon-pink)" stroke-width="2" fill="none" />
+                                        <text x="170" y="20" fill="var(--neon-pink)" font-size="14"
+                                            text-anchor="middle">R</text>
+
+                                        <!-- Inductor -->
+                                        <path
+                                            d="M 250 40 L 250 60 Q 235 70 250 80 Q 235 90 250 100 Q 235 110 250 120 L 250 140"
+                                            stroke="var(--electric-yellow)" stroke-width="2" fill="none" />
+                                        <text x="265" y="85" fill="var(--electric-yellow)" font-size="14"
+                                            text-anchor="middle">L</text>
+
+                                        <!-- Current Arrow -->
+                                        <path d="M 255 50 L 255 70 L 250 75 L 260 70 Z" fill="rgba(0,255,100,0.8)" />
+                                        <text x="275" y="65" fill="#00ff64" font-size="12">I_L</text>
+
+                                        <!-- RL Glow effect during charge -->
+                                        <ellipse cx="250" cy="90" rx="20" ry="30" fill="none" class="e-field-lines"
+                                            stroke="var(--neon-cyan)" stroke-width="2" opacity="0.5" id="rl-glow"
+                                            stroke-dasharray="8,8" />
+                                    </svg>
+                                </div>
+
+                                <div class="mt-3 text-center">
+                                    <button class="neon-btn neon-btn--cyan me-2" id="btn-rl-connect">Connect
+                                        (Rise)</button>
+                                    <button class="neon-btn neon-btn--purple" id="btn-rl-disconnect">Short
+                                        (Decay)</button>
+                                </div>
+
+                                <div class="mt-4" style="text-align: left; padding: 0 15px;">
+                                    <label class="text-sm">Time Constant ($\tau = L/R$)</label>
+                                    <input type="range" id="rl-tau-slider" min="0.5" max="5" step="0.5" value="1.5"
+                                        class="neon-slider">
+                                    <div class="text-sm mt-1" style="color:var(--text-muted);">Current $\tau$: <span
+                                            id="rl-tau-val" style="color:#fff;">1.5</span> s</div>
+                                </div>
+                            </div>
+
+                            <!-- Right: D3 Real time Graph -->
+                            <div class="col-md-7">
+                                <div id="rl-chart-container"
+                                    style="width:100%; height:250px; background:rgba(0,0,0,0.3); border-radius:8px; position:relative;">
+                                    <h6 style="position:absolute; top:10px; right:10px; font-size:10px; color:var(--text-muted); margin:0;"
+                                        id="rl-chart-title">Current Rise: $I_L = I_{max}(1-e^{-t/\tau})$</h6>
+                                </div>
+                                <div class="text-center mt-3" style="font-size:0.9rem;">
+                                    $$ V_L(t) = L\dfrac{di}{dt} = V_S e^{-t/\tau} \quad \text{(exponential decay even
+                                    during current rise)} $$
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 0.22: RLC Circuit & Damping -->
+                <div class="subsection mt-5" id="rlc-circuit" data-aos="fade-up">
+                    <h4 class="subsection__title"
+                        style="color: var(--neon-purple); border-left-color: var(--neon-purple);">0.22 Series RLC
+                        Circuit & Damping</h4>
+                    <div class="card-panel">
+                        <div class="row align-items-center">
+                            <div class="col-md-5 text-center mb-4 mb-md-0">
+                                <svg viewBox="0 0 200 100" width="100%" style="max-width: 250px;">
+                                    <path d="M 30 50 L 50 50" stroke="#aaa" stroke-width="2" fill="none" />
+                                    <!-- R -->
+                                    <path d="M 50 50 L 55 40 L 65 60 L 75 40 L 85 60 L 90 50 L 100 50"
+                                        stroke="var(--neon-pink)" stroke-width="2" fill="none" />
+                                    <text x="75" y="30" fill="var(--neon-pink)" font-size="12"
+                                        text-anchor="middle">R</text>
+
+                                    <!-- L -->
+                                    <path d="M 100 50 Q 110 35 120 50 Q 130 35 140 50" stroke="var(--electric-yellow)"
+                                        stroke-width="2" fill="none" />
+                                    <text x="120" y="30" fill="var(--electric-yellow)" font-size="12"
+                                        text-anchor="middle">L</text>
+
+                                    <!-- C -->
+                                    <path d="M 140 50 L 155 50 M 155 35 L 155 65 M 165 35 L 165 65 M 165 50 L 180 50"
+                                        stroke="var(--neon-cyan)" stroke-width="2" fill="none" />
+                                    <text x="160" y="30" fill="var(--neon-cyan)" font-size="12"
+                                        text-anchor="middle">C</text>
+                                </svg>
+                                <div class="mt-4">
+                                    <div class="text-sm text-start ps-3" style="font-size: 0.9rem;">
+                                        $\alpha = \frac{R}{2L}$ <span class="text-muted">(Neper frequency)</span><br>
+                                        $\omega_0 = \frac{1}{\sqrt{LC}}$ <span class="text-muted">(Resonant
+                                            freq)</span><br>
+                                        $\zeta = \frac{\alpha}{\omega_0}$ <span class="text-muted">(Damping
+                                            ratio)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <h6 class="text-center" style="color:var(--neon-purple);">Response Types based on
+                                    Damping ($\zeta$)</h6>
+                                <div class="mt-3">
+                                    <label class="text-sm d-flex justify-content-between">
+                                        <span>Resistance $R$ (controls $\zeta$)</span>
+                                        <span id="rlc-zeta-val" style="color:#fff;">$\zeta = 0.5$ (Underdamped)</span>
+                                    </label>
+                                    <input type="range" id="rlc-r-slider" min="0" max="2" step="0.05" value="0.5"
+                                        class="neon-slider mt-2">
+                                </div>
+                                <!-- Static D3 container for showing the curve -->
+                                <div id="rlc-curve-container" class="mt-3"
+                                    style="width:100%; height:200px; background:rgba(0,0,0,0.3); border-radius:8px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection" data-aos="fade-up">
+                    <h3 class="subsection__title">1. Definitions & Classifications</h3>
+
+                    <div class="flip-card-grid">
+                        <!-- Network vs Circuit -->
+                        <div class="flip-card" data-aos="flip-left" data-aos-delay="100">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card-panel">
+                                    <h4>Network vs. Circuit</h4>
+                                    <svg viewBox="0 0 100 50" class="neon-svg">
+                                        <rect x="10" y="10" width="30" height="30" fill="none" stroke="var(--neon-cyan)"
+                                            stroke-width="2" />
+                                        <circle cx="70" cy="25" r="15" fill="none" stroke="var(--electric-yellow)"
+                                            stroke-width="2" />
+                                        <path d="M40,25 L55,25" stroke="var(--text-secondary)" stroke-width="2"
+                                            stroke-dasharray="4,4" />
+                                    </svg>
+                                    <p class="flip-hint">Hover to compare</p>
+                                </div>
+                                <div class="flip-card-back card-panel">
+                                    <p><strong>Network:</strong> Any interconnection of electrical elements (may or may
+                                        not
+                                        be closed).</p>
+                                    <p><strong>Circuit:</strong> A network containing at least one closed path for
+                                        current
+                                        to flow.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Active vs Passive -->
+                        <div class="flip-card" data-aos="flip-left" data-aos-delay="200">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card-panel">
+                                    <h4>Active vs. Passive</h4>
+                                    <div class="icon-split">
+                                        <span style="color:var(--electric-yellow)">⚡</span> vs <span
+                                            style="color:var(--text-muted)">▱</span>
+                                    </div>
+                                    <p class="flip-hint">Hover to reveal</p>
+                                </div>
+                                <div class="flip-card-back card-panel">
+                                    <p><strong>Active:</strong> Can deliver power indefinitely (Battery, Generator,
+                                        Op-Amp).
+                                    </p>
+                                    <p><strong>Passive:</strong> Only consumes or stores energy (R, L, C).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Linear vs Non-Linear -->
+                        <div class="flip-card" data-aos="flip-left" data-aos-delay="300">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card-panel">
+                                    <h4>Linear vs. Non-Linear</h4>
+                                    <svg viewBox="0 0 100 50" class="neon-svg">
+                                        <line x1="20" y1="40" x2="80" y2="10" stroke="var(--neon-cyan)"
+                                            stroke-width="2" />
+                                        <path d="M20,40 Q50,40 80,10" fill="none" stroke="var(--electric-yellow)"
+                                            stroke-width="2" stroke-dasharray="4,4" />
+                                    </svg>
+                                    <p class="flip-hint">Hover to reveal</p>
+                                </div>
+                                <div class="flip-card-back card-panel">
+                                    <p><strong>Linear:</strong> Follows Ohm's Law strictly; V-I characteristic is a
+                                        straight
+                                        line through origin (Resistor).</p>
+                                    <p><strong>Non-Linear:</strong> V-I relationship changes (Diode, Transistor).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-SECTION: Parameters -->
+                <div class="subsection" data-aos="fade-up">
+                    <h3 class="subsection__title">2. Fundamental Parameters</h3>
+                    <div class="parameter-grid">
+
+                        <!-- Resistance -->
+                        <div class="param-card card-panel" data-aos="fade-up" data-aos-delay="100">
+                            <div class="param-header">
+                                <h4>Resistance (R)</h4>
+                                <span class="unit">Ω (Ohms)</span>
+                            </div>
+                            <div class="param-formula">
+                                <div class="formula">$$ R = \rho \frac{L}{A} $$</div>
+                            </div>
+                            <div class="param-animation">
+                                <!-- Gradient bar animation -->
+                                <div class="resistor-bar-anim">
+                                    <div class="current-particles"></div>
+                                    <div class="restriction-zone"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inductance -->
+                        <div class="param-card card-panel" data-aos="fade-up" data-aos-delay="200">
+                            <div class="param-header">
+                                <h4>Inductance (L)</h4>
+                                <span class="unit">H (Henrys)</span>
+                            </div>
+                            <div class="param-formula">
+                                <div class="formula">$$ V = L \frac{di}{dt} $$</div>
+                                <div class="formula">$$ W = \frac{1}{2}LI^2 $$</div>
+                            </div>
+                            <div class="inductor-visuals">
+                                <!-- Synced Animation -->
+                                <div class="inductor-anim-container">
+                                    <svg class="inductor-anim" viewBox="0 0 200 100">
+                                        <!-- Current Wave (Sine) -->
+                                        <path class="current-wave"
+                                            d="M -50,50 Q -25,0 0,50 T 50,50 T 100,50 T 150,50 T 200,50 T 250,50"
+                                            fill="none" stroke="var(--electric-yellow)" stroke-width="2" />
+                                        <!-- Coil -->
+                                        <path class="coil"
+                                            d="M 40,75 C 20,25 80,25 60,75 C 40,25 100,25 80,75 C 60,25 120,25 100,75 C 80,25 140,25 120,75 C 100,25 160,25 140,75"
+                                            fill="none" stroke="var(--neon-cyan)" stroke-width="4" />
+                                        <!-- Pulsing Magnetic Fields -->
+                                        <ellipse class="mag-field" cx="60" cy="50" rx="30" ry="40" fill="none"
+                                            stroke="rgba(0, 245, 255, 0.8)" stroke-width="1" />
+                                        <ellipse class="mag-field" cx="100" cy="50" rx="30" ry="40" fill="none"
+                                            stroke="rgba(0, 245, 255, 0.8)" stroke-width="1" />
+                                        <ellipse class="mag-field" cx="140" cy="50" rx="30" ry="40" fill="none"
+                                            stroke="rgba(0, 245, 255, 0.8)" stroke-width="1" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Capacitance -->
+                        <div class="param-card card-panel" data-aos="fade-up" data-aos-delay="300">
+                            <div class="param-header">
+                                <h4>Capacitance (C)</h4>
+                                <span class="unit">F (Farads)</span>
+                            </div>
+                            <div class="param-formula">
+                                <div class="formula">$$ I = C \frac{dv}{dt} $$</div>
+                                <div class="formula">$$ W = \frac{1}{2}CV^2 $$</div>
+                            </div>
+                            <div class="param-animation">
+                                <!-- Charge/Discharge plates -->
+                                <div class="capacitor-anim">
+                                    <div class="plate top-plate">
+                                        <span class="charge charge-pos">+</span><span
+                                            class="charge charge-pos">+</span><span class="charge charge-pos">+</span>
+                                    </div>
+                                    <div class="dielectric"></div>
+                                    <div class="plate bottom-plate">
+                                        <span class="charge charge-neg">-</span><span
+                                            class="charge charge-neg">-</span><span class="charge charge-neg">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- SUB-SECTION: Sources -->
+                <div class="subsection" data-aos="fade-up">
+                    <h3 class="subsection__title">3. Energy Sources</h3>
+                    <div class="sources-container">
+                        <div class="source-types card-panel" data-aos="fade-right">
+                            <h4>Ideal Sources</h4>
+                            <div class="source-item">
+                                <svg viewBox="0 0 40 40" class="src-icon-svg voltage-src">
+                                    <circle cx="20" cy="20" r="15" fill="none" stroke="var(--neon-cyan)"
+                                        stroke-width="2" />
+                                    <text x="20" y="16" text-anchor="middle" fill="var(--neon-cyan)"
+                                        font-size="12">+</text>
+                                    <text x="20" y="30" text-anchor="middle" fill="var(--neon-cyan)"
+                                        font-size="12">-</text>
+                                </svg>
+                                <span>Independent Voltage<br><small>V = constant</small></span>
+                            </div>
+                            <div class="source-item">
+                                <svg viewBox="0 0 40 40" class="src-icon-svg current-src">
+                                    <defs>
+                                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6"
+                                            markerHeight="6" orient="auto-start-reverse">
+                                            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--electric-yellow)" />
+                                        </marker>
+                                    </defs>
+                                    <circle cx="20" cy="20" r="15" fill="none" stroke="var(--electric-yellow)"
+                                        stroke-width="2" />
+                                    <line x1="20" y1="28" x2="20" y2="12" stroke="var(--electric-yellow)"
+                                        stroke-width="2" marker-end="url(#arrow)" />
+                                </svg>
+                                <span>Independent Current<br><small>I = constant</small></span>
+                            </div>
+                            <div class="source-item">
+                                <svg viewBox="0 0 40 40" class="src-icon-svg dependent-src">
+                                    <polygon points="20,5 35,20 20,35 5,20" fill="none" stroke="#ff5252"
+                                        stroke-width="2" />
+                                    <text x="20" y="24" text-anchor="middle" fill="#ff5252" font-size="14">kV</text>
+                                </svg>
+                                <span>Dependent (VCVS, etc.)<br><small>V/I depends on network</small></span>
+                            </div>
+                        </div>
+
+                        <div class="source-transform card-panel" data-aos="fade-left">
+                            <h4>Source Transformation</h4>
+                            <p class="text-sm">Any practical voltage source in series with a resistor can be transformed
+                                into a current source in parallel with that same resistor, and vice versa.</p>
+                            <div class="transform-formula">
+                                <div class="formula">$$ V_s = I_s \times R \quad \leftrightarrow \quad I_s =
+                                    \frac{V_s}{R}
+                                    $$</div>
+                            </div>
+                            <div class="transform-anim-container" id="transform-anim">
+                                <!-- GSAP will animate this morphing -->
+                                <div class="tr-vs">
+                                    <svg viewBox="0 0 60 60">
+                                        <circle cx="30" cy="30" r="20" fill="none" stroke="var(--neon-cyan)"
+                                            stroke-width="2" /><text x="30" y="25" fill="var(--neon-cyan)"
+                                            text-anchor="middle" font-size="14">+</text><text x="30" y="44"
+                                            fill="var(--neon-cyan)" text-anchor="middle" font-size="14">-</text>
+                                    </svg>
+                                    <span>Series R</span>
+                                </div>
+                                <div class="tr-arrow">⇄</div>
+                                <div class="tr-is">
+                                    <svg viewBox="0 0 60 60">
+                                        <circle cx="30" cy="30" r="20" fill="none" stroke="var(--electric-yellow)"
+                                            stroke-width="2" />
+                                        <line x1="30" y1="40" x2="30" y2="20" stroke="var(--electric-yellow)"
+                                            stroke-width="2" />
+                                        <polygon points="25,25 35,25 30,15" fill="var(--electric-yellow)" />
+                                    </svg>
+                                    <span>Parallel R</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-SECTION: Network Topology -->
+                <div class="subsection" data-aos="fade-up">
+                    <h3 class="subsection__title">4. Network Topology & Graph Theory</h3>
+                    <div class="topology-container card-panel">
+                        <div class="topology-text">
+                            <ul class="topo-list">
+                                <li data-target="topo-nodes" class="topo-hover"><span class="topo-dot"></span>
+                                    <strong>Nodes
+                                        (n):</strong> Meeting point of 2 or more elements.
+                                </li>
+                                <li data-target="topo-branches" class="topo-hover"><span class="topo-line"></span>
+                                    <strong>Branches (b):</strong> Single element representing a path between two nodes.
+                                </li>
+                                <li data-target="topo-loops" class="topo-hover"><span class="topo-dash"></span>
+                                    <strong>Loops (l):</strong> Any closed path in a circuit.
+                                </li>
+                                <li data-target="topo-meshes" class="topo-hover"><span class="topo-fill"></span>
+                                    <strong>Meshes:</strong> A loop that contains no other loops inside it.
+                                </li>
+                            </ul>
+                            <div class="topo-formulas mt-4">
+                                <p><strong>Fundamental Theorem of Network Topology:</strong></p>
+                                <div class="formula">$$ b = l + n - 1 $$</div>
+                                <div class="formula">$$ \text{No. of KVL mesh equations} = b - n + 1 $$</div>
+                            </div>
+                        </div>
+                        <!-- Interactive SVG Graph -->
+                        <div class="topology-diagram">
+                            <svg viewBox="0 0 200 150" class="topo-svg" id="topo-svg">
+                                <defs>
+                                    <pattern id="mesh-pattern" width="10" height="10" patternUnits="userSpaceOnUse">
+                                        <path d="M 0,10 L 10,0 M -1,1 L 1,-1 M 9,11 L 11,9"
+                                            stroke="rgba(0, 245, 255, 0.2)" stroke-width="1" />
+                                    </pattern>
+                                </defs>
+                                <!-- Meshes -->
+                                <rect x="20" y="20" width="80" height="110" fill="url(#mesh-pattern)" stroke="none"
+                                    class="t-elem topo-meshes" />
+                                <rect x="100" y="20" width="80" height="110" fill="url(#mesh-pattern)" stroke="none"
+                                    class="t-elem topo-meshes" />
+                                <!-- Loops -->
+                                <path d="M 15,15 L 185,15 L 185,135 L 15,135 Z" fill="none"
+                                    stroke="var(--electric-yellow)" stroke-width="2" stroke-dasharray="2,2"
+                                    class="t-elem topo-loops" opacity="0" />
+                                <!-- Branches (lines with components) -->
+                                <line x1="20" y1="20" x2="100" y2="20" stroke="var(--text-secondary)" stroke-width="2"
+                                    class="t-elem topo-branches" />
+                                <line x1="100" y1="20" x2="180" y2="20" stroke="var(--text-secondary)" stroke-width="2"
+                                    class="t-elem topo-branches" />
+                                <line x1="20" y1="20" x2="20" y2="130" stroke="var(--text-secondary)" stroke-width="2"
+                                    class="t-elem topo-branches" />
+                                <line x1="100" y1="20" x2="100" y2="130" stroke="var(--text-secondary)" stroke-width="2"
+                                    class="t-elem topo-branches" />
+                                <line x1="180" y1="20" x2="180" y2="130" stroke="var(--text-secondary)" stroke-width="2"
+                                    class="t-elem topo-branches" />
+                                <line x1="20" y1="130" x2="100" y2="130" stroke="var(--text-secondary)" stroke-width="2"
+                                    class="t-elem topo-branches" />
+                                <line x1="100" y1="130" x2="180" y2="130" stroke="var(--text-secondary)"
+                                    stroke-width="2" class="t-elem topo-branches" />
+                                <!-- Resistor zigzag representations -->
+                                <path d="M40,20 L45,15 L55,25 L65,15 L75,25 L80,20" fill="none"
+                                    stroke="var(--text-secondary)" stroke-width="2" class="t-elem topo-branches" />
+                                <path d="M120,20 L125,15 L135,25 L145,15 L155,25 L160,20" fill="none"
+                                    stroke="var(--text-secondary)" stroke-width="2" class="t-elem topo-branches" />
+                                <!-- Nodes -->
+                                <circle cx="20" cy="20" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                                <circle cx="100" cy="20" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                                <circle cx="180" cy="20" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                                <circle cx="20" cy="130" r="4" fill="var(--text-secondary)" class="t-elem topo-nodes" />
+                                <circle cx="100" cy="130" r="4" fill="var(--text-secondary)"
+                                    class="t-elem topo-nodes" />
+                                <circle cx="180" cy="130" r="4" fill="var(--text-secondary)"
+                                    class="t-elem topo-nodes" />
+                            </svg>
+                            <p class="text-center text-sm flip-hint mt-2">Hover over terms to highlight diagram</p>
+                        </div>
+                    </div>
+                </div>
         </section>
 
         <section id="dc-ac-analysis" class="circuit-section" data-aos="fade-up">

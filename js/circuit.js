@@ -1288,7 +1288,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             btnDischarge.classList.add('active');
             btnCharge.classList.remove('active');
-            switchBlade.style.transform = 'rotate(90deg)'; // points down to discharge loop terminal
+            switchBlade.style.transform = 'rotate(-60deg)'; // connected to discharge loop
             chartTitle.innerHTML = 'Discharging: $V_C = V_S(e^{-t/\\tau})$';
         }
 
@@ -1315,6 +1315,312 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Init
         startRCMode('charge');
+    }
+
+    // --- CARD 0.15: Capacitor Key Points (Energy Live Slider) ---
+    const capEnergySlide = document.getElementById('cap-f-v-slide');
+    const capEnergyValTxt = document.getElementById('cap-f-v-val');
+    const capEnergyE = document.getElementById('cap-f-e-val');
+    const capEnergyGauge = document.getElementById('cap-f-e-gauge');
+
+    if (capEnergySlide && capEnergyValTxt && capEnergyE && capEnergyGauge) {
+        capEnergySlide.addEventListener('input', function () {
+            let v = parseFloat(this.value);
+            capEnergyValTxt.textContent = v;
+
+            // Assume C = 1F for visual simplicity
+            let E = 0.5 * 1 * (v * v);
+            capEnergyE.textContent = E.toFixed(1) + ' J';
+
+            // Gauge max is 200J (since 0.5 * 1 * 20^2 = 200)
+            let percent = (E / 200) * 100;
+            capEnergyGauge.style.width = percent + '%';
+
+            if (percent > 75) {
+                capEnergyGauge.style.backgroundColor = 'var(--neon-pink)';
+            } else if (percent > 40) {
+                capEnergyGauge.style.backgroundColor = 'var(--neon-cyan)';
+            } else {
+                capEnergyGauge.style.backgroundColor = 'var(--electric-yellow)';
+            }
+        });
+    }
+
+    // --- CARD 0.16: Inductor Fundamentals (Self & Mutual Sliders) ---
+    const indDiDtSlide = document.getElementById('slide-di-dt');
+    const indVLVal = document.getElementById('val-vL');
+
+    if (indDiDtSlide && indVLVal) {
+        indDiDtSlide.addEventListener('input', function () {
+            let didt = parseFloat(this.value);
+            // Assume L = 1H for visual simplicity
+            let vL = 1 * didt;
+            indVLVal.textContent = vL.toFixed(1);
+        });
+    }
+
+    const indKSlide = document.getElementById('slide-k');
+    const indKVal = document.getElementById('val-k');
+    const ring2 = document.getElementById('k-ring-2');
+
+    if (indKSlide && indKVal && ring2) {
+        indKSlide.addEventListener('input', function () {
+            let k = parseFloat(this.value);
+            indKVal.textContent = k.toFixed(2);
+            // Translate the right ring towards the left ring as K increases (max overlap when K=1)
+            let intersectDist = k * 30;
+            ring2.style.transform = `translateX(-${intersectDist}px)`;
+        });
+    }
+
+    // --- CARD 0.20: Magnetic Coupling ---
+    const tglSeriesDots = document.getElementById('toggle-series-dots');
+    const lblSeriesAid = document.getElementById('lbl-series-aid');
+    const formSeriesLeq = document.getElementById('formula-series-leq');
+    const dotSeries2 = document.getElementById('dot-series-2');
+
+    if (tglSeriesDots && lblSeriesAid && formSeriesLeq && dotSeries2) {
+        tglSeriesDots.addEventListener('change', function () {
+            if (this.checked) {
+                // Aiding
+                lblSeriesAid.textContent = "Aiding";
+                lblSeriesAid.style.color = "var(--neon-cyan)";
+                formSeriesLeq.innerHTML = "$$ L_{eq} = L_1 + L_2 + 2M $$";
+                dotSeries2.setAttribute('cx', '155');
+            } else {
+                // Opposing
+                lblSeriesAid.textContent = "Opposing";
+                lblSeriesAid.style.color = "var(--neon-pink)";
+                formSeriesLeq.innerHTML = "$$ L_{eq} = L_1 + L_2 - 2M $$";
+                dotSeries2.setAttribute('cx', '195');
+            }
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(formSeriesLeq);
+            }
+        });
+    }
+
+    const tglParaDots = document.getElementById('toggle-para-dots');
+    const lblParaAid = document.getElementById('lbl-para-aid');
+    const formParaLeq = document.getElementById('formula-para-leq');
+    const dotPara2 = document.getElementById('dot-para-2');
+
+    if (tglParaDots && lblParaAid && formParaLeq && dotPara2) {
+        tglParaDots.addEventListener('change', function () {
+            if (this.checked) {
+                // Aiding
+                lblParaAid.textContent = "Aiding";
+                lblParaAid.style.color = "var(--neon-purple)";
+                formParaLeq.innerHTML = "$$ L_{eq} = \\frac{L_1 L_2 - M^2}{L_1 + L_2 - 2M} $$";
+                dotPara2.setAttribute('cx', '75');
+            } else {
+                // Opposing
+                lblParaAid.textContent = "Opposing";
+                lblParaAid.style.color = "var(--neon-pink)";
+                formParaLeq.innerHTML = "$$ L_{eq} = \\frac{L_1 L_2 - M^2}{L_1 + L_2 + 2M} $$";
+                dotPara2.setAttribute('cx', '105');
+            }
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(formParaLeq);
+            }
+        });
+    }
+
+    // --- CARD 0.21: RL Transients ---
+    const btnRlConnect = document.getElementById('btn-rl-connect');
+    const btnRlDisconnect = document.getElementById('btn-rl-disconnect');
+    const slideRlTau = document.getElementById('rl-tau-slider');
+    const valRlTau = document.getElementById('rl-tau-val');
+    const rlSwitch = document.getElementById('rl-switch-blade');
+    const rlGlow = document.getElementById('rl-glow');
+    const rlChartContainer = document.getElementById('rl-chart-container');
+    const rlChartTitle = document.getElementById('rl-chart-title');
+
+    if (rlChartContainer && typeof d3 !== 'undefined') {
+        let rlMode = 'rise'; // 'rise' or 'decay'
+        let rlData = [];
+        let rlInterval;
+        let rlTime = 0;
+
+        const rlMargin = { top: 30, right: 20, bottom: 30, left: 40 };
+        const rlWidth = rlChartContainer.clientWidth - rlMargin.left - rlMargin.right;
+        const rlHeight = rlChartContainer.clientHeight - rlMargin.top - rlMargin.bottom;
+
+        const rlSvg = d3.select("#rl-chart-container")
+            .append("svg")
+            .attr("width", rlWidth + rlMargin.left + rlMargin.right)
+            .attr("height", rlHeight + rlMargin.top + rlMargin.bottom)
+            .append("g")
+            .attr("transform", `translate(${rlMargin.left},${rlMargin.top})`);
+
+        const rlX = d3.scaleLinear().domain([0, 10]).range([0, rlWidth]);
+        const rlY = d3.scaleLinear().domain([0, 100]).range([rlHeight, 0]); // 0 to 100% current
+
+        rlSvg.append("g")
+            .attr("transform", `translate(0,${rlHeight})`)
+            .call(d3.axisBottom(rlX).ticks(5).tickFormat(d => d + "s"));
+        rlSvg.append("g")
+            .call(d3.axisLeft(rlY).ticks(5).tickFormat(d => d + "%"));
+
+        // grid lines
+        rlSvg.append("g").attr("class", "grid")
+            .call(d3.axisLeft(rlY).ticks(5).tickSize(-rlWidth).tickFormat(""))
+            .style("stroke-dasharray", ("3,3")).style("opacity", 0.1);
+
+        const rlLine = d3.line()
+            .x(d => rlX(d.t))
+            .y(d => rlY(d.i))
+            .curve(d3.curveMonotoneX);
+
+        const rlPath = rlSvg.append("path")
+            .datum(rlData)
+            .attr("fill", "none")
+            .attr("stroke", "var(--electric-yellow)")
+            .attr("stroke-width", 2);
+
+        function stepRL() {
+            rlTime += 0.1;
+            if (rlTime > 10) rlTime = 10;
+
+            let tau = slideRlTau ? parseFloat(slideRlTau.value) : 1.5;
+            let i_val = 0;
+
+            if (rlMode === 'rise') {
+                i_val = 100 * (1 - Math.exp(-rlTime / tau));
+            } else {
+                i_val = 100 * Math.exp(-rlTime / tau);
+            }
+
+            rlData.push({ t: rlTime, i: i_val });
+
+            rlPath.datum(rlData).attr("d", rlLine);
+
+            rlGlow.style.opacity = (i_val / 100) * 0.8;
+
+            if (rlTime >= 10) {
+                clearInterval(rlInterval);
+            }
+        }
+
+        function startRLMode(mode) {
+            clearInterval(rlInterval);
+            rlMode = mode;
+            rlTime = 0;
+            rlData = [];
+            rlPath.datum(rlData).attr("d", rlLine);
+
+            if (mode === 'rise') {
+                btnRlConnect.classList.add('active');
+                btnRlDisconnect.classList.remove('active');
+                if (rlSwitch) rlSwitch.style.transform = 'rotate(0deg)'; // connected
+                if (rlChartTitle) rlChartTitle.innerHTML = 'Current Rise: $I_L = I_{max}(1-e^{-t/\\tau})$';
+            } else {
+                btnRlDisconnect.classList.add('active');
+                btnRlConnect.classList.remove('active');
+                if (rlSwitch) rlSwitch.style.transform = 'rotate(-60deg)'; // disconnected / shorted
+                if (rlChartTitle) rlChartTitle.innerHTML = 'Current Decay: $I_L = I_{max}(e^{-t/\\tau})$';
+            }
+
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(rlChartTitle);
+            }
+
+            rlData.push({ t: 0, i: mode === 'rise' ? 0 : 100 });
+            rlPath.datum(rlData).attr("d", rlLine);
+            rlInterval = setInterval(stepRL, 100);
+        }
+
+        if (btnRlConnect && btnRlDisconnect && slideRlTau) {
+            btnRlConnect.addEventListener('click', () => startRLMode('rise'));
+            btnRlDisconnect.addEventListener('click', () => startRLMode('decay'));
+            slideRlTau.addEventListener('input', () => {
+                valRlTau.textContent = parseFloat(slideRlTau.value).toFixed(1);
+                startRLMode(rlMode);
+            });
+            startRLMode('rise');
+        }
+    }
+
+    // --- CARD 0.22: RLC Circuit & Damping ---
+    const slideRlcR = document.getElementById('rlc-r-slider');
+    const valRlcZeta = document.getElementById('rlc-zeta-val');
+    const rlcCurveContainer = document.getElementById('rlc-curve-container');
+
+    if (rlcCurveContainer && typeof d3 !== 'undefined') {
+        const rlcMargin = { top: 20, right: 20, bottom: 30, left: 40 };
+        const rlcWidth = rlcCurveContainer.clientWidth - rlcMargin.left - rlcMargin.right;
+        const rlcHeight = rlcCurveContainer.clientHeight - rlcMargin.top - rlcMargin.bottom;
+
+        const rlcSvg = d3.select("#rlc-curve-container")
+            .append("svg")
+            .attr("width", rlcWidth + rlcMargin.left + rlcMargin.right)
+            .attr("height", rlcHeight + rlcMargin.top + rlcMargin.bottom)
+            .append("g")
+            .attr("transform", `translate(${rlcMargin.left},${rlcMargin.top})`);
+
+        const rlcX = d3.scaleLinear().domain([0, 15]).range([0, rlcWidth]);
+        const rlcY = d3.scaleLinear().domain([-0.5, 1.5]).range([rlcHeight, 0]);
+
+        rlcSvg.append("g")
+            .attr("transform", `translate(0,${rlcY(0)})`) // axis at y=0
+            .call(d3.axisBottom(rlcX).ticks(5).tickFormat(d => d + "s"));
+
+        rlcSvg.append("g")
+            .call(d3.axisLeft(rlcY).ticks(5));
+
+        const rlcLine = d3.line()
+            .x(d => rlcX(d.t))
+            .y(d => rlcY(d.v))
+            .curve(d3.curveMonotoneX);
+
+        const rlcPath = rlcSvg.append("path")
+            .attr("fill", "none")
+            .attr("stroke", "var(--neon-purple)")
+            .attr("stroke-width", 2);
+
+        function drawRLCCurve(zeta) {
+            let data = [];
+            let w0 = 1;
+            for (let t = 0; t <= 15; t += 0.1) {
+                let v = 0;
+                if (zeta < 1) {
+                    // Underdamped
+                    let wd = w0 * Math.sqrt(1 - zeta * zeta);
+                    v = 1 - Math.exp(-zeta * w0 * t) * (Math.cos(wd * t) + (zeta / (Math.sqrt(1 - zeta * zeta))) * Math.sin(wd * t));
+                } else if (zeta === 1) {
+                    // Critically damped
+                    v = 1 - Math.exp(-w0 * t) * (1 + w0 * t);
+                } else {
+                    // Overdamped
+                    let s1 = -w0 * (zeta - Math.sqrt(zeta * zeta - 1));
+                    let s2 = -w0 * (zeta + Math.sqrt(zeta * zeta - 1));
+                    v = 1 - (s2 * Math.exp(s1 * t) - s1 * Math.exp(s2 * t)) / (s2 - s1);
+                }
+                data.push({ t: t, v: v });
+            }
+
+            rlcPath.datum(data).attr("d", rlcLine)
+                .attr("stroke", zeta < 1 ? "var(--neon-purple)" : (zeta === 1 ? "var(--neon-cyan)" : "var(--electric-yellow)"));
+        }
+
+        if (slideRlcR) {
+            slideRlcR.addEventListener('input', function () {
+                let r = parseFloat(this.value);
+                let zeta = r;
+
+                let type = "Underdamped";
+                if (zeta === 1) type = "Critically Damped";
+                if (zeta > 1) type = "Overdamped";
+
+                valRlcZeta.innerHTML = `$\\zeta = ${zeta.toFixed(2)}$ (${type})`;
+                if (typeof renderMathInElement === 'function') {
+                    renderMathInElement(valRlcZeta);
+                }
+
+                drawRLCCurve(zeta);
+            });
+            drawRLCCurve(0.5); // init
+        }
     }
 
     // 19. Initialize Phasor Canvas Animation
