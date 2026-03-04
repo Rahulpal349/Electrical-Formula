@@ -574,6 +574,749 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // CARD 0.1: Units Table Handling
+    const unitRows = document.querySelectorAll('.unit-row');
+    const unitDisplay = document.getElementById('unit-formula-display');
+    const unitTitle = document.getElementById('unit-formula-title');
+    const unitKatex = document.getElementById('unit-formula-katex');
+
+    if (unitRows.length > 0) {
+        unitRows.forEach(row => {
+            row.addEventListener('click', () => {
+                const qty = row.querySelector('.qty-col').textContent;
+                const formula = row.getAttribute('data-formula');
+                unitTitle.textContent = qty + " Formulas";
+                unitKatex.innerHTML = `$$ ${formula} $$`;
+                unitDisplay.style.display = 'block';
+
+                if (typeof renderMathInElement === 'function') {
+                    renderMathInElement(unitDisplay, {
+                        delimiters: [{ left: '$$', right: '$$', display: true }],
+                        throwOnError: false
+                    });
+                }
+            });
+        });
+    }
+
+    // CARD 0.2: Wire Stretch Animation
+    const btnStretch = document.getElementById('btn-stretch');
+    const btnCompress = document.getElementById('btn-compress');
+    const btnResetWire = document.getElementById('btn-reset-wire');
+    const wireRect = document.getElementById('wire-rect');
+    const wireLabel = document.getElementById('wire-label');
+    const wireStatus = document.getElementById('wire-status');
+
+    if (btnStretch && btnCompress && btnResetWire) {
+        btnStretch.addEventListener('click', () => {
+            gsap.to(wireRect, { attr: { x: 50, width: 200, height: 15, y: 42.5 }, duration: 1 });
+            wireLabel.textContent = "4R";
+            wireLabel.setAttribute('y', 55);
+            wireStatus.textContent = "Resistance: 4R (Glows Red)";
+            wireStatus.style.color = "#ff5252";
+            wireRect.style.fill = "#ff5252";
+        });
+        btnCompress.addEventListener('click', () => {
+            gsap.to(wireRect, { attr: { x: 125, width: 50, height: 60, y: 20 }, duration: 1 });
+            wireLabel.textContent = "R/4";
+            wireLabel.setAttribute('y', 55);
+            wireStatus.textContent = "Resistance: R/4 (Glows Green)";
+            wireStatus.style.color = "#69f0ae";
+            wireRect.style.fill = "#69f0ae";
+        });
+        btnResetWire.addEventListener('click', () => {
+            gsap.to(wireRect, { attr: { x: 100, width: 100, height: 30, y: 35 }, duration: 1 });
+            wireLabel.textContent = "R (ℓ, A)";
+            wireLabel.setAttribute('y', 55);
+            wireStatus.textContent = "Original Resistance: R";
+            wireStatus.style.color = "var(--neon-cyan)";
+            wireRect.style.fill = "var(--electric-yellow)";
+        });
+    }
+
+    // CARD 0.2: Combination Calculator
+    const combR1 = document.getElementById('comb-r1');
+    const combR2 = document.getElementById('comb-r2');
+    const srRes = document.getElementById('comb-series-res');
+    const prRes = document.getElementById('comb-parallel-res');
+
+    function updateCombiner() {
+        if (!combR1 || !combR2 || !srRes || !prRes) return;
+        const r1 = parseFloat(combR1.value) || 0;
+        const r2 = parseFloat(combR2.value) || 0;
+        const rSeries = r1 + r2;
+        const rParallel = (r1 * r2) / (r1 + r2);
+
+        srRes.innerHTML = `$R_{series} = ${rSeries.toFixed(2)}$ Ω`;
+        if (r1 === 0 && r2 === 0) {
+            prRes.innerHTML = `$R_{parallel} = 0.00$ Ω`;
+        } else {
+            prRes.innerHTML = `$R_{parallel} = ${rParallel.toFixed(2)}$ Ω`;
+        }
+
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(srRes.parentElement, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ],
+                throwOnError: false
+            });
+        }
+    }
+
+    if (combR1 && combR2) {
+        combR1.addEventListener('input', updateCombiner);
+        combR2.addEventListener('input', updateCombiner);
+        updateCombiner(); // Initial calculation
+    }
+
+    // CARD 0.3: Delta ↔ Star Conversion
+    const btnToggleDS = document.getElementById('btn-toggle-ds');
+    const grpDelta = document.getElementById('ds-delta-group');
+    const grpStar = document.getElementById('ds-star-group');
+    const tabsDS = document.querySelectorAll('.ds-tab');
+    const panesDS = document.querySelectorAll('.ds-pane');
+    let isDelta = true;
+
+    if (btnToggleDS && grpDelta && grpStar) {
+        btnToggleDS.addEventListener('click', () => {
+            isDelta = !isDelta;
+            if (isDelta) {
+                gsap.to(grpDelta, { opacity: 1, duration: 0.5 });
+                gsap.to(grpStar, { opacity: 0, duration: 0.5 });
+            } else {
+                gsap.to(grpDelta, { opacity: 0, duration: 0.5 });
+                gsap.to(grpStar, { opacity: 1, duration: 0.5 });
+            }
+        });
+    }
+
+    if (tabsDS.length > 0) {
+        tabsDS.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabsDS.forEach(t => { t.classList.remove('active'); t.style.color = "var(--text-muted)"; t.style.borderBottom = "none"; });
+                panesDS.forEach(p => p.style.display = 'none');
+
+                tab.classList.add('active');
+                tab.style.color = "var(--text-primary)";
+                tab.style.borderBottom = "2px solid var(--neon-cyan)";
+                const target = document.getElementById(tab.getAttribute('data-target'));
+                if (target) {
+                    target.style.display = 'block';
+                    // Force re-render of katex in this pane to prevent clipping
+                    if (typeof renderMathInElement === 'function') {
+                        renderMathInElement(target, { delimiters: [{ left: '$$', right: '$$', display: true }], throwOnError: false });
+                    }
+                }
+            });
+        });
+    }
+
+    // Delta-Star Live Calculation
+    const inRab = document.getElementById('ds-calc-rab');
+    const inRbc = document.getElementById('ds-calc-rbc');
+    const inRca = document.getElementById('ds-calc-rca');
+    const dsRes = document.getElementById('ds-calc-result');
+
+    const inRa = document.getElementById('sd-calc-ra');
+    const inRb = document.getElementById('sd-calc-rb');
+    const inRc = document.getElementById('sd-calc-rc');
+    const sdRes = document.getElementById('sd-calc-result');
+
+    function calcDS() {
+        if (!inRab || !inRa) return;
+        // D -> Y
+        let rab = parseFloat(inRab.value) || 0;
+        let rbc = parseFloat(inRbc.value) || 0;
+        let rca = parseFloat(inRca.value) || 0;
+        let sumD = rab + rbc + rca;
+        if (sumD > 0) {
+            let ra = (rab * rca) / sumD;
+            let rb = (rab * rbc) / sumD;
+            let rc = (rbc * rca) / sumD;
+            dsRes.textContent = `RA = ${ra.toFixed(2)} Ω, RB = ${rb.toFixed(2)} Ω, RC = ${rc.toFixed(2)} Ω`;
+        } else { dsRes.textContent = "Sum of Δ must be > 0"; }
+
+        // Y -> D
+        let a = parseFloat(inRa.value) || 0;
+        let b = parseFloat(inRb.value) || 0;
+        let c = parseFloat(inRc.value) || 0;
+        if (a > 0 && b > 0 && c > 0) {
+            let sumY = (a * b) + (b * c) + (c * a);
+            let rabOut = sumY / c;
+            let rbcOut = sumY / a;
+            let rcaOut = sumY / b;
+            sdRes.textContent = `RAB = ${rabOut.toFixed(2)} Ω, RBC = ${rbcOut.toFixed(2)} Ω, RCA = ${rcaOut.toFixed(2)} Ω`;
+        } else { sdRes.textContent = "Input resistances must be > 0"; }
+    }
+
+    [inRab, inRbc, inRca, inRa, inRb, inRc].forEach(inp => {
+        if (inp) inp.addEventListener('input', calcDS);
+    });
+    calcDS(); // init
+
+    // CARD 0.4: Resistor VS Temp D3 Graph
+    const rvtGraph = document.getElementById('rvt-graph');
+    if (rvtGraph && typeof d3 !== 'undefined') {
+        const width = rvtGraph.clientWidth;
+        const height = rvtGraph.clientHeight;
+        const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+        const innerWidth = width - margin.left - margin.right;
+        const innerHeight = height - margin.top - margin.bottom;
+
+        const svg = d3.select('#rvt-graph').append('svg')
+            .attr('width', width)
+            .attr('height', height)
+            .append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
+
+        // X scale (Temp: -50 to 200)
+        const xScale = d3.scaleLinear().domain([-50, 200]).range([0, innerWidth]);
+        // Y scale (Resistance factor: 0.5 to 2.5 of base 100) -> so 50 to 250
+        const yScale = d3.scaleLinear().domain([0, 200]).range([innerHeight, 0]);
+
+        const xAxis = d3.axisBottom(xScale).ticks(6);
+        const yAxis = d3.axisLeft(yScale).ticks(5);
+
+        svg.append('g').attr('transform', `translate(0,${innerHeight})`)
+            .attr('class', 'chart-axis').call(xAxis)
+            .append('text').attr('x', innerWidth / 2).attr('y', 28).attr('fill', '#fff').text('Temperature (°C)');
+
+        svg.append('g').attr('class', 'chart-axis').call(yAxis)
+            .append('text').attr('transform', 'rotate(-90)').attr('y', -30).attr('x', -innerHeight / 2).attr('fill', '#fff').text('Resistance (Ω)');
+
+        // Generate data R0 = 100 at T0 = 20
+        const R0 = 100;
+        const T0 = 20;
+        let dataCu = [], dataSemi = [], dataMang = [];
+        for (let t = -50; t <= 200; t += 5) {
+            // Cu: alpha = 0.00393
+            dataCu.push({ x: t, y: R0 * (1 + 0.00393 * (t - T0)) });
+            // Semi: roughly exponential decay or negative linear. Let's use simple negative linear for visual, bounded.
+            let rSemi = R0 * (1 - 0.005 * (t - T0));
+            if (rSemi < 10) rSemi = 10; // floor
+            dataSemi.push({ x: t, y: rSemi });
+            // Manganin: alpha = 0.00001
+            dataMang.push({ x: t, y: R0 * (1 + 0.00001 * (t - T0)) });
+        }
+
+        const lineBase = d3.line().x(d => xScale(d.x)).y(d => yScale(d.y)).curve(d3.curveMonotoneX);
+
+        svg.append('path').datum(dataCu).attr('fill', 'none').attr('stroke', 'var(--neon-cyan)').attr('stroke-width', 2).attr('d', lineBase);
+        svg.append('path').datum(dataSemi).attr('fill', 'none').attr('stroke', '#ff5252').attr('stroke-width', 2).attr('d', lineBase);
+        svg.append('path').datum(dataMang).attr('fill', 'none').attr('stroke', 'var(--electric-yellow)').attr('stroke-width', 2).attr('d', lineBase);
+
+        // Indicator Line
+        const indicator = svg.append('line')
+            .attr('x1', xScale(20)).attr('x2', xScale(20))
+            .attr('y1', 0).attr('y2', innerHeight)
+            .attr('stroke', '#fff').attr('stroke-width', 1).attr('stroke-dasharray', '4,4');
+
+        const indCircle1 = svg.append('circle').attr('r', 5).attr('fill', 'var(--neon-cyan)');
+        const indCircle2 = svg.append('circle').attr('r', 5).attr('fill', '#ff5252');
+
+        const slider = document.getElementById('rvt-temp-slider');
+        const valDisp = document.getElementById('rvt-temp-val');
+
+        function updateRvtSlider() {
+            if (!slider) return;
+            const t = parseInt(slider.value);
+            valDisp.textContent = t;
+            indicator.attr('x1', xScale(t)).attr('x2', xScale(t));
+            indCircle1.attr('cx', xScale(t)).attr('cy', yScale(R0 * (1 + 0.00393 * (t - T0))));
+
+            let rS = R0 * (1 - 0.005 * (t - T0)); if (rS < 10) rS = 10;
+            indCircle2.attr('cx', xScale(t)).attr('cy', yScale(rS));
+        }
+        if (slider) {
+            slider.addEventListener('input', updateRvtSlider);
+            updateRvtSlider();
+        }
+    }
+
+    // CARD 0.6: Resistor Colour Code Calculator
+    const sel1 = document.getElementById('cc-sel-1');
+    const sel2 = document.getElementById('cc-sel-2');
+    const selMulti = document.getElementById('cc-sel-multi');
+    const selTol = document.getElementById('cc-sel-tol');
+    const b1 = document.querySelector('.b-1');
+    const b2 = document.querySelector('.b-2');
+    const bMulti = document.querySelector('.b-multi');
+    const bTol = document.querySelector('.b-tol');
+    const ccResult = document.getElementById('cc-result');
+
+    function formatRes(val) {
+        if (val >= 1e9) return (val / 1e9).toFixed(1) + ' GΩ';
+        if (val >= 1e6) return (val / 1e6).toFixed(1) + ' MΩ';
+        if (val >= 1e3) return (val / 1e3).toFixed(1) + ' kΩ';
+        return val.toFixed(1) + ' Ω';
+    }
+
+    function updateCC() {
+        if (!sel1 || !sel2 || !selMulti || !selTol) return;
+
+        // Update colors
+        b1.style.background = sel1.options[sel1.selectedIndex].style.background;
+        b2.style.background = sel2.options[sel2.selectedIndex].style.background;
+        bMulti.style.background = selMulti.options[selMulti.selectedIndex].style.background;
+        bTol.style.background = selTol.options[selTol.selectedIndex].style.background;
+
+        // Calculate value
+        const v1 = parseInt(sel1.value);
+        const v2 = parseInt(sel2.value);
+        const multi = parseInt(selMulti.value);
+        const tol = selTol.value;
+
+        let baseVal = (v1 * 10) + v2;
+        let finalVal = 0;
+
+        if (multi === -1) finalVal = baseVal * 0.1;
+        else if (multi === -2) finalVal = baseVal * 0.01;
+        else finalVal = baseVal * Math.pow(10, multi);
+
+        ccResult.innerHTML = `${formatRes(finalVal)} ± ${tol}%`;
+    }
+
+    [sel1, sel2, selMulti, selTol].forEach(sel => {
+        if (sel) sel.addEventListener('change', updateCC);
+    });
+    updateCC(); // Init
+
+    // CARD 0.7: Metal Info & Chart
+    const metalRows = document.querySelectorAll('.metal-row');
+    const metalName = document.getElementById('metal-name');
+    const metalUse = document.getElementById('metal-use');
+    const metalCard = document.getElementById('metal-info-card');
+
+    metalRows.forEach(row => {
+        row.addEventListener('mouseenter', () => {
+            if (metalName && metalUse && metalCard) {
+                metalName.textContent = row.getAttribute('data-metal');
+                metalUse.textContent = row.getAttribute('data-use');
+                metalCard.style.opacity = 1;
+            }
+        });
+        row.addEventListener('mouseleave', () => {
+            if (metalCard) metalCard.style.opacity = 0;
+        });
+    });
+
+    // D3 Bar Chart for Melting Points
+    const mpContainer = document.getElementById('mp-chart');
+    if (mpContainer && typeof d3 !== 'undefined') {
+        const mpData = [
+            { metal: 'Tin', mp: 231.8 },
+            { metal: 'Lead', mp: 327.4 },
+            { metal: 'Zinc', mp: 419.5 },
+            { metal: 'Magnesium', mp: 650 },
+            { metal: 'Aluminium', mp: 658.6 },
+            { metal: 'Silver', mp: 961 },
+            { metal: 'Copper', mp: 1084 },
+            { metal: 'Nickel', mp: 1445 },
+            { metal: 'Cobalt', mp: 1490 },
+            { metal: 'Iron', mp: 1538 },
+            { metal: 'Chromium', mp: 1850 },
+            { metal: 'Molybdenum', mp: 2622 },
+            { metal: 'Tungsten', mp: 3390 },
+            { metal: 'Carbon', mp: 3550 }
+        ];
+
+        const margin = { top: 10, right: 30, bottom: 20, left: 70 };
+        const width = mpContainer.clientWidth - margin.left - margin.right;
+        const height = mpContainer.clientHeight - margin.top - margin.bottom;
+
+        const svg = d3.select("#mp-chart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const x = d3.scaleLinear()
+            .domain([0, 4000])
+            .range([0, width]);
+
+        const y = d3.scaleBand()
+            .range([0, height])
+            .domain(mpData.map(d => d.metal))
+            .padding(.1);
+
+        const colorScale = d3.scaleSequential()
+            .interpolator(d3.interpolateTurbo)
+            .domain([0, 3600]);
+
+        // Y axis
+        svg.append("g")
+            .call(d3.axisLeft(y).tickSize(0))
+            .select(".domain").remove();
+
+        // X axis (bottom)
+        svg.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x).ticks(5))
+            .attr("color", "var(--text-muted)");
+
+        // Style Y axis text
+        svg.selectAll(".tick text")
+            .attr("fill", "var(--text-secondary)")
+            .style("font-size", "9px")
+            .style("font-family", "var(--font-body)");
+
+        // Bars with animation
+        svg.selectAll("myRect")
+            .data(mpData)
+            .join("rect")
+            .attr("x", x(0))
+            .attr("y", d => y(d.metal))
+            .attr("width", 0) // Start at zero for animation
+            .attr("height", y.bandwidth())
+            .attr("fill", d => colorScale(d.mp))
+            .attr("rx", 2)
+            .transition()
+            .duration(1500)
+            .delay((d, i) => i * 100)
+            .attr("width", d => x(d.mp));
+    }
+
+    // CARD 0.8: Dielectric Table Info
+    const dRows = document.querySelectorAll('.dielectric-row');
+    const dInfo = document.getElementById('dielectric-info');
+    if (dInfo) {
+        dRows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                const use = row.getAttribute('data-use');
+                dInfo.innerHTML = `<strong style="color:var(--neon-purple);">${use}</strong>`;
+            });
+            row.addEventListener('mouseleave', () => {
+                dInfo.innerHTML = '<span class="text-muted">Hover over a material to see its application...</span>';
+            });
+        });
+    }
+
+    // CARD 0.9 (a): Basic Parallel Plate
+    const slideAa = document.getElementById('slide-A-a');
+    const slideda = document.getElementById('slide-d-a');
+    const plateTopA = document.getElementById('plate-top-a');
+    const plateBotA = document.getElementById('plate-bot-a');
+    const dielectricA = document.getElementById('dielectric-a');
+    const labelDa = document.getElementById('label-d-a');
+    const arrowDa = document.getElementById('arrow-d-a');
+    const resCapA = document.getElementById('res-cap-a');
+
+    function updateCapA() {
+        if (!slideAa || !slideda || !resCapA) return;
+        const A = parseFloat(slideAa.value);
+        const d = parseFloat(slideda.value);
+
+        // Visual updates
+        plateTopA.setAttribute('x', 100 - A / 2);
+        plateTopA.setAttribute('width', A);
+        plateBotA.setAttribute('x', 100 - A / 2);
+        plateBotA.setAttribute('width', A);
+
+        // top plate is at y=20 (height 8), bottom plate will be at y = 28 + d
+        plateBotA.setAttribute('y', 28 + d);
+
+        dielectricA.setAttribute('x', 100 - A / 2);
+        dielectricA.setAttribute('width', A);
+        dielectricA.setAttribute('height', d);
+
+        // update label arrow
+        if (labelDa && arrowDa) {
+            labelDa.setAttribute('y', 28 + d / 2 + 4);
+            arrowDa.setAttribute('d', `M 155 28 v ${d}`);
+        }
+
+        // Calculation mapping: A=100, d=40 -> 100pF -> C = (A/d) * 40
+        const cVal = (A / d) * 40;
+        resCapA.innerHTML = `C = <span style="color:#fff;">${cVal.toFixed(1)} pF</span>`;
+    }
+
+    if (slideAa) slideAa.addEventListener('input', updateCapA);
+    if (slideda) slideda.addEventListener('input', updateCapA);
+    updateCapA();
+
+    // CARD 0.9 (f): Variable Capacitor
+    const slideMesh = document.getElementById('slide-mesh');
+    const rotorGroup = document.getElementById('rotor-group');
+    if (slideMesh && rotorGroup) {
+        slideMesh.addEventListener('input', () => {
+            const val = parseFloat(slideMesh.value);
+            // Move rotor group left to mesh
+            rotorGroup.setAttribute('transform', `translate(${-val}, 0)`);
+        });
+    }
+
+    // CARD 0.10: Series & Parallel Capacitors
+    const sc1 = document.getElementById('scalc-c1');
+    const sc2 = document.getElementById('scalc-c2');
+    const sc3 = document.getElementById('scalc-c3');
+    const sRes = document.getElementById('scalc-res');
+
+    function updateSCalc() {
+        if (!sc1 || !sc2 || !sc3 || !sRes) return;
+        const c1 = parseFloat(sc1.value) || 0;
+        const c2 = parseFloat(sc2.value) || 0;
+        const c3 = parseFloat(sc3.value) || 0;
+
+        // 1/Ceq = 1/C1 + 1/C2 + 1/C3
+        let invCeq = 0;
+        if (c1 > 0) invCeq += 1 / c1;
+        if (c2 > 0) invCeq += 1 / c2;
+        if (c3 > 0) invCeq += 1 / c3;
+
+        if (invCeq > 0) {
+            const ceq = 1 / invCeq;
+            sRes.textContent = `Ceq = ${ceq.toFixed(2)} µF`;
+        } else {
+            sRes.textContent = `Ceq = 0.00 µF`;
+        }
+    }
+
+    [sc1, sc2, sc3].forEach(el => {
+        if (el) el.addEventListener('input', updateSCalc);
+    });
+    updateSCalc();
+
+    const pc1 = document.getElementById('pcalc-c1');
+    const pc2 = document.getElementById('pcalc-c2');
+    const pc3 = document.getElementById('pcalc-c3');
+    const pRes = document.getElementById('pcalc-res');
+
+    function updatePCalc() {
+        if (!pc1 || !pc2 || !pc3 || !pRes) return;
+        const c1 = parseFloat(pc1.value) || 0;
+        const c2 = parseFloat(pc2.value) || 0;
+        const c3 = parseFloat(pc3.value) || 0;
+
+        // Ceq = C1 + C2 + C3
+        const ceq = c1 + c2 + c3;
+        pRes.textContent = `Ceq = ${ceq.toFixed(2)} µF`;
+    }
+
+    [pc1, pc2, pc3].forEach(el => {
+        if (el) el.addEventListener('input', updatePCalc);
+    });
+    updatePCalc();
+
+    // CARD 0.11: Delta-Star Capacitor Conversion
+    const dsCapToggle = document.getElementById('ds-cap-toggle');
+    const starCapGroup = document.getElementById('star-cap-group');
+    const deltaCapGroup = document.getElementById('delta-cap-group');
+    const stDCapForms = document.getElementById('st-d-cap-forms');
+    const dtSCapForms = document.getElementById('dt-s-cap-forms');
+    const dsCapTitle = document.getElementById('ds-cap-title');
+    const stDCapLbl = document.getElementById('st-d-cap-lbl');
+    const dtSCapLbl = document.getElementById('dt-s-cap-lbl');
+
+    if (dsCapToggle) {
+        dsCapToggle.addEventListener('change', (e) => {
+            const isStarToDelta = !e.target.checked; // default false -> Star to Delta
+
+            if (isStarToDelta) {
+                // Star to Delta Active
+                starCapGroup.style.opacity = '1';
+                starCapGroup.style.filter = 'none';
+                deltaCapGroup.style.opacity = '0.2';
+                deltaCapGroup.style.filter = 'grayscale(1)';
+
+                stDCapForms.style.display = 'block';
+                dtSCapForms.style.display = 'none';
+
+                dsCapTitle.innerHTML = 'Star to Delta ($\\Delta$)';
+                stDCapLbl.style.color = 'var(--text-primary)';
+                dtSCapLbl.style.color = 'var(--text-muted)';
+            } else {
+                // Delta to Star Active
+                deltaCapGroup.style.opacity = '1';
+                deltaCapGroup.style.filter = 'none';
+                starCapGroup.style.opacity = '0.2';
+                starCapGroup.style.filter = 'grayscale(1)';
+
+                dtSCapForms.style.display = 'block';
+                stDCapForms.style.display = 'none';
+
+                dsCapTitle.innerHTML = 'Delta ($\\Delta$) to Star';
+                dtSCapLbl.style.color = 'var(--text-primary)';
+                stDCapLbl.style.color = 'var(--text-muted)';
+            }
+
+            // Re-render KaTeX if available
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.getElementById('ds-cap-title'));
+            }
+        });
+
+        // Init labels correctly based on default state
+        // Init labels correctly based on default state
+        stDCapLbl.style.color = 'var(--text-primary)';
+        dtSCapLbl.style.color = 'var(--text-muted)';
+    }
+
+    // CARD 0.12 - 0.14: Capacitor Transients (RC Circuit)
+    const btnCharge = document.getElementById('btn-rc-charge');
+    const btnDischarge = document.getElementById('btn-rc-discharge');
+    const switchBlade = document.getElementById('rc-switch-blade');
+    const tauSlider = document.getElementById('rc-tau-slider');
+    const tauVal = document.getElementById('rc-tau-val');
+    const chartTitle = document.getElementById('rc-chart-title');
+    const chartContainer = document.getElementById('rc-chart-container');
+
+    let rcState = 'charge'; // 'charge' or 'discharge'
+    let rcInterval = null;
+    let rcTime = 0;
+    const rcData = [];
+    const maxTime = 30; // 30 seconds max window
+
+    // Initialize D3 Chart for RC
+    let rcSvg, xRc, yRc, pathLine, areaGen, pathPath, areaPath;
+
+    if (chartContainer && typeof d3 !== 'undefined') {
+        const margin = { top: 20, right: 20, bottom: 25, left: 35 };
+        const width = chartContainer.clientWidth - margin.left - margin.right;
+        const height = chartContainer.clientHeight - margin.top - margin.bottom;
+
+        rcSvg = d3.select("#rc-chart-container")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        xRc = d3.scaleLinear().domain([0, maxTime]).range([0, width]);
+        yRc = d3.scaleLinear().domain([0, 100]).range([height, 0]); // 0 to 100% of Vs
+
+        rcSvg.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(xRc).ticks(5))
+            .attr("color", "var(--text-muted)");
+
+        rcSvg.append("g")
+            .call(d3.axisLeft(yRc).ticks(4).tickFormat(d => d + "%"))
+            .attr("color", "var(--text-muted)");
+
+        rcSvg.selectAll(".tick text")
+            .attr("fill", "var(--text-secondary)")
+            .style("font-size", "9px")
+            .style("font-family", "var(--font-body)");
+
+        pathLine = d3.line()
+            .x(d => xRc(d.t))
+            .y(d => yRc(d.v))
+            .curve(d3.curveMonotoneX);
+
+        areaGen = d3.area()
+            .x(d => xRc(d.t))
+            .y0(height)
+            .y1(d => yRc(d.v))
+            .curve(d3.curveMonotoneX);
+
+        areaPath = rcSvg.append("path")
+            .attr("fill", "rgba(0, 240, 255, 0.2)")
+            .attr("d", areaGen(rcData));
+
+        pathPath = rcSvg.append("path")
+            .attr("fill", "none")
+            .attr("stroke", "var(--neon-cyan)")
+            .attr("stroke-width", 2)
+            .attr("d", pathLine(rcData));
+
+        // Initial populate to show curve
+        resetRCData();
+    }
+
+    function resetRCData() {
+        rcData.length = 0;
+        rcTime = 0;
+        updateRCChart();
+    }
+
+    function updateRCChart() {
+        if (!rcSvg) return;
+        pathPath.attr("d", pathLine(rcData));
+        areaPath.attr("d", areaGen(rcData));
+    }
+
+    function stepRC() {
+        let tau = parseFloat(tauSlider.value);
+        rcTime += 0.5; // step time
+
+        if (rcTime > maxTime) rcData.shift(); // sliding window optional, or just stop
+
+        let v = 0;
+        if (rcState === 'charge') {
+            v = 100 * (1 - Math.exp(-rcTime / tau));
+            // Color update for charge
+            pathPath.attr("stroke", "var(--neon-cyan)");
+            areaPath.attr("fill", "rgba(0, 240, 255, 0.2)");
+        } else {
+            v = 100 * Math.exp(-rcTime / tau);
+            // Color update for discharge
+            pathPath.attr("stroke", "var(--neon-purple)");
+            areaPath.attr("fill", "rgba(188, 19, 254, 0.2)");
+        }
+
+        rcData.push({ t: rcTime <= maxTime ? rcTime : rcData[rcData.length - 1].t + 0.5, v: v });
+
+        // Adjust X domain if sliding
+        if (rcTime > maxTime) {
+            xRc.domain([rcTime - maxTime, rcTime]);
+            rcSvg.select(".x-axis").call(d3.axisBottom(xRc)); // Requires adding class to x-axis g
+        } else {
+            xRc.domain([0, maxTime]);
+        }
+
+        updateRCChart();
+
+        // Stop if reached near steady state
+        if ((rcState === 'charge' && v > 99.5) || (rcState === 'discharge' && v < 0.5)) {
+            clearInterval(rcInterval);
+        }
+    }
+
+    function startRCMode(mode) {
+        clearInterval(rcInterval);
+        rcState = mode;
+        resetRCData();
+
+        if (mode === 'charge') {
+            btnCharge.classList.add('active');
+            btnDischarge.classList.remove('active');
+            switchBlade.style.transform = 'rotate(0deg)'; // connected to source
+            chartTitle.innerHTML = 'Charging: $V_C = V_S(1-e^{-t/\\tau})$';
+        } else {
+            btnDischarge.classList.add('active');
+            btnCharge.classList.remove('active');
+            switchBlade.style.transform = 'rotate(90deg)'; // points down to discharge loop terminal
+            chartTitle.innerHTML = 'Discharging: $V_C = V_S(e^{-t/\\tau})$';
+        }
+
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(chartTitle);
+        }
+
+        // Push initial point
+        rcData.push({ t: 0, v: mode === 'charge' ? 0 : 100 });
+        updateRCChart();
+
+        rcInterval = setInterval(stepRC, 100); // 100ms real time updates
+    }
+
+    if (btnCharge && btnDischarge && tauSlider) {
+        btnCharge.addEventListener('click', () => startRCMode('charge'));
+        btnDischarge.addEventListener('click', () => startRCMode('discharge'));
+
+        tauSlider.addEventListener('input', () => {
+            tauVal.textContent = parseFloat(tauSlider.value).toFixed(1);
+            // Re-run current mode to see effect
+            startRCMode(rcState);
+        });
+
+        // Init
+        startRCMode('charge');
+    }
+
     // 19. Initialize Phasor Canvas Animation
     initPhasorCanvas();
 
