@@ -2059,6 +2059,7 @@ function initThreeJsBackground() {
 
     animate();
 
+
     // Handle Resize
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -2066,3 +2067,425 @@ function initThreeJsBackground() {
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
 }
+
+// =========================================
+// NEW CARDS INTERACTIVITY (30-36)
+// =========================================
+
+// 30. Voltage Source Connections
+const vToggleBtn = document.getElementById('btn-v-conn-toggle');
+let vAiding = true;
+if (vToggleBtn) {
+    vToggleBtn.addEventListener('click', () => {
+        vAiding = !vAiding;
+        const v2Plus = document.getElementById('v-conn-v2-plus');
+        const v2Minus = document.getElementById('v-conn-v2-minus');
+        const reading = document.getElementById('v-conn-reading');
+        if (vAiding) {
+            v2Plus.textContent = '+'; v2Minus.textContent = '-';
+            reading.textContent = 'Eq: 18V';
+            vToggleBtn.textContent = 'Toggle Polarity (Opposing)';
+        } else {
+            v2Plus.textContent = '-'; v2Minus.textContent = '+';
+            reading.textContent = 'Eq: 6V';
+            vToggleBtn.textContent = 'Toggle Polarity (Aiding)';
+        }
+    });
+}
+
+const vAddRBtn = document.getElementById('btn-v-conn-add-r');
+const vResetParaBtn = document.getElementById('btn-v-conn-reset-para');
+if (vAddRBtn) {
+    vAddRBtn.addEventListener('click', () => {
+        const paraLoad = document.getElementById('v-conn-para-load');
+        const paraShape = document.getElementById('v-conn-para-shape');
+        const paraPlus = document.getElementById('v-conn-para-plus');
+        const paraMinus = document.getElementById('v-conn-para-minus');
+        const paraLabel = document.getElementById('v-conn-para-label');
+
+        // Change V2 to Resistor
+        paraShape.outerHTML = '<path id="v-conn-para-shape" d="M 120 35 L 112 39 L 128 47 L 112 55 L 128 63 L 120 67" stroke="#f97316" stroke-width="2" fill="none"/>';
+        paraPlus.style.display = 'none';
+        paraMinus.style.display = 'none';
+        paraLabel.textContent = '12V (Fixed)';
+        paraLabel.style.color = 'var(--electric-yellow)';
+        vAddRBtn.style.display = 'none';
+        vResetParaBtn.style.display = 'inline-block';
+    });
+}
+
+// 31. Current Sources
+const rlSlider = document.getElementById('v-conn-rl-slider');
+if (rlSlider) {
+    rlSlider.addEventListener('input', (e) => {
+        const rVal = e.target.value;
+        const is = 1; // Assume 1A
+        const v = is * rVal;
+        document.getElementById('v-conn-rl-val').textContent = v + 'V';
+        // Move characteristic dot or line if needed (simple update for now)
+    });
+}
+
+const rintSlider = document.getElementById('v-conn-rint-slider');
+if (rintSlider) {
+    rintSlider.addEventListener('input', (e) => {
+        const rint = e.target.value;
+        const pracLine = document.getElementById('v-conn-prac-line');
+        // Update slope: line starts at (120,40), ends at (120+rint/scale, 100)
+        // Scale rint for display
+        const offset = Math.min(80, rint / 10);
+        pracLine.setAttribute('x2', 120 + offset);
+    });
+}
+
+// 32. Dependent Sources
+const depSlider = document.getElementById('dep-v-control');
+if (depSlider) {
+    depSlider.addEventListener('input', (e) => {
+        const v = e.target.value;
+        const gm = 2; // transconductance
+        const i = gm * v;
+        document.getElementById('dep-i-out').textContent = i.toFixed(1) + ' mA';
+        gsap.to('#dep-i-out', { scale: 1.1, duration: 0.1, yoyo: true, repeat: 1 });
+    });
+}
+
+// 33. Power Balance (Mockup interactive)
+// Simply shows that sum is 0
+if (document.getElementById('p-del-val')) {
+    // Real implementation would have V and I sliders
+}
+
+// 34. Source Transformation Morph
+const stBtn = document.getElementById('btn-st-morph');
+let stIsNorton = false;
+if (stBtn) {
+    stBtn.addEventListener('click', () => {
+        stIsNorton = !stIsNorton;
+        const group = document.getElementById('st-morph-group');
+        const src = document.getElementById('st-src-shape');
+        const res = document.getElementById('st-res-path');
+        const arrow = document.getElementById('st-src-arrow');
+        const vSym = document.getElementById('st-src-sym-v');
+        const vSym2 = document.getElementById('st-src-sym-v2');
+        const labelVal = document.getElementById('st-label-val');
+        const labelRes = document.getElementById('st-label-res');
+
+        if (stIsNorton) {
+            stBtn.textContent = 'Transform: Is → Vs';
+            // Morph to Parallel
+            gsap.to(src, { stroke: '#facc15', duration: 0.6 });
+            gsap.to([vSym, vSym2], { opacity: 0, duration: 0.3 });
+            gsap.to(arrow, { opacity: 1, duration: 0.3 });
+            // Move R to parallel position (vertical)
+            gsap.to(res, {
+                attr: { d: "M 200 20 L 200 35 L 192 40 L 208 48 L 192 56 L 208 64 L 200 69 L 200 100" },
+                duration: 0.6
+            });
+            labelVal.textContent = 'Is = 6A';
+            labelRes.textContent = 'Rp = 2Ω';
+        } else {
+            stBtn.textContent = 'Transform: Vs → Is';
+            gsap.to(src, { stroke: 'var(--neon-cyan)', duration: 0.6 });
+            gsap.to([vSym, vSym2], { opacity: 1, duration: 0.3 });
+            gsap.to(arrow, { opacity: 0, duration: 0.3 });
+            gsap.to(res, {
+                attr: { d: "M 180 60 L 195 60 L 200 52 L 210 68 L 220 52 L 230 68 L 235 60 L 250 60" },
+                duration: 0.6
+            });
+            labelVal.textContent = 'Vs = 12V';
+            labelRes.textContent = 'Rs = 2Ω';
+        }
+    });
+}
+
+// 35. VDR Sliders
+const vdrSlider = document.getElementById('vdr-slider');
+if (vdrSlider) {
+    vdrSlider.addEventListener('input', (e) => {
+        const val = e.target.value; // Percentage for R1
+        const vs = 12;
+        const v1 = (val / 100) * vs;
+        const v2 = vs - v1;
+        document.getElementById('vdr-v1-val').textContent = `V₁: ${v1.toFixed(1)}V`;
+        document.getElementById('vdr-v2-val').textContent = `V₂: ${v2.toFixed(1)}V`;
+        document.getElementById('vdr-bar1').style.width = val + '%';
+        document.getElementById('vdr-bar2').style.width = (100 - val) + '%';
+        document.getElementById('vdr-r1-label').textContent = `R₁: ${val}Ω`;
+        document.getElementById('vdr-r2-label').textContent = `R₂: ${100 - val}Ω`;
+    });
+}
+
+// 36. CDR Sliders
+const cdrSlider = document.getElementById('cdr-slider');
+if (cdrSlider) {
+    cdrSlider.addEventListener('input', (e) => {
+        const val = e.target.value;
+        const is = 10;
+        // Current is INVERSE to R. 
+        // If slider is 30, R1=30, R2=70. 
+        // I1 = 70/100 * 10 = 7A. 
+        // I2 = 30/100 * 10 = 3A.
+        const i1 = ((100 - val) / 100) * is;
+        const i2 = is - i1;
+        document.getElementById('cdr-i1-val').textContent = `I₁: ${i1.toFixed(1)}A`;
+        document.getElementById('cdr-i2-val').textContent = `I₂: ${i2.toFixed(1)}A`;
+        document.getElementById('cdr-bar1').style.width = ((100 - val)) + '%';
+        document.getElementById('cdr-bar2').style.width = val + '%';
+    });
+}
+
+// 37. Nodal Analysis
+const nodalNodes = document.querySelectorAll('.node-clickable');
+const nodalDisplay = document.getElementById('nodal-eq-display');
+nodalNodes.forEach(node => {
+    node.addEventListener('click', () => {
+        const id = node.id;
+        let eq = '';
+        nodalNodes.forEach(n => n.setAttribute('stroke-width', '2'));
+        node.setAttribute('stroke-width', '4');
+
+        if (id === 'node-v1') eq = '$$\\frac{V_1 - V_s}{R_1} + \\frac{V_1 - V_2}{R_3} = 0$$';
+        else if (id === 'node-v2') eq = '$$\\frac{V_2 - V_1}{R_3} + \\frac{V_2 - V_3}{R_4} + \\frac{V_2}{R_2} = 0$$';
+        else if (id === 'node-v3') eq = '$$\\frac{V_3 - V_2}{R_4} + \\frac{V_3}{R_5} = I_s$$';
+
+        nodalDisplay.innerHTML = eq;
+        if (window.renderMathInElement) renderMathInElement(nodalDisplay);
+        gsap.from(nodalDisplay, { opacity: 0, y: 5, duration: 0.3 });
+    });
+});
+
+// 38. Mesh Analysis
+const meshLoops = document.querySelectorAll('.mesh-clickable');
+const meshDisplay = document.getElementById('mesh-eq-display');
+meshLoops.forEach(loop => {
+    loop.addEventListener('click', () => {
+        const id = loop.id;
+        let eq = '';
+        meshLoops.forEach(l => l.setAttribute('stroke-width', '2'));
+        loop.setAttribute('stroke-width', '4');
+
+        if (id === 'mesh-i1') eq = '$$V_1 - I_1 R_1 - (I_1 - I_2)R_3 = 0$$';
+        else if (id === 'mesh-i2') eq = '$$(I_2 - I_1)R_3 + I_2 R_2 + V_2 = 0$$';
+
+        meshDisplay.innerHTML = eq;
+        if (window.renderMathInElement) renderMathInElement(meshDisplay);
+        gsap.from(meshDisplay, { opacity: 0, scale: 0.95, duration: 0.3 });
+    });
+});
+
+// 39. Superposition Sequence
+const btnSpV = document.getElementById('btn-sp-v-only');
+const btnSpI = document.getElementById('btn-sp-i-only');
+const btnSpBoth = document.getElementById('btn-sp-both');
+const spVsrc = document.getElementById('sp-src1-v');
+const spIsrc = document.getElementById('sp-src2-i');
+const spResp = document.getElementById('sp-resp-val');
+
+if (btnSpV) {
+    btnSpV.addEventListener('click', () => {
+        gsap.to(spIsrc, { opacity: 0.1, duration: 0.5 });
+        gsap.to(spVsrc, { opacity: 1, duration: 0.5 });
+        spResp.textContent = "I' = 4A";
+        spResp.style.color = 'var(--neon-cyan)';
+    });
+    btnSpI.addEventListener('click', () => {
+        gsap.to(spVsrc, { opacity: 0.1, duration: 0.5 });
+        gsap.to(spIsrc, { opacity: 1, duration: 0.5 });
+        spResp.textContent = "I'' = 2A";
+        spResp.style.color = '#facc15';
+    });
+    btnSpBoth.addEventListener('click', () => {
+        gsap.to([spVsrc, spIsrc], { opacity: 1, duration: 0.5 });
+        spResp.textContent = "I_total = 6A";
+        spResp.style.color = '#fff';
+    });
+}
+
+// 40. Thevenin-Norton Morph
+const btnTnToggle = document.getElementById('btn-tn-toggle');
+let isNorton = false;
+if (btnTnToggle) {
+    btnTnToggle.addEventListener('click', () => {
+        isNorton = !isNorton;
+        const src = document.getElementById('tn-src');
+        const res = document.getElementById('tn-res');
+        const vP = document.getElementById('tn-src-v-p');
+        const vM = document.getElementById('tn-src-v-m');
+        const iA = document.getElementById('tn-src-i-arrow');
+        const rTop = document.getElementById('tn-rail-top');
+
+        if (isNorton) {
+            btnTnToggle.textContent = 'Switch to Thevenin Equivalent';
+            gsap.to(src, { stroke: '#bf00ff', duration: 0.5 });
+            gsap.to([vP, vM], { opacity: 0, duration: 0.3 });
+            gsap.to(iA, { opacity: 1, duration: 0.3 });
+            // Move Resistor to Parallel
+            gsap.to(res, { attr: { d: "M 100 30 L 100 45 L 92 50 L 108 58 L 92 66 L 108 74 L 100 79 L 100 90" }, duration: 0.6 });
+            gsap.to(rTop, { attr: { d: "M 60 42 L 60 30 L 100 30" }, duration: 0.6 });
+        } else {
+            btnTnToggle.textContent = 'Switch to Norton Equivalent';
+            gsap.to(src, { stroke: '#bf00ff', duration: 0.5 });
+            gsap.to([vP, vM], { opacity: 1, duration: 0.3 });
+            gsap.to(iA, { opacity: 0, duration: 0.3 });
+            gsap.to(res, { attr: { d: "M 120 30 L 135 30 L 140 22 L 150 38 L 160 22 L 170 38 L 175 30 L 190 30" }, duration: 0.6 });
+            gsap.to(rTop, { attr: { d: "M 60 42 L 60 30 L 120 30" }, duration: 0.6 });
+        }
+    });
+}
+
+// 41. Tellegen Verification
+const btnTell = document.getElementById('btn-verify-tellegen');
+if (btnTell) {
+    btnTell.addEventListener('click', () => {
+        const branches = ['tell-b1', 'tell-b2', 'tell-b3', 'tell-b4', 'tell-b5'];
+        const tl = gsap.timeline();
+        branches.forEach((b, i) => {
+            tl.to(`#${b}`, { strokeWidth: 4, duration: 0.2 })
+                .to(`#${b}`, { strokeWidth: 2, duration: 0.2 });
+        });
+        tl.call(() => {
+            document.getElementById('tellegen-check').style.display = 'inline-block';
+            gsap.from('#tellegen-check', { scale: 0, rotation: -20, duration: 0.5, ease: 'back.out' });
+        });
+    });
+}
+
+// 42. Millman Solver
+const btnMill = document.getElementById('btn-millman-solve');
+if (btnMill) {
+    btnMill.addEventListener('click', () => {
+        // E1=10, R1=2, E2=20, R2=4, E3=0 (shorted), R3=5
+        const E1 = 10, R1 = 2, E2 = 20, R2 = 4, E3 = 0, R3 = 5;
+        const Y1 = 1 / R1, Y2 = 1 / R2, Y3 = 1 / R3;
+        const Eeq = (E1 * Y1 + E2 * Y2 + E3 * Y3) / (Y1 + Y2 + Y3);
+        const Req = 1 / (Y1 + Y2 + Y3);
+        document.getElementById('millman-res').innerHTML = `Result: $E_{eq} = ${Eeq.toFixed(2)}V$, $R_{eq} = ${Req.toFixed(2)}\\Omega$`;
+        if (window.renderMathInElement) renderMathInElement(document.getElementById('millman-res'));
+    });
+}
+
+// 43. Reciprocity Swap
+const btnRecip = document.getElementById('btn-recip-swap');
+let recipSwapped = false;
+if (btnRecip) {
+    btnRecip.addEventListener('click', () => {
+        recipSwapped = !recipSwapped;
+        const vsrc = document.getElementById('recip-vsrc');
+        const ammeter = document.getElementById('recip-ammeter');
+        if (recipSwapped) {
+            gsap.to(vsrc, { x: 160, duration: 0.8, ease: 'power2.inOut' });
+            gsap.to(ammeter, { x: -160, duration: 0.8, ease: 'power2.inOut' });
+        } else {
+            gsap.to(vsrc, { x: 0, duration: 0.8, ease: 'power2.inOut' });
+            gsap.to(ammeter, { x: 0, duration: 0.8, ease: 'power2.inOut' });
+        }
+    });
+}
+
+// 44. MPT Slider
+const mptSlider = document.getElementById('mpt-slider');
+if (mptSlider) {
+    mptSlider.addEventListener('input', (e) => {
+        const rl = parseFloat(e.target.value);
+        const rth = 50; // Optimized at midpoint
+        const vth = 20;
+        const p = (vth * vth * rl) / Math.pow(rth + rl, 2);
+        const eff = (rl / (rth + rl)) * 100;
+
+        document.getElementById('mpt-rl-val').textContent = rl;
+        document.getElementById('mpt-p-val').textContent = (p * 10).toFixed(1) + 'W'; // Scaled for display
+        document.getElementById('mpt-eff-val').textContent = eff.toFixed(0) + '%';
+
+        // Move dot on curve. Midpoint (RL=Rth=50) is CX=120, CY=65
+        // RL=1 -> CX=30, RL=100 -> CX=210
+        const cx = 30 + (rl - 1) * (180 / 99);
+        // Approximation for the bell curve CY
+        const cy = 120 - (p * 200);
+        gsap.to('#mpt-dot', { attr: { cx: cx, cy: cy }, duration: 0.1 });
+    });
+}
+
+
+// ————————————— TWO PORT NETWORK INTERACTIVITY —————————————
+
+// Card 45: Intro Selector
+const tpSelect = document.getElementById('tp-param-select');
+if (tpSelect) {
+    tpSelect.addEventListener('change', (e) => {
+        const val = e.target.value;
+        const i1 = document.getElementById('tp-i1-path');
+        const i2 = document.getElementById('tp-i2-path');
+        // Reset
+        gsap.to(['#tp-i1-path', '#tp-i2-path'], { stroke: 'var(--electric-yellow)', opacity: 1, duration: 0.3 });
+
+        if (val === 'z') {
+            gsap.to(['#tp-i1-path', '#tp-i2-path'], { stroke: 'var(--neon-cyan)', duration: 0.3 }); // Independent in cyanide
+        } else if (val === 'y') {
+            gsap.to(['#tp-i1-path', '#tp-i2-path'], { stroke: 'var(--neon-pink)', duration: 0.3 }); // Dependent in pink
+        }
+    });
+}
+
+// Card 46 & 47: Z/Y Measurement
+document.getElementById('btn-z-m1')?.addEventListener('click', () => {
+    gsap.to('#z-test-i1', { scale: 1.2, repeat: 3, yoyo: true, duration: 0.2 });
+    gsap.fromTo('#z-port2-open', { opacity: 0 }, { opacity: 1, duration: 0.5 });
+});
+
+// Card 53: Transformer Slider
+const nSlider = document.getElementById('n-ratio-slider');
+if (nSlider) {
+    nSlider.addEventListener('input', (e) => {
+        const n = parseFloat(e.target.value).toFixed(1);
+        document.getElementById('n-ratio-val').textContent = n;
+        gsap.to('#transformer-tp-svg path', { strokeWidth: 2 + (n * 0.5), duration: 0.2 });
+    });
+}
+
+// Card 54: T-Pi Morphing
+let isPi = false;
+document.getElementById('btn-tpi-morph')?.addEventListener('click', (e) => {
+    isPi = !isPi;
+    const btn = e.target;
+    if (isPi) {
+        // Morph to Pi
+        gsap.to('#tp-res-1', { attr: { d: 'M 40 40 L 40 90' }, duration: 0.6, ease: 'power2.inOut' });
+        gsap.to('#tp-res-2', { attr: { d: 'M 40 40 L 200 40' }, duration: 0.6, ease: 'power2.inOut' });
+        gsap.to('#tp-res-3', { attr: { d: 'M 200 40 L 200 90' }, duration: 0.6, ease: 'power2.inOut' });
+        btn.textContent = 'Switch to T-Network';
+    } else {
+        // Morph back to T
+        gsap.to('#tp-res-1', { attr: { d: 'M 40 40 L 90 40' }, duration: 0.6, ease: 'power2.inOut' });
+        gsap.to('#tp-res-2', { attr: { d: 'M 120 40 L 120 90' }, duration: 0.6, ease: 'power2.inOut' });
+        gsap.to('#tp-res-3', { attr: { d: 'M 150 40 L 200 40' }, duration: 0.6, ease: 'power2.inOut' });
+        btn.textContent = 'Switch to π-Network';
+    }
+});
+
+// Card 55: Parameter Conversion Logic
+document.getElementById('btn-tp-convert')?.addEventListener('click', () => {
+    const z11 = parseFloat(document.getElementById('conv-m11').value) || 1;
+    const z12 = parseFloat(document.getElementById('conv-m12').value) || 0;
+    const z21 = parseFloat(document.getElementById('conv-m21').value) || 0;
+    const z22 = parseFloat(document.getElementById('conv-m22').value) || 1;
+
+    const deltaZ = (z11 * z22) - (z12 * z21);
+    if (Math.abs(deltaZ) < 0.0001) {
+        document.getElementById('tp-conv-res').innerHTML = '<p class="text-danger">Singular Matrix (Cannot Invert)</p>';
+        return;
+    }
+
+    const y11 = (z22 / deltaZ).toFixed(2);
+    const a = (z11 / z21).toFixed(2);
+    const b = (deltaZ / z21).toFixed(2);
+
+    document.getElementById('tp-conv-res').innerHTML = `
+        <div class="text-xs">
+            <p><strong>[Y] Matrix:</strong> [[${y11}, ...], ...]</p>
+            <p class="mt-2"><strong>[ABCD] Matrix:</strong></p>
+            <p>A = ${a}, B = ${b} Ω</p>
+            <p>Det([Z]) = ${deltaZ.toFixed(2)}</p>
+        </div>
+    `;
+});
