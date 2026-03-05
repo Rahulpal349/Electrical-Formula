@@ -1,0 +1,125 @@
+
+/* =========================================
+   TWO PORT NETWORKS - Cards 44-54
+   ========================================= */
+
+/* Card grid layout */
+.card-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .card-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mini parameter grid inside cards */
+.mini-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+/* SVG diagrams */
+.tp-meas-svg {
+    max-width: 280px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Two Port Card accent */
+.tp-card {
+    transition: box-shadow 0.3s ease;
+}
+.tp-card:hover {
+    box-shadow: 0 0 18px rgba(0, 245, 255, 0.15);
+}
+
+/* h/g tabs */
+.hg-tabs {
+    display: flex;
+    gap: 8px;
+}
+
+/* Connection tabs */
+.conn-tabs .hero__cta.active,
+.conn-tabs .hero__cta:hover {
+    background: rgba(0, 245, 255, 0.15);
+}
+
+/* Neon input fields */
+.neon-input {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 245, 255, 0.4);
+    border-radius: 5px;
+    color: var(--text-primary);
+    padding: 6px 10px;
+    font-size: 0.9em;
+    transition: border 0.2s;
+    outline: none;
+    width: 100%;
+}
+.neon-input:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 8px rgba(0, 245, 255, 0.3);
+}
+
+select.neon-input option {
+    background: #0f1220;
+    color: var(--text-primary);
+}
+
+/* Neon slider */
+.neon-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(0, 245, 255, 0.3);
+    outline: none;
+}
+.neon-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--neon-cyan);
+    cursor: pointer;
+    box-shadow: 0 0 6px var(--neon-cyan);
+}
+
+/* Badge styles */
+.badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Connection pane */
+.conn-pane.active {
+    display: block;
+}
+
+/* Subsection title */
+.subsection__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    letter-spacing: 1px;
+    border-left: 4px solid var(--neon-cyan);
+    padding-left: 12px;
+    margin-bottom: 1.5rem;
+}
+
+/* T-Pi SVG animation */
+#t-pi-svg line, #t-pi-svg text {
+    transition: all 0.5s ease;
+}

@@ -88,7 +88,9 @@
                 <div class="hero-icon src-icon" data-aos="zoom-in" data-aos-delay="1100">±</div>
             </div>
 
-            <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+            
+
+        <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
                 <a href="#fundamental-concepts" class="hero__cta neon-btn">⚡ Explore Formulas</a>
                 <a href="#" class="hero__cta outline-btn">📄 Download PDF</a>
             </div>
@@ -4058,26 +4060,9 @@
                         </div>
                     </div>
 
-                    <div class="card-panel mt-5" data-aos="zoom-in"
-                        style="background: linear-gradient(135deg, rgba(0,245,255,0.05) 0%, rgba(191,0,255,0.05) 100%); border: 1px solid rgba(0,245,255,0.2);">
-                        <h5 class="text-center" style="color:var(--neon-cyan);">🎨 UNIT 1 COMPLETE — MASTER TOOL LIST
-                        </h5>
-                        <div class="row mt-4 text-xs text-center g-3">
-                            <div class="col-4 col-md-3"><i class="fas fa-microchip mb-2"></i><br>Nodal Solver</div>
-                            <div class="col-4 col-md-3"><i class="fas fa-sync mb-2"></i><br>Mesh Solver</div>
-                            <div class="col-4 col-md-3"><i class="fas fa-layer-group mb-2"></i><br>Superposition</div>
-                            <div class="col-4 col-md-3"><i
-                                    class="fas fa-compress-arrows-alt mb-2"></i><br>Thevenin/Norton</div>
-                            <div class="col-4 col-md-3"><i class="fas fa-balance-scale mb-2"></i><br>Millman's</div>
-                            <div class="col-4 col-md-3"><i class="fas fa-bolt mb-2"></i><br>MPT Calc</div>
-                            <div class="col-4 col-md-3"><i class="fas fa-exchange-alt mb-2"></i><br>Source Morph</div>
-                            <div class="col-4 col-md-3"><i class="fas fa-ruler-combined mb-2"></i><br>VDR/CDR Tool</div>
-                        </div>
-                    </div>
-
-                    <!-- SUB-SECTION: Sources -->
+                                        <!-- SUB-SECTION: Sources -->
                     <div class="subsection" data-aos="fade-up">
-                        <h3 class="subsection__title">55. Energy Sources</h3>
+                        <h3 class="subsection__title">44. Energy Sources</h3>
                         <div class="sources-container">
                             <div class="source-types card-panel" data-aos="fade-right">
                                 <h4>Ideal Sources</h4>
@@ -4156,7 +4141,7 @@
 
                     <!-- SUB-SECTION: Network Topology -->
                     <div class="subsection mt-5" data-aos="fade-up">
-                        <h3 class="subsection__title">56. Network Topology & Graph Theory</h3>
+                        <h3 class="subsection__title">45. Network Topology & Graph Theory</h3>
                         <div class="topology-container card-panel">
                             <div class="topology-text">
                                 <ul class="topo-list">
@@ -4239,6 +4224,514 @@
                     </div>
         </section>
 
+        
+<!-- SUB-SECTION: Two Port Networks -->
+<div class="subsection mt-5" data-aos="fade-up">
+    <h3 class="subsection__title">46. Two Port Networks</h3>
+
+    <!-- CARD 44: Introduction -->
+    <div class="card-panel mb-4">
+        <h4>Introduction &amp; Variables</h4>
+        <div class="two-port-intro-container" style="display:flex; flex-wrap:wrap; gap:20px; align-items:center;">
+            <div class="two-port-svg-wrapper flex-1" style="min-width:300px; text-align:center;">
+                <svg viewBox="0 0 300 150" class="tp-intro-svg" id="tp-intro-svg" style="width:100%; max-width:400px;">
+                    <rect x="100" y="30" width="100" height="90" fill="rgba(0,0,0,0.5)" stroke="var(--neon-cyan)" stroke-width="2" rx="8" />
+                    <text x="150" y="80" fill="var(--text-primary)" font-size="14" font-weight="bold" text-anchor="middle">2-Port N/W</text>
+                    <text x="50" y="20" fill="var(--text-secondary)" font-size="12" font-weight="bold" text-anchor="middle">Port 1</text>
+                    <line x1="20" y1="50" x2="100" y2="50" stroke="var(--text-primary)" stroke-width="2" />
+                    <line x1="20" y1="100" x2="100" y2="100" stroke="var(--text-primary)" stroke-width="2" />
+                    <path d="M 40,60 Q 30,75 40,90" fill="none" stroke="var(--electric-yellow)" stroke-width="1.5" stroke-dasharray="4,2" />
+                    <text x="25" y="80" fill="var(--electric-yellow)" font-size="12" font-weight="bold">V&#x2081;</text>
+                    <text x="40" y="55" fill="var(--electric-yellow)" font-size="10">+</text>
+                    <text x="40" y="105" fill="var(--electric-yellow)" font-size="10">-</text>
+                    <line x1="50" y1="40" x2="70" y2="40" stroke="var(--neon-cyan)" stroke-width="2" marker-end="url(#arrow-cyan)" />
+                    <text x="60" y="35" fill="var(--neon-cyan)" font-size="12" font-weight="bold">I&#x2081;</text>
+                    <text x="250" y="20" fill="var(--text-secondary)" font-size="12" font-weight="bold" text-anchor="middle">Port 2</text>
+                    <line x1="200" y1="50" x2="280" y2="50" stroke="var(--text-primary)" stroke-width="2" />
+                    <line x1="200" y1="100" x2="280" y2="100" stroke="var(--text-primary)" stroke-width="2" />
+                    <path d="M 260,60 Q 270,75 260,90" fill="none" stroke="var(--electric-yellow)" stroke-width="1.5" stroke-dasharray="4,2" />
+                    <text x="275" y="80" fill="var(--electric-yellow)" font-size="12" font-weight="bold">V&#x2082;</text>
+                    <text x="260" y="55" fill="var(--electric-yellow)" font-size="10">+</text>
+                    <text x="260" y="105" fill="var(--electric-yellow)" font-size="10">-</text>
+                    <line x1="250" y1="40" x2="230" y2="40" stroke="var(--neon-cyan)" stroke-width="2" marker-end="url(#arrow-cyan)" />
+                    <text x="240" y="35" fill="var(--neon-cyan)" font-size="12" font-weight="bold">I&#x2082;</text>
+                    <defs>
+                        <marker id="arrow-cyan" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--neon-cyan)" />
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+            <div class="two-port-intro-text flex-1">
+                <p class="text-sm mb-2">4 Variables: <span class="neon-text">V&#x2081;, I&#x2081;, V&#x2082;, I&#x2082;</span></p>
+                <p class="text-sm mb-3">Choose 2 as dependent, 2 as independent.<br>Possible combinations: ${}^4C_2 = 6$</p>
+                <h5 style="color:var(--electric-yellow);" class="mb-2">Explore the 6 Parameter Sets:</h5>
+                <div class="param-set-selector mb-3" style="display:flex; flex-wrap:wrap; gap:8px;">
+                    <button class="hero__cta outline-btn p-btn btn-sm param-sel-btn" data-param="z" style="background:rgba(0,245,255,0.1); border-color:var(--neon-cyan); color:var(--neon-cyan);">[Z]</button>
+                    <button class="hero__cta outline-btn p-btn btn-sm param-sel-btn" data-param="y" style="background:rgba(250,204,21,0.1); border-color:#facc15; color:#facc15;">[Y]</button>
+                    <button class="hero__cta outline-btn p-btn btn-sm param-sel-btn" data-param="h" style="background:rgba(167,139,250,0.1); border-color:#a78bfa; color:#a78bfa;">[h]</button>
+                    <button class="hero__cta outline-btn p-btn btn-sm param-sel-btn" data-param="g" style="background:rgba(249,115,22,0.1); border-color:#f97316; color:#f97316;">[g]</button>
+                    <button class="hero__cta outline-btn p-btn btn-sm param-sel-btn" data-param="abcd" style="background:rgba(0,255,136,0.1); border-color:#00ff88; color:#00ff88;">[ABCD]</button>
+                    <button class="hero__cta outline-btn p-btn btn-sm param-sel-btn" data-param="abcd-inv" style="background:rgba(160,160,160,0.1); border-color:#a0a0a0; color:#a0a0a0;">[abcd]</button>
+                </div>
+                <div class="param-sel-display p-2" style="background:rgba(0,0,0,0.4); border-radius:6px; font-size:0.9em;">
+                    <p><strong>Independent:</strong> <span id="intro-indep" style="color:var(--neon-cyan);">I&#x2081;, I&#x2082;</span></p>
+                    <p><strong>Dependent:</strong> <span id="intro-dep" style="color:var(--electric-yellow);">V&#x2081;, V&#x2082;</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-grid-2">
+        <!-- CARD 45: Z-Parameters -->
+        <div class="card-panel tp-card" style="border-top: 3px solid #00f5ff;">
+            <h4>Z-Parameters (Impedance)</h4>
+            <div class="formula mb-2">$$ \begin{bmatrix} V_1 \\ V_2 \end{bmatrix} = \begin{bmatrix} Z_{11} &amp; Z_{12} \\ Z_{21} &amp; Z_{22} \end{bmatrix} \begin{bmatrix} I_1 \\ I_2 \end{bmatrix} $$</div>
+            <div class="text-sm mb-3 text-center" style="color:#00f5ff;">(Measured with ports open circuited)</div>
+            <div class="mini-grid text-sm">
+                <div class="text-center p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    <span style="color:#00f5ff; font-weight:bold;">$Z_{11}$</span><br>Input Impedance<br>$(I_2=0)$
+                </div>
+                <div class="text-center p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    <span style="color:#00f5ff; font-weight:bold;">$Z_{12}$</span><br>Reverse Transfer<br>$(I_1=0)$
+                </div>
+                <div class="text-center p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    <span style="color:#00f5ff; font-weight:bold;">$Z_{21}$</span><br>Forward Transfer<br>$(I_2=0)$
+                </div>
+                <div class="text-center p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    <span style="color:#00f5ff; font-weight:bold;">$Z_{22}$</span><br>Output Impedance<br>$(I_1=0)$
+                </div>
+            </div>
+            <div class="mt-3 text-center">
+                <svg viewBox="0 0 200 80" class="tp-meas-svg">
+                    <circle cx="20" cy="40" r="10" fill="none" stroke="#00f5ff" />
+                    <text x="20" y="44" fill="#00f5ff" font-size="10" text-anchor="middle">I&#x2081;</text>
+                    <line x1="30" y1="40" x2="60" y2="40" stroke="var(--text-primary)" stroke-width="2" />
+                    <rect x="60" y="20" width="80" height="40" fill="rgba(0,245,255,0.1)" stroke="#00f5ff" stroke-width="1" />
+                    <text x="100" y="45" fill="#00f5ff" font-size="12" text-anchor="middle">[Z]</text>
+                    <line x1="140" y1="30" x2="160" y2="30" stroke="var(--text-primary)" stroke-width="2" />
+                    <line x1="140" y1="50" x2="160" y2="50" stroke="var(--text-primary)" stroke-width="2" />
+                    <circle cx="160" cy="30" r="2" fill="var(--text-primary)" />
+                    <circle cx="160" cy="50" r="2" fill="var(--text-primary)" />
+                    <text x="175" y="44" fill="var(--electric-yellow)" font-size="10" text-anchor="middle">V&#x2082;</text>
+                    <text x="100" y="75" fill="var(--text-muted)" font-size="10" text-anchor="middle">Port 2 Open (I&#x2082;=0)</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- CARD 46: Y-Parameters -->
+        <div class="card-panel tp-card" style="border-top: 3px solid #facc15;">
+            <h4>Y-Parameters (Admittance)</h4>
+            <div class="formula mb-2">$$ \begin{bmatrix} I_1 \\ I_2 \end{bmatrix} = \begin{bmatrix} Y_{11} &amp; Y_{12} \\ Y_{21} &amp; Y_{22} \end{bmatrix} \begin{bmatrix} V_1 \\ V_2 \end{bmatrix} $$</div>
+            <div class="text-sm mb-3 text-center" style="color:#facc15;">(Measured with ports short circuited)</div>
+            <div class="mini-grid text-sm">
+                <div class="text-center p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    <span style="color:#facc15; font-weight:bold;">$Y_{11}$</span><br>Input Admittance<br>$(V_2=0)$
+                </div>
+                <div class="text-center p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    <span style="color:#facc15; font-weight:bold;">$Y_{12}$</span><br>Reverse Transfer<br>$(V_1=0)$
+                </div>
+                <div class="text-center p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    <span style="color:#facc15; font-weight:bold;">$Y_{21}$</span><br>Forward Transfer<br>$(V_2=0)$
+                </div>
+                <div class="text-center p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    <span style="color:#facc15; font-weight:bold;">$Y_{22}$</span><br>Output Admittance<br>$(V_1=0)$
+                </div>
+            </div>
+            <div class="mt-3 text-center">
+                <svg viewBox="0 0 200 80" class="tp-meas-svg">
+                    <circle cx="20" cy="40" r="10" fill="none" stroke="#facc15" />
+                    <text x="20" y="44" fill="#facc15" font-size="10" text-anchor="middle">V&#x2081;</text>
+                    <line x1="30" y1="40" x2="60" y2="40" stroke="var(--text-primary)" stroke-width="2" />
+                    <rect x="60" y="20" width="80" height="40" fill="rgba(250,204,21,0.1)" stroke="#facc15" stroke-width="1" />
+                    <text x="100" y="45" fill="#facc15" font-size="12" text-anchor="middle">[Y]</text>
+                    <line x1="140" y1="30" x2="160" y2="30" stroke="var(--text-primary)" stroke-width="2" />
+                    <line x1="140" y1="50" x2="160" y2="50" stroke="var(--text-primary)" stroke-width="2" />
+                    <line x1="160" y1="30" x2="160" y2="50" stroke="var(--electric-yellow)" stroke-width="2" stroke-dasharray="2,2" />
+                    <text x="175" y="44" fill="var(--neon-cyan)" font-size="10" text-anchor="middle">I&#x2082;</text>
+                    <text x="100" y="75" fill="var(--text-muted)" font-size="10" text-anchor="middle">Port 2 Shorted (V&#x2082;=0)</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 47 & 48: h and g Parameters -->
+    <div class="card-panel mt-4 tp-card" style="position:relative; overflow:hidden;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px; margin-bottom:15px;">
+            <h4>Hybrid Parameters</h4>
+            <div class="hg-tabs">
+                <button class="hero__cta neon-btn p-btn btn-sm active" id="btn-show-h" style="border-color:#a78bfa; color:#a78bfa;">h-Parameters (BJT)</button>
+                <button class="hero__cta outline-btn p-btn btn-sm" id="btn-show-g" style="border-color:#f97316; color:#f97316;">g-Parameters (FET)</button>
+            </div>
+        </div>
+        <div class="hg-content-wrapper" style="position:relative; min-height: 280px;">
+            <div id="h-content" style="transition: opacity 0.3s, transform 0.3s;">
+                <div class="formula mb-2">$$ \begin{bmatrix} V_1 \\ I_2 \end{bmatrix} = \begin{bmatrix} h_{11} &amp; h_{12} \\ h_{21} &amp; h_{22} \end{bmatrix} \begin{bmatrix} I_1 \\ V_2 \end{bmatrix} $$</div>
+                <p class="text-sm text-center mb-2" style="color:#a78bfa;">Mixed units: $h_{11}(\Omega), h_{12}(\text{pure}), h_{21}(\text{pure}), h_{22}(S)$</p>
+                <div class="bjt-model-container mt-3" style="display:flex; justify-content:center;">
+                    <svg viewBox="0 0 300 120" style="max-width:400px; width:100%;">
+                        <text x="150" y="15" fill="#a78bfa" font-size="12" text-anchor="middle">BJT Small Signal Model</text>
+                        <circle cx="20" cy="40" r="3" fill="var(--text-primary)" />
+                        <circle cx="20" cy="100" r="3" fill="var(--text-primary)" />
+                        <line x1="20" y1="40" x2="60" y2="40" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <path d="M60,40 L65,35 L75,45 L85,35 L95,45 L100,40" fill="none" stroke="#a78bfa" stroke-width="1.5" />
+                        <text x="80" y="25" fill="#a78bfa" font-size="10" text-anchor="middle">h_ie</text>
+                        <line x1="100" y1="40" x2="120" y2="40" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <circle cx="120" cy="70" r="12" fill="none" stroke="var(--electric-yellow)" stroke-width="1.5" />
+                        <text x="80" y="75" fill="var(--electric-yellow)" font-size="10" text-anchor="end">h_re*Vce</text>
+                        <line x1="120" y1="40" x2="120" y2="58" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <line x1="120" y1="82" x2="120" y2="100" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <line x1="20" y1="100" x2="280" y2="100" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <circle cx="280" cy="40" r="3" fill="var(--text-primary)" />
+                        <circle cx="280" cy="100" r="3" fill="var(--text-primary)" />
+                        <line x1="180" y1="40" x2="280" y2="40" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <circle cx="180" cy="70" r="12" fill="none" stroke="var(--neon-cyan)" stroke-width="1.5" />
+                        <text x="215" y="75" fill="var(--neon-cyan)" font-size="10" text-anchor="start">h_fe*Ib</text>
+                        <line x1="180" y1="40" x2="180" y2="58" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <line x1="180" y1="82" x2="180" y2="100" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <line x1="240" y1="40" x2="240" y2="55" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <path d="M240,55 L235,60 L245,70 L235,80 L245,90 L240,95" fill="none" stroke="#a78bfa" stroke-width="1.5" />
+                        <line x1="240" y1="95" x2="240" y2="100" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <text x="260" y="75" fill="#a78bfa" font-size="10" text-anchor="start">1/h_oe</text>
+                    </svg>
+                </div>
+                <div class="row mt-2" style="display:flex; justify-content:space-around;font-size:0.85em;">
+                    <div>$h_{11}$: Input Imp. ($\Omega$)</div>
+                    <div>$h_{21}$: Current Gain (pure)</div>
+                </div>
+            </div>
+            <div id="g-content" style="position:absolute; top:0; left:0; width:100%; opacity:0; pointer-events:none; transform: translateX(20px); transition: opacity 0.3s, transform 0.3s;">
+                <div class="formula mb-2">$$ \begin{bmatrix} I_1 \\ V_2 \end{bmatrix} = \begin{bmatrix} g_{11} &amp; g_{12} \\ g_{21} &amp; g_{22} \end{bmatrix} \begin{bmatrix} V_1 \\ I_2 \end{bmatrix} $$</div>
+                <p class="text-sm text-center mb-2" style="color:#f97316;">Inverse pattern: $[g] = [h]^{-1}$</p>
+                <div class="fet-model-container mt-3" style="display:flex; justify-content:center;">
+                    <svg viewBox="0 0 300 120" style="max-width:400px; width:100%;">
+                        <text x="150" y="15" fill="#f97316" font-size="12" text-anchor="middle">FET Model Concept</text>
+                        <circle cx="20" cy="40" r="3" fill="var(--text-primary)" />
+                        <circle cx="20" cy="100" r="3" fill="var(--text-primary)" />
+                        <line x1="20" y1="40" x2="80" y2="40" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <text x="30" y="30" fill="var(--text-secondary)" font-size="10">Gate</text>
+                        <line x1="80" y1="40" x2="80" y2="65" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <line x1="70" y1="65" x2="90" y2="65" stroke="#f97316" stroke-width="2" />
+                        <line x1="70" y1="75" x2="90" y2="75" stroke="#f97316" stroke-width="2" />
+                        <line x1="80" y1="75" x2="80" y2="100" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <text x="50" y="75" fill="#f97316" font-size="10">Cgs</text>
+                        <line x1="20" y1="100" x2="280" y2="100" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <circle cx="280" cy="40" r="3" fill="var(--text-primary)" />
+                        <circle cx="280" cy="100" r="3" fill="var(--text-primary)" />
+                        <line x1="180" y1="40" x2="280" y2="40" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <text x="260" y="30" fill="var(--text-secondary)" font-size="10">Drain</text>
+                        <circle cx="180" cy="70" r="12" fill="none" stroke="var(--neon-cyan)" stroke-width="1.5" />
+                        <text x="140" y="75" fill="var(--neon-cyan)" font-size="10">gm*Vgs</text>
+                        <line x1="180" y1="40" x2="180" y2="58" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <line x1="180" y1="82" x2="180" y2="100" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <line x1="240" y1="40" x2="240" y2="55" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <path d="M240,55 L235,60 L245,70 L235,80 L245,90 L240,95" fill="none" stroke="#f97316" stroke-width="1.5" />
+                        <line x1="240" y1="95" x2="240" y2="100" stroke="var(--text-primary)" stroke-width="1.5" />
+                        <text x="260" y="75" fill="#f97316" font-size="10">ro</text>
+                    </svg>
+                </div>
+                <div class="row mt-2" style="display:flex; justify-content:space-around;font-size:0.85em;">
+                    <div>$g_{21}$: Transconductance</div>
+                    <div>$g_{22}$: Output Imp. ($\Omega$)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 49: ABCD Parameters -->
+    <div class="card-grid-2 mt-4">
+        <div class="card-panel tp-card" style="border-top: 3px solid #00ff88;">
+            <h4>ABCD (Transmission) Parameters</h4>
+            <div class="formula mb-2">$$ \begin{bmatrix} V_1 \\ I_1 \end{bmatrix} = \begin{bmatrix} A &amp; B \\ C &amp; D \end{bmatrix} \begin{bmatrix} V_2 \\ -I_2 \end{bmatrix} $$</div>
+            <p class="text-sm text-center mb-3" style="color:#00ff88;">Note the $-I_2$ (current leaving port 2)</p>
+            <div class="mini-grid text-sm mb-3">
+                <div class="p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    $A = \frac{V_1}{V_2}\big|_{I_2=0}$ <br><span class="text-muted">(pure)</span>
+                </div>
+                <div class="p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    $B = \frac{V_1}{-I_2}\big|_{V_2=0}$ <br><span class="text-muted">($\Omega$)</span>
+                </div>
+                <div class="p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    $C = \frac{I_1}{V_2}\big|_{I_2=0}$ <br><span class="text-muted">(S)</span>
+                </div>
+                <div class="p-2" style="background:rgba(0,0,0,0.3); border-radius:6px;">
+                    $D = \frac{I_1}{-I_2}\big|_{V_2=0}$ <br><span class="text-muted">(pure)</span>
+                </div>
+            </div>
+            <div class="formula text-sm">$$ \text{Reciprocal: } AD - BC = 1 $$</div>
+            <div class="formula text-sm">$$ \text{Symmetrical: } A = D $$</div>
+        </div>
+        <div class="card-panel tp-card" style="border-top: 3px solid #a0a0a0;">
+            <h4>abcd (Inverse Transmission)</h4>
+            <div class="formula mb-2">$$ \begin{bmatrix} V_2 \\ I_2 \end{bmatrix} = \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} \begin{bmatrix} V_1 \\ -I_1 \end{bmatrix} $$</div>
+            <p class="text-sm mb-2 mt-4 text-center">Relationship with ABCD:</p>
+            <div class="formula text-sm">$$ a = D, \quad b = B $$</div>
+            <div class="formula text-sm">$$ c = C, \quad d = A $$</div>
+            <p class="text-sm text-center mt-2" style="color:#a0a0a0;">(Assuming Reciprocal, $\Delta_T = 1$)</p>
+        </div>
+    </div>
+
+    <!-- CARD 50: Symmetry & Reciprocity Checker -->
+    <div class="card-panel mt-4 tp-card" style="border-left: 3px solid var(--electric-yellow);">
+        <h4>Conditions for Symmetry &amp; Reciprocity</h4>
+        <div class="table-responsive">
+            <table class="neon-table text-sm">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Reciprocal Condition</th>
+                        <th>Symmetrical Condition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="color:#00f5ff">[Z]</td>
+                        <td>$Z_{12} = Z_{21}$</td>
+                        <td>$Z_{11} = Z_{22}$</td>
+                    </tr>
+                    <tr>
+                        <td style="color:#facc15">[Y]</td>
+                        <td>$Y_{12} = Y_{21}$</td>
+                        <td>$Y_{11} = Y_{22}$</td>
+                    </tr>
+                    <tr>
+                        <td style="color:#a78bfa">[h]</td>
+                        <td>$h_{12} = -h_{21}$</td>
+                        <td>$h_{11}h_{22} - h_{12}h_{21} = 1$</td>
+                    </tr>
+                    <tr>
+                        <td style="color:#f97316">[g]</td>
+                        <td>$g_{12} = -g_{21}$</td>
+                        <td>$g_{11}g_{22} - g_{12}g_{21} = 1$</td>
+                    </tr>
+                    <tr>
+                        <td style="color:#00ff88">[ABCD]</td>
+                        <td>$AD - BC = 1$</td>
+                        <td>$A = D$</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-4 p-3" style="background:rgba(0,0,0,0.4); border-radius:8px;">
+            <h6 class="mb-2">Live Condition Checker</h6>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                <select id="sym-check-type" class="neon-input" style="width:auto; padding:5px;">
+                    <option value="z">Z Params</option>
+                    <option value="y">Y Params</option>
+                    <option value="h">h Params</option>
+                    <option value="g">g Params</option>
+                    <option value="abcd">ABCD Params</option>
+                </select>
+                <div id="sym-inputs" style="display:flex; gap:5px;">
+                    <input type="number" id="sym-p11" value="10" class="neon-input" style="width:60px;" placeholder="11/A">
+                    <input type="number" id="sym-p12" value="5" class="neon-input" style="width:60px;" placeholder="12/B">
+                    <input type="number" id="sym-p21" value="5" class="neon-input" style="width:60px;" placeholder="21/C">
+                    <input type="number" id="sym-p22" value="10" class="neon-input" style="width:60px;" placeholder="22/D">
+                </div>
+                <div id="sym-results" style="display:flex; gap:10px; margin-left:auto;">
+                    <span class="badge" id="badge-reciprocal" style="background:rgba(0,245,255,0.2); color:#00f5ff; border:1px solid #00f5ff;">Reciprocal: YES</span>
+                    <span class="badge" id="badge-symmetrical" style="background:rgba(250,204,21,0.2); color:#facc15; border:1px solid #facc15;">Symmetrical: YES</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 51: Connections -->
+    <div class="card-panel mt-4 tp-card">
+        <h4>Connections of Two-Port Networks</h4>
+        <div class="conn-tabs mb-3" style="display:flex; gap:10px; overflow-x:auto; padding-bottom:10px;">
+            <button class="hero__cta neon-btn p-btn btn-sm active" data-conn="series">Series-Series ([Z])</button>
+            <button class="hero__cta outline-btn p-btn btn-sm" data-conn="parallel">Parallel-Parallel ([Y])</button>
+            <button class="hero__cta outline-btn p-btn btn-sm" data-conn="cascade">Cascade ([ABCD])</button>
+        </div>
+        <div class="conn-content" style="min-height: 200px;">
+            <div id="conn-series" class="conn-pane active">
+                <div class="formula">$$ [Z_{total}] = [Z_A] + [Z_B] $$</div>
+                <p class="text-sm text-center text-muted mb-3">Impedance matrices simply add together.</p>
+                <div style="text-align:center;">
+                    <svg viewBox="0 0 200 120" style="max-width:300px; width:100%;">
+                        <rect x="60" y="20" width="80" height="30" fill="rgba(0,245,255,0.2)" stroke="#00f5ff" />
+                        <text x="100" y="40" fill="#00f5ff" font-size="12" text-anchor="middle">[ZA]</text>
+                        <rect x="60" y="70" width="80" height="30" fill="rgba(0,245,255,0.2)" stroke="#00f5ff" />
+                        <text x="100" y="90" fill="#00f5ff" font-size="12" text-anchor="middle">[ZB]</text>
+                        <line x1="20" y1="25" x2="60" y2="25" stroke="var(--text-primary)" />
+                        <line x1="60" y1="45" x2="20" y2="45" stroke="var(--text-primary)" />
+                        <line x1="20" y1="45" x2="20" y2="75" stroke="var(--text-primary)" stroke-dasharray="2,2"/>
+                        <line x1="20" y1="75" x2="60" y2="75" stroke="var(--text-primary)" />
+                        <line x1="60" y1="95" x2="10" y2="95" stroke="var(--text-primary)" />
+                        <line x1="140" y1="25" x2="180" y2="25" stroke="var(--text-primary)" />
+                        <line x1="180" y1="45" x2="140" y2="45" stroke="var(--text-primary)" />
+                        <line x1="180" y1="45" x2="180" y2="75" stroke="var(--text-primary)" stroke-dasharray="2,2"/>
+                        <line x1="180" y1="75" x2="140" y2="75" stroke="var(--text-primary)" />
+                        <line x1="140" y1="95" x2="190" y2="95" stroke="var(--text-primary)" />
+                    </svg>
+                </div>
+            </div>
+            <div id="conn-parallel" class="conn-pane" style="display:none;">
+                <div class="formula">$$ [Y_{total}] = [Y_A] + [Y_B] $$</div>
+                <p class="text-sm text-center text-muted mb-3">Admittance matrices simply add together.</p>
+                <div style="text-align:center;">
+                    <svg viewBox="0 0 200 120" style="max-width:300px; width:100%;">
+                        <rect x="60" y="20" width="80" height="30" fill="rgba(250,204,21,0.2)" stroke="#facc15" />
+                        <text x="100" y="40" fill="#facc15" font-size="12" text-anchor="middle">[YA]</text>
+                        <rect x="60" y="70" width="80" height="30" fill="rgba(250,204,21,0.2)" stroke="#facc15" />
+                        <text x="100" y="90" fill="#facc15" font-size="12" text-anchor="middle">[YB]</text>
+                        <line x1="20" y1="25" x2="60" y2="25" stroke="var(--text-primary)" />
+                        <line x1="20" y1="45" x2="60" y2="45" stroke="var(--text-primary)" />
+                        <line x1="20" y1="75" x2="60" y2="75" stroke="var(--text-primary)" />
+                        <line x1="20" y1="95" x2="60" y2="95" stroke="var(--text-primary)" />
+                        <line x1="20" y1="25" x2="20" y2="75" stroke="var(--text-primary)" />
+                        <line x1="10" y1="50" x2="20" y2="50" stroke="var(--text-primary)" />
+                        <line x1="140" y1="25" x2="180" y2="25" stroke="var(--text-primary)" />
+                        <line x1="140" y1="45" x2="180" y2="45" stroke="var(--text-primary)" />
+                        <line x1="140" y1="75" x2="180" y2="75" stroke="var(--text-primary)" />
+                        <line x1="140" y1="95" x2="180" y2="95" stroke="var(--text-primary)" />
+                        <line x1="180" y1="25" x2="180" y2="75" stroke="var(--text-primary)" />
+                        <line x1="180" y1="50" x2="190" y2="50" stroke="var(--text-primary)" />
+                    </svg>
+                </div>
+            </div>
+            <div id="conn-cascade" class="conn-pane" style="display:none;">
+                <div class="formula">$$ [T]_{tot} = [T]_A \times [T]_B $$</div>
+                <p class="text-sm text-center text-muted mb-3">Transmission matrices MULTIPLY.</p>
+                <div style="text-align:center;">
+                    <svg viewBox="0 0 200 120" style="max-width:300px; width:100%;">
+                        <rect x="30" y="40" width="60" height="40" fill="rgba(0,255,136,0.2)" stroke="#00ff88" />
+                        <text x="60" y="65" fill="#00ff88" font-size="12" text-anchor="middle">[TA]</text>
+                        <rect x="110" y="40" width="60" height="40" fill="rgba(0,255,136,0.2)" stroke="#00ff88" />
+                        <text x="140" y="65" fill="#00ff88" font-size="12" text-anchor="middle">[TB]</text>
+                        <line x1="10" y1="50" x2="30" y2="50" stroke="var(--text-primary)" />
+                        <line x1="10" y1="70" x2="30" y2="70" stroke="var(--text-primary)" />
+                        <line x1="90" y1="50" x2="110" y2="50" stroke="var(--text-primary)" />
+                        <line x1="90" y1="70" x2="110" y2="70" stroke="var(--text-primary)" />
+                        <line x1="170" y1="50" x2="190" y2="50" stroke="var(--text-primary)" />
+                        <line x1="170" y1="70" x2="190" y2="70" stroke="var(--text-primary)" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 52: Transformer -->
+    <div class="card-panel mt-4 tp-card">
+        <h4>Transformer as Two-Port Network</h4>
+        <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:center;">
+            <div style="flex:1; text-align:center;">
+                <svg viewBox="0 0 200 120" style="max-width:300px; width:100%;">
+                    <line x1="20" y1="30" x2="60" y2="30" stroke="var(--text-primary)" stroke-width="2" />
+                    <line x1="20" y1="90" x2="60" y2="90" stroke="var(--text-primary)" stroke-width="2" />
+                    <path d="M60,30 C50,40 70,40 60,50 C50,60 70,60 60,70 C50,80 70,80 60,90" fill="none" stroke="var(--neon-cyan)" stroke-width="2" />
+                    <line x1="95" y1="20" x2="95" y2="100" stroke="var(--text-secondary)" stroke-width="2" />
+                    <line x1="105" y1="20" x2="105" y2="100" stroke="var(--text-secondary)" stroke-width="2" />
+                    <path d="M140,30 C130,40 150,40 140,50 C130,60 150,60 140,70 C130,80 150,80 140,90" fill="none" stroke="var(--electric-yellow)" stroke-width="2" />
+                    <line x1="140" y1="30" x2="180" y2="30" stroke="var(--text-primary)" stroke-width="2" />
+                    <line x1="140" y1="90" x2="180" y2="90" stroke="var(--text-primary)" stroke-width="2" />
+                    <text x="40" y="25" fill="var(--neon-cyan)" font-size="10">V1</text>
+                    <text x="160" y="25" fill="var(--electric-yellow)" font-size="10">V2</text>
+                    <rect x="70" y="55" width="60" height="20" fill="rgb(30,30,40)" />
+                    <text x="100" y="70" fill="white" font-size="14" font-weight="bold" text-anchor="middle" id="xformer-n-display">n = 2</text>
+                </svg>
+            </div>
+            <div style="flex:1;">
+                <p class="text-sm mb-2">Turns ratio $n = \frac{N_2}{N_1}$</p>
+                <div class="formula mb-3">$$ \begin{bmatrix} A &amp; B \\ C &amp; D \end{bmatrix} = \begin{bmatrix} 1/n &amp; 0 \\ 0 &amp; n \end{bmatrix} $$</div>
+                <label class="text-sm">Adjust Ratio (n): <span id="xformer-n-val" style="color:var(--neon-cyan);">2.0</span></label>
+                <input type="range" id="xformer-slider" min="0.1" max="10" step="0.1" value="2" class="neon-slider mt-2" style="width:100%;">
+                <div class="mt-3 p-2 text-center text-sm" style="background:rgba(0,255,136,0.1); border-radius:6px;">
+                    <span style="color:#00ff88; font-family:monospace;">A = <span id="xfa">0.5</span>, B = 0<br>C = 0, D = <span id="xfd">2.0</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 53: T & pi Networks -->
+    <div class="card-panel mt-4 tp-card" style="border-top: 3px solid #fb7185;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+            <h4>T &amp; &#x03C0; Network Conversions</h4>
+            <button class="hero__cta neon-btn p-btn btn-sm" id="btn-t-pi-toggle">Morph T &#x2194; &#x03C0;</button>
+        </div>
+        <div class="t-pi-visual-container" style="display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:center;">
+            <div style="flex:1; min-width:250px; text-align:center;">
+                <svg viewBox="0 0 200 150" id="t-pi-svg" style="max-width:300px; width:100%;">
+                    <circle cx="20" cy="40" r="4" fill="var(--text-primary)" />
+                    <circle cx="180" cy="40" r="4" fill="var(--text-primary)" />
+                    <circle cx="20" cy="120" r="4" fill="var(--text-primary)" />
+                    <circle cx="180" cy="120" r="4" fill="var(--text-primary)" />
+                    <line x1="20" y1="120" x2="180" y2="120" stroke="var(--text-primary)" stroke-width="2" />
+                    <g id="t-group">
+                        <line x1="20" y1="40" x2="100" y2="40" stroke="#60a5fa" stroke-width="4" id="morph-l1" />
+                        <text x="60" y="30" fill="#60a5fa" font-size="12" font-weight="bold" id="morph-t1">Z1</text>
+                        <line x1="100" y1="40" x2="180" y2="40" stroke="#60a5fa" stroke-width="4" id="morph-l2" />
+                        <text x="140" y="30" fill="#60a5fa" font-size="12" font-weight="bold" id="morph-t2">Z2</text>
+                        <line x1="100" y1="40" x2="100" y2="120" stroke="#60a5fa" stroke-width="4" id="morph-l3" />
+                        <text x="115" y="80" fill="#60a5fa" font-size="12" font-weight="bold" id="morph-t3">Z3</text>
+                    </g>
+                </svg>
+            </div>
+            <div style="flex:1; min-width:250px;">
+                <h5 id="t-pi-heading" style="color:#60a5fa;">T-Network Parameters</h5>
+                <div id="t-formulas" class="formula text-sm mt-3" style="text-align:left;">
+                    $$ [Z] = \begin{bmatrix} Z_1+Z_3 &amp; Z_3 \\ Z_3 &amp; Z_2+Z_3 \end{bmatrix} $$
+                </div>
+                <div id="pi-formulas" class="formula text-sm mt-3" style="text-align:left; display:none;">
+                    $$ [Y] = \begin{bmatrix} Y_A+Y_B &amp; -Y_B \\ -Y_B &amp; Y_B+Y_C \end{bmatrix} $$
+                </div>
+                <div class="mt-3" id="t-pi-inputs" style="background:rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
+                    <div><span id="label-z1" style="color:#60a5fa;">Z1</span>: <input type="number" id="inp-z1" value="10" class="neon-input" style="width:60px; padding:2px;"></div>
+                    <div class="mt-1"><span id="label-z2" style="color:#60a5fa;">Z2</span>: <input type="number" id="inp-z2" value="20" class="neon-input" style="width:60px; padding:2px;"></div>
+                    <div class="mt-1"><span id="label-z3" style="color:#60a5fa;">Z3</span>: <input type="number" id="inp-z3" value="30" class="neon-input" style="width:60px; padding:2px;"></div>
+                </div>
+                <div id="t-pi-matrix-res" class="mt-2 text-center" style="font-family:monospace; color:#60a5fa; font-weight:bold;">
+                    [40, 30] <br> [30, 50]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 54: Universal Interconversion -->
+    <div class="card-panel mt-4 tp-card">
+        <h4 class="mb-3">Parameter Interconversion Calculator</h4>
+        <p class="text-sm mb-3">Input any complete parameter set to compute all others.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:20px; background:rgba(0,0,0,0.4); padding:15px; border-radius:8px;">
+            <div style="flex:1; min-width:200px;">
+                <label class="text-sm mb-2" style="display:block;">Input Type:</label>
+                <select id="conv-input-type" class="neon-input" style="width:100%; margin-bottom:15px;">
+                    <option value="z">[Z] Impedance</option>
+                    <option value="y">[Y] Admittance</option>
+                    <option value="abcd">[ABCD] Transmission</option>
+                </select>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                    <input type="number" id="conv-p11" value="10" class="neon-input text-center" placeholder="11 / A">
+                    <input type="number" id="conv-p12" value="5" class="neon-input text-center" placeholder="12 / B">
+                    <input type="number" id="conv-p21" value="5" class="neon-input text-center" placeholder="21 / C">
+                    <input type="number" id="conv-p22" value="20" class="neon-input text-center" placeholder="22 / D">
+                </div>
+                <button class="hero__cta neon-btn p-btn mt-3" id="btn-calc-convert" style="width:100%;">COMPUTE ALL</button>
+            </div>
+            <div style="flex:2; min-width:300px; display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                <div class="p-2" style="background:rgba(0,245,255,0.1); border:1px solid rgba(0,245,255,0.3); border-radius:6px;">
+                    <div class="text-center" style="color:#00f5ff; font-weight:bold; margin-bottom:5px;">[Z]</div>
+                    <div id="res-z" class="text-center text-sm" style="font-family:monospace;">[ 10,  5 ]<br>[  5, 20 ]</div>
+                </div>
+                <div class="p-2" style="background:rgba(250,204,21,0.1); border:1px solid rgba(250,204,21,0.3); border-radius:6px;">
+                    <div class="text-center" style="color:#facc15; font-weight:bold; margin-bottom:5px;">[Y]</div>
+                    <div id="res-y" class="text-center text-sm" style="font-family:monospace;">...</div>
+                </div>
+                <div class="p-2" style="background:rgba(0,255,136,0.1); border:1px solid rgba(0,255,136,0.3); border-radius:6px;">
+                    <div class="text-center" style="color:#00ff88; font-weight:bold; margin-bottom:5px;">[ABCD]</div>
+                    <div id="res-abcd" class="text-center text-sm" style="font-family:monospace;">...</div>
+                </div>
+                <div class="p-2" style="background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.3); border-radius:6px;">
+                    <div class="text-center" style="color:#a78bfa; font-weight:bold; margin-bottom:5px;">[h]</div>
+                    <div id="res-h" class="text-center text-sm" style="font-family:monospace;">...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
         <section id="dc-ac-analysis" class="circuit-section" data-aos="fade-up">
             <div class="section__header">
                 <h2>DC & AC Circuit Analysis</h2>
@@ -4247,7 +4740,7 @@
 
             <!-- OHM'S LAW -->
             <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">57. DC Analysis & Ohm's Law</h3>
+                <h3 class="subsection__title">47. DC Analysis & Ohm's Law</h3>
                 <div class="ohms-law-container card-panel">
                     <div class="ohms-triangle" id="ohms-triangle">
                         <svg viewBox="0 0 200 173.2" class="triangle-svg">
@@ -4303,7 +4796,7 @@
 
             <!-- AC PHASORS -->
             <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">58. AC Waveforms & Phasors</h3>
+                <h3 class="subsection__title">48. AC Waveforms & Phasors</h3>
                 <div class="phasor-container card-panel">
                     <div class="phasor-formulas">
                         <p>AC signals are represented as rotating vectors (phasors) in the complex plane.</p>
@@ -4330,7 +4823,7 @@
 
             <!-- 3-PHASE SYSTEMS -->
             <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">59. Three-Phase Systems</h3>
+                <h3 class="subsection__title">49. Three-Phase Systems</h3>
                 <div class="three-phase-container card-panel">
 
                     <div class="three-phase-toggle"
@@ -4420,7 +4913,7 @@
 
             <!-- Thevenin's Theorem (Interactive Step-by-Step) -->
             <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">60. Thevenin's Theorem</h3>
+                <h3 class="subsection__title">50. Thevenin's Theorem</h3>
                 <div class="theorem-card card-panel">
                     <p class="mb-4">Any linear bidirectional circuit with energy sources and resistors can be replaced
                         by a single Equivalent Voltage Source ($V_{th}$) in series with an Equivalent Resistance
@@ -4737,7 +5230,7 @@
 
             <!-- Norton's Theorem -->
             <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">61. Norton's Theorem</h3>
+                <h3 class="subsection__title">51. Norton's Theorem</h3>
                 <div class="theorem-card card-panel">
                     <p class="mb-4">The dual of Thevenin's. Simplifies a circuit to a single Equivalent Current Source
                         ($I_N$) in parallel with an Equivalent Resistance ($R_N$).</p>
@@ -4814,7 +5307,7 @@
 
             <!-- Maximum Power Transfer -->
             <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">62. Maximum Power Transfer Theorem</h3>
+                <h3 class="subsection__title">52. Maximum Power Transfer Theorem</h3>
                 <div class="theorem-card card-panel">
                     <p class="mb-4">Maximum power is delivered from a linear network to a load when the load resistance
                         equals the Thevenin equivalent resistance of the network.</p>
@@ -4862,7 +5355,7 @@
 
             <!-- Superposition Theorem -->
             <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">63. Superposition Theorem</h3>
+                <h3 class="subsection__title">53. Superposition Theorem</h3>
                 <div class="theorem-card card-panel">
                     <p class="mb-4">In a linear network with multiple sources, the total response is the algebraic sum
                         of the individual responses due to each source acting independently.</p>
@@ -5010,7 +5503,7 @@
             <!-- SUB-SECTION: Transient Analysis -->
             <div class="subsection" data-aos="fade-up">
                 <h3 class="subsection__title"
-                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">64. Transient Analysis
+                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">54. Transient Analysis
                 </h3>
 
                 <div class="theorem-grid mt-4">
@@ -5125,7 +5618,7 @@
             <!-- SUB-SECTION: Frequency Response -->
             <div class="subsection mt-5" data-aos="fade-up">
                 <h3 class="subsection__title"
-                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">65. Frequency Response
+                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">55. Frequency Response
                 </h3>
 
                 <div class="theorem-grid mt-4">
@@ -5231,7 +5724,7 @@
             <!-- SUB-SECTION: Laplace Transform -->
             <div class="subsection mt-5" data-aos="fade-up">
                 <h3 class="subsection__title"
-                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">66. Laplace Transform
+                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">56. Laplace Transform
                 </h3>
 
                 <div class="formula mt-4 text-center">$$ \mathcal{L}\{f(t)\} = F(s) = \int_0^\infty f(t)e^{-st}dt $$
@@ -5396,7 +5889,7 @@
 
             <!-- 5.1 Two-Port Networks -->
             <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">67. Two-Port Networks</h3>
+                <h3 class="subsection__title">57. Two-Port Networks</h3>
 
                 <div class="theorem-grid">
                     <!-- Z Parameters -->
@@ -5443,7 +5936,7 @@
 
             <!-- 5.2 Op-Amps & Magnetically Coupled Circuits -->
             <div class="subsection mt-5" data-aos="fade-up">
-                <h3 class="subsection__title">68. Operational Amplifiers & Mutual Inductance</h3>
+                <h3 class="subsection__title">58. Operational Amplifiers & Mutual Inductance</h3>
 
                 <div class="theorem-grid">
                     <!-- Ideal Op-Amp -->
