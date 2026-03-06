@@ -1677,3 +1677,278 @@ select.neon-input option {
 #t-pi-svg line, #t-pi-svg text {
     transition: all 0.5s ease;
 }
+
+/* =========================================
+   TWO PORT NETWORKS - MOBILE RESPONSIVE
+   ========================================= */
+
+/* ----- Tablet (max-width: 768px) ----- */
+@media (max-width: 768px) {
+
+    /* Card grids → single column */
+    .card-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* Intro flex container → stack vertically */
+    .two-port-intro-container {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .two-port-svg-wrapper {
+        min-width: unset !important;
+    }
+
+    .two-port-intro-text {
+        min-width: unset !important;
+    }
+
+    /* Parameter selector buttons → wrap smaller */
+    .param-set-selector {
+        gap: 6px !important;
+        justify-content: center;
+    }
+
+    .param-sel-btn {
+        font-size: 0.75em !important;
+        padding: 4px 10px !important;
+    }
+
+    /* Mini param grids → 2 cols still but smaller gap */
+    .mini-grid {
+        gap: 6px;
+    }
+
+    /* h/g tab header → stack */
+    .hg-tabs {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .hg-tabs .hero__cta {
+        font-size: 0.75em;
+        padding: 6px 10px;
+    }
+
+    .hg-content-wrapper {
+        min-height: 220px !important;
+    }
+
+    /* BJT/FET SVGs */
+    .bjt-model-container svg,
+    .fet-model-container svg {
+        max-width: 100% !important;
+    }
+
+    .bjt-model-container .row,
+    .fet-model-container .row {
+        flex-direction: column !important;
+        gap: 4px;
+        text-align: center;
+    }
+
+    /* Hybrid params header → stack */
+    .card-panel>div[style*="justify-content:space-between"] {
+        flex-direction: column !important;
+        gap: 10px;
+    }
+
+    /* ABCD/abcd cards */
+    .mini-grid.text-sm {
+        font-size: 0.82em;
+    }
+
+    /* Symmetry checker → stack */
+    #sym-inputs {
+        flex-wrap: wrap !important;
+        gap: 5px !important;
+    }
+
+    #sym-inputs .neon-input {
+        width: 50px !important;
+        font-size: 0.8em;
+        padding: 4px 6px;
+    }
+
+    #sym-results {
+        margin-left: 0 !important;
+        flex-wrap: wrap;
+        gap: 6px !important;
+    }
+
+    .badge {
+        font-size: 0.7em;
+        padding: 3px 8px;
+    }
+
+    /* Connection tabs → scroll horizontal */
+    .conn-tabs {
+        gap: 6px !important;
+        padding-bottom: 8px !important;
+    }
+
+    .conn-tabs .hero__cta {
+        font-size: 0.72em;
+        padding: 5px 10px;
+        white-space: nowrap;
+    }
+
+    /* Transformer card → stack */
+    .card-panel>div[style*="flex-wrap:wrap"][style*="gap:20px"] {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    /* T-Pi card → stack */
+    .t-pi-visual-container {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .t-pi-visual-container>div {
+        min-width: unset !important;
+    }
+
+    /* Universal converter → stack */
+    .card-panel>div[style*="flex-wrap:wrap"][style*="padding:15px"] {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .card-panel>div[style*="flex-wrap:wrap"][style*="padding:15px"]>div {
+        min-width: unset !important;
+    }
+
+    /* Converter results grid → single col */
+    .card-panel>div>div[style*="grid-template-columns: 1fr 1fr"][style*="gap:15px"] {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* Neon slider → larger touch target */
+    .neon-slider {
+        height: 6px;
+    }
+
+    .neon-slider::-webkit-slider-thumb {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Subsection title → smaller on mobile */
+    .subsection__title {
+        font-size: 1.1rem;
+    }
+
+    /* KaTeX formulas: allow horizontal scroll */
+    .formula {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Neon inputs → slightly larger for touch */
+    .neon-input {
+        font-size: 16px;
+        /* Prevents iOS zoom on focus */
+        padding: 8px 10px;
+    }
+
+    select.neon-input {
+        font-size: 16px;
+    }
+
+    /* Card panels → reduce padding for mobile */
+    .tp-card {
+        padding: 12px !important;
+    }
+}
+
+/* ----- Small Mobile (max-width: 480px) ----- */
+@media (max-width: 480px) {
+
+    /* Mini grid → single column on very small screens */
+    .mini-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Param buttons → 3-per-row */
+    .param-set-selector {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px !important;
+    }
+
+    .param-sel-btn {
+        font-size: 0.7em !important;
+        padding: 5px 6px !important;
+        text-align: center;
+    }
+
+    /* h/g wrapper → reduce min height */
+    .hg-content-wrapper {
+        min-height: 180px !important;
+    }
+
+    /* Symmetry checker inputs → full width row */
+    #sym-inputs {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px !important;
+    }
+
+    #sym-inputs .neon-input {
+        width: 100% !important;
+    }
+
+    /* Badges → full width */
+    #sym-results {
+        flex-direction: column;
+    }
+
+    /* Converter input grid → single col */
+    .card-panel>div>div[style*="grid-template-columns: 1fr 1fr"][style*="gap:10px"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Subsection title → even smaller */
+    .subsection__title {
+        font-size: 1rem;
+        padding-left: 8px;
+    }
+
+    /* Card panel → tighter padding */
+    .tp-card {
+        padding: 10px !important;
+    }
+
+    .card-panel {
+        padding: 10px;
+    }
+
+    /* SVG containers → full width */
+    .tp-meas-svg {
+        max-width: 100%;
+    }
+
+    .tp-intro-svg {
+        max-width: 100% !important;
+    }
+
+    /* Tables → allow scroll */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .neon-table {
+        font-size: 0.8em;
+        min-width: 400px;
+    }
+
+    .neon-table th,
+    .neon-table td {
+        padding: 8px 10px;
+    }
+}
