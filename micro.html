@@ -43,28 +43,51 @@
 </head>
 
 <body>
-    <div class="app-container">
-        <!-- Sidebar -->
-        <nav class="sidebar">
-            <div class="sidebar-logo">
-                <i class="fas fa-microchip"></i> µP & µC Hub
+
+        <!-- Unified Navbar -->
+    <nav class="navbar" role="navigation">
+        <a href="index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="circuit.html">Circuit Theory</a></li>
+            <li><a href="machines.html">Machines</a></li>
+            <li><a href="measurements.html">Measurements</a></li>
+            <li><a href="power.html">Power Systems</a></li>
+            <li><a href="powerplant.html">Power Plant</a></li>
+            <li><a href="control.html">Control Systems</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="signals.html">Signals</a></li>
+            <li><a href="micro.html" class="active">μP & μC</a></li>
+            <li><a href="estimation.html">Estimation</a></li>
+            <li><a href="utilization.html">Utilization</a></li>
+        </ul>
+        <div class="navbar__actions">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off" />
             </div>
-            <ul class="nav-links">
-                <li><a href="#mod1" class="nav-link active"><i class="fas fa-microchip"></i> Unit 1: µP Basics</a></li>
-                <li><a href="#mod2" class="nav-link"><i class="fas fa-code"></i> Unit 2: µP Programming</a></li>
-                <li><a href="#mod3" class="nav-link"><i class="fas fa-plug"></i> Unit 3: µP Applications</a></li>
-                <li><a href="#mod4" class="nav-link"><i class="fas fa-memory"></i> Unit 4: µC Basics (8051)</a></li>
-                <li><a href="#mod5" class="nav-link"><i class="fas fa-keyboard"></i> Unit 5: 8051 Instructions</a></li>
-                <li><a href="#mod6" class="nav-link"><i class="fas fa-bolt"></i> Unit 6: Interrupts & Timers</a></li>
-                <li><a href="#mod7" class="nav-link"><i class="fas fa-robot"></i> Unit 7: µC Applications</a></li>
-                <li style="margin-top:2rem;"><a href="index.html" class="nav-link"
-                        style="color:var(--accent-cyan); border: 1px solid var(--accent-cyan); text-align:center;"><i
-                            class="fas fa-home"></i> Back to Hub</a></li>
-            </ul>
-        </nav>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">☀️</button>
+        </div>
+    </nav>
+
+    <!-- Internal Page Navigation -->
+    <nav class="circuit-nav" id="circuit-nav">
+        <ul>
+            <li><a href="#mod1">Microprocessor Basics (8085)</a></li>
+            <li><a href="#mod2">Microprocessor Programming (8085)</a></li>
+            <li><a href="#mod3">Microprocessor Applications</a></li>
+            <li><a href="#mod4">Microcontroller Basics (8051)</a></li>
+            <li><a href="#mod5">8051 Addressing Modes & Instructions</a></li>
+            <li><a href="#mod6">UNIT 6 — 8051 Interrupts & Timers</a></li>
+            <li><a href="#mod7">Application of Microcontroller</a></li>
+        </ul>
+    </nav>
+
+    <div class="app-container">
+        
 
         <!-- Main Content -->
-        <main class="main-content">
+        <main class="circuit-main">
             <header class="page-header">
                 <h1 class="page-title">Microprocessor & Microcontroller</h1>
                 <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px;">

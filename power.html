@@ -30,27 +30,44 @@
 
 <body data-page-category="power">
 
-    <!-- Navbar -->
+        <!-- Unified Navbar -->
     <nav class="navbar" role="navigation">
         <a href="index.html" class="navbar__logo">⚡ EE Hub</a>
         <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
         <ul class="navbar__links">
-      <li><a href="circuit.html">Circuit Theory</a></li>
-      <li><a href="machines.html">Machines</a></li>
-      <li><a href="measurements.html">Measurements</a></li>
-      <li><a href="power.html" class="active">Power Systems</a></li>
-      <li><a href="powerplant.html">Power Plant</a></li>
-      <li><a href="control.html">Control Systems</a></li>
-      <li><a href="electronics.html">Electronics</a></li>
-      <li><a href="signals.html">Signals</a></li>
-      <li><a href="micro.html">μP & μC</a></li>
-      <li><a href="estimation.html">Estimation</a></li>
-      <li><a href="utilization.html">Utilization</a></li>
-    </ul>
+            <li><a href="circuit.html">Circuit Theory</a></li>
+            <li><a href="machines.html">Machines</a></li>
+            <li><a href="measurements.html">Measurements</a></li>
+            <li><a href="power.html" class="active">Power Systems</a></li>
+            <li><a href="powerplant.html">Power Plant</a></li>
+            <li><a href="control.html">Control Systems</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="signals.html">Signals</a></li>
+            <li><a href="micro.html">μP & μC</a></li>
+            <li><a href="estimation.html">Estimation</a></li>
+            <li><a href="utilization.html">Utilization</a></li>
+        </ul>
         <div class="navbar__actions">
-            <!-- Save/Bookmarks button handled by app.js -->
-            <button id="bookmarks-toggle" class="theme-toggle" title="Bookmarks" style="font-size:0.9rem;">🔖</button>
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off" />
+            </div>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">☀️</button>
         </div>
+    </nav>
+
+    <!-- Internal Page Navigation -->
+    <nav class="circuit-nav" id="circuit-nav">
+        <ul>
+            <li><a href="#mod1">Basics of Power Transmission</a></li>
+            <li><a href="#mod2">Transmission Line Components</a></li>
+            <li><a href="#mod3">MODULE 3 — Line Parameters</a></li>
+            <li><a href="#mod4">MODULE 4 — Underground Cables</a></li>
+            <li><a href="#mod5">MODULE 5 — Over Voltages</a></li>
+            <li><a href="#mod6">MODULE 6 — Distribution</a></li>
+            <li><a href="#mod7">MODULE 7 — Substations</a></li>
+            <li><a href="#mod8">MODULE 8 — HVDC & FACTS</a></li>
+        </ul>
     </nav>
 
     <!-- Bookmarks Panel -->
@@ -79,7 +96,7 @@
         </aside>
 
         <!-- Main Content (Formula Cards) -->
-        <main class="main-content" id="formula-container">
+        <main class="circuit-main" id="formula-container">
 
             <!-- MODULE 1: Basics of Power Transmission -->
             <section id="mod1" class="module-section">

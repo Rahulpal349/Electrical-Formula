@@ -39,34 +39,55 @@
     <link rel="stylesheet" href="css/signals.css">
 </head>
 <body data-page-category="signals">
+
+        <!-- Unified Navbar -->
+    <nav class="navbar" role="navigation">
+        <a href="index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="circuit.html">Circuit Theory</a></li>
+            <li><a href="machines.html">Machines</a></li>
+            <li><a href="measurements.html">Measurements</a></li>
+            <li><a href="power.html">Power Systems</a></li>
+            <li><a href="powerplant.html">Power Plant</a></li>
+            <li><a href="control.html">Control Systems</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="signals.html" class="active">Signals</a></li>
+            <li><a href="micro.html">μP & μC</a></li>
+            <li><a href="estimation.html">Estimation</a></li>
+            <li><a href="utilization.html">Utilization</a></li>
+        </ul>
+        <div class="navbar__actions">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off" />
+            </div>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">☀️</button>
+        </div>
+    </nav>
+
+    <!-- Internal Page Navigation -->
+    <nav class="circuit-nav" id="circuit-nav">
+        <ul>
+            <li><a href="#unit1">Introduction to Signals & Systems</a></li>
+            <li><a href="#unit2">UNIT 2 — LTI Systems</a></li>
+            <li><a href="#unit3">UNIT 3 — Fourier Series</a></li>
+            <li><a href="#unit4">Continuous-Time Fourier Transform</a></li>
+            <li><a href="#unit5">UNIT 5 — DTFT, DFT & FFT</a></li>
+            <li><a href="#unit6">Laplace Transform & S-Plane</a></li>
+            <li><a href="#unit7">UNIT 7 — Z-Transform & Z-Plane</a></li>
+            <li><a href="#unit8">UNIT 8 — Sampling & Aliasing</a></li>
+            <li><a href="#unit9">UNIT 9 — State-Space Representation</a></li>
+            <li><a href="#unit10">UNIT 10 — DSP Filter Design</a></li>
+        </ul>
+    </nav>
+
     <div class="app-container">
         
-        <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <div class="sidebar-logo">
-                <i class="fas fa-wave-square"></i> Signals & DSP
-            </div>
-            <ul class="nav-links">
-                <li><a href="#unit1" class="nav-link active"><i class="fas fa-signal"></i> 1. Signals Intro</a></li>
-                <li><a href="#unit2" class="nav-link"><i class="fas fa-project-diagram"></i> 2. LTI Systems</a></li>
-                <li><a href="#unit3" class="nav-link"><i class="fas fa-chart-line"></i> 3. Fourier Series</a></li>
-                <li><a href="#unit4" class="nav-link"><i class="fas fa-water"></i> 4. Fourier Transform</a></li>
-                <li><a href="#unit5" class="nav-link"><i class="fas fa-stream"></i> 5. DTFT & DFT</a></li>
-                <li><a href="#unit6" class="nav-link"><i class="fas fa-superscript"></i> 6. Laplace Transform</a></li>
-                <li><a href="#unit7" class="nav-link"><i class="fas fa-subscript"></i> 7. Z-Transform</a></li>
-                <li><a href="#unit8" class="nav-link"><i class="fas fa-braille"></i> 8. Sampling</a></li>
-                <li><a href="#unit9" class="nav-link"><i class="fas fa-th-large"></i> 9. State Space</a></li>
-                <li><a href="#unit10" class="nav-link"><i class="fas fa-filter"></i> 10. DSP Filters</a></li>
-                <li style="margin-top:2rem;">
-                    <a href="index.html" class="nav-link" style="color:var(--accent-cyan); border: 1px solid var(--accent-cyan); text-align:center; justify-content:center;">
-                        <i class="fas fa-home"></i> Back to Hub
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        
 
         <!-- Main Content -->
-        <main class="main-content">
+        <main class="circuit-main">
             <header class="page-header">
                 <h1 class="page-title">Signals & Systems + DSP</h1>
                 <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px;">

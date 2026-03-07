@@ -18,31 +18,41 @@
 
 <body data-page-category="control">
 
-    <!-- Navbar -->
+        <!-- Unified Navbar -->
     <nav class="navbar" role="navigation">
         <a href="index.html" class="navbar__logo">⚡ EE Hub</a>
         <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
         <ul class="navbar__links">
-      <li><a href="circuit.html">Circuit Theory</a></li>
-      <li><a href="machines.html">Machines</a></li>
-      <li><a href="measurements.html">Measurements</a></li>
-      <li><a href="power.html">Power Systems</a></li>
-      <li><a href="powerplant.html">Power Plant</a></li>
-      <li><a href="control.html" class="active">Control Systems</a></li>
-      <li><a href="electronics.html">Electronics</a></li>
-      <li><a href="signals.html">Signals</a></li>
-      <li><a href="micro.html">μP & μC</a></li>
-      <li><a href="estimation.html">Estimation</a></li>
-      <li><a href="utilization.html">Utilization</a></li>
-    </ul>
+            <li><a href="circuit.html">Circuit Theory</a></li>
+            <li><a href="machines.html">Machines</a></li>
+            <li><a href="measurements.html">Measurements</a></li>
+            <li><a href="power.html">Power Systems</a></li>
+            <li><a href="powerplant.html">Power Plant</a></li>
+            <li><a href="control.html" class="active">Control Systems</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="signals.html">Signals</a></li>
+            <li><a href="micro.html">μP & μC</a></li>
+            <li><a href="estimation.html">Estimation</a></li>
+            <li><a href="utilization.html">Utilization</a></li>
+        </ul>
         <div class="navbar__actions">
             <div class="search-box">
                 <span class="search-icon">🔍</span>
-                <input type="text" id="search-input" placeholder="Search page..." autocomplete="off" />
+                <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off" />
             </div>
-            <button id="bookmarks-toggle" class="theme-toggle" title="Bookmarks" style="font-size:0.9rem;">★</button>
             <button id="theme-toggle" class="theme-toggle" title="Toggle theme">☀️</button>
         </div>
+    </nav>
+
+    <!-- Internal Page Navigation -->
+    <nav class="circuit-nav" id="circuit-nav">
+        <ul>
+            <li><a href="#transfer-functions">1. Transfer Functions</a></li>
+            <li><a href="#time-response">2. Time Response</a></li>
+            <li><a href="#stability">3. Stability</a></li>
+            <li><a href="#frequency-response">4. Frequency Response</a></li>
+            <li><a href="#state-space">5. State Space</a></li>
+        </ul>
     </nav>
 
     <!-- Bookmarks Panel -->
@@ -55,7 +65,7 @@
     <div style="height: 100px;"></div>
 
     <!-- Formula Sections Container -->
-    <main id="formula-sections"></main>
+    <main class="circuit-main" id="formula-sections"></main>
 
     <!-- No Search Results -->
     <div id="no-results" class="no-results">

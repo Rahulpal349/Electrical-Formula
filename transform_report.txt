@@ -1,0 +1,48 @@
+﻿machines.html: sidebar=false PW=false circuitNav=true circuitMain=true
+  -> Already has circuit-nav
+
+measurements.html: sidebar=true PW=false circuitNav=false circuitMain=false
+  -> Removed sidebar
+  -> Changed main-content to circuit-main
+  -> Added circuit-nav with 7 items
+  -> SAVED
+
+power.html: sidebar=false PW=false circuitNav=false circuitMain=false
+  -> Changed main-content to circuit-main
+  -> Added circuit-nav with 8 items
+  -> SAVED
+
+powerplant.html: sidebar=false PW=false circuitNav=false circuitMain=false
+  -> Changed main-content to circuit-main
+  -> Added circuit-nav with 9 items
+  -> SAVED
+
+control.html: sidebar=false PW=false circuitNav=false circuitMain=false
+  -> No sections found for circuit-nav
+
+electronics.html: sidebar=false PW=false circuitNav=false circuitMain=false
+  -> Changed main-content to circuit-main
+  -> Added circuit-nav with 6 items
+  -> SAVED
+
+signals.html: sidebar=true PW=false circuitNav=false circuitMain=false
+  -> Removed sidebar
+  -> Changed main-content to circuit-main
+  -> Added circuit-nav with 10 items
+  -> SAVED
+
+micro.html: sidebar=true PW=false circuitNav=false circuitMain=false
+  -> Removed sidebar
+  -> Changed main-content to circuit-main
+  -> Added circuit-nav with 7 items
+  -> SAVED
+
+estimation.html: sidebar=false PW=false circuitNav=false circuitMain=false
+  -> No sections found for circuit-nav
+
+utilization.html: sidebar=false PW=false circuitNav=false circuitMain=false
+  -> Changed main-content to circuit-main
+  -> No sections found for circuit-nav
+  -> SAVED
+
+

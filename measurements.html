@@ -36,37 +36,60 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <link rel="stylesheet" href="css/measurements.css">
+
+    <link rel="stylesheet" href="css/style.css?v=3" />
 </head>
 
 <body>
+
+        <!-- Unified Navbar -->
+    <nav class="navbar" role="navigation">
+        <a href="index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="circuit.html">Circuit Theory</a></li>
+            <li><a href="machines.html">Machines</a></li>
+            <li><a href="measurements.html" class="active">Measurements</a></li>
+            <li><a href="power.html">Power Systems</a></li>
+            <li><a href="powerplant.html">Power Plant</a></li>
+            <li><a href="control.html">Control Systems</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="signals.html">Signals</a></li>
+            <li><a href="micro.html">μP & μC</a></li>
+            <li><a href="estimation.html">Estimation</a></li>
+            <li><a href="utilization.html">Utilization</a></li>
+        </ul>
+        <div class="navbar__actions">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off" />
+            </div>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">☀️</button>
+        </div>
+    </nav>
+
+    <!-- Internal Page Navigation -->
+    <nav class="circuit-nav" id="circuit-nav">
+        <ul>
+            <li><a href="#mod1">MODULE 1 — Measurement Fundamentals</a></li>
+            <li><a href="#mod2">Analog Indicating Instruments</a></li>
+            <li><a href="#mod3">MODULE 3 — Power & Energy</a></li>
+            <li><a href="#mod4">MODULE 4 — Bridge Circuits</a></li>
+            <li><a href="#mod5">MODULE 5 — Instrument Transformers</a></li>
+            <li><a href="#mod6">MODULE 6 — Electronic Instruments</a></li>
+            <li><a href="#mod7">MODULE 7 — Range Extension</a></li>
+        </ul>
+    </nav>
+
 
     <div id="progress-bar"></div>
 
     <div class="app-container">
 
-        <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <h2 class="orbitron">M&I FORMULAS</h2>
-            <ul class="nav-menu">
-                <li><a href="#mod1" class="nav-link active" data-mod="1"><span class="nav-mod-num">01</span>
-                        Fundamentals</a></li>
-                <li><a href="#mod2" class="nav-link" data-mod="2"><span class="nav-mod-num">02</span> Analog Inst.</a>
-                </li>
-                <li><a href="#mod3" class="nav-link" data-mod="3"><span class="nav-mod-num">03</span> Power & Energy</a>
-                </li>
-                <li><a href="#mod4" class="nav-link" data-mod="4"><span class="nav-mod-num">04</span> Bridges & Res.</a>
-                </li>
-                <li><a href="#mod5" class="nav-link" data-mod="5"><span class="nav-mod-num">05</span> Inst.
-                        Transformers</a></li>
-                <li><a href="#mod6" class="nav-link" data-mod="6"><span class="nav-mod-num">06</span> Electronic
-                        Inst.</a></li>
-                <li><a href="#mod7" class="nav-link" data-mod="7"><span class="nav-mod-num">07</span> Range
-                        Extension</a></li>
-            </ul>
-        </nav>
+        
 
         <!-- Main Content -->
-        <main class="main-content">
+        <main class="circuit-main">
 
             <header class="hero-banner" data-aos="fade-up">
                 <h1 class="hero-title">MEASUREMENTS & INSTRUMENTATION</h1>

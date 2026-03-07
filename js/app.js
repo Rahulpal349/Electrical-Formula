@@ -130,7 +130,7 @@
 
     /* ---------- Search / Filter ---------- */
     function initSearch() {
-        const input = $('#search-input');
+        const input = $('#page-search');
         if (!input) return;
         input.addEventListener('input', () => {
             const q = input.value.toLowerCase().trim();
