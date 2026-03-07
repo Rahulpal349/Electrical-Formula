@@ -8,6 +8,7 @@
 
     /* --- Build Sidebar --- */
     function buildSidebar(unitId) {
+        if (!sidebar) return;
         const u = D.units.find(x => x.id === unitId);
         if (!u) return;
         sidebar.innerHTML = `<h3 style="color:${u.color}">${u.icon} ${u.title}</h3>
@@ -52,7 +53,7 @@
     /* --- SVG Generators --- */
     const svgGenerators = {
         'drive-block': function () {
-            return `<svg viewBox="0 0 800 120" width="100%" height="100%">
+            return `<svg viewBox="0 0 880 120" width="100%" height="100%">
       <defs><marker id="ah1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#f97316"/></marker></defs>
       ${[{ x: 20, l: 'Power\\nSupply', c: '#f97316' }, { x: 200, l: 'Converter', c: '#fb923c' }, { x: 380, l: 'Motor', c: '#facc15' }, { x: 560, l: 'Gearbox', c: '#22c55e' }, { x: 720, l: 'Load', c: '#00f5ff' }].map(b =>
                 `<rect x="${b.x}" y="30" width="140" height="60" rx="8" fill="#1e293b" stroke="${b.c}" stroke-width="2" class="pulse-glow"/>
@@ -342,13 +343,15 @@
     });
 
     /* --- Sidebar Click --- */
-    sidebar.addEventListener('click', e => {
-        const a = e.target.closest('a');
-        if (!a) return;
-        e.preventDefault();
-        const target = $(a.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+    if (sidebar) {
+        sidebar.addEventListener('click', e => {
+            const a = e.target.closest('a');
+            if (!a) return;
+            e.preventDefault();
+            const target = $(a.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
 
     /* --- Charts (Chart.js) --- */
     function initCharts() {

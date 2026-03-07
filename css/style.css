@@ -1091,60 +1091,67 @@ body.light-mode .katex {
 
 /* Internal Page Navigation */
 .circuit-nav {
-    position: sticky;
-    top: var(--nav-height);
-    background: rgba(10, 14, 26, 0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    z-index: 90;
-    padding: 15px 0;
-    overflow-x: auto;
-    scrollbar-width: none;
+  position: sticky;
+  top: var(--nav-height);
+  background: rgba(10, 14, 26, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 90;
+  padding: 15px 0;
 }
 
 .circuit-nav::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .circuit-nav ul {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    gap: 30px;
-    min-width: max-content;
-    padding: 0 20px;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  margin: 0;
 }
 
 .circuit-nav a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-family: var(--font-head);
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 5px 0;
-    position: relative;
-    transition: color var(--transition);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 5px 0;
+  position: relative;
+  transition: color var(--transition);
 }
 
 .circuit-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--electric-yellow, #facc15);
-    box-shadow: 0 0 8px var(--electric-yellow, #facc15);
-    transition: width 0.3s ease;
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--electric-yellow, #facc15);
+  box-shadow: 0 0 8px var(--electric-yellow, #facc15);
+  transition: width 0.3s ease;
 }
 
 .circuit-nav a:hover,
 .circuit-nav a.active {
-    color: var(--text-primary);
+  color: var(--text-primary);
 }
 
 .circuit-nav a:hover::after,
 .circuit-nav a.active::after {
-    width: 100%;
+  width: 100%;
 }
 
+/* Base Main Content Layout for all subjects */
+.circuit-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100%;
+}
