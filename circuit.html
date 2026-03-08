@@ -5468,9 +5468,9 @@
                             <p>Unit Cell Volume: $ V = \bar{a} \cdot \bar{b} \cdot \bar{c} $</p>
                         </div>
                         <div class="ac-card__animation-zone" id="plot-material-1"></div>
-                        <div class="ac-card__footer">
+                        <div class="ac-card__footer" style="justify-content: center; gap: 1rem;">
                             <button class="ac-btn-icon" id="btn-lattice-morph">✨ Morph Basis</button>
-                            <button class="ac-btn-icon" id="btn-lattice-type">🔄 Type: Crystalline</button>
+                            <button class="ac-btn-icon" data-calc="crystal-calc">💎 Crystal Calculator</button>
                         </div>
                     </section>
 
@@ -5575,9 +5575,12 @@
                         <div class="ac-card__animation-zone" id="plot-material-7">
                             <!-- Three.js Container for Miller Cube -->
                         </div>
-                        <div class="ac-card__footer">
-                            <button class="ac-btn-icon" data-calc="miller-calc">📐 Miller Calc</button>
-                            <button class="ac-btn-icon" data-calc="bragg-calc">🔬 Bragg's Law</button>
+                        <div class="ac-card__footer" style="justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+                            <button class="ac-btn-icon" id="btn-m100">(100)</button>
+                            <button class="ac-btn-icon" id="btn-m110">(110)</button>
+                            <button class="ac-btn-icon" id="btn-m111">(111)</button>
+                            <button class="ac-btn-icon" data-calc="miller-calc">📐 Miller Calculator</button>
+                            <button class="ac-btn-icon" data-calc="bragg-calc">📡 Bragg Calculator</button>
                         </div>
                     </section>
 
@@ -5647,7 +5650,7 @@
                         <div class="ac-card__animation-zone" id="plot-material-10" style="height: 380px;">
                             <!-- D3.js Graph Container -->
                         </div>
-                        <div class="ac-card__footer" style="justify-content: center;">
+                        <div class="ac-card__footer" style="justify-content: center; gap: 1rem;">
                             <button class="ac-btn-icon" data-calc="curie-temp-finder">🌡️ Curie Temp Finder</button>
                         </div>
                     </section>
@@ -5804,8 +5807,8 @@
                             <p>Loss Tangent: $$ \tan\delta = \frac{\varepsilon''}{\varepsilon'} \quad \rightarrow \quad
                                 \text{Loss} = \omega\varepsilon_0\varepsilon''\tan\delta\,E^2 $$</p>
                         </div>
-                        <div class="ac-card__animation-zone" id="plot-dielectric-4"
-                            style="height: auto; max-width: 100%; overflow-x: auto; padding-bottom: 20px;">
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="dielectric-id-calc">🔍 Dielectric Identifier</button>
                         </div>
                     </section>
 
@@ -5969,6 +5972,10 @@
                         </div>
                         <div class="ac-card__animation-zone" id="plot-dielectric-12"
                             style="height: 550px; overflow-x: auto;">
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="insulator-selector-calc">📑 Insulation
+                                Categories</button>
                         </div>
                     </section>
 
@@ -6195,6 +6202,65 @@
             <div class="ac-control-group"><label>New Temp T₂ (°C)</label><input type="number" class="ac-calc-input"
                     id="cl-in-t2" value="115"></div>
             <div class="ac-calc-result" id="cl-res-l2" style="grid-column: span 2;">Predicted Life L₂: 10.00 yrs</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-crystal-calc-modal">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">💎 Crystal Calculator</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Atomic Radius r (Å)</label><input type="number" class="ac-calc-input"
+                    id="cry-in-r" value="1.24" step="0.01"></div>
+            <div class="ac-control-group"><label>Structure</label>
+                <select class="ac-calc-input" id="cry-in-type" style="background: var(--bg-card); color: white;">
+                    <option value="SC">Simple Cubic</option>
+                    <option value="BCC">BCC</option>
+                    <option value="FCC" selected>FCC</option>
+                    <option value="DC">Diamond Cubic</option>
+                </select>
+            </div>
+            <div class="ac-calc-result" id="cry-res-a" style="grid-column: span 2;">Lattice Parameter a: 3.51 Å</div>
+            <div class="ac-calc-result" id="cry-res-n">Effective Atoms N: 4</div>
+            <div class="ac-calc-result" id="cry-res-apf">Packing Efficiency: 74%</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-dielectric-id-calc-modal">
+        <h3 style="color: var(--unit-gold); margin-bottom: 1rem; font-family: Orbitron;">🔍 Dielectric Identifier</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group" style="grid-column: span 2;"><label>Select Category</label>
+                <select class="ac-calc-input" id="di-in-type"
+                    style="background: var(--bg-card); color: white; width: 100%;">
+                    <option value="nonpolar">Non-Polar Solid</option>
+                    <option value="polar">Polar Solid</option>
+                    <option value="piezo">Piezoelectric</option>
+                    <option value="ferro">Ferroelectric</option>
+                </select>
+            </div>
+            <div class="ac-calc-result" id="di-res-val" style="grid-column: span 2; font-size: 0.85rem; height: 60px;">
+                Non-Polar: Electronic only. (Diamond)</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-insulator-selector-calc-modal">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">📑 Insulation Categories</h3>
+        <div style="color: white; font-size: 0.85rem;">
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom:10px; padding:8px; background:rgba(255,255,255,0.05); border-radius:4px;">
+                    <b>Organic:</b> Wood, Paper, Cotton, Rubber (Natural)
+                </li>
+                <li style="margin-bottom:10px; padding:8px; background:rgba(255,255,255,0.05); border-radius:4px;">
+                    <b>Inorganic:</b> Glass, Mica, Ceramic, SF6 (Gaseous)
+                </li>
+                <li style="margin-bottom:10px; padding:8px; background:rgba(255,255,255,0.05); border-radius:4px;">
+                    <b>Synthetic:</b> Plastic (PVC, PE), Bakelite, Nylon
+                </li>
+            </ul>
         </div>
         <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
             onclick="closeModals()">Close</button>
