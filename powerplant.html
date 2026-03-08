@@ -68,6 +68,35 @@
     </div>
   </nav>
 
+  <!-- Custom Hero Section for Power Plant -->
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10" />
+    </svg>
+
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style=" text-align:center;">
+        Power <span class="neon-text"
+          style="color:var(--element-color, #a855f7); filter:drop-shadow(0 0 10px #a855f7);">Plant</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter"
+        data-text="Energy Generation · Thermal Dynamics · Renewables"></p>
+
+      <div class="hero-icons">
+        <div class="hero-icon">🏭</div>
+        <div class="hero-icon">💧</div>
+        <div class="hero-icon">☀️</div>
+        <div class="hero-icon">☢️</div>
+      </div>
+
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#thermal-power" class="hero__cta neon-btn" style="border-color:#a855f7; color:#a855f7;">⚡ Explore
+          Formulas</a>
+      </div>
+    </div>
+  </header>
+
   <!-- Internal Page Navigation -->
   <nav class="circuit-nav" id="circuit-nav">
     <ul>
@@ -2148,11 +2177,42 @@
     </main>
   </div>
 
+  <!-- Custom Hero Section for Power Plant -->
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10" />
+    </svg>
+
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style=" text-align:center;">
+        Power <span class="neon-text"
+          style="color:var(--element-color, #a855f7); filter:drop-shadow(0 0 10px #a855f7);">Plant</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter"
+        data-text="Energy Generation · Thermal Dynamics · Renewables"></p>
+
+      <div class="hero-icons">
+        <div class="hero-icon">🏭</div>
+        <div class="hero-icon">💧</div>
+        <div class="hero-icon">☀️</div>
+        <div class="hero-icon">☢️</div>
+      </div>
+
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#thermal-power" class="hero__cta neon-btn" style="border-color:#a855f7; color:#a855f7;">⚡ Explore
+          Formulas</a>
+      </div>
+    </div>
+  </header>
+
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="js/formulas.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/powerplant.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/hero-bg.js"></script>
+  <script src="js/powerplant.js?v=4"></script>
 </body>
 
 </html>

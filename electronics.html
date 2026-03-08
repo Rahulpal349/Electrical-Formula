@@ -71,6 +71,35 @@
         </div>
     </nav>
 
+    <!-- Custom Hero Section for Electronics -->
+    <header class="circuit-hero">
+        <canvas id="hero-canvas"></canvas>
+        <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10" />
+        </svg>
+
+        <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+            <h1 class="circuit-hero__title" style=" text-align:center;">
+                Basic <span class="neon-text"
+                    style="color:var(--element-color, #38bdf8); filter:drop-shadow(0 0 10px #38bdf8);">Electronics</span>
+            </h1>
+            <p class="circuit-hero__subtitle" id="circuit-typewriter"
+                data-text="Semiconductors · Diodes · Bipolar Junction Transistors"></p>
+
+            <div class="hero-icons">
+                <div class="hero-icon">🎛️</div>
+                <div class="hero-icon">🔋</div>
+                <div class="hero-icon">📻</div>
+                <div class="hero-icon">💾</div>
+            </div>
+
+            <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+                <a href="#mod1" class="hero__cta neon-btn" style="border-color:#38bdf8; color:#38bdf8;">⚡ Explore
+                    Formulas</a>
+            </div>
+        </div>
+    </header>
+
     <!-- Internal Page Navigation -->
     <nav class="circuit-nav" id="circuit-nav">
         <ul>
@@ -1261,6 +1290,8 @@
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/hero-bg.js"></script>
     <script src="js/electronics.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });

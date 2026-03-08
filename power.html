@@ -56,6 +56,35 @@
         </div>
     </nav>
 
+    <!-- Custom Hero Section for Power Systems -->
+    <header class="circuit-hero">
+        <canvas id="hero-canvas"></canvas>
+        <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10" />
+        </svg>
+
+        <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+            <h1 class="circuit-hero__title" style=" text-align:center;">
+                Power <span class="neon-text"
+                    style="color:var(--element-color, #22c55e); filter:drop-shadow(0 0 10px #22c55e);">Systems</span>
+            </h1>
+            <p class="circuit-hero__subtitle" id="circuit-typewriter"
+                data-text="High Voltage Transmission · Fault Analysis · Advanced Protection"></p>
+
+            <div class="hero-icons">
+                <div class="hero-icon">🗼</div>
+                <div class="hero-icon">🚡</div>
+                <div class="hero-icon">⚡</div>
+                <div class="hero-icon">🌍</div>
+            </div>
+
+            <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+                <a href="#mod1" class="hero__cta neon-btn" style="border-color:#22c55e; color:#22c55e;">⚡ Explore
+                    Formulas</a>
+            </div>
+        </div>
+    </header>
+
     <!-- Internal Page Navigation -->
     <nav class="circuit-nav" id="circuit-nav">
         <ul>
@@ -1497,6 +1526,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script src="js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/hero-bg.js"></script>
     <script src="js/power.js"></script>
 </body>
 
