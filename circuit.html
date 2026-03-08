@@ -35,6 +35,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/circuit.css?v=1" />
+    <link rel="stylesheet" href="css/ac-analysis.css" />
 </head>
 
 <body data-page-category="circuit" class="custom-page dark-mode">
@@ -57,13 +58,31 @@
             <li><a href="utilization.html">Utilization</a></li>
         </ul>
         <div class="navbar__actions">
-        <div class="search-box">
-            <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
-<path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path><path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path><path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z M365.3,278.3c-28.1,8.5-56.8,2.8-84.2-5.8c-13.8-4.3-27.6-9.1-40.7-15.2c-6.8-3.2-13.6-6.7-19.9-10.9c-5.5-3.6-10.5-7.9-15.9-11.7c-1.7-1.2-2.1-2.8-1.8-4.3c-17.7-23.8-31.1-52.7-29-82.9c2.2-31.5,21.9-58.1,46.9-76.2c38.9-28.1,94.6-38.9,137.8-13.8c21.4,12.4,39.2,30.6,53.1,51c13.4,19.8,24.7,42.6,28.6,66.5C448,222.4,408.4,265.3,365.3,278.3z"></path><path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2zM471.5 185.5c-1.3-13.1-5.2-25-11.2-35.9 7.3 23.4 8.9 48.1 0 71.7-16.2 43.3-59.2 75.9-104.7 81.9-29.7 3.9-60.6-4.4-89-12.2-26.6-7.3-52.8-18-75.2-34.4-3.3.9-7.4-1.3-6.3-5.5.2-.8.5-1.6.8-2.3-7.6-8.8-14.4-18.3-19.9-28.5-4.7-8.8-8.7-18-11.6-27.5 0 5 0 10 .3 15 1.1 20.3 5.2 41.3 19 56.9.5-1 1.3-1.8 2.7-2.3 10.2-3.5 19.2 1.8 26.9 8.1 5.3 4.3 8.2 7.9 11.5 13.8 2.2 3.9 11.9 19.9 9.2 27.2 25.7 11.4 52.5 16.5 80.5 18.4 29.3 2 59.3 1.9 85.5-13.2 23.8-13.7 45.1-34.1 61.4-56.1C467.7 238.3 474.2 212.8 471.5 185.5z"></path><path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z M338.3,272.7c-23.4,0.8-47.2-6.9-69.1-14.6c-10.5-3.7-20.7-7.9-30.7-12.8c-9.3-4.7-17.2-10.7-25.5-16.7c-0.1-0.8-0.4-1.6-1-2.4c-15.3-20.3-27.2-43.7-28.4-69.5c-1.2-26.7,12.3-49.8,31.2-67.6c35.4-33.2,92.6-47.4,136.8-23.9c22,11.7,39.7,31,53.4,51.5c13.1,19.6,24.7,43.7,26.1,67.5C434.1,232.5,382.8,271.2,338.3,272.7z"></path><path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z M175.8,101.4c27-39.9,75.8-68.4,123.6-72.9c50.1-4.7,93.1,28.5,121.4,66.9c14.4,19.6,25.6,41.6,32.2,65c6.4,23.1,4.2,46.3-6.5,67.7c-18.2,36.7-57.9,62.5-98.5,65.8c-13.8,1.1-28-1.1-41.6-3.7c-13.3-2.6-26.5-5.9-39.6-9.5c-24.9-6.8-49.8-17.3-70.6-33c0.2-1.1-0.1-2.3-1.1-3.5c-17.1-19.6-30.2-43-34.8-68.9C155.8,149.6,161.1,123.1,175.8,101.4z M137.8,426.1c-7.3,4.7-15.3,8.4-23.9,10.4c-10.6,2.4-22.1,1.5-31.3-4.7c-8.4-5.7-12.9-15-14.6-24.8c-1.9-11.1-0.4-21.9,3.4-32c0.7-0.1,1.4-0.3,2-0.8c8-4.9,20.3-2.7,28.9-1c4.7,0.9,9.3,2.3,13.7,4.1c3.1,1.3,3.5,2.1,5.5,5.2c4.5,7,7.9,14.9,11.1,22.6c1.6,3.8,3,7.6,4.2,11.5c0.4,1.3,0.8,2.7,1,4.1c0,0.1,0,0.3,0.1,0.4C137,422.6,137,424.6,137.8,426.1z M213.9,308.2c-1.6,0.1-3.1,1-3.7,3.1c-9.1,28.8-21.3,57.1-39,81.7c-6.7,9.3-14.6,18.4-23.6,25.9c-1.7-13.6-14.8-36.8-17.3-41c-1.9-3.2-4.1-6.4-7.5-8.2c-5.2-2.9-11.1-4.5-16.9-5.8c-8.8-2.1-19.3-3.4-28.6-1.4c5.5-9.6,12.7-18.5,20.2-26.2c24.4-24.9,54-45,83.4-63.5c0.8-0.5,1.4-1.1,1.7-1.8c5.8-0.4,11.4,4.7,15.7,8.1c3.2,2.6,4.9,4.7,7,8.3c2.3,4,4.4,8.2,6.3,12.4c0.9,1.9,1.7,3.9,2.4,5.9c0.2,0.5,0.3,0.8,0.4,1.2C214.1,307.4,214,307.8,213.9,308.2z M451.4,260.4c-16.3,22.1-37.6,42.4-61.4,56.1c-26.2,15.1-56.1,15.2-85.5,13.2c-28-1.9-54.7-7.1-80.5-18.4c2.7-7.2-7-23.2-9.2-27.2c-3.3-5.9-6.2-9.5-11.5-13.8c-7.8-6.3-16.8-11.6-26.9-8.1c-1.4,0.5-2.2,1.3-2.7,2.3c-13.9-15.6-18-36.6-19-56.9c-0.3-5-0.3-10-0.3-15c2.9,9.5,6.9,18.7,11.6,27.5c5.5,10.2,12.3,19.7,19.9,28.5c-0.3,0.7-0.6,1.5-0.8,2.3c-1.1,4.2,3,6.4,6.3,5.5c22.4,16.5,48.6,27.1,75.2,34.4c28.4,7.8,59.4,16.1,89,12.2c45.6-6,88.6-38.6,104.7-81.9c8.8-23.7,7.3-48.3,0-71.7c6,10.9,9.9,22.9,11.2,35.9C474.2,212.8,467.7,238.3,451.4,260.4z"></path>
-</svg></span>
-            <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off" />
+            <div class="search-box">
+                <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 512 512" style="vertical-align: middle;">
+                        <path fill="#127274"
+                            d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z">
+                        </path>
+                        <path fill="#74CCCF"
+                            d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z">
+                        </path>
+                        <path fill="#14B6B9"
+                            d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z M365.3,278.3c-28.1,8.5-56.8,2.8-84.2-5.8c-13.8-4.3-27.6-9.1-40.7-15.2c-6.8-3.2-13.6-6.7-19.9-10.9c-5.5-3.6-10.5-7.9-15.9-11.7c-1.7-1.2-2.1-2.8-1.8-4.3c-17.7-23.8-31.1-52.7-29-82.9c2.2-31.5,21.9-58.1,46.9-76.2c38.9-28.1,94.6-38.9,137.8-13.8c21.4,12.4,39.2,30.6,53.1,51c13.4,19.8,24.7,42.6,28.6,66.5C448,222.4,408.4,265.3,365.3,278.3z">
+                        </path>
+                        <path fill="#127274"
+                            d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2zM471.5 185.5c-1.3-13.1-5.2-25-11.2-35.9 7.3 23.4 8.9 48.1 0 71.7-16.2 43.3-59.2 75.9-104.7 81.9-29.7 3.9-60.6-4.4-89-12.2-26.6-7.3-52.8-18-75.2-34.4-3.3.9-7.4-1.3-6.3-5.5.2-.8.5-1.6.8-2.3-7.6-8.8-14.4-18.3-19.9-28.5-4.7-8.8-8.7-18-11.6-27.5 0 5 0 10 .3 15 1.1 20.3 5.2 41.3 19 56.9.5-1 1.3-1.8 2.7-2.3 10.2-3.5 19.2 1.8 26.9 8.1 5.3 4.3 8.2 7.9 11.5 13.8 2.2 3.9 11.9 19.9 9.2 27.2 25.7 11.4 52.5 16.5 80.5 18.4 29.3 2 59.3 1.9 85.5-13.2 23.8-13.7 45.1-34.1 61.4-56.1C467.7 238.3 474.2 212.8 471.5 185.5z">
+                        </path>
+                        <path
+                            d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z M338.3,272.7c-23.4,0.8-47.2-6.9-69.1-14.6c-10.5-3.7-20.7-7.9-30.7-12.8c-9.3-4.7-17.2-10.7-25.5-16.7c-0.1-0.8-0.4-1.6-1-2.4c-15.3-20.3-27.2-43.7-28.4-69.5c-1.2-26.7,12.3-49.8,31.2-67.6c35.4-33.2,92.6-47.4,136.8-23.9c22,11.7,39.7,31,53.4,51.5c13.1,19.6,24.7,43.7,26.1,67.5C434.1,232.5,382.8,271.2,338.3,272.7z">
+                        </path>
+                        <path
+                            d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z M175.8,101.4c27-39.9,75.8-68.4,123.6-72.9c50.1-4.7,93.1,28.5,121.4,66.9c14.4,19.6,25.6,41.6,32.2,65c6.4,23.1,4.2,46.3-6.5,67.7c-18.2,36.7-57.9,62.5-98.5,65.8c-13.8,1.1-28-1.1-41.6-3.7c-13.3-2.6-26.5-5.9-39.6-9.5c-24.9-6.8-49.8-17.3-70.6-33c0.2-1.1-0.1-2.3-1.1-3.5c-17.1-19.6-30.2-43-34.8-68.9C155.8,149.6,161.1,123.1,175.8,101.4z M137.8,426.1c-7.3,4.7-15.3,8.4-23.9,10.4c-10.6,2.4-22.1,1.5-31.3-4.7c-8.4-5.7-12.9-15-14.6-24.8c-1.9-11.1-0.4-21.9,3.4-32c0.7-0.1,1.4-0.3,2-0.8c8-4.9,20.3-2.7,28.9-1c4.7,0.9,9.3,2.3,13.7,4.1c3.1,1.3,3.5,2.1,5.5,5.2c4.5,7,7.9,14.9,11.1,22.6c1.6,3.8,3,7.6,4.2,11.5c0.4,1.3,0.8,2.7,1,4.1c0,0.1,0,0.3,0.1,0.4C137,422.6,137,424.6,137.8,426.1z M213.9,308.2c-1.6,0.1-3.1,1-3.7,3.1c-9.1,28.8-21.3,57.1-39,81.7c-6.7,9.3-14.6,18.4-23.6,25.9c-1.7-13.6-14.8-36.8-17.3-41c-1.9-3.2-4.1-6.4-7.5-8.2c-5.2-2.9-11.1-4.5-16.9-5.8c-8.8-2.1-19.3-3.4-28.6-1.4c5.5-9.6,12.7-18.5,20.2-26.2c24.4-24.9,54-45,83.4-63.5c0.8-0.5,1.4-1.1,1.7-1.8c5.8-0.4,11.4,4.7,15.7,8.1c3.2,2.6,4.9,4.7,7,8.3c2.3,4,4.4,8.2,6.3,12.4c0.9,1.9,1.7,3.9,2.4,5.9c0.2,0.5,0.3,0.8,0.4,1.2C214.1,307.4,214,307.8,213.9,308.2z M451.4,260.4c-16.3,22.1-37.6,42.4-61.4,56.1c-26.2,15.1-56.1,15.2-85.5,13.2c-28-1.9-54.7-7.1-80.5-18.4c2.7-7.2-7-23.2-9.2-27.2c-3.3-5.9-6.2-9.5-11.5-13.8c-7.8-6.3-16.8-11.6-26.9-8.1c-1.4,0.5-2.2,1.3-2.7,2.3c-13.9-15.6-18-36.6-19-56.9c-0.3-5-0.3-10-0.3-15c2.9,9.5,6.9,18.7,11.6,27.5c5.5,10.2,12.3,19.7,19.9,28.5c-0.3,0.7-0.6,1.5-0.8,2.3c-1.1,4.2,3,6.4,6.3,5.5c22.4,16.5,48.6,27.1,75.2,34.4c28.4,7.8,59.4,16.1,89,12.2c45.6-6,88.6-38.6,104.7-81.9c8.8-23.7,7.3-48.3,0-71.7c6,10.9,9.9,22.9,11.2,35.9C474.2,212.8,467.7,238.3,451.4,260.4z">
+                        </path>
+                    </svg></span>
+                <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off" />
+            </div>
         </div>
-    </div>
     </nav>
 
     <!-- Custom Hero Section for Circuit Theory -->
@@ -4958,1216 +4977,620 @@
                 </div>
             </div>
 
-            <!-- 3-PHASE SYSTEMS -->
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">49. Three-Phase Systems</h3>
-                <div class="three-phase-container card-panel">
 
-                    <div class="three-phase-toggle"
-                        style="display:flex; justify-content:center; gap:10px; margin-bottom: 20px;">
-                        <button class="hero__cta neon-btn p-btn active" data-phase="star"
-                            style="padding: 10px 20px; font-size: 0.9em; min-width:150px;">Star (Y)</button>
-                        <button class="hero__cta outline-btn p-btn" data-phase="delta"
-                            style="padding: 10px 20px; font-size: 0.9em; min-width:150px;">Delta (Δ)</button>
-                    </div>
+            <!-- UNIT 2: AC CIRCUIT ANALYSIS (PREMIUM INTERACTIVE UNIT) -->
+            <section id="ac-analysis-unit" class="section-container">
+                <h2 class="section-title neon-text" data-aos="fade-down"
+                    style="font-size: 2.5rem; margin-bottom: 30px; text-transform: uppercase;">
+                    4. AC Circuit Analysis
+                </h2>
+                <div class="ac-grid">
 
-                    <div class="three-phase-content active" id="star-content"
-                        style="display:flex; flex-wrap:wrap; gap:20px; align-items:center;">
-                        <div class="phase-svg-box" style="flex:1; min-width:200px; text-align:center;">
-                            <svg viewBox="0 0 200 200" class="phase-svg" style="max-width:200px;">
-                                <line x1="100" y1="100" x2="100" y2="20" stroke="var(--text-secondary)"
-                                    stroke-width="3" />
-                                <line x1="100" y1="100" x2="30" y2="140" stroke="var(--text-secondary)"
-                                    stroke-width="3" />
-                                <line x1="100" y1="100" x2="170" y2="140" stroke="var(--text-secondary)"
-                                    stroke-width="3" />
-                                <circle cx="100" cy="100" r="6" fill="#fff" /> <!-- Neutral -->
-                                <circle cx="100" cy="20" r="6" fill="#ff5252" /> <!-- R -->
-                                <circle cx="30" cy="140" r="6" fill="#facc15" /> <!-- Y -->
-                                <circle cx="170" cy="140" r="6" fill="#00f5ff" /> <!-- B -->
-                                <!-- Labels -->
-                                <text x="115" y="25" fill="#fff" font-size="14">R</text>
-                                <text x="185" y="145" fill="#fff" font-size="14">B</text>
-                                <text x="15" y="145" fill="#fff" font-size="14">Y</text>
-                                <text x="110" y="110" fill="#aaa" font-size="14">N</text>
-                            </svg>
+                    <!-- CARD 1: Average & RMS Values -->
+                    <section class="ac-card" id="card-rms">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">1. Average & RMS Values</h2>
+                            <span class="badge">Fundamental</span>
                         </div>
-                        <div class="phase-formulas" style="flex:2; min-width:250px;">
-                            <h4 style="color:var(--neon-cyan);">Star connection features:</h4>
-                            <ul
-                                style="color:var(--text-muted); font-size:0.95em; margin-bottom:15px; padding-left:20px;">
-                                <li>Has a Neutral point (N) allowing grounding.</li>
-                                <li>Provides two voltage levels (Phase and Line).</li>
-                                <li><strong>Phase vs Line relations:</strong></li>
-                            </ul>
-                            <div class="formula">$$ V_L = \sqrt{3} V_{ph} $$</div>
-                            <div class="formula">$$ I_L = I_{ph} $$</div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ V_{avg} = \frac{1}{T}\int_0^T v(t)\,dt \quad ; \quad V_{rms} =
+                                \sqrt{\frac{1}{T}\int_0^T
+                                v^2(t)\,dt} $$</p>
+                            <p>$$ \text{Peak Factor} = \frac{V_{peak}}{V_{rms}} \quad ; \quad \text{Form Factor} =
+                                \frac{V_{rms}}{V_{avg}} $$</p>
                         </div>
-                    </div>
+                        <div class="ac-card__animation-zone" id="plot-wave-rms"></div>
+                        <div class="ac-controls">
+                            <div class="ac-control-group">
+                                <label>Amplitude ($V_m$): <span id="val-vm">100</span>V</label>
+                                <input type="range" id="slip-vm" class="ac-slider" min="10" max="200" value="100">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>Frequency ($f$): <span id="val-freq">50</span>Hz</label>
+                                <input type="range" id="slip-freq" class="ac-slider" min="10" max="100" value="50">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="rms">🧮 Calculator</button>
+                        </div>
+                    </section>
 
-                    <div class="three-phase-content" id="delta-content"
-                        style="display:none; flex-wrap:wrap; gap:20px; align-items:center;">
-                        <div class="phase-svg-box" style="flex:1; min-width:200px; text-align:center;">
-                            <svg viewBox="0 0 200 200" class="phase-svg" style="max-width:200px;">
-                                <polygon points="100,30 30,150 170,150" fill="none" stroke="var(--text-secondary)"
-                                    stroke-width="3" />
-                                <circle cx="100" cy="30" r="6" fill="#ff5252" /> <!-- R -->
-                                <circle cx="30" cy="150" r="6" fill="#facc15" /> <!-- Y -->
-                                <circle cx="170" cy="150" r="6" fill="#00f5ff" /> <!-- B -->
-                                <!-- Labels -->
-                                <text x="100" y="20" font-size="14" fill="#fff" text-anchor="middle">R</text>
-                                <text x="15" y="160" font-size="14" fill="#fff" text-anchor="middle">Y</text>
-                                <text x="185" y="160" font-size="14" fill="#fff" text-anchor="middle">B</text>
-                            </svg>
+                    <!-- CARD 2: Waveform Signal Table -->
+                    <section class="ac-card" id="card-table">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">2. Signal Waveform Reference</h2>
+                            <span class="badge">8 Waveforms</span>
                         </div>
-                        <div class="phase-formulas" style="flex:2; min-width:250px;">
-                            <h4 style="color:var(--electric-yellow);">Delta connection features:</h4>
-                            <ul
-                                style="color:var(--text-muted); font-size:0.95em; margin-bottom:15px; padding-left:20px;">
-                                <li>Used for long-distance transmission, no Neutral.</li>
-                                <li>Higher starting torque for motors.</li>
-                                <li><strong>Phase vs Line relations:</strong></li>
-                            </ul>
-                            <div class="formula">$$ V_L = V_{ph} $$</div>
-                            <div class="formula">$$ I_L = \sqrt{3} I_{ph} $$</div>
+                        <div class="ac-card__formula-zone">
+                            <div class="waveform-tabs" style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                <button class="ac-tab active" data-type="sine">Sine</button>
+                                <button class="ac-tab" data-type="hw-rect">HW Rect</button>
+                                <button class="ac-tab" data-type="fw-rect">FW Rect</button>
+                                <button class="ac-tab" data-type="square">Square</button>
+                                <button class="ac-tab" data-type="triangular">Tri</button>
+                                <button class="ac-tab" data-type="sawtooth">Saw</button>
+                            </div>
+                            <div id="formula-display" style="font-size: 0.9rem; min-height: 40px;">
+                                $$ V_{rms} = \frac{V_m}{\sqrt{2}} \quad V_{avg} = 0 \quad (\text{Full Cycle}) $$
+                            </div>
                         </div>
-                    </div>
+                        <div class="ac-card__animation-zone" id="plot-wave-table"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon">📋 Copy LaTeX</button>
+                        </div>
+                    </section>
 
-                    <div class="universal-power" style="margin-top: 30px; text-align:center;">
-                        <p class="text-sm"><strong>Universal Three-Phase Power (Balanced):</strong></p>
-                        <div class="formula">$$ P = \sqrt{3} V_L I_L \cos\phi = 3 V_{ph} I_{ph} \cos\phi $$</div>
-                    </div>
+                    <!-- CARD 3: Phasor Representation -->
+                    <section class="ac-card" id="card-phasor">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">3. Phasor & Power Fundamentals</h2>
+                            <span class="badge">Vector Domain</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ \mathbf{V} = V_{rms}\angle\phi \quad ; \quad Z = R + jX $$</p>
+                            <p>$$ P = VI\cos\phi \quad ; \quad Q = VI\sin\phi \quad ; \quad S = VI $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-phasor-fundamentals"></div>
+                        <div class="ac-controls">
+                            <div class="ac-control-group">
+                                <label>Phase $\phi$: <span id="val-phi">45</span>°</label>
+                                <input type="range" id="slip-phi" class="ac-slider" min="-90" max="90" value="45">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="phasor">🧮 Phasor Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 4: Series RL Circuit -->
+                    <section class="ac-card" id="card-rl">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">4. Series RL Circuit</h2>
+                            <span class="badge">Lagging</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ V = \sqrt{V_R^2 + V_L^2} \quad ; \quad \phi = \tan^{-1}(X_L/R) $$</p>
+                            <p>Current <strong>LAGS</strong> voltage by $\phi$. $\cos\phi$ is lagging.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-rl-phasor"></div>
+                        <div class="ac-controls">
+                            <div class="ac-control-group">
+                                <label>Resistance $R$: <span id="rl-val-r">50</span>Ω</label>
+                                <input type="range" id="rl-slip-r" class="ac-slider" min="10" max="100" value="50">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>Inductance $L$: <span id="rl-val-l">100</span>mH</label>
+                                <input type="range" id="rl-slip-l" class="ac-slider" min="10" max="500" value="100">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="impedance">⚡ Impedance</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 5: Series RC Circuit -->
+                    <section class="ac-card" id="card-rc">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">5. Series RC Circuit</h2>
+                            <span class="badge">Leading</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ V = \sqrt{V_R^2 + V_C^2} \quad ; \quad \phi = \tan^{-1}(X_C/R) $$</p>
+                            <p>Current <strong>LEADS</strong> voltage by $\phi$. $\cos\phi$ is leading.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-rc-phasor"></div>
+                        <div class="ac-controls">
+                            <div class="ac-control-group">
+                                <label>Resistance $R$: <span id="rc-val-r">50</span>Ω</label>
+                                <input type="range" id="rc-slip-r" class="ac-slider" min="10" max="100" value="50">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>Capacitance $C$: <span id="rc-val-c">50</span>μF</label>
+                                <input type="range" id="rc-slip-c" class="ac-slider" min="10" max="200" value="50">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="impedance">⚡ Impedance</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 6: Series RLC Circuit -->
+                    <section class="ac-card" id="card-rlc">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">6. Series RLC & Resonance</h2>
+                            <span class="badge" id="rlc-status">Resonance</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ Z = \sqrt{R^2 + (X_L - X_C)^2} \quad ; \quad f_0 = \frac{1}{2\pi\sqrt{LC}} $$</p>
+                            <div id="rlc-mode-badge"
+                                style="padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; background: var(--unit-green); color: black; display: inline-block;">
+                                RESONANCE</div>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-rlc-phasor"></div>
+                        <div class="ac-controls">
+                            <div class="ac-control-group">
+                                <label>$L$: <span id="rlc-val-l">100</span>mH</label>
+                                <input type="range" id="rlc-slip-l" class="ac-slider" min="10" max="500" value="100">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>$C$: <span id="rlc-val-c">100</span>μF</label>
+                                <input type="range" id="rlc-slip-c" class="ac-slider" min="10" max="500" value="100">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>$f$: <span id="rlc-val-f">50</span>Hz</label>
+                                <input type="range" id="rlc-slip-f" class="ac-slider" min="10" max="1000" value="50">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="resonance">🎯 Resonance</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 7: Parallel RL Circuit -->
+                    <section class="ac-card" id="card-prl">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">7. Parallel RL Circuit</h2>
+                            <span class="badge">Admittance</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ I = \sqrt{I_R^2 + I_L^2} \quad ; \quad Y = \sqrt{G^2 + B_L^2} $$</p>
+                            <p>Voltage is common. Current <strong>LAGS</strong> by $\phi$.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-prl-phasor"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="impedance">⚡ Admittance</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 8: Parallel RC Circuit -->
+                    <section class="ac-card" id="card-prc">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">8. Parallel RC Circuit</h2>
+                            <span class="badge">Admittance</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ I = \sqrt{I_R^2 + I_C^2} \quad ; \quad Y = \sqrt{G^2 + B_C^2} $$</p>
+                            <p>Voltage is common. Current <strong>LEADS</strong> by $\phi$.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-prc-phasor"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="impedance">⚡ Admittance</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 10: Parallel Resonance (Practical) -->
+                    <section class="ac-card" id="card-pres-prac">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">10. Parallel Resonance (Practical)</h2>
+                            <span class="badge" style="background: var(--unit-orange);">Tank Circuit</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ \omega_r = \sqrt{\frac{1}{LC} - \frac{R^2}{L^2}} \quad ; \quad Z_{max} = \frac{L}{CR}
+                                $$</p>
+                            <p>Acts as a <strong>BAND-STOP</strong> filter. $I$ is minimum at $f_r$.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-pres-prac"></div>
+                        <div class="ac-card__controls">
+                            <div class="ac-control-group">
+                                <label>Resistance (R): <span id="pres-val-r">10</span>Ω</label>
+                                <input type="range" id="pres-slip-r" class="ac-slider" min="1" max="100" value="10">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>Q Factor: <span id="pres-val-q">...</span></label>
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="adv-resonance">🎯 Resonance Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 11: Series Resonance -->
+                    <section class="ac-card" id="card-sres">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">11. Series Resonance</h2>
+                            <span class="badge" style="background: var(--unit-green);">Acceptor</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ f_0 = \frac{1}{2\pi\sqrt{LC}} \quad ; \quad Q = \frac{\omega_0 L}{R} $$</p>
+                            <p>Voltage Magnifier: $V_L = V_C = QV$. $Z$ is minimum ($R$).</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-sres"></div>
+                        <div class="ac-card__controls">
+                            <div class="ac-control-group">
+                                <label>Quality (Q): <span id="sres-val-q">...</span></label>
+                                <input type="range" id="sres-slip-q" class="ac-slider" min="1" max="20" value="5">
+                            </div>
+                            <div class="badge-glow" id="v-mag-badge" style="display:none;">VOLTAGE MAGNIFIER</div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="adv-resonance">⚡ Q-Factor</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 12: Series vs Parallel Comparison -->
+                    <section class="ac-card" id="card-res-comp">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">12. Series vs Parallel Comparison</h2>
+                            <span class="toggle-btn" id="toggle-res-mode">Switch to Parallel</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <table class="ac-table-mini">
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th id="comp-mode-label">Series</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Impedance</td>
+                                        <td id="comp-val-z">Minimum (R)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Current</td>
+                                        <td id="comp-val-i">Maximum</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Filter</td>
+                                        <td id="comp-val-f">Band-Pass</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-res-comparison"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="freq-plotter">📊 Response Plot</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 13: Power in AC (Complete) -->
+                    <section class="ac-card" id="card-power-ac">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">13. Power in AC (Complete)</h2>
+                            <span class="badge">Power Triangle</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ S = P + jQ \quad ; \quad pf = \cos\phi = P/S $$</p>
+                            <p>$P$ (Watts), $Q$ (VAR), $S$ (VA).</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-power-triangle"></div>
+                        <div class="ac-card__controls">
+                            <div class="ac-control-group">
+                                <label>Real P: <span id="pwr-val-p">100</span>W</label>
+                                <input type="range" id="pwr-slip-p" class="ac-slider" min="0" max="200" value="100">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>Reactive Q: <span id="pwr-val-q">50</span>VAR</label>
+                                <input type="range" id="pwr-slip-q" class="ac-slider" min="-150" max="150" value="50">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="pfc-calc">💡 PF Correction</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 14: Electric vs Magnetic Analogy -->
+                    <section class="ac-card" id="card-mag-analogy">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">14. Electric vs Magnetic Analogy</h2>
+                            <span class="badge">Magnetism</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ EMF(V) \leftrightarrow MMF(NI) \quad ; \quad R \leftrightarrow \mathcal{S} $$</p>
+                            <p>Current $I \leftrightarrow \Phi$ (Flux). Conductivity $\sigma \leftrightarrow \mu$.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-mag-analogy"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="mag-ohm">🧲 Magnetic Ohm</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 15: Three Phase System -->
+                    <section class="ac-card" id="card-3phase">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">15. Three Phase Systems</h2>
+                            <span class="badge" id="pha-mode-badge" style="background: var(--unit-purple);">STAR
+                                (Y)</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p id="pha-formula">$$ V_L = \sqrt{3}V_{ph} \quad ; \quad I_L = I_{ph} $$</p>
+                            <p>Balanced Load: $P = \sqrt{3}V_L I_L \cos\phi$. Phase diff: 120°.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-3phase"></div>
+                        <div class="ac-card__controls">
+                            <button class="ac-btn-icon" id="toggle-3phase">Switch to Delta (Δ)</button>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="3phase-calc">⚡ 3-Phase Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 16: Graph Theory Basics -->
+                    <section class="ac-card" id="card-graph-basics">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">16. Graph Theory: Topology</h2>
+                            <span class="badge">Network Science</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ \text{Rank} = N - 1 \quad ; \quad \sum \text{deg}(k) = 2B $$</p>
+                            <p>$N$ = Nodes, $B$ = Branches. Euler: $N - B + l = 1$.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-graph-basics"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="graph-analyzer">📐 Analyzer</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 17: Terminology Table -->
+                    <section class="ac-card" id="card-graph-terms">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">17. Trees, Twigs & Links</h2>
+                            <span class="badge">Terminology</span>
+                        </div>
+                        <div class="ac-card__formula-zone" style="font-size: 0.8rem;">
+                            <table class="ac-table-mini">
+                                <thead>
+                                    <tr>
+                                        <th>Term</th>
+                                        <th>Notation</th>
+                                        <th>Formula</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Twig</td>
+                                        <td>Tree Branch</td>
+                                        <td>$N-1$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Link</td>
+                                        <td>Co-tree</td>
+                                        <td>$B-N+1$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Possible Trees</td>
+                                        <td>det[A][A']</td>
+                                        <td>$N^{N-2}$ (for complete)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-graph-tree"></div>
+                        <div class="ac-card__footer">
+                            <span class="text-xs" style="color:var(--text-muted)">Twigs cyan, Links gold</span>
+                        </div>
+                    </section>
+
+                    <!-- CARD 18: Incidence Matrix -->
+                    <section class="ac-card" id="card-inc-matrix">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">18. Incidence Matrix [A]</h2>
+                            <span class="badge">KCL Basis</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ [A][I_b] = [0] \quad ; \quad \text{Sum of column rows} = 0 $$</p>
+                            <p>Reduced matrix $[\tilde{A}]$ by deleting reference row.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-inc-matrix"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="matrix-verify">🔁 Verify Column Sum</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 19: Tie-set Matrix -->
+                    <section class="ac-card" id="card-tie-matrix">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">19. Tie-set (Loop) Matrix</h2>
+                            <span class="badge">KVL Basis</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ [B_f][V_b] = [0] \quad ; \quad \text{Rank} = B - N + 1 $$</p>
+                            <p>Each row = 1 Fundamental Loop using 1 Link.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-tie-matrix"></div>
+                        <div class="ac-card__footer">
+                            <span class="text-xs" style="color:var(--unit-purple)">[A][B_f]^T = 0</span>
+                        </div>
+                    </section>
+
+                    <!-- CARD 20: Cut-set Matrix -->
+                    <section class="ac-card" id="card-cut-matrix">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">20. Cut-set Matrix [Q]</h2>
+                            <span class="badge">Twig Dependent</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ [Q_f][I_b] = [0] \quad ; \quad \text{Rank} = N - 1 $$</p>
+                            <p>Each row corresponds to one fundamental Cut-set.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-cut-matrix"></div>
+                        <div class="ac-card__footer">
+                            <span class="text-xs" style="color:var(--unit-orange)">[B_f][Q_f]^T = 0</span>
+                        </div>
+                    </section>
+
+                    <!-- CARD 21: Principle of Duality -->
+                    <section class="ac-card" id="card-duality">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">21. Principle of Duality</h2>
+                            <span class="badge" style="background: var(--unit-gold);">Morphing Duals</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ R \leftrightarrow G \quad ; \quad L \leftrightarrow C \quad ; \quad V \leftrightarrow
+                                I $$</p>
+                            <p>Node analysis is dual to Mesh analysis.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-duality"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="dual-finder">🔄 Find Dual Network</button>
+                        </div>
+                    </section>
                 </div>
+            </section>
+    </main>
+
+    <!-- Calculator Modals -->
+    <div class="ac-modal-overlay" id="modal-overlay"></div>
+
+    <!-- Modal: Advanced Resonance -->
+    <div class="ac-modal" id="calc-adv-resonance-modal">
+        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">🧮 Advanced Resonance</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>R (Ω)</label><input type="number" class="ac-calc-input"
+                    id="adv-res-in-r" value="10"></div>
+            <div class="ac-control-group"><label>L (mH)</label><input type="number" class="ac-calc-input"
+                    id="adv-res-in-l" value="100"></div>
+            <div class="ac-control-group"><label>C (μF)</label><input type="number" class="ac-calc-input"
+                    id="adv-res-in-c" value="100"></div>
+            <div class="ac-calc-result" id="adv-res-res">f₀: 50.33 Hz | Q: 3.16</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: PF Correction -->
+    <div class="ac-modal" id="calc-pfc-calc-modal">
+        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">💡 PF Correction</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Power P (kW)</label><input type="number" class="ac-calc-input"
+                    id="pfc-in-p" value="10"></div>
+            <div class="ac-control-group"><label>Current pf</label><input type="number" class="ac-calc-input"
+                    id="pfc-in-pf1" value="0.7" step="0.05"></div>
+            <div class="ac-control-group"><label>Target pf</label><input type="number" class="ac-calc-input"
+                    id="pfc-in-pf2" value="0.95" step="0.05"></div>
+            <div class="ac-control-group"><label>V (Vrms)</label><input type="number" class="ac-calc-input"
+                    id="pfc-in-v" value="230"></div>
+            <div class="ac-calc-result" id="pfc-res">Req C: 415.2 uF</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: 3-Phase -->
+    <div class="ac-modal" id="calc-3phase-calc-modal">
+        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">⚡ 3-Phase Calculator</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Line V (V)</label><input type="number" class="ac-calc-input"
+                    id="3p-in-vl" value="415"></div>
+            <div class="ac-control-group"><label>Z / phase (Ω)</label><input type="number" class="ac-calc-input"
+                    id="3p-in-z" value="50"></div>
+            <div class="ac-control-group"><label>pf (cos φ)</label><input type="number" class="ac-calc-input"
+                    id="3p-in-pf" value="0.8"></div>
+            <div class="ac-calc-result" id="3p-res">P: 2.75 kW | IL: 4.79 A</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Magnetic Ohm -->
+    <div class="ac-modal" id="calc-mag-ohm-modal">
+        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">🧲 Magnetic Ohm's Law</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Turns (N)</label><input type="number" class="ac-calc-input"
+                    id="mag-in-n" value="500"></div>
+            <div class="ac-control-group"><label>Current I (A)</label><input type="number" class="ac-calc-input"
+                    id="mag-in-i" value="2"></div>
+            <div class="ac-control-group"><label>Reluct. S (AT/Wb)</label><input type="number" class="ac-calc-input"
+                    id="mag-in-s" value="100000"></div>
+            <div class="ac-calc-result" id="mag-res">Flux Φ: 0.01 Wb</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Graph Analyzer -->
+    <div class="ac-modal" id="calc-graph-analyzer-modal">
+        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">📐 Graph Analyzer</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Nodes (N)</label><input type="number" class="ac-calc-input"
+                    id="graph-in-n" value="4"></div>
+            <div class="ac-control-group"><label>Branches (B)</label><input type="number" class="ac-calc-input"
+                    id="graph-in-b" value="5"></div>
+            <div class="ac-calc-result" id="graph-res">Rank: 3 | Twigs: 3 | Links: 2</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Matrix Verify -->
+    <div class="ac-modal" id="calc-matrix-verify-modal">
+        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">🔁 Matrix Orthogonality</h3>
+        <div class="ac-calc-grid">
+            <p style="font-size: 0.8rem; color: var(--text-muted); grid-column: span 2;">Verifying property: $[A][B]^T =
+                0$. This confirms KCL and KVL are independent layers of the same topology.</p>
+            <div class="ac-calc-result" id="matrix-res" style="grid-column: span 2;">Incidence Matrix Column Sum: ✅ 0
+                (All branches)</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Dual Finder -->
+    <div class="ac-modal" id="calc-dual-finder-modal">
+        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">🔄 Dual Mapper</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group">
+                <label>Source Element</label>
+                <select class="ac-calc-input" id="dual-in-type" style="background: var(--bg-card); color: white;">
+                    <option value="R">Resistance (R)</option>
+                    <option value="L">Inductance (L)</option>
+                    <option value="C">Capacitance (C)</option>
+                    <option value="V">Voltage Source (V)</option>
+                    <option value="I">Current Source (I)</option>
+                    <option value="Series">Series Connection</option>
+                    <option value="KCL">KCL / Node</option>
+                </select>
             </div>
-        </section>
-
-        <!-- SECTION 3: NETWORK THEOREMS -->
-        <section id="network-theorems" class="circuit-section" data-aos="fade-up">
-            <div class="section__header">
-                <h2>Network Theorems</h2>
-                <p>Powerful analytical tools for simplifying complex linear circuits.</p>
-            </div>
-
-            <!-- Thevenin's Theorem (Interactive Step-by-Step) -->
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">50. Thevenin's Theorem</h3>
-                <div class="theorem-card card-panel">
-                    <p class="mb-4">Any linear bidirectional circuit with energy sources and resistors can be replaced
-                        by a single Equivalent Voltage Source ($V_{th}$) in series with an Equivalent Resistance
-                        ($R_{th}$).</p>
-
-                    <div class="stepper-ui mt-4">
-                        <div class="stepper-nav">
-                            <button class="step-btn active" data-step="1">1. Original</button>
-                            <button class="step-btn" data-step="2">2. R Load</button>
-                            <button class="step-btn" data-step="3">3. Find $V_{th}$</button>
-                            <button class="step-btn" data-step="4">4. Find $R_{th}$</button>
-                            <button class="step-btn" data-step="5">5. Equivalent</button>
-                        </div>
-
-                        <div class="stepper-content-box">
-                            <!-- Step 1 -->
-                            <div class="step-pane active" id="th-step-1">
-                                <div class="stepper-svg-box">
-                                    <svg viewBox="0 0 300 150" class="th-svg">
-                                        <!-- Source -->
-                                        <circle cx="40" cy="75" r="15" fill="none" stroke="var(--neon-cyan)"
-                                            stroke-width="2" />
-                                        <text x="40" y="70" text-anchor="middle" fill="var(--neon-cyan)"
-                                            font-size="12">+</text>
-                                        <text x="40" y="85" text-anchor="middle" fill="var(--neon-cyan)"
-                                            font-size="12">-</text>
-                                        <text x="20" y="79" text-anchor="end" fill="var(--neon-cyan)"
-                                            font-size="12">Vs</text>
-
-                                        <!-- R1 -->
-                                        <line x1="40" y1="60" x2="40" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="40" y1="40" x2="80" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 80,40 L 85,35 L 95,45 L 105,35 L 115,45 L 120,40" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <text x="100" y="25" text-anchor="middle" fill="var(--text-secondary)"
-                                            font-size="12">R1</text>
-
-                                        <!-- R2 (parallel) -->
-                                        <line x1="120" y1="40" x2="160" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="160" y1="40" x2="160" y2="55" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 160,55 L 155,60 L 165,70 L 155,80 L 165,90 L 160,95" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <text x="175" y="79" fill="var(--text-secondary)" font-size="12">R2</text>
-                                        <line x1="160" y1="95" x2="160" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-
-                                        <!-- R3 -->
-                                        <line x1="160" y1="40" x2="200" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 200,40 L 205,35 L 215,45 L 225,35 L 235,45 L 240,40" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <text x="220" y="25" text-anchor="middle" fill="var(--text-secondary)"
-                                            font-size="12">R3</text>
-                                        <line x1="240" y1="40" x2="260" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-
-                                        <!-- R Load -->
-                                        <line x1="260" y1="40" x2="260" y2="55" stroke="#ff5252" stroke-width="2" />
-                                        <path d="M 260,55 L 255,60 L 265,70 L 255,80 L 265,90 L 260,95" fill="none"
-                                            stroke="#ff5252" stroke-width="2" />
-                                        <text x="275" y="79" fill="#ff5252" font-size="12">RL</text>
-                                        <line x1="260" y1="95" x2="260" y2="110" stroke="#ff5252" stroke-width="2" />
-
-                                        <!-- Bottom wire -->
-                                        <line x1="40" y1="90" x2="40" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="40" y1="110" x2="260" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-
-                                        <!-- Terminals A/B -->
-                                        <circle cx="260" cy="40" r="3" fill="#fff" />
-                                        <text x="260" y="30" text-anchor="middle" fill="#fff" font-size="12">A</text>
-                                        <circle cx="260" cy="110" r="3" fill="#fff" />
-                                        <text x="260" y="125" text-anchor="middle" fill="#fff" font-size="12">B</text>
-                                    </svg>
-                                </div>
-                                <div class="stepper-text">
-                                    <p><strong>Step 1: The Original Circuit</strong></p>
-                                    <p class="text-sm text-muted">Identify the linear network and the load resistor
-                                        ($R_L$) where we want to find the current or voltage.</p>
-                                </div>
-                            </div>
-
-                            <!-- Step 2 -->
-                            <div class="step-pane" id="th-step-2">
-                                <div class="stepper-svg-box">
-                                    <svg viewBox="0 0 300 150" class="th-svg">
-                                        <!-- Copy of original but load removed -->
-                                        <circle cx="40" cy="75" r="15" fill="none" stroke="var(--neon-cyan)"
-                                            stroke-width="2" />
-                                        <text x="40" y="70" text-anchor="middle" fill="var(--neon-cyan)"
-                                            font-size="12">+</text>
-                                        <text x="40" y="85" text-anchor="middle" fill="var(--neon-cyan)"
-                                            font-size="12">-</text>
-                                        <line x1="40" y1="60" x2="40" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="40" y1="40" x2="80" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 80,40 L 85,35 L 95,45 L 105,35 L 115,45 L 120,40" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <line x1="120" y1="40" x2="160" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="160" y1="40" x2="160" y2="55" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 160,55 L 155,60 L 165,70 L 155,80 L 165,90 L 160,95" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <line x1="160" y1="95" x2="160" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="160" y1="40" x2="200" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 200,40 L 205,35 L 215,45 L 225,35 L 235,45 L 240,40" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <line x1="240" y1="40" x2="260" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <!-- Bottom wire -->
-                                        <line x1="40" y1="90" x2="40" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="40" y1="110" x2="260" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <!-- AB Open -->
-                                        <circle cx="260" cy="40" r="3" fill="#ff5252" />
-                                        <text x="260" y="30" text-anchor="middle" fill="#ff5252" font-size="12">A</text>
-                                        <circle cx="260" cy="110" r="3" fill="#ff5252" />
-                                        <text x="260" y="125" text-anchor="middle" fill="#ff5252"
-                                            font-size="12">B</text>
-                                        <!-- Animated scissors or fading RL -->
-                                        <text x="280" y="75" fill="#facc15" font-size="18" opacity="0.8">✂</text>
-                                    </svg>
-                                </div>
-                                <div class="stepper-text">
-                                    <p><strong>Step 2: Remove the Load</strong></p>
-                                    <p class="text-sm text-muted">Temporarily remove the load resistor $R_L$ from the
-                                        circuit, leaving an open circuit across terminals A and B.</p>
-                                </div>
-                            </div>
-
-                            <!-- Step 3 -->
-                            <div class="step-pane" id="th-step-3">
-                                <div class="stepper-svg-box">
-                                    <svg viewBox="0 0 300 150" class="th-svg">
-                                        <circle cx="40" cy="75" r="15" fill="none" stroke="var(--neon-cyan)"
-                                            stroke-width="2" />
-                                        <line x1="40" y1="60" x2="40" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="40" y1="40" x2="80" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 80,40 L 85,35 L 95,45 L 105,35 L 115,45 L 120,40" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <line x1="120" y1="40" x2="160" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="160" y1="40" x2="160" y2="55" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 160,55 L 155,60 L 165,70 L 155,80 L 165,90 L 160,95" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <line x1="160" y1="95" x2="160" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="160" y1="40" x2="200" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 200,40 L 205,35 L 215,45 L 225,35 L 235,45 L 240,40" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <line x1="240" y1="40" x2="260" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="40" y1="90" x2="40" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="40" y1="110" x2="260" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <circle cx="260" cy="40" r="3" fill="#fff" />
-                                        <circle cx="260" cy="110" r="3" fill="#fff" />
-                                        <!-- Voltmeter -->
-                                        <path d="M 260,40 Q 280,75 260,110" fill="none" stroke="var(--electric-yellow)"
-                                            stroke-width="2" stroke-dasharray="4" />
-                                        <text x="270" y="79" fill="var(--electric-yellow)" font-size="14"
-                                            font-weight="bold">V_th</text>
-                                    </svg>
-                                </div>
-                                <div class="stepper-text">
-                                    <p><strong>Step 3: Find Open Circuit Voltage ($V_{th}$)</strong></p>
-                                    <p class="text-sm text-muted">Calculate the open-circuit voltage across the
-                                        terminals A and B. This voltage is $V_{th}$.</p>
-                                </div>
-                            </div>
-
-                            <!-- Step 4 -->
-                            <div class="step-pane" id="th-step-4">
-                                <div class="stepper-svg-box">
-                                    <svg viewBox="0 0 300 150" class="th-svg">
-                                        <!-- Shorted Source -->
-                                        <line x1="40" y1="40" x2="40" y2="110" stroke="#ff5252" stroke-width="3"
-                                            opacity="0.8" />
-                                        <text x="20" y="79" text-anchor="end" fill="#ff5252" font-size="12">V=0</text>
-
-                                        <line x1="40" y1="40" x2="80" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 80,40 L 85,35 L 95,45 L 105,35 L 115,45 L 120,40" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <line x1="120" y1="40" x2="160" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="160" y1="40" x2="160" y2="55" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 160,55 L 155,60 L 165,70 L 155,80 L 165,90 L 160,95" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <line x1="160" y1="95" x2="160" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="160" y1="40" x2="200" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 200,40 L 205,35 L 215,45 L 225,35 L 235,45 L 240,40" fill="none"
-                                            stroke="var(--text-secondary)" stroke-width="2" />
-                                        <line x1="240" y1="40" x2="260" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="40" y1="110" x2="260" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <circle cx="260" cy="40" r="3" fill="#fff" />
-                                        <circle cx="260" cy="110" r="3" fill="#fff" />
-                                        <!-- Ohmmeter -->
-                                        <path d="M 260,40 Q 280,75 260,110" fill="none" stroke="var(--neon-cyan)"
-                                            stroke-width="2" stroke-dasharray="4" />
-                                        <text x="270" y="79" fill="var(--neon-cyan)" font-size="14"
-                                            font-weight="bold">R_th</text>
-                                    </svg>
-                                </div>
-                                <div class="stepper-text">
-                                    <p><strong>Step 4: Find Equivalent Resistance ($R_{th}$)</strong></p>
-                                    <p class="text-sm text-muted">Turn off all independent sources (short voltage
-                                        sources, open current sources) and calculate the resistance looking into
-                                        terminals A and B.</p>
-                                </div>
-                            </div>
-
-                            <!-- Step 5 -->
-                            <div class="step-pane" id="th-step-5">
-                                <div class="stepper-svg-box">
-                                    <svg viewBox="0 0 300 150" class="th-svg">
-                                        <!-- Equivalent Circuit -->
-                                        <circle cx="80" cy="75" r="15" fill="none" stroke="var(--neon-cyan)"
-                                            stroke-width="2" />
-                                        <text x="80" y="70" text-anchor="middle" fill="var(--neon-cyan)"
-                                            font-size="12">+</text>
-                                        <text x="80" y="85" text-anchor="middle" fill="var(--neon-cyan)"
-                                            font-size="12">-</text>
-                                        <text x="50" y="79" text-anchor="end" fill="var(--neon-cyan)" font-size="14"
-                                            font-weight="bold">V_th</text>
-
-                                        <line x1="80" y1="60" x2="80" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="80" y1="40" x2="120" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <path d="M 120,40 L 125,35 L 135,45 L 145,35 L 155,45 L 160,40" fill="none"
-                                            stroke="var(--neon-cyan)" stroke-width="2" />
-                                        <text x="140" y="25" text-anchor="middle" fill="var(--neon-cyan)" font-size="14"
-                                            font-weight="bold">R_th</text>
-
-                                        <line x1="160" y1="40" x2="200" y2="40" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-
-                                        <!-- Reattached R Load -->
-                                        <line x1="200" y1="40" x2="200" y2="55" stroke="#ff5252" stroke-width="2" />
-                                        <path d="M 200,55 L 195,60 L 205,70 L 195,80 L 205,90 L 200,95" fill="none"
-                                            stroke="#ff5252" stroke-width="2" />
-                                        <text x="215" y="79" fill="#ff5252" font-size="14">RL</text>
-                                        <line x1="200" y1="95" x2="200" y2="110" stroke="#ff5252" stroke-width="2" />
-
-                                        <line x1="80" y1="90" x2="80" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                        <line x1="80" y1="110" x2="200" y2="110" stroke="var(--text-secondary)"
-                                            stroke-width="2" />
-                                    </svg>
-                                </div>
-                                <div class="stepper-text">
-                                    <p><strong>Step 5: Thevenin Equivalent Circuit</strong></p>
-                                    <p class="text-sm text-muted">Reconnect $R_L$ to the simple series equivalent
-                                        circuit. Now you can easily calculate load current using $I_L = V_{th} / (R_{th}
-                                        + R_L)$.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="try-it-calc mt-4 card-panel"
-                        style="background: rgba(0, 245, 255, 0.05); border: 1px solid rgba(0, 245, 255, 0.2);">
-                        <h4 class="mb-3" style="color:var(--neon-cyan)">⚙️ Try It: Calculate Thevenin Equivalent</h4>
-                        <div class="calc-grid"
-                            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap:15px; margin-bottom:15px;">
-                            <div class="input-group">
-                                <label>$V_s$ (V)</label>
-                                <input type="number" id="th-vs" value="12"
-                                    style="width:100%; padding:8px; border-radius:4px; border:none; color:#000;">
-                            </div>
-                            <div class="input-group">
-                                <label>$R_1$ ($\Omega$)</label>
-                                <input type="number" id="th-r1" value="4"
-                                    style="width:100%; padding:8px; border-radius:4px; border:none; color:#000;">
-                            </div>
-                            <div class="input-group">
-                                <label>$R_2$ ($\Omega$)</label>
-                                <input type="number" id="th-r2" value="6"
-                                    style="width:100%; padding:8px; border-radius:4px; border:none; color:#000;">
-                            </div>
-                            <div class="input-group">
-                                <label>$R_3$ ($\Omega$)</label>
-                                <input type="number" id="th-r3" value="2"
-                                    style="width:100%; padding:8px; border-radius:4px; border:none; color:#000;">
-                            </div>
-                        </div>
-                        <button id="calc-thevenin-btn" class="hero__cta neon-btn w-full"
-                            style="width:100%; border-radius:4px;">Calculate $V_{th}$ & $R_{th}$</button>
-                        <div id="th-calc-result" class="mt-3 text-center"
-                            style="display:none; font-size:1.1rem; color:var(--electric-yellow)"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Norton's Theorem -->
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">51. Norton's Theorem</h3>
-                <div class="theorem-card card-panel">
-                    <p class="mb-4">The dual of Thevenin's. Simplifies a circuit to a single Equivalent Current Source
-                        ($I_N$) in parallel with an Equivalent Resistance ($R_N$).</p>
-
-                    <div class="transform-formula">
-                        <div class="formula">$$ I_N = I_{sc} = \frac{V_{th}}{R_{th}} \quad \text{and} \quad R_N = R_{th}
-                            $$</div>
-                    </div>
-
-                    <div class="stepper-ui mt-4">
-                        <div class="stepper-svg-box" style="height:200px;">
-                            <svg viewBox="0 0 400 200" class="norton-morph" id="norton-svg"
-                                style="max-width: 100%; height: auto; max-height: 200px;">
-                                <!-- Morphing Animation SVGs. Initial = Thevenin -->
-                                <!-- We will use GSAP to morph Thevenin (Series) -> Norton (Parallel) -->
-                                <circle cx="80" cy="100" r="20" fill="none" stroke="var(--neon-cyan)" stroke-width="2"
-                                    class="n-src-shape" />
-                                <text x="80" y="95" text-anchor="middle" fill="var(--neon-cyan)"
-                                    style="font-size: 14px; font-family: inherit;" class="n-src-sym-1">+</text>
-                                <text x="80" y="115" text-anchor="middle" fill="var(--neon-cyan)"
-                                    style="font-size: 14px; font-family: inherit;" class="n-src-sym-2">-</text>
-                                <text x="45" y="105" text-anchor="end" fill="var(--neon-cyan)"
-                                    style="font-size: 14px; font-weight: bold; font-family: inherit;"
-                                    class="n-src-label">V_th</text>
-
-                                <path d="M 80,80 L 80,50 L 150,50" fill="none" class="n-wire-1"
-                                    stroke="var(--neon-cyan)" stroke-width="2" />
-
-                                <path d="M 150,50 L 155,40 L 175,60 L 195,40 L 215,60 L 220,50" fill="none"
-                                    stroke="var(--electric-yellow)" stroke-width="2" class="n-resistor" />
-                                <text x="185" y="30" text-anchor="middle" fill="var(--electric-yellow)"
-                                    style="font-size: 14px; font-weight: bold; font-family: inherit;"
-                                    class="n-res-label">R_th</text>
-
-                                <path d="M 220,50 L 300,50" fill="none" class="n-wire-2" stroke="var(--neon-cyan)"
-                                    stroke-width="2" />
-                                <path d="M 80,120 L 80,150 L 300,150" fill="none" class="n-wire-bottom"
-                                    stroke="var(--neon-cyan)" stroke-width="2" />
-
-                                <circle cx="300" cy="50" r="4" fill="#fff" />
-                                <circle cx="300" cy="150" r="4" fill="#fff" />
-                            </svg>
-                        </div>
-                        <div class="p-3 text-center" style="margin-bottom: 20px;">
-                            <button id="morph-norton-btn" class="hero__cta outline-btn"
-                                style="position:relative; z-index:10;">Play Transformation Animation ▶</button>
-                        </div>
-                    </div>
-
-                    <div class="try-it-calc mt-4 card-panel"
-                        style="background: rgba(250, 204, 21, 0.05); border: 1px solid rgba(250, 204, 21, 0.2);">
-                        <h4 class="mb-3" style="color:var(--electric-yellow)">⚙️ Try It: Thevenin $\leftrightarrow$
-                            Norton Transform</h4>
-                        <div class="calc-grid"
-                            style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
-                            <div class="input-group">
-                                <label>$V_{th}$ (V)</label>
-                                <input type="number" id="nr-vth" value="24"
-                                    style="width:100%; padding:8px; border-radius:4px; border:none; color:#000;">
-                            </div>
-                            <div class="input-group">
-                                <label>$R_{th} = R_N$ ($\Omega$)</label>
-                                <input type="number" id="nr-rth" value="8"
-                                    style="width:100%; padding:8px; border-radius:4px; border:none; color:#000;">
-                            </div>
-                        </div>
-                        <button id="calc-norton-btn" class="hero__cta outline-btn w-full"
-                            style="width:100%; border-radius:4px;">Calculate $I_N$</button>
-                        <div id="nr-calc-result" class="mt-3 text-center"
-                            style="display:none; font-size:1.1rem; color:var(--neon-cyan)"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Maximum Power Transfer -->
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">52. Maximum Power Transfer Theorem</h3>
-                <div class="theorem-card card-panel">
-                    <p class="mb-4">Maximum power is delivered from a linear network to a load when the load resistance
-                        equals the Thevenin equivalent resistance of the network.</p>
-
-                    <div class="transform-formula"
-                        style="display:flex; justify-content:space-around; align-items:center; flex-wrap:wrap;">
-                        <div class="formula">$$ R_L = R_{th} \text{ (DC)} $$</div>
-                        <div class="formula">$$ Z_L = Z_{th}^* \text{ (AC)} $$</div>
-                        <div class="formula">$$ P_{max} = \frac{V_{th}^2}{4R_{th}} $$</div>
-                    </div>
-
-                    <div class="graph-container mt-4"
-                        style="background:rgba(0,0,0,0.5); padding:20px; border-radius:8px; display:flex; flex-direction:column; align-items:center; overflow:hidden;">
-                        <canvas id="maxPowerChart" style="max-width:100%; height:200px; max-height:200px;"></canvas>
-                        <p class="text-sm text-muted mt-2">Power curve peaking exactly across the $R_L = R_{th}$ point.
-                        </p>
-                    </div>
-
-                    <div class="try-it-calc mt-4 card-panel"
-                        style="background: rgba(255, 82, 82, 0.05); border: 1px solid rgba(255, 82, 82, 0.2);">
-                        <h4 class="mb-3" style="color:#ff5252">⚙️ Try It: Calculate Power Dissipation</h4>
-                        <div class="calc-grid" style="display:flex; gap:15px; margin-bottom:15px;">
-                            <div class="input-group" style="flex:1;">
-                                <label>$V_{th}$ (V)</label>
-                                <input type="number" id="mp-vth" value="10"
-                                    style="width:100%; padding:8px; border-radius:4px; border:none; color:#000;">
-                            </div>
-                            <div class="input-group" style="flex:1;">
-                                <label>$R_{th}$ ($\Omega$)</label>
-                                <input type="number" id="mp-rth" value="5"
-                                    style="width:100%; padding:8px; border-radius:4px; border:none; color:#000;">
-                            </div>
-                            <div class="input-group" style="flex:1;">
-                                <label>$R_L$ ($\Omega$)</label>
-                                <input type="range" id="mp-rl" min="1" max="20" value="5"
-                                    style="width:100%; margin-top:10px;">
-                                <div id="mp-rl-val" class="text-center text-sm text-muted">5 Ω</div>
-                            </div>
-                        </div>
-                        <div id="mp-calc-result" class="text-center"
-                            style="font-size:1.5rem; color:#ff5252; font-weight:bold;">$P_L = 5.00$ W</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Superposition Theorem -->
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">53. Superposition Theorem</h3>
-                <div class="theorem-card card-panel">
-                    <p class="mb-4">In a linear network with multiple sources, the total response is the algebraic sum
-                        of the individual responses due to each source acting independently.</p>
-
-                    <div class="transform-formula">
-                        <div class="formula">$$ V_{Total} = V_{S1} + V_{S2} + \dots + V_{Sn} $$</div>
-                    </div>
-                    <ul class="text-sm mt-3 mb-3 text-muted" style="padding-left:15px">
-                        <li><strong>Voltage Sources</strong> killed by replacing with a <strong>Short Circuit
-                                (0V)</strong></li>
-                        <li><strong>Current Sources</strong> killed by replacing with an <strong>Open Circuit
-                                (0A)</strong></li>
-                    </ul>
-
-                    <div class="stepper-ui mt-4">
-                        <div class="stepper-svg-box" style="height:200px; position:relative;">
-                            <!-- Circuit with two sources -->
-                            <svg viewBox="0 0 400 200" class="th-svg"
-                                style="max-width: 100%; height: auto; max-height: 200px;">
-                                <!-- V1 (Left) -->
-                                <circle cx="50" cy="100" r="20" fill="none" stroke="var(--neon-cyan)" stroke-width="2"
-                                    id="sp-v1" class="t-elem" />
-                                <text x="50" y="105" text-anchor="middle" fill="var(--neon-cyan)"
-                                    style="font-size: 14px; font-weight: bold; font-family: inherit;" id="sp-v1-label"
-                                    class="t-elem">V1</text>
-
-                                <line x1="50" y1="80" x2="50" y2="40" stroke="var(--text-secondary)" stroke-width="2" />
-                                <line x1="50" y1="40" x2="150" y2="40" stroke="var(--text-secondary)"
-                                    stroke-width="2" />
-
-                                <!-- V2 (Right) -->
-                                <circle cx="350" cy="100" r="20" fill="none" stroke="#ff5252" stroke-width="2"
-                                    id="sp-v2" class="t-elem" />
-                                <text x="350" y="105" text-anchor="middle" fill="#ff5252"
-                                    style="font-size: 14px; font-weight: bold; font-family: inherit;" id="sp-v2-label"
-                                    class="t-elem">V2</text>
-
-                                <line x1="350" y1="80" x2="350" y2="40" stroke="var(--text-secondary)"
-                                    stroke-width="2" />
-                                <line x1="350" y1="40" x2="250" y2="40" stroke="var(--text-secondary)"
-                                    stroke-width="2" />
-
-                                <!-- Central Branch with Load -->
-                                <line x1="150" y1="40" x2="250" y2="40" stroke="var(--text-secondary)"
-                                    stroke-width="2" />
-                                <line x1="200" y1="40" x2="200" y2="70" stroke="var(--text-secondary)"
-                                    stroke-width="2" />
-                                <!-- Resistor R -->
-                                <path d="M 200,70 L 190,80 L 210,100 L 190,120 L 210,140 L 200,150" fill="none"
-                                    stroke="var(--electric-yellow)" stroke-width="2" />
-                                <text x="225" y="115" fill="var(--electric-yellow)"
-                                    style="font-size: 14px; font-weight: bold; font-family: inherit;">R</text>
-                                <line x1="200" y1="150" x2="200" y2="160" stroke="var(--text-secondary)"
-                                    stroke-width="2" />
-
-                                <!-- Bottom Ground Wire -->
-                                <line x1="50" y1="120" x2="50" y2="160" stroke="var(--text-secondary)"
-                                    stroke-width="2" />
-                                <line x1="350" y1="120" x2="350" y2="160" stroke="var(--text-secondary)"
-                                    stroke-width="2" />
-                                <line x1="50" y1="160" x2="350" y2="160" stroke="var(--text-secondary)"
-                                    stroke-width="2" />
-
-                                <!-- Current Arrow -->
-                                <path d="M 200,55 L 200,65 L 195,60 M 200,65 L 205,60" fill="none"
-                                    stroke="var(--electric-yellow)" stroke-width="2" />
-                                <text x="175" y="65" fill="var(--electric-yellow)"
-                                    style="font-size: 14px; font-weight: bold; font-family: inherit;"
-                                    id="sp-i-label">I_total</text>
-                            </svg>
-                        </div>
-                        <div class="p-3" style="display:flex; justify-content:center; gap:10px;">
-                            <button class="hero__cta outline-btn active" id="btn-sp-all">Both Sources ON</button>
-                            <button class="hero__cta outline-btn" id="btn-sp-v1">Only V1 ON</button>
-                            <button class="hero__cta outline-btn" id="btn-sp-v2">Only V2 ON</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional 4 Theorems in Grid -->
-            <div class="theorem-grid mt-5">
-                <!-- Reciprocity -->
-                <div class="theorem-card card-panel" data-aos="fade-up">
-                    <h4 style="color:var(--neon-cyan)">Reciprocity Theorem</h4>
-                    <p class="text-sm text-muted mt-2">In a linear, bilateral network containing a single source, the
-                        ratio of excitation (Source) to response (V or I) remains constant when their positions are
-                        interchanged.</p>
-                    <div class="formula">$$ \frac{V_j}{I_k} = \frac{V_k}{I_j} $$</div>
-                    <svg viewBox="0 0 200 50" style="width:100%; max-width:200px; display:block; margin: 15px auto;">
-                        <circle cx="20" cy="25" r="15" fill="none" stroke="var(--neon-cyan)" stroke-width="2" />
-                        <text x="20" y="30" text-anchor="middle" fill="var(--neon-cyan)"
-                            style="font-size: 14px; font-weight: bold; font-family: inherit;">V</text>
-                        <line x1="45" y1="25" x2="80" y2="25" stroke="var(--text-secondary)" stroke-width="2"
-                            stroke-dasharray="2" />
-                        <rect x="85" y="10" width="30" height="30" fill="rgba(255,255,255,0.1)" />
-                        <line x1="120" y1="25" x2="160" y2="25" stroke="var(--text-secondary)" stroke-width="2"
-                            stroke-dasharray="2" />
-                        <path d="M 165,25 L 185,25 L 180,20 M 185,25 L 180,30" fill="none"
-                            stroke="var(--electric-yellow)" stroke-width="2" />
-                        <text x="175" y="15" fill="var(--electric-yellow)"
-                            style="font-size: 14px; font-weight: bold; font-family: inherit;">I</text>
-                    </svg>
-                </div>
-
-                <!-- Tellegen -->
-                <div class="theorem-card card-panel" data-aos="fade-up">
-                    <h4 style="color:var(--electric-yellow)">Tellegen's Theorem</h4>
-                    <p class="text-sm text-muted mt-2">For any lumped network following KVL and KCL, the sum of power
-                        delivered is exactly equal to the sum of power absorbed across all branches.</p>
-                    <div class="formula">$$ \sum_{k=1}^{n} V_k I_k = 0 $$</div>
-                    <p class="text-sm text-center text-muted">(Conservation of Energy in Circuits)</p>
-                </div>
-
-                <!-- Substitution -->
-                <div class="theorem-card card-panel" data-aos="fade-up">
-                    <h4 style="color:var(--neon-cyan)">Substitution Theorem</h4>
-                    <p class="text-sm text-muted mt-2">Any branch with known voltage V and current I can be replaced by
-                        an ideal voltage source V, or ideal current source I, without affecting voltages and currents in
-                        the rest of the network.</p>
-                    <div class="formula">$$ Z = V/I \rightarrow \text{Source } V \text{ or } I $$</div>
-                </div>
-
-                <!-- Compensation -->
-                <div class="theorem-card card-panel" data-aos="fade-up">
-                    <h4 style="color:#ff5252">Compensation Theorem</h4>
-                    <p class="text-sm text-muted mt-2">Analyzes the effect of changing impedance by $\Delta Z$. The
-                        change in currents can be modeled by placing a compensating voltage source $V_c = -I \Delta Z$
-                        in series with the modified branch.</p>
-                    <div class="formula">$$ \Delta I = -\Delta Z \times \frac{I}{Z_{th} + \Delta Z} $$</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: Transient & Frequency Response -->
-        <section id="transient-frequency" class="section-container">
-            <h2 class="section-title neon-text" data-aos="fade-down"
-                style="font-size: 2.5rem; margin-bottom: 30px; text-transform: uppercase;">
-                4. Transient & Frequency Response
-            </h2>
-            <p class="text-muted text-center mb-5" data-aos="fade-up">Analyze circuit behavior over time and frequency
-                domains.
-            </p>
-
-            <!-- SUB-SECTION: Transient Analysis -->
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title"
-                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">54. Transient Analysis
-                </h3>
-
-                <div class="theorem-grid mt-4">
-                    <!-- First Order RC -->
-                    <div class="theorem-card card-panel"
-                        style="display:flex; flex-direction:column; justify-content:space-between;">
-                        <div>
-                            <h4 style="color:var(--neon-cyan); text-transform:uppercase;">FIRST ORDER — RC CIRCUIT</h4>
-                            <div class="formula mt-3">$$ v(t) = V_f + (V_i - V_f)e^{-t/\tau} $$</div>
-                            <div class="formula mt-2">$$ \tau = RC \text{ (time constant)} $$</div>
-                            <p class="text-sm text-muted mt-2 text-center">At $t = \tau$: reaches 63.2% of final value
-                            </p>
-                        </div>
-                        <div class="anim-container mt-3"
-                            style="text-align: center; height: 120px; position:relative; overflow:hidden; border-radius:8px; background:rgba(0,0,0,0.3);">
-                            <svg viewBox="0 0 200 100" style="width: 100%; height: 100%;">
-                                <path d="M 20 80 Q 60 80, 80 40 T 180 20" fill="none" class="rc-curve anim-path"
-                                    stroke="var(--neon-cyan)" stroke-width="3" />
-                                <!-- Capacitor symbol -->
-                                <line x1="20" y1="50" x2="35" y2="50" stroke="var(--text-secondary)" stroke-width="2" />
-                                <line x1="35" y1="35" x2="35" y2="65" stroke="var(--text-secondary)" stroke-width="3" />
-                                <line x1="45" y1="35" x2="45" y2="65" stroke="var(--text-secondary)" stroke-width="3" />
-                                <line x1="45" y1="50" x2="60" y2="50" stroke="var(--text-secondary)" stroke-width="2" />
-                                <!-- Capacitor glowing fill representation -->
-                                <rect x="36" y="35" width="8" height="30" fill="var(--neon-cyan)" class="cap-fill" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <!-- First Order RL -->
-                    <div class="theorem-card card-panel"
-                        style="display:flex; flex-direction:column; justify-content:space-between;">
-                        <div>
-                            <h4 style="color:var(--electric-yellow); text-transform:uppercase;">FIRST ORDER — RL CIRCUIT
-                            </h4>
-                            <div class="formula mt-3">$$ i(t) = I_f + (I_i - I_f)e^{-t/\tau} $$</div>
-                            <div class="formula mt-2">$$ \tau = L/R $$</div>
-                        </div>
-                        <div class="anim-container mt-3"
-                            style="text-align: center; height: 120px; position:relative; overflow:hidden; border-radius:8px; background:rgba(0,0,0,0.3);">
-                            <svg viewBox="0 0 200 100" style="width: 100%; height: 100%;">
-                                <path d="M 20 80 Q 60 80, 80 40 T 180 20" fill="none" class="rl-curve anim-path"
-                                    stroke="var(--electric-yellow)" stroke-width="3" />
-                                <!-- Inductor symbol -->
-                                <path d="M 20 50 L 30 50 Q 35 35, 40 50 Q 45 35, 50 50 Q 55 35, 60 50 L 70 50"
-                                    fill="none" class="rl-inductor" stroke="var(--text-secondary)" stroke-width="2" />
-                                <!-- Magnetic Field flux lines -->
-                                <ellipse cx="45" cy="50" rx="15" ry="25" fill="none" stroke="var(--electric-yellow)"
-                                    stroke-width="1.5" class="mag-flux flux-1" />
-                                <ellipse cx="45" cy="50" rx="25" ry="35" fill="none" stroke="var(--electric-yellow)"
-                                    stroke-width="1" class="mag-flux flux-2" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <!-- Second Order RLC -->
-                    <div class="theorem-card card-panel" style="grid-column: 1 / -1;">
-                        <h4 style="color:#ff5252; text-transform:uppercase;">SECOND ORDER — RLC CIRCUIT</h4>
-                        <div class="formula mt-3">$$ \frac{d^2v}{dt^2} + \frac{R}{L}\frac{dv}{dt} + \frac{v}{LC} =
-                            \frac{V_s}{LC} $$</div>
-
-                        <div class="grid"
-                            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; align-items: start;">
-                            <div class="p-3 mt-2"
-                                style="background: rgba(255, 82, 82, 0.05); border: 1px dashed rgba(255, 82, 82, 0.2); border-radius: 8px;">
-                                <p class="text-sm font-bold mb-2">Characteristic equation: <br>$s^2 + 2\alpha s +
-                                    \omega_0^2 =
-                                    0$</p>
-                                <p class="text-sm mt-1">$\alpha = \frac{R}{2L}$ (damping coeff)</p>
-                                <p class="text-sm">$\omega_0 = \frac{1}{\sqrt{LC}}$ (natural freq)</p>
-                            </div>
-                            <div class="p-3 mt-2">
-                                <p class="text-sm font-bold mb-2">Cases:</p>
-                                <ul class="text-sm" style="padding-left:15px; line-height:1.6;">
-                                    <li><span style="color:#5c6bc0; font-weight:bold;">Overdamped:</span> $\alpha >
-                                        \omega_0
-                                        \quad (\alpha^2 > \omega_0^2)$</li>
-                                    <li><span style="color:#42a5f5; font-weight:bold;">Critically Damped:</span> $\alpha
-                                        =
-                                        \omega_0$</li>
-                                    <li><span style="color:#ff5252; font-weight:bold;">Underdamped:</span> $\alpha <
-                                            \omega_0$ <br>
-                                            &nbsp;&nbsp;&nbsp;$\rightarrow \omega_d = \sqrt{\omega_0^2 - \alpha^2}$
-                                            (damped
-                                            freq)
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Interactive Overlapping Waveforms -->
-                        <div class="mt-4 p-3" style="background: rgba(0,0,0,0.5); border-radius:8px;">
-                            <p class="text-sm text-center mb-3" style="color:var(--text-secondary);">Animation: Three
-                                overlapping waveforms (solid line is active state based on slider)</p>
-                            <div class="input-group text-center mb-3">
-                                <label
-                                    style="display:inline-block; font-weight:bold; margin-right:15px; color:#ff5252;">Adjust
-                                    R, L, C to shift dominant response:</label>
-                                <input type="range" id="rlc-overlay-r" min="1" max="100" value="20"
-                                    style="vertical-align:middle; width:200px;">
-                            </div>
-                            <!-- Canvas containing all 3 superimposed graphs -->
-                            <div style="position:relative; height: 250px; width:100%;">
-                                <canvas id="rlcOverlayChart"
-                                    style="width:100%; height:100%; max-height:250px;"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SUB-SECTION: Frequency Response -->
-            <div class="subsection mt-5" data-aos="fade-up">
-                <h3 class="subsection__title"
-                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">55. Frequency Response
-                </h3>
-
-                <div class="theorem-grid mt-4">
-                    <!-- Series Resonance -->
-                    <div class="theorem-card card-panel">
-                        <h4 style="color:#b388ff; text-transform:uppercase;">SERIES RESONANCE</h4>
-                        <div class="formula mt-3">$$ \omega_0 = 1/\sqrt{LC} \quad\quad f_0 = \frac{1}{2\pi\sqrt{LC}} $$
-                        </div>
-                        <p class="text-sm text-muted text-center mt-2">$$ Z_{min} = R \text{ (at resonance)} $$</p>
-                        <div class="formula mt-2">$$ Q = \frac{\omega_0 L}{R} = \frac{1}{\omega_0 CR} =
-                            \frac{1}{R}\sqrt{\frac{L}{C}} $$</div>
-                        <div class="formula mt-2">$$ BW = \omega_0 / Q = R/L $$</div>
-                        <div class="anim-container mt-4"
-                            style="text-align: center; height: 150px; background:rgba(0,0,0,0.3); border-radius:8px;">
-                            <!-- Impedance vs Frequency Curve -->
-                            <svg viewBox="0 0 200 100" style="width: 100%; height: 100%; padding:10px;">
-                                <path d="M 10 20 Q 100 90, 190 20" fill="none" stroke="#b388ff" stroke-width="3"
-                                    class="z-curve" />
-                                <circle cx="100" cy="55" r="4" fill="#fff" class="z-peak"
-                                    filter="drop-shadow(0 0 8px #fff)" />
-                                <line x1="100" y1="55" x2="100" y2="90" stroke="#fff" stroke-dasharray="2"
-                                    class="z-line" />
-                                <text x="100" y="100" fill="#fff" font-size="10" font-family="inherit"
-                                    text-anchor="middle">f₀</text>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <!-- Parallel Resonance -->
-                    <div class="theorem-card card-panel">
-                        <h4 style="color:#00e676; text-transform:uppercase;">PARALLEL RESONANCE</h4>
-                        <div class="formula mt-3">$$ \omega_0 = 1/\sqrt{LC} \quad\quad Z_{max} = R \text{ (at res)} $$
-                        </div>
-                        <div class="formula mt-2">$$ Q = \frac{R}{\omega_0 L} = \omega_0 CR = R\sqrt{\frac{C}{L}} $$
-                        </div>
-                        <div class="formula mt-2">$$ BW = \omega_0 / Q = 1/RC $$</div>
-                        <div class="anim-container mt-4"
-                            style="text-align: center; height: 150px; background:rgba(0,0,0,0.3); border-radius:8px;">
-                            <!-- Admittance Dip / Impedance Peak -->
-                            <svg viewBox="0 0 200 100" style="width: 100%; height: 100%; padding:10px;">
-                                <path d="M 10 80 Q 100 10, 190 80" fill="none" stroke="#00e676" stroke-width="3"
-                                    class="y-curve" />
-                                <circle cx="100" cy="45" r="4" fill="#fff" class="y-peak"
-                                    filter="drop-shadow(0 0 8px #fff)" />
-                                <line x1="100" y1="45" x2="100" y2="90" stroke="#fff" stroke-dasharray="2"
-                                    class="y-line" />
-                                <text x="100" y="100" fill="#fff" font-size="10" font-family="inherit"
-                                    text-anchor="middle">f₀</text>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <!-- Bandwidth & Q Factor -->
-                    <div class="theorem-card card-panel"
-                        style="grid-column: 1 / -1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-                        <h4 style="color:#29b6f6; text-transform:uppercase; width:100%; text-align:left;">BANDWIDTH & Q
-                            FACTOR
-                        </h4>
-                        <div class="w-100"
-                            style="display:flex; width:100%; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px;">
-                            <div style="flex:1; min-width:300px;">
-                                <div class="formula mt-3">$$ BW = f_2 - f_1 \text{ (half-power frequencies)} $$</div>
-                                <div class="formula mt-2">$$ Q = f_0 / BW $$</div>
-                                <p class="text-sm text-muted mt-2 text-center">At $f_1, f_2$: Power = $P_{max}/2 \quad
-                                    (-3dB)$
-                                </p>
-                            </div>
-                            <div class="anim-container mt-3"
-                                style="flex:1; min-width:300px; text-align: center; height: 180px; position:relative; background:rgba(0,0,0,0.3); border-radius:8px; padding:10px;">
-                                <svg viewBox="0 0 400 160" style="width: 100%; height: 100%;">
-                                    <!-- Bell Curve -->
-                                    <path d="M 50 140 Q 200 -40, 350 140" fill="none" class="bell-curve"
-                                        stroke="#29b6f6" stroke-width="4" />
-
-                                    <!-- Half-power line -->
-                                    <line x1="80" y1="80" x2="320" y2="80" stroke="rgba(255,255,255,0.4)"
-                                        stroke-dasharray="6" stroke-width="2" />
-
-                                    <!-- Pulsing Points -->
-                                    <circle cx="120" cy="80" r="6" fill="#facc15" class="bw-pt bw-1"
-                                        filter="drop-shadow(0 0 6px #facc15)" />
-                                    <circle cx="280" cy="80" r="6" fill="#facc15" class="bw-pt bw-2"
-                                        filter="drop-shadow(0 0 6px #facc15)" />
-
-                                    <!-- Labels -->
-                                    <text x="120" y="65" fill="#fff" font-size="14" font-family="inherit"
-                                        font-weight="bold" text-anchor="middle">-3dB (f₁)</text>
-                                    <text x="280" y="65" fill="#fff" font-size="14" font-family="inherit"
-                                        font-weight="bold" text-anchor="middle">-3dB (f₂)</text>
-
-                                    <!-- BW Bracket Animation -->
-                                    <path d="M 120 100 L 120 115 L 280 115 L 280 100" fill="none"
-                                        stroke="var(--neon-cyan)" stroke-width="3" class="bw-bracket" />
-                                    <text x="200" y="140" fill="var(--neon-cyan)" font-size="20" font-family="inherit"
-                                        text-anchor="middle" font-weight="bold">BW</text>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SUB-SECTION: Laplace Transform -->
-            <div class="subsection mt-5" data-aos="fade-up">
-                <h3 class="subsection__title"
-                    style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">56. Laplace Transform
-                </h3>
-
-                <div class="formula mt-4 text-center">$$ \mathcal{L}\{f(t)\} = F(s) = \int_0^\infty f(t)e^{-st}dt $$
-                </div>
-
-                <div class="theorem-grid mt-4">
-                    <!-- Key Pairs Table -->
-                    <div class="theorem-card card-panel">
-                        <h4 style="color:#f48fb1; text-transform:uppercase;">Key Pairs Table (Animated Flip Cards)</h4>
-                        <p class="text-sm text-center text-muted mb-3">Hover or tap cards to flip from Time-Domain to
-                            s-Domain</p>
-                        <div class="laplace-grid">
-                            <!-- Flip Card 1 -->
-                            <div class="flip-card l-card">
-                                <div class="flip-inner">
-                                    <div class="flip-front"
-                                        style="display:flex; align-items:center; justify-content:center;">
-                                        $$u(t)$$</div>
-                                    <div class="flip-back"
-                                        style="display:flex; align-items:center; justify-content:center;">
-                                        $$\frac{1}{s}$$</div>
-                                </div>
-                            </div>
-                            <!-- Flip Card 2 -->
-                            <div class="flip-card l-card">
-                                <div class="flip-inner">
-                                    <div class="flip-front"
-                                        style="display:flex; align-items:center; justify-content:center;">
-                                        $$\delta(t)$$</div>
-                                    <div class="flip-back"
-                                        style="display:flex; align-items:center; justify-content:center;">$$1$$
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Flip Card 3 -->
-                            <div class="flip-card l-card">
-                                <div class="flip-inner">
-                                    <div class="flip-front"
-                                        style="display:flex; align-items:center; justify-content:center;">
-                                        $$e^{-at}$$</div>
-                                    <div class="flip-back"
-                                        style="display:flex; align-items:center; justify-content:center;">
-                                        $$\frac{1}{s+a}$$</div>
-                                </div>
-                            </div>
-                            <!-- Flip Card 4 -->
-                            <div class="flip-card l-card">
-                                <div class="flip-inner">
-                                    <div class="flip-front"
-                                        style="display:flex; align-items:center; justify-content:center;">$$t
-                                        \cdot e^{-at}$$</div>
-                                    <div class="flip-back"
-                                        style="display:flex; align-items:center; justify-content:center;">
-                                        $$\frac{1}{(s+a)^2}$$</div>
-                                </div>
-                            </div>
-                            <!-- Flip Card 5 -->
-                            <div class="flip-card l-card">
-                                <div class="flip-inner">
-                                    <div class="flip-front"
-                                        style="display:flex; align-items:center; justify-content:center;">
-                                        $$\sin(\omega t)$$</div>
-                                    <div class="flip-back"
-                                        style="display:flex; align-items:center; justify-content:center;">
-                                        $$\frac{\omega}{s^2+\omega^2}$$</div>
-                                </div>
-                            </div>
-                            <!-- Flip Card 6 -->
-                            <div class="flip-card l-card">
-                                <div class="flip-inner">
-                                    <div class="flip-front"
-                                        style="display:flex; align-items:center; justify-content:center;">
-                                        $$\cos(\omega t)$$</div>
-                                    <div class="flip-back"
-                                        style="display:flex; align-items:center; justify-content:center;">
-                                        $$\frac{s}{s^2+\omega^2}$$</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Circuit Elements Morphing -->
-                    <div class="theorem-card card-panel"
-                        style="display:flex; flex-direction:column; justify-content:start;">
-                        <h4 style="color:#ce93d8; text-transform:uppercase;">Circuit Elements in s-domain</h4>
-
-                        <div style="display:flex; flex-direction:column; gap:20px;">
-                            <div class="s-domain-elements mt-3 p-3"
-                                style="background:rgba(255,255,255,0.05); border-left: 3px solid #ce93d8; width:100%;">
-                                <div
-                                    style="display:grid; grid-template-columns: auto auto 1fr; gap: 15px 20px; align-items:center;">
-                                    <div style="font-weight:bold; font-size:1.1rem; text-align:right;">$$R$$</div>
-                                    <div>$\rightarrow$</div>
-                                    <div>$$R$$</div>
-
-                                    <div style="font-weight:bold; font-size:1.1rem; text-align:right;">$$L$$</div>
-                                    <div>$\rightarrow$</div>
-                                    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                                        <div>$$sL$$</div>
-                                        <span class="text-sm text-muted">(initial: $-Li(0)$ series voltage)</span>
-                                    </div>
-
-                                    <div style="font-weight:bold; font-size:1.1rem; text-align:right;">$$C$$</div>
-                                    <div>$\rightarrow$</div>
-                                    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                                        <div>$$\frac{1}{sC}$$</div>
-                                        <span class="text-sm text-muted">(initial: $\frac{v(0)}{s}$ series
-                                            voltage)</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="text-center anim-container p-3"
-                                style="background:rgba(0,0,0,0.3); border-radius:8px; width:100%;">
-                                <button id="morph-laplace-btn" class="hero__cta mb-3"
-                                    style="padding: 10px 20px; font-size: 0.9rem;">Morph Time-Domain $L$ to s-Domain
-                                    ▶</button>
-                                <svg viewBox="0 0 300 120" style="width: 100%; height: auto; max-height:120px;">
-                                    <!-- Time Domain L -->
-                                    <g id="l-td-group">
-                                        <path
-                                            d="M 20 60 L 80 60 Q 90 30, 100 60 Q 110 30, 120 60 Q 130 30, 140 60 Q 150 30, 160 60 L 220 60"
-                                            fill="none" stroke="#ce93d8" stroke-width="4" />
-                                        <text x="120" y="95" fill="#fff" font-size="16" font-family="inherit"
-                                            text-anchor="middle" font-weight="bold">L, i(0)</text>
-                                    </g>
-                                    <!-- s-Domain Equivalent: Impedance box + source -->
-                                    <g id="l-sd-group" style="opacity:0;">
-                                        <path d="M 20 60 L 50 60" fill="none" stroke="#ce93d8" stroke-width="4" />
-                                        <rect x="50" y="40" width="80" height="40" fill="rgba(206, 147, 216, 0.2)"
-                                            stroke="#ce93d8" stroke-width="2" />
-                                        <text x="90" y="60" fill="#fff" font-size="16" font-family="inherit"
-                                            text-anchor="middle" font-weight="bold" dominant-baseline="middle">sL</text>
-
-                                        <path d="M 130 60 L 150 60" fill="none" stroke="#ce93d8" stroke-width="4" />
-                                        <!-- Voltage Source for initial condition -->
-                                        <circle cx="170" cy="60" r="20" fill="none" stroke="#facc15" stroke-width="2" />
-                                        <text x="170" y="55" fill="#facc15" font-size="20" font-family="inherit"
-                                            text-anchor="middle" dominant-baseline="middle">-</text>
-                                        <text x="170" y="70" fill="#facc15" font-size="16" font-family="inherit"
-                                            text-anchor="middle" dominant-baseline="middle">+</text>
-
-                                        <path d="M 190 60 L 220 60" fill="none" stroke="#ce93d8" stroke-width="4" />
-
-                                        <text x="170" y="100" fill="#facc15" font-size="14" font-family="inherit"
-                                            text-anchor="middle" font-weight="bold">Li(0)</text>
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Section 5: Advanced Topics -->
-        <section id="advanced-topics" class="section-container">
-            <h2 class="section-title neon-text" data-aos="fade-down" style="font-size: 2.5rem; margin-bottom: 30px;">
-                5. Advanced Topics
-            </h2>
-            <p class="text-muted text-center mb-5" data-aos="fade-up">Two-Port Networks, Magnetically Coupled Circuits,
-                and Op-Amps.</p>
-
-            <!-- 5.1 Two-Port Networks -->
-            <div class="subsection" data-aos="fade-up">
-                <h3 class="subsection__title">57. Two-Port Networks</h3>
-
-                <div class="theorem-grid">
-                    <!-- Z Parameters -->
-                    <div class="theorem-card card-panel">
-                        <h4 style="color:var(--electric-yellow)">Z-Parameters (Open-Circuit)</h4>
-                        <p class="text-sm text-muted mt-2">Expresses port voltages in terms of port currents.</p>
-                        <div class="formula mt-3">$$ \begin{bmatrix} V_1 \\ V_2 \end{bmatrix} = \begin{bmatrix} Z_{11} &
-                            Z_{12} \\ Z_{21} & Z_{22} \end{bmatrix} \begin{bmatrix} I_1 \\ I_2 \end{bmatrix} $$</div>
-                        <ul class="text-sm text-muted mt-2" style="padding-left:15px">
-                            <li>$Z_{11} = \frac{V_1}{I_1} \Big|_{I_2=0}$ (Input Impedance)</li>
-                        </ul>
-                    </div>
-
-                    <!-- Y Parameters -->
-                    <div class="theorem-card card-panel">
-                        <h4 style="color:var(--neon-cyan)">Y-Parameters (Short-Circuit)</h4>
-                        <p class="text-sm text-muted mt-2">Expresses port currents in terms of port voltages. Inverse of
-                            Z matrix.</p>
-                        <div class="formula mt-3">$$ \begin{bmatrix} I_1 \\ I_2 \end{bmatrix} = \begin{bmatrix} Y_{11} &
-                            Y_{12} \\ Y_{21} & Y_{22} \end{bmatrix} \begin{bmatrix} V_1 \\ V_2 \end{bmatrix} $$</div>
-                        <ul class="text-sm text-muted mt-2" style="padding-left:15px">
-                            <li>$Y_{11} = \frac{I_1}{V_1} \Big|_{V_2=0}$ (Input Admittance)</li>
-                        </ul>
-                    </div>
-
-                    <!-- ABCD Parameters -->
-                    <div class="theorem-card card-panel">
-                        <h4 style="color:#ff5252">Transmission (ABCD) Parameters</h4>
-                        <p class="text-sm text-muted mt-2">Relates input variables ($V_1, I_1$) to output variables
-                            ($V_2, -I_2$). Excellent for cascaded networks.</p>
-                        <div class="formula mt-3">$$ \begin{bmatrix} V_1 \\ I_1 \end{bmatrix} = \begin{bmatrix} A & B \\
-                            C & D \end{bmatrix} \begin{bmatrix} V_2 \\ -I_2 \end{bmatrix} $$</div>
-                    </div>
-
-                    <!-- h Parameters -->
-                    <div class="theorem-card card-panel">
-                        <h4 style="color:#b388ff">Hybrid (h) Parameters</h4>
-                        <p class="text-sm text-muted mt-2">Used extensively in amplifier and transistor modeling.</p>
-                        <div class="formula mt-3">$$ \begin{bmatrix} V_1 \\ I_2 \end{bmatrix} = \begin{bmatrix} h_{11} &
-                            h_{12} \\ h_{21} & h_{22} \end{bmatrix} \begin{bmatrix} I_1 \\ V_2 \end{bmatrix} $$</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5.2 Op-Amps & Magnetically Coupled Circuits -->
-            <div class="subsection mt-5" data-aos="fade-up">
-                <h3 class="subsection__title">58. Operational Amplifiers & Mutual Inductance</h3>
-
-                <div class="theorem-grid">
-                    <!-- Ideal Op-Amp -->
-                    <div class="theorem-card card-panel">
-                        <h4 style="color:var(--neon-cyan)">Ideal Op-Amp Characteristics</h4>
-                        <ul class="text-sm text-muted mt-2" style="padding-left:15px">
-                            <li>Infinite Input Impedance: $I_+ = I_- = 0$</li>
-                            <li>Zero Output Impedance: $R_{out} = 0$</li>
-                            <li>Infinite Open-Loop Gain: $A \to \infty$</li>
-                            <li>Virtual Short: $V_+ = V_-$ (with negative feedback)</li>
-                        </ul>
-                        <hr style="border-color: rgba(255,255,255,0.1); margin: 10px 0;">
-                        <p class="text-sm text-muted"><strong>Inverting Gain:</strong> $ -R_f/R_{in} $</p>
-                        <p class="text-sm text-muted"><strong>Non-Inverting Gain:</strong> $ 1 + R_f/R_{in} $</p>
-                    </div>
-
-                    <!-- Mutual Inductance -->
-                    <div class="theorem-card card-panel">
-                        <h4 style="color:var(--electric-yellow)">Magnetically Coupled Circuits</h4>
-                        <p class="text-sm text-muted mt-2">When magnetic flux from one coil links with another coil, a
-                            mutually induced voltage is produced.</p>
-                        <div class="formula mt-3">$$ V_1 = L_1 \frac{di_1}{dt} \pm M \frac{di_2}{dt} $$</div>
-                        <div class="formula mt-2">$$ M = k\sqrt{L_1 L_2} $$</div>
-                        <p class="text-sm text-center text-muted">($k$ = Coefficient of Coupling, $0 \le k \le 1$)</p>
-                    </div>
-                </div>
-
-                <!-- Interactive Op-Amp Calculator -->
-                <div class="try-it-calc mt-4 card-panel"
-                    style="background: rgba(0, 245, 255, 0.05); border: 1px solid rgba(0, 245, 255, 0.2);">
-                    <h4 class="mb-3" style="color:var(--neon-cyan)">🎛️ Interactive: Op-Amp Gain Calculator</h4>
-                    <p class="text-sm text-muted mb-3">Adjust the feedback and input resistors to calculate the
-                        closed-loop signal gain and output voltage. Assumes $V_{cc} = \pm15V$ (Saturation).</p>
-
-                    <div class="calc-grid"
-                        style="display:flex; gap:15px; margin-bottom:15px; flex-wrap:wrap; align-items:center;">
-                        <div class="input-group" style="flex:1; min-width: 150px;">
-                            <label>Configuration Type</label>
-                            <select id="opamp-type"
-                                style="width:100%; padding:8px; border-radius:4px; border:none; color:#000; margin-top:10px;">
-                                <option value="non-inverting">Non-Inverting</option>
-                                <option value="inverting">Inverting</option>
-                            </select>
-                        </div>
-                        <div class="input-group" style="flex:1; min-width: 150px;">
-                            <label>Feedback Resistor $R_f$ (k$\Omega$)</label>
-                            <input type="number" id="opamp-rf" value="10" step="0.1"
-                                style="width:100%; padding:8px; border-radius:4px; border:none; color:#000; margin-top:10px;">
-                        </div>
-                        <div class="input-group" style="flex:1; min-width: 150px;">
-                            <label>Input Resistor $R_{in}$ (k$\Omega$)</label>
-                            <input type="number" id="opamp-rin" value="2" step="0.1"
-                                style="width:100%; padding:8px; border-radius:4px; border:none; color:#000; margin-top:10px;">
-                        </div>
-                        <div class="input-group" style="flex:1; min-width: 150px;">
-                            <label>Input Voltage $V_{in}$ (V)</label>
-                            <input type="number" id="opamp-vin" value="1" step="0.1"
-                                style="width:100%; padding:8px; border-radius:4px; border:none; color:#000; margin-top:10px;">
-                        </div>
-                    </div>
-
-                    <div class="text-center mt-4">
-                        <button id="calc-opamp-btn" class="hero__cta">Calculate Output</button>
-                    </div>
-
-                    <div id="opamp-calc-result" class="mt-4 p-3 rounded text-center"
-                        style="display:none; background:rgba(0,0,0,0.5); border: 1px solid var(--neon-cyan); color: var(--electric-yellow); font-size: 1.2rem; font-family: var(--font-head); letter-spacing: 1px;">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <main style="display:none;">
-
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-            <script src="js/hero-bg.js"></script>
-            <script src="js/circuit.js?v=1"></script>
-            <!-- KaTeX Auto-Render Initializer -->
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    if (typeof renderMathInElement === 'function') {
-                        renderMathInElement(document.body, {
-                            delimiters: [
-                                { left: "$$", right: "$$", display: true },
-                                { left: "$", right: "$", display: false },
-                                { left: "\\(", right: "\\)", display: false },
-                                { left: "\\[", right: "\\]", display: true }
-                            ],
-                            throwOnError: false
-                        });
-                    }
+            <div class="ac-calc-result" id="dual-res">Dual element: Conductance (G)</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+
+    <script src="js/hero-bg.js"></script>
+    <script src="js/circuit.js?v=1"></script>
+    <script src="js/ac-analysis.js"></script>
+    <script src="js/app.js"></script>
+    <!-- KaTeX Auto-Render Initializer -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        { left: "$$", right: "$$", display: true },
+                        { left: "$", right: "$", display: false },
+                        { left: "\\(", right: "\\)", display: false },
+                        { left: "\\[", right: "\\]", display: true }
+                    ],
+                    throwOnError: false
                 });
-            </script>
+            }
+        });
+        function closeModals() {
+            document.querySelectorAll('.ac-modal, .ac-modal-overlay').forEach(el => el.style.display = 'none');
+        }
+    </script>
 </body>
 
 </html>

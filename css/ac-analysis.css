@@ -1,0 +1,373 @@
+:root {
+    --unit-cyan: #00f5ff;
+    --unit-gold: #facc15;
+    --unit-purple: #a78bfa;
+    --unit-white: #ffffff;
+    --unit-green: #00ff88;
+    --unit-orange: #f97316;
+    --unit-blue: #60a5fa;
+
+    --bg-dark: #0a0a0f;
+    --card-bg: #111827;
+    --formula-bg: #0d1117;
+}
+
+/* ──── AC Hero Styles ──── */
+.ac-hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #111827 0%, var(--bg-dark) 100%);
+    padding: 120px 24px 60px;
+    overflow: hidden;
+}
+
+.ac-hero__title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.ac-hero__title span {
+    color: var(--unit-cyan);
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+}
+
+.ac-hero__subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 700px;
+}
+
+/* ──── Card Design ──── */
+.ac-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.ac-card {
+    background: var(--card-bg);
+    border-top: 4px solid var(--unit-cyan);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.ac-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 245, 255, 0.1);
+}
+
+.ac-card__header {
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ac-card__title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: var(--unit-cyan);
+}
+
+.ac-card__formula-zone {
+    background: var(--formula-bg);
+    padding: 1.5rem;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ac-card__animation-zone {
+    height: 240px;
+    position: relative;
+    background: #080c14;
+    overflow: hidden;
+}
+
+.ac-card__footer {
+    padding: 0.75rem 1.25rem;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.ac-btn-icon {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ac-btn-icon:hover {
+    background: rgba(0, 245, 255, 0.1);
+    color: var(--unit-cyan);
+    border-color: var(--unit-cyan);
+}
+
+/* ──── Controls ──── */
+.ac-controls {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+}
+
+.ac-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 120px;
+    padding: 10px;
+}
+
+.ac-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+}
+
+.ac-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--unit-cyan);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--unit-cyan);
+}
+
+/* ──── D3 Plot Grid ──── */
+.ac-plot-grid line {
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-dasharray: 2, 2;
+}
+
+.ac-plot-axis text {
+    fill: var(--text-muted);
+    font-size: 10px;
+}
+
+/* ──── Badge Styles ──── */
+.badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* ──── Modal Styles ──── */
+.ac-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background: var(--card-bg);
+    border: 1px solid var(--unit-cyan);
+    border-radius: 12px;
+    z-index: 1000;
+    padding: 2rem;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.ac-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    backdrop-filter: blur(5px);
+}
+
+.ac-calc-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.ac-calc-input {
+    background: #080c14;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.ac-calc-result {
+    grid-column: span 2;
+    padding: 1rem;
+    background: rgba(0, 245, 255, 0.05);
+    border-radius: 4px;
+    color: var(--unit-cyan);
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ──── Table Styles ──── */
+.ac-table-mini {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.ac-table-mini th {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: var(--unit-cyan);
+    font-family: Orbitron;
+}
+
+.ac-table-mini td {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ──── Interactive Elements ──── */
+.toggle-btn {
+    padding: 4px 12px;
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid var(--unit-cyan);
+    border-radius: 20px;
+    color: var(--unit-cyan);
+    font-size: 0.7rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background: var(--unit-cyan);
+    color: #000;
+}
+
+.badge-glow {
+    margin-top: 10px;
+    padding: 5px 15px;
+    background: var(--unit-green);
+    color: #000;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    animation: glow-pulse 2s infinite;
+    text-align: center;
+}
+
+@keyframes glow-pulse {
+    0% {
+        box-shadow: 0 0 5px var(--unit-green);
+    }
+
+    50% {
+        box-shadow: 0 0 20px var(--unit-green);
+    }
+
+    100% {
+        box-shadow: 0 0 5px var(--unit-green);
+    }
+}
+
+/* ──── Matrix Grid ──── */
+.matrix-container {
+    display: grid;
+    gap: 4px;
+    padding: 10px;
+    background: #080c14;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.matrix-cell {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 2px;
+    font-size: 0.8rem;
+}
+
+.matrix-cell.pos {
+    color: var(--unit-green);
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.matrix-cell.neg {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* ──── Graph Elements ──── */
+.graph-node {
+    fill: var(--card-bg);
+    stroke: var(--unit-cyan);
+    stroke-width: 2px;
+}
+
+.graph-link {
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 2px;
+}
+
+.graph-link.twig {
+    stroke: var(--unit-cyan);
+    stroke-width: 4px;
+}
+
+.graph-link.link {
+    stroke: var(--unit-gold);
+    stroke-dasharray: 4, 4;
+}
+
+/* ──── Responsive ──── */
+@media (max-width: 768px) {
+    .ac-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+}
