@@ -123,10 +123,9 @@
             <li><a href="#dc-ac-analysis">2. DC & AC Analysis</a></li>
             <li><a href="#network-theorems">3. Network Theorems</a></li>
             <li><a href="#transient-frequency">4. Transient & Frequency</a></li>
-            <li><a href="#advanced-topics">5. Advanced Topics</a></li>
+            <li><a href="#advanced-topics">5. Electrical Materials</a></li>
         </ul>
     </nav>
-
     <main class="circuit-main">
         <!-- Sections will go here -->
         <section id="fundamental-concepts" class="circuit-section">
@@ -5447,92 +5446,762 @@
                     </section>
                 </div>
             </section>
+
+            <!-- SECTION 5: ELECTRICAL MATERIALS -->
+            <section id="advanced-topics" class="circuit-section">
+                <div class="section__header" data-aos="fade-up">
+                    <h2 style="color: var(--unit-purple);">Electrical Materials — Crystal Structure</h2>
+                    <p>Understanding atomic arrangements, unit cells, and packing efficiency.</p>
+                </div>
+
+                <div class="ac-grid" data-aos="fade-up">
+
+                    <!-- CARD 22: Crystal Fundamentals -->
+                    <section class="ac-card" id="card-crystal-fundamentals"
+                        style="border-top: 4px solid var(--unit-purple);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">1. Crystal Structure: Fundamentals</h2>
+                            <span class="badge" style="background: var(--unit-purple);">Space Lattice</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ \text{Lattice} + \text{Basis} \rightarrow \text{Crystal structure} $$</p>
+                            <p>Unit Cell Volume: $ V = \bar{a} \cdot \bar{b} \cdot \bar{c} $</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-1"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" id="btn-lattice-morph">✨ Morph Basis</button>
+                            <button class="ac-btn-icon" id="btn-lattice-type">🔄 Type: Crystalline</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 23: Atom Counting -->
+                    <section class="ac-card" id="card-atom-counting" style="border-top: 4px solid var(--unit-purple);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">2. Atom Counting in 3D Unit Cells</h2>
+                            <span class="badge" style="background: var(--unit-purple);">APF</span>
+                        </div>
+                        <div class="ac-card__formula-zone" style="font-size: 0.9rem;">
+                            <p>$$ N = N_c(\frac{1}{8}) + N_e(\frac{1}{4}) + N_f(\frac{1}{2}) + N_b(1) $$</p>
+                            <p>$$ APF = \frac{N_{atoms} \times \frac{4}{3}\pi r^3}{a^3} \quad;\quad \text{Void} = 1 -
+                                APF $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-2"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="atom-counter">⚛️ Atom Counter</button>
+                            <button class="ac-btn-icon" data-calc="apf-calc">📐 APF Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 24: Simple Cubic -->
+                    <section class="ac-card" id="card-sc" style="border-top: 4px solid var(--unit-purple);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">3. Simple Cubic (SC) Structure</h2>
+                            <span class="badge" style="background: var(--unit-blue);">Polonium</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ N = 1 \quad;\quad CN = 6 \quad;\quad r = \frac{a}{2} $$</p>
+                            <p>$$ APF = \frac{\pi}{6} \approx 0.52 \quad (52\%) $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-3"></div>
+                        <div class="ac-card__footer">
+                            <span class="text-xs" style="color:var(--text-muted)">Touch points: 2r = a</span>
+                        </div>
+                    </section>
+
+                    <!-- CARD 25: Body Centred Cubic -->
+                    <section class="ac-card" id="card-bcc" style="border-top: 4px solid var(--unit-purple);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">4. Body Centred Cubic (BCC)</h2>
+                            <span class="badge" style="background: var(--unit-orange);">Na, Li, Cr</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ N = 2 \quad;\quad CN = 8 \quad;\quad r = \frac{\sqrt{3}}{4}a $$</p>
+                            <p>$$ APF = \frac{\sqrt{3}\pi}{8} \approx 0.68 \quad (68\%) $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-4"></div>
+                        <div class="ac-card__footer">
+                            <span class="text-xs" style="color:var(--text-muted)">Body diagonal: 4r = a√3</span>
+                        </div>
+                    </section>
+
+                    <!-- CARD 26: Face Centred Cubic -->
+                    <section class="ac-card" id="card-fcc" style="border-top: 4px solid var(--unit-purple);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">5. Face Centred Cubic (FCC)</h2>
+                            <span class="badge" style="background: var(--unit-green);">Al, Cu, Ag</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ N = 4 \quad;\quad CN = 12 \quad;\quad r = \frac{\sqrt{2}}{4}a $$</p>
+                            <p>$$ APF = \frac{\sqrt{2}\pi}{6} \approx 0.74 \quad (74\%) $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-5"></div>
+                        <div class="ac-card__footer">
+                            <span class="text-xs" style="color:var(--text-muted)">Face diagonal: 4r = a√2 (Most
+                                efficient)</span>
+                        </div>
+                    </section>
+
+                    <!-- CARD 27: Comparison -->
+                    <section class="ac-card ac-card--wide" id="card-crystal-compare"
+                        style="border-top: 4px solid var(--unit-purple);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">6. Unit Cell Properties Comparison</h2>
+                            <span class="badge" style="background: var(--unit-rose);">Diamond: 34% APF</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ DC(0.34) < SC(0.52) < BCC(0.68) < FCC(0.74) $$</p>
+                                    <p>Diamond Cubic (Ge, Si, C): $N=8$, $CN=4$, $r = \frac{\sqrt{3}}{8}a$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-6" style="height: 350px;"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="lattice-param">🔢 Lattice Parameter Calc</button>
+                            <button class="ac-btn-icon" data-calc="crystal-identify">🎯 Identifier</button>
+                            <button class="ac-btn-icon" data-calc="crystal-compare">📊 Compare Table</button>
+                        </div>
+                    </section>
+
+                    <!-- NEW CARDS 28-35 START HERE -->
+
+                    <!-- CARD 28: Miller Indices -->
+                    <section class="ac-card" id="card-miller-indices" style="border-top: 4px solid var(--unit-purple);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">7. Miller Indices & Bragg's Law</h2>
+                            <span class="badge" style="background: var(--unit-purple);">Crystallography</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>d-spacing: $$ d_{hkl} = \frac{a}{\sqrt{h^2+k^2+l^2}} $$</p>
+                            <p>Bragg's Law: $$ n\lambda = 2d\sin\theta $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-7">
+                            <!-- Three.js Container for Miller Cube -->
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="miller-calc">📐 Miller Calc</button>
+                            <button class="ac-btn-icon" data-calc="bragg-calc">🔬 Bragg's Law</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 29: Magnetic Fundamentals -->
+                    <section class="ac-card" id="card-magnetic-fundamentals"
+                        style="border-top: 4px solid var(--unit-blue);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">8. Magnetic Materials: Fundamentals</h2>
+                            <span class="badge" style="background: var(--unit-blue);">Dipoles</span>
+                        </div>
+                        <div class="ac-card__formula-zone" style="font-size: 0.85rem;">
+                            <p>Biot-Savart: $ dB = \frac{\mu_0}{4\pi}\cdot\frac{Id\ell\sin\theta}{r^2} $</p>
+                            <p>Ampere's Law: $ \oint \vec{H}\cdot d\vec{l} = I_{enc} $</p>
+                            <p>Intensity: $ B = \mu_0(H + M) \quad;\quad M = \chi_m H $</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-8">
+                            <!-- SVG Container for Dipoles and Laws -->
+                        </div>
+                        <div class="ac-card__footer">
+                            <span class="text-xs" style="color:var(--text-muted)">$\mu_B = 9.27\times10^{-24} \text{
+                                Am}^2$</span>
+                        </div>
+                    </section>
+
+                    <!-- CARD 30: Magnetic Anisotropy -->
+                    <section class="ac-card" id="card-magnetic-anisotropy"
+                        style="border-top: 4px solid var(--unit-blue);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">9. Anisotropy & Magnetostriction</h2>
+                            <span class="badge" style="background: var(--unit-cyan);">Physical Changes</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>Magnetostriction: $\Delta L/L$ vs applied $H$.</p>
+                            <p>Villari Effect: Converse of magnetostriction (Stress $\rightarrow$ $\Delta B$).</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-9"
+                            style="min-height: auto; padding-bottom: 15px;">
+                            <!-- SVG Container for Magnetostriction -->
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" id="btn-villari-toggle">🔄 Villari Effect Toggle</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 31: Curie Temperature -->
+                    <section class="ac-card ac-card--wide" id="card-curie-temp"
+                        style="border-top: 4px solid var(--unit-red);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">10. Curie Temperature & Magnetic Laws</h2>
+                            <span class="badge" style="background: var(--unit-red);">$T_c$ Phase Transition</span>
+                        </div>
+                        <div class="ac-card__formula-zone"
+                            style="display: flex; gap: 1rem; justify-content: space-around;">
+                            <div>
+                                <p style="color:var(--unit-cyan)">Paramagnetic (Curie's Law):</p>
+                                <p>$$ \chi_m = \frac{C}{T} $$</p>
+                            </div>
+                            <div>
+                                <p style="color:var(--unit-gold)">Ferromagnetic ($T > T_C$):</p>
+                                <p>$$ \chi_m = \frac{C}{T - \theta} $$</p>
+                            </div>
+                            <div>
+                                <p style="color:var(--unit-orange)">Anti-ferro ($T > T_N$):</p>
+                                <p>$$ \chi_m = \frac{C}{T + \theta} $$</p>
+                            </div>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-10" style="height: 380px;">
+                            <!-- D3.js Graph Container -->
+                        </div>
+                        <div class="ac-card__footer" style="justify-content: center;">
+                            <button class="ac-btn-icon" data-calc="curie-temp-finder">🌡️ Curie Temp Finder</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 32: Magnetic Types Summary -->
+                    <section class="ac-card ac-card--wide" id="card-magnetic-types"
+                        style="border-top: 4px solid var(--unit-blue);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">11. Types of Magnetic Materials</h2>
+                            <span class="badge" style="background: var(--unit-blue);">Classification</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>Dia ($\chi < 0$) | Para ($\chi> 0$) | Ferro ($\chi \gg 0$) | Anti-ferro ($\chi \approx
+                                    0$) | Ferri (large $\chi$)</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-11"
+                            style="height: auto; max-width: 100%; overflow-x: auto;">
+                            <!-- Comprehensive SVG / Table combined visualization -->
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="mag-identifier">🧲 Material Identifier</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 33: Langevin Paramagnetic -->
+                    <section class="ac-card ac-card--wide" id="card-langevin"
+                        style="border-top: 4px solid var(--unit-gold);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">12. Magnetization: Paramagnetic Materials</h2>
+                            <span class="badge" style="background: var(--unit-gold);">Langevin Function</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ M = N\mu_0\left(\coth\alpha - \frac{1}{\alpha}\right) = N\mu_0 L(\alpha) \quad;\quad
+                                \alpha = \frac{\mu_0 H}{k_B T} $$</p>
+                            <p>Weak fields ($\alpha \ll 1$): $M = \frac{N\mu_0^2 H}{k_B T}$ | Strong fields ($\alpha \gg
+                                1$): $M \rightarrow N\mu_0 = M_{sat}$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-12"
+                            style="height: auto; max-width: 100%; overflow-x: auto; padding-bottom: 20px;">
+                            <!-- D3 Plotter for Langevin L(a) -->
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="langevin-plotter">📈 L(α) Plotter Modal</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 34: Hysteresis Loop Terms -->
+                    <section class="ac-card ac-card--wide" id="card-hysteresis"
+                        style="border-top: 4px solid var(--unit-green);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">13. B-H Hysteresis Loop Terms</h2>
+                            <span class="badge" style="background: var(--unit-green);">Energy Loss</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ B_r = \text{Retentivity} \quad;\quad H_C = \text{Coercivity} \quad;\quad W_{hyst} =
+                                \oint H\,dB $$</p>
+                            <p>Steinmetz: $P_h = k_h f B_{max}^n$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-material-13" style="height: 450px;">
+                            <!-- D3 Interactive Hysteresis Tracer -->
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="hysteresis-compare">⚖️ Soft vs Hard</button>
+                            <button class="ac-btn-icon" data-calc="unit-converter">🔢 Unit Converter</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 15: Internal Field -->
+                    <section class="ac-card ac-card--wide" id="card-internal-field"
+                        style="border-top: 4px solid var(--unit-purple);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">15. Internal Field in Solids & Liquids</h2>
+                            <span class="badge" style="background: var(--unit-purple);">Local Field</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>Lorentz Field: $$ E_{int} = E + \frac{P}{3\varepsilon_0} $$</p>
+                            <p>Clausius-Mossotti: $$ \frac{\varepsilon_r - 1}{\varepsilon_r + 2} =
+                                \frac{N\alpha}{3\varepsilon_0} \quad;\quad \varepsilon_r = n^2 $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-1"
+                            style="height: 400px; padding-bottom: 20px;">
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="clausius-calc">📐 Clausius-Mossotti Calc</button>
+                            <button class="ac-btn-icon" data-calc="lorentz-calc">🧪 Lorentz-Lorentz Calc</button>
+                            <button class="ac-btn-icon" data-calc="refractive-calc">🌈 Refractive Index</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 16: Types of Dielectric Materials -->
+                    <section class="ac-card ac-card--wide" id="card-dielectric-types"
+                        style="border-top: 4px solid var(--unit-cyan);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">16. Types of Dielectric Materials</h2>
+                            <span class="badge" style="background: var(--unit-cyan);">Classification</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>Total Polarizability: $$ \alpha_{total} = \alpha_e + \alpha_i + \alpha_d + \alpha_{space}
+                                $$</p>
+                            <div
+                                style="display:flex; justify-content:space-around; font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">
+                                <span>$\alpha_e$: Optical ($10^{15}$ Hz)</span>
+                                <span>$\alpha_i$: Infrared ($10^{13}$ Hz)</span>
+                                <span>$\alpha_d$: Microwave ($10^{10}$ Hz)</span>
+                                <span>$\alpha_{space}$: Audio ($10^3$ Hz)</span>
+                            </div>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-2"
+                            style="min-height: 480px; padding-bottom: 20px;">
+                        </div>
+                    </section>
+
+                    <!-- CARD 17: Active Dielectrics -->
+                    <section class="ac-card ac-card--wide" id="card-active-dielectrics"
+                        style="border-top: 4px solid var(--unit-green);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">17. Piezoelectric, Ferroelectric & Pyroelectric</h2>
+                            <span class="badge" style="background: var(--unit-green);">Active Dielectrics</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div>
+                                    <p style="color:var(--unit-green)">Piezoelectric:</p>
+                                    <p>$$ P = dT \text{ (Direct)}, S = dE \text{ (Inverse)} $$</p>
+                                </div>
+                                <div>
+                                    <p style="color:var(--unit-rose)">Ferroelectric:</p>
+                                    <p>$$ \varepsilon_r = \frac{C}{T - T_C} \text{ (Curie-Weiss)} $$</p>
+                                </div>
+                            </div>
+                            <p style="text-align:center; color:var(--unit-red); margin-top:5px;">Pyroelectric: $$ \Delta
+                                P = \lambda \Delta T $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-3"
+                            style="min-height: 500px; overflow-x: auto;">
+                        </div>
+                        <div class="ac-card__footer" style="justify-content: center; gap: 10px;">
+                            <button class="ac-btn-icon" data-calc="piezo-calc">🔬 Piezo Calculator</button>
+                            <button class="ac-btn-icon" data-calc="pyro-calc">🌡️ Pyro Calculator</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 18: Dielectric Properties Summary -->
+                    <section class="ac-card ac-card--wide" id="card-dielectric-summary"
+                        style="border-top: 4px solid var(--unit-gold);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">18. Dielectric Properties Summary</h2>
+                            <span class="badge" style="background: var(--unit-gold);">Overview</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ \varepsilon_r = \frac{\varepsilon}{\varepsilon_0} \quad;\quad \chi_e = \varepsilon_r -
+                                1 \quad;\quad P = \varepsilon_0\chi_e E $$</p>
+                            <p>$$ D = \varepsilon_0 E + P = \varepsilon_0\varepsilon_r E $$</p>
+                            <p>Loss Tangent: $$ \tan\delta = \frac{\varepsilon''}{\varepsilon'} \quad \rightarrow \quad
+                                \text{Loss} = \omega\varepsilon_0\varepsilon''\tan\delta\,E^2 $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-4"
+                            style="height: auto; max-width: 100%; overflow-x: auto; padding-bottom: 20px;">
+                        </div>
+                    </section>
+
+                    <!-- CARD 19: Anti-Ferroelectric & Breakdown in Gases -->
+                    <section class="ac-card ac-card--wide" id="card-breakdown-gases"
+                        style="border-top: 4px solid var(--unit-orange);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">19. Anti-Ferroelectric & Breakdown in Gases</h2>
+                            <span class="badge" style="background: var(--unit-orange);">Gases</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>Antiparallel alignment: $$ P_{net} = 0 $$ Examples: Lead zirconate, Sodium nitrate</p>
+                            <p>Gas Mobility: $$ \bar{V} = \mu E $$ Townsend Criterion: $$ \gamma(e^{\alpha d}-1) = 1 $$
+                            </p>
+                            <p>Paschen's Law: $$ V_{breakdown} = f(p \cdot d) $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-5"
+                            style="height: 450px; overflow-x: auto;">
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="townsend-calc">⚡ Townsend Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 20: Dielectric Breakdown in Liquids -->
+                    <section class="ac-card ac-card--wide" id="card-breakdown-liquids"
+                        style="border-top: 4px solid var(--unit-blue);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">20. Dielectric Breakdown in Liquids</h2>
+                            <span class="badge" style="background: var(--unit-blue);">Liquids</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>Bubble Theory: $$ E_b = \frac{3\varepsilon_L}{2\varepsilon_L+1}E_0 $$</p>
+                            <p>Liquid Globule stability: $$ E = 487.7\sqrt{\frac{\sigma}{R\varepsilon_L}} \text{ V/cm}
+                                $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-6" style="height: 450px;">
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="globule-calc">🔴 Globule Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 21: Dielectric Breakdown in Solids -->
+                    <section class="ac-card ac-card--wide" id="card-breakdown-solids"
+                        style="border-top: 4px solid var(--unit-red);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">21. Dielectric Breakdown in Solids</h2>
+                            <span class="badge" style="background: var(--unit-red);">Solids</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>Von Hippel (Intrinsic): $$ E_c = \frac{2\pi\nu em}{h}\left(\frac{1}{n_c^2} -
+                                \frac{1}{\varepsilon}\right) $$</p>
+                            <p>Thermal Power loss: $$ W = E^2 f \cdot \frac{\varepsilon_r\tan\delta}{1.8\times10^{10}}
+                                \text{ W/cm}^3 $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-7"
+                            style="height: 500px; overflow-x: auto;">
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="thermal-breakdown-calc">🌡️ Thermal Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 22: Dielectric Loss -->
+                    <section class="ac-card ac-card--wide" id="card-dielectric-loss"
+                        style="border-top: 4px solid var(--neon-cyan);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">22. Dielectric Loss & Complex Permittivity</h2>
+                            <span class="badge" style="background: var(--neon-cyan);">Losses</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>Complex Permittivity: $$ \varepsilon^* = \varepsilon' - j\varepsilon'' \quad;\quad
+                                \tan\delta = \frac{\varepsilon''}{\varepsilon'} $$</p>
+                            <p>Power Loss: $$ P_{loss} = V^2\omega C\tan\delta \quad Q = \frac{1}{\tan\delta} $$</p>
+                            <p>Debye: $$ \varepsilon' = \varepsilon_\infty + \frac{\varepsilon_s -
+                                \varepsilon_\infty}{1+\omega^2\tau^2} \quad \varepsilon'' = \frac{(\varepsilon_s -
+                                \varepsilon_\infty)\omega\tau}{1+\omega^2\tau^2} $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-8"
+                            style="height: 500px; overflow-x: auto;">
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="loss-tangent-calc">📉 Loss Tangent Calc</button>
+                            <button class="ac-btn-icon" data-calc="debye-plotter-calc">🌀 Debye Plotter</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 23: Dielectric Strength & Energy Absorbed -->
+                    <section class="ac-card ac-card--wide" id="card-dielectric-strength"
+                        style="border-top: 4px solid var(--unit-rose);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">23. Dielectric Strength & Energy Absorbed</h2>
+                            <span class="badge" style="background: var(--unit-rose);">Strength</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>Energy Lost: $$ W(t) = \frac{\omega}{2}\varepsilon_0\varepsilon_r\tan\delta\,E_0^2 \text{
+                                W/m}^3 $$</p>
+                            <p>Dielectric Strength: $$ E_{bd} = \text{Max Field before Breakdown} $$ Mica: 200 kV/cm
+                                (Highest)</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-9"
+                            style="height: 500px; overflow-x: auto;">
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="strength-calc">📏 Strength Calc</button>
+                            <button class="ac-btn-icon" data-calc="energy-loss-calc">🔋 Energy Loss Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 24: Insulating Materials: Basics & Properties -->
+                    <section class="ac-card ac-card--wide" id="card-insulator-basics"
+                        style="border-top: 4px solid var(--unit-green);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">24. Insulating Materials: Basics & Properties</h2>
+                            <span class="badge" style="background: var(--unit-green);">Insulators</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>NTC behavior: $$ dR/dT < 0 $$ (Resistance decreases as Temp increases)</p>
+                                    <p>Max Voltage: $$ V_{max} = E_{bd} \times d $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-10"
+                            style="height: 500px; overflow-x: auto;">
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="material-selector-calc">📊 Material Selector</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 25: Thermal Classification of Insulators -->
+                    <section class="ac-card ac-card--wide" id="card-thermal-classes"
+                        style="border-top: 4px solid var(--unit-gold);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">25. Thermal Classification of Insulators</h2>
+                            <span class="badge" style="background: var(--unit-gold);">Thermal</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>Y (90°) < A,E (105°) < B (130°) < F (150°) < H (180°) < C (>180°)</p>
+                            <p>Montsinger's Rule: $$ L_2 = L_1 \times 2^{-(T_2-T_1)/10} $$ (Life halves every 10°C rise)
+                            </p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-11"
+                            style="height: 500px; overflow-x: auto;">
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="thermal-class-finder-calc">🌡️ Class Finder</button>
+                            <button class="ac-btn-icon" data-calc="life-calc">⏳ Life Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 26: Classification (Physical, Structural, etc.) -->
+                    <section class="ac-card ac-card--wide" id="card-insulator-classification"
+                        style="border-top: 4px solid var(--unit-purple);">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">26. Classification of Insulating Materials</h2>
+                            <span class="badge" style="background: var(--unit-purple);">Categories</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>SF₆ (Sulphur Hexafluoride): $$ E_{bd} \approx 3 \times \text{Air} $$ (GIS Switchgear)</p>
+                            <p>Organic/Inorganic | Natural/Synthetic | Solid, Liquid, Gas States</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-dielectric-12"
+                            style="height: 550px; overflow-x: auto;">
+                        </div>
+                    </section>
+
+                </div>
+            </section>
     </main>
+
 
     <!-- Calculator Modals -->
     <div class="ac-modal-overlay" id="modal-overlay"></div>
 
-    <!-- Modal: Advanced Resonance -->
-    <div class="ac-modal" id="calc-adv-resonance-modal">
-        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">🧮 Advanced Resonance</h3>
+    <!-- Dielectric Modals -->
+    <div class="ac-modal" id="calc-clausius-calc-modal">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">📐 Clausius-Mossotti</h3>
         <div class="ac-calc-grid">
-            <div class="ac-control-group"><label>R (Ω)</label><input type="number" class="ac-calc-input"
-                    id="adv-res-in-r" value="10"></div>
-            <div class="ac-control-group"><label>L (mH)</label><input type="number" class="ac-calc-input"
-                    id="adv-res-in-l" value="100"></div>
-            <div class="ac-control-group"><label>C (μF)</label><input type="number" class="ac-calc-input"
-                    id="adv-res-in-c" value="100"></div>
-            <div class="ac-calc-result" id="adv-res-res">f₀: 50.33 Hz | Q: 3.16</div>
+            <div class="ac-control-group"><label>N ($10^{28}$/m³)</label><input type="number" class="ac-calc-input"
+                    id="dl-in-n" value="5"></div>
+            <div class="ac-control-group"><label>α ($10^{-40}$ F·m²)</label><input type="number" class="ac-calc-input"
+                    id="dl-in-alpha" value="2"></div>
+            <div class="ac-calc-result" id="dl-res-final" style="grid-column: span 2;">Relative Permittivity
+                $\varepsilon_r$: 1.45</div>
         </div>
         <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
             onclick="closeModals()">Close</button>
     </div>
 
-    <!-- Modal: PF Correction -->
-    <div class="ac-modal" id="calc-pfc-calc-modal">
-        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">💡 PF Correction</h3>
+    <div class="ac-modal" id="calc-piezo-calc-modal">
+        <h3 style="color: var(--unit-green); margin-bottom: 1rem; font-family: Orbitron;">🔬 Piezo Calculator</h3>
         <div class="ac-calc-grid">
-            <div class="ac-control-group"><label>Power P (kW)</label><input type="number" class="ac-calc-input"
-                    id="pfc-in-p" value="10"></div>
-            <div class="ac-control-group"><label>Current pf</label><input type="number" class="ac-calc-input"
-                    id="pfc-in-pf1" value="0.7" step="0.05"></div>
-            <div class="ac-control-group"><label>Target pf</label><input type="number" class="ac-calc-input"
-                    id="pfc-in-pf2" value="0.95" step="0.05"></div>
-            <div class="ac-control-group"><label>V (Vrms)</label><input type="number" class="ac-calc-input"
-                    id="pfc-in-v" value="230"></div>
-            <div class="ac-calc-result" id="pfc-res">Req C: 415.2 uF</div>
+            <div class="ac-control-group"><label>Stress T (MPa)</label><input type="number" class="ac-calc-input"
+                    id="pz-in-t" value="10"></div>
+            <div class="ac-control-group"><label>d-const (pC/N)</label><input type="number" class="ac-calc-input"
+                    id="pz-in-d" value="200"></div>
+            <div class="ac-calc-result" id="pz-res-p" style="grid-column: span 2;">Polarization P: 2.0 μC/m²</div>
         </div>
         <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
             onclick="closeModals()">Close</button>
     </div>
 
-    <!-- Modal: 3-Phase -->
-    <div class="ac-modal" id="calc-3phase-calc-modal">
-        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">⚡ 3-Phase Calculator</h3>
+    <div class="ac-modal" id="calc-pyro-calc-modal">
+        <h3 style="color: var(--unit-red); margin-bottom: 1rem; font-family: Orbitron;">🌡️ Pyro Calculator</h3>
         <div class="ac-calc-grid">
-            <div class="ac-control-group"><label>Line V (V)</label><input type="number" class="ac-calc-input"
-                    id="3p-in-vl" value="415"></div>
-            <div class="ac-control-group"><label>Z / phase (Ω)</label><input type="number" class="ac-calc-input"
-                    id="3p-in-z" value="50"></div>
-            <div class="ac-control-group"><label>pf (cos φ)</label><input type="number" class="ac-calc-input"
-                    id="3p-in-pf" value="0.8"></div>
-            <div class="ac-calc-result" id="3p-res">P: 2.75 kW | IL: 4.79 A</div>
+            <div class="ac-control-group"><label>ΔT (K)</label><input type="number" class="ac-calc-input" id="py-in-dt"
+                    value="5"></div>
+            <div class="ac-control-group"><label>λ (μC/m²K)</label><input type="number" class="ac-calc-input"
+                    id="py-in-lambda" value="30"></div>
+            <div class="ac-calc-result" id="py-res-p" style="grid-column: span 2;">Change in P: 150 μC/m²</div>
         </div>
         <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
             onclick="closeModals()">Close</button>
     </div>
 
-    <!-- Modal: Magnetic Ohm -->
-    <div class="ac-modal" id="calc-mag-ohm-modal">
-        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">🧲 Magnetic Ohm's Law</h3>
+    <div class="ac-modal" id="calc-refractive-calc-modal">
+        <h3 style="color: var(--neon-cyan); margin-bottom: 1rem; font-family: Orbitron;">🌈 Refractive Index</h3>
         <div class="ac-calc-grid">
-            <div class="ac-control-group"><label>Turns (N)</label><input type="number" class="ac-calc-input"
-                    id="mag-in-n" value="500"></div>
-            <div class="ac-control-group"><label>Current I (A)</label><input type="number" class="ac-calc-input"
-                    id="mag-in-i" value="2"></div>
-            <div class="ac-control-group"><label>Reluct. S (AT/Wb)</label><input type="number" class="ac-calc-input"
-                    id="mag-in-s" value="100000"></div>
-            <div class="ac-calc-result" id="mag-res">Flux Φ: 0.01 Wb</div>
+            <div class="ac-control-group"><label>Refractive Index (n)</label><input type="number" class="ac-calc-input"
+                    id="ref-in-n" value="1.5" step="0.1"></div>
+            <div class="ac-calc-result" id="ref-res-er" style="grid-column: span 2;">Permittivity ε<sub>r</sub> = n² :
+                2.25</div>
         </div>
         <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
             onclick="closeModals()">Close</button>
     </div>
 
-    <!-- Modal: Graph Analyzer -->
-    <div class="ac-modal" id="calc-graph-analyzer-modal">
-        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">📐 Graph Analyzer</h3>
+    <div class="ac-modal" id="calc-lorentz-calc-modal">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">🧪 Lorentz-Lorentz</h3>
         <div class="ac-calc-grid">
-            <div class="ac-control-group"><label>Nodes (N)</label><input type="number" class="ac-calc-input"
-                    id="graph-in-n" value="4"></div>
-            <div class="ac-control-group"><label>Branches (B)</label><input type="number" class="ac-calc-input"
-                    id="graph-in-b" value="5"></div>
-            <div class="ac-calc-result" id="graph-res">Rank: 3 | Twigs: 3 | Links: 2</div>
+            <div class="ac-control-group"><label>Index (n)</label><input type="number" class="ac-calc-input"
+                    id="lor-in-n" value="1.5" step="0.1"></div>
+            <div class="ac-control-group"><label>Mol. Wt (M)</label><input type="number" class="ac-calc-input"
+                    id="lor-in-m" value="18"></div>
+            <div class="ac-control-group"><label>Density (ρ)</label><input type="number" class="ac-calc-input"
+                    id="lor-in-rho" value="1000"></div>
+            <div class="ac-calc-result" id="lor-res-rm" style="grid-column: span 2;">Molar Refraction R<sub>m</sub>:
+                0.005</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-townsend-calc-modal">
+        <h3 style="color: var(--unit-orange); margin-bottom: 1rem; font-family: Orbitron;">⚡ Townsend Breakdown</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>α (m⁻¹)</label><input type="number" class="ac-calc-input"
+                    id="twn-in-alpha" value="100"></div>
+            <div class="ac-control-group"><label>d (mm)</label><input type="number" class="ac-calc-input" id="twn-in-d"
+                    value="5"></div>
+            <div class="ac-control-group"><label>γ (coeff)</label><input type="number" class="ac-calc-input"
+                    id="twn-in-gamma" value="0.01"></div>
+            <div class="ac-calc-result" id="twn-res-val" style="grid-column: span 2;">Criterion γ(e^αd - 1): 0.51</div>
+            <div class="ac-calc-result" id="twn-res-status" style="grid-column: span 2; color: var(--unit-green);">Safe
+                (No Spark)</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-globule-calc-modal">
+        <h3 style="color: var(--unit-blue); margin-bottom: 1rem; font-family: Orbitron;">🔴 Liquid Globule</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Surface Tension σ</label><input type="number" class="ac-calc-input"
+                    id="glb-in-sigma" value="0.03"></div>
+            <div class="ac-control-group"><label>Radius R (μm)</label><input type="number" class="ac-calc-input"
+                    id="glb-in-r" value="10"></div>
+            <div class="ac-control-group"><label>Permittivity ε<sub>L</sub></label><input type="number"
+                    class="ac-calc-input" id="glb-in-er" value="2.2"></div>
+            <div class="ac-calc-result" id="glb-res-e" style="grid-column: span 2;">Critical E: 180.2 kV/cm</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-thermal-breakdown-calc-modal">
+        <h3 style="color: var(--unit-red); margin-bottom: 1rem; font-family: Orbitron;">🌡️ Thermal Breakdown</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Field E (kV/cm)</label><input type="number" class="ac-calc-input"
+                    id="thm-in-e" value="50"></div>
+            <div class="ac-control-group"><label>Freq f (Hz)</label><input type="number" class="ac-calc-input"
+                    id="thm-in-f" value="50"></div>
+            <div class="ac-control-group"><label>ε<sub>r</sub></label><input type="number" class="ac-calc-input"
+                    id="thm-in-er" value="3"></div>
+            <div class="ac-control-group"><label>tan δ</label><input type="number" class="ac-calc-input"
+                    id="thm-in-tand" value="0.005"></div>
+            <div class="ac-calc-result" id="thm-res-w" style="grid-column: span 2;">Heat W: 0.208 W/cm³</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-loss-tangent-calc-modal">
+        <h3 style="color: var(--neon-cyan); margin-bottom: 1rem; font-family: Orbitron;">📉 Loss Tangent</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>ε' (Storage)</label><input type="number" class="ac-calc-input"
+                    id="lt-in-ep" value="4.0"></div>
+            <div class="ac-control-group"><label>ε'' (Loss)</label><input type="number" class="ac-calc-input"
+                    id="lt-in-epp" value="0.04"></div>
+            <div class="ac-calc-result" id="lt-res-tand" style="grid-column: span 2;">tan δ: 0.010</div>
+            <div class="ac-calc-result" id="lt-res-q" style="grid-column: span 2;">Q-Factor: 100</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-debye-plotter-calc-modal">
+        <h3 style="color: var(--unit-rose); margin-bottom: 1rem; font-family: Orbitron;">🌀 Debye Plotter</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>ε<sub>s</sub> (Static)</label><input type="number"
+                    class="ac-calc-input" id="deb-in-es" value="10"></div>
+            <div class="ac-control-group"><label>ε<sub>∞</sub> (Opt)</label><input type="number" class="ac-calc-input"
+                    id="deb-in-einf" value="2"></div>
+            <div class="ac-control-group"><label>τ (ns)</label><input type="number" class="ac-calc-input"
+                    id="deb-in-tau" value="1"></div>
+            <div class="ac-calc-result" id="deb-res-peak" style="grid-column: span 2;">Peak Loss at: 159.2 MHz</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-strength-calc-modal">
+        <h3 style="color: var(--unit-rose); margin-bottom: 1rem; font-family: Orbitron;">📏 Dielectric Strength</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Material E<sub>bd</sub> (kV/cm)</label><input type="number"
+                    class="ac-calc-input" id="str-in-ebd" value="30"></div>
+            <div class="ac-control-group"><label>Thickness d (mm)</label><input type="number" class="ac-calc-input"
+                    id="str-in-d" value="2"></div>
+            <div class="ac-calc-result" id="str-res-vmax" style="grid-column: span 2;">Max Voltage V<sub>max</sub>: 6.0
+                kV</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-energy-loss-calc-modal">
+        <h3 style="color: var(--neon-cyan); margin-bottom: 1rem; font-family: Orbitron;">🔋 Energy Loss</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>ω (rad/s)</label><input type="number" class="ac-calc-input"
+                    id="en-in-omega" value="314"></div>
+            <div class="ac-control-group"><label>ε<sub>r</sub></label><input type="number" class="ac-calc-input"
+                    id="en-in-er" value="4"></div>
+            <div class="ac-control-group"><label>tan δ</label><input type="number" class="ac-calc-input" id="en-in-tand"
+                    value="0.01"></div>
+            <div class="ac-control-group"><label>E₀ (kV/m)</label><input type="number" class="ac-calc-input"
+                    id="en-in-e0" value="10"></div>
+            <div class="ac-calc-result" id="en-res-w" style="grid-column: span 2;">Loss W: 0.556 W/m³</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-material-selector-calc-modal">
+        <h3 style="color: var(--unit-green); margin-bottom: 1rem; font-family: Orbitron;">📊 Material Selector</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Min E<sub>bd</sub> (kV/cm)</label><input type="number"
+                    class="ac-calc-input" id="sel-in-ebd" value="25"></div>
+            <div class="ac-control-group"><label>Max Op Temp (°C)</label><input type="number" class="ac-calc-input"
+                    id="sel-in-temp" value="100"></div>
+            <div class="ac-calc-result" id="sel-res-list"
+                style="grid-column: span 2; font-size: 0.85rem; height: 100px; overflow-y: auto;">Recommended: Mica,
+                Glass, Porcelain</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-thermal-class-finder-calc-modal">
+        <h3 style="color: var(--unit-gold); margin-bottom: 1rem; font-family: Orbitron;">🌡️ Class Finder</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Operating Temp (°C)</label><input type="number" class="ac-calc-input"
+                    id="clf-in-temp" value="140"></div>
+            <div class="ac-calc-result" id="clf-res-class"
+                style="grid-column: span 2; font-weight: bold; font-size: 1.2rem;">Required: Class F (150°C)</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <div class="ac-modal" id="calc-life-calc-modal">
+        <h3 style="color: var(--unit-gold); margin-bottom: 1rem; font-family: Orbitron;">⏳ Life Expectancy</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Base Temp T₁ (°C)</label><input type="number" class="ac-calc-input"
+                    id="cl-in-t1" value="105"></div>
+            <div class="ac-control-group"><label>Base Life L₁ (yrs)</label><input type="number" class="ac-calc-input"
+                    id="cl-in-l1" value="20"></div>
+            <div class="ac-control-group"><label>New Temp T₂ (°C)</label><input type="number" class="ac-calc-input"
+                    id="cl-in-t2" value="115"></div>
+            <div class="ac-calc-result" id="cl-res-l2" style="grid-column: span 2;">Predicted Life L₂: 10.00 yrs</div>
         </div>
         <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
             onclick="closeModals()">Close</button>
     </div>
 
     <!-- Modal: Matrix Verify -->
+
     <div class="ac-modal" id="calc-matrix-verify-modal">
         <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">🔁 Matrix Orthogonality</h3>
         <div class="ac-calc-grid">
@@ -5567,10 +6236,270 @@
             onclick="closeModals()">Close</button>
     </div>
 
+    <!-- Modal: Atom Counter -->
+    <div class="ac-modal" id="calc-atom-counter-modal">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">⚛️ Atom Counter</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Corners (1/8)</label><input type="number" class="ac-calc-input"
+                    id="mat-in-nc" value="8" min="0" max="8"></div>
+            <div class="ac-control-group"><label>Faces (1/2)</label><input type="number" class="ac-calc-input"
+                    id="mat-in-nf" value="6" min="0" max="6"></div>
+            <div class="ac-control-group"><label>Edges (1/4)</label><input type="number" class="ac-calc-input"
+                    id="mat-in-ne" value="0" min="0" max="12"></div>
+            <div class="ac-control-group"><label>Body (1)</label><input type="number" class="ac-calc-input"
+                    id="mat-in-nb" value="0" min="0" max="4"></div>
+            <div class="ac-calc-result" id="mat-res-atoms">Total Atoms (N): 4</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: APF Calculator -->
+    <div class="ac-modal" id="calc-apf-calc-modal">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">📐 APF Calculator</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group">
+                <label>Structure Type</label>
+                <select class="ac-calc-input" id="mat-in-type" style="background: var(--bg-card); color: white;">
+                    <option value="SC">Simple Cubic (SC)</option>
+                    <option value="BCC">Body Centred (BCC)</option>
+                    <option value="FCC" selected>Face Centred (FCC)</option>
+                    <option value="DC">Diamond Cubic (DC)</option>
+                </select>
+            </div>
+            <div class="ac-calc-result" id="mat-res-apf">APF: 74% | Void: 26%</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Lattice Parameter Recalculator -->
+    <div class="ac-modal" id="calc-lattice-param-modal">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">🔢 Lattice Parameter (a)</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Radius r (Å)</label><input type="number" class="ac-calc-input"
+                    id="mat-in-r" value="1.24" step="0.01"></div>
+            <div class="ac-control-group"><label>Structure</label>
+                <select class="ac-calc-input" id="mat-in-lat-type" style="background: var(--bg-card); color: white;">
+                    <option value="SC">SC (a = 2r)</option>
+                    <option value="BCC">BCC (a = 4r/√3)</option>
+                    <option value="FCC" selected>FCC (a = 4r/√2)</option>
+                    <option value="DC">DC (a = 8r/√3)</option>
+                </select>
+            </div>
+            <div class="ac-calc-result" id="mat-res-lat-a">a: 3.51 Å</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Crystal Identifier -->
+    <div class="ac-modal" id="calc-crystal-identify-modal">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">🎯 Crystal Identifier</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group">
+                <label>Coordination No.</label>
+                <select class="ac-calc-input" id="mat-in-cn" style="background: var(--bg-card); color: white;">
+                    <option value="4">CN = 4</option>
+                    <option value="6">CN = 6</option>
+                    <option value="8">CN = 8</option>
+                    <option value="12" selected>CN = 12</option>
+                </select>
+            </div>
+            <div class="ac-calc-result" id="mat-res-ident">Matches: FCC Structure</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Compare Table -->
+    <div class="ac-modal" id="calc-crystal-compare-modal"
+        style="width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto;">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">📊 Complete Comparison</h3>
+        <div style="overflow-x: auto;">
+            <table class="ac-table" style="font-size: 0.8rem; width: 100%; color: white;">
+                <thead style="background: var(--bg-dark);">
+                    <tr>
+                        <th>Property</th>
+                        <th>Diamond (dc)</th>
+                        <th>SC</th>
+                        <th>BCC</th>
+                        <th>FCC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Atoms (N)</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>CN</td>
+                        <td>4</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>r vs a</td>
+                        <td>$a\sqrt{3}/8$</td>
+                        <td>$a/2$</td>
+                        <td>$a\sqrt{3}/4$</td>
+                        <td>$a\sqrt{2}/4$</td>
+                    </tr>
+                    <tr>
+                        <td>APF</td>
+                        <td>34%</td>
+                        <td>52%</td>
+                        <td>68%</td>
+                        <td>74%</td>
+                    </tr>
+                    <tr>
+                        <td>Examples</td>
+                        <td>Ge, Si, C</td>
+                        <td>Po</td>
+                        <td>Na, Li, Cr</td>
+                        <td>Al, Cu, Ag</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- NEW MODALS START HERE -->
+
+    <!-- Modal: Miller Indices -->
+    <div class="ac-modal" id="calc-miller-calc-modal">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">📐 Miller Indices</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Intercept x</label><input type="number" class="ac-calc-input"
+                    id="miller-in-x" value="1"></div>
+            <div class="ac-control-group"><label>Intercept y</label><input type="number" class="ac-calc-input"
+                    id="miller-in-y" value="1"></div>
+            <div class="ac-control-group"><label>Intercept z</label><input type="number" class="ac-calc-input"
+                    id="miller-in-z" value="999" placeholder="999 for ∞"></div>
+            <div class="ac-calc-result" id="miller-res">Indices: (1 1 0)</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Bragg's Law -->
+    <div class="ac-modal" id="calc-bragg-calc-modal">
+        <h3 style="color: var(--unit-purple); margin-bottom: 1rem; font-family: Orbitron;">🔬 Bragg's Law</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Order (n)</label><input type="number" class="ac-calc-input"
+                    id="bragg-in-n" value="1"></div>
+            <div class="ac-control-group"><label>Spacing d (nm)</label><input type="number" class="ac-calc-input"
+                    id="bragg-in-d" value="0.5" step="0.01"></div>
+            <div class="ac-control-group"><label>Angle θ (°)</label><input type="number" class="ac-calc-input"
+                    id="bragg-in-theta" value="30" step="1"></div>
+            <div class="ac-calc-result" id="bragg-res">Wavelength λ: 0.50 nm</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Magnetic Identifier -->
+    <div class="ac-modal" id="calc-mag-identifier-modal">
+        <h3 style="color: var(--unit-blue); margin-bottom: 1rem; font-family: Orbitron;">🧲 Material Identifier</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group" style="grid-column: span 2;"><label>Property Selection</label>
+                <select class="ac-calc-input" id="mag-in-id-type"
+                    style="background: var(--bg-card); color: white; width: 100%;">
+                    <option value="chi_small_neg">Susceptibility (χ) is small negative</option>
+                    <option value="chi_small_pos">Susceptibility (χ) is small positive</option>
+                    <option value="chi_large_pos">Susceptibility (χ) is very large positive</option>
+                    <option value="chi_approx_0">Susceptibility (χ) approaches 0</option>
+                </select>
+            </div>
+            <div class="ac-calc-result" id="mag-res-id" style="grid-column: span 2;">Classification: Diamagnetic</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Curie Temp Finder -->
+    <div class="ac-modal" id="calc-curie-temp-finder-modal">
+        <h3 style="color: var(--unit-red); margin-bottom: 1rem; font-family: Orbitron;">🌡️ Curie Temp Finder</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group">
+                <label>Material</label>
+                <select class="ac-calc-input" id="curie-in-mat" style="background: var(--bg-card); color: white;">
+                    <option value="Fe">Iron (Fe)</option>
+                    <option value="Co">Cobalt (Co)</option>
+                    <option value="Ni">Nickel (Ni)</option>
+                    <option value="FeO">FeO (Néel)</option>
+                </select>
+            </div>
+            <div class="ac-calc-result" id="curie-res">Tc = 770 °C (1043 K)</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Langevin Plotter -->
+    <div class="ac-modal" id="calc-langevin-plotter-modal">
+        <h3 style="color: var(--unit-gold); margin-bottom: 1rem; font-family: Orbitron;">📈 Langevin L(α)</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group"><label>Atoms (N)</label><input type="number" class="ac-calc-input"
+                    id="lan-in-n" value="1" step="0.1"></div>
+            <div class="ac-control-group"><label>Temp T (K)</label><input type="number" class="ac-calc-input"
+                    id="lan-in-t" value="300" step="10"></div>
+            <div class="ac-control-group"><label>H Field</label><input type="number" class="ac-calc-input" id="lan-in-h"
+                    value="1"></div>
+            <div class="ac-calc-result" id="lan-res">Magnetization: Linear Regime</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Soft vs Hard Hysteresis Compare -->
+    <div class="ac-modal" id="calc-hysteresis-compare-modal">
+        <h3 style="color: var(--unit-green); margin-bottom: 1rem; font-family: Orbitron;">⚖️ Soft vs Hard Magnet</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group">
+                <label>Coercivity (A/m)</label>
+                <input type="number" class="ac-calc-input" id="hyst-in-hc" value="50">
+            </div>
+            <div class="ac-calc-result" id="hyst-res" style="grid-column: span 2;">Type: Soft Magnetic (Transformer
+                Core)</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+    <!-- Modal: Unit Converter -->
+    <div class="ac-modal" id="calc-unit-converter-modal">
+        <h3 style="color: var(--unit-cyan); margin-bottom: 1rem; font-family: Orbitron;">🔢 Unit Converter</h3>
+        <div class="ac-calc-grid">
+            <div class="ac-control-group" style="grid-column: span 2;"><label>Direction</label>
+                <select class="ac-calc-input" id="unit-in-type"
+                    style="background: var(--bg-card); color: white; width: 100%;">
+                    <option value="G2T">Gauss → Tesla (B)</option>
+                    <option value="T2G">Tesla → Gauss (B)</option>
+                    <option value="Oe2Am">Oersted → A/m (H)</option>
+                    <option value="Am2Oe">A/m → Oersted (H)</option>
+                </select>
+            </div>
+            <div class="ac-control-group"><label>Value</label><input type="number" class="ac-calc-input"
+                    id="unit-in-val" value="1000"></div>
+            <div class="ac-calc-result" id="unit-res">Result: 0.1 Tesla</div>
+        </div>
+        <button class="ac-btn-icon" style="margin-top: 1rem; width: 100%; justify-content: center;"
+            onclick="closeModals()">Close</button>
+    </div>
+
+
 
     <script src="js/hero-bg.js"></script>
     <script src="js/circuit.js?v=1"></script>
     <script src="js/ac-analysis.js"></script>
+    <script src="js/materials.js"></script>
     <script src="js/app.js"></script>
     <!-- KaTeX Auto-Render Initializer -->
     <script>
