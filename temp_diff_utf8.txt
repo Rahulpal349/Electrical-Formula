@@ -1,0 +1,31 @@
+diff --git a/circuit.html b/circuit.html
+index d5d8c18..83dc39a 100644
+--- a/circuit.html
++++ b/circuit.html
+@@ -1,4 +1,4 @@
+-<!DOCTYPE html>
++﻿<!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+@@ -57,11 +57,8 @@
+             <li><a href="utilization.html">Utilization</a></li>
+         </ul>
+         <div class="navbar__actions">
+-            <div class="search-box">
+-                <span class="search-icon">??</span>
+-                <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off" />
+-            </div>
+-            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">??</button>
++            <button id="bookmarks-toggle" class="bookmark-btn" title="Bookmarks" style="font-size:1.2rem; background:none; border:none; color:var(--neon-cyan); cursor:pointer; padding:5px 10px;">🔖</button>
++
+         </div>
+     </nav>
+ 
+@@ -6170,3 +6167,6 @@
+ </body>
+ 
+ </html>
++
++
++
