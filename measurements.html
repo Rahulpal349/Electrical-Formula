@@ -230,8 +230,262 @@
                         </div>
                     </div>
 
-                </div>
-            </section>
+                    <!-- ─────── 1.4 Methods of Measurement ─────── -->
+                    <div class="machine-card" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color);"></div>
+                        <div class="card-header">
+                            <h3>1.4 Methods of Measurement</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <h4 style="color:var(--mod1-color); margin-bottom:8px;">Direct Method</h4>
+                            <div class="formula text-sm">$$ \text{Unknown quantity directly compared against a standard} $$</div>
+                            <div class="formula text-xs mb-2">$$ \text{Inaccurate — Examples: Ruler, Ammeter reading} $$</div>
+                            <h4 style="color:var(--mod1-color); margin-bottom:8px;">Indirect Method</h4>
+                            <div class="formula text-sm">$$ \text{Unknown quantity computed from measured related quantities} $$</div>
+                            <div class="formula text-xs">$$ P = V \times I \quad \text{(measure V, I separately)} $$</div>
+                            <div class="formula text-xs mt-2" style="color:#00ff88;">$$ \text{Accurate, More Sensitive, Preferred} $$</div>
+                        </div>
+                        <div class="anim-zone" style="flex-direction:column;">
+                            <div id="plot-em-methods" style="width:100%; height:220px;"></div>
+                            <div class="toggle-group mt-2">
+                                <button class="toggle-btn mod1-btn active" id="btn-direct">Direct</button>
+                                <button class="toggle-btn mod1-btn" id="btn-indirect">Indirect</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─────── 1.5 Classification of Instruments ─────── -->
+                    <div class="machine-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod1-color);"></div>
+                        <div class="card-header">
+                            <h3>1.5 Classification of Instruments</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <h4 style="color:#fff; margin-bottom:6px; text-align:center;">(i) Absolute vs Secondary</h4>
+                            <div class="formula text-xs mb-2">$$ \text{Absolute: value from constants (no calibration)} $$</div>
+                            <div class="formula text-xs mb-2">$$ \text{Secondary: must be calibrated} $$</div>
+                            <h4 style="color:#fff; margin-bottom:6px; text-align:center;">(ii) Deflection vs Null</h4>
+                            <div class="formula text-xs mb-2">$$ \text{Deflection: fast, less accurate} $$</div>
+                            <div class="formula text-xs mb-2">$$ \text{Null: slow, high accuracy \& sensitivity} $$</div>
+                            <h4 style="color:#fff; margin-bottom:6px; text-align:center;">(iii) Recording vs Integrating</h4>
+                            <div class="formula text-xs">$$ W = \int_0^T P\,dt = \int_0^T VI\cos\phi\,dt \;\text{(kWh)} $$</div>
+                        </div>
+                        <div class="anim-zone" style="flex-direction:column;">
+                            <div id="plot-em-classify" style="width:100%; height:220px;"></div>
+                            <div class="toggle-group mt-2">
+                                <button class="toggle-btn mod1-btn active" id="btn-class-tree">Tree</button>
+                                <button class="toggle-btn mod1-btn" id="btn-defl-null">Defl vs Null</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─────── 1.6 Static Characteristics ─────── -->
+                    <div class="machine-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color);"></div>
+                        <div class="card-header">
+                            <h3>1.6 Static Characteristics of Instruments</h3>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:16px;">
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:6px; text-align:center;">1. Accuracy</h4>
+                                <div class="formula text-xs">$$ \%\text{Acc} = \left(1 - \frac{|A_m - A_t|}{A_t}\right) \times 100 $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:6px; text-align:center;">2. Precision</h4>
+                                <div class="formula text-xs">$$ \text{Closeness of measurements to each other} $$</div>
+                                <div class="formula text-xs">$$ \text{Precise} \neq \text{Accurate} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:6px; text-align:center;">3. Sensitivity</h4>
+                                <div class="formula text-xs">$$ S = \frac{\Delta V_o}{\Delta V_i} = \frac{1}{I_{FSD}} \;\Omega/\text{V} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:6px; text-align:center;">4. Repeatability</h4>
+                                <div class="formula text-xs">$$ \text{Short-term consistency (same observer)} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#ef4444; margin-bottom:6px; text-align:center;">5. Dead Time / Zone</h4>
+                                <div class="formula text-xs">$$ t_{dead} = \text{delay before response} $$</div>
+                                <div class="formula text-xs">$$ \Delta x_{dead} = \text{input with no output} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:6px; text-align:center;">6. Linearity</h4>
+                                <div class="formula text-xs">$$ y = kx \quad \text{(ideal)} $$</div>
+                                <div class="formula text-xs">$$ e_{lin} = \frac{|y_{act} - y_{ideal}|}{y_{FS}} \times 100\% $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#60a5fa; margin-bottom:6px; text-align:center;">7. Resolution</h4>
+                                <div class="formula text-xs">$$ R = \frac{\text{FSD}}{n} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#f472b6; margin-bottom:6px; text-align:center;">8. Drift</h4>
+                                <div class="formula text-xs">$$ \text{Zero drift | Sensitivity drift | Span drift} $$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="flex-direction:column; min-height:280px;">
+                            <div id="plot-em-static" style="width:100%; height:250px;"></div>
+                            <div class="toggle-group mt-2">
+                                <button class="toggle-btn mod1-btn active" id="btn-acc-prec">Accuracy vs Precision</button>
+                                <button class="toggle-btn mod1-btn" id="btn-sensitivity">Sensitivity</button>
+                                <button class="toggle-btn mod1-btn" id="btn-deadzone">Dead Zone</button>
+                                <button class="toggle-btn mod1-btn" id="btn-resolution">Resolution</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─────── 1.7 Errors in Measurement ─────── -->
+                    <div class="machine-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color);"></div>
+                        <div class="card-header">
+                            <h3>1.7 Errors in Measurement & Analysis</h3>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:16px;">
+                            <div>
+                                <h4 style="color:#ef4444; margin-bottom:6px; text-align:center;">Static Error</h4>
+                                <div class="formula text-xs">$$ \delta A = A_m - A_t $$</div>
+                                <div class="formula text-xs">$$ |\delta A| = |A_m - A_t| \;\text{(Absolute)} $$</div>
+                                <div class="formula text-xs">$$ \epsilon_r = \frac{\delta A}{A_t} \;\text{(Relative)} $$</div>
+                                <div class="formula text-xs">$$ \%\text{Error} = \frac{A_m - A_t}{A_t} \times 100 $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:6px; text-align:center;">% Accuracy</h4>
+                                <div class="formula text-xs">$$ \%\text{Acc} = (1 - |\epsilon_r|) \times 100 $$</div>
+                                <div class="formula text-xs">$$ \%\text{Error}_{class} = \frac{\text{Limiting error}}{\text{FSD}} \times 100 $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:6px; text-align:center;">Error Types</h4>
+                                <div class="formula text-xs">$$ \text{Gross: Human blunders} $$</div>
+                                <div class="formula text-xs">$$ \text{Systematic: Pattern (+ve or -ve)} $$</div>
+                                <div class="formula text-xs">$$ \text{Random: Gaussian distributed} $$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="flex-direction:column;">
+                            <div id="plot-em-errors" style="width:100%; height:220px;"></div>
+                            <div style="display:flex; gap:10px; align-items:center; justify-content:center; margin-top:8px;">
+                                <label style="color:#ccc; font-size:0.8rem;">σ:</label>
+                                <input type="range" id="em-sigma-slider" min="5" max="40" value="15" style="width:150px;">
+                                <span id="em-sigma-val" style="color:var(--mod1-color); font-size:0.8rem;">15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─────── 1.8 Relative Limiting Error & Static Correction ─────── -->
+                    <div class="machine-card" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color);"></div>
+                        <div class="card-header">
+                            <h3>1.8 Limiting Error & Static Correction</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <h4 style="color:#facc15; margin-bottom:6px;">Relative Limiting Error</h4>
+                            <div class="formula text-xs">$$ \epsilon_r = \frac{A_m - A_t}{A_t} \times 100\% $$</div>
+                            <h4 style="color:#00ff88; margin-top:10px; margin-bottom:6px;">Static Correction</h4>
+                            <div class="formula text-sm">$$ \boxed{\delta C = A_t - A_m = -\delta A} $$</div>
+                            <div class="formula text-xs">$$ A_t = A_m + \delta C $$</div>
+                            <h4 style="color:#f97316; margin-top:10px; margin-bottom:6px;">Non-Linearity Error</h4>
+                            <div class="formula text-xs">$$ \%NL = \frac{\text{Max deviation from ideal line}}{\text{Desired Value}} \times 100 $$</div>
+                        </div>
+                        <div class="anim-zone">
+                            <div id="plot-em-correction" style="width:100%; height:220px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- ─────── 1.9 Combination of Quantities with Limiting Errors ─────── -->
+                    <div class="machine-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-strip" style="background: var(--mod1-color);"></div>
+                        <div class="card-header">
+                            <h3>1.9 Combination of Errors</h3>
+                        </div>
+                        <div class="formula-zone">
+                            <h4 style="color:#00f5ff; margin-bottom:6px;">Sum / Difference</h4>
+                            <div class="formula text-xs">$$ \delta X = \pm(\delta X_1 + \delta X_2 + \cdots) $$</div>
+                            <h4 style="color:#00ff88; margin-top:8px; margin-bottom:6px;">Product / Quotient</h4>
+                            <div class="formula text-xs">$$ \frac{\delta x}{x} = \pm\left(\frac{\delta x_1}{x_1} + \frac{\delta x_2}{x_2}\right) $$</div>
+                            <h4 style="color:#a78bfa; margin-top:8px; margin-bottom:6px;">Composite (Power)</h4>
+                            <div class="formula text-xs">$$ x = x_1^a \cdot x_2^b \Rightarrow \epsilon_x = a\epsilon_1 + b\epsilon_2 $$</div>
+                            <div class="formula text-xs mt-2" style="color:#facc15;">$$ P = \frac{V^2}{R} \Rightarrow \frac{\delta P}{P} = 2\frac{\delta V}{V} + \frac{\delta R}{R} $$</div>
+                        </div>
+                        <div class="anim-zone">
+                            <div id="plot-em-combination" style="width:100%; height:220px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- ─────── 1.10 Arithmetic Mean & Deviation Analysis ─────── -->
+                    <div class="machine-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color);"></div>
+                        <div class="card-header">
+                            <h3>1.10 Arithmetic Mean & Deviation Analysis</h3>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:16px;">
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:6px; text-align:center;">Mean & Deviation</h4>
+                                <div class="formula text-xs">$$ \bar{X} = \frac{\sum X_i}{n} $$</div>
+                                <div class="formula text-xs">$$ d_i = X_i - \bar{X} \quad;\quad \bar{D} = \frac{\sum|d_i|}{n} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:6px; text-align:center;">Std Dev & Variance</h4>
+                                <div class="formula text-xs">$$ \sigma = \sqrt{\frac{\sum d_i^2}{n-1}} \;\text{(n&lt;20)} $$</div>
+                                <div class="formula text-xs">$$ V = \sigma^2 $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:6px; text-align:center;">Probable & Std Error</h4>
+                                <div class="formula text-xs">$$ r = 0.6745\,\sigma $$</div>
+                                <div class="formula text-xs">$$ S_{\bar{X}} = \frac{\sigma}{\sqrt{n}} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:6px; text-align:center;">Confidence Intervals</h4>
+                                <div class="formula text-xs">$$ \pm\sigma \rightarrow 68.27\% $$</div>
+                                <div class="formula text-xs">$$ \pm 2\sigma \rightarrow 95.45\% $$</div>
+                                <div class="formula text-xs">$$ \pm 3\sigma \rightarrow 99.73\% $$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="flex-direction:column; min-height:280px;">
+                            <div id="plot-em-stats" style="width:100%; height:200px;"></div>
+                            <div style="padding:8px 16px;">
+                                <label style="color:#ccc; font-size:0.75rem;">Data (comma-separated):</label>
+                                <input type="text" id="em-stat-input" value="49.7, 50.1, 50.2, 49.6, 49.7, 50.0, 49.8, 50.3, 49.9, 50.1"
+                                    style="width:100%; background:#0d1117; border:1px solid rgba(255,255,255,0.1); color:#fff; padding:6px 10px; border-radius:4px; font-size:0.75rem; margin-top:4px;">
+                                <button class="toggle-btn mod1-btn" id="btn-stat-compute" style="margin-top:6px;">Compute & Plot</button>
+                            </div>
+                            <div id="em-stat-results" style="padding:4px 16px; font-size:0.75rem; color:var(--mod1-color);"></div>
+                        </div>
+                    </div>
+
+                    <!-- ─────── 1.11 Error Types & Analog Instruments ─────── -->
+                    <div class="machine-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: var(--mod1-color);"></div>
+                        <div class="card-header">
+                            <h3>1.11 Error Types & Analog Instruments</h3>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:16px;">
+                            <div>
+                                <h4 style="color:#ef4444; margin-bottom:6px; text-align:center;">Gross Errors</h4>
+                                <div class="formula text-xs">$$ \text{Human mistakes — cannot treat mathematically} $$</div>
+                                <div class="formula text-xs">$$ \text{Parallax, wrong reading, wrong setting} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:6px; text-align:center;">Systematic Errors</h4>
+                                <div class="formula text-xs">$$ \text{Instrumental | Environmental | Observational} $$</div>
+                                <div class="formula text-xs">$$ \delta R = R_0 \alpha \Delta T $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#60a5fa; margin-bottom:6px; text-align:center;">Random Errors</h4>
+                                <div class="formula text-xs">$$ \text{Follow Gaussian distribution} $$</div>
+                                <div class="formula text-xs">$$ \text{Error reduces as } \frac{1}{\sqrt{n}} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:6px; text-align:center;">Analog Instrument Types</h4>
+                                <div class="formula text-xs">$$ \text{Indicating | Recording | Integrating | Null} $$</div>
+                                <div class="formula text-xs">$$ W = \int_0^T VI\cos\phi\,dt \;\text{(energy meter)} $$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="flex-direction:column; min-height:280px;">
+                            <div id="plot-em-analog" style="width:100%; height:240px;"></div>
+                            <div class="toggle-group mt-2">
+                                <button class="toggle-btn mod1-btn active" id="btn-error-tree">Error Tree</button>
+                                <button class="toggle-btn mod1-btn" id="btn-sqrt-n">1/√n Curve</button>
+                            </div>
+                        </div>
+                    </div>
 
             <!-- MODULE 2: Analog Indicating Instruments -->
             <section id="mod2" class="module-section">
@@ -1516,6 +1770,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
         <script src="js/hero-bg.js"></script>
         <script src="js/measurements.js"></script>
+        <script src="js/measurements-ext.js"></script>
 </body>
 
 </html>
