@@ -751,9 +751,10 @@ function initMagnetostriction() {
         }
         bindSlider();
     }
+}
 
-    // ──── Card 31: Curie Temperature Laws (D3.js Graph) ────
-    function initCurieGraph() {
+// ──── Card 31: Curie Temperature Laws (D3.js Graph) ────
+function initCurieGraph() {
         const container = d3.select("#plot-material-10");
         if (container.empty()) return;
 
@@ -2352,7 +2353,7 @@ function initMagnetostriction() {
         const lifeDiv = container.append("div").style("width", "400px");
         const lm = { t: 30, r: 20, b: 50, l: 60 };
         const lw = 400 - lm.l - lm.r, lh = 300 - lm.t - lm.b;
-        lifeDiv.append("h4").style("color", "var(--unit- gold)").style("text-align", "center").text("Insulation Life (Montsinger's Rule)");
+        lifeDiv.append("h4").style("color", "var(--unit-gold)").style("text-align", "center").text("Insulation Life (Montsinger's Rule)");
         const lSvg = lifeDiv.append("svg").attr("width", 400).attr("height", 300);
         const lg = lSvg.append("g").attr("transform", `translate(${lm.l},${lm.t})`);
 
@@ -2472,5 +2473,4 @@ function initMagnetostriction() {
         });
         renderView();
     }
-}
 

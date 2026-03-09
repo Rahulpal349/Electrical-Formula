@@ -6,6 +6,8 @@
     --unit-green: #00ff88;
     --unit-orange: #f97316;
     --unit-blue: #60a5fa;
+    --unit-red: #ef4444;
+    --unit-rose: #f472b6;
 
     --bg-dark: #0a0a0f;
     --card-bg: #111827;
@@ -65,6 +67,10 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+}
+
+.ac-card--wide {
+    grid-column: 1 / -1;
 }
 
 .ac-card:hover {
@@ -362,6 +368,42 @@
 .graph-link.link {
     stroke: var(--unit-gold);
     stroke-dasharray: 4, 4;
+}
+
+/* ──── Sub-section Dividers ──── */
+.ac-subsection {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 1.5rem 1rem 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.ac-subsection h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.ac-subsection h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+}
+
+.ac-subsection p {
+    color: var(--text-muted, #888);
+    font-size: 0.85rem;
+    margin-top: 6px;
 }
 
 /* ──── Responsive ──── */

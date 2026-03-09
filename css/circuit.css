@@ -1109,8 +1109,17 @@
     gap: 20px;
 }
 
+.card-grid-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
 @media (max-width: 768px) {
     .card-grid-2 {
+        grid-template-columns: 1fr;
+    }
+    .card-grid-sidebar {
         grid-template-columns: 1fr;
     }
 }
