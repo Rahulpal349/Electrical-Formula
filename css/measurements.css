@@ -602,3 +602,449 @@ input[type=range]::-webkit-slider-thumb {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 5px;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MODULE 2: MEASURING INSTRUMENTS — Orange Accent (#f97316)
+   ═══════════════════════════════════════════════════════════ */
+
+/* M2 badge */
+.m2-badge {
+    background: rgba(249,115,22,0.15);
+    color: #f97316;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(249,115,22,0.3);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+/* Card footer */
+.m2-card-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 15px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.15);
+}
+.m2-footer-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #94a3b8;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all .25s ease;
+    font-family: 'Inter', sans-serif;
+}
+.m2-footer-btn:hover {
+    background: rgba(249,115,22,0.12);
+    color: #f97316;
+    border-color: rgba(249,115,22,0.3);
+}
+.m2-footer-btn.bookmarked {
+    color: #f97316;
+    border-color: #f97316;
+    background: rgba(249,115,22,0.15);
+}
+
+/* Calculator zones */
+.m2-calc-zone {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease, padding .4s ease;
+    background: rgba(13,17,23,0.95);
+    padding: 0 1.5rem;
+}
+.m2-calc-zone.open {
+    max-height: 250px;
+    padding: 15px 1.5rem;
+    border-top: 1px solid rgba(249,115,22,0.15);
+}
+.m2-calc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.m2-calc-row label {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    min-width: 50px;
+}
+.m2-calc-row input[type="number"] {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #f8fafc;
+    padding: 5px 8px;
+    border-radius: 6px;
+    width: 80px;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color .2s;
+}
+.m2-calc-row input[type="number"]:focus {
+    border-color: #f97316;
+    box-shadow: 0 0 6px rgba(249,115,22,0.3);
+}
+.m2-calc-result {
+    background: rgba(249,115,22,0.08);
+    color: #f97316;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* M2 toggle buttons (orange) */
+.m2-btn.active {
+    background: rgba(249,115,22,0.9);
+    border-color: #f97316;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 0 12px rgba(249,115,22,0.4);
+}
+
+/* M2 slider accent */
+.m2-slider::-webkit-slider-thumb {
+    background: #f97316 !important;
+    box-shadow: 0 0 6px rgba(249,115,22,0.5);
+}
+
+/* Error tags */
+.m2-error-tag {
+    background: rgba(239,68,68,0.1);
+    color: #ef4444;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(239,68,68,0.2);
+}
+
+/* Comparison table */
+.m2-comparison-table-wrap {
+    overflow-x: auto;
+    margin-top: 10px;
+}
+.m2-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+}
+.m2-comparison-table th {
+    background: rgba(249,115,22,0.12);
+    color: #f97316;
+    padding: 10px 12px;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    border-bottom: 2px solid rgba(249,115,22,0.3);
+}
+.m2-comparison-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #e2e8f0;
+    vertical-align: top;
+}
+.m2-comparison-table tr:hover td {
+    background: rgba(249,115,22,0.04);
+}
+
+/* M2 card glow on hover */
+.m2-card:hover {
+    box-shadow: 0 10px 40px rgba(249,115,22,0.12),
+                0 0 0 1px rgba(249,115,22,0.1);
+}
+
+/* M2 pointer meter shared styles */
+.m2-meter-svg {
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+/* Responsive for M2 */
+@media (max-width: 768px) {
+    .m2-calc-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .m2-calc-row input[type="number"] {
+        width: 100%;
+    }
+    .m2-card-footer {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .m2-comparison-table {
+        font-size: 0.75rem;
+    }
+    .m2-comparison-table th,
+    .m2-comparison-table td {
+        padding: 6px 8px;
+    }
+}
+
+/* ─── M2 Cards 2.8-2.11 extras ─── */
+.m2-app-tag {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Hot wire glow animation */
+@keyframes hwGlow {
+    0%   { opacity: 0.15; }
+    50%  { opacity: 0.55; }
+    100% { opacity: 0.15; }
+}
+.hw-glow-anim {
+    animation: hwGlow 1.2s ease-in-out infinite;
+}
+
+/* Thermocouple glow pulse */
+@keyframes tcPulse {
+    0%   { r: 10; opacity: 0.3; }
+    50%  { r: 18; opacity: 0.6; }
+    100% { r: 10; opacity: 0.3; }
+}
+.tc-glow-anim {
+    animation: tcPulse 1.5s ease-in-out infinite;
+}
+
+/* Electrostatic field shimmer */
+@keyframes fieldShimmer {
+    0%   { opacity: 0.15; }
+    50%  { opacity: 0.5; }
+    100% { opacity: 0.15; }
+}
+.estat-field-anim {
+    animation: fieldShimmer 2s ease-in-out infinite;
+}
+
+/* R-divider heat glow */
+@keyframes rHeat {
+    0%   { opacity: 0; }
+    50%  { opacity: 0.25; }
+    100% { opacity: 0; }
+}
+.rdiv-heat-anim {
+    animation: rHeat 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MODULE 3: RECTIFIER & RESISTANCE — Green Accent (#00ff88)
+   ═══════════════════════════════════════════════════════════ */
+
+.m3-badge {
+    background: rgba(0,255,136,0.12);
+    color: #00ff88;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,255,136,0.25);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.m3-card-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 15px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.15);
+}
+.m3-footer-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #94a3b8;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all .25s ease;
+    font-family: 'Inter', sans-serif;
+}
+.m3-footer-btn:hover {
+    background: rgba(0,255,136,0.1);
+    color: #00ff88;
+    border-color: rgba(0,255,136,0.3);
+}
+.m3-footer-btn.bookmarked {
+    color: #00ff88;
+    border-color: #00ff88;
+    background: rgba(0,255,136,0.12);
+}
+
+.m3-calc-zone {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease, padding .4s ease;
+    background: rgba(13,17,23,0.95);
+    padding: 0 1.5rem;
+}
+.m3-calc-zone.open {
+    max-height: 280px;
+    padding: 15px 1.5rem;
+    border-top: 1px solid rgba(0,255,136,0.15);
+}
+.m3-calc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.m3-calc-row label {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    min-width: 50px;
+}
+.m3-calc-row input[type="number"] {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #f8fafc;
+    padding: 5px 8px;
+    border-radius: 6px;
+    width: 90px;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color .2s;
+}
+.m3-calc-row input[type="number"]:focus {
+    border-color: #00ff88;
+    box-shadow: 0 0 6px rgba(0,255,136,0.3);
+}
+.m3-calc-result {
+    background: rgba(0,255,136,0.06);
+    color: #00ff88;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.m3-btn.active {
+    background: rgba(0,255,136,0.85);
+    border-color: #00ff88;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 0 12px rgba(0,255,136,0.4);
+}
+
+.m3-slider::-webkit-slider-thumb {
+    background: #00ff88 !important;
+    box-shadow: 0 0 6px rgba(0,255,136,0.5);
+}
+
+.m3-comparison-table-wrap {
+    overflow-x: auto;
+    margin-top: 10px;
+}
+.m3-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+}
+.m3-comparison-table th {
+    background: rgba(0,255,136,0.08);
+    color: #00ff88;
+    padding: 10px 12px;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    border-bottom: 2px solid rgba(0,255,136,0.25);
+}
+.m3-comparison-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #e2e8f0;
+    vertical-align: top;
+}
+.m3-comparison-table tr:hover td {
+    background: rgba(0,255,136,0.03);
+}
+
+.m3-app-tag {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+}
+
+.m3-card:hover {
+    box-shadow: 0 10px 40px rgba(0,255,136,0.1),
+                0 0 0 1px rgba(0,255,136,0.08);
+}
+
+@media (max-width: 768px) {
+    .m3-calc-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .m3-calc-row input[type="number"] {
+        width: 100%;
+    }
+    .m3-card-footer {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .m3-comparison-table {
+        font-size: 0.75rem;
+    }
+    .m3-comparison-table th,
+    .m3-comparison-table td {
+        padding: 6px 8px;
+    }
+}
+
+/* ── Cards 8-12 additions ── */
+.m3-btn {
+    padding: 6px 16px;
+    border: 1px solid #333;
+    background: rgba(255,255,255,0.04);
+    color: #94a3b8;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+.m3-btn:hover {
+    border-color: #00ff88;
+    color: #fff;
+}
+.m3-btn.active {
+    background: rgba(0,255,136,0.12);
+    border-color: #00ff88;
+    color: #00ff88;
+    font-weight: 600;
+}
+
+.interactive-slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.interactive-slider-group label {
+    color: #94a3b8;
+    font-size: 0.78rem;
+    font-family: 'Inter', sans-serif;
+}
