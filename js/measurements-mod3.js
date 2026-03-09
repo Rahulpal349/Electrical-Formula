@@ -689,6 +689,559 @@
         });
     }
 
+    /* ══════════════════════════════════════════════════════
+       CARD 3.8: THEVENIN EQUIVALENT OF WHEATSTONE BRIDGE
+       ══════════════════════════════════════════════════════ */
+    function initTheveninBridge() {
+        var pSlider = document.getElementById('m3-thev-p');
+        var qSlider = document.getElementById('m3-thev-q');
+        var rSlider = document.getElementById('m3-thev-r');
+        var sSlider = document.getElementById('m3-thev-s');
+        if (!pSlider) return;
+
+        var pV = document.getElementById('m3-thev-p-val');
+        var qV = document.getElementById('m3-thev-q-val');
+        var rV = document.getElementById('m3-thev-r-val');
+        var sV = document.getElementById('m3-thev-s-val');
+        var vthLabel = document.getElementById('m3-thev-vth-label');
+        var rthLabel = document.getElementById('m3-thev-rth-label');
+        var igLabel  = document.getElementById('m3-thev-ig-label');
+        var statusEl = document.getElementById('m3-thev-status');
+
+        var Rg = 100, Vbat = 10;
+        var chW = 320, chH = 210;
+        var chartSvg = d3Container('m3-thev-chart', chW, chH);
+
+        function drawChart(P, Q, R, S) {
+            if (!chartSvg) return;
+            chartSvg.selectAll('.th-el').remove();
+            var margin = { t: 22, r: 15, b: 28, l: 45 };
+            var w = chW - margin.l - margin.r, h = chH - margin.t - margin.b;
+            var g = chartSvg.append('g').attr('class', 'th-el').attr('transform', 'translate(' + margin.l + ',' + margin.t + ')');
+
+            // Vth vs S (varying S, fixed P, Q, R)
+            var data = [];
+            for (var s = 10; s <= 1000; s += 10) {
+                var vth = Vbat * (P * s - Q * R) / ((P + Q) * (R + s));
+                data.push({ s: s, vth: vth });
+            }
+            var xScale = d3.scaleLinear().domain([10, 1000]).range([0, w]);
+            var ext = d3.extent(data, function (d) { return d.vth; });
+            var maxA = Math.max(Math.abs(ext[0]), Math.abs(ext[1])) || 1;
+            var yScale = d3.scaleLinear().domain([-maxA, maxA]).range([h, 0]);
+
+            g.append('line').attr('x1', 0).attr('y1', h).attr('x2', w).attr('y2', h).attr('stroke', '#475569');
+            g.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', h).attr('stroke', '#475569');
+            g.append('line').attr('x1', 0).attr('y1', yScale(0)).attr('x2', w).attr('y2', yScale(0)).attr('stroke', '#333');
+            g.append('text').attr('x', w / 2).attr('y', h + 22).attr('fill', GREY).attr('font-size', 8).attr('text-anchor', 'middle').text('S (Ω)');
+            g.append('text').attr('x', -5).attr('y', -6).attr('fill', GREY).attr('font-size', 7).text('Vth (V)');
+
+            var lineGen = d3.line().x(function (d) { return xScale(d.s); }).y(function (d) { return yScale(d.vth); }).curve(d3.curveMonotoneX);
+            g.append('path').attr('d', lineGen(data)).attr('fill', 'none').attr('stroke', PURPLE).attr('stroke-width', 2);
+
+            // Balance point
+            var sBal = Q * R / P;
+            if (sBal >= 10 && sBal <= 1000) {
+                g.append('circle').attr('cx', xScale(sBal)).attr('cy', yScale(0)).attr('r', 5).attr('fill', GREEN);
+                g.append('text').attr('x', xScale(sBal)).attr('y', yScale(0) - 8).attr('fill', GREEN).attr('font-size', 8).attr('text-anchor', 'middle').text('Balance S=' + fmtR(sBal));
+            }
+
+            // Current S marker
+            if (S >= 10 && S <= 1000) {
+                var vthCur = Vbat * (P * S - Q * R) / ((P + Q) * (R + S));
+                g.append('circle').attr('cx', xScale(S)).attr('cy', yScale(vthCur)).attr('r', 4).attr('fill', ORANGE);
+            }
+            g.append('text').attr('x', w / 2).attr('y', 12).attr('fill', GREY).attr('font-size', 9).attr('text-anchor', 'middle').text('Vth vs S (P=' + P + ', Q=' + Q + ', R=' + R + ')');
+        }
+
+        function update() {
+            var P = +pSlider.value, Q = +qSlider.value, R = +rSlider.value, S = +sSlider.value;
+            if (pV) pV.textContent = fmtR(P);
+            if (qV) qV.textContent = fmtR(Q);
+            if (rV) rV.textContent = fmtR(R);
+            if (sV) sV.textContent = fmtR(S);
+
+            var vth = Vbat * (P * S - Q * R) / ((P + Q) * (R + S));
+            var rth = (P * Q) / (P + Q) + (R * S) / (R + S);
+            var ig = vth / (rth + Rg);
+            var isBalanced = Math.abs(vth) < 0.01;
+
+            if (vthLabel) vthLabel.textContent = 'Vth=' + vth.toFixed(3) + 'V';
+            if (rthLabel) rthLabel.textContent = 'Rth=' + rth.toFixed(1) + 'Ω';
+            if (igLabel) igLabel.textContent = 'Ig = ' + (ig * 1000).toFixed(2) + ' mA';
+
+            if (statusEl) {
+                if (isBalanced) {
+                    statusEl.textContent = '✓ BALANCED — Vth ≈ 0';
+                    statusEl.setAttribute('fill', GREEN);
+                } else {
+                    statusEl.textContent = 'Unbalanced — Vth ≠ 0';
+                    statusEl.setAttribute('fill', RED);
+                }
+            }
+            drawChart(P, Q, R, S);
+        }
+
+        [pSlider, qSlider, rSlider, sSlider].forEach(function (sl) { sl.addEventListener('input', update); });
+        update();
+
+        // Calculator
+        initCalcListener(['m3-thc-p', 'm3-thc-q', 'm3-thc-r', 'm3-thc-s', 'm3-thc-v', 'm3-thc-rg'], function () {
+            var P = +document.getElementById('m3-thc-p').value;
+            var Q = +document.getElementById('m3-thc-q').value;
+            var R = +document.getElementById('m3-thc-r').value;
+            var S = +document.getElementById('m3-thc-s').value;
+            var V = +document.getElementById('m3-thc-v').value;
+            var rg = +document.getElementById('m3-thc-rg').value;
+            var vth = V * (P * S - Q * R) / ((P + Q) * (R + S));
+            var rth = (P * Q) / (P + Q) + (R * S) / (R + S);
+            var ig = vth / (rth + rg);
+            setResult('m3-thc-result',
+                'Vth = ' + vth.toFixed(4) + ' V | Rth = ' + rth.toFixed(2) + ' Ω | Ig = ' + (ig * 1e6).toFixed(1) + ' µA (' + (ig * 1000).toFixed(4) + ' mA)');
+        });
+    }
+
+    /* ══════════════════════════════════════════════════════
+       CARD 3.9: BRIDGE & GALVANOMETER SENSITIVITY
+       ══════════════════════════════════════════════════════ */
+    function initSensitivity() {
+        var siSlider = document.getElementById('m3-sens-si');
+        var vSlider  = document.getElementById('m3-sens-v');
+        var rgSlider = document.getElementById('m3-sens-rg');
+        var drSlider = document.getElementById('m3-sens-dr');
+        if (!siSlider) return;
+
+        var siVal = document.getElementById('m3-sens-si-val');
+        var vVal  = document.getElementById('m3-sens-v-val');
+        var rgVal = document.getElementById('m3-sens-rg-val');
+        var drVal = document.getElementById('m3-sens-dr-val');
+        var statusDiv = document.getElementById('m3-sens-status');
+
+        // Triptych panel
+        var trW = 700, trH = 140;
+        var trSvg = d3Container('m3-sens-triptych', trW, trH);
+
+        // SB vs arm ratio
+        var sbW = 700, sbH = 140;
+        var sbSvg = d3Container('m3-sens-sb-chart', sbW, sbH);
+
+        function drawTriptych(SI, V, Rg, dR) {
+            if (!trSvg) return;
+            trSvg.selectAll('.tp-el').remove();
+
+            var panelW = trW / 3 - 10;
+            var panels = [
+                { title: 'Current Sensitivity SI', value: SI.toFixed(1) + ' mm/µA', color: CYAN, barPct: Math.min(SI / 20 * 100, 100) },
+                { title: 'Voltage Sensitivity SV', value: (SI / Rg).toFixed(4) + ' mm/V', color: GOLD, barPct: Math.min((SI / Rg) / 0.2 * 100, 100) },
+                { title: 'Bridge Sensitivity SB', value: (SI * V / (4 * (Rg + Rg))).toFixed(2) + ' mm', color: GREEN, barPct: Math.min(SI * V / (4 * 2 * Rg) / 5 * 100, 100) }
+            ];
+
+            panels.forEach(function (p, i) {
+                var x = i * (panelW + 10) + 5;
+                var g = trSvg.append('g').attr('class', 'tp-el').attr('transform', 'translate(' + x + ',0)');
+                g.append('rect').attr('x', 0).attr('y', 0).attr('width', panelW).attr('height', trH).attr('rx', 6).attr('fill', 'rgba(255,255,255,0.02)').attr('stroke', '#1e293b');
+                g.append('text').attr('x', panelW / 2).attr('y', 18).attr('fill', p.color).attr('font-size', 9).attr('text-anchor', 'middle').attr('font-weight', 'bold').text(p.title);
+                // Bar
+                var barW = Math.max(panelW * 0.8 * p.barPct / 100, 4);
+                g.append('rect').attr('x', (panelW - panelW * 0.8) / 2).attr('y', 40).attr('width', panelW * 0.8).attr('height', 22).attr('rx', 4).attr('fill', 'rgba(255,255,255,0.04)');
+                g.append('rect').attr('x', (panelW - panelW * 0.8) / 2).attr('y', 40).attr('width', barW).attr('height', 22).attr('rx', 4).attr('fill', p.color).attr('opacity', 0.5);
+                // Value
+                g.append('text').attr('x', panelW / 2).attr('y', 90).attr('fill', p.color).attr('font-size', 14).attr('text-anchor', 'middle').attr('font-family', 'Orbitron, monospace').text(p.value);
+                // θ
+                var Rth = Rg; // assuming equal arms
+                var Ig_val = V / (4 * (Rg + Rth));
+                var theta = SI * Ig_val * 1e6; // µA
+                g.append('text').attr('x', panelW / 2).attr('y', 115).attr('fill', GREY).attr('font-size', 8).attr('text-anchor', 'middle').text('θ = ' + theta.toFixed(1) + ' mm at ΔR/R=' + dR.toFixed(3));
+            });
+        }
+
+        function drawSBChart(SI, V, Rg) {
+            if (!sbSvg) return;
+            sbSvg.selectAll('.sb-el').remove();
+
+            var margin = { t: 22, r: 15, b: 28, l: 50 };
+            var w = sbW - margin.l - margin.r, h = sbH - margin.t - margin.b;
+            var g = sbSvg.append('g').attr('class', 'sb-el').attr('transform', 'translate(' + margin.l + ',' + margin.t + ')');
+            g.append('text').attr('x', w / 2).attr('y', 10).attr('fill', GREY).attr('font-size', 9).attr('text-anchor', 'middle').text('SB vs P/Q Ratio (Equal-arm condition)');
+
+            var data = [];
+            for (var ratio = 0.1; ratio <= 10; ratio += 0.1) {
+                // For ratio = P/Q, Rth varies. At equal arms ratio=1, Rth = R/2+R/2=R
+                // SB = SI * V / (4 * (Rg + Rth))
+                // Rth = P||Q + R||S → at equal arms with ratio r: Rth = R*(1+r^2)/(2*r) ? 
+                // Simplified: SB peak at ratio=1
+                var Rth = Rg * (1 + ratio * ratio) / (2 * ratio);
+                var sb = SI * V / (4 * (Rg + Rth));
+                data.push({ ratio: ratio, sb: sb });
+            }
+
+            var xScale = d3.scaleLinear().domain([0.1, 10]).range([0, w]);
+            var maxSB = d3.max(data, function (d) { return d.sb; }) || 1;
+            var yScale = d3.scaleLinear().domain([0, maxSB * 1.1]).range([h, 0]);
+
+            g.append('line').attr('x1', 0).attr('y1', h).attr('x2', w).attr('y2', h).attr('stroke', '#475569');
+            g.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', h).attr('stroke', '#475569');
+            g.append('text').attr('x', w / 2).attr('y', h + 20).attr('fill', GREY).attr('font-size', 7).attr('text-anchor', 'middle').text('P/Q Ratio');
+            g.append('text').attr('x', -5).attr('y', -5).attr('fill', GREY).attr('font-size', 7).text('SB');
+
+            var lineGen = d3.line().x(function (d) { return xScale(d.ratio); }).y(function (d) { return yScale(d.sb); }).curve(d3.curveMonotoneX);
+            g.append('path').attr('d', lineGen(data)).attr('fill', 'none').attr('stroke', GREEN).attr('stroke-width', 2);
+
+            // Max marker at ratio=1
+            g.append('circle').attr('cx', xScale(1)).attr('cy', yScale(maxSB)).attr('r', 5).attr('fill', '#fb7185');
+            g.append('text').attr('x', xScale(1) + 8).attr('y', yScale(maxSB) + 4).attr('fill', '#fb7185').attr('font-size', 8).text('MAX at P/Q=1');
+        }
+
+        function update() {
+            var SI = +siSlider.value, V = +vSlider.value, Rg = +rgSlider.value, dR = +drSlider.value;
+            if (siVal) siVal.textContent = SI;
+            if (vVal) vVal.textContent = V;
+            if (rgVal) rgVal.textContent = Rg;
+            if (drVal) drVal.textContent = dR.toFixed(3);
+
+            var SV = SI / Rg;
+            var Rth = Rg; // equal arms assumption
+            var SB = SI * V / (4 * (Rg + Rth));
+            var SBmax = V * SI / 4;
+            var theta = SB * dR / (1); // SB = θ/(ΔR/R), so θ = SB * ΔR/R
+            // Corrected: θ = SB * (ΔR/R)
+            theta = SB * dR;
+
+            if (statusDiv) {
+                var isMax = Math.abs(SB - SBmax) < 0.01;
+                statusDiv.textContent = 'SV=' + SV.toFixed(4) + ' mm/V | SB=' + SB.toFixed(2) + ' mm | SBmax=' + SBmax.toFixed(2) + ' mm | θ=' + theta.toFixed(3) + ' mm' + (isMax ? ' | MAXIMUM SENSITIVITY ✓' : '');
+                statusDiv.style.color = isMax ? '#fb7185' : GREEN;
+            }
+
+            drawTriptych(SI, V, Rg, dR);
+            drawSBChart(SI, V, Rg);
+        }
+
+        [siSlider, vSlider, rgSlider, drSlider].forEach(function (sl) { sl.addEventListener('input', update); });
+        update();
+
+        // Calculator
+        initCalcListener(['m3-sc-si', 'm3-sc-v', 'm3-sc-rg', 'm3-sc-rth'], function () {
+            var si = +document.getElementById('m3-sc-si').value;
+            var v = +document.getElementById('m3-sc-v').value;
+            var rg = +document.getElementById('m3-sc-rg').value;
+            var rth = +document.getElementById('m3-sc-rth').value;
+            var sv = si / rg;
+            var sb = si * v / (4 * (rg + rth));
+            var sbmax = v * si / 4;
+            setResult('m3-sc-result',
+                'SV = SI/Rg = ' + sv.toFixed(4) + ' mm/V | SB = ' + sb.toFixed(3) + ' mm | SBmax = VSI/4 = ' + sbmax.toFixed(2) + ' mm');
+        });
+    }
+
+    /* ══════════════════════════════════════════════════════
+       CARD 3.10: KELVIN DOUBLE BRIDGE COMPLETE
+       ══════════════════════════════════════════════════════ */
+    function initKelvinComplete() {
+        var rSlider  = document.getElementById('m3-kb2-r-slider');
+        var pqSlider = document.getElementById('m3-kb2-pq');
+        var ppqSlider = document.getElementById('m3-kb2-ppq');
+        if (!rSlider) return;
+
+        var rVal  = document.getElementById('m3-kb2-r-val');
+        var pqVal = document.getElementById('m3-kb2-pq-val');
+        var ppqVal = document.getElementById('m3-kb2-ppq-val');
+        var statusEl = document.getElementById('m3-kb2-status');
+        var linkEl = document.getElementById('m3-kb2-link');
+
+        // Accuracy comparison bars
+        var accW = 700, accH = 100;
+        var accSvg = d3Container('m3-kb2-accuracy', accW, accH);
+
+        if (accSvg) {
+            accSvg.append('text').attr('x', accW / 2).attr('y', 14).attr('fill', GREY).attr('font-size', 9).attr('text-anchor', 'middle').text('Low-R Measurement Accuracy');
+            var methods = [
+                { name: 'A-V Method', acc: 5, color: RED },
+                { name: 'Wheatstone', acc: 0.1, color: GOLD },
+                { name: 'Kelvin Bridge', acc: 0.5, color: PURPLE },
+                { name: 'Potentiometer', acc: 0.05, color: GREEN }
+            ];
+            var margin = { l: 100, t: 22 };
+            var barH = 14, gap = 4;
+            methods.forEach(function (m, i) {
+                var y = margin.t + i * (barH + gap);
+                var bw = Math.max((m.acc / 6) * (accW - margin.l - 40), 5);
+                accSvg.append('text').attr('x', margin.l - 5).attr('y', y + 11).attr('fill', m.color).attr('font-size', 8).attr('text-anchor', 'end').text(m.name);
+                accSvg.append('rect').attr('x', margin.l).attr('y', y).attr('width', bw).attr('height', barH).attr('rx', 3).attr('fill', m.color).attr('opacity', 0.5);
+                accSvg.append('text').attr('x', margin.l + bw + 5).attr('y', y + 11).attr('fill', m.color).attr('font-size', 7).text('±' + m.acc + '%');
+            });
+        }
+
+        function update() {
+            var r = +rSlider.value, pq = +pqSlider.value, ppq = +ppqSlider.value;
+            if (rVal) rVal.textContent = r.toFixed(2);
+            if (pqVal) pqVal.textContent = pq.toFixed(2);
+            if (ppqVal) ppqVal.textContent = ppq.toFixed(2);
+
+            var matched = Math.abs(pq - ppq) < 0.06;
+            if (statusEl) {
+                if (matched) {
+                    statusEl.textContent = 'P/Q ≈ p/q → link r eliminated ✓';
+                    statusEl.setAttribute('fill', GREEN);
+                } else {
+                    statusEl.textContent = 'P/Q ≠ p/q → error from r = ' + (r * Math.abs(pq - ppq)).toFixed(4) + ' Ω';
+                    statusEl.setAttribute('fill', RED);
+                }
+            }
+            if (linkEl) {
+                linkEl.setAttribute('stroke', matched ? '#333' : ORANGE);
+                linkEl.setAttribute('stroke-width', matched ? '1' : '2.5');
+            }
+        }
+
+        [rSlider, pqSlider, ppqSlider].forEach(function (sl) { sl.addEventListener('input', update); });
+        update();
+
+        // Kelvin complete calculator
+        initCalcListener(['m3-kb2c-r', 'm3-kb2c-p', 'm3-kb2c-q', 'm3-kb2c-pp', 'm3-kb2c-qq', 'm3-kb2c-rr'], function () {
+            var R = +document.getElementById('m3-kb2c-r').value;
+            var P = +document.getElementById('m3-kb2c-p').value;
+            var Q = +document.getElementById('m3-kb2c-q').value;
+            var p = +document.getElementById('m3-kb2c-pp').value;
+            var q = +document.getElementById('m3-kb2c-qq').value;
+            var r = +document.getElementById('m3-kb2c-rr').value;
+            var correction = (r * p * q / (p + q + r)) * (P / Q - p / q);
+            var Rx = R * P / Q + correction;
+            var matched = Math.abs(P / Q - p / q) < 0.001;
+            setResult('m3-kb2c-result',
+                'Rx = ' + Rx.toFixed(6) + ' Ω (' + fmtR(Rx) + ') | P/Q=' + (P / Q).toFixed(4) + ', p/q=' + (p / q).toFixed(4) +
+                (matched ? ' <b style="color:' + GREEN + '">✓ Matched</b>' : ' <b style="color:' + RED + '">✗ Mismatch → error=' + correction.toFixed(6) + 'Ω</b>'));
+        });
+
+        // Potentiometer calculator
+        initCalcListener(['m3-potc-rs', 'm3-potc-lx', 'm3-potc-ls'], function () {
+            var Rs = +document.getElementById('m3-potc-rs').value;
+            var lx = +document.getElementById('m3-potc-lx').value;
+            var ls = +document.getElementById('m3-potc-ls').value;
+            var Rx = Rs * lx / ls;
+            setResult('m3-potc-result', 'Rx = Rs·(ℓx/ℓs) = ' + Rx.toFixed(6) + ' Ω (' + fmtR(Rx) + ') | ℓx/ℓs = ' + (lx / ls).toFixed(4));
+        });
+    }
+
+    /* ══════════════════════════════════════════════════════
+       CARD 3.11: MEDIUM RESISTANCE MEASUREMENT
+       ══════════════════════════════════════════════════════ */
+    function initMediumResistance() {
+        var pSlider = document.getElementById('m3-med-p');
+        var qSlider = document.getElementById('m3-med-q');
+        var rSlider = document.getElementById('m3-med-r');
+        if (!pSlider) return;
+
+        var pVal = document.getElementById('m3-med-p-val');
+        var qVal = document.getElementById('m3-med-q-val');
+        var rVal = document.getElementById('m3-med-r-val');
+        var needle = document.getElementById('m3-med-needle');
+        var sLabel = document.getElementById('m3-med-s-label');
+        var badge  = document.getElementById('m3-med-badge');
+
+        // Balance procedure steps chart
+        var stW = 320, stH = 240;
+        var stSvg = d3Container('m3-med-steps', stW, stH);
+
+        if (stSvg) {
+            stSvg.append('text').attr('x', stW / 2).attr('y', 16).attr('fill', GREY).attr('font-size', 10).attr('text-anchor', 'middle').text('Balance Procedure');
+
+            var steps = [
+                { n: '1', text: 'Set ratio P/Q', sub: 'Known ratio arms', color: GOLD },
+                { n: '2', text: 'Adjust R until Ig = 0', sub: 'Variable known resistance', color: CYAN },
+                { n: '3', text: 'Read S = QR/P', sub: 'Unknown resistance found!', color: GREEN }
+            ];
+            steps.forEach(function (s, i) {
+                var y = 35 + i * 65;
+                stSvg.append('circle').attr('cx', 25).attr('cy', y + 12).attr('r', 12).attr('fill', 'rgba(0,255,136,0.1)').attr('stroke', s.color).attr('stroke-width', 1.5);
+                stSvg.append('text').attr('x', 25).attr('y', y + 16).attr('fill', s.color).attr('font-size', 11).attr('text-anchor', 'middle').attr('font-weight', 'bold').text(s.n);
+                stSvg.append('text').attr('x', 48).attr('y', y + 10).attr('fill', '#fff').attr('font-size', 10).text(s.text);
+                stSvg.append('text').attr('x', 48).attr('y', y + 24).attr('fill', GREY).attr('font-size', 8).text(s.sub);
+                if (i < 2) {
+                    stSvg.append('line').attr('x1', 25).attr('y1', y + 26).attr('x2', 25).attr('y2', y + 55).attr('stroke', '#333').attr('stroke-width', 1).attr('stroke-dasharray', '3 2');
+                }
+            });
+        }
+
+        function update() {
+            var P = +pSlider.value, Q = +qSlider.value, R = +rSlider.value;
+            if (pVal) pVal.textContent = fmtR(P);
+            if (qVal) qVal.textContent = fmtR(Q);
+            if (rVal) rVal.textContent = fmtR(R);
+
+            var S = Q * R / P;
+            if (sLabel) sLabel.textContent = 'S=' + fmtR(S);
+            if (badge) badge.textContent = 'PS=' + (P * S).toFixed(0) + ' = QR=' + (Q * R).toFixed(0) + ' ✓';
+
+            // Needle always at center (balanced condition shown)
+            if (needle) {
+                needle.setAttribute('x2', '150');
+                needle.setAttribute('y2', '103');
+                needle.setAttribute('stroke', GREEN);
+            }
+        }
+
+        [pSlider, qSlider, rSlider].forEach(function (sl) { sl.addEventListener('input', update); });
+        update();
+
+        // Calculator
+        initCalcListener(['m3-medc-p', 'm3-medc-q', 'm3-medc-r'], function () {
+            var p = +document.getElementById('m3-medc-p').value;
+            var q = +document.getElementById('m3-medc-q').value;
+            var r = +document.getElementById('m3-medc-r').value;
+            var s = q * r / p;
+            setResult('m3-medc-result', 'S = QR/P = ' + s.toFixed(3) + ' Ω (' + fmtR(s) + ') | P/Q = ' + (p / q).toFixed(4) + ' | PS = QR = ' + (q * r).toFixed(1) + ' ✓');
+        });
+    }
+
+    /* ══════════════════════════════════════════════════════
+       CARD 3.12: OHMMETER — SERIES & SHUNT TYPES
+       ══════════════════════════════════════════════════════ */
+    function initOhmmeter() {
+        var rxSlider  = document.getElementById('m3-ohm-rx');
+        var r1Slider  = document.getElementById('m3-ohm-r1');
+        var vbatSlider = document.getElementById('m3-ohm-vbat');
+        if (!rxSlider) return;
+
+        var rxVal  = document.getElementById('m3-ohm-rx-val');
+        var r1Val  = document.getElementById('m3-ohm-r1-val');
+        var vbatVal = document.getElementById('m3-ohm-vbat-val');
+        var needleEl = document.getElementById('m3-ohm-needle');
+        var titleEl  = document.getElementById('m3-ohm-title');
+        var currentEl = document.getElementById('m3-ohm-current');
+        var readingEl = document.getElementById('m3-ohm-reading');
+
+        var mode = 'series';
+
+        // I vs Rx D3 curve
+        var curveW = 320, curveH = 190;
+        var curveSvg = d3Container('m3-ohm-curve', curveW, curveH);
+
+        function drawCurve(R1, Vbat, Rm) {
+            if (!curveSvg) return;
+            curveSvg.selectAll('.oc-el').remove();
+
+            var margin = { t: 22, r: 15, b: 28, l: 42 };
+            var w = curveW - margin.l - margin.r, h = curveH - margin.t - margin.b;
+            var g = curveSvg.append('g').attr('class', 'oc-el').attr('transform', 'translate(' + margin.l + ',' + margin.t + ')');
+
+            var Ifsd = Vbat / R1;
+            var data = [];
+            for (var rx = 0; rx <= 2000; rx += 10) {
+                var I;
+                if (mode === 'series') {
+                    I = Vbat / (R1 + rx);
+                } else {
+                    I = (Vbat * rx) / (R1 * (Rm + rx) + Rm * rx);
+                }
+                data.push({ rx: rx, i: I, pct: (I / Ifsd) * 100 });
+            }
+
+            var xScale = d3.scaleLinear().domain([0, 2000]).range([0, w]);
+            var yScale = d3.scaleLinear().domain([0, 120]).range([h, 0]);
+
+            g.append('line').attr('x1', 0).attr('y1', h).attr('x2', w).attr('y2', h).attr('stroke', '#475569');
+            g.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', h).attr('stroke', '#475569');
+            g.append('text').attr('x', w / 2).attr('y', h + 22).attr('fill', GREY).attr('font-size', 8).attr('text-anchor', 'middle').text('Rx (Ω)');
+            g.append('text').attr('x', -5).attr('y', -5).attr('fill', GREY).attr('font-size', 7).text('I/Ifsd %');
+
+            var lineGen = d3.line().x(function (d) { return xScale(d.rx); }).y(function (d) { return yScale(d.pct); }).curve(d3.curveMonotoneX);
+            g.append('path').attr('d', lineGen(data)).attr('fill', 'none').attr('stroke', mode === 'series' ? CYAN : ORANGE).attr('stroke-width', 2);
+
+            // Mid-scale marker
+            if (mode === 'series') {
+                g.append('circle').attr('cx', xScale(R1)).attr('cy', yScale(50)).attr('r', 5).attr('fill', GOLD);
+                g.append('text').attr('x', xScale(R1) + 8).attr('y', yScale(50) + 4).attr('fill', GOLD).attr('font-size', 8).text('Mid: Rx=R1=' + fmtR(R1));
+            }
+
+            // FSD and zero lines
+            g.append('line').attr('x1', 0).attr('y1', yScale(100)).attr('x2', w).attr('y2', yScale(100)).attr('stroke', GREEN).attr('stroke-width', 1).attr('stroke-dasharray', '3 2');
+            g.append('text').attr('x', w + 3).attr('y', yScale(100) + 3).attr('fill', GREEN).attr('font-size', 6).text('FSD');
+            g.append('line').attr('x1', 0).attr('y1', yScale(50)).attr('x2', w).attr('y2', yScale(50)).attr('stroke', GOLD).attr('stroke-width', 1).attr('stroke-dasharray', '2 3');
+
+            // Current Rx marker
+            var rxCur = +rxSlider.value;
+            if (rxCur <= 2000) {
+                var ICur;
+                if (mode === 'series') ICur = (Vbat / (R1 + rxCur)) / Ifsd * 100;
+                else ICur = ((Vbat * rxCur) / (R1 * (Rm + rxCur) + Rm * rxCur)) / Ifsd * 100;
+                g.append('circle').attr('cx', xScale(rxCur)).attr('cy', yScale(ICur)).attr('r', 4).attr('fill', '#fff');
+            }
+
+            g.append('text').attr('x', w / 2).attr('y', 10).attr('fill', GREY).attr('font-size', 9).attr('text-anchor', 'middle').text((mode === 'series' ? 'Series' : 'Shunt') + ': I vs Rx (Non-linear)');
+        }
+
+        function update() {
+            var Rx = +rxSlider.value, R1 = +r1Slider.value, Vbat = +vbatSlider.value;
+            if (rxVal) rxVal.textContent = fmtR(Rx);
+            if (r1Val) r1Val.textContent = fmtR(R1);
+            if (vbatVal) vbatVal.textContent = Vbat + 'V';
+
+            var Ifsd = Vbat / R1;
+            var Rm = 50;
+            var I, pct;
+            if (mode === 'series') {
+                I = Vbat / (R1 + Rx);
+                pct = (I / Ifsd) * 100;
+            } else {
+                I = (Vbat * Rx) / (R1 * (Rm + Rx) + Rm * Rx);
+                pct = (I / Ifsd) * 100;
+            }
+
+            // Needle movement: series has 0Ω on right (full deflection)
+            if (needleEl) {
+                var angle;
+                if (mode === 'series') {
+                    angle = -40 + (pct / 100) * 80; // -40° (left = ∞) to +40° (right = 0Ω)
+                } else {
+                    angle = -40 + (pct / 100) * 80;
+                }
+                var rad = angle * Math.PI / 180;
+                var nx = 170 + 22 * Math.sin(rad);
+                var ny = 86 - 22 * Math.cos(rad);
+                needleEl.setAttribute('x2', String(nx));
+                needleEl.setAttribute('y2', String(ny));
+            }
+
+            if (titleEl) titleEl.textContent = mode === 'series' ? 'Series Ohmmeter' : 'Shunt Ohmmeter';
+            if (currentEl) currentEl.textContent = mode === 'series' ? 'I = V/(R₁+Rx) = ' + (I * 1000).toFixed(2) + ' mA' : 'Im = V·Rx/(R₁(Rm+Rx)+RmRx) = ' + (I * 1000).toFixed(2) + ' mA';
+            if (readingEl) readingEl.textContent = 'Deflection: ' + pct.toFixed(1) + '% of FSD | ' + (mode === 'series' ? (Rx === 0 ? '→ 0Ω (right)' : Rx >= 2000 ? '→ ∞ (left)' : 'Mid at Rx=R1') : (Rx === 0 ? '→ 0Ω (left)' : '→ ∞ (right)'));
+
+            drawCurve(R1, Vbat, Rm);
+        }
+
+        window.m3OhmToggle = function (m) {
+            mode = m;
+            update();
+        };
+
+        [rxSlider, r1Slider, vbatSlider].forEach(function (sl) { sl.addEventListener('input', update); });
+        update();
+
+        // Series calculator
+        initCalcListener(['m3-osc-v', 'm3-osc-r1', 'm3-osc-rx'], function () {
+            var V = +document.getElementById('m3-osc-v').value;
+            var R1 = +document.getElementById('m3-osc-r1').value;
+            var Rx = +document.getElementById('m3-osc-rx').value;
+            var I = V / (R1 + Rx);
+            var Ifsd = V / R1;
+            var pct = (I / Ifsd) * 100;
+            setResult('m3-osc-result', 'I = ' + (I * 1000).toFixed(3) + ' mA | θ = ' + pct.toFixed(1) + '%FSD | Mid-scale R = R₁ = ' + fmtR(R1));
+        });
+
+        // Shunt calculator
+        initCalcListener(['m3-oshc-v', 'm3-oshc-r1', 'm3-oshc-rm', 'm3-oshc-rx'], function () {
+            var V = +document.getElementById('m3-oshc-v').value;
+            var R1 = +document.getElementById('m3-oshc-r1').value;
+            var Rm = +document.getElementById('m3-oshc-rm').value;
+            var Rx = +document.getElementById('m3-oshc-rx').value;
+            var Im = (V * Rx) / (R1 * (Rm + Rx) + Rm * Rx);
+            var Ifsd = V / R1;
+            var pct = (Im / Ifsd) * 100;
+            setResult('m3-oshc-result', 'Im = ' + (Im * 1000).toFixed(3) + ' mA | θ = ' + pct.toFixed(1) + '%FSD | Shunt: low R best');
+        });
+    }
+
     /* ── BOOKMARKS ── */
     function initBookmarks() {
         var stored = {};
@@ -734,6 +1287,11 @@
         initWheatstoneBridge();
         initKelvinBridge();
         initMethodsSummary();
+        initTheveninBridge();
+        initSensitivity();
+        initKelvinComplete();
+        initMediumResistance();
+        initOhmmeter();
         initBookmarks();
         initGSAPAnimations();
     }

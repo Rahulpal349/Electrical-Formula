@@ -16,8 +16,8 @@
     /* Cyan */
     --mod3-color: #facc15;
     /* Gold */
-    --mod4-color: #f97316;
-    /* Orange */
+    --mod4-color: #a78bfa;
+    /* Purple — High R & AC Bridges */
     --mod5-color: #a78bfa;
     /* Purple */
     --mod6-color: #60a5fa;
@@ -523,37 +523,149 @@ input[type=range]::-webkit-slider-thumb {
     }
 }
 
-/* --- Module 4: Bridge Circuits & Resistance --- */
+/* --- Module 4: High Resistance & AC Bridge Measurements --- */
 
-@keyframes meggerSweep {
-    0% {
-        transform: rotate(-30deg);
-    }
-
-    10% {
-        transform: rotate(-25deg);
-    }
-
-    30% {
-        transform: rotate(15deg);
-    }
-
-    50% {
-        transform: rotate(-5deg);
-    }
-
-    80% {
-        transform: rotate(40deg);
-    }
-
-    100% {
-        transform: rotate(30deg);
-    }
+.m4-badge {
+    background: rgba(167,139,250,0.12);
+    color: #a78bfa;
+    border: 1px solid rgba(167,139,250,0.3);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-family: 'Orbitron', sans-serif;
+    white-space: nowrap;
 }
 
-.balanced-bridge {
-    stroke: #00ff88 !important;
-    filter: drop-shadow(0 0 10px #00ff88);
+.m4-card-footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border-top: 1px solid rgba(167,139,250,0.15);
+    flex-wrap: wrap;
+}
+
+.m4-footer-btn {
+    background: rgba(167,139,250,0.08);
+    color: #a78bfa;
+    border: 1px solid rgba(167,139,250,0.25);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.m4-footer-btn:hover {
+    background: rgba(167,139,250,0.18);
+    box-shadow: 0 0 10px rgba(167,139,250,0.3);
+}
+
+.m4-calc-zone {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 15px;
+    background: rgba(167,139,250,0.03);
+    border-top: 1px solid rgba(167,139,250,0.08);
+}
+
+.m4-calc-zone.open {
+    max-height: 300px;
+    padding: 15px;
+}
+
+.m4-calc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.m4-calc-row label {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    min-width: 55px;
+}
+
+.m4-calc-row input[type="number"] {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(167,139,250,0.25);
+    color: #f8fafc;
+    padding: 4px 8px;
+    border-radius: 6px;
+    width: 85px;
+    font-size: 0.8rem;
+}
+
+.m4-calc-result {
+    color: #a78bfa;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 8px;
+    background: rgba(167,139,250,0.06);
+    border-radius: 8px;
+    border: 1px solid rgba(167,139,250,0.15);
+}
+
+.m4-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+}
+
+.m4-comparison-table th {
+    background: rgba(167,139,250,0.12);
+    color: #a78bfa;
+    padding: 6px 10px;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+}
+
+.m4-comparison-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #cbd5e1;
+}
+
+.m4-slider {
+    accent-color: #a78bfa;
+    width: 100%;
+}
+
+.m4-btn {
+    background: rgba(167,139,250,0.08);
+    color: #94a3b8;
+    border: 1px solid rgba(167,139,250,0.2);
+    padding: 5px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.m4-btn:hover {
+    background: rgba(167,139,250,0.15);
+    color: #a78bfa;
+}
+
+.m4-btn.active {
+    background: rgba(167,139,250,0.2);
+    color: #a78bfa;
+    border-color: #a78bfa;
+    box-shadow: 0 0 8px rgba(167,139,250,0.3);
+}
+
+@media (max-width: 768px) {
+    .m4-calc-row { gap: 6px; }
+    .m4-calc-row input[type="number"] { width: 70px; }
+    .m4-comparison-table { font-size: 0.7rem; }
+    .m4-btn { padding: 4px 10px; font-size: 0.7rem; }
 }
 
 /* --- Module 5: Instrument Transformers --- */
