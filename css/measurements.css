@@ -18,8 +18,8 @@
     /* Gold */
     --mod4-color: #a78bfa;
     /* Purple — High R & AC Bridges */
-    --mod5-color: #a78bfa;
-    /* Purple */
+    --mod5-color: #fb7185;
+    /* Rose — High Voltage / Insulation */
     --mod6-color: #60a5fa;
     /* Blue */
     --mod7-color: #fb7185;
@@ -668,7 +668,181 @@ input[type=range]::-webkit-slider-thumb {
     .m4-btn { padding: 4px 10px; font-size: 0.7rem; }
 }
 
-/* --- Module 5: Instrument Transformers --- */
+/* --- Module 5: High Resistance & AC Bridge Theory --- */
+
+.m5-badge {
+    background: rgba(251,113,133,0.12);
+    color: #fb7185;
+    border: 1px solid rgba(251,113,133,0.3);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-family: 'Orbitron', sans-serif;
+    white-space: nowrap;
+}
+
+.m5-card-footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border-top: 1px solid rgba(251,113,133,0.15);
+    flex-wrap: wrap;
+}
+
+.m5-footer-btn {
+    background: rgba(251,113,133,0.08);
+    color: #fb7185;
+    border: 1px solid rgba(251,113,133,0.25);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.m5-footer-btn:hover {
+    background: rgba(251,113,133,0.18);
+    box-shadow: 0 0 10px rgba(251,113,133,0.3);
+}
+
+.m5-calc-zone {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 15px;
+    background: rgba(251,113,133,0.03);
+    border-top: 1px solid rgba(251,113,133,0.08);
+}
+
+.m5-calc-zone.open {
+    max-height: 350px;
+    padding: 15px;
+}
+
+.m5-calc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.m5-calc-row label {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    min-width: 55px;
+}
+
+.m5-calc-row input[type="number"] {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(251,113,133,0.25);
+    color: #f8fafc;
+    padding: 4px 8px;
+    border-radius: 6px;
+    width: 85px;
+    font-size: 0.8rem;
+}
+
+.m5-calc-result {
+    color: #fb7185;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 8px;
+    background: rgba(251,113,133,0.06);
+    border-radius: 8px;
+    border: 1px solid rgba(251,113,133,0.15);
+}
+
+.m5-app-tag {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+}
+
+.m5-slider {
+    accent-color: #fb7185;
+    width: 100%;
+}
+
+.m5-btn {
+    background: rgba(251,113,133,0.08);
+    color: #94a3b8;
+    border: 1px solid rgba(251,113,133,0.2);
+    padding: 5px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.m5-btn:hover {
+    background: rgba(251,113,133,0.15);
+    color: #fb7185;
+}
+
+.m5-btn.active {
+    background: rgba(251,113,133,0.2);
+    color: #fb7185;
+    border-color: #fb7185;
+    box-shadow: 0 0 8px rgba(251,113,133,0.3);
+}
+
+.m5-select {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(251,113,133,0.25);
+    color: #f8fafc;
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-size: 0.78rem;
+    min-width: 80px;
+}
+
+.m5-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+}
+
+.m5-comparison-table th {
+    background: rgba(251,113,133,0.12);
+    color: #fb7185;
+    padding: 6px 10px;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+}
+
+.m5-comparison-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #cbd5e1;
+}
+
+.m5-comparison-table tr:hover td {
+    background: rgba(251,113,133,0.03);
+}
+
+.m5-card:hover {
+    box-shadow: 0 10px 40px rgba(251,113,133,0.1),
+                0 0 0 1px rgba(251,113,133,0.08);
+}
+
+@media (max-width: 768px) {
+    .m5-calc-row { gap: 6px; }
+    .m5-calc-row input[type="number"] { width: 70px; }
+    .m5-comparison-table { font-size: 0.7rem; }
+    .m5-btn { padding: 4px 10px; font-size: 0.7rem; }
+    .m5-select { min-width: 65px; font-size: 0.72rem; }
+}
+
+/* --- Module 5: Instrument Transformers (legacy) --- */
 
 .danger-spark {
     stroke: #ef4444 !important;
