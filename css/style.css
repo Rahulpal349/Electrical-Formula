@@ -1159,8 +1159,47 @@ body.light-mode .navbar {
     font-size: 1rem;
   }
 
+  .circuit-hero__ctas {
+    gap: 12px;
+  }
+
   .circuit-nav ul {
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .circuit-hero {
+    padding-top: 60px;
+  }
+
+  .circuit-hero__title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .circuit-hero__subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-icons {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .hero-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .hero__cta {
+    padding: 12px 24px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
   }
 }
 

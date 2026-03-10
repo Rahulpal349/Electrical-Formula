@@ -2642,3 +2642,85 @@ input[type=range]::-webkit-slider-thumb {
         padding: 9px 12px;
     }
 }
+
+/* ══════════ COMPREHENSIVE MOBILE OPTIMIZATION ══════════ */
+
+/* --- Tablet & Small Laptop (≤900px) --- */
+@media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 2rem;
+    }
+}
+
+/* --- Tablet Portrait / Large Phone (≤768px) --- */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 1.5rem 1rem;
+    }
+    .hero-banner {
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+    }
+    .hero-title { font-size: 2rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .module-title { font-size: 1.5rem; gap: 0.5rem; }
+    .module-subtitle { font-size: 1rem; }
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    .formula {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+    }
+    .formula-zone {
+        padding: 1rem;
+        overflow-x: auto;
+    }
+    .anim-zone {
+        min-height: 180px;
+        padding: 1rem;
+    }
+    .machine-card .card-header { padding: 1rem; }
+    .katex-display { overflow-x: auto; overflow-y: hidden; }
+    svg[width] { max-width: 100%; height: auto; }
+}
+
+/* --- Phone (≤480px) --- */
+@media (max-width: 480px) {
+    .main-content {
+        padding: 1rem 0.75rem;
+    }
+    .hero-banner {
+        padding: 1.5rem 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+    .hero-title { font-size: 1.6rem; }
+    .module-title { font-size: 1.25rem; }
+    .module-subtitle { font-size: 0.85rem; }
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .machine-card { border-radius: 8px; }
+    .machine-card .card-header {
+        padding: 0.75rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    .formula-zone { padding: 0.75rem; }
+    .formula { font-size: 0.95rem; }
+    .anim-zone {
+        min-height: 150px;
+        padding: 0.75rem;
+    }
+    .katex { font-size: 0.9em !important; }
+    svg[width] { max-width: 100%; height: auto; }
+}
