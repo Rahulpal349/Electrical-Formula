@@ -75,8 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Scroll to top & refresh
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Force instant scroll to top (override CSS smooth scroll)
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        // Restore smooth scroll after reset
+        requestAnimationFrame(() => {
+            document.documentElement.style.scrollBehavior = '';
+        });
+
         reRenderMath();
         if (typeof AOS !== 'undefined') setTimeout(() => AOS.refresh(), 100);
     }
@@ -85,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sidebarLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
+            e.stopPropagation();
             const targetId = this.getAttribute('href');
             if (targetId && targetId !== '#') switchUnit(targetId);
             closeSidebar();
