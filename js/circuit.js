@@ -22,41 +22,74 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Smooth scrolling for internal sticky nav
-    const innerNavLinks = document.querySelectorAll('.circuit-nav a');
-    innerNavLinks.forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            if (targetId === '#') return;
-            const targetEl = document.querySelector(targetId);
-            if (targetEl) {
-                // Offset for main navbar + inner navbar
-                const offset = 140;
-                const top = targetEl.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top, behavior: 'smooth' });
+    // ── Glass Sidebar Toggle ──
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const glassSidebar = document.getElementById('glass-sidebar');
+    const sidebarClose = document.getElementById('sidebar-close');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
 
-                // Update active state manually (optional, spy handles it too)
-                innerNavLinks.forEach(l => l.classList.remove('active'));
+    function openSidebar() {
+        if (glassSidebar) glassSidebar.classList.add('open');
+        if (sidebarOverlay) sidebarOverlay.classList.add('active');
+        if (sidebarToggle) sidebarToggle.classList.add('hidden');
+    }
+
+    function closeSidebar() {
+        if (glassSidebar) glassSidebar.classList.remove('open');
+        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        if (sidebarToggle) sidebarToggle.classList.remove('hidden');
+    }
+
+    if (sidebarToggle) sidebarToggle.addEventListener('click', openSidebar);
+    if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+
+    // ── Re-render KaTeX ──
+    function reRenderMath() {
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ],
+                throwOnError: false
+            });
+        }
+    }
+
+    // ── Unit Switching Logic ──
+    const sections = document.querySelectorAll('.circuit-section');
+    const sidebarLinks = document.querySelectorAll('.glass-sidebar__link');
+
+    function switchUnit(targetId) {
+        // Hide all sections, show selected
+        sections.forEach(s => s.classList.remove('active'));
+        const target = document.querySelector(targetId);
+        if (target) target.classList.add('active');
+
+        // Update sidebar active link
+        sidebarLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === targetId) {
                 link.classList.add('active');
             }
         });
-    });
 
-    // 5. Scroll Spy for internal nav
-    const sections = document.querySelectorAll('.circuit-section');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.id;
-                innerNavLinks.forEach(link => {
-                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-                });
-            }
+        // Scroll to top & refresh
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        reRenderMath();
+        if (typeof AOS !== 'undefined') setTimeout(() => AOS.refresh(), 100);
+    }
+
+    // Sidebar link click → unit switching
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== '#') switchUnit(targetId);
+            closeSidebar();
         });
-    }, { rootMargin: '-150px 0px -60% 0px' });
-
-    sections.forEach(s => observer.observe(s));
+    });
 
     // 6. Source Transformation Animation
     const transformAnim = document.getElementById('transform-anim');
@@ -139,110 +172,131 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 11. Thevenin Stepper UI
-    const stepBtns = document.querySelectorAll('.step-btn');
-    const stepPanes = document.querySelectorAll('.step-pane');
+    // 11. Thevenin Step-by-Step Animation
+    const thevStepBtns = document.querySelectorAll('.thev-step-btn');
+    if (thevStepBtns.length) {
+        const thevOverlays = {
+            0: [], // original - just reset
+            1: ['#thev-step-overlay'],
+            2: ['#thev-rth-overlay'],
+            3: ['#thev-final-overlay']
+        };
+        const thevLabels = [
+            'Original circuit with load Z_L',
+            'Step 1: Remove load, find open-circuit voltage Voc across a-b',
+            'Step 2: Kill all sources, find Rth looking into a-b',
+            'Step 3: Thevenin equivalent = Vth in series with Rth'
+        ];
 
-    stepBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const stepNum = btn.getAttribute('data-step');
+        thevStepBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const step = parseInt(btn.getAttribute('data-step'));
+                thevStepBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
 
-            stepBtns.forEach(b => b.classList.remove('active'));
-            stepPanes.forEach(p => p.classList.remove('active'));
-
-            btn.classList.add('active');
-            const targetPane = document.getElementById(`th-step-${stepNum}`);
-            if (targetPane) targetPane.classList.add('active');
+                // Hide all overlays
+                ['#thev-step-overlay', '#thev-rth-overlay', '#thev-final-overlay'].forEach(sel => {
+                    gsap.to(sel, { opacity: 0, duration: 0.3 });
+                });
+                // Hide/show load based on step
+                if (step >= 1 && step <= 2) {
+                    gsap.to('#thev-load', { opacity: 0.2, duration: 0.3 });
+                    gsap.to('#thev-load-txt', { opacity: 0.2, duration: 0.3 });
+                } else {
+                    gsap.to('#thev-load', { opacity: 1, duration: 0.3 });
+                    gsap.to('#thev-load-txt', { opacity: 1, duration: 0.3 });
+                }
+                // Show relevant overlays
+                if (thevOverlays[step]) {
+                    thevOverlays[step].forEach(sel => {
+                        gsap.to(sel, { opacity: 1, duration: 0.5, delay: 0.2 });
+                    });
+                }
+                // Show original circuit or hide it for final
+                gsap.to('#thev-step-original', { opacity: step === 3 ? 0 : 1, duration: 0.3 });
+                // Update label
+                const label = document.getElementById('thev-step-label');
+                if (label) label.textContent = thevLabels[step] || '';
+            });
         });
-    });
+    }
 
-    // 12. Thevenin Try-It Calculator
-    const calcTheveninBtn = document.getElementById('calc-thevenin-btn');
-    if (calcTheveninBtn) {
-        calcTheveninBtn.addEventListener('click', () => {
-            const vs = parseFloat(document.getElementById('th-vs').value);
-            const r1 = parseFloat(document.getElementById('th-r1').value);
-            const r2 = parseFloat(document.getElementById('th-r2').value);
-            const r3 = parseFloat(document.getElementById('th-r3').value);
-
-            // Assuming circuit: Vs in series with R1, R2 in parallel across it, R3 in series with load.
-            // Vth = Vs * [R2 / (R1 + R2)]
+    // 12. Thevenin Calculator
+    const thevCalcBtn = document.getElementById('thev-calc-btn');
+    if (thevCalcBtn) {
+        thevCalcBtn.addEventListener('click', () => {
+            const vs = parseFloat(document.getElementById('thev-calc-vs').value);
+            const r1 = parseFloat(document.getElementById('thev-calc-r1').value);
+            const r2 = parseFloat(document.getElementById('thev-calc-r2').value);
+            const rl = parseFloat(document.getElementById('thev-calc-rl').value);
+            if ([vs, r1, r2, rl].some(isNaN) || r1 + r2 === 0) return;
             const vth = vs * (r2 / (r1 + r2));
-            // Rth = (R1 || R2) + R3
-            const rth = ((r1 * r2) / (r1 + r2)) + r3;
-
-            const resBox = document.getElementById('th-calc-result');
-            resBox.style.display = 'block';
-            resBox.innerHTML = `Vth = ${vth.toFixed(2)} V <br> Rth = ${rth.toFixed(2)} &Omega;`;
-        });
-    }
-
-    // 13. Norton Morph Animation
-    const morphNortonBtn = document.getElementById('morph-norton-btn');
-    if (morphNortonBtn) {
-        let isNorton = false;
-        morphNortonBtn.addEventListener('click', () => {
-            isNorton = !isNorton;
-            if (isNorton) {
-                morphNortonBtn.textContent = 'Reverse Transform ◀';
-                // Morph to Norton (Parallel)
-                gsap.to('.n-src-shape', { r: 20, stroke: '#facc15', duration: 1 });
-                gsap.to('.n-src-sym-1', { opacity: 0, duration: 0.5 });
-                gsap.to('.n-src-sym-2', { opacity: 0, duration: 0.5 });
-                // Arrow for current source
-                setTimeout(() => {
-                    document.querySelector('.n-src-sym-1').innerHTML = '↑';
-                    document.querySelector('.n-src-sym-1').style.fill = '#facc15';
-                    gsap.to('.n-src-sym-1', { opacity: 1, duration: 0.5 });
-                }, 500);
-                document.querySelector('.n-src-label').textContent = 'I_N';
-                document.querySelector('.n-src-label').style.fill = '#facc15';
-
-                // Morph resistor wire to parallel
-                gsap.to('.n-wire-1', { attr: { d: "M 80,50 L 150,50 L 150,80" }, duration: 1 });
-                gsap.to('.n-resistor', { attr: { d: "M 150,80 L 140,85 L 160,105 L 140,125 L 160,145 L 150,150" }, stroke: '#00f5ff', duration: 1 });
-                gsap.to('.n-wire-2', { attr: { d: "M 150,150 L 150,150" }, opacity: 0, duration: 1 });
-
-                document.querySelector('.n-res-label').textContent = 'R_N';
-                document.querySelector('.n-res-label').style.fill = '#00f5ff';
-                gsap.to('.n-res-label', { x: -60, y: 70, duration: 1 });
-            } else {
-                morphNortonBtn.textContent = 'Play Transformation Animation ▶';
-                // Morph to Thevenin (Series)
-                gsap.to('.n-src-shape', { r: 20, stroke: 'var(--neon-cyan)', duration: 1 });
-                gsap.to('.n-src-sym-1', { opacity: 0, duration: 0.5 });
-                setTimeout(() => {
-                    document.querySelector('.n-src-sym-1').innerHTML = '+';
-                    document.querySelector('.n-src-sym-1').style.fill = 'var(--neon-cyan)';
-                    gsap.to('.n-src-sym-1', { opacity: 1, duration: 0.5 });
-                    gsap.to('.n-src-sym-2', { opacity: 1, duration: 0.5 });
-                }, 500);
-                document.querySelector('.n-src-label').textContent = 'V_th';
-                document.querySelector('.n-src-label').style.fill = 'var(--neon-cyan)';
-
-                // Resistor back to series
-                gsap.to('.n-wire-1', { attr: { d: "M 80,80 L 80,50 L 150,50" }, duration: 1 });
-                gsap.to('.n-resistor', { attr: { d: "M 150,50 L 155,40 L 175,60 L 195,40 L 215,60 L 220,50" }, stroke: 'var(--electric-yellow)', duration: 1 });
-                gsap.to('.n-wire-2', { attr: { d: "M 220,50 L 300,50" }, opacity: 1, duration: 1 });
-
-                document.querySelector('.n-res-label').textContent = 'R_th';
-                document.querySelector('.n-res-label').style.fill = 'var(--electric-yellow)';
-                gsap.to('.n-res-label', { x: 0, y: 0, duration: 1 });
-            }
-        });
-    }
-
-    // 14. Norton Try-It Calculator
-    const calcNortonBtn = document.getElementById('calc-norton-btn');
-    if (calcNortonBtn) {
-        calcNortonBtn.addEventListener('click', () => {
-            const vth = parseFloat(document.getElementById('nr-vth').value);
-            const rth = parseFloat(document.getElementById('nr-rth').value);
-            const rn = rth;
-            const in_n = vth / rth;
-            const res = document.getElementById('nr-calc-result');
+            const rth = (r1 * r2) / (r1 + r2);
+            const il = vth / (rth + rl);
+            const res = document.getElementById('thev-calc-result');
             res.style.display = 'block';
-            res.innerHTML = `I_N = ${in_n.toFixed(2)} A <br> R_N = ${rn.toFixed(2)} &Omega;`;
+            res.innerHTML = `V<sub>th</sub> = ${vth.toFixed(2)} V &nbsp;|&nbsp; R<sub>th</sub> = ${rth.toFixed(2)} Ω &nbsp;|&nbsp; I<sub>L</sub> = ${il.toFixed(3)} A`;
+        });
+    }
+
+    // 13. Norton Step-by-Step Animation
+    const nortonStepBtns = document.querySelectorAll('.norton-step-btn');
+    if (nortonStepBtns.length) {
+        const nortonOverlays = {
+            0: [],
+            1: ['#norton-isc-overlay'],
+            2: ['#norton-rn-overlay'],
+            3: ['#norton-final-overlay']
+        };
+        const nortonLabels = [
+            'Original circuit with load Z_L',
+            'Step 1: Short-circuit terminals a-b, find Isc',
+            'Step 2: Kill all sources, find Rn = Rth looking into a-b',
+            'Step 3: Norton equivalent = IN in parallel with RN'
+        ];
+
+        nortonStepBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const step = parseInt(btn.getAttribute('data-step'));
+                nortonStepBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                ['#norton-isc-overlay', '#norton-rn-overlay', '#norton-final-overlay'].forEach(sel => {
+                    gsap.to(sel, { opacity: 0, duration: 0.3 });
+                });
+                if (step >= 1 && step <= 2) {
+                    gsap.to('#norton-load', { opacity: 0.2, duration: 0.3 });
+                    gsap.to('#norton-load-txt', { opacity: 0.2, duration: 0.3 });
+                } else {
+                    gsap.to('#norton-load', { opacity: 1, duration: 0.3 });
+                    gsap.to('#norton-load-txt', { opacity: 1, duration: 0.3 });
+                }
+                if (nortonOverlays[step]) {
+                    nortonOverlays[step].forEach(sel => {
+                        gsap.to(sel, { opacity: 1, duration: 0.5, delay: 0.2 });
+                    });
+                }
+                gsap.to('#norton-step-original', { opacity: step === 3 ? 0 : 1, duration: 0.3 });
+                const label = document.getElementById('norton-step-label');
+                if (label) label.textContent = nortonLabels[step] || '';
+            });
+        });
+    }
+
+    // 14. Norton Calculator
+    const nortonCalcBtn = document.getElementById('norton-calc-btn');
+    if (nortonCalcBtn) {
+        nortonCalcBtn.addEventListener('click', () => {
+            const vth = parseFloat(document.getElementById('norton-calc-vth').value);
+            const rth = parseFloat(document.getElementById('norton-calc-rth').value);
+            const rl = parseFloat(document.getElementById('norton-calc-rl').value);
+            if ([vth, rth, rl].some(isNaN) || rth === 0) return;
+            const iN = vth / rth;
+            const rN = rth;
+            const il = iN * (rN / (rN + rl));
+            const res = document.getElementById('norton-calc-result');
+            res.style.display = 'block';
+            res.innerHTML = `I<sub>N</sub> = ${iN.toFixed(3)} A &nbsp;|&nbsp; R<sub>N</sub> = ${rN.toFixed(2)} Ω &nbsp;|&nbsp; I<sub>L</sub> = ${il.toFixed(3)} A`;
         });
     }
 
@@ -2170,37 +2224,7 @@ if (btnSpV) {
     });
 }
 
-// 40. Thevenin-Norton Morph
-const btnTnToggle = document.getElementById('btn-tn-toggle');
-let isNorton = false;
-if (btnTnToggle) {
-    btnTnToggle.addEventListener('click', () => {
-        isNorton = !isNorton;
-        const src = document.getElementById('tn-src');
-        const res = document.getElementById('tn-res');
-        const vP = document.getElementById('tn-src-v-p');
-        const vM = document.getElementById('tn-src-v-m');
-        const iA = document.getElementById('tn-src-i-arrow');
-        const rTop = document.getElementById('tn-rail-top');
-
-        if (isNorton) {
-            btnTnToggle.textContent = 'Switch to Thevenin Equivalent';
-            gsap.to(src, { stroke: '#bf00ff', duration: 0.5 });
-            gsap.to([vP, vM], { opacity: 0, duration: 0.3 });
-            gsap.to(iA, { opacity: 1, duration: 0.3 });
-            // Move Resistor to Parallel
-            gsap.to(res, { attr: { d: "M 100 30 L 100 45 L 92 50 L 108 58 L 92 66 L 108 74 L 100 79 L 100 90" }, duration: 0.6 });
-            gsap.to(rTop, { attr: { d: "M 60 42 L 60 30 L 100 30" }, duration: 0.6 });
-        } else {
-            btnTnToggle.textContent = 'Switch to Norton Equivalent';
-            gsap.to(src, { stroke: '#bf00ff', duration: 0.5 });
-            gsap.to([vP, vM], { opacity: 1, duration: 0.3 });
-            gsap.to(iA, { opacity: 0, duration: 0.3 });
-            gsap.to(res, { attr: { d: "M 120 30 L 135 30 L 140 22 L 150 38 L 160 22 L 170 38 L 175 30 L 190 30" }, duration: 0.6 });
-            gsap.to(rTop, { attr: { d: "M 60 42 L 60 30 L 120 30" }, duration: 0.6 });
-        }
-    });
-}
+// 40. (Removed — Thevenin/Norton morph replaced by step-by-step animations)
 
 // 41. Tellegen Verification
 const btnTell = document.getElementById('btn-verify-tellegen');

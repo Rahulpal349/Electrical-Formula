@@ -98,22 +98,77 @@
         </div>
     </header>
 
-    <!-- Internal Page Navigation -->
-    <nav class="circuit-nav" id="circuit-nav">
-        <ul>
-            <li><a href="#mod1">1. Measurement Fundamentals</a></li>
-            <li><a href="#mod2">2. Measuring Instruments</a></li>
-            <li><a href="#mod3">3. Rectifier & Resistance</a></li>
-            <li><a href="#mod4">4. High R & AC Bridges</a></li>
-            <li><a href="#mod5">5. High R & AC Bridge Theory</a></li>
-            <li><a href="#mod6">6. Frequency & Instrument Transformers</a></li>
-            <li><a href="#mod7">7. PT, CT vs PT & Power</a></li>
-            <li><a href="#mod8">8. Wattmeter Errors & Polyphase</a></li>
-            <li><a href="#mod9">9. 3-φ Power & Energy Meters</a></li>
-            <li><a href="#mod10">10. CRO & Electronic Measurements</a></li>
-            <li><a href="#mod11">11. Lissajous Phase, DVM, Q-Meter & Sensors</a></li>
+    <!-- Glass Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle Sidebar">
+        <span class="sidebar-toggle-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </span>
+    </button>
+
+    <!-- Glass Sidebar -->
+    <aside class="glass-sidebar" id="glass-sidebar">
+        <div class="glass-sidebar__header">
+            <div class="glass-sidebar__profile">
+                <div class="glass-sidebar__avatar">⚡</div>
+                <div class="glass-sidebar__info">
+                    <span class="glass-sidebar__label">MEASUREMENTS</span>
+                    <span class="glass-sidebar__name">Instrumentation</span>
+                </div>
+            </div>
+            <button class="glass-sidebar__close" id="sidebar-close" aria-label="Close Sidebar">✕</button>
+        </div>
+
+        <div class="glass-sidebar__section-label">MODULES</div>
+        <ul class="glass-sidebar__nav">
+            <li><a href="#mod1" class="glass-sidebar__link active" data-mod="1">
+                <span class="glass-sidebar__icon">🎯</span>
+                <span>Measurement Fundamentals</span>
+            </a></li>
+            <li><a href="#mod2" class="glass-sidebar__link" data-mod="2">
+                <span class="glass-sidebar__icon">🎛️</span>
+                <span>Measuring Instruments</span>
+            </a></li>
+            <li><a href="#mod3" class="glass-sidebar__link" data-mod="3">
+                <span class="glass-sidebar__icon">⚡</span>
+                <span>Rectifier & Resistance</span>
+            </a></li>
+            <li><a href="#mod4" class="glass-sidebar__link" data-mod="4">
+                <span class="glass-sidebar__icon">🌉</span>
+                <span>High R & AC Bridges</span>
+            </a></li>
+            <li><a href="#mod5" class="glass-sidebar__link" data-mod="5">
+                <span class="glass-sidebar__icon">📐</span>
+                <span>High R & AC Bridge Theory</span>
+            </a></li>
+            <li><a href="#mod6" class="glass-sidebar__link" data-mod="6">
+                <span class="glass-sidebar__icon">🔄</span>
+                <span>Frequency & Instrument Transformers</span>
+            </a></li>
+            <li><a href="#mod7" class="glass-sidebar__link" data-mod="7">
+                <span class="glass-sidebar__icon">📊</span>
+                <span>PT, CT vs PT & Power</span>
+            </a></li>
+            <li><a href="#mod8" class="glass-sidebar__link" data-mod="8">
+                <span class="glass-sidebar__icon">⚖️</span>
+                <span>Wattmeter Errors & Polyphase</span>
+            </a></li>
+            <li><a href="#mod9" class="glass-sidebar__link" data-mod="9">
+                <span class="glass-sidebar__icon">📟</span>
+                <span>3-φ Power & Energy Meters</span>
+            </a></li>
+            <li><a href="#mod10" class="glass-sidebar__link" data-mod="10">
+                <span class="glass-sidebar__icon">📺</span>
+                <span>CRO & Electronic Measurements</span>
+            </a></li>
+            <li><a href="#mod11" class="glass-sidebar__link" data-mod="11">
+                <span class="glass-sidebar__icon">📡</span>
+                <span>Lissajous Phase, DVM, Q-Meter & Sensors</span>
+            </a></li>
         </ul>
-    </nav>
+    </aside>
+
+    <!-- Sidebar Overlay -->
+    <div class="glass-sidebar__overlay" id="sidebar-overlay"></div>
 
 
     <div id="progress-bar"></div>
@@ -126,7 +181,7 @@
         <main class="circuit-main">
 
             <!-- MODULE 1: Measurement Fundamentals -->
-            <section id="mod1" class="module-section">
+            <section id="mod1" class="module-section active">
                 <div class="module-header" data-aos="fade-right">
                     <h2 class="module-title">MODULE 1 <span class="module-subtitle">— Measurement Fundamentals</span>
                     </h2>

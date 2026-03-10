@@ -224,11 +224,16 @@ h4,
     margin: 0 auto;
 }
 
-/* Module Sections */
+/* Module Sections — Unit Switching (hidden by default, shown when active) */
 .module-section {
     margin-bottom: 6rem;
     padding-top: 2rem;
-    /* offset for anchor links if needed */
+    display: none;
+    scroll-margin-top: 150px;
+}
+
+.module-section.active {
+    display: block;
 }
 
 .module-header {
@@ -2105,6 +2110,7 @@ input[type=range]::-webkit-slider-thumb {
 /* Hot wire glow animation */
 @keyframes hwGlow {
     0%   { opacity: 0.15; }
+
     50%  { opacity: 0.55; }
     100% { opacity: 0.15; }
 }
@@ -2347,4 +2353,292 @@ input[type=range]::-webkit-slider-thumb {
     color: #94a3b8;
     font-size: 0.78rem;
     font-family: 'Inter', sans-serif;
+}
+
+/* =========================================================================
+   GLASS SIDEBAR DESIGN
+   ========================================================================= */
+
+/* Toggle Button */
+.sidebar-toggle {
+    position: fixed;
+    top: 80px;
+    left: 16px;
+    z-index: 200;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: #f97316;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-toggle:hover {
+    background: rgba(249, 115, 22, 0.15);
+    border-color: rgba(249, 115, 22, 0.4);
+    transform: scale(1.05);
+}
+
+.sidebar-toggle.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-60px);
+}
+
+/* Glass Sidebar */
+.glass-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    z-index: 300;
+    background: rgba(15, 10, 30, 0.75);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.5), inset 0 0 80px rgba(249, 115, 22, 0.03);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.glass-sidebar.open {
+    transform: translateX(0);
+}
+
+.glass-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.glass-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.glass-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(249, 115, 22, 0.25);
+    border-radius: 4px;
+}
+
+/* Sidebar Header */
+.glass-sidebar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 18px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-sidebar__profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.glass-sidebar__avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+}
+
+.glass-sidebar__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.glass-sidebar__label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    color: rgba(249, 115, 22, 0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.glass-sidebar__name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.glass-sidebar__close {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.glass-sidebar__close:hover {
+    background: rgba(255, 70, 70, 0.15);
+    color: #ff6b6b;
+    border-color: rgba(255, 70, 70, 0.3);
+}
+
+/* Section Label */
+.glass-sidebar__section-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 2.5px;
+    padding: 16px 20px 8px;
+    text-transform: uppercase;
+}
+
+/* Nav Links */
+.glass-sidebar__nav {
+    list-style: none;
+    padding: 0 10px 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.glass-sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-sidebar__link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 0 3px 3px 0;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.glass-sidebar__link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.glass-sidebar__link.active {
+    color: #fff;
+    background: rgba(249, 115, 22, 0.12);
+}
+
+.glass-sidebar__link.active::before {
+    background: #f97316;
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.5);
+}
+
+/* Module-specific active colors */
+.glass-sidebar__link[data-mod="1"].active { background: rgba(0,255,136,0.1); }
+.glass-sidebar__link[data-mod="1"].active::before { background: var(--mod1-color); box-shadow: 0 0 12px var(--mod1-color); }
+
+.glass-sidebar__link[data-mod="2"].active { background: rgba(0,245,255,0.1); }
+.glass-sidebar__link[data-mod="2"].active::before { background: var(--mod2-color); box-shadow: 0 0 12px var(--mod2-color); }
+
+.glass-sidebar__link[data-mod="3"].active { background: rgba(250,204,21,0.1); }
+.glass-sidebar__link[data-mod="3"].active::before { background: var(--mod3-color); box-shadow: 0 0 12px var(--mod3-color); }
+
+.glass-sidebar__link[data-mod="4"].active { background: rgba(167,139,250,0.1); }
+.glass-sidebar__link[data-mod="4"].active::before { background: var(--mod4-color); box-shadow: 0 0 12px var(--mod4-color); }
+
+.glass-sidebar__link[data-mod="5"].active { background: rgba(251,113,133,0.1); }
+.glass-sidebar__link[data-mod="5"].active::before { background: var(--mod5-color); box-shadow: 0 0 12px var(--mod5-color); }
+
+.glass-sidebar__link[data-mod="6"].active { background: rgba(96,165,250,0.1); }
+.glass-sidebar__link[data-mod="6"].active::before { background: var(--mod6-color); box-shadow: 0 0 12px var(--mod6-color); }
+
+.glass-sidebar__link[data-mod="7"].active { background: rgba(250,204,21,0.1); }
+.glass-sidebar__link[data-mod="7"].active::before { background: var(--mod7-color); box-shadow: 0 0 12px var(--mod7-color); }
+
+.glass-sidebar__link[data-mod="8"].active { background: rgba(0,255,136,0.1); }
+.glass-sidebar__link[data-mod="8"].active::before { background: var(--mod8-color); box-shadow: 0 0 12px var(--mod8-color); }
+
+.glass-sidebar__link[data-mod="9"].active { background: rgba(249,115,22,0.1); }
+.glass-sidebar__link[data-mod="9"].active::before { background: var(--mod9-color); box-shadow: 0 0 12px var(--mod9-color); }
+
+.glass-sidebar__link[data-mod="10"].active { background: rgba(0,245,255,0.1); }
+.glass-sidebar__link[data-mod="10"].active::before { background: var(--mod10-color); box-shadow: 0 0 12px var(--mod10-color); }
+
+.glass-sidebar__link[data-mod="11"].active { background: rgba(167,139,250,0.1); }
+.glass-sidebar__link[data-mod="11"].active::before { background: var(--mod11-color); box-shadow: 0 0 12px var(--mod11-color); }
+
+.glass-sidebar__icon {
+    font-size: 1.1rem;
+    width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Overlay */
+.glass-sidebar__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 250;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.glass-sidebar__overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .glass-sidebar {
+        width: 260px;
+    }
+
+    .sidebar-toggle {
+        top: 75px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .glass-sidebar__link {
+        font-size: 0.78rem;
+        padding: 9px 12px;
+    }
 }

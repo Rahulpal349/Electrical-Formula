@@ -12,6 +12,12 @@
 .circuit-section {
     padding: 80px 0;
     border-bottom: 1px solid var(--border);
+    display: none;
+    scroll-margin-top: 150px;
+}
+
+.circuit-section.active {
+    display: block;
 }
 
 /* =========================================
@@ -1703,5 +1709,287 @@ select.neon-input option {
     .neon-table th,
     .neon-table td {
         padding: 8px 10px;
+    }
+}
+
+/* =========================================================================
+   GLASS SIDEBAR DESIGN
+   ========================================================================= */
+
+/* Toggle Button */
+.sidebar-toggle {
+    position: fixed;
+    top: 80px;
+    left: 16px;
+    z-index: 200;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: #00f0ff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-toggle:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: rgba(0, 240, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.sidebar-toggle.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-60px);
+}
+
+/* Thevenin/Norton Step Buttons */
+.thev-step-btn.active,
+.norton-step-btn.active {
+    background: rgba(0, 240, 255, 0.15);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4), inset 0 0 10px rgba(0, 240, 255, 0.15);
+    transform: translateY(-2px);
+}
+.norton-step-btn.active {
+    background: rgba(250, 204, 21, 0.15);
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.4), inset 0 0 10px rgba(250, 204, 21, 0.15);
+}
+
+/* Glass Sidebar */
+.glass-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    z-index: 300;
+    background: rgba(15, 10, 30, 0.75);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.5), inset 0 0 80px rgba(0, 240, 255, 0.03);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.glass-sidebar.open {
+    transform: translateX(0);
+}
+
+.glass-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.glass-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.glass-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0, 240, 255, 0.25);
+    border-radius: 4px;
+}
+
+/* Sidebar Header */
+.glass-sidebar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 18px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-sidebar__profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.glass-sidebar__avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #00f0ff, #00b8d4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+}
+
+.glass-sidebar__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.glass-sidebar__label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    color: rgba(0, 240, 255, 0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.glass-sidebar__name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.glass-sidebar__close {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.glass-sidebar__close:hover {
+    background: rgba(255, 70, 70, 0.15);
+    color: #ff6b6b;
+    border-color: rgba(255, 70, 70, 0.3);
+}
+
+/* Section Label */
+.glass-sidebar__section-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 2.5px;
+    padding: 16px 20px 8px;
+    text-transform: uppercase;
+}
+
+/* Nav Links */
+.glass-sidebar__nav {
+    list-style: none;
+    padding: 0 10px 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.glass-sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-sidebar__link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 0 3px 3px 0;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.glass-sidebar__link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.glass-sidebar__link.active {
+    color: #fff;
+    background: rgba(0, 240, 255, 0.1);
+}
+
+.glass-sidebar__link.active::before {
+    background: #00f0ff;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+}
+
+/* Per-unit active colors */
+.glass-sidebar__link[data-unit="1"].active { background: rgba(0, 240, 255, 0.1); }
+.glass-sidebar__link[data-unit="1"].active::before { background: #00f0ff; box-shadow: 0 0 12px #00f0ff; }
+
+.glass-sidebar__link[data-unit="2"].active { background: rgba(250, 204, 21, 0.1); }
+.glass-sidebar__link[data-unit="2"].active::before { background: #facc15; box-shadow: 0 0 12px #facc15; }
+
+.glass-sidebar__link[data-unit="3"].active { background: rgba(0, 255, 136, 0.1); }
+.glass-sidebar__link[data-unit="3"].active::before { background: #00ff88; box-shadow: 0 0 12px #00ff88; }
+
+.glass-sidebar__link[data-unit="4"].active { background: rgba(167, 139, 250, 0.1); }
+.glass-sidebar__link[data-unit="4"].active::before { background: #a78bfa; box-shadow: 0 0 12px #a78bfa; }
+
+.glass-sidebar__link[data-unit="5"].active { background: rgba(251, 113, 133, 0.1); }
+.glass-sidebar__link[data-unit="5"].active::before { background: #fb7185; box-shadow: 0 0 12px #fb7185; }
+
+.glass-sidebar__icon {
+    font-size: 1.1rem;
+    width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Overlay */
+.glass-sidebar__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 250;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.glass-sidebar__overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .glass-sidebar {
+        width: 260px;
+    }
+
+    .sidebar-toggle {
+        top: 75px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .glass-sidebar__link {
+        font-size: 0.78rem;
+        padding: 9px 12px;
     }
 }

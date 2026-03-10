@@ -116,19 +116,56 @@
         </div>
     </header>
 
-    <!-- Internal Page Navigation -->
-    <nav class="circuit-nav" id="circuit-nav">
-        <ul>
-            <li><a href="#fundamental-concepts">1. Fundamental Concepts</a></li>
-            <li><a href="#dc-ac-analysis">2. DC & AC Analysis</a></li>
-            <li><a href="#network-theorems">3. Network Theorems</a></li>
-            <li><a href="#two-port-networks">4. Two Port Networks</a></li>
-            <li><a href="#advanced-topics">5. Electrical Materials</a></li>
+    <!-- Glass Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle Sidebar">
+        <span class="sidebar-toggle-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </span>
+    </button>
+
+    <!-- Glass Sidebar -->
+    <aside class="glass-sidebar" id="glass-sidebar">
+        <div class="glass-sidebar__header">
+            <div class="glass-sidebar__profile">
+                <div class="glass-sidebar__avatar">⚡</div>
+                <div class="glass-sidebar__info">
+                    <span class="glass-sidebar__label">CIRCUIT THEORY</span>
+                    <span class="glass-sidebar__name">Network Analysis</span>
+                </div>
+            </div>
+            <button class="glass-sidebar__close" id="sidebar-close" aria-label="Close Sidebar">✕</button>
+        </div>
+
+        <div class="glass-sidebar__section-label">MODULES</div>
+        <ul class="glass-sidebar__nav">
+            <li><a href="#fundamental-concepts" class="glass-sidebar__link active" data-unit="1">
+                <span class="glass-sidebar__icon">🔌</span>
+                <span>Fundamental Concepts</span>
+            </a></li>
+            <li><a href="#dc-ac-analysis" class="glass-sidebar__link" data-unit="2">
+                <span class="glass-sidebar__icon">〰️</span>
+                <span>DC & AC Analysis</span>
+            </a></li>
+            <li><a href="#network-theorems" class="glass-sidebar__link" data-unit="3">
+                <span class="glass-sidebar__icon">📐</span>
+                <span>Network Theorems</span>
+            </a></li>
+            <li><a href="#two-port-networks" class="glass-sidebar__link" data-unit="4">
+                <span class="glass-sidebar__icon">🔄</span>
+                <span>Two Port Networks</span>
+            </a></li>
+            <li><a href="#advanced-topics" class="glass-sidebar__link" data-unit="5">
+                <span class="glass-sidebar__icon">🧲</span>
+                <span>Electrical Materials</span>
+            </a></li>
         </ul>
-    </nav>
+    </aside>
+
+    <!-- Sidebar Overlay -->
+    <div class="glass-sidebar__overlay" id="sidebar-overlay"></div>
     <main class="circuit-main">
         <!-- Sections will go here -->
-        <section id="fundamental-concepts" class="circuit-section">
+        <section id="fundamental-concepts" class="circuit-section active">
             <div class="section__header" data-aos="fade-up">
                 <h2>Fundamental Concepts & Circuit Elements</h2>
                 <p>Units, circuit elements, laws, theorems, and network analysis techniques.</p>
@@ -4472,6 +4509,7 @@
                     </section>
                 </div>
             </section>
+        </section>
 
 
         <!-- ═══════════════════════════════════════════════════════════════
@@ -4550,69 +4588,313 @@
                         </div>
                     </div>
 
-                    <!-- ----------- CARD 2: THEVENIN'S & NORTON'S THEOREM ----------- -->
-                    <div class="subsection mt-5" id="thevenin-norton" data-aos="fade-up">
-                        <h3 class="subsection__title" style="color: #bf00ff; border-left-color: #bf00ff;">2. Thevenin's
-                            & Norton's Theorem</h3>
+                    <!-- ----------- CARD 2: THEVENIN'S THEOREM ----------- -->
+                    <div class="subsection mt-5" id="thevenin-theorem" data-aos="fade-up">
+                        <h3 class="subsection__title" style="color: #00f0ff; border-left-color: #00f0ff;">2. Thevenin's Theorem</h3>
 
                         <div class="card-grid-2">
-                            <!-- Morphing SVG -->
-                            <div class="card-panel text-center" data-aos="fade-right">
-                                <h5 style="color:#bf00ff;">Equivalent Network Morph</h5>
+                            <!-- Interactive Step-by-Step Animation -->
+                            <div class="card-panel text-center" data-aos="fade-right" style="min-height:420px;">
+                                <h5 style="color:#00f0ff;">Step-by-Step: Find Thevenin Equivalent</h5>
                                 <div class="mt-3">
-                                    <svg viewBox="0 0 240 120" width="100%" style="max-width:280px;" id="tn-morph-svg">
-                                        <!-- Terminals -->
-                                        <circle cx="220" cy="30" r="3" fill="#fff" />
-                                        <circle cx="220" cy="90" r="3" fill="#fff" />
-                                        <text x="225" y="25" fill="#fff" font-size="10">a</text>
-                                        <text x="225" y="95" fill="#fff" font-size="10">b</text>
+                                    <svg viewBox="0 0 400 200" width="100%" style="max-width:400px;" id="thev-anim-svg">
+                                        <defs>
+                                            <marker id="thev-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                                                <polygon points="0 0, 8 3, 0 6" fill="#00f0ff"/>
+                                            </marker>
+                                        </defs>
 
-                                        <!-- Components -->
-                                        <g id="tn-comp-group">
-                                            <circle id="tn-src" cx="60" cy="60" r="18" fill="#0b0f19" stroke="#bf00ff"
-                                                stroke-width="2" />
-                                            <text id="tn-src-v-p" x="60" y="56" fill="#fff" font-size="10"
-                                                text-anchor="middle">+</text>
-                                            <text id="tn-src-v-m" x="60" y="68" fill="#fff" font-size="12"
-                                                text-anchor="middle">-</text>
-                                            <line id="tn-src-i-arrow" x1="60" y1="68" x2="60" y2="52" stroke="#bf00ff"
-                                                stroke-width="2" opacity="0" />
-
-                                            <path id="tn-res"
-                                                d="M 120 30 L 135 30 L 140 22 L 150 38 L 160 22 L 170 38 L 175 30 L 190 30"
-                                                stroke="#00f5ff" stroke-width="2" fill="none" />
+                                        <!-- Step 0: Original Circuit -->
+                                        <g id="thev-step-original">
+                                            <!-- Battery Vs -->
+                                            <rect x="15" y="40" width="30" height="50" rx="4" fill="none" stroke="#00f0ff" stroke-width="2"/>
+                                            <text x="30" y="60" fill="#00f0ff" font-size="9" text-anchor="middle">Vs</text>
+                                            <line x1="23" y1="68" x2="37" y2="68" stroke="#fff" stroke-width="2"/>
+                                            <line x1="26" y1="74" x2="34" y2="74" stroke="#fff" stroke-width="1.5"/>
+                                            <!-- R1 -->
+                                            <path d="M 60 30 L 75 30 L 80 22 L 90 38 L 100 22 L 110 38 L 115 30 L 130 30" stroke="#facc15" stroke-width="2" fill="none"/>
+                                            <text x="95" y="18" fill="#facc15" font-size="9" text-anchor="middle">R₁</text>
+                                            <!-- R2 vertical -->
+                                            <path d="M 170 30 L 170 45 L 162 50 L 178 60 L 162 70 L 178 80 L 170 85 L 170 100" stroke="#facc15" stroke-width="2" fill="none"/>
+                                            <text x="188" y="68" fill="#facc15" font-size="9">R₂</text>
+                                            <!-- Load RL -->
+                                            <rect x="240" y="40" width="40" height="50" rx="4" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3" id="thev-load"/>
+                                            <text x="260" y="70" fill="#94a3b8" font-size="10" text-anchor="middle" id="thev-load-txt">Z_L</text>
+                                            <!-- Wires -->
+                                            <line x1="30" y1="40" x2="30" y2="30" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="30" y1="30" x2="60" y2="30" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="130" y1="30" x2="280" y2="30" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="240" y1="65" x2="170" y2="65" stroke="#555" stroke-width="1.5" opacity="0"/>
+                                            <line x1="30" y1="90" x2="30" y2="120" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="30" y1="120" x2="280" y2="120" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="170" y1="100" x2="170" y2="120" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="240" y1="90" x2="240" y2="120" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="280" y1="30" x2="280" y2="40" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="280" y1="90" x2="280" y2="120" stroke="#555" stroke-width="1.5"/>
+                                            <!-- Terminal dots a, b -->
+                                            <circle cx="240" cy="40" r="4" fill="#00f0ff" id="thev-dot-a"/>
+                                            <circle cx="240" cy="90" r="4" fill="#00f0ff" id="thev-dot-b"/>
+                                            <text x="230" y="38" fill="#00f0ff" font-size="9">a</text>
+                                            <text x="230" y="100" fill="#00f0ff" font-size="9">b</text>
                                         </g>
-                                        <!-- Rails -->
-                                        <path id="tn-rail-top" d="M 60 42 L 60 30 L 120 30" stroke="#555"
-                                            stroke-width="1.5" fill="none" />
-                                        <path id="tn-rail-bottom" d="M 60 78 L 60 90 L 220 90" stroke="#555"
-                                            stroke-width="1.5" fill="none" />
-                                        <line id="tn-rail-endV" x1="190" y1="30" x2="220" y2="30" stroke="#555"
-                                            stroke-width="1.5" />
+
+                                        <!-- Step overlay: highlights & labels -->
+                                        <g id="thev-step-overlay" opacity="0">
+                                            <!-- Voc highlight -->
+                                            <line x1="245" y1="45" x2="245" y2="85" stroke="#00ff88" stroke-width="2" stroke-dasharray="4,2"/>
+                                            <text x="255" y="68" fill="#00ff88" font-size="10" font-weight="bold">Voc</text>
+                                            <!-- Arrow -->
+                                            <line x1="250" y1="82" x2="250" y2="50" stroke="#00ff88" stroke-width="1.5" marker-end="url(#thev-arrow)"/>
+                                        </g>
+
+                                        <!-- Step 2 overlay: Rth calculation -->
+                                        <g id="thev-rth-overlay" opacity="0">
+                                            <!-- X over Vs (source killed) -->
+                                            <line x1="18" y1="43" x2="42" y2="87" stroke="#ef4444" stroke-width="2.5"/>
+                                            <line x1="42" y1="43" x2="18" y2="87" stroke="#ef4444" stroke-width="2.5"/>
+                                            <text x="55" y="135" fill="#ef4444" font-size="8">Source killed</text>
+                                            <!-- Rth label -->
+                                            <text x="120" y="150" fill="#facc15" font-size="10" font-weight="bold">Rth = R₁ ‖ R₂</text>
+                                        </g>
+
+                                        <!-- Step 3 overlay: Final Thevenin circuit -->
+                                        <g id="thev-final-overlay" opacity="0">
+                                            <rect x="10" y="15" width="390" height="180" fill="rgba(10,14,26,0.92)" rx="8"/>
+                                            <!-- Vth source -->
+                                            <circle cx="100" cy="100" r="22" fill="none" stroke="#00f0ff" stroke-width="2.5"/>
+                                            <text x="100" y="95" fill="#fff" font-size="11" text-anchor="middle">+</text>
+                                            <text x="100" y="110" fill="#fff" font-size="13" text-anchor="middle">−</text>
+                                            <text x="100" y="140" fill="#00f0ff" font-size="11" text-anchor="middle" font-weight="bold">Vth</text>
+                                            <!-- Rth resistor -->
+                                            <path d="M 160 60 L 175 60 L 180 50 L 190 70 L 200 50 L 210 70 L 215 60 L 230 60" stroke="#facc15" stroke-width="2.5" fill="none"/>
+                                            <text x="195" y="46" fill="#facc15" font-size="11" text-anchor="middle" font-weight="bold">Rth</text>
+                                            <!-- Load -->
+                                            <rect x="280" y="55" width="50" height="70" rx="5" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,3"/>
+                                            <text x="305" y="95" fill="#94a3b8" font-size="12" text-anchor="middle">Z_L</text>
+                                            <!-- Wires -->
+                                            <line x1="100" y1="78" x2="100" y2="60" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="100" y1="60" x2="160" y2="60" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="230" y1="60" x2="305" y2="60" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="305" y1="60" x2="305" y2="55" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="100" y1="122" x2="100" y2="150" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="100" y1="150" x2="305" y2="150" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="305" y1="125" x2="305" y2="150" stroke="#555" stroke-width="1.5"/>
+                                            <!-- Terminal dots -->
+                                            <circle cx="280" cy="60" r="4" fill="#00f0ff"/>
+                                            <circle cx="280" cy="150" r="4" fill="#00f0ff"/>
+                                            <text x="270" y="56" fill="#00f0ff" font-size="9">a</text>
+                                            <text x="270" y="158" fill="#00f0ff" font-size="9">b</text>
+                                            <!-- Label -->
+                                            <text x="200" y="180" fill="#00f0ff" font-size="10" text-anchor="middle" font-weight="bold">Thevenin Equivalent Circuit</text>
+                                        </g>
+
+                                        <!-- Step indicator -->
+                                        <text id="thev-step-label" x="200" y="195" fill="#94a3b8" font-size="9" text-anchor="middle"></text>
                                     </svg>
-                                    <div class="mt-3">
-                                        <button class="neon-btn" id="btn-tn-toggle">Switch to Norton Equivalent</button>
+
+                                    <!-- Step buttons -->
+                                    <div class="mt-3" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+                                        <button class="neon-btn thev-step-btn active" data-step="0" style="font-size:0.75rem; padding:6px 12px;">Original Circuit</button>
+                                        <button class="neon-btn thev-step-btn" data-step="1" style="font-size:0.75rem; padding:6px 12px;">① Find Voc</button>
+                                        <button class="neon-btn thev-step-btn" data-step="2" style="font-size:0.75rem; padding:6px 12px;">② Find Rth</button>
+                                        <button class="neon-btn thev-step-btn" data-step="3" style="font-size:0.75rem; padding:6px 12px;">③ Equivalent</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Theory -->
+                            <!-- Theory & Calculator -->
                             <div class="card-panel" data-aos="fade-left">
-                                <h5 style="color:#bf00ff;">Network Reduction</h5>
+                                <h5 style="color:#00f0ff;">Thevenin's Theorem</h5>
                                 <div class="text-sm">
-                                    <div class="info-badge mb-2"
-                                        style="background:rgba(191,0,255,0.05); border:1px solid #bf00ff;">
-                                        $ V_{th} = V_{OC} \quad ; \quad I_N = I_{SC} $
-                                        $ Z_{th} = Z_N = \frac{V_{OC}}{I_{SC}} $
+                                    <div class="info-badge mb-2" style="background:rgba(0,240,255,0.05); border:1px solid #00f0ff;">
+                                        <strong>Statement:</strong> Any linear bilateral network with voltage/current sources and resistances can be replaced by an equivalent circuit having a <em>voltage source $V_{th}$</em> in <strong>series</strong> with a resistance $R_{th}$.
                                     </div>
-                                    <div class="mt-3">
-                                        <p><strong>Thevenin:</strong> Active network $\rightarrow$ $V_{th}$ in SERIES
-                                            with $Z_{th}$.</p>
-                                        <p class="mt-1"><strong>Norton:</strong> Active network $\rightarrow$ $I_N$ in
-                                            PARALLEL with $Z_N$.</p>
+
+                                    <div class="mt-3" style="background:rgba(0,240,255,0.03); padding:12px; border-radius:8px; border-left:3px solid #00f0ff;">
+                                        <p><strong style="color:#00f0ff;">Step 1:</strong> Remove load $Z_L$ from terminals a-b</p>
+                                        <p><strong style="color:#00ff88;">Step 2:</strong> Find open-circuit voltage across a-b</p>
+                                        <p style="text-align:center;">$V_{th} = V_{OC} = V_{ab}$</p>
+                                        <p><strong style="color:#facc15;">Step 3:</strong> Deactivate all independent sources</p>
+                                        <p style="font-size:0.8rem; color:#94a3b8;">Voltage source → short circuit, Current source → open circuit</p>
+                                        <p><strong style="color:#fb7185;">Step 4:</strong> Find equivalent resistance from a-b</p>
+                                        <p style="text-align:center;">$R_{th} = R_{ab}$</p>
                                     </div>
-                                    <p class="mt-3 text-xs opacity-75">Used to simplify complex circuits into a single
-                                        source and impedance when analyzing a varying load $Z_L$.</p>
+
+                                    <div class="mt-3" style="background:rgba(250,204,21,0.05); padding:10px; border-radius:8px;">
+                                        <p style="color:#facc15; font-size:0.85rem;"><strong>Key Relations:</strong></p>
+                                        <p style="text-align:center;">$V_{th} = V_{OC}$</p>
+                                        <p style="text-align:center;">$R_{th} = \frac{V_{OC}}{I_{SC}}$</p>
+                                        <p style="text-align:center;">$I_L = \frac{V_{th}}{R_{th} + Z_L}$</p>
+                                    </div>
+
+                                    <!-- Mini Calculator -->
+                                    <div class="mt-3" style="background:#1a1f2e; padding:10px; border-radius:8px; border:1px solid #333;">
+                                        <p style="color:#00f0ff; font-size:0.8rem; font-weight:600;">Quick Calculator</p>
+                                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:6px;">
+                                            <input type="number" id="thev-calc-vs" placeholder="Vs (V)" value="20" style="background:#0a0e1a; color:#fff; border:1px solid #333; padding:5px 8px; border-radius:4px; font-size:0.8rem;">
+                                            <input type="number" id="thev-calc-r1" placeholder="R₁ (Ω)" value="4" style="background:#0a0e1a; color:#fff; border:1px solid #333; padding:5px 8px; border-radius:4px; font-size:0.8rem;">
+                                            <input type="number" id="thev-calc-r2" placeholder="R₂ (Ω)" value="6" style="background:#0a0e1a; color:#fff; border:1px solid #333; padding:5px 8px; border-radius:4px; font-size:0.8rem;">
+                                            <input type="number" id="thev-calc-rl" placeholder="RL (Ω)" value="10" style="background:#0a0e1a; color:#fff; border:1px solid #333; padding:5px 8px; border-radius:4px; font-size:0.8rem;">
+                                        </div>
+                                        <button class="neon-btn mt-2" id="thev-calc-btn" style="width:100%; font-size:0.75rem;">Calculate Vth, Rth, IL</button>
+                                        <div id="thev-calc-result" style="display:none; margin-top:8px; padding:8px; background:rgba(0,240,255,0.08); border-radius:6px; font-size:0.8rem; color:#00f0ff;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ----------- CARD 2B: NORTON'S THEOREM ----------- -->
+                    <div class="subsection mt-5" id="norton-theorem" data-aos="fade-up">
+                        <h3 class="subsection__title" style="color: #facc15; border-left-color: #facc15;">2b. Norton's Theorem</h3>
+
+                        <div class="card-grid-2">
+                            <!-- Interactive Step-by-Step Animation -->
+                            <div class="card-panel text-center" data-aos="fade-right" style="min-height:420px;">
+                                <h5 style="color:#facc15;">Step-by-Step: Find Norton Equivalent</h5>
+                                <div class="mt-3">
+                                    <svg viewBox="0 0 400 200" width="100%" style="max-width:400px;" id="norton-anim-svg">
+                                        <defs>
+                                            <marker id="norton-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                                                <polygon points="0 0, 8 3, 0 6" fill="#facc15"/>
+                                            </marker>
+                                        </defs>
+
+                                        <!-- Step 0: Original Circuit -->
+                                        <g id="norton-step-original">
+                                            <!-- Battery Vs -->
+                                            <rect x="15" y="40" width="30" height="50" rx="4" fill="none" stroke="#facc15" stroke-width="2"/>
+                                            <text x="30" y="60" fill="#facc15" font-size="9" text-anchor="middle">Vs</text>
+                                            <line x1="23" y1="68" x2="37" y2="68" stroke="#fff" stroke-width="2"/>
+                                            <line x1="26" y1="74" x2="34" y2="74" stroke="#fff" stroke-width="1.5"/>
+                                            <!-- R1 -->
+                                            <path d="M 60 30 L 75 30 L 80 22 L 90 38 L 100 22 L 110 38 L 115 30 L 130 30" stroke="#00f0ff" stroke-width="2" fill="none"/>
+                                            <text x="95" y="18" fill="#00f0ff" font-size="9" text-anchor="middle">R₁</text>
+                                            <!-- R2 vertical -->
+                                            <path d="M 170 30 L 170 45 L 162 50 L 178 60 L 162 70 L 178 80 L 170 85 L 170 100" stroke="#00f0ff" stroke-width="2" fill="none"/>
+                                            <text x="188" y="68" fill="#00f0ff" font-size="9">R₂</text>
+                                            <!-- Load RL -->
+                                            <rect x="240" y="40" width="40" height="50" rx="4" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3" id="norton-load"/>
+                                            <text x="260" y="70" fill="#94a3b8" font-size="10" text-anchor="middle" id="norton-load-txt">Z_L</text>
+                                            <!-- Wires -->
+                                            <line x1="30" y1="40" x2="30" y2="30" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="30" y1="30" x2="60" y2="30" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="130" y1="30" x2="280" y2="30" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="30" y1="90" x2="30" y2="120" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="30" y1="120" x2="280" y2="120" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="170" y1="100" x2="170" y2="120" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="240" y1="90" x2="240" y2="120" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="280" y1="30" x2="280" y2="40" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="280" y1="90" x2="280" y2="120" stroke="#555" stroke-width="1.5"/>
+                                            <!-- Terminal dots a, b -->
+                                            <circle cx="240" cy="40" r="4" fill="#facc15"/>
+                                            <circle cx="240" cy="90" r="4" fill="#facc15"/>
+                                            <text x="230" y="38" fill="#facc15" font-size="9">a</text>
+                                            <text x="230" y="100" fill="#facc15" font-size="9">b</text>
+                                        </g>
+
+                                        <!-- Step 1: Isc overlay -->
+                                        <g id="norton-isc-overlay" opacity="0">
+                                            <!-- Short circuit wire across a-b -->
+                                            <line x1="240" y1="42" x2="240" y2="88" stroke="#ef4444" stroke-width="3"/>
+                                            <text x="255" y="55" fill="#ef4444" font-size="8" font-weight="bold">Short</text>
+                                            <!-- Isc arrow -->
+                                            <line x1="248" y1="82" x2="248" y2="50" stroke="#00ff88" stroke-width="2" marker-end="url(#norton-arrow)"/>
+                                            <text x="260" y="70" fill="#00ff88" font-size="10" font-weight="bold">Isc</text>
+                                        </g>
+
+                                        <!-- Step 2: Rn overlay -->
+                                        <g id="norton-rn-overlay" opacity="0">
+                                            <!-- X over Vs -->
+                                            <line x1="18" y1="43" x2="42" y2="87" stroke="#ef4444" stroke-width="2.5"/>
+                                            <line x1="42" y1="43" x2="18" y2="87" stroke="#ef4444" stroke-width="2.5"/>
+                                            <text x="55" y="135" fill="#ef4444" font-size="8">Source killed</text>
+                                            <text x="120" y="150" fill="#00f0ff" font-size="10" font-weight="bold">Rn = R₁ ‖ R₂ = Rth</text>
+                                        </g>
+
+                                        <!-- Step 3: Final Norton circuit -->
+                                        <g id="norton-final-overlay" opacity="0">
+                                            <rect x="10" y="15" width="390" height="180" fill="rgba(10,14,26,0.92)" rx="8"/>
+                                            <!-- In current source -->
+                                            <circle cx="100" cy="100" r="22" fill="none" stroke="#facc15" stroke-width="2.5"/>
+                                            <line x1="100" y1="115" x2="100" y2="88" stroke="#facc15" stroke-width="2.5" marker-end="url(#norton-arrow)"/>
+                                            <text x="100" y="140" fill="#facc15" font-size="11" text-anchor="middle" font-weight="bold">I_N</text>
+                                            <!-- Rn resistor (parallel) -->
+                                            <path d="M 200 60 L 200 75 L 192 80 L 208 90 L 192 100 L 208 110 L 200 115 L 200 150" stroke="#00f0ff" stroke-width="2.5" fill="none"/>
+                                            <text x="218" y="108" fill="#00f0ff" font-size="11" font-weight="bold">R_N</text>
+                                            <!-- Load -->
+                                            <rect x="280" y="55" width="50" height="70" rx="5" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,3"/>
+                                            <text x="305" y="95" fill="#94a3b8" font-size="12" text-anchor="middle">Z_L</text>
+                                            <!-- Wires — parallel config -->
+                                            <line x1="100" y1="78" x2="100" y2="60" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="100" y1="60" x2="330" y2="60" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="100" y1="122" x2="100" y2="150" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="100" y1="150" x2="330" y2="150" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="305" y1="55" x2="305" y2="60" stroke="#555" stroke-width="1.5"/>
+                                            <line x1="305" y1="125" x2="305" y2="150" stroke="#555" stroke-width="1.5"/>
+                                            <!-- Terminal dots -->
+                                            <circle cx="280" cy="60" r="4" fill="#facc15"/>
+                                            <circle cx="280" cy="150" r="4" fill="#facc15"/>
+                                            <text x="270" y="56" fill="#facc15" font-size="9">a</text>
+                                            <text x="270" y="158" fill="#facc15" font-size="9">b</text>
+                                            <text x="200" y="180" fill="#facc15" font-size="10" text-anchor="middle" font-weight="bold">Norton Equivalent Circuit</text>
+                                        </g>
+
+                                        <text id="norton-step-label" x="200" y="195" fill="#94a3b8" font-size="9" text-anchor="middle"></text>
+                                    </svg>
+
+                                    <!-- Step buttons -->
+                                    <div class="mt-3" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+                                        <button class="neon-btn norton-step-btn active" data-step="0" style="font-size:0.75rem; padding:6px 12px; border-color:#facc15; color:#facc15;">Original Circuit</button>
+                                        <button class="neon-btn norton-step-btn" data-step="1" style="font-size:0.75rem; padding:6px 12px; border-color:#facc15; color:#facc15;">① Find Isc</button>
+                                        <button class="neon-btn norton-step-btn" data-step="2" style="font-size:0.75rem; padding:6px 12px; border-color:#facc15; color:#facc15;">② Find Rn</button>
+                                        <button class="neon-btn norton-step-btn" data-step="3" style="font-size:0.75rem; padding:6px 12px; border-color:#facc15; color:#facc15;">③ Equivalent</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Theory & Calculator -->
+                            <div class="card-panel" data-aos="fade-left">
+                                <h5 style="color:#facc15;">Norton's Theorem</h5>
+                                <div class="text-sm">
+                                    <div class="info-badge mb-2" style="background:rgba(250,204,21,0.05); border:1px solid #facc15;">
+                                        <strong>Statement:</strong> Any linear bilateral network can be replaced by an equivalent circuit having a <em>current source $I_N$</em> in <strong>parallel</strong> with a resistance $R_N$.
+                                    </div>
+
+                                    <div class="mt-3" style="background:rgba(250,204,21,0.03); padding:12px; border-radius:8px; border-left:3px solid #facc15;">
+                                        <p><strong style="color:#facc15;">Step 1:</strong> Remove load $Z_L$ & short-circuit a-b</p>
+                                        <p><strong style="color:#00ff88;">Step 2:</strong> Find short-circuit current through a-b</p>
+                                        <p style="text-align:center;">$I_N = I_{SC}$</p>
+                                        <p><strong style="color:#00f0ff;">Step 3:</strong> Deactivate all independent sources</p>
+                                        <p style="font-size:0.8rem; color:#94a3b8;">Same as Thevenin: V→short, I→open</p>
+                                        <p><strong style="color:#fb7185;">Step 4:</strong> Find equivalent resistance from a-b</p>
+                                        <p style="text-align:center;">$R_N = R_{th} = R_{ab}$</p>
+                                    </div>
+
+                                    <div class="mt-3" style="background:rgba(250,204,21,0.05); padding:10px; border-radius:8px;">
+                                        <p style="color:#facc15; font-size:0.85rem;"><strong>Key Relations:</strong></p>
+                                        <p style="text-align:center;">$I_N = I_{SC} = \frac{V_{th}}{R_{th}}$</p>
+                                        <p style="text-align:center;">$R_N = R_{th} = \frac{V_{OC}}{I_{SC}}$</p>
+                                        <p style="text-align:center;">$I_L = I_N \cdot \frac{R_N}{R_N + Z_L}$</p>
+                                    </div>
+
+                                    <div class="mt-3" style="background:rgba(0,240,255,0.04); padding:10px; border-radius:8px; border:1px solid rgba(0,240,255,0.15);">
+                                        <p style="color:#00f0ff; font-size:0.8rem;"><strong>Thevenin ↔ Norton Conversion:</strong></p>
+                                        <p style="text-align:center; font-size:0.85rem;">$V_{th} = I_N \cdot R_N \quad;\quad I_N = \frac{V_{th}}{R_{th}}$</p>
+                                        <p style="text-align:center; font-size:0.85rem;">$R_N = R_{th}$</p>
+                                    </div>
+
+                                    <!-- Mini Calculator -->
+                                    <div class="mt-3" style="background:#1a1f2e; padding:10px; border-radius:8px; border:1px solid #333;">
+                                        <p style="color:#facc15; font-size:0.8rem; font-weight:600;">Quick Calculator</p>
+                                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:6px;">
+                                            <input type="number" id="norton-calc-vth" placeholder="Vth (V)" value="12" style="background:#0a0e1a; color:#fff; border:1px solid #333; padding:5px 8px; border-radius:4px; font-size:0.8rem;">
+                                            <input type="number" id="norton-calc-rth" placeholder="Rth (Ω)" value="4" style="background:#0a0e1a; color:#fff; border:1px solid #333; padding:5px 8px; border-radius:4px; font-size:0.8rem;">
+                                            <input type="number" id="norton-calc-rl" placeholder="RL (Ω)" value="6" style="background:#0a0e1a; color:#fff; border:1px solid #333; padding:5px 8px; border-radius:4px; font-size:0.8rem;">
+                                        </div>
+                                        <button class="neon-btn mt-2" id="norton-calc-btn" style="width:100%; font-size:0.75rem; border-color:#facc15; color:#facc15;">Calculate IN, RN, IL</button>
+                                        <div id="norton-calc-result" style="display:none; margin-top:8px; padding:8px; background:rgba(250,204,21,0.08); border-radius:6px; font-size:0.8rem; color:#facc15;"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -6013,265 +6295,6 @@
 
                 </div>
             </section>
-
-        <!-- ══════════════════════════════════════════════════════════════ -->
-        <!-- SECTION 6: ELECTRICAL MEASUREMENTS                          -->
-        <!-- ══════════════════════════════════════════════════════════════ -->
-        <section id="electrical-measurements" class="circuit-section">
-            <div class="section__header" data-aos="fade-up">
-                <h2 style="color: var(--unit-gold);">Electrical Measurements</h2>
-                <p>Measurement methods, instrument classification, static characteristics, error analysis &amp; statistical treatment.</p>
-            </div>
-
-            <div class="ac-grid" data-aos="fade-up">
-
-                <!-- ═══════ a) Measurement Fundamentals (Cards 1-3) ═══════ -->
-                <div class="ac-subsection">
-                    <h3 style="color: var(--unit-gold);">a) Measurement Fundamentals</h3>
-                    <p>Methods, instrument types, and performance characteristics</p>
-                </div>
-
-                <!-- CARD 1: Methods of Measurement -->
-                <section class="ac-card" id="card-em-methods"
-                    style="border-top: 4px solid var(--unit-gold);">
-                    <div class="ac-card__header">
-                        <h2 class="ac-card__title" style="color: var(--unit-gold);">1. Methods of Measurement</h2>
-                        <span class="badge" style="background: var(--unit-gold); color: #000;">Fundamental</span>
-                    </div>
-                    <div class="ac-card__formula-zone">
-                        <p><strong style="color: var(--unit-cyan);">1. Direct Method:</strong> Unknown quantity is <em>directly compared</em> against a standard.</p>
-                        <p>$$ \text{Reading} = \text{Instrument Scale Value} $$</p>
-                        <p style="font-size:0.85rem; color: var(--unit-orange);">Inaccurate — direct comparison may have errors. E.g.: Ruler, Ammeter reading.</p>
-                        <p><strong style="color: var(--unit-green);">2. Indirect Method:</strong> Unknown quantity <em>computed</em> from measured related quantities.</p>
-                        <p>$$ R = \frac{V}{I} \quad \text{(measure V and I separately)} $$</p>
-                        <p style="font-size:0.85rem; color: var(--unit-green);">Accurate, more sensitive, preferred method. E.g.: Power P = VI.</p>
-                        <p>$$ \text{Direct} \rightarrow \text{Inaccurate, Simple} \quad;\quad \text{Indirect} \rightarrow \text{Accurate, Sensitive} $$</p>
-                    </div>
-                    <div class="ac-card__animation-zone" id="plot-em-1"></div>
-                    <div class="ac-card__footer">
-                        <button class="ac-btn-icon" id="btn-em-method-toggle">Toggle Direct / Indirect</button>
-                    </div>
-                </section>
-
-                <!-- CARD 2: Classification of Instruments -->
-                <section class="ac-card" id="card-em-classification"
-                    style="border-top: 4px solid var(--unit-gold);">
-                    <div class="ac-card__header">
-                        <h2 class="ac-card__title" style="color: var(--unit-gold);">2. Classification of Instruments</h2>
-                        <span class="badge" style="background: var(--unit-gold); color: #000;">3 Classes</span>
-                    </div>
-                    <div class="ac-card__formula-zone">
-                        <p><strong style="color: var(--unit-cyan);">(i) Absolute vs Secondary:</strong></p>
-                        <p style="font-size:0.85rem;">Absolute — value from instrument constants, no calibration. E.g.: Tangent galvanometer.<br>
-                        Secondary — must be calibrated. E.g.: Ammeter, Voltmeter.</p>
-                        <p><strong style="color: var(--unit-green);">(ii) Deflection vs Null:</strong></p>
-                        <p style="font-size:0.85rem;">Deflection — pointer shows magnitude; fast but less accurate. E.g.: PMMC, Moving iron.<br>
-                        Null — balance detected at zero; slow but high accuracy. E.g.: Potentiometer, Bridges.</p>
-                        <p><strong style="color: var(--unit-orange);">(iii) Recording vs Integrating:</strong></p>
-                        <p style="font-size:0.85rem;">Recording — logs variation over time. E.g.: CRO, ECG.<br>
-                        Integrating — accumulates total. E.g.: Energy meter (kWh). $W = \int_0^T P\,dt$</p>
-                    </div>
-                    <div class="ac-card__animation-zone" id="plot-em-2"></div>
-                    <div class="ac-card__footer" style="justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
-                        <button class="ac-btn-icon" id="btn-em-class-tree">Classification Tree</button>
-                        <button class="ac-btn-icon" id="btn-em-deflect-null">Deflection vs Null</button>
-                    </div>
-                </section>
-
-                <!-- CARD 3: Static Characteristics (Wide) -->
-                <section class="ac-card ac-card--wide" id="card-em-static-char"
-                    style="border-top: 4px solid var(--unit-gold);">
-                    <div class="ac-card__header">
-                        <h2 class="ac-card__title" style="color: var(--unit-gold);">3. Static Characteristics of Instruments</h2>
-                        <span class="badge" style="background: var(--unit-gold); color: #000;">8 Parameters</span>
-                    </div>
-                    <div class="ac-card__formula-zone" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-                        <div>
-                            <p style="color:var(--unit-cyan)"><strong>1. Accuracy:</strong></p>
-                            <p>$$ \% \text{Acc} = \left(1 - \frac{|A_m - A_t|}{A_t}\right) \times 100 $$</p>
-                            <p style="color:var(--unit-cyan)"><strong>2. Precision:</strong></p>
-                            <p style="font-size:0.85rem;">Closeness of measurements to each other (reproducibility).</p>
-                        </div>
-                        <div>
-                            <p style="color:var(--unit-green)"><strong>3. Sensitivity:</strong></p>
-                            <p>$$ S = \frac{\Delta\theta}{\Delta Q} = \frac{1}{I_{FSD}} \;\Omega/\text{V} $$</p>
-                            <p style="color:var(--unit-green)"><strong>4. Repeatability / Reproducibility:</strong></p>
-                            <p style="font-size:0.85rem;">Short-term vs long-term consistency of readings.</p>
-                        </div>
-                        <div>
-                            <p style="color:var(--unit-orange)"><strong>5. Dead Time &amp; Dead Zone:</strong></p>
-                            <p>$$ t_{dead} = \text{delay before response} $$</p>
-                            <p>$$ \Delta x_{dead} = \text{input range with no output} $$</p>
-                        </div>
-                        <div>
-                            <p style="color:var(--unit-rose)"><strong>6. Linearity:</strong></p>
-                            <p>$$ \% e_{lin} = \frac{|y_{act} - y_{ideal}|}{y_{FSD}} \times 100 $$</p>
-                            <p style="color:var(--unit-rose)"><strong>7. Resolution:</strong></p>
-                            <p>$$ R = \frac{\text{FSD}}{N_{divisions}} $$</p>
-                            <p style="color:var(--unit-rose)"><strong>8. Drift:</strong></p>
-                            <p style="font-size:0.85rem;">Zero drift, sensitivity drift, span drift.</p>
-                        </div>
-                    </div>
-                    <div class="ac-card__animation-zone" id="plot-em-3" style="height: 300px;"></div>
-                    <div class="ac-card__footer" style="justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
-                        <button class="ac-btn-icon active" id="btn-em-acc-prec">Accuracy vs Precision</button>
-                        <button class="ac-btn-icon" id="btn-em-sensitivity">Sensitivity</button>
-                        <button class="ac-btn-icon" id="btn-em-deadzone">Dead Zone</button>
-                        <button class="ac-btn-icon" id="btn-em-resolution">Resolution</button>
-                    </div>
-                </section>
-
-                <!-- ═══════ b) Error Analysis & Propagation (Cards 4-6) ═══════ -->
-                <div class="ac-subsection">
-                    <h3 style="color: var(--unit-gold);">b) Error Analysis &amp; Propagation</h3>
-                    <p>Static errors, limiting errors, and combination of quantities</p>
-                </div>
-
-                <!-- CARD 4: Errors in Measurement -->
-                <section class="ac-card" id="card-em-errors"
-                    style="border-top: 4px solid var(--unit-gold);">
-                    <div class="ac-card__header">
-                        <h2 class="ac-card__title" style="color: var(--unit-gold);">4. Errors in Measurement</h2>
-                        <span class="badge" style="background: var(--unit-gold); color: #000;">3 Types</span>
-                    </div>
-                    <div class="ac-card__formula-zone">
-                        <p><strong>Static Error:</strong> $$ \delta A = A_m - A_t $$</p>
-                        <p><strong>Relative Error:</strong> $$ \varepsilon_r = \frac{\delta A}{A_t} = \frac{A_m - A_t}{A_t} $$</p>
-                        <p><strong>Percentage Error:</strong> $$ \% \varepsilon = \frac{A_m - A_t}{A_t} \times 100 $$</p>
-                        <p><strong>Percentage Accuracy:</strong> $$ \% \text{Acc} = (1 - |\varepsilon_r|) \times 100 $$</p>
-                        <p style="font-size:0.85rem; margin-top:0.5rem;">
-                            <strong style="color:#ef4444;">Gross:</strong> Human mistakes (parallax, wrong reading).<br>
-                            <strong style="color:#f97316;">Systematic:</strong> Instrument, environmental, observational errors.<br>
-                            <strong style="color:#60a5fa;">Random:</strong> Statistical fluctuations — follow Gaussian distribution.</p>
-                    </div>
-                    <div class="ac-card__animation-zone" id="plot-em-4"></div>
-                    <div class="ac-card__footer">
-                        <button class="ac-btn-icon" data-calc="em-error">Error Calculator</button>
-                    </div>
-                </section>
-
-                <!-- CARD 5: Relative Limiting Error & Static Correction -->
-                <section class="ac-card" id="card-em-limiting-error"
-                    style="border-top: 4px solid var(--unit-gold);">
-                    <div class="ac-card__header">
-                        <h2 class="ac-card__title" style="color: var(--unit-gold);">5. Limiting Error &amp; Static Correction</h2>
-                        <span class="badge" style="background: var(--unit-gold); color: #000;">Correction</span>
-                    </div>
-                    <div class="ac-card__formula-zone">
-                        <p><strong>Limiting Error:</strong></p>
-                        <p>$$ \delta A_{limit} = \pm \frac{\text{Class}\%}{100} \times \text{FSD} $$</p>
-                        <p><strong>Relative Limiting Error at reading:</strong></p>
-                        <p>$$ \varepsilon_r = \frac{\delta A_{limit}}{A_m} $$</p>
-                        <p><strong>Static Correction:</strong></p>
-                        <p>$$ \delta C = A_t - A_m = -\delta A $$</p>
-                        <p>$$ A_t = A_m + \delta C \quad \text{(corrected value)} $$</p>
-                        <p><strong>Non-Linearity Error:</strong></p>
-                        <p>$$ \% e_{NL} = \frac{|O_{actual} - O_{ideal}|_{max}}{\text{FSD}} \times 100 $$</p>
-                    </div>
-                    <div class="ac-card__animation-zone" id="plot-em-5"></div>
-                    <div class="ac-card__footer">
-                        <button class="ac-btn-icon" data-calc="em-limiting">Limiting Error Calc</button>
-                    </div>
-                </section>
-
-                <!-- CARD 6: Combination of Quantities with Limiting Errors (Wide) -->
-                <section class="ac-card ac-card--wide" id="card-em-combination"
-                    style="border-top: 4px solid var(--unit-gold);">
-                    <div class="ac-card__header">
-                        <h2 class="ac-card__title" style="color: var(--unit-gold);">6. Combination of Quantities with Limiting Errors</h2>
-                        <span class="badge" style="background: var(--unit-gold); color: #000;">Propagation</span>
-                    </div>
-                    <div class="ac-card__formula-zone" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                        <div>
-                            <p style="color:var(--unit-cyan)"><strong>Sum / Difference:</strong></p>
-                            <p>$$ X = X_1 \pm X_2 $$</p>
-                            <p>$$ \delta X = |\delta X_1| + |\delta X_2| $$</p>
-                            <p style="font-size:0.85rem;">Absolute errors add directly.</p>
-                        </div>
-                        <div>
-                            <p style="color:var(--unit-green)"><strong>Product / Quotient:</strong></p>
-                            <p>$$ x = \frac{x_1 \cdot x_2}{x_3} $$</p>
-                            <p>$$ \frac{\delta x}{x} = \frac{\delta x_1}{x_1} + \frac{\delta x_2}{x_2} + \frac{\delta x_3}{x_3} $$</p>
-                            <p style="font-size:0.85rem;">Relative errors add.</p>
-                        </div>
-                        <div>
-                            <p style="color:var(--unit-orange)"><strong>Composite (Power):</strong></p>
-                            <p>$$ x = x_1^a \cdot x_2^b \cdot x_3^c $$</p>
-                            <p>$$ \frac{\delta x}{x} = a\frac{\delta x_1}{x_1} + b\frac{\delta x_2}{x_2} + c\frac{\delta x_3}{x_3} $$</p>
-                            <p style="font-size:0.85rem;">Example: $ P = V^2/R \Rightarrow \frac{\delta P}{P} = 2\frac{\delta V}{V} + \frac{\delta R}{R} $</p>
-                        </div>
-                    </div>
-                    <div class="ac-card__animation-zone" id="plot-em-6" style="height: 300px;"></div>
-                    <div class="ac-card__footer" style="justify-content: center; gap: 0.5rem;">
-                        <button class="ac-btn-icon" data-calc="em-propagation">Error Propagation Calc</button>
-                        <button class="ac-btn-icon" id="btn-em-power-example">P = V&#178;/R Example</button>
-                    </div>
-                </section>
-
-                <!-- ═══════ c) Statistical Analysis & Instrument Types (Cards 7-8) ═══════ -->
-                <div class="ac-subsection">
-                    <h3 style="color: var(--unit-gold);">c) Statistical Analysis &amp; Instrument Types</h3>
-                    <p>Mean, deviation, confidence intervals, and analog instrument classification</p>
-                </div>
-
-                <!-- CARD 7: Arithmetic Mean & Deviation Analysis -->
-                <section class="ac-card" id="card-em-statistics"
-                    style="border-top: 4px solid var(--unit-gold);">
-                    <div class="ac-card__header">
-                        <h2 class="ac-card__title" style="color: var(--unit-gold);">7. Arithmetic Mean &amp; Deviation Analysis</h2>
-                        <span class="badge" style="background: var(--unit-gold); color: #000;">Statistics</span>
-                    </div>
-                    <div class="ac-card__formula-zone">
-                        <p><strong>Arithmetic Mean:</strong> $$ \bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i $$</p>
-                        <p><strong>Deviation:</strong> $$ d_i = X_i - \bar{X} \quad;\quad \sum d_i = 0 $$</p>
-                        <p><strong>Standard Deviation:</strong> $$ \sigma = \sqrt{\frac{\sum d_i^2}{n-1}} \;\;(n &lt; 20) \quad;\quad \sigma = \sqrt{\frac{\sum d_i^2}{n}} \;\;(n \geq 20) $$</p>
-                        <p><strong>Variance:</strong> $ V = \sigma^2 $ &emsp; <strong>Probable Error:</strong> $ r = 0.6745\,\sigma $</p>
-                        <p><strong>Std Error of Mean:</strong> $$ \sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}} $$</p>
-                        <p style="font-size:0.85rem;">$\pm\sigma \to 68.27\%$ &emsp; $\pm 2\sigma \to 95.45\%$ &emsp; $\pm 3\sigma \to 99.73\%$</p>
-                    </div>
-                    <div class="ac-card__animation-zone" id="plot-em-7"></div>
-                    <div class="ac-controls">
-                        <div class="ac-control-group" style="flex: 2;">
-                            <label>Data Points (comma-separated):</label>
-                            <input type="text" id="em-stat-input" class="ac-calc-input" value="49.7, 50.1, 50.2, 49.6, 49.7, 50.0, 49.8, 50.3, 49.9, 50.1" style="width:100%; background:var(--formula-bg); color:white; border:1px solid rgba(255,255,255,0.1); padding:6px 10px; border-radius:4px;">
-                        </div>
-                        <div class="ac-control-group">
-                            <button class="ac-btn-icon" id="btn-em-stat-compute" style="margin-top: 1.2rem;">Compute Stats</button>
-                        </div>
-                    </div>
-                    <div id="em-stat-results" style="padding: 0.75rem 1.25rem; font-size: 0.8rem; color: var(--unit-gold);"></div>
-                    <div class="ac-card__footer">
-                        <button class="ac-btn-icon" data-calc="em-stats">Full Statistics Calc</button>
-                    </div>
-                </section>
-
-                <!-- CARD 8: Types of Errors & Analog Instruments -->
-                <section class="ac-card" id="card-em-analog"
-                    style="border-top: 4px solid var(--unit-gold);">
-                    <div class="ac-card__header">
-                        <h2 class="ac-card__title" style="color: var(--unit-gold);">8. Error Types &amp; Analog Instruments</h2>
-                        <span class="badge" style="background: var(--unit-gold); color: #000;">Classification</span>
-                    </div>
-                    <div class="ac-card__formula-zone">
-                        <p><strong style="color:#ef4444;">Gross Errors:</strong> Human mistakes — cannot be treated mathematically.</p>
-                        <p><strong style="color:#f97316;">Systematic Errors:</strong> Instrument (friction, zero error), Environmental (temp, humidity), Observational (parallax).</p>
-                        <p>$$ \delta R = R_0 \alpha \Delta T \quad \text{(resistance drift with temperature)} $$</p>
-                        <p><strong style="color:#60a5fa;">Random Errors:</strong> Follow Gaussian distribution. Error reduces as $ \frac{1}{\sqrt{n}} $</p>
-                        <p style="font-size:0.85rem; margin-top:0.5rem;">
-                            <strong>Analog Instrument Types:</strong>
-                            Indicating (Ammeter, Voltmeter) | Recording (CRO, X-Y Plotter) | Integrating (Energy meter) | Null (Potentiometer, Bridges)</p>
-                        <p>$$ W = \int_0^T P\,dt = \int_0^T VI\cos\phi\,dt \;\text{(kWh)} $$</p>
-                    </div>
-                    <div class="ac-card__animation-zone" id="plot-em-8"></div>
-                    <div class="ac-card__footer" style="justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
-                        <button class="ac-btn-icon active" id="btn-em-error-tree">Error Tree</button>
-                        <button class="ac-btn-icon" id="btn-em-parallax">Parallax Demo</button>
-                        <button class="ac-btn-icon" id="btn-em-sqrt-n">1/&#8730;n Curve</button>
-                    </div>
-                </section>
-
-            </div>
-        </section>
 
     </main>
 

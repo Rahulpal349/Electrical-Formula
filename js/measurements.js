@@ -29,49 +29,86 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Sidebar Navigation & Scroll Progress Indicator
+    // Unit Switching & Progress Bar
     const sections = document.querySelectorAll('.module-section');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.glass-sidebar__link');
     const progressBar = document.getElementById('progress-bar');
+    let activeMod = 1;
 
-    window.addEventListener('scroll', () => {
-        let current = '';
-        const scrollY = window.pageYOffset;
+    // Glass Sidebar Toggle
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const glassSidebar = document.getElementById('glass-sidebar');
+    const sidebarClose = document.getElementById('sidebar-close');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
 
-        // Update Progress Bar
-        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (scrollY / docHeight) * 100;
-        if (progressBar) progressBar.style.width = scrolled + '%';
+    function openSidebar() {
+        if (glassSidebar) glassSidebar.classList.add('open');
+        if (sidebarOverlay) sidebarOverlay.classList.add('active');
+        if (sidebarToggle) sidebarToggle.classList.add('hidden');
+    }
 
-        // Update Active Sidebar Link
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
-            }
-        });
+    function closeSidebar() {
+        if (glassSidebar) glassSidebar.classList.remove('open');
+        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        if (sidebarToggle) sidebarToggle.classList.remove('hidden');
+    }
 
+    if (sidebarToggle) sidebarToggle.addEventListener('click', openSidebar);
+    if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+
+    // Re-render KaTeX formulas for the visible section
+    function reRenderMath() {
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ],
+                throwOnError: false
+            });
+        }
+    }
+
+    // Switch to a module by number
+    function switchModule(modNum) {
+        activeMod = modNum;
+
+        // Hide all sections, show selected
+        sections.forEach(s => s.classList.remove('active'));
+        const target = document.getElementById('mod' + modNum);
+        if (target) target.classList.add('active');
+
+        // Update sidebar active link
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (current && link.getAttribute('href').includes(current)) {
+            if (link.dataset.mod === String(modNum)) {
                 link.classList.add('active');
             }
         });
+
+        // Scroll to top of content
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Re-render math & refresh AOS
+        reRenderMath();
+        if (typeof AOS !== 'undefined') setTimeout(() => AOS.refresh(), 100);
+    }
+
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.pageYOffset / docHeight) * 100;
+        if (progressBar) progressBar.style.width = scrolled + '%';
     });
 
-    // Smooth scroll for sidebar links
+    // Sidebar link click → unit switching
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 50,
-                    behavior: 'smooth'
-                });
-            }
+            const modNum = +this.dataset.mod;
+            if (modNum) switchModule(modNum);
+            closeSidebar();
         });
     });
 
