@@ -22,8 +22,16 @@
     /* Rose — High Voltage / Insulation */
     --mod6-color: #60a5fa;
     /* Blue */
-    --mod7-color: #fb7185;
-    /* Rose */
+    --mod7-color: #facc15;
+    /* Gold */
+    --mod8-color: #00ff88;
+    /* Green — Power Accuracy */
+    --mod9-color: #f97316;
+    /* Orange — Energy */
+    --mod10-color: #00f5ff;
+    /* Cyan — Oscilloscope */
+    --mod11-color: #a78bfa;
+    /* Purple — Sensors */
 }
 
 * {
@@ -840,6 +848,1012 @@ input[type=range]::-webkit-slider-thumb {
     .m5-comparison-table { font-size: 0.7rem; }
     .m5-btn { padding: 4px 10px; font-size: 0.7rem; }
     .m5-select { min-width: 65px; font-size: 0.72rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MODULE 6 — Frequency & Instrument Transformers  #60a5fa
+   ═══════════════════════════════════════════════════════════ */
+
+.m6-badge {
+    background: rgba(96,165,250,0.12);
+    color: #60a5fa;
+    border: 1px solid rgba(96,165,250,0.3);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-family: 'Orbitron', sans-serif;
+    white-space: nowrap;
+}
+
+.m6-card-footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border-top: 1px solid rgba(96,165,250,0.15);
+    flex-wrap: wrap;
+}
+
+.m6-footer-btn {
+    background: rgba(96,165,250,0.08);
+    color: #60a5fa;
+    border: 1px solid rgba(96,165,250,0.25);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.m6-footer-btn:hover {
+    background: rgba(96,165,250,0.18);
+    box-shadow: 0 0 10px rgba(96,165,250,0.3);
+}
+
+.m6-calc-zone {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 15px;
+    background: rgba(96,165,250,0.03);
+    border-top: 1px solid rgba(96,165,250,0.08);
+}
+
+.m6-calc-zone.open {
+    max-height: 350px;
+    padding: 15px;
+}
+
+.m6-calc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.m6-calc-row label {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    min-width: 55px;
+}
+
+.m6-calc-row input[type="number"] {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(96,165,250,0.25);
+    color: #f8fafc;
+    padding: 4px 8px;
+    border-radius: 6px;
+    width: 85px;
+    font-size: 0.8rem;
+}
+
+.m6-calc-result {
+    color: #60a5fa;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 8px;
+    background: rgba(96,165,250,0.06);
+    border-radius: 8px;
+    border: 1px solid rgba(96,165,250,0.15);
+}
+
+.m6-app-tag {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+}
+
+.m6-slider {
+    accent-color: #60a5fa;
+    width: 100%;
+}
+
+.m6-btn {
+    background: rgba(96,165,250,0.08);
+    color: #94a3b8;
+    border: 1px solid rgba(96,165,250,0.2);
+    padding: 5px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.m6-btn:hover {
+    background: rgba(96,165,250,0.15);
+    color: #60a5fa;
+}
+
+.m6-btn.active {
+    background: rgba(96,165,250,0.2);
+    color: #60a5fa;
+    border-color: #60a5fa;
+    box-shadow: 0 0 8px rgba(96,165,250,0.3);
+}
+
+.m6-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+}
+
+.m6-comparison-table th {
+    background: rgba(96,165,250,0.12);
+    color: #60a5fa;
+    padding: 6px 10px;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+}
+
+.m6-comparison-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #cbd5e1;
+}
+
+.m6-comparison-table tr:hover td {
+    background: rgba(96,165,250,0.03);
+}
+
+.m6-card:hover {
+    box-shadow: 0 10px 40px rgba(96,165,250,0.1),
+                0 0 0 1px rgba(96,165,250,0.08);
+}
+
+@media (max-width: 768px) {
+    .m6-calc-row { gap: 6px; }
+    .m6-calc-row input[type="number"] { width: 70px; }
+    .m6-comparison-table { font-size: 0.7rem; }
+    .m6-btn { padding: 4px 10px; font-size: 0.7rem; }
+}
+
+/* ════════════════════════════════════════════════════
+   MODULE 7 · PT, CT vs PT & Power Measurement (#facc15)
+   ════════════════════════════════════════════════════ */
+
+.m7-badge {
+    background: rgba(250,204,21,0.12);
+    color: #facc15;
+    border: 1px solid rgba(250,204,21,0.3);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-family: 'Orbitron', sans-serif;
+    white-space: nowrap;
+}
+
+.m7-card-footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border-top: 1px solid rgba(250,204,21,0.15);
+    flex-wrap: wrap;
+}
+
+.m7-footer-btn {
+    background: rgba(250,204,21,0.08);
+    color: #facc15;
+    border: 1px solid rgba(250,204,21,0.25);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.m7-footer-btn:hover {
+    background: rgba(250,204,21,0.18);
+    box-shadow: 0 0 10px rgba(250,204,21,0.3);
+}
+
+.m7-calc-zone {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 15px;
+    background: rgba(250,204,21,0.03);
+    border-top: 1px solid rgba(250,204,21,0.08);
+}
+
+.m7-calc-zone.open {
+    max-height: 350px;
+    padding: 15px;
+}
+
+.m7-calc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.m7-calc-row label {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    min-width: 55px;
+}
+
+.m7-calc-row input[type="number"] {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(250,204,21,0.25);
+    color: #f8fafc;
+    padding: 4px 8px;
+    border-radius: 6px;
+    width: 85px;
+    font-size: 0.8rem;
+}
+
+.m7-calc-result {
+    color: #facc15;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 8px;
+    background: rgba(250,204,21,0.06);
+    border-radius: 8px;
+    border: 1px solid rgba(250,204,21,0.15);
+}
+
+.m7-app-tag {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+}
+
+.m7-slider {
+    accent-color: #facc15;
+    width: 100%;
+}
+
+.m7-btn {
+    background: rgba(250,204,21,0.08);
+    color: #94a3b8;
+    border: 1px solid rgba(250,204,21,0.2);
+    padding: 5px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.m7-btn:hover {
+    background: rgba(250,204,21,0.15);
+    color: #facc15;
+}
+
+.m7-btn.active {
+    background: rgba(250,204,21,0.2);
+    color: #facc15;
+    border-color: #facc15;
+    box-shadow: 0 0 8px rgba(250,204,21,0.3);
+}
+
+.m7-danger-btn {
+    background: rgba(239,68,68,0.08);
+    color: #ef4444;
+    border-color: rgba(239,68,68,0.25);
+}
+
+.m7-danger-btn:hover {
+    background: rgba(239,68,68,0.18);
+    box-shadow: 0 0 10px rgba(239,68,68,0.3);
+}
+
+.m7-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+}
+
+.m7-comparison-table th {
+    background: rgba(250,204,21,0.12);
+    color: #facc15;
+    padding: 6px 10px;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+}
+
+.m7-comparison-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #cbd5e1;
+}
+
+.m7-comparison-table tr:hover td {
+    background: rgba(250,204,21,0.03);
+}
+
+.m7-card:hover {
+    box-shadow: 0 10px 40px rgba(250,204,21,0.1),
+                0 0 0 1px rgba(250,204,21,0.08);
+}
+
+@media (max-width: 768px) {
+    .m7-calc-row { gap: 6px; }
+    .m7-calc-row input[type="number"] { width: 70px; }
+    .m7-comparison-table { font-size: 0.7rem; }
+    .m7-btn { padding: 4px 10px; font-size: 0.7rem; }
+}
+
+/* ════════════════════════════════════════════════════
+   MODULE 8 · Wattmeter Errors & Polyphase (#00ff88)
+   ════════════════════════════════════════════════════ */
+
+.m8-badge {
+    background: rgba(0,255,136,0.12);
+    color: #00ff88;
+    border: 1px solid rgba(0,255,136,0.3);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-family: 'Orbitron', sans-serif;
+    white-space: nowrap;
+}
+
+.m8-card-footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border-top: 1px solid rgba(0,255,136,0.15);
+    flex-wrap: wrap;
+}
+
+.m8-footer-btn {
+    background: rgba(0,255,136,0.08);
+    color: #00ff88;
+    border: 1px solid rgba(0,255,136,0.25);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.m8-footer-btn:hover {
+    background: rgba(0,255,136,0.18);
+    box-shadow: 0 0 10px rgba(0,255,136,0.3);
+}
+
+.m8-calc-zone {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 15px;
+    background: rgba(0,255,136,0.03);
+    border-top: 1px solid rgba(0,255,136,0.08);
+}
+
+.m8-calc-zone.open {
+    max-height: 350px;
+    padding: 15px;
+}
+
+.m8-calc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.m8-calc-row label {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    min-width: 55px;
+}
+
+.m8-calc-row input[type="number"] {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,255,136,0.25);
+    color: #f8fafc;
+    padding: 4px 8px;
+    border-radius: 6px;
+    width: 85px;
+    font-size: 0.8rem;
+}
+
+.m8-calc-result {
+    color: #00ff88;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 8px;
+    background: rgba(0,255,136,0.06);
+    border-radius: 8px;
+    border: 1px solid rgba(0,255,136,0.15);
+}
+
+.m8-app-tag {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+}
+
+.m8-slider {
+    accent-color: #00ff88;
+    width: 100%;
+}
+
+.m8-btn {
+    background: rgba(0,255,136,0.08);
+    color: #94a3b8;
+    border: 1px solid rgba(0,255,136,0.2);
+    padding: 5px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.m8-btn:hover {
+    background: rgba(0,255,136,0.15);
+    color: #00ff88;
+}
+
+.m8-btn.active {
+    background: rgba(0,255,136,0.2);
+    color: #00ff88;
+    border-color: #00ff88;
+    box-shadow: 0 0 8px rgba(0,255,136,0.3);
+}
+
+.m8-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+}
+
+.m8-comparison-table th {
+    background: rgba(0,255,136,0.12);
+    color: #00ff88;
+    padding: 6px 10px;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+}
+
+.m8-comparison-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #cbd5e1;
+}
+
+.m8-comparison-table tr:hover td {
+    background: rgba(0,255,136,0.03);
+}
+
+.m8-card:hover {
+    box-shadow: 0 10px 40px rgba(0,255,136,0.1),
+                0 0 0 1px rgba(0,255,136,0.08);
+}
+
+@media (max-width: 768px) {
+    .m8-calc-row { gap: 6px; }
+    .m8-calc-row input[type="number"] { width: 70px; }
+    .m8-comparison-table { font-size: 0.7rem; }
+    .m8-btn { padding: 4px 10px; font-size: 0.7rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MODULE 9 — 3-Phase Power, Reactive Power & Energy Meters
+   Accent: #f97316 (Orange — Energy)
+   ═══════════════════════════════════════════════════════════ */
+.m9-badge {
+    background: rgba(249,115,22,0.12);
+    color: #f97316;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    padding: 2px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(249,115,22,0.25);
+}
+
+.m9-card-footer {
+    border-top: 1px solid rgba(249,115,22,0.1);
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.m9-footer-btn {
+    background: transparent;
+    border: 1px solid rgba(249,115,22,0.25);
+    color: #f97316;
+    padding: 5px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    transition: all 0.25s;
+}
+.m9-footer-btn:hover {
+    background: rgba(249,115,22,0.1);
+    border-color: #f97316;
+}
+
+.m9-calc-zone {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 16px;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    background: #0d1117;
+    border-top: 1px solid rgba(249,115,22,0.08);
+}
+.m9-calc-zone.open {
+    max-height: 500px;
+    padding: 12px 16px;
+}
+
+.m9-calc-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+.m9-calc-row label {
+    color: #94a3b8;
+    font-size: 0.78rem;
+    min-width: fit-content;
+}
+.m9-calc-row input[type="number"] {
+    width: 80px;
+    background: #111827;
+    border: 1px solid #334155;
+    color: #f8fafc;
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 0.78rem;
+}
+
+.m9-calc-result {
+    background: rgba(249,115,22,0.06);
+    border: 1px solid rgba(249,115,22,0.15);
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: #f97316;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.78rem;
+    margin-top: 6px;
+    text-align: center;
+    word-break: break-word;
+}
+
+.m9-app-tag {
+    display: inline-block;
+    border: 1px solid rgba(249,115,22,0.25);
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.72rem;
+}
+
+.m9-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 120px;
+    height: 4px;
+    background: #1e293b;
+    border-radius: 2px;
+    outline: none;
+}
+.m9-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #f97316;
+    cursor: pointer;
+}
+
+.m9-btn {
+    background: transparent;
+    border: 1px solid rgba(249,115,22,0.3);
+    color: #f97316;
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.25s;
+}
+.m9-btn:hover {
+    background: rgba(249,115,22,0.1);
+    border-color: #f97316;
+}
+.m9-btn.active {
+    background: rgba(249,115,22,0.15);
+    border-color: #f97316;
+    color: #fff;
+}
+
+.m9-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+}
+.m9-comparison-table th {
+    background: rgba(249,115,22,0.08);
+    color: #f97316;
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 1px solid rgba(249,115,22,0.15);
+    font-family: 'Orbitron', monospace;
+    font-size: 0.7rem;
+}
+.m9-comparison-table td {
+    padding: 5px 8px;
+    border-bottom: 1px solid rgba(249,115,22,0.06);
+    color: #94a3b8;
+}
+.m9-comparison-table tr:hover td {
+    background: rgba(249,115,22,0.04);
+}
+.m9-comparison-table tr.active-row td {
+    background: rgba(249,115,22,0.12);
+    color: #f97316;
+    font-weight: 600;
+}
+
+.m9-comp-panel {
+    transition: opacity 0.3s ease;
+}
+
+#m9-card1:hover, #m9-card2:hover, #m9-card3:hover, #m9-card4:hover, #m9-card5:hover {
+    box-shadow: 0 10px 40px rgba(249,115,22,0.1),
+                0 0 0 1px rgba(249,115,22,0.08);
+}
+
+@media (max-width: 768px) {
+    .m9-calc-row { gap: 6px; }
+    .m9-calc-row input[type="number"] { width: 70px; }
+    .m9-comparison-table { font-size: 0.7rem; }
+    .m9-btn { padding: 4px 10px; font-size: 0.7rem; }
+    .m9-slider { width: 90px; }
+}
+
+/* ═══════════════════════════════════════
+   MODULE 10 — CRO & Electronic Measurements
+   Accent: #00f5ff (Cyan)
+   ═══════════════════════════════════════ */
+.m10-badge {
+    background: linear-gradient(135deg, #00f5ff 0%, #0ea5e9 100%);
+    color: #0a0a0f;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.m10-card-footer {
+    border-top: 1px solid rgba(0,245,255,0.1);
+    padding: 0.8rem 1.2rem;
+}
+.m10-footer-btn {
+    background: rgba(0,245,255,0.08);
+    border: 1px solid rgba(0,245,255,0.25);
+    color: #00f5ff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    transition: all 0.2s;
+}
+.m10-footer-btn:hover {
+    background: rgba(0,245,255,0.18);
+    box-shadow: 0 0 12px rgba(0,245,255,0.25);
+}
+.m10-calc-zone {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 1.2rem;
+    background: rgba(0,245,255,0.02);
+    border-top: 1px solid transparent;
+}
+.m10-calc-zone.open {
+    max-height: 600px;
+    padding: 0.8rem 1.2rem;
+    border-top-color: rgba(0,245,255,0.1);
+}
+.m10-calc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 4px 0;
+}
+.m10-calc-row label {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    min-width: 40px;
+}
+.m10-calc-row input[type="number"] {
+    background: #0f172a;
+    border: 1px solid rgba(0,245,255,0.2);
+    color: #f8fafc;
+    width: 80px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+}
+.m10-calc-row input[type="number"]:focus {
+    outline: none;
+    border-color: #00f5ff;
+    box-shadow: 0 0 8px rgba(0,245,255,0.3);
+}
+.m10-calc-result {
+    margin-top: 6px;
+    padding: 6px 10px;
+    background: rgba(0,245,255,0.06);
+    border: 1px solid rgba(0,245,255,0.15);
+    border-radius: 6px;
+    color: #00f5ff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.78rem;
+    word-break: break-word;
+}
+.m10-app-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid rgba(0,245,255,0.3);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    background: rgba(0,245,255,0.04);
+}
+.m10-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 120px;
+    height: 6px;
+    background: rgba(0,245,255,0.15);
+    border-radius: 3px;
+    outline: none;
+}
+.m10-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #00f5ff;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0,245,255,0.5);
+}
+.m10-btn {
+    background: rgba(0,245,255,0.08);
+    border: 1px solid rgba(0,245,255,0.25);
+    color: #94a3b8;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.72rem;
+    transition: all 0.2s;
+}
+.m10-btn:hover, .m10-btn.active {
+    background: rgba(0,245,255,0.18);
+    color: #00f5ff;
+    border-color: #00f5ff;
+}
+.m10-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+    color: #cbd5e1;
+}
+.m10-comparison-table th {
+    background: rgba(0,245,255,0.08);
+    color: #00f5ff;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    padding: 6px 10px;
+    text-align: left;
+    border-bottom: 2px solid rgba(0,245,255,0.2);
+}
+.m10-comparison-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(0,245,255,0.06);
+}
+.m10-comparison-table tr:hover td {
+    background: rgba(0,245,255,0.03);
+}
+
+#m10-card1:hover, #m10-card2:hover, #m10-card3:hover,
+#m10-card4:hover, #m10-card5:hover, #m10-card6:hover {
+    box-shadow: 0 10px 40px rgba(0,245,255,0.1),
+                0 0 0 1px rgba(0,245,255,0.08);
+}
+
+@media (max-width: 768px) {
+    .m10-calc-row { gap: 6px; }
+    .m10-calc-row input[type="number"] { width: 70px; }
+    .m10-comparison-table { font-size: 0.7rem; }
+    .m10-btn { padding: 4px 10px; font-size: 0.7rem; }
+    .m10-slider { width: 90px; }
+}
+
+/* ═══════════════════════════════════════
+   MODULE 11 — Lissajous Phase, DVM, Q-Meter, Transducers & Sensors
+   Accent: #a78bfa (Purple — Sensors)
+   ═══════════════════════════════════════ */
+.m11-badge {
+    background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+    color: #0a0a0f;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.m11-card-footer {
+    border-top: 1px solid rgba(167,139,250,0.1);
+    padding: 0.8rem 1.2rem;
+}
+.m11-footer-btn {
+    background: rgba(167,139,250,0.08);
+    border: 1px solid rgba(167,139,250,0.25);
+    color: #a78bfa;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    transition: all 0.2s;
+}
+.m11-footer-btn:hover {
+    background: rgba(167,139,250,0.18);
+    box-shadow: 0 0 12px rgba(167,139,250,0.25);
+}
+.m11-calc-zone {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 1.2rem;
+    background: rgba(167,139,250,0.02);
+    border-top: 1px solid transparent;
+}
+.m11-calc-zone.open {
+    max-height: 700px;
+    padding: 0.8rem 1.2rem;
+    border-top-color: rgba(167,139,250,0.1);
+}
+.m11-calc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 4px 0;
+}
+.m11-calc-row label {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    min-width: 40px;
+}
+.m11-calc-row input[type="number"] {
+    background: #0f172a;
+    border: 1px solid rgba(167,139,250,0.2);
+    color: #f8fafc;
+    width: 80px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+}
+.m11-calc-row input[type="number"]:focus {
+    outline: none;
+    border-color: #a78bfa;
+    box-shadow: 0 0 8px rgba(167,139,250,0.3);
+}
+.m11-calc-result {
+    margin-top: 6px;
+    padding: 6px 10px;
+    background: rgba(167,139,250,0.06);
+    border: 1px solid rgba(167,139,250,0.15);
+    border-radius: 6px;
+    color: #a78bfa;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.78rem;
+    word-break: break-word;
+}
+.m11-app-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    background: rgba(167,139,250,0.04);
+}
+.m11-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 120px;
+    height: 6px;
+    background: rgba(167,139,250,0.15);
+    border-radius: 3px;
+    outline: none;
+}
+.m11-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #a78bfa;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(167,139,250,0.5);
+}
+.m11-btn {
+    background: rgba(167,139,250,0.08);
+    border: 1px solid rgba(167,139,250,0.25);
+    color: #94a3b8;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.72rem;
+    transition: all 0.2s;
+}
+.m11-btn:hover, .m11-btn.active {
+    background: rgba(167,139,250,0.18);
+    color: #a78bfa;
+    border-color: #a78bfa;
+}
+.m11-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+    color: #cbd5e1;
+}
+.m11-comparison-table th {
+    background: rgba(167,139,250,0.08);
+    color: #a78bfa;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    padding: 6px 10px;
+    text-align: left;
+    border-bottom: 2px solid rgba(167,139,250,0.2);
+}
+.m11-comparison-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(167,139,250,0.06);
+}
+.m11-comparison-table tr:hover td {
+    background: rgba(167,139,250,0.03);
+}
+
+#m11-card1:hover, #m11-card2:hover, #m11-card3:hover, #m11-card4:hover,
+#m11-card5:hover, #m11-card6:hover, #m11-card7:hover, #m11-card8:hover {
+    box-shadow: 0 10px 40px rgba(167,139,250,0.1),
+                0 0 0 1px rgba(167,139,250,0.08);
+}
+
+@media (max-width: 768px) {
+    .m11-calc-row { gap: 6px; }
+    .m11-calc-row input[type="number"] { width: 70px; }
+    .m11-comparison-table { font-size: 0.7rem; }
+    .m11-btn { padding: 4px 10px; font-size: 0.7rem; }
+    .m11-slider { width: 90px; }
 }
 
 /* --- Module 5: Instrument Transformers (legacy) --- */
