@@ -21,9 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
     initUnit3Parameters();
     initUnit4Cables();
     initUnit5Performance();
-    initUnit6EHV();
-    initUnit7Distribution();
-    initUnit8Substations();
+    initUnit5Overvoltages();
+    initUnit6Distribution();
+    initUnit7Substations();
+    initUnit8HVDC();
 
     // Render math again just in case dynamic content was injected
     if (window.renderMathInElement) {
@@ -841,43 +842,86 @@ function initUnit6Distribution() {
 function initUnit7Substations() {
     const btnOperate = document.getElementById('btn-operate-sub');
     const blade = document.getElementById('iso-blade');
+    const subSvg = document.getElementById('substation-svg');
 
     let isClosed = false;
+    let energizeTimeline = null;
 
-    if (btnOperate && blade) {
-        btnOperate.addEventListener('click', () => {
-            isClosed = !isClosed;
-            if (isClosed) {
-                // Close Isolator
-                blade.style.transform = "rotate(0deg)";
-                btnOperate.textContent = "Open Isolator";
-                btnOperate.classList.add('active');
+    if (!btnOperate || !blade || !subSvg) return;
 
-                // Energize Transformer (Pulse)
-                gsap.to('#substation-svg circle', {
-                    strokeWidth: 6,
-                    filter: "drop-shadow(0 0 10px #00f5ff)",
-                    duration: 0.5,
+    // Create a dynamic power-flow dot that will travel across the circuit when energized
+    const flowDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    flowDot.setAttribute('r', '5');
+    flowDot.setAttribute('fill', '#facc15');
+    flowDot.style.filter = 'drop-shadow(0 0 6px #facc15)';
+    flowDot.style.opacity = '0';
+    subSvg.appendChild(flowDot);
+
+    btnOperate.addEventListener('click', () => {
+        isClosed = !isClosed;
+
+        if (isClosed) {
+            // === CLOSE ISOLATOR ===
+            // Use GSAP to animate the SVG transform attribute (most reliable cross-browser)
+            gsap.to(blade, {
+                duration: 0.6,
+                ease: 'power2.inOut',
+                attr: { transform: 'rotate(0, 260, 50)' }
+            });
+
+            btnOperate.textContent = 'Open Isolator';
+            btnOperate.classList.add('active');
+
+            // === ENERGIZE TRANSFORMER ===
+            // Pulse the transformer circles
+            energizeTimeline = gsap.timeline({ delay: 0.5 });
+            energizeTimeline
+                .to('#substation-svg circle', {
+                    attr: { 'stroke-width': 6 },
+                    filter: 'drop-shadow(0 0 12px #00f5ff)',
+                    duration: 0.4,
                     repeat: -1,
                     yoyo: true,
-                    delay: 0.5 // wait for blade to close
+                    ease: 'sine.inOut'
                 });
-            } else {
-                // Open Isolator
-                blade.style.transform = "rotate(40deg)";
-                btnOperate.textContent = "Close Isolator & Energize TX";
-                btnOperate.classList.remove('active');
 
-                // De-energize
-                gsap.killTweensOf('#substation-svg circle');
-                gsap.to('#substation-svg circle', {
-                    strokeWidth: 4,
-                    filter: "none",
-                    duration: 0.3
-                });
-            }
-        });
-    }
+            // Animate power-flow dot traveling from line → CB → Isolator → TX → Bus
+            flowDot.style.opacity = '1';
+            gsap.fromTo(flowDot,
+                { attr: { cx: 10, cy: 50 } },
+                {
+                    attr: { cx: 490, cy: 50 },
+                    duration: 2.5,
+                    ease: 'none',
+                    repeat: -1,
+                    delay: 0.5
+                }
+            );
+        } else {
+            // === OPEN ISOLATOR ===
+            gsap.to(blade, {
+                duration: 0.6,
+                ease: 'power2.inOut',
+                attr: { transform: 'rotate(40, 260, 50)' }
+            });
+
+            btnOperate.textContent = 'Close Isolator & Energize TX';
+            btnOperate.classList.remove('active');
+
+            // === DE-ENERGIZE ===
+            if (energizeTimeline) { energizeTimeline.kill(); energizeTimeline = null; }
+            gsap.killTweensOf('#substation-svg circle');
+            gsap.killTweensOf(flowDot);
+
+            gsap.to('#substation-svg circle', {
+                attr: { 'stroke-width': 4 },
+                filter: 'none',
+                duration: 0.4
+            });
+
+            flowDot.style.opacity = '0';
+        }
+    });
 }
 
 // ==========================================
@@ -896,23 +940,4 @@ function initUnit8HVDC() {
     });
 }
 
-// ------------------------------------------
-// MAIN INITIALIZATION
-// ------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-    // Basic Navigation Map
-    setupSidebarScrollspy();
-
-    // Call Unit Initializes
-    // Assuming initUnit1Basics, initUnit2Components, initUnit3Parameters, initUnit4Cables exist elsewhere
-    // and should be called as per the instruction "ensure that all initUnit... functions are called"
-    initUnit1Basics();
-    initUnit2Components();
-    initUnit3Parameters();
-    initUnit4Cables();
-    initUnit5Performance(); // Added based on existing function
-    initUnit5Overvoltages();
-    initUnit6Distribution();
-    initUnit7Substations();
-    initUnit8HVDC();
-});
+// NOTE: Main initialization is handled by the DOMContentLoaded at the top of this file.
