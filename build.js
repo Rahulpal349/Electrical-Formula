@@ -10,20 +10,19 @@ if (fs.existsSync('dist')) {
 }
 fs.mkdirSync('dist');
 
-// 2. Copy HTML files
-const htmlFiles = fs.readdirSync('.').filter(f => f.endsWith('.html'));
-htmlFiles.forEach(file => {
+// 2. Copy Root files
+const rootFiles = fs.readdirSync('.').filter(f => f.endsWith('.html') || f === '_redirects' || f === 'favicon.svg');
+rootFiles.forEach(file => {
     fs.copyFileSync(file, path.join('dist', file));
 });
-console.log(`📄 Copied ${htmlFiles.length} HTML files`);
+console.log(`📄 Copied ${rootFiles.length} root files`);
 
-// 3. Copy asset directories
-const folders = ['css', 'js', 'images'];
+// 3. Copy directories
+const folders = ['shared', 'subjects', 'images'];
 folders.forEach(folder => {
     if (fs.existsSync(folder)) {
         fs.cpSync(folder, path.join('dist', folder), { recursive: true });
-        const count = fs.readdirSync(path.join('dist', folder)).length;
-        console.log(`📁 Copied ${folder}/ (${count} files)`);
+        console.log(`📁 Copied ${folder}/`);
     }
 });
 
