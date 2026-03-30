@@ -1,0 +1,2084 @@
+/* ── Power Plant Page Custom Styles ── */
+  :root {
+    --pp-bg: #050a0f;
+    --pp-surface: #0a1520;
+    --pp-card: #0d1e2e;
+    --pp-border: #1a3a55;
+    --pp-accent: #00d4ff;
+    --pp-accent2: #ff6b00;
+    --pp-accent3: #00ff88;
+    --pp-text: #c8e6f5;
+    --pp-muted: #5a8aaa;
+    --pp-glow: 0 0 20px rgba(0,212,255,0.4);
+    --pp-glow2: 0 0 20px rgba(255,107,0,0.4);
+  }
+
+  .pp-body {
+    font-family: 'Exo 2', sans-serif;
+    background: var(--pp-bg);
+    color: var(--pp-text);
+    min-height: 100vh;
+  }
+
+  /* Animated grid background */
+  .pp-body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: ppGridMove 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes ppGridMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(40px); }
+  }
+
+  /* Floating particles */
+  .pp-particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .pp-particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--pp-accent);
+    border-radius: 50%;
+    animation: ppFloat linear infinite;
+    opacity: 0;
+  }
+  @keyframes ppFloat {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.5; }
+    100% { transform: translateY(-10vh) translateX(var(--dx)); opacity: 0; }
+  }
+
+  /* PP Hero (circuit-hero style) */
+  .circuit-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0a0e27;
+    overflow: hidden;
+    padding-top: 70px;
+  }
+  #hero-canvas {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0; opacity: 0.4;
+  }
+  .lightning-overlay {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1; pointer-events: none; opacity: 0.15;
+  }
+  .bolt-path {
+    fill: none; stroke: #00f0ff; stroke-width: 0.5;
+    filter: drop-shadow(0 0 8px #00f0ff);
+    stroke-dasharray: 200; stroke-dashoffset: 200;
+    animation: ppStrike 4s infinite linear;
+  }
+  @keyframes ppStrike {
+    0% { stroke-dashoffset: 200; opacity: 0; }
+    10% { stroke-dashoffset: 0; opacity: 1; filter: drop-shadow(0 0 20px #00f0ff); }
+    15% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  .circuit-hero__content {
+    position: relative; z-index: 2;
+    text-align: center; width: 100%; max-width: 100%; padding: 0 20px;
+  }
+  .circuit-hero__title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem; font-weight: 800;
+    letter-spacing: 2px; color: #e5e7eb;
+    margin-bottom: 20px; text-transform: uppercase;
+  }
+  .pp-neon-text {
+    color: #f97316;
+    text-shadow: 0 0 10px rgba(249,115,22,0.4), 0 0 20px rgba(249,115,22,0.2), 0 0 40px rgba(249,115,22,0.1);
+    filter: drop-shadow(0 0 10px #f97316);
+  }
+  .circuit-hero__subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem; color: #facc15;
+    margin-bottom: 40px; min-height: 2rem; letter-spacing: 1.5px;
+  }
+  .pp-hero-icons {
+    display: flex; justify-content: center; gap: 30px; margin-bottom: 40px;
+  }
+  .pp-hero-icon {
+    font-size: 2.5rem;
+    background: rgba(249,115,22,0.05);
+    border: 1px solid rgba(249,115,22,0.2);
+    width: 60px; height: 60px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 12px;
+    animation: ppHeroFloat 4s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(249,115,22,0.1);
+  }
+  .pp-hero-icon:nth-child(1) { color: #f97316; border-color: rgba(249,115,22,0.2); }
+  .pp-hero-icon:nth-child(2) { animation-delay: 1s; color: #60a5fa; border-color: rgba(96,165,250,0.2); }
+  .pp-hero-icon:nth-child(3) { animation-delay: 2s; color: #facc15; border-color: rgba(250,204,21,0.2); }
+  .pp-hero-icon:nth-child(4) { animation-delay: 3s; color: #00e5a0; border-color: rgba(0,229,160,0.2); }
+  @keyframes ppHeroFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  .circuit-hero__ctas { display: flex; justify-content: center; gap: 20px; }
+  .pp-hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 40px; background: transparent;
+    border: 2px solid #f97316; border-radius: 50px;
+    color: #f97316; font-family: 'Orbitron', sans-serif;
+    font-size: 1rem; letter-spacing: 2px;
+    text-decoration: none; text-transform: uppercase;
+    cursor: pointer; transition: all 0.4s ease;
+    position: relative; overflow: hidden;
+    box-shadow: 0 0 10px rgba(249,115,22,0.2), inset 0 0 10px rgba(249,115,22,0.1);
+  }
+  .pp-hero-cta::before {
+    content: ''; position: absolute; inset: 0;
+    background: #f97316; opacity: 0;
+    transition: opacity 0.4s ease; z-index: -1;
+  }
+  .pp-hero-cta:hover {
+    color: #0a0e27;
+    box-shadow: 0 0 20px rgba(249,115,22,0.6);
+    transform: translateY(-2px);
+  }
+  .pp-hero-cta:hover::before { opacity: 1; }
+  @media (max-width: 768px) {
+    .circuit-hero__title { font-size: 3rem; }
+    .circuit-hero__subtitle { font-size: 1rem; }
+    .pp-hero-icon { width: 48px; height: 48px; font-size: 1.8rem; }
+    .pp-hero-cta { padding: 12px 28px; font-size: 0.85rem; }
+  }
+
+  /* Main layout */
+  .pp-main {
+    position: relative;
+    z-index: 5;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    display: grid;
+    gap: 30px;
+  }
+
+  /* Section title */
+  .pp-section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pp-accent);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .pp-section-title::before {
+    content: '';
+    width: 4px; height: 18px;
+    background: linear-gradient(180deg, var(--pp-accent), var(--pp-accent2));
+    border-radius: 2px;
+    box-shadow: var(--pp-glow);
+  }
+  .pp-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--pp-border), transparent);
+  }
+
+  /* Card base */
+  .pp-card {
+    background: var(--pp-card);
+    border: 1px solid var(--pp-border);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .pp-card.visible {
+    animation: ppSlideUp 0.6s ease forwards;
+  }
+  @keyframes ppSlideUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .pp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--pp-accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .pp-card:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(0,212,255,0.15); border-color: rgba(0,212,255,0.4); }
+  .pp-card:hover::before { opacity: 1; }
+
+  /* Definition box */
+  .pp-definition-box {
+    border-left: 3px solid var(--pp-accent);
+    background: rgba(0,212,255,0.05);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 16px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #a0d4f0;
+  }
+
+  /* Roman list */
+  .pp-roman-list { list-style: none; padding: 0; }
+  .pp-roman-list li {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px;
+    align-items: flex-start;
+  }
+  .pp-roman-list li:last-child { border-bottom: none; }
+  .pp-roman-num {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--pp-accent2);
+    min-width: 24px;
+    font-weight: bold;
+  }
+
+  /* Generator types grid */
+  .pp-gen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .pp-gen-item {
+    background: rgba(0,212,255,0.05);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    cursor: default;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .pp-gen-item:hover { background: rgba(0,212,255,0.12); border-color: var(--pp-accent); transform: scale(1.03); }
+  .pp-gen-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,212,255,0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .pp-gen-item:hover::after { opacity: 1; }
+  .pp-gen-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+  .pp-gen-label {
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--pp-accent);
+    text-transform: uppercase;
+  }
+  .pp-gen-sub { font-size: 11px; color: var(--pp-muted); margin-top: 4px; }
+
+  /* Data table */
+  .pp-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .pp-data-table th {
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pp-accent);
+    padding: 12px 16px;
+    background: rgba(0,212,255,0.08);
+    border: 1px solid var(--pp-border);
+    text-align: left;
+  }
+  .pp-data-table td {
+    padding: 10px 16px;
+    border: 1px solid rgba(26,58,85,0.5);
+    color: var(--pp-text);
+    font-family: 'Share Tech Mono', monospace;
+    transition: background 0.2s;
+  }
+  .pp-data-table tr:hover td { background: rgba(0,212,255,0.06); }
+  .pp-data-table .total-row td {
+    background: rgba(0,212,255,0.1);
+    color: var(--pp-accent);
+    font-weight: bold;
+    border-top: 2px solid var(--pp-accent);
+  }
+  .pp-pct { color: var(--pp-accent3); }
+  .pp-mw { color: var(--pp-accent2); }
+
+  /* Two-col compare */
+  .pp-compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 600px) { .pp-compare-grid { grid-template-columns: 1fr; } }
+
+  .pp-compare-col {
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid var(--pp-border);
+  }
+  .pp-compare-col.conventional { border-top: 3px solid var(--pp-accent2); }
+  .pp-compare-col.non-conventional { border-top: 3px solid var(--pp-accent3); }
+
+  .pp-compare-header {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .conventional .pp-compare-header { color: var(--pp-accent2); }
+  .non-conventional .pp-compare-header { color: var(--pp-accent3); }
+
+  .pp-compare-point {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--pp-text);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    gap: 8px;
+  }
+  .pp-compare-point:last-child { border: none; }
+  .pp-compare-dot { flex-shrink: 0; margin-top: 6px; }
+
+  /* Regional grid */
+  .pp-regions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+  }
+  .pp-region-chip {
+    background: rgba(0,212,255,0.05);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 14px 12px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .pp-region-chip:hover { border-color: var(--pp-accent); background: rgba(0,212,255,0.12); box-shadow: var(--pp-glow); }
+  .pp-region-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--pp-accent);
+    display: block;
+    line-height: 1;
+  }
+  .pp-region-name {
+    font-size: 11px;
+    color: var(--pp-muted);
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  /* Timeline */
+  .pp-timeline { position: relative; padding-left: 20px; }
+  .pp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--pp-accent), var(--pp-accent2), transparent);
+  }
+  .pp-timeline-item {
+    position: relative;
+    padding: 0 0 20px 24px;
+  }
+  .pp-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 5px;
+    width: 10px; height: 10px;
+    background: var(--pp-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--pp-accent);
+    animation: ppPulse 2s ease infinite;
+  }
+  .pp-timeline-item:nth-child(2)::before { background: var(--pp-accent2); box-shadow: 0 0 10px var(--pp-accent2); animation-delay: 0.5s; }
+  .pp-timeline-item:nth-child(3)::before { background: var(--pp-accent3); box-shadow: 0 0 10px var(--pp-accent3); animation-delay: 1s; }
+  @keyframes ppPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.7; } }
+
+  .pp-timeline-year {
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    color: var(--pp-accent2);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .pp-timeline-text { font-size: 13px; color: var(--pp-text); line-height: 1.6; }
+
+  /* Energy source tree */
+  .pp-energy-tree {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .pp-energy-branch {
+    flex: 1;
+    min-width: 140px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .pp-branch-header {
+    padding: 10px 14px;
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .pp-branch-header.comm { background: rgba(255,107,0,0.15); color: var(--pp-accent2); }
+  .pp-branch-header.non-comm { background: rgba(0,255,136,0.1); color: var(--pp-accent3); }
+  .pp-branch-header.renew { background: rgba(0,212,255,0.1); color: var(--pp-accent); }
+  .pp-branch-header.non-renew { background: rgba(255,0,80,0.1); color: #ff5577; }
+  .pp-branch-items { padding: 10px 14px; }
+  .pp-branch-item { font-size: 12px; color: var(--pp-muted); padding: 4px 0; display: flex; gap: 8px; align-items: center; }
+  .pp-branch-item::before { content: '▸'; color: var(--pp-accent); font-size: 10px; }
+
+  /* Green power */
+  .pp-green-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+  }
+  .pp-green-card {
+    background: rgba(0,255,136,0.05);
+    border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 10px;
+    padding: 16px 10px;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .pp-green-card:hover { background: rgba(0,255,136,0.12); box-shadow: 0 0 20px rgba(0,255,136,0.2); transform: translateY(-3px); }
+  .pp-green-icon { font-size: 32px; display: block; margin-bottom: 8px; }
+  .pp-green-label { font-size: 11px; font-family: 'Orbitron', monospace; letter-spacing: 1px; color: var(--pp-accent3); text-transform: uppercase; }
+
+  /* SMES box */
+  .pp-smes-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.4);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--pp-accent);
+    margin: 4px;
+    transition: all 0.3s;
+  }
+  .pp-smes-box:hover { background: rgba(0,212,255,0.2); box-shadow: var(--pp-glow); }
+
+  /* Badges */
+  .pp-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  /* Bar chart for generation */
+  .pp-bar-chart { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+  .pp-bar-row { display: flex; align-items: center; gap: 12px; }
+  .pp-bar-label { font-size: 12px; min-width: 140px; color: var(--pp-text); font-family: 'Share Tech Mono', monospace; }
+  .pp-bar-track { flex: 1; height: 20px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; position: relative; }
+  .pp-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+  }
+  .pp-bar-fill::after {
+    content: attr(data-pct);
+    position: absolute;
+    right: 8px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    font-family: 'Orbitron', monospace;
+    color: white;
+  }
+  .pp-bar-fill.thermal { background: linear-gradient(90deg, #ff4444, #ff8800); }
+  .pp-bar-fill.hydro { background: linear-gradient(90deg, #0088ff, #00d4ff); }
+  .pp-bar-fill.nuclear { background: linear-gradient(90deg, #aa00ff, #ff00aa); }
+  .pp-bar-fill.renewable { background: linear-gradient(90deg, #00cc44, #00ff88); }
+
+  /* Highlight box */
+  .pp-highlight {
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .pp-highlight strong { color: var(--pp-accent); font-family: 'Orbitron', monospace; font-size: 11px; letter-spacing: 1px; }
+
+  /* Two col layout */
+  .pp-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 700px) { .pp-two-col { grid-template-columns: 1fr; } }
+
+  /* Scroll indicator */
+  .pp-scroll-top {
+    position: fixed;
+    bottom: 30px; right: 30px;
+    width: 42px; height: 42px;
+    background: rgba(0,212,255,0.15);
+    border: 1px solid var(--pp-accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 100;
+    transition: all 0.3s;
+    opacity: 0;
+    color: var(--pp-accent);
+  }
+  .pp-scroll-top.show { opacity: 1; }
+  .pp-scroll-top:hover { background: rgba(0,212,255,0.3); box-shadow: var(--pp-glow); }
+
+  /* Animations */
+  @keyframes ppFadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Card Accent Bar ── */
+  .pp-card-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  /* ── Formula Zone ── */
+  .pp-formula-zone {
+    background: #0d1117;
+    border: 1px solid rgba(249,115,22,0.15);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+
+  /* ── Animation Zone ── */
+  .pp-anim-zone {
+    background: rgba(0,0,0,0.25);
+    border: 1px dashed rgba(249,115,22,0.25);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+    min-height: 260px;
+  }
+  .pp-anim-label {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #f97316;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── Corner Bookmark ── */
+  .pp-card { position: relative; }
+  .pp-bm-corner {
+    position: absolute;
+    top: 0;
+    right: 18px;
+    width: 32px;
+    height: 46px;
+    cursor: pointer;
+    z-index: 10;
+    filter: drop-shadow(0 2px 6px rgba(220,38,38,0.5));
+    transition: transform 0.2s, filter 0.2s;
+  }
+  .pp-bm-corner:hover {
+    transform: scaleY(1.08);
+    filter: drop-shadow(0 4px 12px rgba(220,38,38,0.8));
+  }
+  .pp-bm-corner.saved .bm-ribbon { fill: #16a34a; }
+  .pp-bm-corner.saved { filter: drop-shadow(0 2px 6px rgba(22,163,74,0.6)); }
+
+  /* ── Storage Buttons ── */
+  .pp-storage-btn {
+    padding: 6px 14px;
+    border: 1px solid var(--pp-border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-storage-btn:hover { border-color: var(--pp-accent); color: var(--pp-accent); }
+  .pp-storage-btn.active { background: rgba(167,139,250,0.15); border-color: #a78bfa; color: #a78bfa; box-shadow: 0 0 12px rgba(167,139,250,0.3); }
+
+  /* ── Sliders ── */
+  .pp-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--pp-border);
+    outline: none;
+    margin-top: 4px;
+  }
+  .pp-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #00f5ff;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0,245,255,0.5);
+  }
+  .pp-slider.hydro-slider::-webkit-slider-thumb { background: #60a5fa; box-shadow: 0 0 6px rgba(96,165,250,0.5); }
+  .pp-slider.solar-slider::-webkit-slider-thumb { background: #facc15; box-shadow: 0 0 6px rgba(250,204,21,0.5); }
+
+  /* ── Small Inputs ── */
+  .pp-input-sm {
+    width: 100%;
+    padding: 5px 8px;
+    border: 1px solid var(--pp-border);
+    border-radius: 4px;
+    background: rgba(0,0,0,0.3);
+    color: var(--pp-text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .pp-input-sm:focus { border-color: #f97316; outline: none; box-shadow: 0 0 6px rgba(249,115,22,0.3); }
+
+  /* ── Calc Button ── */
+  .pp-calc-btn {
+    padding: 8px 16px;
+    border: 1px solid #f97316;
+    border-radius: 6px;
+    background: rgba(249,115,22,0.1);
+    color: #f97316;
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-calc-btn:hover { background: rgba(249,115,22,0.25); box-shadow: 0 0 15px rgba(249,115,22,0.3); }
+
+  /* ── Tariff Buttons ── */
+  .pp-tariff-btn {
+    padding: 5px 14px;
+    border: 1px solid var(--pp-border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-tariff-btn:hover { border-color: #f97316; color: #f97316; }
+  .pp-tariff-btn.active { background: rgba(249,115,22,0.15); border-color: #f97316; color: #f97316; }
+
+  /* ── Performance Boxes ── */
+  .pp-perf-box {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.3s;
+  }
+  .pp-perf-box:hover { border-color: var(--pp-accent); background: rgba(0,212,255,0.04); }
+  .pp-perf-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--pp-accent);
+    margin-bottom: 6px;
+  }
+  .pp-perf-desc {
+    font-size: 12px;
+    color: var(--pp-muted);
+    line-height: 1.5;
+  }
+
+  /* ── Flip Cards ── */
+  .pp-flip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+  }
+  .pp-flip-card {
+    perspective: 600px;
+    cursor: pointer;
+    height: 90px;
+  }
+  .pp-flip-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  .pp-flip-card.flipped .pp-flip-inner { transform: rotateY(180deg); }
+  .pp-flip-front, .pp-flip-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+    padding: 8px;
+  }
+  .pp-flip-front { background: var(--pp-card); }
+  .pp-flip-back {
+    background: #0d1117;
+    transform: rotateY(180deg);
+    color: var(--pp-text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+  }
+
+  /* ── Stat Cards ── */
+  .pp-stat-card {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 14px 10px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .pp-stat-card:hover { border-color: var(--pp-accent); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,212,255,0.1); }
+  .pp-stat-value {
+    font-family: 'Orbitron', monospace;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .pp-stat-label {
+    font-size: 10px;
+    color: var(--pp-muted);
+    margin-top: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── Flow Animation Pulses ── */
+  .flow-pulse { opacity: 0; }
+  .flow-stage rect { transition: fill 0.3s, filter 0.3s; }
+  .flow-stage:hover rect { fill: #1e2a3e; filter: drop-shadow(0 0 8px rgba(249,115,22,0.4)); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .pp-gen-grid { grid-template-columns: repeat(2, 1fr); }
+    .pp-main { padding: 20px 14px 60px; }
+    .pp-flip-grid { grid-template-columns: repeat(2, 1fr); }
+    .pp-perf-box { padding: 8px; }
+    .pp-two-col { grid-template-columns: 1fr; }
+    .pp-formula-zone { padding: 14px; }
+    .pp-anim-zone { padding: 14px; min-height: auto; }
+  }
+  @media (max-width: 480px) {
+    .pp-flip-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+  /* ══════════════════════════════════════════ */
+  /* MODULE 1 PART 2 — HYDRO POWER PLANT CSS  */
+  /* ══════════════════════════════════════════ */
+
+  /* Hydro Elements Grid */
+  .pp-hydro-elements-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .pp-hydro-elem {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(96,165,250,0.06);
+    border: 1px solid rgba(96,165,250,0.2);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 11px;
+    color: var(--pp-text);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .pp-hydro-elem:hover {
+    background: rgba(96,165,250,0.15);
+    border-color: #60a5fa;
+    color: #60a5fa;
+    box-shadow: 0 0 10px rgba(96,165,250,0.2);
+  }
+
+  /* Unit kW/HP Toggle */
+  .pp-unit-toggle {
+    padding: 5px 16px;
+    border: 1px solid var(--pp-border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--pp-muted);
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-unit-toggle:hover { border-color: #60a5fa; color: #60a5fa; }
+  .pp-unit-toggle.active { background: rgba(96,165,250,0.15); border-color: #60a5fa; color: #60a5fa; box-shadow: 0 0 12px rgba(96,165,250,0.3); }
+
+  /* Plant type tabs */
+  .pp-plant-tab {
+    padding: 6px 14px;
+    border: 1px solid var(--pp-border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-plant-tab:hover { border-color: #60a5fa; color: #60a5fa; }
+  .pp-plant-tab.active { background: rgba(96,165,250,0.15); border-color: #60a5fa; color: #60a5fa; }
+
+  /* Turbine tabs */
+  .pp-turbine-tab {
+    padding: 6px 14px;
+    border: 1px solid var(--pp-border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-turbine-tab:hover { border-color: #60a5fa; color: #60a5fa; }
+  .pp-turbine-tab[data-turb="pelton"].active { background: rgba(250,204,21,0.15); border-color: #facc15; color: #facc15; }
+  .pp-turbine-tab[data-turb="francis"].active { background: rgba(0,245,255,0.15); border-color: #00f5ff; color: #00f5ff; }
+  .pp-turbine-tab[data-turb="kaplan"].active { background: rgba(96,165,250,0.15); border-color: #60a5fa; color: #60a5fa; }
+
+  /* Pumped storage toggle */
+  .pp-pump-btn {
+    padding: 6px 14px;
+    border: 1px solid var(--pp-border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-pump-btn:hover { border-color: #60a5fa; color: #60a5fa; }
+  .pp-pump-btn.active { background: rgba(96,165,250,0.15); border-color: #60a5fa; color: #60a5fa; }
+
+  /* Pelton jet animation */
+  .pelton-jet { animation: jetFlow 0.8s linear infinite; }
+  @keyframes jetFlow { 0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -20; } }
+
+  /* Quiz option buttons */
+  .pp-quiz-opt {
+    padding: 6px 14px;
+    border: 1px solid var(--pp-border);
+    border-radius: 6px;
+    background: rgba(0,0,0,0.2);
+    color: var(--pp-text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-quiz-opt:hover { border-color: #60a5fa; background: rgba(96,165,250,0.1); }
+  .pp-quiz-opt.correct { border-color: #00ff88; background: rgba(0,255,136,0.15); color: #00ff88; }
+  .pp-quiz-opt.wrong { border-color: #ef4444; background: rgba(239,68,68,0.1); color: #ef4444; }
+
+  /* Hydro responsive */
+  @media (max-width: 768px) {
+    .pp-hydro-elements-grid { gap: 4px; }
+    .pp-hydro-elem { font-size: 10px; padding: 4px 8px; }
+  }
+  @media (max-width: 600px) {
+    #c7 .pp-formula-zone > div:nth-child(2),
+    #c7 .pp-formula-zone > div:nth-child(4) { grid-template-columns: 1fr; }
+  }
+
+  /* ══════════════════════════════════════════ */
+  /* MODULE 1 PART 3 — TURBINE, SITE, THERMAL */
+  /* ══════════════════════════════════════════ */
+
+  /* Hydro card accent override */
+  .pp-card.hydro-card .pp-card-accent { background: linear-gradient(90deg, transparent, #60a5fa, transparent) !important; }
+  .pp-card.thermal-card .pp-card-accent { background: linear-gradient(90deg, transparent, #ef4444, transparent) !important; }
+
+  .pp-card.hydro-card .pp-formula-zone { border-color: rgba(96,165,250,0.15); }
+  .pp-card.thermal-card .pp-formula-zone { border-color: rgba(239,68,68,0.15); }
+  .pp-card.hydro-card .pp-anim-zone { border-color: rgba(96,165,250,0.25); }
+  .pp-card.thermal-card .pp-anim-zone { border-color: rgba(239,68,68,0.25); }
+
+  /* Four-panel turbine grid */
+  .pp-turb-grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  @media (max-width: 768px) { .pp-turb-grid-4 { grid-template-columns: 1fr; } }
+
+  .pp-turb-panel {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .pp-turb-panel:hover { border-color: var(--pp-accent); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,212,255,0.1); }
+  .pp-turb-panel-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .pp-turb-panel svg { display: block; margin: 0 auto 8px; }
+
+  /* Efficiency curve canvas */
+  .pp-eta-chart-wrap {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+  }
+  .pp-eta-chart-wrap canvas { width: 100% !important; height: 220px !important; }
+
+  /* Pressure diagram */
+  .pp-pressure-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  @media (max-width: 600px) { .pp-pressure-compare { grid-template-columns: 1fr; } }
+
+  .pp-pressure-box {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .pp-pressure-bar {
+    height: 20px;
+    border-radius: 4px;
+    margin: 6px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .pp-pressure-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease;
+  }
+
+  /* Radar chart wrap */
+  .pp-radar-wrap {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .pp-radar-wrap canvas { width: 100% !important; height: 260px !important; }
+
+  /* Balance scale animation */
+  .pp-balance-scale {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 12px 0;
+    min-height: 200px;
+  }
+  .pp-balance-side {
+    flex: 1;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .pp-balance-item {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: ppBalanceIn 0.4s ease forwards;
+  }
+  @keyframes ppBalanceIn { to { opacity: 1; transform: translateY(0); } }
+  .pp-balance-item.merit { background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); color: #00ff88; }
+  .pp-balance-item.demerit { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #ef4444; }
+
+  /* Head diagram SVG */
+  .pp-head-diagram svg { display: block; margin: 0 auto; }
+
+  /* Thermal flow diagram */
+  .pp-thermal-flow svg { display: block; margin: 0 auto; }
+
+  /* Rankine process tags */
+  .pp-rankine-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    margin: 2px;
+  }
+
+  /* Sankey bar */
+  .pp-sankey-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0;
+  }
+  .pp-sankey-label {
+    font-size: 10px;
+    min-width: 80px;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .pp-sankey-bar {
+    height: 18px;
+    border-radius: 3px;
+    transition: width 1.2s ease;
+    position: relative;
+  }
+  .pp-sankey-bar::after {
+    content: attr(data-val);
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 9px;
+    font-family: 'Orbitron', monospace;
+    color: #fff;
+  }
+
+  /* Card 13 flip summary */
+  .pp-summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  @media (max-width: 600px) { .pp-summary-grid { grid-template-columns: 1fr; } }
+
+  .pp-summary-box {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .pp-summary-box h4 {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+  }
+
+  /* Head range slider */
+  .pp-head-range {
+    margin: 16px 0;
+    padding: 12px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+  }
+  .pp-head-range label {
+    font-size: 11px;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .pp-head-range .pp-slider { width: 100%; }
+  .pp-head-result {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'Share Tech Mono', monospace;
+    transition: all 0.3s;
+  }
+
+  /* Life comparison bars */
+  .pp-life-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0;
+  }
+  .pp-life-bar-label {
+    font-size: 11px;
+    min-width: 60px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .pp-life-bar-track {
+    flex: 1;
+    height: 22px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .pp-life-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    font-size: 10px;
+    font-family: 'Orbitron', monospace;
+    color: #fff;
+    transition: width 1.5s ease;
+  }
+
+  /* Part 3 responsive additions */
+  @media (max-width: 768px) {
+    .pp-turb-grid-4 { grid-template-columns: 1fr; }
+    .pp-pressure-compare { grid-template-columns: 1fr; }
+    .pp-summary-grid { grid-template-columns: 1fr; }
+    .pp-balance-scale { flex-direction: column; align-items: stretch; }
+  }
+  @media (max-width: 480px) {
+    .pp-turb-panel { padding: 8px; }
+    .pp-eta-chart-wrap canvas { height: 180px !important; }
+    .pp-radar-wrap canvas { height: 200px !important; }
+  }
+
+  /* ══════════════════════════════════════════════ */
+  /* MODULE 2 — THERMAL (STEAM) POWER PLANT CSS   */
+  /* ══════════════════════════════════════════════ */
+
+  .pp-card.m2-thermal .pp-card-accent { background: linear-gradient(90deg, transparent, #ef4444, transparent) !important; }
+  .pp-card.m2-thermal .pp-formula-zone { border-color: rgba(239,68,68,0.15); }
+  .pp-card.m2-thermal .pp-anim-zone { border-color: rgba(239,68,68,0.25); }
+  .pp-card.m2-thermal .pp-anim-label { color: #ef4444; }
+
+  /* Module 2 section divider */
+  .pp-module-divider {
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+  }
+  .pp-module-divider::before,
+  .pp-module-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ef4444, transparent);
+  }
+  .pp-module-divider::before { left: 0; }
+  .pp-module-divider::after { right: 0; }
+  .pp-module-divider-tag {
+    display: inline-block;
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #ef4444;
+    border: 1px solid rgba(239,68,68,0.4);
+    padding: 6px 24px;
+    border-radius: 20px;
+    background: rgba(239,68,68,0.06);
+    box-shadow: 0 0 20px rgba(239,68,68,0.15);
+  }
+
+  /* Energy flow chain */
+  .pp-energy-chain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+  .pp-chain-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--pp-border);
+    background: rgba(0,0,0,0.25);
+    min-width: 70px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .pp-chain-node:hover { border-color: #ef4444; box-shadow: 0 0 12px rgba(239,68,68,0.2); transform: translateY(-2px); }
+  .pp-chain-icon { font-size: 20px; }
+  .pp-chain-label { font-size: 9px; font-family: 'Orbitron', monospace; letter-spacing: 1px; text-transform: uppercase; }
+  .pp-chain-pct { font-size: 11px; font-family: 'Share Tech Mono', monospace; }
+  .pp-chain-arrow { color: #ef4444; font-size: 14px; }
+  .pp-chain-loss { font-size: 8px; color: #ef4444; font-family: 'Share Tech Mono', monospace; }
+
+  /* Circuit tabs */
+  .pp-circuit-tabs {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .pp-circuit-tab {
+    flex: 1;
+    min-width: 80px;
+    padding: 6px 10px;
+    border: 1px solid var(--pp-border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+  }
+  .pp-circuit-tab:hover { border-color: #ef4444; color: #ef4444; }
+  .pp-circuit-tab.active { background: rgba(239,68,68,0.12); border-color: #ef4444; color: #ef4444; box-shadow: 0 0 10px rgba(239,68,68,0.2); }
+  .pp-circuit-tab[data-circuit="coal"].active { background: rgba(107,114,128,0.15); border-color: #6b7280; color: #e5e7eb; }
+  .pp-circuit-tab[data-circuit="air"].active { background: rgba(249,115,22,0.12); border-color: #f97316; color: #f97316; }
+  .pp-circuit-tab[data-circuit="steam"].active { background: rgba(250,204,21,0.12); border-color: #facc15; color: #facc15; }
+  .pp-circuit-tab[data-circuit="cooling"].active { background: rgba(96,165,250,0.12); border-color: #60a5fa; color: #60a5fa; }
+  .pp-circuit-tab[data-circuit="electrical"].active { background: rgba(250,204,21,0.12); border-color: #facc15; color: #facc15; }
+  .pp-circuit-tab[data-circuit="fluegas"].active { background: rgba(107,114,128,0.15); border-color: #6b7280; color: #9ca3af; }
+
+  /* Circuit scene */
+  .pp-circuit-scene {
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.15);
+    border: 1px solid var(--pp-border);
+  }
+  .pp-circuit-scene[style*="display: none"] { display: none !important; }
+
+  /* Component expand cards */
+  .pp-comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+  }
+  .pp-comp-card {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .pp-comp-card:hover { border-color: #ef4444; background: rgba(239,68,68,0.06); transform: translateY(-2px); }
+  .pp-comp-card .pp-comp-icon { font-size: 22px; display: block; margin-bottom: 4px; }
+  .pp-comp-card .pp-comp-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: #ef4444;
+    text-transform: uppercase;
+  }
+  .pp-comp-card .pp-comp-func {
+    font-size: 10px;
+    color: var(--pp-muted);
+    margin-top: 4px;
+    display: none;
+  }
+  .pp-comp-card.expanded .pp-comp-func { display: block; }
+  .pp-comp-card.expanded { background: rgba(239,68,68,0.08); border-color: #ef4444; }
+
+  /* Efficiency gauge arcs */
+  .pp-gauge-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+  .pp-gauge-item { text-align: center; }
+  .pp-gauge-item canvas { display: block; margin: 0 auto; }
+  .pp-gauge-label {
+    margin-top: 4px;
+    font-size: 10px;
+    font-family: 'Orbitron', monospace;
+    letter-spacing: 1px;
+  }
+
+  /* Sankey flow bars */
+  .pp-sankey-wrap {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Boiler type toggle */
+  .pp-boiler-toggle {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  .pp-boiler-btn {
+    padding: 6px 16px;
+    border: 1px solid var(--pp-border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-boiler-btn:hover { border-color: #ef4444; color: #ef4444; }
+  .pp-boiler-btn.active { background: rgba(239,68,68,0.15); border-color: #ef4444; color: #ef4444; }
+
+  /* HR vs η chart */
+  .pp-hr-chart-wrap {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+  }
+  .pp-hr-chart-wrap canvas { width: 100% !important; height: 200px !important; }
+
+  /* Module 2 responsive */
+  @media (max-width: 768px) {
+    .pp-circuit-tabs { gap: 3px; }
+    .pp-circuit-tab { font-size: 9px; padding: 5px 6px; min-width: 60px; }
+    .pp-comp-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
+    .pp-energy-chain { gap: 2px; }
+    .pp-chain-node { padding: 6px 8px; min-width: 55px; }
+  }
+  @media (max-width: 480px) {
+    .pp-circuit-tabs { flex-direction: column; }
+    .pp-circuit-tab { min-width: auto; }
+    .pp-comp-grid { grid-template-columns: 1fr 1fr; }
+    .pp-hr-chart-wrap canvas { height: 160px !important; }
+  }
+
+  /* ══════════════════════════════════════════════════════ */
+  /* MODULE 3 — COAL CLASSIFICATION & NUCLEAR POWER PLANT */
+  /* ══════════════════════════════════════════════════════ */
+
+  /* Coal/Fuel card accent (orange) */
+  .pp-card.m3-coal .pp-card-accent { background: linear-gradient(90deg, transparent, #f97316, transparent) !important; }
+  .pp-card.m3-coal .pp-formula-zone { border-color: rgba(249,115,22,0.15); }
+  .pp-card.m3-coal .pp-anim-zone { border-color: rgba(249,115,22,0.25); }
+  .pp-card.m3-coal .pp-anim-label { color: #f97316; }
+
+  /* Nuclear card accent (purple) */
+  .pp-card.m3-nuclear .pp-card-accent { background: linear-gradient(90deg, transparent, #a78bfa, transparent) !important; }
+  .pp-card.m3-nuclear .pp-formula-zone { border-color: rgba(167,139,250,0.15); }
+  .pp-card.m3-nuclear .pp-anim-zone { border-color: rgba(167,139,250,0.25); }
+  .pp-card.m3-nuclear .pp-anim-label { color: #a78bfa; }
+
+  /* Coal grade bar chart */
+  .pp-coal-bars { display: flex; flex-direction: column; gap: 6px; margin: 10px 0; }
+  .pp-coal-bar-row { display: flex; align-items: center; gap: 8px; }
+  .pp-coal-bar-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--pp-muted);
+    min-width: 95px;
+    text-align: right;
+  }
+  .pp-coal-bar-track {
+    flex: 1;
+    height: 18px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .pp-coal-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease-out;
+    display: flex;
+    align-items: center;
+    padding-left: 6px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .pp-coal-bar-val {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--pp-muted);
+    min-width: 70px;
+    text-align: left;
+  }
+
+  /* Fuel type cards */
+  .pp-fuel-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 10px 0; }
+  .pp-fuel-card {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-fuel-card:hover { transform: translateY(-2px); }
+  .pp-fuel-card .pp-fuel-icon { font-size: 24px; display: block; margin-bottom: 4px; }
+  .pp-fuel-card .pp-fuel-name { font-family: 'Orbitron', monospace; font-size: 10px; letter-spacing: 1px; }
+  .pp-fuel-card .pp-fuel-cv { font-family: 'Share Tech Mono', monospace; font-size: 11px; margin-top: 4px; }
+
+  /* Nuclear reactor SVG viewport */
+  .pp-reactor-svg-wrap {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    padding: 8px;
+    margin: 8px 0;
+  }
+  .pp-reactor-svg-wrap svg { width: 100%; height: auto; }
+
+  /* keff slider zone */
+  .pp-keff-zone {
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    margin: 8px 0;
+    text-align: center;
+  }
+  .pp-keff-display {
+    font-family: 'Orbitron', monospace;
+    font-size: 24px;
+    margin: 6px 0;
+    transition: color 0.3s;
+  }
+  .pp-keff-status {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-top: 4px;
+  }
+
+  /* Reactor type tabs */
+  .pp-reactor-tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 10px; }
+  .pp-reactor-tab {
+    flex: 1;
+    min-width: 70px;
+    padding: 6px 8px;
+    border: 1px solid var(--pp-border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+  }
+  .pp-reactor-tab:hover { border-color: #a78bfa; color: #a78bfa; }
+  .pp-reactor-tab.active { background: rgba(167,139,250,0.12); border-color: #a78bfa; color: #a78bfa; box-shadow: 0 0 10px rgba(167,139,250,0.2); }
+
+  /* Comparison side-by-side bars */
+  .pp-compare-rows { display: flex; flex-direction: column; gap: 8px; }
+  .pp-compare-row { display: flex; flex-direction: column; gap: 2px; }
+  .pp-compare-param {
+    font-family: 'Orbitron', monospace;
+    font-size: 9px;
+    color: var(--pp-muted);
+    letter-spacing: 1px;
+  }
+  .pp-compare-pair { display: flex; gap: 4px; }
+  .pp-compare-bar {
+    height: 16px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding-left: 6px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    color: #fff;
+    transition: width 0.8s ease-out;
+    white-space: nowrap;
+  }
+
+  /* Quiz zone */
+  .pp-quiz-zone {
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--pp-border);
+    border-radius: 8px;
+    margin: 8px 0;
+  }
+  .pp-quiz-q {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: #e5e7eb;
+    margin-bottom: 8px;
+  }
+  .pp-quiz-opts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pp-quiz-opt {
+    padding: 5px 14px;
+    border: 1px solid var(--pp-border);
+    border-radius: 16px;
+    background: transparent;
+    color: var(--pp-muted);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .pp-quiz-opt:hover { border-color: #a78bfa; color: #a78bfa; }
+  .pp-quiz-opt.correct { border-color: #00ff88; color: #00ff88; background: rgba(0,255,136,0.1); }
+  .pp-quiz-opt.wrong { border-color: #ef4444; color: #ef4444; background: rgba(239,68,68,0.1); }
+
+  /* Module 3 responsive */
+  @media (max-width: 768px) {
+    .pp-fuel-cards { grid-template-columns: 1fr; }
+    .pp-reactor-tabs { gap: 3px; }
+    .pp-reactor-tab { font-size: 9px; padding: 5px 6px; min-width: 55px; }
+    .pp-coal-bar-label { min-width: 70px; font-size: 9px; }
+  }
+  @media (max-width: 480px) {
+    .pp-reactor-tabs { flex-direction: column; }
+    .pp-reactor-tab { min-width: auto; }
+    .pp-coal-bar-label { min-width: 55px; font-size: 8px; }
+    .pp-keff-display { font-size: 18px; }
+  }
+
+  /* ═══════════════════════════════════════════════════════ */
+  /* MODULE 3 PART 2 — NUCLEAR REACTORS, FUELS & SITE      */
+  /* ═══════════════════════════════════════════════════════ */
+
+  /* Component legend icon grid */
+  .pp-comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-top: 10px; }
+  .pp-comp-item { background: rgba(0,0,0,0.2); border: 1px solid var(--pp-border); border-radius: 8px; padding: 10px; text-align: center; transition: all 0.3s ease; cursor: pointer; }
+  .pp-comp-item:hover { border-color: #a78bfa; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(167,139,250,0.15); }
+  .pp-comp-icon { font-size: 22px; margin-bottom: 4px; }
+  .pp-comp-name { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #e5e7eb; letter-spacing: 0.5px; }
+  .pp-comp-desc { font-size: 9px; color: var(--pp-muted); margin-top: 3px; line-height: 1.3; }
+
+  /* Reactor type cards (tab panels) */
+  .pp-rtype-panel { display: none; background: rgba(0,0,0,0.15); border: 1px solid var(--pp-border); border-radius: 10px; padding: 14px; margin-top: 8px; animation: ppFadeIn 0.4s ease; }
+  .pp-rtype-panel.active { display: block; }
+  .pp-rtype-header { font-family: 'Orbitron', monospace; font-size: 11px; letter-spacing: 1px; margin-bottom: 8px; }
+  .pp-rtype-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-size: 11px; color: var(--pp-muted); }
+  .pp-rtype-label { font-family: 'Share Tech Mono', monospace; min-width: 80px; color: #9ca3af; font-size: 10px; }
+  .pp-rtype-val { color: #e5e7eb; }
+
+  /* Efficiency bars */
+  .pp-eff-bars { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+  .pp-eff-bar-row { display: flex; align-items: center; gap: 8px; }
+  .pp-eff-bar-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #9ca3af; min-width: 55px; text-align: right; }
+  .pp-eff-bar-track { flex: 1; height: 18px; background: rgba(255,255,255,0.03); border-radius: 4px; overflow: hidden; position: relative; }
+  .pp-eff-bar-fill { height: 100%; border-radius: 4px; transition: width 1.5s cubic-bezier(0.4,0,0.2,1); width: 0; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; }
+  .pp-eff-bar-val { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: #fff; text-shadow: 0 0 4px rgba(0,0,0,0.8); }
+
+  /* Decay chain timeline */
+  .pp-decay-chain { display: flex; align-items: center; gap: 0; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+  .pp-decay-node { background: rgba(0,0,0,0.3); border: 2px solid var(--pp-border); border-radius: 50%; width: 70px; height: 70px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.5s ease; position: relative; }
+  .pp-decay-node.active { border-color: #a78bfa; box-shadow: 0 0 15px rgba(167,139,250,0.4); }
+  .pp-decay-isotope { font-family: 'Orbitron', monospace; font-size: 11px; color: #e5e7eb; }
+  .pp-decay-mass { font-size: 9px; color: var(--pp-muted); }
+  .pp-decay-arrow { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #fb7185; padding: 0 6px; display: flex; flex-direction: column; align-items: center; }
+  .pp-decay-time { font-size: 8px; color: #60a5fa; }
+
+  /* Site selection radar / criteria */
+  .pp-site-criteria { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 6px; margin-top: 10px; }
+  .pp-site-item { display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.15); border: 1px solid var(--pp-border); border-radius: 8px; padding: 8px 10px; }
+  .pp-site-icon { font-size: 16px; }
+  .pp-site-text { font-size: 10px; color: var(--pp-muted); line-height: 1.3; }
+  .pp-site-slider { width: 100%; margin-top: 4px; }
+
+  /* Exclusion zone rings */
+  .pp-zone-rings { position: relative; width: 220px; height: 220px; margin: 10px auto; }
+  .pp-zone-ring { position: absolute; border-radius: 50%; border: 2px dashed; display: flex; align-items: flex-start; justify-content: center; padding-top: 6px; }
+  .pp-zone-ring span { font-family: 'Share Tech Mono', monospace; font-size: 8px; background: rgba(10,10,15,0.85); padding: 1px 5px; border-radius: 3px; }
+
+  /* Advantages / Disadvantages stacks */
+  .pp-advdis-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .pp-adv-stack, .pp-dis-stack { display: flex; flex-direction: column; gap: 5px; }
+  .pp-adv-item, .pp-dis-item { font-size: 10px; padding: 7px 10px; border-radius: 6px; line-height: 1.3; }
+  .pp-adv-item { background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.2); color: #00ff88; }
+  .pp-dis-item { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); color: #ef4444; }
+
+  /* Flip cards for reactor reference */
+  .pp-flip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-top: 10px; }
+  .pp-flip-card { perspective: 600px; height: 110px; cursor: pointer; }
+  .pp-flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s ease; transform-style: preserve-3d; }
+  .pp-flip-card.flipped .pp-flip-inner { transform: rotateY(180deg); }
+  .pp-flip-front, .pp-flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px; border: 1px solid var(--pp-border); }
+  .pp-flip-front { background: rgba(0,0,0,0.25); }
+  .pp-flip-back { background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.3); transform: rotateY(180deg); }
+  .pp-flip-front .pp-flip-name { font-family: 'Orbitron', monospace; font-size: 11px; color: #e5e7eb; }
+  .pp-flip-back .pp-flip-detail { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--pp-muted); text-align: center; line-height: 1.4; }
+
+  /* k-trainer scenarios */
+  .pp-ktrain-opts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .pp-ktrain-btn { font-family: 'Share Tech Mono', monospace; font-size: 10px; padding: 6px 12px; border: 1px solid var(--pp-border); background: rgba(0,0,0,0.2); color: var(--pp-muted); border-radius: 6px; cursor: pointer; transition: all 0.3s ease; }
+  .pp-ktrain-btn:hover { border-color: #a78bfa; color: #a78bfa; }
+  .pp-ktrain-btn.correct { border-color: #00ff88; color: #00ff88; background: rgba(0,255,136,0.1); }
+  .pp-ktrain-btn.wrong { border-color: #ef4444; color: #ef4444; background: rgba(239,68,68,0.1); }
+
+  /* Module 3 Part 2 responsive */
+  @media (max-width: 768px) {
+    .pp-comp-grid { grid-template-columns: repeat(2, 1fr); }
+    .pp-decay-node { width: 56px; height: 56px; }
+    .pp-decay-isotope { font-size: 9px; }
+    .pp-advdis-wrap { grid-template-columns: 1fr; }
+    .pp-flip-grid { grid-template-columns: repeat(2, 1fr); }
+    .pp-site-criteria { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .pp-comp-grid { grid-template-columns: 1fr; }
+    .pp-decay-chain { flex-direction: column; }
+    .pp-decay-arrow { transform: rotate(90deg); padding: 4px 0; }
+    .pp-flip-grid { grid-template-columns: 1fr 1fr; }
+    .pp-eff-bar-label { min-width: 45px; font-size: 9px; }
+  }
+
+  /* ═══════════════════════════════════════════════════════ */
+  /* MODULE 4 — DIESEL, GAS TURBINE & NON-CONVENTIONAL     */
+  /* ═══════════════════════════════════════════════════════ */
+
+  .m4-diesel .pp-card-accent { background: linear-gradient(90deg, #f97316, #ef4444, #f97316); }
+  .m4-diesel .pp-section-title { border-left-color: #f97316; }
+  .m4-diesel .pp-formula-title { color: #f97316; }
+  .m4-diesel .pp-formula-title::before { color: #f97316; }
+
+  .m4-solar .pp-card-accent { background: linear-gradient(90deg, #facc15, #f97316, #facc15); }
+  .m4-solar .pp-section-title { border-left-color: #facc15; }
+  .m4-solar .pp-formula-title { color: #facc15; }
+  .m4-solar .pp-formula-title::before { color: #facc15; }
+
+  /* Diesel P-V / Brayton T-s diagram zone */
+  .pp-cycle-diagram { position: relative; width: 100%; max-width: 360px; margin: 0 auto; }
+  .pp-cycle-diagram svg { width: 100%; height: auto; }
+
+  /* Plant comparison table */
+  .pp-comp-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-family: 'Share Tech Mono', monospace; font-size: 10px; }
+  .pp-comp-table th { background: rgba(249,115,22,0.1); color: #f97316; padding: 6px 8px; border: 1px solid rgba(249,115,22,0.2); text-align: center; font-size: 9px; letter-spacing: 0.5px; }
+  .pp-comp-table td { padding: 5px 8px; border: 1px solid var(--pp-border); color: var(--pp-muted); text-align: center; font-size: 10px; }
+  .pp-comp-table tr:hover td { background: rgba(249,115,22,0.04); }
+
+  /* Solar cell cross-section layers */
+  .pp-solar-layers { position: relative; margin: 10px auto; max-width: 320px; }
+  .pp-solar-layer { padding: 8px 12px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 10px; border: 1px solid var(--pp-border); margin-bottom: -1px; transition: all 0.3s ease; cursor: pointer; }
+  .pp-solar-layer:hover { transform: scale(1.02); z-index: 1; }
+
+  /* Solar scaling builder */
+  .pp-solar-builder { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 6px; margin-top: 10px; }
+  .pp-solar-unit { border: 1px solid var(--pp-border); border-radius: 6px; padding: 6px; text-align: center; font-size: 9px; color: var(--pp-muted); transition: all 0.3s ease; }
+
+  /* Wind power curve zone */
+  .pp-wind-curve { position: relative; background: rgba(0,0,0,0.15); border: 1px solid var(--pp-border); border-radius: 8px; padding: 10px; margin-top: 10px; }
+  .pp-wind-zone-label { position: absolute; top: 4px; font-family: 'Share Tech Mono', monospace; font-size: 8px; padding: 1px 4px; border-radius: 3px; }
+
+  /* Startup race bars */
+  .pp-startup-bars { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+  .pp-startup-row { display: flex; align-items: center; gap: 8px; }
+  .pp-startup-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #9ca3af; min-width: 60px; text-align: right; }
+  .pp-startup-track { flex: 1; height: 18px; background: rgba(255,255,255,0.03); border-radius: 4px; overflow: hidden; position: relative; }
+  .pp-startup-fill { height: 100%; border-radius: 4px; transition: width 2s cubic-bezier(0.4,0,0.2,1); width: 0; display: flex; align-items: center; padding-left: 6px; }
+  .pp-startup-time { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: #fff; text-shadow: 0 0 4px rgba(0,0,0,0.8); white-space: nowrap; }
+
+  /* CSP type cards */
+  .pp-csp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-top: 10px; }
+  .pp-csp-card { background: rgba(0,0,0,0.2); border: 1px solid var(--pp-border); border-radius: 8px; padding: 10px; text-align: center; transition: all 0.3s ease; cursor: pointer; }
+  .pp-csp-card:hover { border-color: #facc15; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(250,204,21,0.12); }
+  .pp-csp-icon { font-size: 24px; margin-bottom: 4px; }
+  .pp-csp-name { font-family: 'Orbitron', monospace; font-size: 10px; color: #facc15; letter-spacing: 0.5px; }
+  .pp-csp-desc { font-size: 9px; color: var(--pp-muted); margin-top: 3px; line-height: 1.3; }
+
+  /* India target progress bars */
+  .pp-target-bars { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .pp-target-row { display: flex; flex-direction: column; gap: 3px; }
+  .pp-target-head { display: flex; justify-content: space-between; font-family: 'Share Tech Mono', monospace; font-size: 10px; }
+  .pp-target-track { height: 14px; background: #374151; border-radius: 4px; overflow: hidden; }
+  .pp-target-fill { height: 100%; border-radius: 4px; transition: width 1.5s cubic-bezier(0.4,0,0.2,1); }
+
+  /* Renewable comparison mini-cards */
+  .pp-renew-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 6px; margin-top: 10px; }
+  .pp-renew-card { background: rgba(0,0,0,0.18); border: 1px solid var(--pp-border); border-radius: 8px; padding: 8px; text-align: center; }
+  .pp-renew-card .pp-renew-icon { font-size: 20px; }
+  .pp-renew-card .pp-renew-name { font-family: 'Orbitron', monospace; font-size: 9px; letter-spacing: 0.5px; margin: 3px 0; }
+  .pp-renew-card .pp-renew-stat { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--pp-muted); }
+
+  /* Module 4 responsive */
+  @media (max-width: 768px) {
+    .pp-comp-table { font-size: 8px; }
+    .pp-comp-table th, .pp-comp-table td { padding: 3px 4px; }
+    .pp-csp-grid { grid-template-columns: repeat(2, 1fr); }
+    .pp-renew-grid { grid-template-columns: repeat(2, 1fr); }
+    .pp-solar-builder { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .pp-comp-table th, .pp-comp-table td { padding: 2px 3px; font-size: 7px; }
+    .pp-csp-grid { grid-template-columns: 1fr 1fr; }
+    .pp-renew-grid { grid-template-columns: 1fr 1fr; }
+    .pp-startup-label { min-width: 45px; font-size: 9px; }
+  }
+
+  /* ═══════════════════════════════════════════════
+     MODULE 4 PART 2 — SOLAR DEEP DIVE (c41-c45)
+     ═══════════════════════════════════════════════ */
+  .m4p2-solar .pp-card-accent { background: linear-gradient(90deg,#facc15,#f59e0b,#facc15); }
+  .m4p2-solar .pp-section-title { color: #facc15; }
+  .m4p2-solar .pp-calc-btn { background: rgba(250,204,21,0.12); border: 1px solid rgba(250,204,21,0.3); color: #facc15; }
+  .m4p2-solar .pp-calc-btn:hover { background: rgba(250,204,21,0.25); }
+
+  /* Spectrum bar */
+  .pp-spectrum-bar { display:flex; height:30px; border-radius:6px; overflow:hidden; margin:6px 0; border:1px solid rgba(250,204,21,0.15); }
+  .pp-spectrum-seg { display:flex; align-items:center; justify-content:center; font-size:9px; font-family:'Share Tech Mono',monospace; color:#fff; font-weight:600; }
+
+  /* Band gap curve container */
+  .pp-bandgap-chart { position:relative; width:100%; height:180px; background:rgba(0,0,0,0.2); border-radius:8px; border:1px solid var(--pp-border); overflow:hidden; }
+  .pp-bandgap-chart svg { width:100%; height:100%; }
+
+  /* Photon badges */
+  .pp-photon-demo { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  .pp-photon-card { flex:1; min-width:120px; padding:8px; border-radius:8px; text-align:center; font-size:10px; font-family:'Share Tech Mono',monospace; border:1px solid var(--pp-border); }
+
+  /* I-V curve container */
+  .pp-iv-chart { position:relative; width:100%; height:200px; background:rgba(0,0,0,0.2); border-radius:8px; border:1px solid var(--pp-border); overflow:hidden; }
+  .pp-iv-chart svg { width:100%; height:100%; }
+
+  /* Shadow demo */
+  .pp-shadow-demo { display:flex; gap:8px; align-items:center; flex-wrap:wrap; padding:10px; background:rgba(0,0,0,0.15); border-radius:8px; border:1px solid var(--pp-border); }
+  .pp-shadow-cell { width:50px; height:50px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:10px; font-family:'Share Tech Mono',monospace; cursor:pointer; transition:all 0.3s; border:2px solid; }
+
+  /* Material cards */
+  .pp-mat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .pp-mat-card { padding:10px; border-radius:8px; text-align:center; background:rgba(0,0,0,0.15); border:1px solid var(--pp-border); transition:transform 0.2s,border-color 0.3s; cursor:default; }
+  .pp-mat-card:hover { transform:translateY(-2px); }
+  .pp-mat-card .pp-mat-name { font-family:'Orbitron',monospace; font-size:9px; letter-spacing:1px; margin-bottom:4px; }
+  .pp-mat-card .pp-mat-eta { font-family:'Share Tech Mono',monospace; font-size:11px; color:#00ff88; }
+  .pp-mat-card .pp-mat-life { font-family:'Share Tech Mono',monospace; font-size:9px; color:var(--pp-muted); }
+  .pp-mat-card .pp-mat-cost { font-family:'Share Tech Mono',monospace; font-size:9px; }
+
+  /* System tabs */
+  .pp-sys-tabs { display:flex; gap:4px; margin-bottom:10px; }
+  .pp-sys-tab { flex:1; padding:6px 10px; text-align:center; font-family:'Orbitron',monospace; font-size:9px; letter-spacing:1px; border-radius:6px 6px 0 0; background:rgba(0,0,0,0.2); border:1px solid var(--pp-border); border-bottom:none; color:var(--pp-muted); cursor:pointer; transition:all 0.3s; }
+  .pp-sys-tab.active { background:rgba(250,204,21,0.1); border-color:rgba(250,204,21,0.3); color:#facc15; }
+  .pp-sys-panel { display:none; padding:10px; background:rgba(0,0,0,0.15); border-radius:0 0 8px 8px; border:1px solid var(--pp-border); border-top:none; }
+  .pp-sys-panel.active { display:block; }
+
+  /* Lifespan bars */
+  .pp-life-bars { display:flex; flex-direction:column; gap:6px; }
+  .pp-life-row { display:flex; align-items:center; gap:8px; }
+  .pp-life-label { min-width:65px; font-size:10px; font-family:'Share Tech Mono',monospace; }
+  .pp-life-track { flex:1; height:16px; background:rgba(255,255,255,0.04); border-radius:4px; overflow:hidden; }
+  .pp-life-fill { height:100%; border-radius:4px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; font-size:9px; font-family:'Share Tech Mono',monospace; color:#fff; width:0; transition:width 1.2s ease; }
+
+  @media (max-width: 768px) {
+    .pp-mat-grid { grid-template-columns: repeat(2, 1fr); }
+    .pp-photon-demo { flex-direction: column; }
+  }
+  @media (max-width: 480px) {
+    .pp-mat-grid { grid-template-columns: 1fr 1fr; }
+    .pp-sys-tab { font-size: 8px; padding: 4px 6px; }
+    .pp-iv-chart { height: 160px; }
+    .pp-bandgap-chart { height: 150px; }
+  }
+
+  /* ══════════ MODULE 4 PART 3 — Solar Collectors, Solar Thermal, Heliostats ══════════ */
+  .m4p3-solar { border-top-color: #facc15 !important; }
+  .m4p3-solar .pp-card-accent { background: linear-gradient(90deg, #facc15, #f59e0b); }
+
+  .pp-balance-scale { display: flex; gap: 18px; justify-content: center; align-items: flex-end; min-height: 180px; }
+  .pp-balance-col { display: flex; flex-direction: column; gap: 5px; flex: 1; max-width: 170px; }
+  .pp-balance-item { padding: 5px 8px; border-radius: 6px; font-size: 10px; font-family: 'Share Tech Mono', monospace; text-align: center; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; }
+  .pp-balance-item.show { opacity: 1; transform: translateY(0); }
+  .pp-balance-adv { background: rgba(0,255,136,0.13); border: 1px solid #00ff88; color: #00ff88; }
+  .pp-balance-dis { background: rgba(239,68,68,0.13); border: 1px solid #ef4444; color: #ef4444; }
+  .pp-balance-label { text-align: center; font-size: 11px; color: #facc15; font-family: 'Orbitron', sans-serif; margin-top: 8px; }
+
+  .pp-em-spectrum { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin: 8px 0; }
+  .pp-em-seg { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 7px; font-family: 'Share Tech Mono', monospace; color: #fff; text-shadow: 0 0 3px rgba(0,0,0,0.8); transition: flex 0.4s ease; cursor: pointer; }
+  .pp-em-seg:hover { flex: 2; }
+  .pp-em-seg.solar-zone { box-shadow: inset 0 -3px 0 #facc15; }
+
+  .pp-instrument-row { display: flex; gap: 10px; margin: 8px 0; }
+  .pp-instr-card { flex: 1; background: rgba(250,204,21,0.06); border: 1px solid rgba(250,204,21,0.2); border-radius: 8px; padding: 8px; text-align: center; cursor: pointer; transition: all 0.3s ease; }
+  .pp-instr-card:hover, .pp-instr-card.active { border-color: #facc15; background: rgba(250,204,21,0.12); }
+  .pp-instr-icon { font-size: 24px; }
+  .pp-instr-name { font-size: 9px; color: #facc15; font-family: 'Orbitron', sans-serif; margin-top: 4px; }
+  .pp-instr-desc { font-size: 9px; color: #9ca3af; margin-top: 4px; display: none; }
+  .pp-instr-card.active .pp-instr-desc { display: block; }
+
+  .pp-eta-gauge { position: relative; height: 32px; background: rgba(17,24,39,0.8); border-radius: 16px; margin: 8px 0; overflow: hidden; border: 1px solid rgba(250,204,21,0.2); }
+  .pp-eta-fill { height: 100%; border-radius: 16px; transition: width 1.2s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 10px; font-family: 'Share Tech Mono', monospace; }
+  .pp-eta-marker { position: absolute; top: 0; height: 100%; width: 2px; }
+  .pp-eta-marker-label { position: absolute; top: -16px; font-size: 8px; white-space: nowrap; font-family: 'Share Tech Mono', monospace; transform: translateX(-50%); }
+
+  .pp-collector-tree { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 8px 0; }
+  .pp-ct-node { padding: 6px 14px; border-radius: 8px; font-size: 10px; font-family: 'Orbitron', sans-serif; cursor: pointer; transition: all 0.3s ease; text-align: center; }
+  .pp-ct-node:hover { transform: scale(1.08); }
+  .pp-ct-root { background: linear-gradient(135deg, #facc15, #f59e0b); color: #000; font-weight: 700; }
+  .pp-ct-branch { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .pp-ct-low { background: rgba(96,165,250,0.15); border: 1px solid #60a5fa; color: #60a5fa; }
+  .pp-ct-high { background: rgba(250,204,21,0.15); border: 1px solid #facc15; color: #facc15; }
+  .pp-ct-detail { background: rgba(17,24,39,0.9); border: 1px solid rgba(250,204,21,0.3); border-radius: 8px; padding: 10px; margin-top: 6px; width: 100%; max-width: 340px; }
+  .pp-ct-detail svg { width: 100%; height: 120px; }
+
+  .pp-temp-ladder { display: flex; flex-direction: column; gap: 4px; margin: 8px 0; }
+  .pp-temp-row { display: flex; align-items: center; gap: 8px; }
+  .pp-temp-name { width: 90px; font-size: 9px; font-family: 'Orbitron', sans-serif; text-align: right; }
+  .pp-temp-bar { height: 18px; border-radius: 4px; transition: width 1.2s ease; display: flex; align-items: center; padding-left: 6px; font-size: 9px; font-family: 'Share Tech Mono', monospace; color: #fff; min-width: 30px; }
+
+  .pp-csp-flow { position: relative; min-height: 220px; background: rgba(17,24,39,0.7); border-radius: 10px; border: 1px solid rgba(250,204,21,0.15); overflow: hidden; }
+  .pp-csp-flow svg { width: 100%; height: 220px; }
+
+  .pp-storage-anim { display: flex; gap: 14px; align-items: center; justify-content: center; margin: 10px 0; }
+  .pp-tank { width: 60px; height: 80px; border-radius: 8px; border: 2px solid; position: relative; overflow: hidden; }
+  .pp-tank-fill { position: absolute; bottom: 0; width: 100%; transition: height 1s ease; }
+  .pp-tank-label { text-align: center; font-size: 9px; font-family: 'Orbitron', sans-serif; margin-top: 4px; }
+  .pp-tank-arrow { font-size: 20px; color: #facc15; }
+
+  .pp-heliostat-field { position: relative; min-height: 200px; background: rgba(17,24,39,0.7); border-radius: 10px; border: 1px solid rgba(250,204,21,0.15); overflow: hidden; }
+  .pp-heliostat-field svg { width: 100%; height: 200px; }
+
+  .pp-tracking-demo { display: flex; align-items: center; justify-content: center; min-height: 140px; }
+  .pp-tracking-demo svg { width: 240px; height: 140px; }
+
+  .pp-drawback-bars { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+  .pp-drawback-row { display: flex; align-items: center; gap: 8px; }
+  .pp-drawback-label { width: 80px; font-size: 9px; font-family: 'Orbitron', sans-serif; text-align: right; }
+  .pp-drawback-track { flex: 1; height: 16px; background: rgba(17,24,39,0.6); border-radius: 4px; overflow: hidden; }
+  .pp-drawback-fill { height: 100%; border-radius: 4px; transition: width 1.2s ease; display: flex; align-items: center; padding-left: 6px; font-size: 8px; font-family: 'Share Tech Mono', monospace; color: #fff; }
+  .pp-drawback-solution { font-size: 8px; color: #00ff88; min-width: 70px; }
+
+  .pp-area-viz { display: flex; align-items: center; gap: 14px; justify-content: center; margin: 10px 0; }
+  .pp-area-block { display: flex; flex-wrap: wrap; gap: 2px; }
+  .pp-area-sq { width: 14px; height: 14px; border-radius: 2px; background: rgba(250,204,21,0.3); border: 1px solid #facc15; transition: all 0.3s ease; }
+  .pp-area-sq.filled { background: #facc15; }
+  .pp-area-label { font-size: 10px; font-family: 'Share Tech Mono', monospace; color: #facc15; }
+
+  .pp-flashcard-zone { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .pp-flashcard { width: 100%; max-width: 320px; min-height: 80px; background: rgba(250,204,21,0.06); border: 1px solid rgba(250,204,21,0.25); border-radius: 10px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.4s ease; perspective: 600px; }
+  .pp-flashcard:hover { border-color: #facc15; }
+  .pp-flashcard-q { font-size: 13px; color: #e5e7eb; font-family: 'Exo 2', sans-serif; }
+  .pp-flashcard-a { font-size: 14px; color: #facc15; font-family: 'Orbitron', sans-serif; margin-top: 8px; display: none; }
+  .pp-flashcard.revealed .pp-flashcard-a { display: block; }
+  .pp-flashcard-nav { display: flex; gap: 10px; }
+  .pp-flashcard-nav button { padding: 6px 16px; border-radius: 6px; border: 1px solid #facc15; background: rgba(250,204,21,0.1); color: #facc15; font-family: 'Orbitron', sans-serif; font-size: 10px; cursor: pointer; }
+  .pp-flashcard-nav button:hover { background: #facc15; color: #000; }
+  .pp-flashcard-counter { font-size: 10px; color: #9ca3af; font-family: 'Share Tech Mono', monospace; }
+
+  .pp-oct-shape { display: flex; gap: 18px; align-items: center; justify-content: center; margin: 8px 0; }
+  .pp-oct-shape svg { width: 80px; height: 80px; }
+  .pp-oct-label { font-size: 9px; font-family: 'Orbitron', sans-serif; text-align: center; margin-top: 4px; }
+
+  .pp-csp-compare { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9px; font-family: 'Share Tech Mono', monospace; }
+  .pp-csp-compare th { background: rgba(250,204,21,0.15); color: #facc15; padding: 6px; text-align: left; font-family: 'Orbitron', sans-serif; }
+  .pp-csp-compare td { padding: 5px 6px; border-bottom: 1px solid rgba(250,204,21,0.1); color: #d1d5db; }
+  .pp-csp-compare tr:hover td { background: rgba(250,204,21,0.05); }
+
+  @media (max-width: 768px) {
+    .pp-balance-scale { flex-direction: column; align-items: center; min-height: auto; }
+    .pp-instrument-row { flex-direction: column; }
+    .pp-ct-branch { flex-direction: column; align-items: center; }
+    .pp-storage-anim { flex-direction: column; }
+    .pp-oct-shape { flex-direction: column; }
+  }
+  @media (max-width: 480px) {
+    .pp-balance-item { font-size: 8px; }
+    .pp-em-seg { font-size: 6px; }
+    .pp-temp-name { width: 65px; font-size: 8px; }
+    .pp-csp-flow svg { height: 180px; }
+    .pp-heliostat-field svg { height: 160px; }
+    .pp-flashcard { max-width: 260px; }
+  }
+
+  /* ══════════ GLASSMORPHISM SIDEBAR ══════════ */
+  .pp-sidebar-toggle {
+    position: fixed; top: 80px; left: 16px; z-index: 200;
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(17,24,39,0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.12); color: #f97316;
+    font-size: 20px; cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+  .pp-sidebar-toggle:hover { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.4); transform: scale(1.05); }
+
+  .pp-sidebar__overlay {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.4); backdrop-filter: blur(3px);
+    opacity: 0; visibility: hidden; transition: all 0.35s ease;
+  }
+  .pp-sidebar__overlay.open { opacity: 1; visibility: visible; }
+
+  .pp-sidebar {
+    position: fixed; top: 0; left: 0; width: 280px; height: 100vh;
+    z-index: 1050;
+    background: rgba(15,17,23,0.75);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border-right: 1px solid rgba(250,204,21,0.1);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    overflow-y: auto; overflow-x: hidden;
+    scrollbar-width: thin; scrollbar-color: rgba(250,204,21,0.2) transparent;
+  }
+  .pp-sidebar.open { transform: translateX(0); }
+  .pp-sidebar::-webkit-scrollbar { width: 5px; }
+  .pp-sidebar::-webkit-scrollbar-track { background: transparent; }
+  .pp-sidebar::-webkit-scrollbar-thumb { background: rgba(250,204,21,0.2); border-radius: 4px; }
+
+  .pp-sidebar__header {
+    padding: 24px 20px 18px;
+    border-bottom: 1px solid rgba(250,204,21,0.1);
+    background: linear-gradient(180deg, rgba(250,204,21,0.08), transparent);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .pp-sidebar__profile { display: flex; align-items: center; gap: 12px; }
+  .pp-sidebar__avatar {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: linear-gradient(135deg, #f97316, #facc15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .pp-sidebar__info { display: flex; flex-direction: column; }
+  .pp-sidebar__label {
+    font-family: 'Orbitron', sans-serif; font-size: 10px;
+    color: #6b7280; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .pp-sidebar__name {
+    font-family: 'Orbitron', sans-serif; font-size: 13px;
+    color: #facc15; letter-spacing: 1.5px; font-weight: 600;
+  }
+  .pp-sidebar__close {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    color: #9ca3af; font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s;
+  }
+  .pp-sidebar__close:hover { background: rgba(239,68,68,0.15); color: #ef4444; border-color: rgba(239,68,68,0.3); }
+
+  .pp-sidebar__section-label {
+    padding: 16px 20px 8px;
+    font-family: 'Orbitron', sans-serif; font-size: 9px;
+    color: #4b5563; letter-spacing: 3px; text-transform: uppercase;
+  }
+
+  .pp-sidebar__nav { list-style: none; padding: 4px 10px 20px; margin: 0; }
+  .pp-sidebar__link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 11px 14px; margin: 3px 0; border-radius: 10px;
+    cursor: pointer; transition: all 0.25s ease;
+    border-left: 3px solid transparent; text-decoration: none;
+    color: #d1d5db;
+  }
+  .pp-sidebar__link:hover { background: rgba(255,255,255,0.06); }
+  .pp-sidebar__link.active {
+    background: rgba(255,255,255,0.08);
+    border-left-color: var(--mod-color, #facc15);
+    box-shadow: inset 0 0 20px rgba(250,204,21,0.05);
+  }
+  .pp-sidebar__link.active .pp-sidebar__link-text {
+    color: var(--mod-color, #facc15); font-weight: 600;
+  }
+  .pp-sidebar__icon { font-size: 18px; flex-shrink: 0; width: 24px; text-align: center; }
+  .pp-sidebar__link-text {
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    color: #d1d5db; transition: color 0.25s;
+  }
+  .pp-sidebar__link-count {
+    margin-left: auto;
+    font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    color: #4b5563; background: rgba(255,255,255,0.04);
+    padding: 2px 6px; border-radius: 6px;
+  }
+
+  .pp-sidebar__footer {
+    padding: 16px 20px; border-top: 1px solid rgba(250,204,21,0.08);
+    margin-top: 10px;
+  }
+  .pp-sidebar__footer-text {
+    font-family: 'Share Tech Mono', monospace; font-size: 9px;
+    color: #4b5563; line-height: 1.8;
+  }
+  .pp-sidebar__footer-text span { color: #facc15; }
+
+  /* Module switching: hide cards & dividers */
+  .pp-card.pp-mod-hidden { display: none !important; }
+  .pp-module-divider.pp-mod-hidden { display: none !important; }
+
+  /* Active module header */
+  .pp-module-active-header {
+    text-align: center; padding: 24px 20px; margin-bottom: 10px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(15,17,23,0.9), rgba(31,41,55,0.5));
+    border: 1px solid rgba(250,204,21,0.15);
+    animation: ppModHeaderIn 0.5s ease;
+  }
+  @keyframes ppModHeaderIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .pp-module-active-header h2 {
+    font-family: 'Orbitron', sans-serif; font-size: 16px;
+    color: var(--mod-hdr-color, #facc15); letter-spacing: 2px; margin: 0 0 4px;
+  }
+  .pp-module-active-header p {
+    font-family: 'Inter', sans-serif; font-size: 12px; color: #6b7280; margin: 0;
+  }

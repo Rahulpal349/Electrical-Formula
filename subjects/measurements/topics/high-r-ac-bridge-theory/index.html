@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurements &amp; Instrumentation Formula Book</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+    <!-- Libraries: GSAP, D3, Chart.js, AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="../../css/measurements.css">
+
+    <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+    <link rel="stylesheet" href="../../../../shared/css/topic-page.css">
+    <title>📐 High R & AC Bridge Theory | MEASUREMENTS | EE Hub</title>
+</head>
+<body >
+    <nav class="navbar" role="navigation">
+        <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+            <li><a href="../../../machines/index.html">Machines</a></li>
+            <li><a href="../../../measurements/index.html" class="active">Measurements</a></li>
+            <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+            <li><a href="../../../power-plant/index.html">Power Plant</a></li>
+            <li><a href="../../../control/index.html">Control Systems</a></li>
+            <li><a href="../../../electronics/index.html">Electronics</a></li>
+            <li><a href="../../../signals/index.html">Signals</a></li>
+            <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+            <li><a href="../../../estimation/index.html">Estimation</a></li>
+            <li><a href="../../../utilization/index.html">Utilization</a></li>
+        </ul>
+        <div class="navbar__actions">
+        <div class="search-box">
+            <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+<path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path><path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path><path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z M365.3,278.3c-28.1,8.5-56.8,2.8-84.2-5.8c-13.8-4.3-27.6-9.1-40.7-15.2c-6.8-3.2-13.6-6.7-19.9-10.9c-5.5-3.6-10.5-7.9-15.9-11.7c-1.7-1.2-2.1-2.8-1.8-4.3c-17.7-23.8-31.1-52.7-29-82.9c2.2-31.5,21.9-58.1,46.9-76.2c38.9-28.1,94.6-38.9,137.8-13.8c21.4,12.4,39.2,30.6,53.1,51c13.4,19.8,24.7,42.6,28.6,66.5C448,222.4,408.4,265.3,365.3,278.3z"></path><path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2zM471.5 185.5c-1.3-13.1-5.2-25-11.2-35.9 7.3 23.4 8.9 48.1 0 71.7-16.2 43.3-59.2 75.9-104.7 81.9-29.7 3.9-60.6-4.4-89-12.2-26.6-7.3-52.8-18-75.2-34.4-3.3.9-7.4-1.3-6.3-5.5.2-.8.5-1.6.8-2.3-7.6-8.8-14.4-18.3-19.9-28.5-4.7-8.8-8.7-18-11.6-27.5 0 5 0 10 .3 15 1.1 20.3 5.2 41.3 19 56.9.5-1 1.3-1.8 2.7-2.3 10.2-3.5 19.2 1.8 26.9 8.1 5.3 4.3 8.2 7.9 11.5 13.8 2.2 3.9 11.9 19.9 9.2 27.2 25.7 11.4 52.5 16.5 80.5 18.4 29.3 2 59.3 1.9 85.5-13.2 23.8-13.7 45.1-34.1 61.4-56.1C467.7 238.3 474.2 212.8 471.5 185.5z"></path><path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z M338.3,272.7c-23.4,0.8-47.2-6.9-69.1-14.6c-10.5-3.7-20.7-7.9-30.7-12.8c-9.3-4.7-17.2-10.7-25.5-16.7c-0.1-0.8-0.4-1.6-1-2.4c-15.3-20.3-27.2-43.7-28.4-69.5c-1.2-26.7,12.3-49.8,31.2-67.6c35.4-33.2,92.6-47.4,136.8-23.9c22,11.7,39.7,31,53.4,51.5c13.1,19.6,24.7,43.7,26.1,67.5C434.1,232.5,382.8,271.2,338.3,272.7z"></path><path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z M175.8,101.4c27-39.9,75.8-68.4,123.6-72.9c50.1-4.7,93.1,28.5,121.4,66.9c14.4,19.6,25.6,41.6,32.2,65c6.4,23.1,4.2,46.3-6.5,67.7c-18.2,36.7-57.9,62.5-98.5,65.8c-13.8,1.1-28-1.1-41.6-3.7c-13.3-2.6-26.5-5.9-39.6-9.5c-24.9-6.8-49.8-17.3-70.6-33c0.2-1.1-0.1-2.3-1.1-3.5c-17.1-19.6-30.2-43-34.8-68.9C155.8,149.6,161.1,123.1,175.8,101.4z M137.8,426.1c-7.3,4.7-15.3,8.4-23.9,10.4c-10.6,2.4-22.1,1.5-31.3-4.7c-8.4-5.7-12.9-15-14.6-24.8c-1.9-11.1-0.4-21.9,3.4-32c0.7-0.1,1.4-0.3,2-0.8c8-4.9,20.3-2.7,28.9-1c4.7,0.9,9.3,2.3,13.7,4.1c3.1,1.3,3.5,2.1,5.5,5.2c4.5,7,7.9,14.9,11.1,22.6c1.6,3.8,3,7.6,4.2,11.5c0.4,1.3,0.8,2.7,1,4.1c0,0.1,0,0.3,0.1,0.4C137,422.6,137,424.6,137.8,426.1z M213.9,308.2c-1.6,0.1-3.1,1-3.7,3.1c-9.1,28.8-21.3,57.1-39,81.7c-6.7,9.3-14.6,18.4-23.6,25.9c-1.7-13.6-14.8-36.8-17.3-41c-1.9-3.2-4.1-6.4-7.5-8.2c-5.2-2.9-11.1-4.5-16.9-5.8c-8.8-2.1-19.3-3.4-28.6-1.4c5.5-9.6,12.7-18.5,20.2-26.2c24.4-24.9,54-45,83.4-63.5c0.8-0.5,1.4-1.1,1.7-1.8c5.8-0.4,11.4,4.7,15.7,8.1c3.2,2.6,4.9,4.7,7,8.3c2.3,4,4.4,8.2,6.3,12.4c0.9,1.9,1.7,3.9,2.4,5.9c0.2,0.5,0.3,0.8,0.4,1.2C214.1,307.4,214,307.8,213.9,308.2z M451.4,260.4c-16.3,22.1-37.6,42.4-61.4,56.1c-26.2,15.1-56.1,15.2-85.5,13.2c-28-1.9-54.7-7.1-80.5-18.4c2.7-7.2-7-23.2-9.2-27.2c-3.3-5.9-6.2-9.5-11.5-13.8c-7.8-6.3-16.8-11.6-26.9-8.1c-1.4,0.5-2.2,1.3-2.7,2.3c-13.9-15.6-18-36.6-19-56.9c-0.3-5-0.3-10-0.3-15c2.9,9.5,6.9,18.7,11.6,27.5c5.5,10.2,12.3,19.7,19.9,28.5c-0.3,0.7-0.6,1.5-0.8,2.3c-1.1,4.2,3,6.4,6.3,5.5c22.4,16.5,48.6,27.1,75.2,34.4c28.4,7.8,59.4,16.1,89,12.2c45.6-6,88.6-38.6,104.7-81.9c8.8-23.7,7.3-48.3,0-71.7c6,10.9,9.9,22.9,11.2,35.9C474.2,212.8,467.7,238.3,451.4,260.4z"></path>
+</svg></span>
+            <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+        </div>
+    </div>
+    </nav>
+    
+    <!-- Topic Nav Script (Shared) -->
+    <script src="../../../../shared/js/topic-nav.js"></script>
+
+    <div class="breadcrumb" style="margin-top: 80px;">
+        <span class="home-icon">🏠</span> 
+        <span class="delimiter">/</span> 
+        <a href="../../index.html" style="text-transform: capitalize;">measurements</a> 
+        <span class="delimiter">/</span> 
+        <span class="current-topic">📐 High R & AC Bridge Theory</span>
+    </div>
+
+    <main class="topic-main-container">
+        <section id="mod5" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 5 <span class="module-subtitle">— High Resistance Measurement &amp; AC Bridge Theory</span></h2>
+                    <div class="module-line" style="background: var(--mod5-color); box-shadow: 0 0 10px var(--mod5-color);"></div>
+                </div>
+
+                <div class="card-grid">
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 5.1: HIGH RESISTANCE OVERVIEW          -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m5-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #fb7185;"></div>
+                        <div class="card-header">
+                            <h3>⚡ 5.1 Measurement of High Resistance: Overview</h3>
+                            <span class="m5-badge">R &gt; 100 kΩ · Insulation · Leakage</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#fb7185; margin-bottom:10px; text-align:center;">Methods for High R (&gt;100 kΩ)</h4>
+                                <div class="formula text-sm">$$ \text{1. Loss of charge method} $$</div>
+                                <div class="formula text-sm">$$ \text{2. Megger (Insulation tester)} $$</div>
+                                <div class="formula text-sm">$$ \text{3. Direct deflection method} $$</div>
+                                <div class="formula text-sm">$$ \text{4. Mega ohm bridge} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Applications</h4>
+                                <div class="formula text-sm" style="color:#94a3b8;">$$ \text{Insulation resistance of cables} $$</div>
+                                <div class="formula text-sm" style="color:#94a3b8;">$$ \text{Bushing insulation} $$</div>
+                                <div class="formula text-sm" style="color:#94a3b8;">$$ \text{Leakage resistance of capacitors} $$</div>
+                                <div class="formula text-sm" style="color:#94a3b8;">$$ \text{Surface resistance of insulators} $$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="min-height:260px; flex-direction:column; gap:15px;">
+                            <div id="m5-overview-chart" style="width:100%; height:220px;"></div>
+                            <div id="m5-method-cards" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;"></div>
+                        </div>
+                        <div class="m5-card-footer">
+                            <button class="m5-footer-btn" onclick="navigator.clipboard.writeText('R > 100\\,k\\Omega')">📋 Copy LaTeX</button>
+                            <button class="m5-footer-btn m5-bookmark-btn" data-card="m5-overview">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 5.2: LOSS OF CHARGE METHOD             -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m5-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #fb7185;"></div>
+                        <div class="card-header">
+                            <h3>📉 5.2 Loss of Charge Method</h3>
+                            <span class="m5-badge">Exponential Decay · τ = RC · Capacitor Discharge</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#fb7185; margin-bottom:10px; text-align:center;">Discharge Equation</h4>
+                                <div class="formula text-sm">$$ \boxed{V_c(t) = Ve^{-t/\tau}} \quad \tau = RC $$</div>
+                                <div class="formula text-sm">$$ \boxed{R = \frac{t}{C\ln\!\left(\dfrac{V}{V_c}\right)}} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Using log₁₀</h4>
+                                <div class="formula text-sm">$$ \boxed{R = \frac{0.4343\,t}{C\,\log_{10}\!\left(\dfrac{V}{V_c}\right)}} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:10px; text-align:center;">Leakage Correction</h4>
+                                <div class="formula text-sm">$$ \frac{1}{R_{meas}} = \frac{1}{R_x} + \frac{1}{R_C} $$</div>
+                                <div class="formula text-sm">$$ R_x = \frac{R_{meas} \cdot R_C}{R_C - R_{meas}} $$</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#ef4444; text-align:center; margin-bottom:8px;">Error Sources</h4>
+                            <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">
+                                <div class="m5-app-tag" style="border-color:#ef4444; color:#ef4444;">Leakage of capacitor itself</div>
+                                <div class="m5-app-tag" style="border-color:#ef4444; color:#ef4444;">Meter loading during measurement</div>
+                                <div class="m5-app-tag" style="border-color:#ef4444; color:#ef4444;">Temperature effects on C</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="min-height:260px; flex-direction:column; gap:15px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Discharge Circuit SVG -->
+                                <svg id="m5-loc-svg" viewBox="0 0 240 180" width="230" height="175">
+                                    <!-- Battery / Supply -->
+                                    <line x1="20" y1="30" x2="20" y2="150" stroke="#555" stroke-width="1.5"></line>
+                                    <line x1="20" y1="30" x2="60" y2="30" stroke="#555" stroke-width="1.5"></line>
+                                    <text x="40" y="22" fill="#facc15" font-size="9" text-anchor="middle">V</text>
+                                    <!-- Switch -->
+                                    <line x1="60" y1="30" x2="80" y2="30" stroke="#555" stroke-width="1.5"></line>
+                                    <line id="m5-loc-sw" x1="80" y1="30" x2="100" y2="30" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round"></line>
+                                    <circle cx="80" cy="30" r="3" fill="#fff"></circle>
+                                    <circle cx="100" cy="30" r="3" fill="#fff"></circle>
+                                    <text x="90" y="22" fill="#94a3b8" font-size="7" text-anchor="middle">SW</text>
+                                    <!-- Capacitor C -->
+                                    <line x1="100" y1="30" x2="100" y2="65" stroke="#555" stroke-width="1.5"></line>
+                                    <line x1="85" y1="65" x2="115" y2="65" stroke="#facc15" stroke-width="3"></line>
+                                    <line x1="85" y1="75" x2="115" y2="75" stroke="#facc15" stroke-width="3"></line>
+                                    <line x1="100" y1="75" x2="100" y2="95" stroke="#555" stroke-width="1.5"></line>
+                                    <text x="120" y="73" fill="#facc15" font-size="9">C</text>
+                                    <!-- Resistor R (unknown) -->
+                                    <rect x="88" y="95" width="24" height="35" rx="3" fill="rgba(251,113,133,0.1)" stroke="#fb7185" stroke-width="1.5"></rect>
+                                    <text x="100" y="116" fill="#fb7185" font-size="9" text-anchor="middle">R</text>
+                                    <line x1="100" y1="130" x2="100" y2="150" stroke="#555" stroke-width="1.5"></line>
+                                    <line x1="20" y1="150" x2="100" y2="150" stroke="#555" stroke-width="1.5"></line>
+                                    <!-- Voltmeter across C -->
+                                    <line x1="115" y1="70" x2="155" y2="70" stroke="#555" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <circle cx="170" cy="70" r="14" fill="rgba(0,245,255,0.08)" stroke="#00f5ff" stroke-width="1.5"></circle>
+                                    <text x="170" y="74" fill="#00f5ff" font-size="10" text-anchor="middle">V</text>
+                                    <text x="170" y="55" fill="#94a3b8" font-size="7" text-anchor="middle" id="m5-loc-vread">Vc</text>
+                                    <!-- Status -->
+                                    <text x="120" y="170" fill="#00ff88" font-size="8" text-anchor="middle" id="m5-loc-status">Charging...</text>
+                                </svg>
+                                <!-- Decay Curve -->
+                                <div id="m5-decay-chart" style="width:300px; height:175px;"></div>
+                            </div>
+                            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                                <div class="interactive-slider-group" style="max-width:180px;">
+                                    <label>R (MΩ):</label>
+                                    <input type="range" id="m5-loc-r" min="1" max="1000" value="100" class="m5-slider">
+                                    <span id="m5-loc-r-val" style="color:#fb7185; min-width:55px;">100 MΩ</span>
+                                </div>
+                                <div class="interactive-slider-group" style="max-width:180px;">
+                                    <label>C (μF):</label>
+                                    <input type="range" id="m5-loc-c" min="1" max="100" value="10" class="m5-slider">
+                                    <span id="m5-loc-c-val" style="color:#facc15; min-width:55px;">10 μF</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m5-calc-zone" id="m5-loc-calc">
+                            <h4 style="color:#fb7185; margin-bottom:10px;">📉 Loss of Charge Calculator</h4>
+                            <div class="m5-calc-row">
+                                <label>C (μF):</label><input type="number" id="m5-locc-c" value="10" min="0.001" step="0.1">
+                                <label>V (V):</label><input type="number" id="m5-locc-v" value="100" min="0.1" step="1">
+                                <label>Vc (V):</label><input type="number" id="m5-locc-vc" value="36.8" min="0.01" step="0.1">
+                                <label>t (s):</label><input type="number" id="m5-locc-t" value="1000" min="0.1" step="1">
+                            </div>
+                            <div class="m5-calc-result" id="m5-locc-result">R = —</div>
+                        </div>
+                        <div class="m5-card-footer">
+                            <button class="m5-footer-btn" onclick="navigator.clipboard.writeText('R = \\frac{0.4343\\,t}{C\\,\\log_{10}(V/V_c)}')">📋 Copy LaTeX</button>
+                            <button class="m5-footer-btn" onclick="document.getElementById('m5-loc-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m5-footer-btn m5-bookmark-btn" data-card="m5-loc">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 5.3: MEGGER                            -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m5-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #fb7185;"></div>
+                        <div class="card-header">
+                            <h3>🔧 5.3 Megger (Insulation Resistance Tester)</h3>
+                            <span class="m5-badge">Electrodynamometer · θ ∝ 1/Rx · Guard Terminal</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#fb7185; margin-bottom:10px; text-align:center;">Deflection Principle</h4>
+                                <div class="formula text-sm">$$ \theta \propto \frac{1}{R_x} $$</div>
+                                <div class="formula text-sm">$$ \theta = f\!\left(\frac{V}{R_x}\right) $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">No spring — no restoring torque</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">At Extremes</h4>
+                                <div class="formula text-sm">$$ R_x \to \infty: \; I_{CC} \to 0,\; \theta \to 0\;\;(\infty\text{ mark}) $$</div>
+                                <div class="formula text-sm">$$ R_x = 0: \; I_{CC} \to \text{max},\; \theta \to \theta_{max}\;\;(0\text{ mark}) $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:10px; text-align:center;">Test Voltages</h4>
+                                <div class="formula text-xs" style="color:#94a3b8;">500V — General wiring</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">1000V — Motors, transformers</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">2500V, 5000V — Cables, switchgear</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#00ff88; text-align:center; margin-bottom:8px;">Insulation Standards</h4>
+                            <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">
+                                <div class="m5-app-tag" style="border-color:#00ff88; color:#00ff88;">R ≥ 1 MΩ/kV (general rule)</div>
+                                <div class="m5-app-tag" style="border-color:#00ff88; color:#00ff88;">&gt;100 MΩ = Excellent</div>
+                                <div class="m5-app-tag" style="border-color:#f97316; color:#f97316;">1–10 MΩ = Warning</div>
+                                <div class="m5-app-tag" style="border-color:#ef4444; color:#ef4444;">&lt;1 MΩ = FAIL</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="min-height:260px; flex-direction:column; gap:15px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Megger SVG -->
+                                <svg id="m5-megger-svg" viewBox="0 0 260 200" width="250" height="195">
+                                    <!-- Generator body -->
+                                    <rect x="80" y="20" width="100" height="80" rx="8" fill="rgba(251,113,133,0.05)" stroke="#fb7185" stroke-width="1.5"></rect>
+                                    <text x="130" y="38" fill="#fb7185" font-size="9" text-anchor="middle" font-weight="bold">MEGGER</text>
+                                    <!-- Hand crank -->
+                                    <line x1="180" y1="55" x2="210" y2="55" stroke="#94a3b8" stroke-width="2"></line>
+                                    <circle cx="215" cy="55" r="6" fill="none" stroke="#94a3b8" stroke-width="1.5"></circle>
+                                    <text x="225" y="58" fill="#94a3b8" font-size="7">↻</text>
+                                    <!-- Pointer / Scale -->
+                                    <path d="M 95 70 A 35 35 0 0 1 165 70" fill="none" stroke="#334155" stroke-width="1.5"></path>
+                                    <text x="90" y="66" fill="#ef4444" font-size="7">0</text>
+                                    <text x="163" y="66" fill="#00ff88" font-size="7">∞</text>
+                                    <text x="128" y="55" fill="#94a3b8" font-size="6" text-anchor="middle">MΩ</text>
+                                    <!-- Needle -->
+                                    <line id="m5-megger-needle" x1="130" y1="72" x2="155" y2="55" stroke="#fff" stroke-width="2" stroke-linecap="round"></line>
+                                    <circle cx="130" cy="72" r="3" fill="#fff"></circle>
+                                    <!-- Coils labels -->
+                                    <text x="108" y="90" fill="#00f5ff" font-size="7" text-anchor="middle">CC</text>
+                                    <text x="152" y="90" fill="#facc15" font-size="7" text-anchor="middle">PC</text>
+                                    <!-- Terminals -->
+                                    <line x1="95" y1="100" x2="95" y2="130" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="130" y1="100" x2="130" y2="130" stroke="#60a5fa" stroke-width="1.5"></line>
+                                    <line x1="165" y1="100" x2="165" y2="130" stroke="#fff" stroke-width="1.5"></line>
+                                    <text x="95" y="142" fill="#fff" font-size="8" text-anchor="middle">L</text>
+                                    <text x="130" y="142" fill="#60a5fa" font-size="8" text-anchor="middle">G</text>
+                                    <text x="165" y="142" fill="#fff" font-size="8" text-anchor="middle">E</text>
+                                    <!-- Rx -->
+                                    <rect x="70" y="150" width="120" height="25" rx="5" fill="rgba(251,113,133,0.05)" stroke="#fb7185" stroke-width="1" stroke-dasharray="4 2"></rect>
+                                    <text x="130" y="166" fill="#fb7185" font-size="9" text-anchor="middle">Rx (Unknown insulation)</text>
+                                    <!-- Guard path -->
+                                    <line x1="130" y1="130" x2="130" y2="148" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <text x="130" y="192" fill="#60a5fa" font-size="7" text-anchor="middle">Guard eliminates surface leakage</text>
+                                </svg>
+                                <!-- Insulation gauge -->
+                                <div id="m5-insulation-gauge" style="width:260px; height:195px;"></div>
+                            </div>
+                            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                                <div class="interactive-slider-group" style="max-width:220px;">
+                                    <label>Rx (MΩ):</label>
+                                    <input type="range" id="m5-megger-rx" min="0.1" max="500" value="50" step="0.1" class="m5-slider">
+                                    <span id="m5-megger-rx-val" style="color:#fb7185; min-width:65px;">50 MΩ</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m5-calc-zone" id="m5-megger-calc">
+                            <h4 style="color:#fb7185; margin-bottom:10px;">🔧 Megger Insulation Grader</h4>
+                            <div class="m5-calc-row">
+                                <label>Rx (MΩ):</label><input type="number" id="m5-megc-rx" value="50" min="0" step="0.1">
+                            </div>
+                            <div class="m5-calc-result" id="m5-megc-result">Grade: —</div>
+                        </div>
+                        <div class="m5-card-footer">
+                            <button class="m5-footer-btn" onclick="navigator.clipboard.writeText('\\theta \\propto \\frac{1}{R_x}')">📋 Copy LaTeX</button>
+                            <button class="m5-footer-btn" onclick="document.getElementById('m5-megger-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m5-footer-btn m5-bookmark-btn" data-card="m5-megger">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 5.4: DIRECT DEFLECTION METHOD          -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m5-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #fb7185;"></div>
+                        <div class="card-header">
+                            <h3>🔌 5.4 Direct Deflection &amp; Carry Foster Bridge</h3>
+                            <span class="m5-badge">Cable Insulation · Guard Ring · Slide Wire</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#fb7185; margin-bottom:10px; text-align:center;">Direct Deflection</h4>
+                                <div class="formula text-sm">$$ R_x = \frac{V}{I_{galv}} $$</div>
+                                <div class="formula text-sm">$$ R_{insulation} = \frac{V}{I_{volume}} $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">Guard ring removes $I_{surface}$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Current Components</h4>
+                                <div class="formula text-sm">$$ I_{total} = I_{volume} + I_{surface} $$</div>
+                                <div class="formula text-sm" style="color:#00ff88;">$$ I_{measured} = I_{volume} \text{ only} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:10px; text-align:center;">Carry Foster Bridge</h4>
+                                <div class="formula text-sm">$$ \boxed{R = S + s(\ell_2 - \ell_1)} $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">$s$ = resistance per unit length</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="min-height:260px; flex-direction:column; gap:15px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Cable cross-section SVG -->
+                                <svg id="m5-cable-svg" viewBox="0 0 220 200" width="210" height="195">
+                                    <text x="110" y="14" fill="#94a3b8" font-size="9" text-anchor="middle">Cable Cross-Section (3-Terminal)</text>
+                                    <!-- Sheath (outer) -->
+                                    <circle cx="110" cy="110" r="70" fill="rgba(148,163,184,0.05)" stroke="#475569" stroke-width="3"></circle>
+                                    <text x="110" y="188" fill="#475569" font-size="8" text-anchor="middle">Metallic Sheath</text>
+                                    <!-- Insulation -->
+                                    <circle cx="110" cy="110" r="50" fill="rgba(251,113,133,0.08)" stroke="#fb7185" stroke-width="2" stroke-dasharray="4 2"></circle>
+                                    <text x="155" y="78" fill="#fb7185" font-size="7">Insulation</text>
+                                    <!-- Guard ring -->
+                                    <circle cx="110" cy="110" r="35" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3 2"></circle>
+                                    <text x="150" y="98" fill="#60a5fa" font-size="7">Guard</text>
+                                    <!-- Core (conductor) -->
+                                    <circle cx="110" cy="110" r="15" fill="rgba(250,204,21,0.15)" stroke="#facc15" stroke-width="2"></circle>
+                                    <text x="110" y="114" fill="#facc15" font-size="8" text-anchor="middle">Core</text>
+                                    <!-- Current paths -->
+                                    <line id="m5-ivol" x1="125" y1="110" x2="158" y2="110" stroke="#facc15" stroke-width="2" marker-end="url(#m5-arrowG)"></line>
+                                    <text x="140" y="105" fill="#facc15" font-size="7">I_vol</text>
+                                    <path id="m5-isur" d="M 120 97 Q 140 80 155 85" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 2"></path>
+                                    <text x="148" y="80" fill="#ef4444" font-size="7">I_sur</text>
+                                    <!-- HV label -->
+                                    <text x="110" y="30" fill="#fb7185" font-size="8" text-anchor="middle">High V applied</text>
+                                    <defs>
+                                        <marker id="m5-arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#facc15"></path>
+                                        </marker>
+                                    </defs>
+                                </svg>
+                                <!-- Carry Foster Bridge -->
+                                <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+                                    <svg id="m5-cf-svg" viewBox="0 0 280 140" width="270" height="135">
+                                        <text x="140" y="12" fill="#00f5ff" font-size="9" text-anchor="middle" font-weight="bold">Carry Foster Slide Bridge</text>
+                                        <!-- Bridge diamond -->
+                                        <line x1="140" y1="25" x2="260" y2="70" stroke="#555" stroke-width="1.5"></line>
+                                        <line x1="260" y1="70" x2="140" y2="115" stroke="#555" stroke-width="1.5"></line>
+                                        <line x1="140" y1="115" x2="20" y2="70" stroke="#555" stroke-width="1.5"></line>
+                                        <line x1="20" y1="70" x2="140" y2="25" stroke="#555" stroke-width="1.5"></line>
+                                        <!-- Arms P, Q -->
+                                        <text x="200" y="42" fill="#00ff88" font-size="9">P</text>
+                                        <text x="200" y="105" fill="#00ff88" font-size="9">Q</text>
+                                        <!-- Arms R, S -->
+                                        <text x="70" y="42" fill="#facc15" font-size="9">R</text>
+                                        <text x="70" y="105" fill="#f97316" font-size="9">S</text>
+                                        <!-- Slide wire -->
+                                        <rect x="40" y="125" width="200" height="6" rx="3" fill="rgba(255,255,255,0.08)" stroke="#94a3b8" stroke-width="0.5"></rect>
+                                        <circle id="m5-cf-l1" cx="100" cy="128" r="5" fill="#00f5ff" stroke="#fff" stroke-width="1"></circle>
+                                        <text id="m5-cf-l1-txt" x="100" y="120" fill="#00f5ff" font-size="7" text-anchor="middle">ℓ₁</text>
+                                        <circle id="m5-cf-l2" cx="160" cy="128" r="5" fill="#a78bfa" stroke="#fff" stroke-width="1"></circle>
+                                        <text id="m5-cf-l2-txt" x="160" y="120" fill="#a78bfa" font-size="7" text-anchor="middle">ℓ₂</text>
+                                        <!-- Galvanometer -->
+                                        <line x1="20" y1="70" x2="260" y2="70" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3 2"></line>
+                                        <circle cx="140" cy="70" r="10" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1.5"></circle>
+                                        <text x="140" y="74" fill="#a78bfa" font-size="9" text-anchor="middle">G</text>
+                                        <!-- Result -->
+                                        <text x="140" y="140" fill="#00f5ff" font-size="8" text-anchor="middle" id="m5-cf-result">R = S + s(ℓ₂ − ℓ₁)</text>
+                                    </svg>
+                                    <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+                                        <div class="interactive-slider-group" style="max-width:130px;">
+                                            <label>ℓ₁ (cm):</label>
+                                            <input type="range" id="m5-cf-l1-sl" min="5" max="95" value="30" class="m5-slider">
+                                            <span id="m5-cf-l1-val" style="color:#00f5ff; min-width:40px;">30</span>
+                                        </div>
+                                        <div class="interactive-slider-group" style="max-width:130px;">
+                                            <label>ℓ₂ (cm):</label>
+                                            <input type="range" id="m5-cf-l2-sl" min="5" max="95" value="60" class="m5-slider">
+                                            <span id="m5-cf-l2-val" style="color:#a78bfa; min-width:40px;">60</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m5-calc-zone" id="m5-dd-calc">
+                            <h4 style="color:#fb7185; margin-bottom:10px;">🔌 Direct Deflection &amp; Carry Foster</h4>
+                            <div class="m5-calc-row">
+                                <label>V (V):</label><input type="number" id="m5-ddc-v" value="1000" min="0" step="1">
+                                <label>Ig (nA):</label><input type="number" id="m5-ddc-ig" value="50" min="0.01" step="0.1">
+                            </div>
+                            <div class="m5-calc-result" id="m5-ddc-result">Rx = V/Ig = —</div>
+                            <hr style="border-color:rgba(255,255,255,0.05); margin:8px 0;">
+                            <div class="m5-calc-row">
+                                <label>S (Ω):</label><input type="number" id="m5-cfc-s" value="100" min="0" step="0.1">
+                                <label>ℓ₁ (cm):</label><input type="number" id="m5-cfc-l1" value="30" min="0" step="0.1">
+                                <label>ℓ₂ (cm):</label><input type="number" id="m5-cfc-l2" value="60" min="0" step="0.1">
+                                <label>s (Ω/cm):</label><input type="number" id="m5-cfc-s2" value="0.01" min="0" step="0.001">
+                            </div>
+                            <div class="m5-calc-result" id="m5-cfc-result">R = S + s(ℓ₂−ℓ₁) = —</div>
+                        </div>
+                        <div class="m5-card-footer">
+                            <button class="m5-footer-btn" onclick="navigator.clipboard.writeText('R = S + s(\\ell_2 - \\ell_1)')">📋 Copy LaTeX</button>
+                            <button class="m5-footer-btn" onclick="document.getElementById('m5-dd-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m5-footer-btn m5-bookmark-btn" data-card="m5-dd">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 5.5: AC BRIDGES GENERAL THEORY         -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m5-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #fb7185;"></div>
+                        <div class="card-header">
+                            <h3>🌉 5.5 AC Bridges: General Theory</h3>
+                            <span class="m5-badge">Z₁Z₃ = Z₂Z₄ · Magnitude · Angle · Detectors</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#fb7185; margin-bottom:10px; text-align:center;">Balance Condition</h4>
+                                <div class="formula text-sm">$$ \boxed{\bar{Z}_1 \bar{Z}_3 = \bar{Z}_2 \bar{Z}_4} $$</div>
+                                <div class="formula text-sm">$$ \text{Magnitude: } |Z_1||Z_3| = |Z_2||Z_4| $$</div>
+                                <div class="formula text-sm">$$ \text{Angle: } \theta_1 + \theta_3 = \theta_2 + \theta_4 $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Phase Angles</h4>
+                                <div class="formula text-xs" style="color:#00ff88;">$R$ only → $\theta = 0°$</div>
+                                <div class="formula text-xs" style="color:#00f5ff;">$L$ only → $\theta = +90°$</div>
+                                <div class="formula text-xs" style="color:#fb7185;">$C$ only → $\theta = -90°$</div>
+                                <div class="formula text-xs" style="color:#facc15;">$R,L$ series → $0° &lt; \theta &lt; 90°$</div>
+                                <div class="formula text-xs" style="color:#f97316;">$R,C$ series → $-90° &lt; \theta &lt; 0°$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:10px; text-align:center;">Detectors</h4>
+                                <div class="formula text-xs" style="color:#94a3b8;">Vibrant Galvanometer: 5 Hz – 1 kHz</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">Head Phone: 250 Hz – 4 kHz</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">Tuned Amplifier: 10 Hz – 100 kHz</div>
+                                <div class="formula text-xs" style="color:#facc15;">Most sensitive at null: HEAD PHONE</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="min-height:280px; flex-direction:column; gap:15px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- AC Bridge SVG -->
+                                <svg id="m5-acb-svg" viewBox="0 0 280 250" width="270" height="245">
+                                    <text x="140" y="14" fill="#fb7185" font-size="10" text-anchor="middle" font-weight="bold">General AC Bridge</text>
+                                    <!-- Diamond nodes -->
+                                    <circle cx="140" cy="30" r="4" fill="#fff"></circle>
+                                    <circle cx="250" cy="125" r="4" fill="#fff"></circle>
+                                    <circle cx="140" cy="220" r="4" fill="#fff"></circle>
+                                    <circle cx="30" cy="125" r="4" fill="#fff"></circle>
+                                    <text x="140" y="24" fill="#94a3b8" font-size="8" text-anchor="middle">A</text>
+                                    <text x="258" y="128" fill="#94a3b8" font-size="8">B</text>
+                                    <text x="140" y="236" fill="#94a3b8" font-size="8" text-anchor="middle">C</text>
+                                    <text x="18" y="128" fill="#94a3b8" font-size="8" text-anchor="end">D</text>
+                                    <!-- Arms -->
+                                    <line x1="140" y1="30" x2="250" y2="125" stroke="#00f5ff" stroke-width="2"></line>
+                                    <line x1="250" y1="125" x2="140" y2="220" stroke="#a78bfa" stroke-width="2"></line>
+                                    <line x1="140" y1="220" x2="30" y2="125" stroke="#a78bfa" stroke-width="2"></line>
+                                    <line x1="30" y1="125" x2="140" y2="30" stroke="#00f5ff" stroke-width="2"></line>
+                                    <!-- Arm labels -->
+                                    <rect x="180" y="60" width="32" height="18" rx="4" fill="rgba(0,245,255,0.1)" stroke="#00f5ff" stroke-width="1"></rect>
+                                    <text x="196" y="73" fill="#00f5ff" font-size="9" text-anchor="middle">Z₁</text>
+                                    <rect x="180" y="160" width="32" height="18" rx="4" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1"></rect>
+                                    <text x="196" y="173" fill="#a78bfa" font-size="9" text-anchor="middle">Z₂</text>
+                                    <rect x="68" y="160" width="32" height="18" rx="4" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1"></rect>
+                                    <text x="84" y="173" fill="#a78bfa" font-size="9" text-anchor="middle">Z₄</text>
+                                    <rect x="68" y="60" width="32" height="18" rx="4" fill="rgba(0,245,255,0.1)" stroke="#00f5ff" stroke-width="1"></rect>
+                                    <text x="84" y="73" fill="#00f5ff" font-size="9" text-anchor="middle">Z₃</text>
+                                    <!-- AC Source (A↔C) -->
+                                    <circle cx="140" cy="228" r="8" fill="none" stroke="#facc15" stroke-width="1.5"></circle>
+                                    <text x="140" y="231" fill="#facc15" font-size="8" text-anchor="middle">~</text>
+                                    <!-- Detector (B↔D) -->
+                                    <line x1="50" y1="125" x2="120" y2="125" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <circle cx="140" cy="125" r="12" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1.5"></circle>
+                                    <text x="140" y="129" fill="#a78bfa" font-size="9" text-anchor="middle">D</text>
+                                    <line x1="160" y1="125" x2="230" y2="125" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <!-- Balance status -->
+                                    <text x="140" y="248" fill="#00ff88" font-size="9" text-anchor="middle" id="m5-acb-status">At balance: V_BD = 0</text>
+                                </svg>
+                                <!-- Phase angle chart -->
+                                <div id="m5-phase-chart" style="width:280px; height:245px;"></div>
+                            </div>
+                            <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+                                <button class="m5-btn" id="m5-arm-r" data-angle="0">R (0°)</button>
+                                <button class="m5-btn" id="m5-arm-l" data-angle="90">L (+90°)</button>
+                                <button class="m5-btn" id="m5-arm-c" data-angle="-90">C (−90°)</button>
+                                <button class="m5-btn" id="m5-arm-rl" data-angle="45">RL (mixed)</button>
+                                <button class="m5-btn" id="m5-arm-rc" data-angle="-45">RC (mixed)</button>
+                            </div>
+                        </div>
+                        <div class="m5-calc-zone" id="m5-acb-calc">
+                            <h4 style="color:#fb7185; margin-bottom:10px;">🌉 AC Bridge Angle Condition Checker</h4>
+                            <div class="m5-calc-row">
+                                <label>θ₁ (°):</label><input type="number" id="m5-acbc-t1" value="45" step="1">
+                                <label>θ₂ (°):</label><input type="number" id="m5-acbc-t2" value="0" step="1">
+                                <label>θ₃ (°):</label><input type="number" id="m5-acbc-t3" value="0" step="1">
+                                <label>θ₄ (°):</label><input type="number" id="m5-acbc-t4" value="-45" step="1">
+                            </div>
+                            <div class="m5-calc-result" id="m5-acbc-result">θ₁+θ₃ vs θ₂+θ₄ → —</div>
+                        </div>
+                        <div class="m5-card-footer">
+                            <button class="m5-footer-btn" onclick="navigator.clipboard.writeText('\\bar{Z}_1\\bar{Z}_3 = \\bar{Z}_2\\bar{Z}_4')">📋 Copy LaTeX</button>
+                            <button class="m5-footer-btn" onclick="document.getElementById('m5-acb-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m5-footer-btn m5-bookmark-btn" data-card="m5-acb">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 5.6: BRIDGE BALANCE WORKED EXAMPLES    -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m5-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #fb7185;"></div>
+                        <div class="card-header">
+                            <h3>📐 5.6 Bridge Balance: Worked Examples</h3>
+                            <span class="m5-badge">Angle Condition · Maxwell · Hay · Schering</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:10px; text-align:center;">Maxwell L-C</h4>
+                                <div class="formula text-xs">$$ \theta_1 = +\phi_x \;(RL) $$</div>
+                                <div class="formula text-xs">$$ \theta_4 = -\phi_4 \;(RC\!\parallel) $$</div>
+                                <div class="formula text-xs" style="color:#00ff88;">$$ \phi_x = \phi_4 \;\checkmark $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:10px; text-align:center;">Hay's Bridge</h4>
+                                <div class="formula text-xs">$$ \theta_1 = +\phi_x \;(RL) $$</div>
+                                <div class="formula text-xs">$$ \theta_4 = -\phi_4 \;(RC\text{ series}) $$</div>
+                                <div class="formula text-xs" style="color:#00ff88;">$$ \phi_x = \phi_4 \;\checkmark $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:10px; text-align:center;">Schering</h4>
+                                <div class="formula text-xs">$$ \theta_1 = -\phi_1 \;(RC\text{ series}) $$</div>
+                                <div class="formula text-xs">$$ \theta_2 = -90° \;(C) $$</div>
+                                <div class="formula text-xs" style="color:#00ff88;">$$ \phi_4 = 90° - \phi_1 \;\checkmark $$</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#facc15; text-align:center; margin-bottom:8px;">Impedance Reference</h4>
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+                                <div class="formula text-xs" style="color:#00ff88;">$Z=R:\;\theta=0°$</div>
+                                <div class="formula text-xs" style="color:#00f5ff;">$Z=j\omega L:\;\theta=+90°$</div>
+                                <div class="formula text-xs" style="color:#fb7185;">$Z=\frac{1}{j\omega C}:\;\theta=-90°$</div>
+                                <div class="formula text-xs" style="color:#facc15;">$Z=R+j\omega L:\;\theta=\arctan\frac{\omega L}{R}$</div>
+                                <div class="formula text-xs" style="color:#f97316;">$Z=R-\frac{j}{\omega C}:\;\theta=-\arctan\frac{1}{\omega CR}$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="min-height:260px; flex-direction:column; gap:15px;">
+                            <div id="m5-phasor-select" style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Phasor Arm Selector -->
+                                <div style="display:flex; flex-direction:column; gap:8px; align-items:center;">
+                                    <div style="display:grid; grid-template-columns:auto 1fr; gap:6px 10px; font-size:0.78rem; color:#94a3b8;">
+                                        <label>Arm 1:</label><select id="m5-ps-a1" class="m5-select"><option value="rl">R+L</option><option value="r">R</option><option value="l">L</option><option value="c">C</option><option value="rc">R+C</option></select>
+                                        <label>Arm 2:</label><select id="m5-ps-a2" class="m5-select"><option value="r" selected="">R</option><option value="l">L</option><option value="c">C</option><option value="rl">R+L</option><option value="rc">R+C</option></select>
+                                        <label>Arm 3:</label><select id="m5-ps-a3" class="m5-select"><option value="r" selected="">R</option><option value="l">L</option><option value="c">C</option><option value="rl">R+L</option><option value="rc">R+C</option></select>
+                                        <label>Arm 4:</label><select id="m5-ps-a4" class="m5-select"><option value="rc">R‖C</option><option value="r">R</option><option value="l">L</option><option value="c">C</option><option value="rl">R+L</option></select>
+                                    </div>
+                                    <div id="m5-ps-result" style="padding:6px 14px; border-radius:8px; font-size:0.82rem; font-family:'Orbitron',sans-serif; background:rgba(0,255,136,0.06); border:1px solid rgba(0,255,136,0.2); color:#00ff88;"></div>
+                                    <div id="m5-ps-bridge" style="font-size:0.78rem; color:#facc15;"></div>
+                                </div>
+                                <!-- Phasor Diagram -->
+                                <div id="m5-phasor-diagram" style="width:250px; height:220px;"></div>
+                            </div>
+                        </div>
+                        <div class="m5-card-footer">
+                            <button class="m5-footer-btn" onclick="navigator.clipboard.writeText('\\theta_1+\\theta_3 = \\theta_2+\\theta_4')">📋 Copy LaTeX</button>
+                            <button class="m5-footer-btn m5-bookmark-btn" data-card="m5-phasor">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 5.7: SELF INDUCTANCE BRIDGE SELECTOR   -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m5-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #fb7185;"></div>
+                        <div class="card-header">
+                            <h3>📊 5.7 Self Inductance Measurement: Bridge Selector</h3>
+                            <span class="m5-badge">Q Factor · Maxwell · Hay · Anderson · Owen</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#fb7185; margin-bottom:10px; text-align:center;">Q Factor</h4>
+                                <div class="formula text-sm">$$ Q = \frac{\omega L}{R} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Bridge Selection</h4>
+                                <div class="formula text-xs" style="color:#a78bfa;">$Q &lt; 1$: Anderson's Bridge</div>
+                                <div class="formula text-xs" style="color:#00f5ff;">$1 \le Q \le 10$: Maxwell L-C</div>
+                                <div class="formula text-xs" style="color:#f97316;">$Q &gt; 10$: Hay's Bridge</div>
+                                <div class="formula text-xs" style="color:#fb7185;">Any Q: Owen's Bridge</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05); overflow-x:auto;">
+                            <table class="m5-comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th>Bridge</th>
+                                        <th>$L_x$ Formula</th>
+                                        <th>$Q$ Formula</th>
+                                        <th>Q Range</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color:#00f5ff;">Maxwell L-C</td>
+                                        <td>$R_2 R_3 C_4$</td>
+                                        <td>$\omega C_4 R_4$</td>
+                                        <td>1 – 10</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:#f97316;">Hay's</td>
+                                        <td>$\frac{R_2 R_3 C_4}{1+1/Q^2}$</td>
+                                        <td>$\frac{1}{\omega R_4 C_4}$</td>
+                                        <td>&gt; 10</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:#a78bfa;">Anderson's</td>
+                                        <td>$C[r(R_3\!+\!R_0)+R_2 R_3]$</td>
+                                        <td>—</td>
+                                        <td>&lt; 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:#fb7185;">Owen's</td>
+                                        <td>$R_2 R_4 C_3$</td>
+                                        <td>$\omega R_2 C_2$</td>
+                                        <td>All</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="anim-zone" style="min-height:280px; flex-direction:column; gap:15px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Q-factor log scale -->
+                                <div id="m5-q-chart" style="width:100%; max-width:600px; height:200px;"></div>
+                            </div>
+                            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; align-items:center;">
+                                <div class="interactive-slider-group" style="max-width:160px;">
+                                    <label>L (μH):</label>
+                                    <input type="range" id="m5-q-l" min="1" max="10000" value="100" class="m5-slider">
+                                    <span id="m5-q-l-val" style="color:#facc15; min-width:55px;">100 μH</span>
+                                </div>
+                                <div class="interactive-slider-group" style="max-width:160px;">
+                                    <label>R (Ω):</label>
+                                    <input type="range" id="m5-q-r" min="1" max="1000" value="10" class="m5-slider">
+                                    <span id="m5-q-r-val" style="color:#fb7185; min-width:55px;">10 Ω</span>
+                                </div>
+                                <div class="interactive-slider-group" style="max-width:160px;">
+                                    <label>f (kHz):</label>
+                                    <input type="range" id="m5-q-f" min="0.1" max="100" value="10" step="0.1" class="m5-slider">
+                                    <span id="m5-q-f-val" style="color:#00f5ff; min-width:55px;">10 kHz</span>
+                                </div>
+                            </div>
+                            <div id="m5-q-recommendation" style="text-align:center; font-family:'Orbitron',sans-serif; font-size:0.85rem; color:#00ff88; padding:6px 14px; background:rgba(0,255,136,0.06); border-radius:8px; border:1px solid rgba(0,255,136,0.15);"></div>
+                        </div>
+                        <div class="m5-calc-zone" id="m5-q-calc">
+                            <h4 style="color:#fb7185; margin-bottom:10px;">🎯 Coil Q Estimator &amp; Bridge Selector</h4>
+                            <div class="m5-calc-row">
+                                <label>L (μH):</label><input type="number" id="m5-qc-l" value="100" min="0" step="1">
+                                <label>R (Ω):</label><input type="number" id="m5-qc-r" value="10" min="0.01" step="0.1">
+                                <label>f (kHz):</label><input type="number" id="m5-qc-f" value="10" min="0.01" step="0.1">
+                            </div>
+                            <div class="m5-calc-result" id="m5-qc-result">Q = ωL/R = — → Bridge: —</div>
+                        </div>
+                        <div class="m5-card-footer">
+                            <button class="m5-footer-btn" onclick="navigator.clipboard.writeText('Q = \\frac{\\omega L}{R}')">📋 Copy LaTeX</button>
+                            <button class="m5-footer-btn" onclick="document.getElementById('m5-q-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m5-footer-btn m5-bookmark-btn" data-card="m5-q">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+    </main>
+
+    <div class="topic-nav-footer">
+        <a href="../high-r-ac-bridges/index.html" class="btn-nav btn-prev">← Previous: 🌉 High R & AC Bridges</a>
+        <a href="../frequency-instrument-transformers/index.html" class="btn-nav btn-next">Next: 🔄 Frequency & Instrument Transformers →</a>
+    </div>
+
+    
+</body>
+</html>

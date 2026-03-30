@@ -1,0 +1,260 @@
+/* =========================================================
+   MODULE 10 PART 2 (MHD, Fuel Cells, Thermoelectric) CSS
+========================================================= */
+
+/* Base Card Structure (Mimicking pp-card) */
+.card {
+  background: var(--pp-card, #0d1e2e);
+  border: 1px solid var(--pp-border, #1a3a55);
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  margin-bottom: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.card-icon {
+  font-size: 22px;
+}
+.card-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pp-accent, #00d4ff);
+  margin: 0;
+}
+.card-desc {
+  font-family: 'Inter', sans-serif;
+  color: var(--pp-text, #c8e6f5);
+  opacity: 0.85;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+/* Cyan border cards for MHD and Fuel Cells */
+.card-mhd {
+  border-top: 4px solid var(--pp-accent, #00d4ff);
+}
+
+/* Orange border cards for Thermoelectric */
+.card-te {
+  border-top: 4px solid var(--pp-accent2, #ff6b00);
+}
+
+/* Formula Zones */
+.formula-zone {
+  background-color: #0d1117;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  border: 1px solid var(--pp-border);
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: auto;
+}
+
+/* Animation Container base */
+.animation-zone {
+  background-color: #0a0a0f;
+  border: 1px solid var(--pp-border);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.animation-zone svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Tabs & Selectors */
+.pill-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.pill-tab {
+  background: var(--pp-surface);
+  color: var(--pp-text);
+  border: 1px solid var(--pp-border);
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.pill-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.pill-tab.active-cyan {
+  background: rgba(0, 245, 255, 0.15);
+  border-color: var(--pp-accent);
+  color: var(--pp-accent);
+  box-shadow: var(--pp-glow);
+}
+.pill-tab.active-orange {
+  background: rgba(249, 115, 22, 0.15);
+  border-color: var(--pp-accent2);
+  color: var(--pp-accent2);
+  box-shadow: var(--pp-glow2);
+}
+
+/* Badges */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Calculator Grid */
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.calc-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.calc-input-group label {
+  font-size: 12px;
+  color: var(--pp-muted);
+  font-weight: 600;
+}
+.calc-input-group input[type="range"],
+.calc-input-group input[type="number"] {
+  width: 100%;
+}
+.calc-input-group input[type="number"] {
+  background: #050a0f;
+  border: 1px solid var(--pp-border);
+  color: var(--pp-accent);
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'Share Tech Mono', monospace;
+}
+.calc-result {
+  background: rgba(0, 245, 255, 0.05);
+  border: 1px dashed var(--pp-accent);
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--pp-accent);
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.calc-result.orange {
+  background: rgba(249, 115, 22, 0.05);
+  border-color: var(--pp-accent2);
+  color: var(--pp-accent2);
+}
+
+/* D3 Tooltips */
+.d3-tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 12px;
+  background: rgba(10, 21, 32, 0.95);
+  border: 1px solid var(--pp-accent);
+  color: #fff;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  box-shadow: var(--pp-glow);
+  font-family: 'Inter', sans-serif;
+  z-index: 100;
+}
+
+/* Master Flashcard Quiz */
+.flashcard-container {
+  perspective: 1000px;
+  height: 200px;
+  width: 100%;
+  margin: 20px 0;
+}
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.flashcard.is-flipped {
+  transform: rotateY(180deg);
+}
+.flashcard-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid var(--pp-border);
+}
+.flashcard-front {
+  background-color: var(--pp-surface);
+}
+.flashcard-back {
+  background-color: rgba(0, 245, 255, 0.1);
+  border-color: var(--pp-accent);
+  transform: rotateY(180deg);
+}
+.flashcard-q {
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.flashcard-a {
+  font-size: 1.25em;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--pp-accent);
+  font-weight: bold;
+}
+.flashcard-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.flashcard-progress {
+  font-size: 12px;
+  color: var(--pp-muted);
+  display: flex;
+  align-items: center;
+}

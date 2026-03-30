@@ -1,0 +1,2035 @@
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuclear Power — Power Plant Engineering</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;family=Exo+2:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+  
+<link rel="stylesheet" href="../../css/powerplant-inline.css"><link rel="stylesheet" href="../../../../../../shared/css/topic-page.css"></head>
+
+<body data-page-category="powerplant" class="pp-body">
+
+  <!-- Sidebar Toggle -->
+  <button class="pp-sidebar-toggle" id="ppSbToggle" aria-label="Toggle sidebar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <div class="pp-sidebar__overlay" id="ppSbOverlay"></div>
+
+  <!-- Glassmorphism Sidebar -->
+  <aside class="pp-sidebar" id="ppSidebar">
+    <div class="pp-sidebar__header">
+      <div class="pp-sidebar__profile">
+        <div class="pp-sidebar__avatar">⚡</div>
+        <div class="pp-sidebar__info">
+          <span class="pp-sidebar__label">Power Plant</span>
+          <span class="pp-sidebar__name">ENGINEERING</span>
+        </div>
+      </div>
+      <button class="pp-sidebar__close" id="ppSbClose" aria-label="Close sidebar">✕</button>
+    </div>
+    <div class="pp-sidebar__section-label">MODULES</div>
+    <ul class="pp-sidebar__nav">
+      <li><a class="pp-sidebar__link active" data-mod="1" style="--mod-color:#f97316;" href="../power-systems-overview/index.html"><span class="pp-sidebar__icon">⚡</span><span class="pp-sidebar__link-text">Power Systems</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="2" style="--mod-color:#60a5fa;" href="../hydro-power/index.html"><span class="pp-sidebar__icon">💧</span><span class="pp-sidebar__link-text">Hydro Power</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="3" style="--mod-color:#ef4444;" href="../thermal-steam/index.html"><span class="pp-sidebar__icon">🔥</span><span class="pp-sidebar__link-text">Thermal Steam</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="4" style="--mod-color:#f97316;" href="../coal-fuels/index.html"><span class="pp-sidebar__icon">⛏️</span><span class="pp-sidebar__link-text">Coal &amp; Fuels</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="5" style="--mod-color:#a78bfa;" href="../nuclear-power/index.html"><span class="pp-sidebar__icon">☢️</span><span class="pp-sidebar__link-text">Nuclear Power</span><span class="pp-sidebar__link-count">10</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="6" style="--mod-color:#f97316;" href="../diesel-power/index.html"><span class="pp-sidebar__icon">🛢️</span><span class="pp-sidebar__link-text">Diesel Power</span><span class="pp-sidebar__link-count">1</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="7" style="--mod-color:#f97316;" href="../gas-turbine/index.html"><span class="pp-sidebar__icon">🌀</span><span class="pp-sidebar__link-text">Gas Turbine</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="8" style="--mod-color:#facc15;" href="../solar-energy/index.html"><span class="pp-sidebar__icon">☀️</span><span class="pp-sidebar__link-text">Solar Energy</span><span class="pp-sidebar__link-count">9</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="9" style="--mod-color:#facc15;" href="../solar-collectors/index.html"><span class="pp-sidebar__icon">🌡️</span><span class="pp-sidebar__link-text">Solar Collectors</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="10" style="--mod-color:#00f5ff;" href="../geothermal-mhd/index.html"><span class="pp-sidebar__icon">🌋</span><span class="pp-sidebar__link-text">Geothermal &amp; MHD</span><span class="pp-sidebar__link-count">6</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="0" style="--mod-color:#00ff88;" href="../../index.html"><span class="pp-sidebar__icon">📋</span><span class="pp-sidebar__link-text">All Modules</span><span class="pp-sidebar__link-count">56</span></a></li>
+    </ul>
+    <div class="pp-sidebar__footer">
+      <div class="pp-sidebar__footer-text">
+        Chapters: <span>56</span> • Formulas: <span>400+</span><br>
+        Animations: <span>120+</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Unified Navbar -->
+  <nav class="navbar" role="navigation">
+    <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+    <ul class="navbar__links">
+      <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+      <li><a href="../../../machines/index.html">Machines</a></li>
+      <li><a href="../../../measurements/index.html">Measurements</a></li>
+      <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+      <li><a href="../../../power-plant/index.html" class="active">Power Plant</a></li>
+      <li><a href="../../../control/index.html">Control Systems</a></li>
+      <li><a href="../../../electronics/index.html">Electronics</a></li>
+      <li><a href="../../../signals/index.html">Signals</a></li>
+      <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+      <li><a href="../../../estimation/index.html">Estimation</a></li>
+      <li><a href="../../../utilization/index.html">Utilization</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <div class="search-box">
+        <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+          <path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path>
+          <path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path>
+          <path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z"></path>
+          <path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2z"></path>
+          <path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z"></path>
+          <path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z"></path>
+        </svg></span>
+        <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Particles -->
+  <div class="pp-particles" id="pp-particles"></div>
+
+  <!-- Hero Section (measurements-style) -->
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10"></path>
+    </svg>
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style="text-align:center;">
+        Power <span class="pp-neon-text">Plant</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter" data-text="Generation · Thermal · Hydro · Nuclear · Solar · Gas Turbine"></p>
+      <div class="pp-hero-icons">
+        <div class="pp-hero-icon">🏭</div>
+        <div class="pp-hero-icon">💧</div>
+        <div class="pp-hero-icon">☢️</div>
+        <div class="pp-hero-icon">☀️</div>
+      </div>
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#c1" class="pp-hero-cta">⚡ Explore Power Plants</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pp-main"><div class="topic-breadcrumb">
+        <a href="../../../../index.html">EE Hub</a> › 
+        <a href="../../index.html">Power Plant</a> › 
+        <span>Nuclear Power</span>
+    </div><div class="topic-content"><div class="pp-card m3-nuclear" id="c24">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#a78bfa;font-size:14px;">☢️</span>
+        Module 3 · Nuclear Power Plant: Overview
+      </div>
+
+      <div class="pp-definition-box">
+        Nuclear power releases a <strong>huge amount of energy</strong> from a small amount of fissile material via <strong>nuclear fission</strong>. It is the cheapest non-hydroelectric power source in India and is used as a <strong>base load</strong> plant (high load factor &gt; 80%).
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Einstein's Mass-Energy Equivalence</div>
+        <div class="pp-formula-row">$$\boxed{E = mc^2} \quad c = 3 \times 10^8\;\text{m/s}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Nuclear Fission Reaction</div>
+        <div class="pp-formula-row">$${}^{235}_{92}\text{U} + {}^{1}_{0}n \rightarrow \text{Fission products} + 2.5\;{}^{1}_{0}n + Q$$</div>
+        <div class="pp-formula-row">$$Q \approx 200\;\text{MeV per fission}$$</div>
+        <div class="pp-formula-row">$$1\;\text{MeV} = 1.6 \times 10^{-13}\;\text{J}$$</div>
+        <div class="pp-formula-row">$$Q_{total} = 200 \times 1.6 \times 10^{-13} = 3.2 \times 10^{-11}\;\text{J/fission}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Energy Comparison</div>
+        <div class="pp-formula-row">$$1\;\text{kg of U-235} \equiv 2.7 \times 10^6\;\text{kg of coal (same energy)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">India's Nuclear Status</div>
+        <div class="pp-formula-row">$$\text{Capacity: } 6{,}780\;\text{MW} = 1.8\%\;\text{of total installed}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-24" style="min-height:260px;">
+        <div class="pp-anim-label">☢️ Fission &amp; Energy Comparison</div>
+
+        <!-- Fission Chain Reaction SVG -->
+        <div class="pp-reactor-svg-wrap">
+          <svg viewBox="0 0 480 160" aria-label="Nuclear fission chain reaction" id="c24FissionSvg">
+            <!-- U-235 nucleus -->
+            <circle cx="80" cy="80" r="22" fill="rgba(124,58,237,0.3)" stroke="#a78bfa" stroke-width="1.5"></circle>
+            <text x="80" y="84" text-anchor="middle" fill="#a78bfa" font-size="9" font-family="Orbitron">U-235</text>
+            <!-- Incoming neutron -->
+            <circle cx="20" cy="80" r="5" fill="#00ff88" id="c24neutron1"></circle>
+            <text x="20" y="96" text-anchor="middle" fill="#00ff88" font-size="7" font-family="Share Tech Mono">n</text>
+            <line x1="25" y1="80" x2="58" y2="80" stroke="#00ff88" stroke-width="1" stroke-dasharray="3,2"></line>
+            <!-- Arrow -->
+            <text x="115" y="84" fill="#facc15" font-size="16">→</text>
+            <!-- Fission flash -->
+            <circle cx="155" cy="80" r="18" fill="rgba(250,204,21,0.15)" stroke="#facc15" stroke-width="1" stroke-dasharray="2,2"></circle>
+            <text x="155" y="76" text-anchor="middle" fill="#facc15" font-size="8" font-family="Share Tech Mono">FISSION</text>
+            <text x="155" y="88" text-anchor="middle" fill="#facc15" font-size="7" font-family="Share Tech Mono">200 MeV</text>
+            <!-- Fragment 1 -->
+            <circle cx="220" cy="50" r="14" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"></circle>
+            <text x="220" y="54" text-anchor="middle" fill="#ef4444" font-size="7" font-family="Share Tech Mono">Ba-141</text>
+            <!-- Fragment 2 -->
+            <circle cx="220" cy="110" r="12" fill="rgba(96,165,250,0.2)" stroke="#60a5fa" stroke-width="1"></circle>
+            <text x="220" y="114" text-anchor="middle" fill="#60a5fa" font-size="7" font-family="Share Tech Mono">Kr-92</text>
+            <!-- Released neutrons -->
+            <circle cx="260" cy="30" r="4" fill="#00ff88"></circle>
+            <text x="260" y="22" text-anchor="middle" fill="#00ff88" font-size="6">n</text>
+            <circle cx="270" cy="70" r="4" fill="#00ff88"></circle>
+            <text x="270" y="62" text-anchor="middle" fill="#00ff88" font-size="6">n</text>
+            <circle cx="260" cy="130" r="4" fill="#00ff88"></circle>
+            <text x="260" y="145" text-anchor="middle" fill="#00ff88" font-size="6">n</text>
+            <!-- Chain arrows -->
+            <text x="290" y="34" fill="#00ff88" font-size="12">→</text>
+            <text x="290" y="74" fill="#00ff88" font-size="12">→</text>
+            <text x="290" y="134" fill="#00ff88" font-size="12">→</text>
+            <!-- Next U-235 nuclei -->
+            <circle cx="330" cy="30" r="14" fill="rgba(124,58,237,0.2)" stroke="#a78bfa" stroke-width="1"></circle>
+            <text x="330" y="34" text-anchor="middle" fill="#a78bfa" font-size="7">U-235</text>
+            <circle cx="330" cy="70" r="14" fill="rgba(124,58,237,0.2)" stroke="#a78bfa" stroke-width="1"></circle>
+            <text x="330" y="74" text-anchor="middle" fill="#a78bfa" font-size="7">U-235</text>
+            <circle cx="330" cy="130" r="14" fill="rgba(124,58,237,0.2)" stroke="#a78bfa" stroke-width="1"></circle>
+            <text x="330" y="134" text-anchor="middle" fill="#a78bfa" font-size="7">U-235</text>
+            <!-- More fissions -->
+            <text x="360" y="34" fill="#facc15" font-size="10">→ ⚡</text>
+            <text x="360" y="74" fill="#facc15" font-size="10">→ ⚡</text>
+            <text x="360" y="134" fill="#facc15" font-size="10">→ ⚡</text>
+            <!-- Label -->
+            <text x="420" y="75" text-anchor="middle" fill="#ef4444" font-size="8" font-family="Orbitron">CHAIN</text>
+            <text x="420" y="88" text-anchor="middle" fill="#ef4444" font-size="8" font-family="Orbitron">REACTION</text>
+            <!-- Badge -->
+            <rect x="380" y="120" width="95" height="18" rx="9" fill="rgba(0,255,136,0.1)" stroke="#00ff88" stroke-width="0.5"></rect>
+            <text x="427" y="132" text-anchor="middle" fill="#00ff88" font-size="7" font-family="Share Tech Mono">Controlled in reactor</text>
+          </svg>
+        </div>
+
+        <!-- U-235 vs Coal Comparison -->
+        <div style="display:flex;justify-content:center;align-items:center;gap:20px;margin:12px 0;flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a78bfa);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:14px;">☢️</div>
+            <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;margin-top:4px;">1 kg U-235</div>
+          </div>
+          <div style="font-family:'Orbitron',monospace;font-size:12px;color:#facc15;">=</div>
+          <div style="text-align:center;">
+            <div style="font-size:24px;">⛰️</div>
+            <div style="font-family:'Orbitron',monospace;font-size:10px;color:#6b7280;margin-top:4px;">2,700,000 kg Coal</div>
+          </div>
+        </div>
+
+        <!-- E = mc² Calculator -->
+        <div style="padding:12px;background:rgba(0,0,0,0.2);border:1px solid var(--pp-border);border-radius:8px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">E = mc² CALCULATOR</div>
+          <label style="font-size:10px;color:var(--pp-muted);">Mass converted (kg) — e.g., 0.001 for 1g
+            <input type="number" class="pp-input-sm" id="c24mass" value="0.001" step="0.0001" style="width:100%;margin-top:2px;">
+          </label>
+          <button class="pp-calc-btn" onclick="calcEmc2C24()" style="margin-top:8px;width:100%;">Calculate E = mc²</button>
+          <div id="c24Emc2Out" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m3-nuclear" id="c25">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#a78bfa;font-size:14px;">⚙️</span>
+        Module 3 · Nuclear Power Plant: Components
+      </div>
+
+      <div class="pp-definition-box">
+        A nuclear power plant contains the <strong>reactor core</strong> (fuel rods + moderator), <strong>control rods</strong> (reaction control), <strong>coolant</strong> (heat removal), <strong>reflector</strong>, <strong>biological shield</strong>, and <strong>containment structure</strong>.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Moderator — Slows Neutrons</div>
+        <div class="pp-formula-row">$$\text{Fast neutron} \xrightarrow{\text{Moderator}} \text{Thermal neutron (slow)}$$</div>
+        <div class="pp-formula-row">$$\text{Materials: } D_2O\text{ (best)},\;\text{Graphite},\;\text{Beryllium},\;\text{Light water}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Control Rods — Absorb Neutrons</div>
+        <div class="pp-formula-row">$$\text{Materials: Boron (B), Cadmium (Cd), Hafnium (Hf)}$$</div>
+        <div class="pp-formula-row">$$k_{eff} = 1:\;\text{Critical (sustained reaction)}$$</div>
+        <div class="pp-formula-row">$$k_{eff} &lt; 1:\;\text{Sub-critical (reaction dies)}$$</div>
+        <div class="pp-formula-row">$$k_{eff} &gt; 1:\;\text{Super-critical (runaway — danger!)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Coolant Heat Removal</div>
+        <div class="pp-formula-row">$$Q_{coolant} = \dot{m}_c \cdot c_p \cdot (T_{out} - T_{in})$$</div>
+        <div class="pp-formula-row">$$\text{Types: Light water, Heavy water, Liquid Na, CO}_2\text{, He}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Radiation Shielding</div>
+        <div class="pp-formula-row">$$I = I_0 \cdot e^{-\mu x}$$</div>
+        <div class="pp-formula-row">$$\text{Where } \mu = \text{attenuation coefficient},\; x = \text{shield thickness}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Fuel Rod Cladding</div>
+        <table class="pp-data-table">
+          <tbody><tr><th>Material</th><th>Advantage</th><th>Use</th></tr>
+          <tr><td>Aluminum</td><td>Light, cheap</td><td>Low-pressure reactors</td></tr>
+          <tr><td>Stainless Steel</td><td>Strong, corrosion-resistant</td><td>PWR</td></tr>
+          <tr><td>Zirconium</td><td>Low neutron absorption</td><td>Preferred (PHWR, BWR)</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-25" style="min-height:260px;">
+        <div class="pp-anim-label">⚙️ Reactor Components &amp; Control</div>
+
+        <!-- Reactor Cross-Section SVG -->
+        <div class="pp-reactor-svg-wrap">
+          <svg viewBox="0 0 400 220" aria-label="Nuclear reactor cross-section" id="c25ReactorSvg">
+            <!-- Containment (outer) -->
+            <path d="M40,200 L40,60 Q200,0 360,60 L360,200 Z" fill="rgba(55,65,81,0.15)" stroke="#374151" stroke-width="1.5"></path>
+            <text x="200" y="18" text-anchor="middle" fill="#374151" font-size="7" font-family="Share Tech Mono">CONTAINMENT</text>
+            <!-- Bio shield -->
+            <rect x="70" y="50" width="260" height="140" rx="8" fill="rgba(31,41,55,0.2)" stroke="#1f2937" stroke-width="1.5"></rect>
+            <text x="88" y="46" fill="#6b7280" font-size="6" font-family="Share Tech Mono">BIO SHIELD (concrete)</text>
+            <!-- Pressure vessel -->
+            <rect x="100" y="65" width="200" height="110" rx="6" fill="rgba(0,0,0,0.2)" stroke="#9ca3af" stroke-width="1"></rect>
+            <text x="108" y="62" fill="#9ca3af" font-size="6" font-family="Share Tech Mono">PRESSURE VESSEL</text>
+            <!-- Reflector -->
+            <rect x="120" y="80" width="160" height="80" rx="4" fill="rgba(96,165,250,0.05)" stroke="#60a5fa" stroke-width="0.8" stroke-dasharray="3,2"></rect>
+            <text x="128" y="78" fill="#60a5fa" font-size="6" font-family="Share Tech Mono">REFLECTOR</text>
+            <!-- Moderator -->
+            <rect x="140" y="90" width="120" height="60" rx="4" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="1"></rect>
+            <text x="200" y="143" text-anchor="middle" fill="#60a5fa" font-size="7" font-family="Share Tech Mono">MODERATOR (D₂O)</text>
+            <!-- Fuel rods -->
+            <rect x="160" y="95" width="8" height="45" rx="2" fill="rgba(250,204,21,0.4)" stroke="#facc15" stroke-width="0.8"></rect>
+            <rect x="178" y="95" width="8" height="45" rx="2" fill="rgba(250,204,21,0.4)" stroke="#facc15" stroke-width="0.8"></rect>
+            <rect x="196" y="95" width="8" height="45" rx="2" fill="rgba(250,204,21,0.4)" stroke="#facc15" stroke-width="0.8"></rect>
+            <rect x="214" y="95" width="8" height="45" rx="2" fill="rgba(250,204,21,0.4)" stroke="#facc15" stroke-width="0.8"></rect>
+            <rect x="232" y="95" width="8" height="45" rx="2" fill="rgba(250,204,21,0.4)" stroke="#facc15" stroke-width="0.8"></rect>
+            <text x="200" y="93" text-anchor="middle" fill="#facc15" font-size="6" font-family="Orbitron">FUEL RODS (U-235)</text>
+            <!-- Control rods -->
+            <rect x="170" y="70" width="6" height="55" rx="2" fill="rgba(239,68,68,0.5)" stroke="#ef4444" stroke-width="0.8" id="c25ctrlRod1"></rect>
+            <rect x="188" y="70" width="6" height="55" rx="2" fill="rgba(239,68,68,0.5)" stroke="#ef4444" stroke-width="0.8" id="c25ctrlRod2"></rect>
+            <rect x="206" y="70" width="6" height="55" rx="2" fill="rgba(239,68,68,0.5)" stroke="#ef4444" stroke-width="0.8"></rect>
+            <rect x="224" y="70" width="6" height="55" rx="2" fill="rgba(239,68,68,0.5)" stroke="#ef4444" stroke-width="0.8"></rect>
+            <text x="200" y="68" text-anchor="middle" fill="#ef4444" font-size="6" font-family="Share Tech Mono">CONTROL RODS (B/Cd)</text>
+            <!-- Coolant arrows -->
+            <text x="130" y="118" fill="#06b6d4" font-size="10">↓</text>
+            <text x="260" y="118" fill="#06b6d4" font-size="10">↑</text>
+            <text x="132" y="128" fill="#06b6d4" font-size="5" font-family="Share Tech Mono">cool</text>
+            <text x="256" y="128" fill="#06b6d4" font-size="5" font-family="Share Tech Mono">hot</text>
+            <!-- Steam generator (adjacent) -->
+            <rect x="300" y="75" width="50" height="80" rx="4" fill="rgba(250,204,21,0.08)" stroke="#facc15" stroke-width="1"></rect>
+            <text x="325" y="105" text-anchor="middle" fill="#facc15" font-size="6" font-family="Share Tech Mono">STEAM</text>
+            <text x="325" y="115" text-anchor="middle" fill="#facc15" font-size="6" font-family="Share Tech Mono">GEN</text>
+            <line x1="280" y1="100" x2="300" y2="100" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3,2"></line>
+            <line x1="280" y1="130" x2="300" y2="130" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3,2"></line>
+            <text x="350" y="98" fill="#facc15" font-size="8">→ 💨</text>
+          </svg>
+        </div>
+
+        <!-- keff Control Slider -->
+        <div class="pp-keff-zone">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:6px;">CRITICALITY MONITOR</div>
+          <input type="range" class="pp-slider" id="c25keffSlider" min="0.5" max="1.5" step="0.01" value="1.0" style="width:80%;" oninput="updateKeffC25()">
+          <div class="pp-keff-display" id="c25keffDisplay" style="color:#00ff88;">k<sub>eff</sub> = 1.00</div>
+          <div class="pp-keff-status" id="c25keffStatus" style="color:#00ff88;border:1px solid #00ff88;background:rgba(0,255,136,0.1);">● CRITICAL — Sustained chain reaction</div>
+        </div>
+
+        <!-- Radiation Shielding Calculator -->
+        <div style="padding:12px;background:rgba(0,0,0,0.2);border:1px solid var(--pp-border);border-radius:8px;margin-top:8px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">RADIATION SHIELDING: I = I₀·e^(-μx)</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">I₀ (initial)
+              <input type="number" class="pp-input-sm" id="c25I0" value="1000" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">μ (1/cm)
+              <input type="number" class="pp-input-sm" id="c25mu" value="0.1" step="0.01" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">x (cm)
+              <input type="number" class="pp-input-sm" id="c25x" value="30" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="calcShieldC25()" style="margin-top:8px;width:100%;">Calculate Transmitted Intensity</button>
+          <div id="c25ShieldOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m3-nuclear" id="c26">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#a78bfa;font-size:14px;">🌀</span>
+        Module 3 · Nuclear Plant: Complete Diagram &amp; Circuit
+      </div>
+
+      <div class="pp-definition-box">
+        A nuclear plant has a <strong style="color:#a78bfa">Primary Circuit</strong> (radioactive coolant loop through reactor &amp; steam generator) and a <strong style="color:#00f5ff">Secondary Circuit</strong> (non-radioactive steam loop through turbine &amp; condenser). Two-loop design prevents radioactive contamination of the turbine.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Primary Circuit (Radioactive)</div>
+        <div class="pp-formula-row">$$\text{Reactor core} \xrightarrow{\text{Hot coolant}} \text{Steam generator} \xrightarrow{\text{Cold coolant}} \text{Pump} \rightarrow \text{Reactor}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Secondary Circuit (Non-radioactive)</div>
+        <div class="pp-formula-row">$$\text{Steam generator} \rightarrow \text{Turbine} \rightarrow \text{Generator} \rightarrow \text{Condenser} \rightarrow \text{Pump} \rightarrow \text{Steam gen.}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Reactor Types</div>
+        <table class="pp-data-table">
+          <tbody><tr><th>Type</th><th>Coolant</th><th>Moderator</th><th>Fuel</th><th>Key Feature</th></tr>
+          <tr><td>PWR</td><td>Light H₂O (155 bar)</td><td>Light H₂O</td><td>Enriched U</td><td>Water stays liquid</td></tr>
+          <tr><td>BWR</td><td>Light H₂O</td><td>Light H₂O</td><td>Enriched U</td><td>Boils in reactor — no heat exchanger</td></tr>
+          <tr><td>PHWR/CANDU</td><td>D₂O</td><td>D₂O</td><td>Natural U</td><td>India's main type</td></tr>
+          <tr><td>LMFBR</td><td>Liquid Na</td><td>None</td><td>Pu-239</td><td>Breeds more fuel</td></tr>
+        </tbody></table>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Nuclear Plant Efficiency</div>
+        <div class="pp-formula-row">$$\eta_{nuclear} \approx 33\text{–}35\% \quad (\text{lower than thermal due to lower steam conditions})$$</div>
+        <div class="pp-formula-row">$$\text{But fuel cost is much lower → economical at high load factors}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-26" style="min-height:260px;">
+        
+  <!-- NUKE DIAGRAM INJECTION -->
+  <style>
+    
+  .new-nuke-wrapper { 
+    --bg:#080c18; --accent:#00e5ff; --label:#7eb8d8; --text:#c9d8e8;
+   }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg); font-family:'Share Tech Mono',monospace; color:var(--text);
+    min-height:100vh; display:flex;flex-direction:column;align-items:center;
+    padding:20px;overflow-x:hidden;
+  } .new-nuke-wrapper h1 {
+    font-family:'Orbitron',sans-serif; font-size:clamp(1rem,3vw,1.6rem);
+    letter-spacing:.3em;color:var(--accent); text-shadow:0 0 20px #00e5ff88;margin-bottom:5px;
+  } .new-nuke-wrapper .subtitle {font-size:.7rem;color:var(--label);letter-spacing:.2em;margin-bottom:20px;} .new-nuke-wrapper .diagram-wrap {width:100%;max-width:1100px;position:relative;}
+  svg#plant{width:100%;height:auto;display:block;filter:drop-shadow(0 0 30px #00e5ff18);} .new-nuke-wrapper .lbl {font-family:'Share Tech Mono',monospace;font-size:11px;fill:#7eb8d8;text-anchor:middle;dominant-baseline:middle;} .new-nuke-wrapper .lbl-xs {font-size:9px;} .new-nuke-wrapper .lbl-title {font-family:'Orbitron',sans-serif;font-size:12px;fill:#00e5ff;font-weight:700;text-anchor:middle;}
+  #turb-housing{animation:turbShimmer 4s ease-in-out infinite;}
+  @keyframes turbShimmer{0%,100%{stroke:#4a7090}50%{stroke:#70a0c0}}
+  #gen-housing{animation:genGlowPulse 1.6s ease-in-out infinite;}
+  @keyframes genGlowPulse{0%,100%{stroke:#ffe66d;filter:drop-shadow(0 0 4px #ffe66d55)}50%{stroke:#fff0a0;filter:drop-shadow(0 0 10px #ffe66daa)}}
+  #turb-steam-glow{animation:steamInGlow 1s ease-in-out infinite;}
+  @keyframes steamInGlow{0%,100%{opacity:.35}50%{opacity:.9}}
+  #pump-primary {animation:spinPA .9s  linear infinite;transform-origin:170px 452px;}
+  #pump-secondary{animation:spinPB .85s linear infinite;transform-origin:362px 452px;}
+  @keyframes spinPA{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  @keyframes spinPB{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  .spuff{animation:spuffRise 3.5s ease-out infinite;opacity:0;transform-box:fill-box;transform-origin:center center;}
+  .spuff:nth-child(1){animation-delay:0s}.spuff:nth-child(2){animation-delay:1.2s}.spuff:nth-child(3){animation-delay:2.4s}
+  @keyframes spuffRise{0%{transform:translateY(0) scale(.85);opacity:.8}100%{transform:translateY(-55px) scale(1.9);opacity:0}}
+  .crod{animation:rodShift 3s ease-in-out infinite;}
+  .crod:nth-child(2){animation-delay:.3s}.crod:nth-child(3){animation-delay:.6s}.crod:nth-child(4){animation-delay:.15s}.crod:nth-child(5){animation-delay:.45s}
+  @keyframes rodShift{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  .ph {stroke:#ff4500;stroke-width:5;fill:none;filter:drop-shadow(0 0 4px #ff450099);}
+  .pc {stroke:#1a6fff;stroke-width:5;fill:none;filter:drop-shadow(0 0 4px #1a6fff88);}
+  .ps {stroke:#90d8f0;stroke-width:5;fill:none;filter:drop-shadow(0 0 5px #90d8f088);}
+  .pw {stroke:#ff7030;stroke-width:4;fill:none;filter:drop-shadow(0 0 3px #ff703066);}
+  .pco{stroke:#0055dd;stroke-width:4;fill:none;filter:drop-shadow(0 0 3px #0055dd66);}
+  .pe {stroke:#ffe66d;stroke-width:3;fill:none;stroke-dasharray:9 5; filter:drop-shadow(0 0 5px #ffe66d88);animation:dashE .9s linear infinite;}
+  @keyframes dashE{from{stroke-dashoffset:0}to{stroke-dashoffset:-28}}
+  .cher-ring{animation:cherPulse 2.2s ease-out infinite;transform-origin:170px 268px;}
+  .cher-ring:nth-child(2){animation-delay:.55s;}
+  .cher-ring:nth-child(3){animation-delay:1.1s;}
+  .cher-ring:nth-child(4){animation-delay:1.65s;}
+  @keyframes cherPulse{ 0%  {transform:scale(.3);opacity:.9;} 80% {transform:scale(1);opacity:.15;} 100%{transform:scale(1.05);opacity:0;} }
+  #core-mega{animation:megaPulse 1.8s ease-in-out infinite;}
+  @keyframes megaPulse{0%,100%{opacity:.35;r:42}50%{opacity:.75;r:52}}
+  #core-inner{animation:innerPulse 1.2s ease-in-out infinite;}
+  @keyframes innerPulse{0%,100%{opacity:.6}50%{opacity:1}}
+  .rod-tip{animation:rodTip 2s ease-in-out infinite;}
+  @keyframes rodTip{0%,100%{opacity:.3}50%{opacity:.9}}
+  #dome-arc{animation:domeFlash 4s ease-in-out infinite;}
+  @keyframes domeFlash{0%,100%{stroke:#00e5ff;stroke-width:1.8}50%{stroke:#00ff88;stroke-width:2.5}}
+  #pvessel{animation:vesselShimmer 3s ease-in-out infinite;}
+  @keyframes vesselShimmer{0%,100%{stroke:#2a6090}50%{stroke:#3a80b0}}
+  #power-bar{animation:powerBar 2s ease-in-out infinite;}
+  @keyframes powerBar{0%,100%{width:52}50%{width:58}}
+  #temp-val{animation:tempBlink 3s ease-in-out infinite;}
+  @keyframes tempBlink{0%,100%{fill:#00ff88}45%{fill:#88ffcc}55%{fill:#00ff88}}
+  #rad-symbol{animation:radSpin 8s linear infinite;transform-origin:170px 80px;}
+  @keyframes radSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  #rad-ring{animation:radRing 2s ease-in-out infinite;}
+  @keyframes radRing{0%,100%{opacity:.4}50%{opacity:.9}}
+  .cbubble{animation:bubbleRise linear infinite;}
+  @keyframes bubbleRise{0%{transform:translateY(0);opacity:.7}100%{transform:translateY(-130px);opacity:0}}
+  .sgbubble{animation:sgBub ease-in-out infinite;}
+  @keyframes sgBub{0%,100%{opacity:.2;transform:translateY(0)}50%{opacity:.5;transform:translateY(-4px)}}
+  #status-ok{animation:stFlicker 5s ease-in-out infinite;}
+  @keyframes stFlicker{0%,100%{opacity:1}92%{opacity:1}93%{opacity:.2}94%{opacity:1}} .new-nuke-wrapper .legend {display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:14px;font-size:.71rem;letter-spacing:.1em;}
+  .legend-item{display:flex;align-items:center;gap:7px;}
+  .ldot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
+
+  </style>
+  <div class="new-nuke-wrapper">
+    
+<h1>Nuclear Power Plant</h1>
+<p class="subtitle">Animated Process Flow Diagram</p>
+<div class="diagram-wrap">
+<svg id="plant" viewBox="0 0 1100 650" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#aaffcc" stop-opacity=".99"></stop>
+    <stop offset="30%" stop-color="#00ff88" stop-opacity=".9"></stop>
+    <stop offset="65%" stop-color="#00cc55" stop-opacity=".5"></stop>
+    <stop offset="100%" stop-color="#002211" stop-opacity="0"></stop>
+  </radialGradient>
+  <radialGradient id="cherGrad" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#00ccff" stop-opacity=".0"></stop>
+    <stop offset="60%" stop-color="#0066ff" stop-opacity=".25"></stop>
+    <stop offset="100%" stop-color="#0033aa" stop-opacity=".0"></stop>
+  </radialGradient>
+  <radialGradient id="heatGrad" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#ff6600" stop-opacity=".0"></stop>
+    <stop offset="50%" stop-color="#ff4400" stop-opacity=".18"></stop>
+    <stop offset="100%" stop-color="#ff2200" stop-opacity=".0"></stop>
+  </radialGradient>
+  <linearGradient id="vesselGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#0a1828"></stop>
+    <stop offset="40%" stop-color="#122040"></stop>
+    <stop offset="100%" stop-color="#0a1828"></stop>
+  </linearGradient>
+  <linearGradient id="fuelRodGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#334400"></stop>
+    <stop offset="40%" stop-color="#556600"></stop>
+    <stop offset="100%" stop-color="#222200"></stop>
+  </linearGradient>
+  <linearGradient id="moderatorGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#002244" stop-opacity=".9"></stop>
+    <stop offset="100%" stop-color="#001133" stop-opacity=".9"></stop>
+  </linearGradient>
+  <linearGradient id="sgSteamGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#0d2a45"></stop>
+    <stop offset="100%" stop-color="#0d2040"></stop>
+  </linearGradient>
+  <linearGradient id="sgHotSide" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#2a1000" stop-opacity=".8"></stop>
+    <stop offset="100%" stop-color="#0d1e35" stop-opacity="0"></stop>
+  </linearGradient>
+  <linearGradient id="sgCoolSide" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#0d1e35" stop-opacity="0"></stop>
+    <stop offset="100%" stop-color="#00102a" stop-opacity=".8"></stop>
+  </linearGradient>
+  <radialGradient id="towerGrad" cx="50%" cy="70%" r="60%">
+    <stop offset="0%" stop-color="#1a3a5f"></stop>
+    <stop offset="100%" stop-color="#0a1a30"></stop>
+  </radialGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+  <filter id="sglow"><feGaussianBlur stdDeviation="7" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+  <filter id="xglow"><feGaussianBlur stdDeviation="12" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+  <filter id="neutronBlur"><feGaussianBlur stdDeviation="1.5"></feGaussianBlur></filter>
+  <filter id="bladeBlur"><feGaussianBlur stdDeviation="1"></feGaussianBlur><feMerge><feMergeNode></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+  <linearGradient id="turbHousing" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e3448"></stop><stop offset="50%" stop-color="#0d1e35"></stop><stop offset="100%" stop-color="#091528"></stop></linearGradient>
+  <linearGradient id="turbShaft" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7aaccc"></stop><stop offset="45%" stop-color="#c0d8e8"></stop><stop offset="100%" stop-color="#3a6080"></stop></linearGradient>
+  <radialGradient id="turbHub" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#90bcd0"></stop><stop offset="60%" stop-color="#4a7a90"></stop><stop offset="100%" stop-color="#2a4a60"></stop></radialGradient>
+  <linearGradient id="turbSteamIn" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#90d8f0" stop-opacity=".9"></stop><stop offset="100%" stop-color="#ccf0ff" stop-opacity=".2"></stop></linearGradient>
+  <radialGradient id="genStatorGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#101828"></stop><stop offset="75%" stop-color="#152535"></stop><stop offset="100%" stop-color="#0a1420"></stop></radialGradient>
+  <radialGradient id="genRotorGrad" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#304050"></stop><stop offset="55%" stop-color="#1a2840"></stop><stop offset="100%" stop-color="#0d1828"></stop></radialGradient>
+  <radialGradient id="genAirGapGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#001133" stop-opacity=".0"></stop><stop offset="65%" stop-color="#002244" stop-opacity=".3"></stop><stop offset="100%" stop-color="#ffe66d" stop-opacity=".04"></stop></radialGradient>
+  <clipPath id="turbClip"><rect x="509" y="109" width="138" height="99" rx="5"></rect></clipPath>
+  <clipPath id="genClip"><circle cx="737" cy="171" r="54"></circle></clipPath>
+  <clipPath id="genHousingClip"><rect x="653" y="111" width="163" height="118" rx="5"></rect></clipPath>
+  <clipPath id="vesselClip"><rect x="113" y="149" width="114" height="220" rx="9"></rect></clipPath>
+  <clipPath id="containClip"><rect x="63" y="26" width="214" height="380"></rect></clipPath>
+  <path id="mp-hot" d="M228,200 L295,200 L295,143 L346,143"></path>
+  <path id="mp-cool" d="M346,260 L295,260 L295,452 L215,452 L170,452 L170,385"></path>
+  <path id="mp-steam" d="M440,133 L538,133 L538,162"></path>
+  <path id="mp-exhaust" d="M578,208 L578,298 L488,298 L488,372"></path>
+  <path id="mp-feed" d="M488,442 L362,442 L362,260 L440,260"></path>
+  <path id="mp-warm" d="M622,372 L730,372 L730,402"></path>
+  <path id="mp-cwin" d="M730,526 L622,526 L622,442"></path>
+  <path id="mp-elec" d="M810,172 L880,115 L960,68 L1080,30"></path>
+</defs>
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<!-- ═══════════════ BACKGROUND GRID ═══════════════ -->
+<rect width="1100" height="630" fill="#080c18"></rect>
+<g opacity=".04" stroke="#00e5ff" stroke-width=".6">
+  <line x1="0" y1="50" x2="1100" y2="50"></line> <line x1="0" y1="100" x2="1100" y2="100"></line>
+  <line x1="0" y1="150" x2="1100" y2="150"></line> <line x1="0" y1="200" x2="1100" y2="200"></line>
+  <line x1="0" y1="250" x2="1100" y2="250"></line> <line x1="0" y1="300" x2="1100" y2="300"></line>
+  <line x1="0" y1="350" x2="1100" y2="350"></line> <line x1="0" y1="400" x2="1100" y2="400"></line>
+  <line x1="0" y1="450" x2="1100" y2="450"></line> <line x1="0" y1="500" x2="1100" y2="500"></line>
+  <line x1="0" y1="550" x2="1100" y2="550"></line> <line x1="0" y1="600" x2="1100" y2="600"></line>
+  <line x1="55" y1="0" x2="55" y2="630"></line> <line x1="110" y1="0" x2="110" y2="630"></line>
+  <line x1="165" y1="0" x2="165" y2="630"></line> <line x1="220" y1="0" x2="220" y2="630"></line>
+  <line x1="275" y1="0" x2="275" y2="630"></line> <line x1="330" y1="0" x2="330" y2="630"></line>
+  <line x1="385" y1="0" x2="385" y2="630"></line> <line x1="440" y1="0" x2="440" y2="630"></line>
+  <line x1="495" y1="0" x2="495" y2="630"></line> <line x1="550" y1="0" x2="550" y2="630"></line>
+  <line x1="605" y1="0" x2="605" y2="630"></line> <line x1="660" y1="0" x2="660" y2="630"></line>
+  <line x1="715" y1="0" x2="715" y2="630"></line> <line x1="770" y1="0" x2="770" y2="630"></line>
+  <line x1="825" y1="0" x2="825" y2="630"></line> <line x1="880" y1="0" x2="880" y2="630"></line>
+  <line x1="935" y1="0" x2="935" y2="630"></line> <line x1="990" y1="0" x2="990" y2="630"></line>
+  <line x1="1045" y1="0" x2="1045" y2="630"></line>
+</g>
+
+<!-- ═══════════════ PIPES ═══════════════ -->
+<line class="ph" x1="228" y1="200" x2="295" y2="200"></line>
+<line class="ph" x1="295" y1="143" x2="295" y2="200"></line>
+<line class="ph" x1="295" y1="143" x2="348" y2="143"></line>
+<line class="pc" x1="348" y1="260" x2="295" y2="260"></line>
+<line class="pc" x1="295" y1="260" x2="295" y2="452"></line>
+<line class="pc" x1="170" y1="452" x2="295" y2="452"></line>
+<line class="pc" x1="170" y1="385" x2="170" y2="452"></line>
+<line class="ps" x1="440" y1="133" x2="538" y2="133"></line>
+<line class="ps" x1="538" y1="133" x2="538" y2="162"></line>
+<line class="ps" x1="578" y1="208" x2="578" y2="298"></line>
+<line class="ps" x1="488" y1="298" x2="578" y2="298"></line>
+<line class="ps" x1="488" y1="298" x2="488" y2="372"></line>
+<line class="pc" x1="488" y1="442" x2="362" y2="442"></line>
+<line class="pc" x1="362" y1="260" x2="362" y2="442"></line>
+<line class="pc" x1="362" y1="260" x2="440" y2="260"></line>
+<line class="pw" x1="622" y1="372" x2="730" y2="372"></line>
+<line class="pw" x1="730" y1="372" x2="730" y2="406"></line>
+<line class="pco" x1="730" y1="526" x2="622" y2="526"></line>
+<line class="pco" x1="622" y1="442" x2="622" y2="526"></line>
+<line class="pe" x1="810" y1="172" x2="880" y2="115"></line>
+<line class="pe" x1="880" y1="115" x2="960" y2="68"></line>
+<line class="pe" x1="960" y1="68" x2="1085" y2="30"></line>
+
+<!-- 1. CONTAINMENT SHELL -->
+<path id="dome-arc" d="M62,125 Q62,25 170,25 Q278,25 278,125" fill="#0c1628" stroke="#00e5ff" stroke-width="1.8" opacity=".85"></path>
+<rect x="62" y="123" width="216" height="267" rx="3" fill="#0c1628" stroke="#1e3a5f" stroke-width="2"></rect>
+<ellipse cx="170" cy="390" rx="108" ry="10" fill="#0c1628" stroke="#1e3a5f" stroke-width="2"></ellipse>
+
+<!-- 2. PRESSURE VESSEL + MODERATOR WATER -->
+<rect id="pvessel" x="112" y="148" width="116" height="222" rx="10" fill="url(#vesselGrad)" stroke="#2a6090" stroke-width="2.5"></rect>
+<ellipse cx="170" cy="148" rx="58" ry="13" fill="url(#vesselGrad)" stroke="#2a6090" stroke-width="2.5"></ellipse>
+<ellipse cx="170" cy="370" rx="58" ry="13" fill="url(#vesselGrad)" stroke="#2a6090" stroke-width="2.5"></ellipse>
+<rect x="114" y="150" width="112" height="218" rx="8" fill="url(#moderatorGrad)" clip-path="url(#vesselClip)"></rect>
+<ellipse cx="170" cy="268" rx="52" ry="62" fill="url(#cherGrad)" clip-path="url(#vesselClip)"></ellipse>
+
+<!-- 3. CHERENKOV RADIATION RINGS -->
+<g id="cherenkov-rings" clip-path="url(#vesselClip)">
+  <circle class="cher-ring" cx="170" cy="268" r="36" fill="none" stroke="#0099ff" stroke-width="2" opacity=".8"></circle>
+  <circle class="cher-ring" cx="170" cy="268" r="36" fill="none" stroke="#00bbff" stroke-width="1.5" opacity=".7"></circle>
+  <circle class="cher-ring" cx="170" cy="268" r="36" fill="none" stroke="#00ddff" stroke-width="1" opacity=".6"></circle>
+  <circle class="cher-ring" cx="170" cy="268" r="36" fill="none" stroke="#aaddff" stroke-width="1" opacity=".5"></circle>
+</g>
+
+<!-- 4. HEAT AURA -->
+<circle cx="170" cy="268" r="58" fill="url(#heatGrad)" clip-path="url(#vesselClip)">
+  <animate attributeName="r" values="52;62;52" dur="2s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values=".5;.8;.5" dur="2s" repeatCount="indefinite"></animate>
+</circle>
+
+<!-- 5. FUEL ROD ASSEMBLY -->
+<g id="fuel-assembly" clip-path="url(#vesselClip)">
+  <rect x="140" y="234" width="60" height="68" rx="5" fill="#041a0e" stroke="#00aa44" stroke-width="1.5" opacity=".95"></rect>
+  <rect x="148" y="237" width="7" height="60" rx="2" fill="url(#fuelRodGrad)">
+    <animate attributeName="fill" values="#223300;#446600;#556600;#446600;#223300" dur="1.8s" repeatCount="indefinite"></animate>
+  </rect>
+  <rect x="158" y="237" width="7" height="60" rx="2" fill="url(#fuelRodGrad)">
+    <animate attributeName="fill" values="#446600;#223300;#556600;#223300;#446600" dur="2.1s" repeatCount="indefinite"></animate>
+  </rect>
+  <rect x="168" y="237" width="7" height="60" rx="2" fill="url(#fuelRodGrad)">
+    <animate attributeName="fill" values="#556600;#446600;#223300;#446600;#556600" dur="1.5s" repeatCount="indefinite"></animate>
+  </rect>
+  <rect x="178" y="237" width="7" height="60" rx="2" fill="url(#fuelRodGrad)">
+    <animate attributeName="fill" values="#223300;#556600;#446600;#556600;#223300" dur="1.9s" repeatCount="indefinite"></animate>
+  </rect>
+  <rect x="188" y="237" width="7" height="60" rx="2" fill="url(#fuelRodGrad)">
+    <animate attributeName="fill" values="#446600;#223300;#223300;#446600;#556600" dur="2.3s" repeatCount="indefinite"></animate>
+  </rect>
+  <rect x="148" y="235" width="7" height="4" rx="1" fill="#667700" opacity=".8"></rect>
+  <rect x="158" y="235" width="7" height="4" rx="1" fill="#667700" opacity=".8"></rect>
+  <rect x="168" y="235" width="7" height="4" rx="1" fill="#667700" opacity=".8"></rect>
+  <rect x="178" y="235" width="7" height="4" rx="1" fill="#667700" opacity=".8"></rect>
+  <rect x="188" y="235" width="7" height="4" rx="1" fill="#667700" opacity=".8"></rect>
+  <ellipse cx="151" cy="268" rx="5" ry="30" fill="#00ff44" opacity=".07">
+    <animate attributeName="opacity" values=".05;.15;.05" dur="1.8s" repeatCount="indefinite"></animate>
+  </ellipse>
+  <ellipse cx="171" cy="268" rx="5" ry="30" fill="#00ff44" opacity=".12">
+    <animate attributeName="opacity" values=".08;.2;.08" dur="1.5s" repeatCount="indefinite"></animate>
+  </ellipse>
+  <ellipse cx="191" cy="268" rx="5" ry="30" fill="#00ff44" opacity=".07">
+    <animate attributeName="opacity" values=".05;.15;.05" dur="2.3s" repeatCount="indefinite"></animate>
+  </ellipse>
+</g>
+
+<!-- 6. CORE MEGA-GLOW -->
+<circle id="core-mega" cx="170" cy="268" r="42" fill="url(#coreGrad)" filter="url(#xglow)"></circle>
+<circle id="core-inner" cx="170" cy="268" r="22" fill="#00ff88" opacity=".35" filter="url(#sglow)"></circle>
+<text class="lbl" x="170" y="271" fill="#aaffcc" font-size="11" font-weight="bold" filter="url(#glow)">CORE</text>
+<rect x="226" y="193" width="12" height="14" rx="2" fill="#3a1800"></rect>
+<rect x="226" y="355" width="12" height="14" rx="2" fill="#0a1e3a"></rect>
+<g id="coolant-bubbles" clip-path="url(#vesselClip)"></g>
+<g id="neutron-layer" clip-path="url(#containClip)"></g>
+<g id="fission-layer" clip-path="url(#vesselClip)"></g>
+
+<!-- 8. CONTROL RODS -->
+<g id="control-rods">
+  <g class="crod"><rect x="141" y="148" width="6" height="90" rx="3" fill="#00ccff" opacity=".88"></rect><rect class="rod-tip" x="141" y="233" width="6" height="8" rx="2" fill="#00ffff"></rect></g>
+  <g class="crod"><rect x="152" y="148" width="6" height="90" rx="3" fill="#00ccff" opacity=".82"></rect><rect class="rod-tip" x="152" y="233" width="6" height="8" rx="2" fill="#00ffff"></rect></g>
+  <g class="crod"><rect x="167" y="148" width="6" height="90" rx="3" fill="#00ccff" opacity=".92"></rect><rect class="rod-tip" x="167" y="233" width="6" height="8" rx="2" fill="#00ffff"></rect></g>
+  <g class="crod"><rect x="182" y="148" width="6" height="90" rx="3" fill="#00ccff" opacity=".82"></rect><rect class="rod-tip" x="182" y="233" width="6" height="8" rx="2" fill="#00ffff"></rect></g>
+  <g class="crod"><rect x="193" y="148" width="6" height="90" rx="3" fill="#00ccff" opacity=".88"></rect><rect class="rod-tip" x="193" y="233" width="6" height="8" rx="2" fill="#00ffff"></rect></g>
+</g>
+
+<!-- 9a. RADIATION HAZARD SYMBOL -->
+<g id="rad-symbol" opacity=".65">
+  <circle cx="170" cy="80" r="16" fill="none" stroke="#00ff88" stroke-width="1.2"></circle>
+  <circle cx="170" cy="80" r="4" fill="#00ff88"></circle>
+  <path d="M170,80 L178,67 A12,12 0 0,1 182,80 Z" fill="#00ff88" opacity=".8"></path>
+  <path d="M170,80 L156,67 A12,12 0 0,0 162,80 Z" fill="#00ff88" opacity=".8"></path>
+  <path d="M170,80 L162,93 A12,12 0 0,1 178,93 Z" fill="#00ff88" opacity=".8"></path>
+</g>
+<circle id="rad-ring" cx="170" cy="80" r="20" fill="none" stroke="#00ff88" stroke-width="1" opacity=".4"></circle>
+
+<!-- 9b. REACTOR STATUS READOUT PANEL -->
+<g id="reactor-panel" transform="translate(25,513)">
+  <rect x="0" y="0" width="250" height="90" rx="5" fill="#060e1c" stroke="#1a4060" stroke-width="1.2" opacity=".95"></rect>
+  <text x="125" y="14" font-family="Orbitron,sans-serif" font-size="8" fill="#00e5ff" text-anchor="middle" letter-spacing="2">REACTOR STATUS</text>
+  <line x1="5" y1="19" x2="245" y2="19" stroke="#1a4060" stroke-width=".8"></line>
+  <text x="8" y="30" font-family="Share Tech Mono,monospace" font-size="8" fill="#7eb8d8">PWR OUTPUT</text>
+  <rect x="90" y="23" width="90" height="8" rx="2" fill="#0a1a2a" stroke="#1a4060" stroke-width=".8"></rect>
+  <rect id="power-bar" x="90" y="23" width="70" height="8" rx="2" fill="#00ff88" opacity=".85">
+    <animate attributeName="width" values="65;76;70;73;65" dur="3s" repeatCount="indefinite"></animate>
+    <animate attributeName="fill" values="#00ff88;#44ffaa;#00ff88" dur="2s" repeatCount="indefinite"></animate>
+  </rect>
+  <text x="186" y="30" font-family="Share Tech Mono,monospace" font-size="8" fill="#00ff88">97%</text>
+  <text x="8" y="45" font-family="Share Tech Mono,monospace" font-size="8" fill="#7eb8d8">CORE TEMP</text>
+  <text id="temp-val" x="180" y="45" font-family="Share Tech Mono,monospace" font-size="9" fill="#00ff88" text-anchor="end">320 °C</text>
+  <text x="8" y="59" font-family="Share Tech Mono,monospace" font-size="8" fill="#7eb8d8">FLUX</text>
+  <text x="180" y="59" font-family="Share Tech Mono,monospace" font-size="9" fill="#ffe66d" text-anchor="end">3.2×10¹³</text>
+  <circle cx="8" cy="71" r="4" fill="#00ff88"><animate attributeName="opacity" values="1;.3;1" dur="1.5s" repeatCount="indefinite"></animate></circle>
+  <text id="status-ok" x="16" y="75" font-family="Share Tech Mono,monospace" font-size="8" fill="#00ff88" text-anchor="start">NOMINAL ■ ALL SYSTEMS OK</text>
+  <line x1="5" y1="80" x2="245" y2="80" stroke="#1a4060" stroke-width=".8"></line>
+  <text x="125" y="88" font-family="Share Tech Mono,monospace" font-size="7" fill="#3a6080" text-anchor="middle">CONTAINMENT STRUCTURE</text>
+</g>
+
+<!-- Primary water pump -->
+<circle cx="170" cy="452" r="22" fill="#0d1e35" stroke="#2a6090" stroke-width="2.5"></circle>
+<g id="pump-primary" filter="url(#glow)">
+  <line x1="170" y1="436" x2="170" y2="452" stroke="#00ccff" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="170" y1="452" x2="185" y2="466" stroke="#00ccff" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="170" y1="452" x2="155" y2="466" stroke="#00ccff" stroke-width="3" stroke-linecap="round"></line>
+</g>
+<circle cx="170" cy="452" r="4" fill="#00ccff"></circle>
+<text class="lbl-title" x="170" y="14">NUCLEAR REACTOR</text>
+<text class="lbl" x="44" y="200">Control</text><text class="lbl" x="44" y="212">Rods</text>
+<text class="lbl" x="170" y="487">Water Pump</text><text class="lbl lbl-xs" x="170" y="499">(Primary Loop)</text>
+
+<!-- ═══════════════ STEAM GENERATOR ═══════════════ -->
+<rect x="346" y="118" width="94" height="166" rx="10" fill="#0d1e35" stroke="#2a6090" stroke-width="2.2"></rect>
+<rect x="347" y="119" width="92" height="44" rx="9" fill="url(#sgSteamGrad)" stroke="none"></rect>
+<line x1="347" y1="162" x2="439" y2="162" stroke="#2a6090" stroke-width="1.8"></line>
+<text class="lbl lbl-xs" x="393" y="142" fill="#90d8f0">STEAM DOME</text>
+<ellipse class="sgbubble" cx="375" cy="150" rx="7" ry="4" fill="#90d8f0" opacity=".25"></ellipse>
+<ellipse class="sgbubble" cx="410" cy="148" rx="5" ry="3" fill="#90d8f0" opacity=".2" style="animation-delay:.8s"></ellipse>
+<rect x="347" y="162" width="47" height="98" fill="url(#sgHotSide)"></rect>
+<rect x="393" y="162" width="46" height="98" fill="url(#sgCoolSide)"></rect>
+<line x1="393" y1="162" x2="393" y2="260" stroke="#2a6090" stroke-width="1" stroke-dasharray="4,3" opacity=".55"></line>
+<path d="M360,162 L360,234 Q360,248 370,248 L370,162" fill="none" stroke="#ff5522" stroke-width="2" opacity=".75"></path>
+<path d="M376,162 L376,240 Q376,254 386,254 L386,162" fill="none" stroke="#ff5522" stroke-width="2" opacity=".6"></path>
+<path d="M400,162 L400,240 Q400,254 410,254 L410,162" fill="none" stroke="#4499ff" stroke-width="2" opacity=".6"></path>
+<path d="M416,162 L416,234 Q416,248 426,248 L426,162" fill="none" stroke="#4499ff" stroke-width="2" opacity=".75"></path>
+<polygon points="360,210 357,218 363,218" fill="#ff5522" opacity=".7"></polygon>
+<polygon points="370,220 367,212 373,212" fill="#ff5522" opacity=".7"></polygon>
+<polygon points="416,210 413,218 419,218" fill="#4499ff" opacity=".7"></polygon>
+<polygon points="426,220 423,212 429,212" fill="#4499ff" opacity=".7"></polygon>
+<text class="lbl lbl-xs" x="370" y="177" fill="#ff6633">HOT ↓</text>
+<text class="lbl lbl-xs" x="418" y="177" fill="#5599ff">COOL ↑</text>
+<line x1="347" y1="260" x2="439" y2="260" stroke="#2a6090" stroke-width="2"></line>
+<rect x="347" y="260" width="92" height="23" rx="0" fill="#0d2a4a" opacity=".75"></rect>
+<rect x="335" y="136" width="13" height="14" rx="2" fill="#3a1500"></rect>
+<rect x="335" y="253" width="13" height="14" rx="2" fill="#0d2040"></rect>
+<rect x="439" y="125" width="12" height="14" rx="2" fill="#0d2540"></rect>
+<rect x="439" y="253" width="12" height="14" rx="2" fill="#0d2040"></rect>
+<text class="lbl lbl-xs" x="318" y="202" fill="#ff6633" transform="rotate(-90,318,202)">PRIMARY</text>
+<text class="lbl lbl-xs" x="455" y="202" fill="#5599ff" transform="rotate(90,455,202)">SECONDARY</text>
+<text class="lbl" x="393" y="300">Steam Generator</text>
+
+<!-- ═══════════════ TURBINE ═══════════════ -->
+<rect id="turb-housing" x="508" y="108" width="140" height="100" rx="6" fill="url(#turbHousing)" stroke="#4a7090" stroke-width="2"></rect>
+<line x1="510" y1="120" x2="646" y2="120" stroke="#2a5070" stroke-width=".8" opacity=".5"></line>
+<line x1="510" y1="218" x2="646" y2="218" stroke="#2a5070" stroke-width=".8" opacity=".5"></line>
+<line x1="557" y1="111" x2="557" y2="205" stroke="#2a5070" stroke-width=".9" stroke-dasharray="4,4" opacity=".4"></line>
+<line x1="599" y1="111" x2="599" y2="205" stroke="#2a5070" stroke-width=".9" stroke-dasharray="4,4" opacity=".4"></line>
+<circle cx="515" cy="114" r="2.5" fill="#2a4a60" stroke="#5a8aaa" stroke-width=".8"></circle>
+<circle cx="641" cy="114" r="2.5" fill="#2a4a60" stroke="#5a8aaa" stroke-width=".8"></circle>
+<circle cx="515" cy="203" r="2.5" fill="#2a4a60" stroke="#5a8aaa" stroke-width=".8"></circle>
+<circle cx="641" cy="203" r="2.5" fill="#2a4a60" stroke="#5a8aaa" stroke-width=".8"></circle>
+<text x="535" y="117" font-family="Orbitron,sans-serif" font-size="7" fill="#5a9aaa" text-anchor="middle" letter-spacing="1">HP</text>
+<text x="577" y="117" font-family="Orbitron,sans-serif" font-size="7" fill="#4a9090" text-anchor="middle" letter-spacing="1">IP</text>
+<text x="619" y="117" font-family="Orbitron,sans-serif" font-size="7" fill="#3a8880" text-anchor="middle" letter-spacing="1">LP</text>
+<path d="M526,108 L548,108 L546,122 L528,122 Z" fill="#0d2035" stroke="#3a6080" stroke-width="1.2"></path>
+<rect id="turb-steam-glow" x="529" y="109" width="16" height="12" rx="2" fill="url(#turbSteamIn)"></rect>
+<path d="M560,207 L596,207 L596,208 L560,208 Z" fill="#0d2035" stroke="#3a6080" stroke-width="1"></path>
+<g opacity=".55" stroke="#6a9ab0" stroke-width=".8" fill="#0d2a40">
+  <polygon points="557,148 563,155 557,162"></polygon><polygon points="557,158 563,165 557,172"></polygon>
+  <polygon points="557,168 563,175 557,182"></polygon><polygon points="557,178 563,185 557,192"></polygon>
+</g>
+<g opacity=".55" stroke="#6a9ab0" stroke-width=".8" fill="#0d2a40">
+  <polygon points="599,143 606,151 599,159"></polygon><polygon points="599,155 606,163 599,171"></polygon>
+  <polygon points="599,167 606,175 599,183"></polygon><polygon points="599,179 606,187 599,195"></polygon>
+</g>
+<circle cx="535" cy="170" r="21" fill="#091828" stroke="#2a5070" stroke-width="1.2" opacity=".9"></circle>
+<circle cx="577" cy="170" r="26" fill="#08162a" stroke="#2a5070" stroke-width="1.2" opacity=".9"></circle>
+<circle cx="619" cy="170" r="30" fill="#071420" stroke="#2a5070" stroke-width="1.2" opacity=".9"></circle>
+<rect x="512" y="165" width="134" height="10" rx="5" fill="url(#turbShaft)" opacity=".9"></rect>
+<g id="tblades-hp" clip-path="url(#turbClip)"></g>
+<g id="tblades-ip" clip-path="url(#turbClip)"></g>
+<g id="tblades-lp" clip-path="url(#turbClip)"></g>
+<g id="turb-steam-fx" clip-path="url(#turbClip)"></g>
+<circle cx="535" cy="170" r="8" fill="url(#turbHub)" stroke="#6a9ab0" stroke-width="1.2"></circle>
+<circle cx="577" cy="170" r="10" fill="url(#turbHub)" stroke="#6a9ab0" stroke-width="1.2"></circle>
+<circle cx="619" cy="170" r="12" fill="url(#turbHub)" stroke="#6a9ab0" stroke-width="1.2"></circle>
+<circle cx="535" cy="170" r="2.5" fill="#c0d8e8"></circle>
+<circle cx="577" cy="170" r="3" fill="#c0d8e8"></circle>
+<circle cx="619" cy="170" r="3.5" fill="#c0d8e8"></circle>
+<rect x="646" y="163" width="10" height="14" rx="3" fill="#ffe66d" opacity=".85"></rect>
+<line x1="648" y1="166" x2="654" y2="166" stroke="#fff0a0" stroke-width="1"></line>
+<line x1="648" y1="170" x2="654" y2="170" stroke="#fff0a0" stroke-width="1"></line>
+<line x1="648" y1="174" x2="654" y2="174" stroke="#fff0a0" stroke-width="1"></line>
+<text class="lbl" x="578" y="222">Turbine</text>
+<g transform="translate(508,316)">
+  <rect x="0" y="0" width="136" height="20" rx="3" fill="#050c18" stroke="#1a4060" stroke-width=".8" opacity=".95"></rect>
+  <text x="10" y="13" font-family="Share Tech Mono,monospace" font-size="8" fill="#4a8aaa">RPM</text>
+  <text id="turb-rpm" x="43" y="13" font-family="Share Tech Mono,monospace" font-size="9" fill="#00e5ff">3,000</text>
+  <line x1="78" y1="2" x2="78" y2="18" stroke="#1a4060" stroke-width=".8"></line>
+  <text x="83" y="8" font-family="Share Tech Mono,monospace" font-size="6.5" fill="#3a7090">3-STAGE AXIAL</text>
+  <text x="83" y="16" font-family="Share Tech Mono,monospace" font-size="6.5" fill="#3a7090">STEAM TURBINE</text>
+</g>
+
+<!-- ═══════════════ GENERATOR ═══════════════ -->
+<rect id="gen-housing" x="654" y="110" width="162" height="122" rx="6" fill="#0a0e1e" stroke="#ffe66d" stroke-width="2" filter="url(#glow)"></rect>
+<line x1="656" y1="122" x2="814" y2="122" stroke="#1a2a3a" stroke-width=".8"></line>
+<line x1="656" y1="220" x2="814" y2="220" stroke="#1a2a3a" stroke-width=".8"></line>
+<text x="737" y="119" font-family="Orbitron,sans-serif" font-size="6.5" fill="#ffe66d" text-anchor="middle" letter-spacing="1.5" opacity=".7">CROSS-SECTION</text>
+<circle cx="737" cy="171" r="52" fill="url(#genStatorGrad)" stroke="#2a4560" stroke-width="2" clip-path="url(#genHousingClip)"></circle>
+<g id="gen-stator-svg" clip-path="url(#genClip)"></g>
+<g id="gen-field-svg" clip-path="url(#genClip)"></g>
+<g id="gen-rotor-svg" clip-path="url(#genClip)"></g>
+<g id="gen-coil-glow" clip-path="url(#genClip)"></g>
+<g id="gen-spark-layer" clip-path="url(#genHousingClip)"></g>
+<circle cx="737" cy="171" r="34" fill="none" stroke="#ffe66d" stroke-width="1" opacity=".12"></circle>
+<circle cx="737" cy="171" r="42" fill="url(#genAirGapGrad)" clip-path="url(#genClip)"></circle>
+<rect x="814" y="152" width="18" height="38" rx="3" fill="#0d1a2a" stroke="#ffe66d" stroke-width="1.2"></rect>
+<rect x="816" y="156" width="14" height="5" rx="1" fill="#ffe66d" opacity=".7"></rect>
+<rect x="816" y="164" width="14" height="5" rx="1" fill="#ffe66d" opacity=".7"></rect>
+<rect x="816" y="172" width="14" height="5" rx="1" fill="#ffe66d" opacity=".7"></rect>
+<rect x="816" y="180" width="14" height="5" rx="1" fill="#ffe66d" opacity=".6"></rect>
+<text x="823" y="200" font-family="Share Tech Mono,monospace" font-size="6" fill="#ffe66d" text-anchor="middle">OUT</text>
+<text class="lbl" x="737" y="242">Electric Generator</text>
+<g transform="translate(655,249)">
+  <rect x="0" y="0" width="160" height="20" rx="3" fill="#050c18" stroke="#1a4060" stroke-width=".8" opacity=".95"></rect>
+  <text x="8" y="13" font-family="Share Tech Mono,monospace" font-size="7.5" fill="#7eb8d8">V</text>
+  <text id="gen-volt" x="20" y="13" font-family="Share Tech Mono,monospace" font-size="9" fill="#ffe66d">11.0 kV</text>
+  <line x1="68" y1="2" x2="68" y2="18" stroke="#1a4060" stroke-width=".8"></line>
+  <text x="73" y="13" font-family="Share Tech Mono,monospace" font-size="7.5" fill="#7eb8d8">Hz</text>
+  <text id="gen-hz" x="87" y="13" font-family="Share Tech Mono,monospace" font-size="9" fill="#ffe66d">50.0</text>
+  <line x1="120" y1="2" x2="120" y2="18" stroke="#1a4060" stroke-width=".8"></line>
+  <circle cx="127" cy="9" r="3.5" fill="#ffe66d"><animate attributeName="opacity" values="1;.2;1" dur=".7s" repeatCount="indefinite"></animate></circle>
+  <text x="134" y="13" font-family="Share Tech Mono,monospace" font-size="6.5" fill="#ffe66d">AC</text>
+</g>
+
+<!-- ═══════════════ SECONDARY FEEDWATER PUMP ═══════════════ -->
+<circle cx="362" cy="452" r="22" fill="#0d1e35" stroke="#2a6090" stroke-width="2.5"></circle>
+<g id="pump-secondary" filter="url(#glow)">
+  <line x1="362" y1="436" x2="362" y2="452" stroke="#00ccff" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="362" y1="452" x2="377" y2="466" stroke="#00ccff" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="362" y1="452" x2="347" y2="466" stroke="#00ccff" stroke-width="3" stroke-linecap="round"></line>
+</g>
+<circle cx="362" cy="452" r="4" fill="#00ccff"></circle>
+<text class="lbl" x="362" y="487">Water Pump</text>
+<text class="lbl lbl-xs" x="362" y="499">(Secondary Loop)</text>
+
+<!-- ═══════════════ CONDENSER ═══════════════ -->
+<rect x="468" y="368" width="166" height="76" rx="8" fill="#0d1526" stroke="#1a6fff" stroke-width="2"></rect>
+<g opacity=".42" stroke="#1a6fff" stroke-width="1.5">
+  <line x1="490" y1="373" x2="490" y2="440"></line><line x1="505" y1="373" x2="505" y2="440"></line>
+  <line x1="520" y1="373" x2="520" y2="440"></line><line x1="535" y1="373" x2="535" y2="440"></line>
+  <line x1="550" y1="373" x2="550" y2="440"></line><line x1="565" y1="373" x2="565" y2="440"></line>
+  <line x1="580" y1="373" x2="580" y2="440"></line><line x1="595" y1="373" x2="595" y2="440"></line>
+  <line x1="610" y1="373" x2="610" y2="440"></line>
+</g>
+<rect x="632" y="367" width="9" height="13" rx="2" fill="#3a2010"></rect>
+<rect x="632" y="442" width="9" height="13" rx="2" fill="#0d2040"></rect>
+<text class="lbl" x="554" y="460">Condenser</text>
+
+<!-- ═══════════════ COOLING TOWER ═══════════════ -->
+<path d="M728,530 L760,392 Q780,358 800,392 L832,530 Z" fill="url(#towerGrad)" stroke="#2a6090" stroke-width="2"></path>
+<ellipse cx="780" cy="393" rx="20" ry="7" fill="#0d2535" stroke="#2a6090" stroke-width="1.5"></ellipse>
+<rect x="730" y="518" width="100" height="26" rx="5" fill="#0e2540" stroke="#1a6fff" stroke-width="1.5"></rect>
+<g opacity=".55">
+  <line x1="760" y1="518" x2="752" y2="497" stroke="#1a6fff" stroke-width="1.3"></line>
+  <line x1="772" y1="518" x2="770" y2="494" stroke="#1a6fff" stroke-width="1.3"></line>
+  <line x1="780" y1="518" x2="780" y2="492" stroke="#1a6fff" stroke-width="1.3"></line>
+  <line x1="790" y1="518" x2="792" y2="494" stroke="#1a6fff" stroke-width="1.3"></line>
+  <line x1="800" y1="518" x2="808" y2="497" stroke="#1a6fff" stroke-width="1.3"></line>
+</g>
+<ellipse class="spuff" cx="773" cy="393" rx="14" ry="9" fill="#a8d8ea"></ellipse>
+<ellipse class="spuff" cx="780" cy="386" rx="18" ry="11" fill="#a8d8ea"></ellipse>
+<ellipse class="spuff" cx="787" cy="393" rx="12" ry="8" fill="#a8d8ea"></ellipse>
+<text class="lbl-title" x="780" y="590">COOLING TOWER</text>
+<text class="lbl lbl-xs" x="780" y="530">Cool Water Basin</text>
+<text class="lbl lbl-xs" x="840" y="372">Non-radioactive</text>
+<text class="lbl lbl-xs" x="840" y="384">Water Vapour ↑</text>
+<text class="lbl lbl-xs" x="614" y="614">← Intake from Lake / River</text>
+<line x1="500" y1="609" x2="726" y2="609" stroke="#1a6fff" stroke-width="2"></line>
+
+<!-- ═══════════════ TRANSMISSION TOWERS ═══════════════ -->
+<g stroke="#ffe66d" stroke-width="1.5" opacity=".85">
+  <line x1="968" y1="58" x2="968" y2="130"></line><line x1="955" y1="86" x2="981" y2="86"></line>
+  <line x1="957" y1="76" x2="979" y2="76"></line><line x1="952" y1="130" x2="984" y2="130"></line>
+  <line x1="959" y1="130" x2="955" y2="158"></line><line x1="977" y1="130" x2="981" y2="158"></line>
+  <line x1="1018" y1="42" x2="1018" y2="114"></line><line x1="1005" y1="68" x2="1031" y2="68"></line>
+  <line x1="1007" y1="58" x2="1029" y2="58"></line><line x1="1002" y1="114" x2="1034" y2="114"></line>
+  <line x1="1009" y1="114" x2="1005" y2="142"></line><line x1="1027" y1="114" x2="1031" y2="142"></line>
+</g>
+<text class="lbl" x="1000" y="165">Transmission</text><text class="lbl" x="1000" y="177">Lines</text>
+
+<!-- ═══════════════ FLOW LABELS ═══════════════ -->
+<text class="lbl lbl-xs" x="320" y="125">Hot Coolant →</text>
+<text class="lbl lbl-xs" x="320" y="280">← Cool Coolant</text>
+<text class="lbl lbl-xs" x="490" y="100">Steam →</text>
+<text class="lbl lbl-xs" x="604" y="250">Exhaust ↓</text>
+<text class="lbl lbl-xs" x="427" y="382">↑ Feedwater</text>
+<text class="lbl lbl-xs" x="682" y="358">Warm Water →</text>
+<text class="lbl lbl-xs" x="674" y="544">← Cool Water</text>
+
+<!-- ═══════════════ STATUS INDICATORS ═══════════════ -->
+<circle cx="480" cy="18" r="5" fill="#00ff88"><animate attributeName="opacity" values="1;.3;1" dur="1.5s" repeatCount="indefinite"></animate></circle>
+<text class="lbl" x="510" y="19" text-anchor="start" fill="#00ff88">REACTOR ACTIVE</text>
+<circle cx="660" cy="18" r="5" fill="#ffe66d"><animate attributeName="opacity" values="1;.3;1" dur="1s" repeatCount="indefinite"></animate></circle>
+<text class="lbl" x="688" y="19" text-anchor="start" fill="#ffe66d">GENERATING</text>
+
+<!-- ═══════════════ FLOW PARTICLES ═══════════════ -->
+<circle r="5" fill="#ff5520" filter="url(#glow)"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#mp-hot"></mpath></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="2.2s" repeatCount="indefinite"></animate></circle>
+<circle r="5" fill="#ff5520" filter="url(#glow)"><animateMotion dur="2.2s" begin=".73s" repeatCount="indefinite"><mpath href="#mp-hot"></mpath></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="2.2s" begin=".73s" repeatCount="indefinite"></animate></circle>
+<circle r="5" fill="#ff5520" filter="url(#glow)"><animateMotion dur="2.2s" begin="1.47s" repeatCount="indefinite"><mpath href="#mp-hot"></mpath></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="2.2s" begin="1.47s" repeatCount="indefinite"></animate></circle>
+<circle r="5" fill="#3388ff" filter="url(#glow)"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#mp-cool"></mpath></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="3s" repeatCount="indefinite"></animate></circle>
+<circle r="5" fill="#3388ff" filter="url(#glow)"><animateMotion dur="3s" begin="1s" repeatCount="indefinite"><mpath href="#mp-cool"></mpath></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="3s" begin="1s" repeatCount="indefinite"></animate></circle>
+<circle r="5" fill="#3388ff" filter="url(#glow)"><animateMotion dur="3s" begin="2s" repeatCount="indefinite"><mpath href="#mp-cool"></mpath></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="3s" begin="2s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#90d8f0" filter="url(#glow)"><animateMotion dur="1.5s" repeatCount="indefinite"><mpath href="#mp-steam"></mpath></animateMotion><animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.1;.9;1" dur="1.5s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#90d8f0" filter="url(#glow)"><animateMotion dur="1.5s" begin=".75s" repeatCount="indefinite"><mpath href="#mp-steam"></mpath></animateMotion><animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.1;.9;1" dur="1.5s" begin=".75s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#90d8f0" filter="url(#glow)"><animateMotion dur="2s" repeatCount="indefinite"><mpath href="#mp-exhaust"></mpath></animateMotion><animate attributeName="opacity" values="0;.8;.8;0" keyTimes="0;.1;.9;1" dur="2s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#90d8f0" filter="url(#glow)"><animateMotion dur="2s" begin="1s" repeatCount="indefinite"><mpath href="#mp-exhaust"></mpath></animateMotion><animate attributeName="opacity" values="0;.8;.8;0" keyTimes="0;.1;.9;1" dur="2s" begin="1s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#1a6fff" filter="url(#glow)"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#mp-feed"></mpath></animateMotion><animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.1;.9;1" dur="2.8s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#1a6fff" filter="url(#glow)"><animateMotion dur="2.8s" begin=".93s" repeatCount="indefinite"><mpath href="#mp-feed"></mpath></animateMotion><animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.1;.9;1" dur="2.8s" begin=".93s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#1a6fff" filter="url(#glow)"><animateMotion dur="2.8s" begin="1.87s" repeatCount="indefinite"><mpath href="#mp-feed"></mpath></animateMotion><animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.1;.9;1" dur="2.8s" begin="1.87s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#ff7030" filter="url(#glow)"><animateMotion dur="2s" repeatCount="indefinite"><mpath href="#mp-warm"></mpath></animateMotion><animate attributeName="opacity" values="0;.85;.85;0" keyTimes="0;.1;.9;1" dur="2s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#ff7030" filter="url(#glow)"><animateMotion dur="2s" begin="1s" repeatCount="indefinite"><mpath href="#mp-warm"></mpath></animateMotion><animate attributeName="opacity" values="0;.85;.85;0" keyTimes="0;.1;.9;1" dur="2s" begin="1s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#0055dd" filter="url(#glow)"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#mp-cwin"></mpath></animateMotion><animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.1;.9;1" dur="2.4s" repeatCount="indefinite"></animate></circle>
+<circle r="4" fill="#0055dd" filter="url(#glow)"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite"><mpath href="#mp-cwin"></mpath></animateMotion><animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.1;.9;1" dur="2.4s" begin="1.2s" repeatCount="indefinite"></animate></circle>
+<circle r="3" fill="#ffe66d" filter="url(#glow)"><animateMotion dur="1.1s" repeatCount="indefinite"><mpath href="#mp-elec"></mpath></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="1.1s" repeatCount="indefinite"></animate></circle>
+<circle r="3" fill="#ffe66d" filter="url(#glow)"><animateMotion dur="1.1s" begin=".55s" repeatCount="indefinite"><mpath href="#mp-elec"></mpath></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="1.1s" begin=".55s" repeatCount="indefinite"></animate></circle>
+
+</svg>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="ldot" style="background:#ff4500;box-shadow:0 0 6px #ff4500"></div><span>Hot Primary Coolant</span></div>
+  <div class="legend-item"><div class="ldot" style="background:#1a6fff;box-shadow:0 0 6px #1a6fff"></div><span>Cool Water / Feedwater</span></div>
+  <div class="legend-item"><div class="ldot" style="background:#90d8f0;box-shadow:0 0 6px #90d8f0"></div><span>Steam</span></div>
+  <div class="legend-item"><div class="ldot" style="background:#ffe66d;box-shadow:0 0 6px #ffe66d"></div><span>Electricity</span></div>
+  <div class="legend-item"><div class="ldot" style="background:#00ff88;box-shadow:0 0 6px #00ff88"></div><span>Nuclear Core / Neutrons</span></div>
+  <div class="legend-item"><div class="ldot" style="background:#0099ff;box-shadow:0 0 6px #0099ff88"></div><span>Cherenkov Radiation</span></div>
+  <div class="legend-item"><div class="ldot" style="background:#ff7030;box-shadow:0 0 6px #ff703055"></div><span>Warm Condenser Water</span></div>
+</div>
+
+
+
+  </div>
+  <!-- END NUKE DIAGRAM INJECTION -->
+  
+=======
+        <!-- Plant SVG -->
+        <div class="pp-reactor-svg-wrap">
+          <svg viewBox="0 0 520 180" aria-label="Nuclear plant primary and secondary loops" id="c26PlantSvg">
+            <!-- ─── DEFS ─── -->
+            <defs>
+              <filter id="npp-glow-purple" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="2.2" result="blur"></feGaussianBlur>
+                <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+              </filter>
+              <filter id="npp-glow-cyan" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="2.5" result="blur"></feGaussianBlur>
+                <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+              </filter>
+              <filter id="npp-glow-green" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="2" result="blur"></feGaussianBlur>
+                <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+              </filter>
+              <radialGradient id="npp-core-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#facc15" stop-opacity="0.7"></stop>
+                <stop offset="55%" stop-color="#a78bfa" stop-opacity="0.4"></stop>
+                <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"></stop>
+              </radialGradient>
+            </defs>
+
+            <!-- ─── PRIMARY LOOP ─── -->
+            <g id="c26primary">
+              <!-- Pulsing reactor glow behind box -->
+              <ellipse cx="50" cy="75" rx="30" ry="35" fill="url(#npp-core-glow)">
+                <animate attributeName="rx" values="30;38;30" dur="2s" repeatCount="indefinite"></animate>
+                <animate attributeName="ry" values="35;43;35" dur="2s" repeatCount="indefinite"></animate>
+                <animate attributeName="opacity" values="0.65;1;0.65" dur="2s" repeatCount="indefinite"></animate>
+              </ellipse>
+              <rect x="20" y="40" width="60" height="70" rx="6" fill="rgba(124,58,237,0.15)" stroke="#a78bfa" stroke-width="1.5"></rect>
+              <text x="50" y="70" text-anchor="middle" fill="#a78bfa" font-size="8" font-family="Orbitron">REACTOR</text>
+              <text x="50" y="82" text-anchor="middle" fill="#7c3aed" font-size="6" font-family="Share Tech Mono">☢️ core</text>
+              <!-- Spinning radioactive wedges inside reactor -->
+              <g transform="translate(50,63)">
+                <g><path d="M0,-9 L2.5,-3.5 L-2.5,-3.5 Z" fill="#facc15" opacity="0.85"></path>
+                   <path d="M0,-9 L2.5,-3.5 L-2.5,-3.5 Z" fill="#facc15" opacity="0.85" transform="rotate(120)"></path>
+                   <path d="M0,-9 L2.5,-3.5 L-2.5,-3.5 Z" fill="#facc15" opacity="0.85" transform="rotate(240)"></path>
+                   <circle cx="0" cy="0" r="2" fill="#facc15" opacity="0.9"></circle>
+                   <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3.5s" repeatCount="indefinite"></animateTransform>
+                </g>
+              </g>
+
+              <!-- Primary pump -->
+              <circle cx="50" cy="145" r="12" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1"></circle>
+              <text x="50" y="149" text-anchor="middle" fill="#a78bfa" font-size="6" font-family="Share Tech Mono">PUMP</text>
+              <!-- Pump impeller spin -->
+              <g transform="translate(50,145)"><g>
+                <line x1="0" y1="-7" x2="0" y2="-3.5" stroke="#c084fc" stroke-width="2" stroke-linecap="round"></line>
+                <line x1="0" y1="-7" x2="0" y2="-3.5" stroke="#c084fc" stroke-width="2" stroke-linecap="round" transform="rotate(120)"></line>
+                <line x1="0" y1="-7" x2="0" y2="-3.5" stroke="#c084fc" stroke-width="2" stroke-linecap="round" transform="rotate(240)"></line>
+                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="2s" repeatCount="indefinite"></animateTransform>
+              </g></g>
+
+              <!-- Steam generator -->
+              <rect x="120" y="30" width="50" height="80" rx="4" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"></rect>
+              <text x="145" y="60" text-anchor="middle" fill="#a78bfa" font-size="7" font-family="Share Tech Mono">STEAM</text>
+              <text x="145" y="72" text-anchor="middle" fill="#a78bfa" font-size="7" font-family="Share Tech Mono">GEN</text>
+              <text x="145" y="84" text-anchor="middle" fill="#facc15" font-size="6" font-family="Share Tech Mono">⇌ heat</text>
+
+              <!-- Primary pipes (hot + cold leg) -->
+              <line x1="80" y1="55" x2="120" y2="55" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,2"></line>
+              <line x1="120" y1="95" x2="80" y2="95" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,2"></line>
+              <line x1="50" y1="110" x2="50" y2="133" stroke="#7c3aed" stroke-width="1" stroke-dasharray="3,2"></line>
+              <line x1="50" y1="157" x2="50" y2="170" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3,2"></line>
+
+              <!-- Radioactive badge -->
+              <rect x="10" y="160" width="80" height="14" rx="7" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="0.5"></rect>
+              <text x="50" y="170" text-anchor="middle" fill="#a78bfa" font-size="6" font-family="Share Tech Mono">☢ RADIOACTIVE</text>
+            </g>
+
+            <!-- ─── SECONDARY LOOP ─── -->
+            <g id="c26secondary">
+              <!-- Turbine -->
+              <polygon points="200,30 260,45 260,75 200,90" fill="rgba(0,245,255,0.08)" stroke="#00f5ff" stroke-width="1.5"></polygon>
+              <text x="230" y="65" text-anchor="middle" fill="#00f5ff" font-size="8" font-family="Orbitron">TURBINE</text>
+              <!-- Spinning turbine blades -->
+              <g transform="translate(221,60)"><g>
+                <rect x="-1" y="-17" width="2" height="14" rx="1" fill="#00f5ff" opacity="0.65"></rect>
+                <rect x="-1" y="-17" width="2" height="14" rx="1" fill="#00f5ff" opacity="0.65" transform="rotate(60)"></rect>
+                <rect x="-1" y="-17" width="2" height="14" rx="1" fill="#00f5ff" opacity="0.65" transform="rotate(120)"></rect>
+                <rect x="-1" y="-17" width="2" height="14" rx="1" fill="#00f5ff" opacity="0.65" transform="rotate(180)"></rect>
+                <rect x="-1" y="-17" width="2" height="14" rx="1" fill="#00f5ff" opacity="0.65" transform="rotate(240)"></rect>
+                <rect x="-1" y="-17" width="2" height="14" rx="1" fill="#00f5ff" opacity="0.65" transform="rotate(300)"></rect>
+                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="0.75s" repeatCount="indefinite"></animateTransform>
+              </g></g>
+
+              <!-- Generator -->
+              <circle cx="300" cy="60" r="20" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="1.5"></circle>
+              <text x="300" y="64" text-anchor="middle" fill="#00ff88" font-size="8" font-family="Orbitron">GEN</text>
+              <!-- Generator rotor ellipses -->
+              <g transform="translate(300,60)"><g>
+                <ellipse rx="13" ry="5" fill="none" stroke="#00ff88" stroke-width="1.2" opacity="0.55"></ellipse>
+                <ellipse rx="13" ry="5" fill="none" stroke="#00ff88" stroke-width="1.2" opacity="0.55" transform="rotate(45)"></ellipse>
+                <ellipse rx="13" ry="5" fill="none" stroke="#00ff88" stroke-width="1.2" opacity="0.55" transform="rotate(90)"></ellipse>
+                <ellipse rx="13" ry="5" fill="none" stroke="#00ff88" stroke-width="1.2" opacity="0.55" transform="rotate(135)"></ellipse>
+                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1.1s" repeatCount="indefinite"></animateTransform>
+              </g></g>
+
+              <!-- Condenser -->
+              <rect x="210" y="120" width="50" height="35" rx="4" fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="1"></rect>
+              <text x="235" y="141" text-anchor="middle" fill="#60a5fa" font-size="7" font-family="Share Tech Mono">COND</text>
+
+              <!-- Feed pump -->
+              <circle cx="175" cy="137" r="10" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="1"></circle>
+              <text x="175" y="141" text-anchor="middle" fill="#06b6d4" font-size="5" font-family="Share Tech Mono">FP</text>
+              <!-- Feed pump impeller spin -->
+              <g transform="translate(175,137)"><g>
+                <line x1="0" y1="-6" x2="0" y2="-3" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round"></line>
+                <line x1="0" y1="-6" x2="0" y2="-3" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" transform="rotate(120)"></line>
+                <line x1="0" y1="-6" x2="0" y2="-3" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" transform="rotate(240)"></line>
+                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="2.2s" repeatCount="indefinite"></animateTransform>
+              </g></g>
+
+              <!-- Secondary pipes -->
+              <line x1="170" y1="55" x2="200" y2="55" stroke="#facc15" stroke-width="1.5" stroke-dasharray="4,2"></line>
+              <line x1="260" y1="60" x2="280" y2="60" stroke="#00f5ff" stroke-width="1.5" stroke-dasharray="4,2"></line>
+              <line x1="235" y1="90" x2="235" y2="120" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"></line>
+              <line x1="210" y1="137" x2="185" y2="137" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3,2"></line>
+              <line x1="165" y1="137" x2="145" y2="110" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3,2"></line>
+
+              <!-- Non-radioactive badge -->
+              <rect x="195" y="160" width="80" height="14" rx="7" fill="rgba(0,245,255,0.1)" stroke="#00f5ff" stroke-width="0.5"></rect>
+              <text x="235" y="170" text-anchor="middle" fill="#00f5ff" font-size="6" font-family="Share Tech Mono">NON-RADIOACTIVE</text>
+            </g>
+
+            <!-- ─── COOLING TOWER ─── -->
+            <g>
+              <path d="M370,155 Q380,100 375,80 L395,80 Q390,100 400,155 Z" fill="rgba(229,231,235,0.05)" stroke="#e5e7eb" stroke-width="1"></path>
+              <text x="385" y="145" text-anchor="middle" fill="#e5e7eb" font-size="6" font-family="Share Tech Mono">COOLING</text>
+              <text x="385" y="155" text-anchor="middle" fill="#e5e7eb" font-size="6" font-family="Share Tech Mono">TOWER</text>
+              <!-- Steam puffs -->
+              <circle cx="381" cy="74" r="4" fill="rgba(229,231,235,0.15)" stroke="rgba(229,231,235,0.3)" stroke-width="0.5">
+                <animate attributeName="cy" values="74;55;38" dur="2.5s" repeatCount="indefinite"></animate>
+                <animate attributeName="r" values="4;7;10" dur="2.5s" repeatCount="indefinite"></animate>
+                <animate attributeName="opacity" values="0.6;0.3;0" dur="2.5s" repeatCount="indefinite"></animate>
+              </circle>
+              <circle cx="388" cy="70" r="3" fill="rgba(229,231,235,0.12)" stroke="rgba(229,231,235,0.25)" stroke-width="0.5">
+                <animate attributeName="cy" values="70;52;36" dur="3s" repeatCount="indefinite" begin="0.9s"></animate>
+                <animate attributeName="r" values="3;6;9" dur="3s" repeatCount="indefinite" begin="0.9s"></animate>
+                <animate attributeName="opacity" values="0.5;0.25;0" dur="3s" repeatCount="indefinite" begin="0.9s"></animate>
+              </circle>
+              <circle cx="377" cy="71" r="3.5" fill="rgba(229,231,235,0.1)" stroke="rgba(229,231,235,0.2)" stroke-width="0.5">
+                <animate attributeName="cy" values="71;53;35" dur="3.5s" repeatCount="indefinite" begin="1.6s"></animate>
+                <animate attributeName="r" values="3.5;7;10" dur="3.5s" repeatCount="indefinite" begin="1.6s"></animate>
+                <animate attributeName="opacity" values="0.45;0.2;0" dur="3.5s" repeatCount="indefinite" begin="1.6s"></animate>
+              </circle>
+              <line x1="260" y1="137" x2="370" y2="137" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"></line>
+            </g>
+
+            <!-- ─── TRANSMISSION ─── -->
+            <g>
+              <rect x="340" y="45" width="35" height="30" rx="3" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"></rect>
+              <text x="357" y="64" text-anchor="middle" fill="#a78bfa" font-size="6" font-family="Share Tech Mono">XFMR</text>
+              <line x1="320" y1="60" x2="340" y2="60" stroke="#00ff88" stroke-width="1" stroke-dasharray="3,2"></line>
+              <rect x="395" y="48" width="30" height="24" rx="3" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="1"></rect>
+              <text x="410" y="64" text-anchor="middle" fill="#ef4444" font-size="6" font-family="Orbitron">GRID</text>
+              <!-- Grid blinking dot -->
+              <circle cx="407" cy="50" r="3" fill="#ef4444">
+                <animate attributeName="opacity" values="1;0.15;1" dur="0.95s" repeatCount="indefinite"></animate>
+              </circle>
+              <line x1="375" y1="60" x2="395" y2="60" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3,2"></line>
+              <text x="450" y="64" fill="#facc15" font-size="14">🏙️</text>
+              <line x1="425" y1="60" x2="445" y2="60" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2"></line>
+            </g>
+
+            <!-- ─── INVISIBLE MOTION PATHS ─── -->
+            <path id="npp-p-hot" d="M80,55  L120,55" fill="none" stroke="none"></path>
+            <path id="npp-p-cold" d="M120,95  L80,95" fill="none" stroke="none"></path>
+            <path id="npp-p-down" d="M50,110  L50,157" fill="none" stroke="none"></path>
+            <path id="npp-p-steam" d="M170,55  L200,55" fill="none" stroke="none"></path>
+            <path id="npp-p-t2g" d="M260,60  L280,60" fill="none" stroke="none"></path>
+            <path id="npp-p-gen2grid" d="M320,60  L345,60 L375,60 L395,60 L425,60" fill="none" stroke="none"></path>
+            <path id="npp-p-t2cond" d="M235,90  L235,120" fill="none" stroke="none"></path>
+            <path id="npp-p-feed" d="M210,137 L185,137 L165,137 L145,110" fill="none" stroke="none"></path>
+            <path id="npp-p-cool" d="M260,137 L370,137" fill="none" stroke="none"></path>
+
+            <!-- ─── FLOWING PARTICLES ─── -->
+            <!-- HOT LEG (reactor → steam gen) — bright purple -->
+            <circle r="3.5" fill="#c084fc" filter="url(#npp-glow-purple)">
+              <animateMotion dur="1.6s" repeatCount="indefinite" begin="0s"><mpath href="#npp-p-hot"></mpath></animateMotion>
+            </circle>
+            <circle r="2.5" fill="#e879f9" opacity="0.75">
+              <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.55s"><mpath href="#npp-p-hot"></mpath></animateMotion>
+            </circle>
+
+            <!-- COLD LEG (steam gen → reactor) — deep violet -->
+            <circle r="3" fill="#7c3aed" filter="url(#npp-glow-purple)">
+              <animateMotion dur="2s" repeatCount="indefinite" begin="0s"><mpath href="#npp-p-cold"></mpath></animateMotion>
+            </circle>
+            <circle r="2" fill="#a78bfa" opacity="0.65">
+              <animateMotion dur="2s" repeatCount="indefinite" begin="0.8s"><mpath href="#npp-p-cold"></mpath></animateMotion>
+            </circle>
+
+            <!-- PUMP RETURN (down column) -->
+            <circle r="2.5" fill="#a78bfa" opacity="0.8" filter="url(#npp-glow-purple)">
+              <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.3s"><mpath href="#npp-p-down"></mpath></animateMotion>
+            </circle>
+
+            <!-- STEAM LINE (steam gen → turbine) — gold -->
+            <circle r="3.5" fill="#facc15" filter="url(#npp-glow-cyan)">
+              <animateMotion dur="1.2s" repeatCount="indefinite" begin="0s"><mpath href="#npp-p-steam"></mpath></animateMotion>
+            </circle>
+            <circle r="2.5" fill="#fde68a" opacity="0.75">
+              <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.45s"><mpath href="#npp-p-steam"></mpath></animateMotion>
+            </circle>
+
+            <!-- TURBINE → GEN — cyan -->
+            <circle r="3" fill="#00f5ff" filter="url(#npp-glow-cyan)">
+              <animateMotion dur="0.9s" repeatCount="indefinite" begin="0s"><mpath href="#npp-p-t2g"></mpath></animateMotion>
+            </circle>
+
+            <!-- GEN → GRID — green electricity -->
+            <circle r="3.5" fill="#00ff88" filter="url(#npp-glow-green)">
+              <animateMotion dur="1.1s" repeatCount="indefinite" begin="0s"><mpath href="#npp-p-gen2grid"></mpath></animateMotion>
+            </circle>
+            <circle r="2" fill="#c084fc" opacity="0.7">
+              <animateMotion dur="1.1s" repeatCount="indefinite" begin="0.38s"><mpath href="#npp-p-gen2grid"></mpath></animateMotion>
+            </circle>
+
+            <!-- TURBINE → CONDENSER — cold blue -->
+            <circle r="2.5" fill="#93c5fd" opacity="0.85">
+              <animateMotion dur="1.2s" repeatCount="indefinite" begin="0s"><mpath href="#npp-p-t2cond"></mpath></animateMotion>
+            </circle>
+
+            <!-- FEEDWATER LOOP (cond → FP → steam gen) — cyan -->
+            <circle r="3" fill="#06b6d4" filter="url(#npp-glow-cyan)">
+              <animateMotion dur="2.2s" repeatCount="indefinite" begin="0s"><mpath href="#npp-p-feed"></mpath></animateMotion>
+            </circle>
+            <circle r="2" fill="#22d3ee" opacity="0.65">
+              <animateMotion dur="2.2s" repeatCount="indefinite" begin="0.85s"><mpath href="#npp-p-feed"></mpath></animateMotion>
+            </circle>
+
+            <!-- COOLING (cond → cooling tower) — blue -->
+            <circle r="2" fill="#60a5fa" opacity="0.8">
+              <animateMotion dur="2.6s" repeatCount="indefinite" begin="0s"><mpath href="#npp-p-cool"></mpath></animateMotion>
+            </circle>
+          </svg>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 03e68ba807ce888c12bd6ffa627b31700e71cb23
+        </div>
+
+        <!-- Reactor Type Selector -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin:10px 0 6px;">REACTOR TYPE SELECTOR</div>
+        <div class="pp-reactor-tabs">
+          <button class="pp-reactor-tab active" onclick="switchReactorC26(this,'pwr')">PWR</button>
+          <button class="pp-reactor-tab" onclick="switchReactorC26(this,'bwr')">BWR</button>
+          <button class="pp-reactor-tab" onclick="switchReactorC26(this,'phwr')">PHWR/CANDU</button>
+          <button class="pp-reactor-tab" onclick="switchReactorC26(this,'fbr')">LMFBR</button>
+        </div>
+        <div id="c26ReactorInfo" style="padding:8px;background:rgba(0,0,0,0.15);border-radius:6px;font-size:11px;color:var(--pp-muted);">
+          <strong style="color:#a78bfa">PWR (Pressurised Water Reactor):</strong> Coolant is light water under high pressure (~155 bar) — stays liquid at ~320°C. Two-loop design. Most common reactor type worldwide. Uses enriched uranium fuel.
+        </div>
+
+        <!-- Reactor Heat Output Calculator -->
+        <div style="padding:12px;background:rgba(0,0,0,0.2);border:1px solid var(--pp-border);border-radius:8px;margin-top:10px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">REACTOR HEAT OUTPUT: Q = ṁ·Cp·ΔT</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">ṁ (kg/s)
+              <input type="number" class="pp-input-sm" id="c26mc" value="5000" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">Cp (kJ/kg·K)
+              <input type="number" class="pp-input-sm" id="c26cp" value="5.0" step="0.1" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">T<sub>in</sub> (°C)
+              <input type="number" class="pp-input-sm" id="c26tin" value="280" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">T<sub>out</sub> (°C)
+              <input type="number" class="pp-input-sm" id="c26tout" value="320" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="calcReactorHeatC26()" style="margin-top:8px;width:100%;">Calculate Q<sub>reactor</sub></button>
+          <div id="c26HeatOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m3-nuclear" id="c27">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#a78bfa;font-size:14px;">⚖️</span>
+        Module 3 · Nuclear vs Thermal Comparison
+      </div>
+
+      <div class="pp-definition-box">
+        Nuclear and thermal power plants differ fundamentally in fuel, cost structure, environmental impact, and operational characteristics. Nuclear excels at <strong>base load</strong> with near-zero emissions but faces challenges in waste disposal and high capital cost.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Comparison Table</div>
+        <table class="pp-data-table">
+          <tbody><tr><th>Parameter</th><th style="color:#a78bfa">Nuclear</th><th style="color:#f97316">Thermal</th></tr>
+          <tr><td>Fuel</td><td>U-235, Pu-239 (tiny)</td><td>Coal, oil, gas (bulk)</td></tr>
+          <tr><td>Energy/atom</td><td>200 MeV (fission)</td><td>~4 eV (combustion)</td></tr>
+          <tr><td>Fuel cost</td><td>Very low</td><td>High</td></tr>
+          <tr><td>Capital cost</td><td>Very high</td><td>Moderate</td></tr>
+          <tr><td>CO₂ Pollution</td><td>None</td><td>High (CO₂, SO₂, ash)</td></tr>
+          <tr><td>Radiation risk</td><td>Yes (if containment fails)</td><td>None</td></tr>
+          <tr><td>Load type</td><td>Base load (constant)</td><td>Base + Peak load</td></tr>
+          <tr><td>Efficiency</td><td>33–35%</td><td>35–42%</td></tr>
+          <tr><td>Waste</td><td>Radioactive (critical)</td><td>Ash (simpler)</td></tr>
+          <tr><td>India capacity</td><td>6,780 MW (1.8%)</td><td>2,31,421 MW (61.1%)</td></tr>
+        </tbody></table>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Fission vs Fusion</div>
+        <div class="pp-formula-row">$$\text{Fission: } ^{235}U \rightarrow \text{splits (current technology)}$$</div>
+        <div class="pp-formula-row">$$\text{Fusion: } ^2H + ^3H \rightarrow ^4He + n \quad \text{(future — ITER)}$$</div>
+        <div class="pp-formula-row">$$Q_{fusion} &gt; Q_{fission} \;\text{per kg of fuel}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-27" style="min-height:260px;">
+        <div class="pp-anim-label">⚖️ Nuclear vs Thermal Comparison</div>
+
+        <!-- Comparison Bars -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">SIDE-BY-SIDE COMPARISON</div>
+        <div class="pp-compare-rows" id="c27Bars">
+          <div class="pp-compare-row">
+            <span class="pp-compare-param">FUEL COST</span>
+            <div class="pp-compare-pair">
+              <div class="pp-compare-bar" style="width:15%;background:#a78bfa;">Nuclear ●</div>
+              <div class="pp-compare-bar" style="width:80%;background:#f97316;">Thermal ●●●●</div>
+            </div>
+          </div>
+          <div class="pp-compare-row">
+            <span class="pp-compare-param">CAPITAL COST</span>
+            <div class="pp-compare-pair">
+              <div class="pp-compare-bar" style="width:85%;background:#a78bfa;">Nuclear ●●●●●</div>
+              <div class="pp-compare-bar" style="width:50%;background:#f97316;">Thermal ●●●</div>
+            </div>
+          </div>
+          <div class="pp-compare-row">
+            <span class="pp-compare-param">CO₂ EMISSIONS</span>
+            <div class="pp-compare-pair">
+              <div class="pp-compare-bar" style="width:2%;background:#00ff88;min-width:35px;">0 ✓</div>
+              <div class="pp-compare-bar" style="width:90%;background:#ef4444;">HIGH ✗</div>
+            </div>
+          </div>
+          <div class="pp-compare-row">
+            <span class="pp-compare-param">EFFICIENCY</span>
+            <div class="pp-compare-pair">
+              <div class="pp-compare-bar" style="width:34%;background:#a78bfa;">33–35%</div>
+              <div class="pp-compare-bar" style="width:42%;background:#f97316;">35–42%</div>
+            </div>
+          </div>
+          <div class="pp-compare-row">
+            <span class="pp-compare-param">INDIA SHARE</span>
+            <div class="pp-compare-pair">
+              <div class="pp-compare-bar" style="width:5%;background:#a78bfa;min-width:40px;">1.8%</div>
+              <div class="pp-compare-bar" style="width:61%;background:#f97316;">61.1%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nuclear vs Coal Fuel Calculator -->
+        <div style="padding:12px;background:rgba(0,0,0,0.2);border:1px solid var(--pp-border);border-radius:8px;margin-top:12px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">NUCLEAR vs COAL FUEL REQUIREMENT</div>
+          <label style="font-size:10px;color:var(--pp-muted);">Plant Size (MW)
+            <input type="number" class="pp-input-sm" id="c27plantMW" value="1000" style="width:100%;margin-top:2px;">
+          </label>
+          <button class="pp-calc-btn" onclick="calcNucVsCoalC27()" style="margin-top:8px;width:100%;">Compare Fuel Requirements</button>
+          <div id="c27CompOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#00ff88;min-height:20px;line-height:1.6;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m3-nuclear" id="c28">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#a78bfa;font-size:14px;">📊</span>
+        Module 3 · Module 3 Complete Reference
+      </div>
+
+      <div class="pp-definition-box">
+        Comprehensive reference combining all Module 3 formulas — coal classification, nuclear fission, reactor components, shielding, and plant comparison — with interactive quiz and master calculator.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Coal Quick Reference</div>
+        <div class="pp-formula-row">$$\text{Peat: } 3{,}000 \;|\; \text{Lignite: } 13{,}800\text{–}17{,}600 \;|\; \text{Sub-bit: } 18{,}000\text{–}23{,}000\;\text{kJ/kg}$$</div>
+        <div class="pp-formula-row">$$\text{Bituminous: } 23{,}000\text{–}34{,}000 \;|\; \text{Semi-bit: } 27{,}000\text{–}35{,}000 \;|\; \text{Semi-anth: } 33{,}500\text{–}34{,}750\;\text{kJ/kg}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Nuclear Key Formulas</div>
+        <div class="pp-formula-row">$$E = mc^2 \quad;\quad {}^{235}_{92}\text{U} + n \rightarrow \text{products} + 200\;\text{MeV}$$</div>
+        <div class="pp-formula-row">$$I = I_0 e^{-\mu x} \quad;\quad k_{eff} = 1 \;\text{(criticality)}$$</div>
+        <div class="pp-formula-row">$$Q_{reactor} = \dot{m}_c c_p \Delta T$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Moderator Ranking</div>
+        <div class="pp-formula-row">$$D_2O\;\text{(best)} &gt; \text{Graphite} &gt; \text{Beryllium} &gt; H_2O$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Control Rod Materials</div>
+        <div class="pp-formula-row">$$\text{Boron (B)},\;\text{Cadmium (Cd)},\;\text{Hafnium (Hf)}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-28" style="min-height:260px;">
+        <div class="pp-anim-label">📊 Quiz &amp; Reference</div>
+
+        <!-- Quiz Section -->
+        <div class="pp-quiz-zone" id="c28Quiz">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:10px;">QUICK QUIZ — TEST YOUR KNOWLEDGE</div>
+          <div id="c28QuizContent">
+            <div class="pp-quiz-q" id="c28qText">Q1: CV = 28,000 kJ/kg — which coal grade?</div>
+            <div class="pp-quiz-opts" id="c28qOpts">
+              <button class="pp-quiz-opt" onclick="answerQuizC28(this,false)">Peat</button>
+              <button class="pp-quiz-opt" onclick="answerQuizC28(this,false)">Lignite</button>
+              <button class="pp-quiz-opt" onclick="answerQuizC28(this,true)">Bituminous</button>
+              <button class="pp-quiz-opt" onclick="answerQuizC28(this,false)">Anthracite</button>
+            </div>
+            <div id="c28qFeedback" style="margin-top:6px;font-size:11px;min-height:16px;"></div>
+            <button class="pp-calc-btn" onclick="nextQuizC28()" style="margin-top:8px;">Next Question →</button>
+          </div>
+        </div>
+
+        <!-- India Nuclear Timeline -->
+        <div style="margin-top:12px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">INDIA NUCLEAR TIMELINE</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#facc15;min-width:40px;">1969</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,#facc15,transparent);"></div>
+              <span style="font-size:10px;color:var(--pp-muted);">Tarapur — India's first nuclear plant (BWR)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f97316;min-width:40px;">1972</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,#f97316,transparent);"></div>
+              <span style="font-size:10px;color:var(--pp-muted);">Rawatbhata PHWR (CANDU design)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#00f5ff;min-width:40px;">2014</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,#00f5ff,transparent);"></div>
+              <span style="font-size:10px;color:var(--pp-muted);">Kudankulam Unit 1 (VVER-1000, Russian)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#00ff88;min-width:40px;">Now</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,#00ff88,transparent);"></div>
+              <span style="font-size:10px;color:var(--pp-muted);">6,780 MW installed (1.8% of total)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#a78bfa;min-width:40px;">2032</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,#a78bfa,transparent);"></div>
+              <span style="font-size:10px;color:var(--pp-muted);">Target: 63,000 MW</span>
+            </div>
+          </div>
+          <!-- Progress bar -->
+          <div style="margin-top:8px;">
+            <div style="font-size:9px;color:var(--pp-muted);margin-bottom:3px;">Progress: 6,780 / 63,000 MW (10.8%)</div>
+            <div style="height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;">
+              <div style="width:10.8%;height:100%;background:linear-gradient(90deg,#a78bfa,#00ff88);border-radius:4px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="pp-module-divider">
+      <span class="pp-module-divider-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.4);background:rgba(167,139,250,0.06);box-shadow:0 0 20px rgba(167,139,250,0.15);">Module 3 Part 2 — Nuclear Reactors: Types, Fuels, Site &amp; Performance</span>
+    </div>
+<div class="pp-card m3-nuclear" id="c29">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#a78bfa;font-size:14px;">☢️</span>
+        Module 3 · Reactor Components: Control Rods, Coolant, Reflector, Shielding
+      </div>
+
+      <div class="pp-definition-box">
+        The reactor core contains fuel rods, control rods, moderator, coolant, reflector, and biological shielding. Together they sustain, control, and safely contain the nuclear chain reaction while extracting thermal energy for power generation.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">4. Control Rods</div>
+        <div class="pp-formula-row">$$\text{Purpose: Control the rate of fission of } ^{235}U$$</div>
+        <div class="pp-formula-row">$$\text{Material: Boron (B), Cadmium (Cd), Hafnium (Hf)}$$</div>
+        <div class="pp-formula-row">$$\text{Chain reaction controlled by: Removing fuel rods OR introducing neutron-absorbing material}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">5. Coolant</div>
+        <div class="pp-formula-row">$$\text{Medium through which heat generated in reactor is transferred to heat exchanger}$$</div>
+        <div class="pp-formula-row">$$\text{Sometimes takes up heat} \rightarrow \text{converts to steam} \rightarrow \text{drives turbine (BWR type)}$$</div>
+        <div class="pp-formula-row">$$\text{Gases: Air, He, H}_2\text{, CO}_2 \quad|\quad \text{Liquids: } H_2O,\;D_2O \quad|\quad \text{Metals: Na, Li}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">6. Reflector</div>
+        <div class="pp-formula-row">$$\text{Placed around core} \rightarrow \text{prevents leakage of neutrons from core}$$</div>
+        <div class="pp-formula-row">$$\text{Materials: Graphite, Beryllium, Heavy water } (D_2O)$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">7. Thermal Shielding</div>
+        <div class="pp-formula-row">$$\text{Protects against deadly } \alpha,\;\beta,\;\gamma \text{ radiations}$$</div>
+        <div class="pp-formula-row">$$\boxed{I = I_0\,e^{-\mu x}} \quad \text{(radiation attenuation)}$$</div>
+        <div class="pp-formula-row">$$\text{Shield material: Thick concrete, Lead}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Multiplication Factor (k)</div>
+        <div class="pp-formula-row">$$\boxed{k = \frac{\text{Neutrons produced in one generation}}{\text{Neutrons produced in preceding generation}}}$$</div>
+        <div class="pp-formula-row">$$k &lt; 1:\;\text{Sub-critical (STOPS)} \quad k = 1:\;\text{Critical (STEADY)} \quad k &gt; 1:\;\text{Super-critical (GROWS)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Control Rod Action on k</div>
+        <div class="pp-formula-row">$$\text{Insert rods deeper} \rightarrow \text{more neutrons absorbed} \rightarrow k \downarrow$$</div>
+        <div class="pp-formula-row">$$\text{Withdraw rods} \rightarrow \text{fewer absorbed} \rightarrow k \uparrow$$</div>
+        <div class="pp-formula-row">$$\text{Adjust for } k = 1 \rightarrow \text{steady power output}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Moderator Role</div>
+        <div class="pp-formula-row">$$\text{Slow neutrons} \Rightarrow \text{slower speed} \Rightarrow \text{more likely to produce fission}$$</div>
+        <div class="pp-formula-row">$$\text{Examples: Graphite, Heavy water } (D_2O)\text{, Beryllium}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-29" style="min-height:260px;">
+        <div class="pp-anim-label">☢️ Reactor Components &amp; k-Factor</div>
+
+        <!-- Component Legend Grid -->
+        <div class="pp-comp-grid" id="c29CompGrid">
+          <div class="pp-comp-item" style="border-color:rgba(250,204,21,0.3);" onclick="showCompDetailC29('fuel')">
+            <div class="pp-comp-icon">🟡</div>
+            <div class="pp-comp-name" style="color:#facc15;">Fuel Rods</div>
+            <div class="pp-comp-desc">U-235 / UO₂ pellets in zircaloy cladding</div>
+          </div>
+          <div class="pp-comp-item" style="border-color:rgba(239,68,68,0.3);" onclick="showCompDetailC29('control')">
+            <div class="pp-comp-icon">🔴</div>
+            <div class="pp-comp-name" style="color:#ef4444;">Control Rods</div>
+            <div class="pp-comp-desc">B, Cd, Hf — absorb neutrons</div>
+          </div>
+          <div class="pp-comp-item" style="border-color:rgba(96,165,250,0.3);" onclick="showCompDetailC29('moderator')">
+            <div class="pp-comp-icon">🔵</div>
+            <div class="pp-comp-name" style="color:#60a5fa;">Moderator</div>
+            <div class="pp-comp-desc">Graphite, D₂O — slow neutrons</div>
+          </div>
+          <div class="pp-comp-item" style="border-color:rgba(6,182,212,0.3);" onclick="showCompDetailC29('coolant')">
+            <div class="pp-comp-icon">💧</div>
+            <div class="pp-comp-name" style="color:#06b6d4;">Coolant</div>
+            <div class="pp-comp-desc">H₂O, D₂O, CO₂, Na — removes heat</div>
+          </div>
+          <div class="pp-comp-item" style="border-color:rgba(107,114,128,0.3);" onclick="showCompDetailC29('reflector')">
+            <div class="pp-comp-icon">⚪</div>
+            <div class="pp-comp-name" style="color:#9ca3af;">Reflector</div>
+            <div class="pp-comp-desc">Graphite, Be — prevents neutron leakage</div>
+          </div>
+          <div class="pp-comp-item" style="border-color:rgba(31,41,55,0.5);" onclick="showCompDetailC29('shield')">
+            <div class="pp-comp-icon">🛡️</div>
+            <div class="pp-comp-name" style="color:#6b7280;">Shield</div>
+            <div class="pp-comp-desc">Concrete, Lead — stops radiation</div>
+          </div>
+        </div>
+        <div id="c29CompDetail" style="margin-top:8px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);font-size:11px;color:var(--pp-muted);min-height:40px;display:none;"></div>
+
+        <!-- Radiation Penetration -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">RADIATION PENETRATION DEPTH</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div class="pp-rtype-row"><span style="color:#facc15;min-width:18px;">α</span><div style="flex:1;height:8px;background:rgba(255,255,255,0.03);border-radius:4px;overflow:hidden;"><div style="width:5%;height:100%;background:#facc15;border-radius:4px;"></div></div><span style="font-size:9px;color:#facc15;">Paper / skin (cm)</span></div>
+            <div class="pp-rtype-row"><span style="color:#f97316;min-width:18px;">β</span><div style="flex:1;height:8px;background:rgba(255,255,255,0.03);border-radius:4px;overflow:hidden;"><div style="width:25%;height:100%;background:#f97316;border-radius:4px;"></div></div><span style="font-size:9px;color:#f97316;">Aluminium (mm-cm)</span></div>
+            <div class="pp-rtype-row"><span style="color:#ef4444;min-width:18px;">γ</span><div style="flex:1;height:8px;background:rgba(255,255,255,0.03);border-radius:4px;overflow:hidden;"><div style="width:90%;height:100%;background:#ef4444;border-radius:4px;"></div></div><span style="font-size:9px;color:#ef4444;">Lead / thick concrete (m)</span></div>
+          </div>
+        </div>
+
+        <!-- k Calculator -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">MULTIPLICATION FACTOR CALCULATOR</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">n(gen+1):</label>
+            <input type="number" id="c29nGen2" value="1000" min="0" step="1" style="width:80px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">n(gen):</label>
+            <input type="number" id="c29nGen1" value="1000" min="1" step="1" style="width:80px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcKfactorC29()">Calculate k</button>
+          </div>
+          <div id="c29KOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#00ff88;min-height:18px;line-height:1.6;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m3-nuclear" id="c30">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#a78bfa;font-size:14px;">⚙️</span>
+        Module 3 · Types of Nuclear Reactors
+      </div>
+
+      <div class="pp-definition-box">
+        Six major reactor types form the backbone of nuclear power worldwide. They differ in fuel, coolant, moderator, and thermodynamic efficiency — from the common BWR/PWR to the advanced Fast Breeder Reactor.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">1. Boiling Water Reactor (BWR)</div>
+        <div class="pp-formula-row">$$\text{Fuel: Enriched UO}_2 \quad \text{Coolant/Moderator: Light water}$$</div>
+        <div class="pp-formula-row">$$\text{Water boils directly in reactor} \rightarrow \text{steam drives turbine (single loop)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">2. Pressurised Water Reactor (PWR)</div>
+        <div class="pp-formula-row">$$\text{Fuel: Enriched UO}_2\;\text{(clad in zircaloy)} \quad \text{Thermal reactor}$$</div>
+        <div class="pp-formula-row">$$T_{primary} \approx 320°C,\quad P \approx 155\;\text{bar (water stays liquid)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">3. Advanced Gas Cooled Reactor (AGCR)</div>
+        <div class="pp-formula-row">$$\text{Fuel: U-235} \quad \text{Coolant: CO}_2 \quad \text{Moderator: Graphite}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">4. CANDU (Canadian Deuterium Uranium)</div>
+        <div class="pp-formula-row">$$\text{Fuel: Natural Uranium} \quad \text{Moderator: } D_2O \quad \text{Coolant: } D_2O$$</div>
+        <div class="pp-formula-row">$$\text{Advantage: No enrichment needed — India's PHWR based on CANDU design}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">5. Liquid Metal Cooled Reactor (LMCR)</div>
+        <div class="pp-formula-row">$$\text{Fuel: Uranium} \quad \text{Coolant: Liquid Na} \quad \text{Na} \rightarrow \text{Heat} \rightarrow \text{Steam}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">6. Fast Breeder Reactor (FBR)</div>
+        <div class="pp-formula-row">$$\text{Fuel: Pu-239 / Th-232} \quad \text{Coolant: Liquid Na} \quad \text{Moderator: NONE}$$</div>
+        <div class="pp-formula-row">$${}^{238}_{92}\text{U} + {}^{1}_{0}n \rightarrow {}^{239}_{92}\text{U} \xrightarrow{\beta^-} {}^{239}_{93}\text{Np} \xrightarrow{\beta^-} {}^{239}_{94}\text{Pu}$$</div>
+        <div class="pp-formula-row">$$\eta_{FBR}(\text{Na}) \approx 42\% \quad \eta_{other} \approx 28\% \quad \text{FBR most efficient!}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Reactor Comparison Table</div>
+        <div class="pp-formula-row">$$\text{BWR: Enriched UO}_2\;|\;\text{Light water}\;|\;\text{Light water}\;|\;33\%$$</div>
+        <div class="pp-formula-row">$$\text{PWR: Enriched UO}_2\;|\;\text{Light water (pressure)}\;|\;\text{Light water}\;|\;33\%$$</div>
+        <div class="pp-formula-row">$$\text{AGCR: U-235}\;|\;\text{CO}_2\;|\;\text{Graphite}\;|\;40\%$$</div>
+        <div class="pp-formula-row">$$\text{CANDU: Natural U}\;|\;D_2O\;|\;D_2O\;|\;30\%$$</div>
+        <div class="pp-formula-row">$$\text{LMCR: Uranium}\;|\;\text{Liquid Na}\;|\;\text{—}\;|\;35\%$$</div>
+        <div class="pp-formula-row">$$\text{FBR: Pu-239/Th-232}\;|\;\text{Liquid Na}\;|\;\text{None}\;|\;42\%$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-30" style="min-height:260px;">
+        <div class="pp-anim-label">⚙️ 6 Reactor Types — Interactive</div>
+
+        <!-- Reactor Type Tabs -->
+        <div class="pp-reactor-tabs" style="margin-bottom:10px;">
+          <button class="pp-reactor-tab active" style="border-color:#60a5fa;color:#60a5fa;" onclick="switchRTypeC30(this,'bwr')">BWR</button>
+          <button class="pp-reactor-tab" style="border-color:#00f5ff;color:#9ca3af;" onclick="switchRTypeC30(this,'pwr')">PWR</button>
+          <button class="pp-reactor-tab" style="border-color:#6b7280;color:#9ca3af;" onclick="switchRTypeC30(this,'agcr')">AGCR</button>
+          <button class="pp-reactor-tab" style="border-color:#facc15;color:#9ca3af;" onclick="switchRTypeC30(this,'candu')">CANDU</button>
+          <button class="pp-reactor-tab" style="border-color:#f97316;color:#9ca3af;" onclick="switchRTypeC30(this,'lmcr')">LMCR</button>
+          <button class="pp-reactor-tab" style="border-color:#a78bfa;color:#9ca3af;" onclick="switchRTypeC30(this,'fbr')">FBR</button>
+        </div>
+
+        <div class="pp-rtype-panel active" id="c30panelBwr">
+          <div class="pp-rtype-header" style="color:#60a5fa;">BWR — Boiling Water Reactor</div>
+          <svg viewBox="0 0 400 160" style="width:100%;max-width:400px;margin:0 auto;display:block;">
+            <rect x="80" y="20" width="80" height="100" rx="8" fill="#1e293b" stroke="#60a5fa" stroke-width="2"></rect>
+            <text x="120" y="50" text-anchor="middle" fill="#60a5fa" font-size="9" font-family="Orbitron">REACTOR</text>
+            <circle cx="100" cy="75" r="4" fill="#facc15"></circle><circle cx="120" cy="80" r="4" fill="#facc15"></circle><circle cx="140" cy="70" r="4" fill="#facc15"></circle>
+            <circle cx="105" cy="58" r="3" fill="#60a5fa" opacity="0.6"></circle><circle cx="130" cy="55" r="3" fill="#60a5fa" opacity="0.6"></circle><circle cx="115" cy="45" r="2" fill="#60a5fa" opacity="0.5"></circle>
+            <text x="120" y="100" text-anchor="middle" fill="#9ca3af" font-size="7">Steam bubbles</text>
+            <path d="M160 40 L220 40" stroke="#ef4444" stroke-width="2" fill="none" marker-end="url(#arrowR30)"></path>
+            <text x="190" y="35" text-anchor="middle" fill="#ef4444" font-size="7">Steam</text>
+            <rect x="220" y="25" width="50" height="50" rx="6" fill="#1e293b" stroke="#00ff88" stroke-width="1.5"></rect>
+            <text x="245" y="50" text-anchor="middle" fill="#00ff88" font-size="8" font-family="Share Tech Mono">TURBINE</text>
+            <path d="M270 50 L310 50" stroke="#00ff88" stroke-width="1.5" fill="none"></path>
+            <rect x="310" y="35" width="40" height="30" rx="4" fill="#1e293b" stroke="#facc15" stroke-width="1.5"></rect>
+            <text x="330" y="53" text-anchor="middle" fill="#facc15" font-size="7">GEN</text>
+            <path d="M220 75 L160 100 L120 120 L120 130" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-dasharray="4"></path>
+            <text x="170" y="115" text-anchor="middle" fill="#60a5fa" font-size="7">Condensate return</text>
+            <text x="120" y="145" text-anchor="middle" fill="#9ca3af" font-size="8">Single-loop system</text>
+            <defs><marker id="arrowR30" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10" fill="#ef4444"></path></marker></defs>
+          </svg>
+          <div style="margin-top:6px;">
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Fuel</span><span class="pp-rtype-val">Enriched UO₂</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Coolant</span><span class="pp-rtype-val" style="color:#60a5fa;">Light water (boils in core)</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Moderator</span><span class="pp-rtype-val" style="color:#60a5fa;">Light water</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Efficiency</span><span class="pp-rtype-val" style="color:#00ff88;">~33%</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Note</span><span class="pp-rtype-val">Tarapur (India) — first nuclear plant, BWR type</span></div>
+          </div>
+        </div>
+
+        <div class="pp-rtype-panel" id="c30panelPwr">
+          <div class="pp-rtype-header" style="color:#00f5ff;">PWR — Pressurised Water Reactor</div>
+          <svg viewBox="0 0 400 160" style="width:100%;max-width:400px;margin:0 auto;display:block;">
+            <rect x="40" y="20" width="70" height="90" rx="8" fill="#1e293b" stroke="#00f5ff" stroke-width="2"></rect>
+            <text x="75" y="45" text-anchor="middle" fill="#00f5ff" font-size="8" font-family="Orbitron">REACTOR</text>
+            <text x="75" y="60" text-anchor="middle" fill="#9ca3af" font-size="7">155 bar</text>
+            <text x="75" y="75" text-anchor="middle" fill="#9ca3af" font-size="7">320°C liquid</text>
+            <path d="M110 50 L160 50" stroke="#ef4444" stroke-width="2" fill="none"></path>
+            <rect x="160" y="25" width="50" height="60" rx="6" fill="#1e293b" stroke="#f97316" stroke-width="1.5"></rect>
+            <text x="185" y="50" text-anchor="middle" fill="#f97316" font-size="7" font-family="Share Tech Mono">STEAM</text>
+            <text x="185" y="62" text-anchor="middle" fill="#f97316" font-size="7" font-family="Share Tech Mono">GEN</text>
+            <path d="M210 40 L260 40" stroke="#ef4444" stroke-width="1.5" fill="none"></path>
+            <rect x="260" y="25" width="45" height="40" rx="5" fill="#1e293b" stroke="#00ff88" stroke-width="1.5"></rect>
+            <text x="283" y="48" text-anchor="middle" fill="#00ff88" font-size="8">TURB</text>
+            <rect x="320" y="30" width="35" height="30" rx="4" fill="#1e293b" stroke="#facc15" stroke-width="1.5"></rect>
+            <text x="338" y="48" text-anchor="middle" fill="#facc15" font-size="7">GEN</text>
+            <path d="M160 70 L110 90" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-dasharray="4"></path>
+            <text x="75" y="130" text-anchor="middle" fill="#00f5ff" font-size="7">Primary loop</text>
+            <text x="245" y="130" text-anchor="middle" fill="#f97316" font-size="7">Secondary loop</text>
+            <text x="200" y="150" text-anchor="middle" fill="#9ca3af" font-size="8">Two-loop system</text>
+          </svg>
+          <div style="margin-top:6px;">
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Fuel</span><span class="pp-rtype-val">Enriched UO₂ (zircaloy clad)</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Coolant</span><span class="pp-rtype-val" style="color:#00f5ff;">Light water under 155 bar</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Moderator</span><span class="pp-rtype-val" style="color:#00f5ff;">Light water</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Efficiency</span><span class="pp-rtype-val" style="color:#00ff88;">~33%</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Note</span><span class="pp-rtype-val">Kudankulam (India) — PWR type</span></div>
+          </div>
+        </div>
+
+        <div class="pp-rtype-panel" id="c30panelAgcr">
+          <div class="pp-rtype-header" style="color:#6b7280;">AGCR — Advanced Gas Cooled Reactor</div>
+          <div style="margin-top:6px;">
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Fuel</span><span class="pp-rtype-val">U-235</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Coolant</span><span class="pp-rtype-val" style="color:#6b7280;">CO₂ gas</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Moderator</span><span class="pp-rtype-val" style="color:#374151;">Graphite</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Efficiency</span><span class="pp-rtype-val" style="color:#00ff88;">~40%</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Note</span><span class="pp-rtype-val">Developed in UK — higher operating temperature than PWR</span></div>
+          </div>
+        </div>
+
+        <div class="pp-rtype-panel" id="c30panelCandu">
+          <div class="pp-rtype-header" style="color:#facc15;">CANDU / PHWR — Heavy Water Reactor</div>
+          <div style="margin-top:6px;">
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Fuel</span><span class="pp-rtype-val" style="color:#facc15;">Natural Uranium (no enrichment!)</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Coolant</span><span class="pp-rtype-val" style="color:#facc15;">D₂O (heavy water)</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Moderator</span><span class="pp-rtype-val" style="color:#facc15;">D₂O (heavy water)</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Efficiency</span><span class="pp-rtype-val" style="color:#00ff88;">~30%</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">India</span><span class="pp-rtype-val">Rawatbhata, Kaiga, Kakrapar — India's primary reactor type</span></div>
+          </div>
+        </div>
+
+        <div class="pp-rtype-panel" id="c30panelLmcr">
+          <div class="pp-rtype-header" style="color:#f97316;">LMCR — Liquid Metal Cooled Reactor</div>
+          <div style="margin-top:6px;">
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Fuel</span><span class="pp-rtype-val">Uranium</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Coolant</span><span class="pp-rtype-val" style="color:#f97316;">Liquid Sodium (Na)</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Moderator</span><span class="pp-rtype-val">—</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Efficiency</span><span class="pp-rtype-val" style="color:#00ff88;">~35%</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Note</span><span class="pp-rtype-val">Intermediate heat exchanger: Na → Heat → Steam</span></div>
+          </div>
+        </div>
+
+        <div class="pp-rtype-panel" id="c30panelFbr">
+          <div class="pp-rtype-header" style="color:#a78bfa;">FBR — Fast Breeder Reactor ⭐</div>
+          <div style="padding:8px;background:rgba(167,139,250,0.06);border:1px solid rgba(167,139,250,0.2);border-radius:8px;margin-bottom:8px;">
+            <span style="font-size:10px;color:#a78bfa;">Breeds more fissile material (Pu-239) than it consumes! Breeding ratio &gt; 1</span>
+          </div>
+          <div style="margin-top:6px;">
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Fuel</span><span class="pp-rtype-val" style="color:#a78bfa;">Pu-239 / Th-232</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Coolant</span><span class="pp-rtype-val" style="color:#f97316;">Liquid Sodium (Na)</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Moderator</span><span class="pp-rtype-val" style="color:#ef4444;">NONE (fast neutrons)</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">Efficiency</span><span class="pp-rtype-val" style="color:#00ff88;">~42% (HIGHEST!)</span></div>
+            <div class="pp-rtype-row"><span class="pp-rtype-label">India</span><span class="pp-rtype-val">PFBR Kalpakkam — India's 3-stage nuclear programme</span></div>
+          </div>
+          <div style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--pp-muted);line-height:1.5;">
+            Breeding: ²³⁸U + n → ²³⁹U →(β⁻)→ ²³⁹Np →(β⁻)→ ²³⁹Pu
+          </div>
+        </div>
+
+        <!-- Efficiency Bar Chart -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">EFFICIENCY COMPARISON</div>
+          <div class="pp-eff-bars" id="c30EffBars">
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label">FBR</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="84" style="background:linear-gradient(90deg,#a78bfa,#00ff88);"><span class="pp-eff-bar-val">42%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label">AGCR</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="80" style="background:linear-gradient(90deg,#6b7280,#06b6d4);"><span class="pp-eff-bar-val">40%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label">LMCR</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="70" style="background:linear-gradient(90deg,#f97316,#facc15);"><span class="pp-eff-bar-val">35%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label">BWR</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="66" style="background:linear-gradient(90deg,#60a5fa,#a78bfa);"><span class="pp-eff-bar-val">33%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label">PWR</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="66" style="background:linear-gradient(90deg,#00f5ff,#60a5fa);"><span class="pp-eff-bar-val">33%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label">CANDU</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="60" style="background:linear-gradient(90deg,#facc15,#f97316);"><span class="pp-eff-bar-val">30%</span></div></div></div>
+          </div>
+          <div style="margin-top:6px;text-align:center;font-size:10px;color:#00ff88;">⭐ FBR with liquid Na: Highest efficiency at 42%</div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m3-nuclear" id="c31">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#a78bfa;font-size:14px;">⚛️</span>
+        Module 3 · Nuclear Fuels &amp; Plutonium Formation
+      </div>
+
+      <div class="pp-definition-box">
+        Nuclear fuels include natural uranium (U-235, U-238), enriched uranium, and bred fuels (Pu-239 from U-238, U-233 from Th-232). The conversion of fertile U-238 to fissile Pu-239 via neutron capture and beta decay is key to the Fast Breeder Reactor programme.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Fission Products</div>
+        <div class="pp-formula-row">$${}^{235}_{92}\text{U} + {}^{1}_{0}n \rightarrow {}^{141}_{56}\text{Ba} + {}^{92}_{36}\text{Kr} + 3\;{}^{1}_{0}n + Q$$</div>
+        <div class="pp-formula-row">$$\text{OR: } \rightarrow {}^{140}_{55}\text{Cs} + {}^{94}_{37}\text{Rb} + 2\;{}^{1}_{0}n + 200\;\text{MeV}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Plutonium-239 Formation (3-Step)</div>
+        <div class="pp-formula-row">$$\text{Step 1 (immediately): } {}^{238}_{92}\text{U} + {}^{1}_{0}n \rightarrow {}^{239}_{92}\text{U}$$</div>
+        <div class="pp-formula-row">$$\text{Step 2 (23 min): } {}^{239}_{92}\text{U} \xrightarrow{\beta^-} {}^{239}_{93}\text{Np} + e^- + \bar{\nu}$$</div>
+        <div class="pp-formula-row">$$\text{Step 3 (2.3 days): } {}^{239}_{93}\text{Np} \xrightarrow{\beta^-} {}^{239}_{94}\text{Pu} + e^- + \bar{\nu}$$</div>
+        <div class="pp-formula-row">$$\boxed{{}^{238}_{92}\text{U} \xrightarrow{+n} {}^{239}_{92}\text{U} \xrightarrow{23\;\text{min}} {}^{239}_{93}\text{Np} \xrightarrow{2.3\;\text{days}} {}^{239}_{94}\text{Pu}}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Why Pu-239 Matters</div>
+        <div class="pp-formula-row">$$\text{Pu-239 is fissile (like U-235) — FBR breeds it from abundant U-238 (99.3\% of natural U)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Thorium Fuel Cycle (India)</div>
+        <div class="pp-formula-row">$${}^{232}_{90}\text{Th} + n \rightarrow {}^{233}_{90}\text{Th} \xrightarrow{\beta^-} {}^{233}_{91}\text{Pa} \xrightarrow{\beta^-} {}^{233}_{92}\text{U}$$</div>
+        <div class="pp-formula-row">$$\text{India has } \approx 25\% \text{ of world's thorium reserves (Kerala coast)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Energy per Fission</div>
+        <div class="pp-formula-row">$$Q = 200\;\text{MeV} = 3.2 \times 10^{-11}\;\text{J per fission}$$</div>
+        <div class="pp-formula-row">$$\text{Per kg U-235: } E = \frac{6.023\times10^{23}}{235} \times 3.2\times10^{-11} \approx 8.2\times10^{13}\;\text{J} = 8.2\times10^7\;\text{MJ/kg}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-31" style="min-height:260px;">
+        <div class="pp-anim-label">⚛️ Plutonium Formation &amp; Decay Chain</div>
+
+        <!-- Pu-239 Decay Chain Animation -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">Pu-239 FORMATION CHAIN</div>
+        <div class="pp-decay-chain" id="c31DecayChain">
+          <div class="pp-decay-node active" style="border-color:#374151;" id="c31node1">
+            <div class="pp-decay-isotope" style="color:#374151;">U-238</div>
+            <div class="pp-decay-mass">Fertile</div>
+          </div>
+          <div class="pp-decay-arrow"><span>+n →</span><span class="pp-decay-time">instant</span></div>
+          <div class="pp-decay-node" id="c31node2">
+            <div class="pp-decay-isotope" style="color:#60a5fa;">U-239</div>
+            <div class="pp-decay-mass">Unstable</div>
+          </div>
+          <div class="pp-decay-arrow"><span style="color:#fb7185;">β⁻ →</span><span class="pp-decay-time">23 min</span></div>
+          <div class="pp-decay-node" id="c31node3">
+            <div class="pp-decay-isotope" style="color:#60a5fa;">Np-239</div>
+            <div class="pp-decay-mass">Intermediate</div>
+          </div>
+          <div class="pp-decay-arrow"><span style="color:#fb7185;">β⁻ →</span><span class="pp-decay-time">2.3 days</span></div>
+          <div class="pp-decay-node" id="c31node4">
+            <div class="pp-decay-isotope" style="color:#a78bfa;">Pu-239</div>
+            <div class="pp-decay-mass">Fissile!</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:6px;">
+          <button class="pp-calc-btn" onclick="animateDecayC31()" style="margin-right:8px;">▶ Animate Chain</button>
+          <button class="pp-calc-btn" onclick="resetDecayC31()">↺ Reset</button>
+        </div>
+
+        <!-- Fission Energy Calculator -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">FISSION ENERGY CALCULATOR</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">Fissions:</label>
+            <input type="number" id="c31fissions" value="1e18" style="width:100px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcFissionEnergyC31()">Calculate</button>
+          </div>
+          <div id="c31FissOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#00ff88;min-height:18px;line-height:1.6;"></div>
+        </div>
+
+        <!-- Thorium Badge -->
+        <div style="margin-top:10px;padding:10px;background:rgba(249,115,22,0.06);border:1px solid rgba(249,115,22,0.2);border-radius:8px;text-align:center;">
+          <div style="font-size:14px;">🇮🇳</div>
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#f97316;letter-spacing:1px;">INDIA'S THORIUM ADVANTAGE</div>
+          <div style="font-size:10px;color:var(--pp-muted);margin-top:4px;">²³²Th → ²³³U fuel cycle | ~25% of world's thorium reserves</div>
+          <div style="font-size:10px;color:#f97316;margin-top:2px;">Stage 3 of India's 3-stage nuclear programme</div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m3-nuclear" id="c32">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#a78bfa;font-size:14px;">📍</span>
+        Module 3 · Selection of Plant Site
+      </div>
+
+      <div class="pp-definition-box">
+        Nuclear plant site selection involves safety exclusion zones, water availability, accessibility, and waste disposal space. Nuclear plants offer low operating cost but high initial investment, heavy cooling requirements, and radioactive waste challenges.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Site Selection Criteria</div>
+        <div class="pp-formula-row">$$\text{1. Availability of water supply} \quad \text{2. Accessibility / Type of land}$$</div>
+        <div class="pp-formula-row">$$\text{3. Distance from populated areas (safety exclusion zone)}$$</div>
+        <div class="pp-formula-row">$$\text{4. Transportation facilities} \quad \text{5. Nearness to load center}$$</div>
+        <div class="pp-formula-row">$$\text{6. Availability of space for disposal of waste}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Safety Zones</div>
+        <div class="pp-formula-row">$$R_{exclusion} \geq 1.6\;\text{km (typical minimum)}$$</div>
+        <div class="pp-formula-row">$$\text{Low population zone: 5–10 km radius}$$</div>
+        <div class="pp-formula-row">$$Q_{cooling} \approx 30\text{–}50\;\text{m}^3/\text{s for a 1000 MW plant}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Advantages</div>
+        <div class="pp-formula-row">$$\text{1. Can be constructed near load centers (negligible transport cost)}$$</div>
+        <div class="pp-formula-row">$$\text{2. Most economical for large MVA rating}$$</div>
+        <div class="pp-formula-row">$$\text{3. Operating cost is very low}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Disadvantages</div>
+        <div class="pp-formula-row">$$\text{1. Initial cost very high} \quad \text{2. Radioactive waste → pollution}$$</div>
+        <div class="pp-formula-row">$$\text{3. Not suitable for varying loads (base load only)}$$</div>
+        <div class="pp-formula-row">$$\text{4. Fuel expensive, difficult to recover} \quad \text{5. Very heavy cooling water requirement}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Efficiency &amp; Radioactive Decay</div>
+        <div class="pp-formula-row">$$\boxed{\eta_{nuclear} = 30\text{–}40\%} \quad \eta_{overall} = \eta_{reactor} \times \eta_{turbine} \times \eta_{generator}$$</div>
+        <div class="pp-formula-row">$$\text{FBR with Na: } \eta \approx 42\% \quad \text{Other coolant: } \eta \approx 28\%$$</div>
+        <div class="pp-formula-row">$$N(t) = N_0 \cdot 2^{-t/t_{1/2}} \quad \text{(radioactive decay of waste)}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-32" style="min-height:260px;">
+        <div class="pp-anim-label">📍 Site Selection &amp; Safety Zones</div>
+
+        <!-- Exclusion Zone Visualization -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">SAFETY EXCLUSION ZONES</div>
+        <div class="pp-zone-rings">
+          <div class="pp-zone-ring" style="width:220px;height:220px;top:0;left:0;border-color:rgba(250,204,21,0.3);background:rgba(250,204,21,0.03);"><span style="color:#facc15;">10 km — Planning zone</span></div>
+          <div class="pp-zone-ring" style="width:155px;height:155px;top:32px;left:32px;border-color:rgba(249,115,22,0.4);background:rgba(249,115,22,0.04);"><span style="color:#f97316;">5 km — Low pop.</span></div>
+          <div class="pp-zone-ring" style="width:80px;height:80px;top:70px;left:70px;border-color:rgba(239,68,68,0.5);background:rgba(239,68,68,0.06);"><span style="color:#ef4444;">1.6 km</span></div>
+          <div style="position:absolute;top:105px;left:105px;width:10px;height:10px;background:#a78bfa;border-radius:50%;box-shadow:0 0 10px #a78bfa;"></div>
+        </div>
+
+        <!-- Advantages vs Disadvantages -->
+        <div style="margin-top:14px;font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">ADVANTAGES vs DISADVANTAGES</div>
+        <div class="pp-advdis-wrap">
+          <div class="pp-adv-stack">
+            <div style="font-family:'Orbitron',monospace;font-size:9px;color:#00ff88;letter-spacing:1px;margin-bottom:4px;">✓ ADVANTAGES</div>
+            <div class="pp-adv-item">Near load centers — negligible transport cost</div>
+            <div class="pp-adv-item">Most economical for large MVA rating</div>
+            <div class="pp-adv-item">Very low operating cost</div>
+          </div>
+          <div class="pp-dis-stack">
+            <div style="font-family:'Orbitron',monospace;font-size:9px;color:#ef4444;letter-spacing:1px;margin-bottom:4px;">✗ DISADVANTAGES</div>
+            <div class="pp-dis-item">Very high initial cost</div>
+            <div class="pp-dis-item">Radioactive waste → pollution</div>
+            <div class="pp-dis-item">Not suitable for varying loads</div>
+            <div class="pp-dis-item">Fuel expensive &amp; hard to recover</div>
+            <div class="pp-dis-item">Heavy cooling water requirement</div>
+          </div>
+        </div>
+
+        <!-- Radioactive Decay Calculator -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">RADIOACTIVE DECAY CALCULATOR</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">N₀:</label>
+            <input type="number" id="c32N0" value="1000" min="0" style="width:70px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">t½ (yr):</label>
+            <input type="number" id="c32tHalf" value="30" min="0.01" step="0.1" style="width:62px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">t (yr):</label>
+            <input type="number" id="c32t" value="100" min="0" style="width:62px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcDecayC32()">Calculate</button>
+          </div>
+          <div id="c32DecayOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#00ff88;min-height:18px;line-height:1.6;"></div>
+        </div>
+
+        <!-- Efficiency Calculator -->
+        <div style="margin-top:10px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">OVERALL EFFICIENCY</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">η_reactor (%):</label>
+            <input type="number" id="c32etaR" value="90" min="0" max="100" style="width:55px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">η_turbine (%):</label>
+            <input type="number" id="c32etaT" value="40" min="0" max="100" style="width:55px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">η_gen (%):</label>
+            <input type="number" id="c32etaG" value="95" min="0" max="100" style="width:55px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcEffC32()">Calculate η</button>
+          </div>
+          <div id="c32EffOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#00ff88;min-height:18px;line-height:1.6;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m3-nuclear" id="c33">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#a78bfa;font-size:14px;">📊</span>
+        Module 3 · Complete Nuclear Reference
+      </div>
+
+      <div class="pp-definition-box">
+        Master reference combining all nuclear power formulas — reactor types, multiplication factor, radiation shielding, fission energy, Pu-239 breeding, radioactive decay, and efficiency — with interactive quiz and flip-card reactor reference.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">All Key Nuclear Formulas</div>
+        <div class="pp-formula-row">$$E = mc^2 \quad;\quad k = \frac{n_{gen+1}}{n_{gen}}\;\;(k=1:\text{critical})$$</div>
+        <div class="pp-formula-row">$$Q_{fission} = 200\;\text{MeV/fission} \quad;\quad I = I_0 e^{-\mu x}$$</div>
+        <div class="pp-formula-row">$$N(t) = N_0 \cdot 2^{-t/t_{1/2}} \quad;\quad \eta_{FBR} = 42\%,\;\eta_{nuclear} = 30\text{–}40\%$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Pu-239 Formation Chain</div>
+        <div class="pp-formula-row">$$^{238}U \xrightarrow{+n} ^{239}U \xrightarrow{23\;\text{min}} ^{239}Np \xrightarrow{2.3\;\text{days}} ^{239}Pu$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">6 Reactor Types Quick Reference</div>
+        <div class="pp-formula-row">$$\text{BWR: Enriched U | Water | Water | 33\%}$$</div>
+        <div class="pp-formula-row">$$\text{PWR: Enriched U | Water (pressure) | Water | 33\%}$$</div>
+        <div class="pp-formula-row">$$\text{AGCR: U-235 | CO}_2\text{ | Graphite | 40\%}$$</div>
+        <div class="pp-formula-row">$$\text{CANDU: Natural U | }D_2O\text{ | }D_2O\text{ | 30\%}$$</div>
+        <div class="pp-formula-row">$$\text{LMCR: Uranium | Liquid Na | — | 35\%}$$</div>
+        <div class="pp-formula-row">$$\text{FBR: Pu-239 | Liquid Na | None | 42\%}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Moderator Ranking &amp; Control Rod Materials</div>
+        <div class="pp-formula-row">$$D_2O &gt; \text{Graphite} &gt; \text{Beryllium} &gt; H_2O$$</div>
+        <div class="pp-formula-row">$$\text{Control rods: Boron (B), Cadmium (Cd), Hafnium (Hf)}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-33" style="min-height:260px;">
+        <div class="pp-anim-label">📊 Master Quiz &amp; Flip Cards</div>
+
+        <!-- Nuclear Quiz -->
+        <div class="pp-quiz-zone" id="c33Quiz">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:10px;">NUCLEAR REACTOR QUIZ</div>
+          <div class="pp-quiz-q" id="c33qText">Q1: Which reactor type uses natural uranium (no enrichment)?</div>
+          <div class="pp-quiz-opts" id="c33qOpts">
+            <button class="pp-quiz-opt" onclick="answerQuizC33(this,0)">BWR</button>
+            <button class="pp-quiz-opt" onclick="answerQuizC33(this,1)">PWR</button>
+            <button class="pp-quiz-opt" onclick="answerQuizC33(this,2)">CANDU</button>
+            <button class="pp-quiz-opt" onclick="answerQuizC33(this,3)">FBR</button>
+          </div>
+          <div id="c33qFeedback" style="margin-top:6px;font-size:11px;min-height:16px;"></div>
+          <button class="pp-calc-btn" onclick="nextQuizC33()" style="margin-top:8px;">Next Question →</button>
+        </div>
+
+        <!-- k-Factor Trainer -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">k-FACTOR TRAINER</div>
+          <div class="pp-quiz-q" id="c33kTrainQ">Scenario: Control rods are inserted deeper. What happens to k?</div>
+          <div class="pp-ktrain-opts" id="c33kTrainOpts">
+            <button class="pp-ktrain-btn" onclick="answerKTrainC33(this,0)">k increases ↑</button>
+            <button class="pp-ktrain-btn" onclick="answerKTrainC33(this,1)">k decreases ↓</button>
+            <button class="pp-ktrain-btn" onclick="answerKTrainC33(this,2)">k stays same</button>
+          </div>
+          <div id="c33kTrainFb" style="margin-top:6px;font-size:11px;min-height:16px;"></div>
+          <button class="pp-calc-btn" onclick="nextKTrainC33()" style="margin-top:8px;">Next Scenario →</button>
+        </div>
+
+        <!-- Reactor Flip Cards -->
+        <div style="margin-top:14px;font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">REACTOR FLIP CARDS — Click to reveal</div>
+        <div class="pp-flip-grid" id="c33FlipGrid">
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:rgba(96,165,250,0.3);"><div class="pp-flip-name" style="color:#60a5fa;">BWR</div><div style="font-size:9px;color:var(--pp-muted);">Click to flip</div></div>
+              <div class="pp-flip-back"><div class="pp-flip-detail">Enriched UO₂<br>Water / Water<br>η ≈ 33%<br>Tarapur 🇮🇳</div></div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:rgba(0,245,255,0.3);"><div class="pp-flip-name" style="color:#00f5ff;">PWR</div><div style="font-size:9px;color:var(--pp-muted);">Click to flip</div></div>
+              <div class="pp-flip-back"><div class="pp-flip-detail">Enriched UO₂<br>Water (155 bar) / Water<br>η ≈ 33%<br>Kudankulam 🇮🇳</div></div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:rgba(107,114,128,0.3);"><div class="pp-flip-name" style="color:#6b7280;">AGCR</div><div style="font-size:9px;color:var(--pp-muted);">Click to flip</div></div>
+              <div class="pp-flip-back"><div class="pp-flip-detail">U-235<br>CO₂ / Graphite<br>η ≈ 40%<br>UK design</div></div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:rgba(250,204,21,0.3);"><div class="pp-flip-name" style="color:#facc15;">CANDU</div><div style="font-size:9px;color:var(--pp-muted);">Click to flip</div></div>
+              <div class="pp-flip-back"><div class="pp-flip-detail">Natural U (no enrich!)<br>D₂O / D₂O<br>η ≈ 30%<br>Rawatbhata 🇮🇳</div></div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:rgba(249,115,22,0.3);"><div class="pp-flip-name" style="color:#f97316;">LMCR</div><div style="font-size:9px;color:var(--pp-muted);">Click to flip</div></div>
+              <div class="pp-flip-back"><div class="pp-flip-detail">Uranium<br>Liquid Na / —<br>η ≈ 35%<br>Na intermediate HX</div></div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:rgba(167,139,250,0.3);"><div class="pp-flip-name" style="color:#a78bfa;">FBR ⭐</div><div style="font-size:9px;color:var(--pp-muted);">Click to flip</div></div>
+              <div class="pp-flip-back"><div class="pp-flip-detail">Pu-239 / Th-232<br>Liquid Na / None<br>η ≈ 42% (BEST!)<br>Kalpakkam 🇮🇳</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- India Nuclear Timeline -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px;">INDIA NUCLEAR TIMELINE</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;min-width:40px;">1969</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,#60a5fa,transparent);"></div>
+              <span style="font-size:10px;color:var(--pp-muted);">Tarapur BWR — first nuclear plant</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#facc15;min-width:40px;">1972</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,#facc15,transparent);"></div>
+              <span style="font-size:10px;color:var(--pp-muted);">Rawatbhata CANDU/PHWR</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#00f5ff;min-width:40px;">2013</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,#00f5ff,transparent);"></div>
+              <span style="font-size:10px;color:var(--pp-muted);">Kudankulam PWR</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#a78bfa;min-width:40px;">2024</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,#a78bfa,transparent);"></div>
+              <span style="font-size:10px;color:var(--pp-muted);">PFBR Kalpakkam (FBR)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#00ff88;min-width:40px;">2032</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,#00ff88,transparent);"></div>
+              <span style="font-size:10px;color:#00ff88;">Target: 63,000 MW nuclear capacity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="pp-module-divider">
+      <span class="pp-module-divider-tag" style="color:#f97316;border-color:rgba(249,115,22,0.4);background:rgba(249,115,22,0.06);box-shadow:0 0 20px rgba(249,115,22,0.15);">Module 4 — Diesel, Gas Turbine &amp; Non-Conventional Energy</span>
+    </div>
+</div><div class="topic-bottom-nav">
+        <a href="../coal-fuels/index.html" class="topic-btn prev-btn">← Coal &amp; Fuels</a>
+        <a href="../../index.html" class="topic-btn back-btn">All Topics</a>
+        <a href="../diesel-power/index.html" class="topic-btn next-btn">Diesel Power →</a>
+    </div></main>
+
+  <!-- Scroll to top -->
+  <div class="pp-scroll-top" id="ppScrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="../../../../../../shared/js/hero-bg.js"></script>
+  <script src="../../../../../../shared/js/formulas.js"></script>
+  <script src="../../../../../../shared/js/app.js"></script>
+
+  
+
+  <!-- Bookmark corner buttons -->
+  
+  
+
+
+
+<script src="../../js/powerplant-inline.js"></script><script src="../../../../../../shared/js/topic-nav.js"></script></body></html>

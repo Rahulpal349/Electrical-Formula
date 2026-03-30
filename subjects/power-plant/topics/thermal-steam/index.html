@@ -1,0 +1,1755 @@
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thermal Steam — Power Plant Engineering</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;family=Exo+2:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+  
+<link rel="stylesheet" href="../../css/powerplant-inline.css"><link rel="stylesheet" href="../../../../../../shared/css/topic-page.css"></head>
+
+<body data-page-category="powerplant" class="pp-body">
+
+  <!-- Sidebar Toggle -->
+  <button class="pp-sidebar-toggle" id="ppSbToggle" aria-label="Toggle sidebar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <div class="pp-sidebar__overlay" id="ppSbOverlay"></div>
+
+  <!-- Glassmorphism Sidebar -->
+  <aside class="pp-sidebar" id="ppSidebar">
+    <div class="pp-sidebar__header">
+      <div class="pp-sidebar__profile">
+        <div class="pp-sidebar__avatar">⚡</div>
+        <div class="pp-sidebar__info">
+          <span class="pp-sidebar__label">Power Plant</span>
+          <span class="pp-sidebar__name">ENGINEERING</span>
+        </div>
+      </div>
+      <button class="pp-sidebar__close" id="ppSbClose" aria-label="Close sidebar">✕</button>
+    </div>
+    <div class="pp-sidebar__section-label">MODULES</div>
+    <ul class="pp-sidebar__nav">
+      <li><a class="pp-sidebar__link active" data-mod="1" style="--mod-color:#f97316;" href="../power-systems-overview/index.html"><span class="pp-sidebar__icon">⚡</span><span class="pp-sidebar__link-text">Power Systems</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="2" style="--mod-color:#60a5fa;" href="../hydro-power/index.html"><span class="pp-sidebar__icon">💧</span><span class="pp-sidebar__link-text">Hydro Power</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="3" style="--mod-color:#ef4444;" href="../thermal-steam/index.html"><span class="pp-sidebar__icon">🔥</span><span class="pp-sidebar__link-text">Thermal Steam</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="4" style="--mod-color:#f97316;" href="../coal-fuels/index.html"><span class="pp-sidebar__icon">⛏️</span><span class="pp-sidebar__link-text">Coal &amp; Fuels</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="5" style="--mod-color:#a78bfa;" href="../nuclear-power/index.html"><span class="pp-sidebar__icon">☢️</span><span class="pp-sidebar__link-text">Nuclear Power</span><span class="pp-sidebar__link-count">10</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="6" style="--mod-color:#f97316;" href="../diesel-power/index.html"><span class="pp-sidebar__icon">🛢️</span><span class="pp-sidebar__link-text">Diesel Power</span><span class="pp-sidebar__link-count">1</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="7" style="--mod-color:#f97316;" href="../gas-turbine/index.html"><span class="pp-sidebar__icon">🌀</span><span class="pp-sidebar__link-text">Gas Turbine</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="8" style="--mod-color:#facc15;" href="../solar-energy/index.html"><span class="pp-sidebar__icon">☀️</span><span class="pp-sidebar__link-text">Solar Energy</span><span class="pp-sidebar__link-count">9</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="9" style="--mod-color:#facc15;" href="../solar-collectors/index.html"><span class="pp-sidebar__icon">🌡️</span><span class="pp-sidebar__link-text">Solar Collectors</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="10" style="--mod-color:#00f5ff;" href="../geothermal-mhd/index.html"><span class="pp-sidebar__icon">🌋</span><span class="pp-sidebar__link-text">Geothermal &amp; MHD</span><span class="pp-sidebar__link-count">6</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="0" style="--mod-color:#00ff88;" href="../../index.html"><span class="pp-sidebar__icon">📋</span><span class="pp-sidebar__link-text">All Modules</span><span class="pp-sidebar__link-count">56</span></a></li>
+    </ul>
+    <div class="pp-sidebar__footer">
+      <div class="pp-sidebar__footer-text">
+        Chapters: <span>56</span> • Formulas: <span>400+</span><br>
+        Animations: <span>120+</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Unified Navbar -->
+  <nav class="navbar" role="navigation">
+    <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+    <ul class="navbar__links">
+      <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+      <li><a href="../../../machines/index.html">Machines</a></li>
+      <li><a href="../../../measurements/index.html">Measurements</a></li>
+      <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+      <li><a href="../../../power-plant/index.html" class="active">Power Plant</a></li>
+      <li><a href="../../../control/index.html">Control Systems</a></li>
+      <li><a href="../../../electronics/index.html">Electronics</a></li>
+      <li><a href="../../../signals/index.html">Signals</a></li>
+      <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+      <li><a href="../../../estimation/index.html">Estimation</a></li>
+      <li><a href="../../../utilization/index.html">Utilization</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <div class="search-box">
+        <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+          <path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path>
+          <path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path>
+          <path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z"></path>
+          <path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2z"></path>
+          <path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z"></path>
+          <path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z"></path>
+        </svg></span>
+        <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Particles -->
+  <div class="pp-particles" id="pp-particles"></div>
+
+  <!-- Hero Section (measurements-style) -->
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10"></path>
+    </svg>
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style="text-align:center;">
+        Power <span class="pp-neon-text">Plant</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter" data-text="Generation · Thermal · Hydro · Nuclear · Solar · Gas Turbine"></p>
+      <div class="pp-hero-icons">
+        <div class="pp-hero-icon">🏭</div>
+        <div class="pp-hero-icon">💧</div>
+        <div class="pp-hero-icon">☢️</div>
+        <div class="pp-hero-icon">☀️</div>
+      </div>
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#c1" class="pp-hero-cta">⚡ Explore Power Plants</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pp-main"><div class="topic-breadcrumb">
+        <a href="../../../../index.html">EE Hub</a> › 
+        <a href="../../index.html">Power Plant</a> › 
+        <span>Thermal Steam</span>
+    </div><div class="topic-content"><div class="pp-card thermal-card" id="c14">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title" style="color:#ef4444;">🔥 Thermal Power Plant: Overview</div>
+
+      <div class="pp-definition-box" style="border-color:#ef4444; background:rgba(239,68,68,0.05);">
+        "In steam power plant, heat of combustion of fossil fuels is utilized by boilers to raise steam at high temperature and pressure."
+      </div>
+
+      <div class="pp-formula-zone">
+        <p style="color:#f97316; font-weight:600; margin-bottom:8px;">Energy Conversion Chain:</p>
+        <div style="text-align:center;">
+          $$ \text{Chemical (fuel)} \xrightarrow{\text{Boiler}} \text{Heat} \xrightarrow{\text{Steam}} \text{Pressure} \xrightarrow{\text{Turbine}} \text{Mechanical} \xrightarrow{\text{Gen}} \text{Electrical} $$
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;">
+          <div style="background:rgba(239,68,68,0.06); padding:10px; border-radius:8px; border-left:3px solid #ef4444;">
+            <p style="color:#ef4444; font-weight:bold; font-size:11px; font-family:'Orbitron',monospace;">Why Thermal?</p>
+            <div style="font-size:10px; color:var(--pp-text); line-height:1.7; margin-top:4px;">
+              ▸ 61.1% of India's generation<br>
+              ▸ Near load centre → low TL cost<br>
+              ▸ Controllable output<br>
+              ▸ Available 24×7
+            </div>
+          </div>
+          <div style="background:rgba(249,115,22,0.06); padding:10px; border-radius:8px; border-left:3px solid #f97316;">
+            <p style="color:#f97316; font-weight:bold; font-size:11px; font-family:'Orbitron',monospace;">Fuels Used</p>
+            <div style="font-size:10px; color:var(--pp-text); line-height:1.7; margin-top:4px;">
+              ▸ Coal (most common)<br>
+              ▸ Oil, Natural gas<br>
+              ▸ Types: Anthracite, Bituminous, Lignite
+            </div>
+          </div>
+        </div>
+
+        <p style="color:#facc15; font-weight:600; margin:16px 0 8px;">Rankine Cycle (Ideal Steam Cycle):</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-size:11px;">
+          <div style="padding:5px 8px; border-radius:4px;">
+            <span class="pp-rankine-tag" style="background:rgba(250,204,21,0.15); color:#facc15;">1→2</span> Isentropic expansion (turbine)
+          </div>
+          <div style="padding:5px 8px; border-radius:4px;">
+            <span class="pp-rankine-tag" style="background:rgba(96,165,250,0.15); color:#60a5fa;">2→3</span> Constant P condensation
+          </div>
+          <div style="padding:5px 8px; border-radius:4px;">
+            <span class="pp-rankine-tag" style="background:rgba(0,245,255,0.15); color:#00f5ff;">3→4</span> Isentropic pumping
+          </div>
+          <div style="padding:5px 8px; border-radius:4px;">
+            <span class="pp-rankine-tag" style="background:rgba(249,115,22,0.15); color:#f97316;">4→1</span> Constant P heat addition (boiler)
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:12px; background:rgba(239,68,68,0.06); padding:14px; border-radius:8px; border:1px solid rgba(239,68,68,0.2);">
+          $$ \boxed{\eta_{Rankine} = \frac{W_{turbine} - W_{pump}}{Q_{boiler}} = \frac{(h_1-h_2)-(h_4-h_3)}{h_1-h_4}} $$
+          <p style="font-size:10px; color:var(--pp-muted); margin-top:6px;">$\eta_{thermal,actual} \approx 30\text{-}40\%$</p>
+        </div>
+
+        <p style="color:#ef4444; font-weight:600; margin:16px 0 8px;">Overall &amp; Heat Rate:</p>
+        <div style="text-align:center;">
+          $$ \eta_{overall} = \eta_{boiler} \times \eta_{turbine} \times \eta_{generator} \times \eta_{mech} $$
+          $$ \text{Heat rate} = \frac{\text{Heat input (kJ)}}{\text{kWh generated}} \qquad \eta = \frac{3600}{\text{Heat rate}} $$
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px;">
+          <div class="pp-stat-card" style="border-top:3px solid #00ff88;">
+            <div class="pp-stat-value" style="color:#00ff88; font-size:14px;">3,600</div>
+            <div class="pp-stat-label">Ideal kJ/kWh</div>
+          </div>
+          <div class="pp-stat-card" style="border-top:3px solid #ef4444;">
+            <div class="pp-stat-value" style="color:#ef4444; font-size:14px;">8,000–12,000</div>
+            <div class="pp-stat-label">Actual kJ/kWh</div>
+          </div>
+        </div>
+
+        <p style="color:#f97316; font-weight:600; margin:16px 0 8px;">Major Components:</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:6px;">
+          <div class="pp-stat-card"><div class="pp-stat-value" style="font-size:18px;">🔥</div><div class="pp-stat-label">Boiler</div></div>
+          <div class="pp-stat-card"><div class="pp-stat-value" style="font-size:18px;">⚙️</div><div class="pp-stat-label">Turbine</div></div>
+          <div class="pp-stat-card"><div class="pp-stat-value" style="font-size:18px;">❄️</div><div class="pp-stat-label">Condenser</div></div>
+          <div class="pp-stat-card"><div class="pp-stat-value" style="font-size:18px;">💧</div><div class="pp-stat-label">Feed Pump</div></div>
+          <div class="pp-stat-card"><div class="pp-stat-value" style="font-size:18px;">🗼</div><div class="pp-stat-label">Cooling Tower</div></div>
+          <div class="pp-stat-card"><div class="pp-stat-value" style="font-size:18px;">🪨</div><div class="pp-stat-label">Coal Plant</div></div>
+          <div class="pp-stat-card"><div class="pp-stat-value" style="font-size:18px;">🌫️</div><div class="pp-stat-label">Ash Handling</div></div>
+          <div class="pp-stat-card"><div class="pp-stat-value" style="font-size:18px;">♨️</div><div class="pp-stat-label">Superheater</div></div>
+        </div>
+      </div>
+
+      <!-- Animation Zone -->
+      <div class="pp-anim-zone" id="anim-zone-14">
+        <p class="pp-anim-label" style="color:#ef4444;">🏭 Complete Thermal Plant Flow</p>
+        <div class="pp-thermal-flow">
+          <svg viewBox="0 0 600 220" width="100%" style="max-width:600px; margin:0 auto; display:block;" id="thermal-plant-svg">
+            <!-- Coal Bunker -->
+            <rect x="10" y="20" width="60" height="40" rx="4" fill="#374151" stroke="#6b7280" stroke-width="1"></rect>
+            <text x="40" y="43" fill="#e5e7eb" font-size="7" text-anchor="middle">Coal</text>
+            <!-- Arrow -->
+            <line x1="70" y1="40" x2="95" y2="40" stroke="#6b7280" stroke-width="1.5"></line>
+            <polygon points="92,37 98,40 92,43" fill="#6b7280"></polygon>
+            <!-- Boiler/Furnace -->
+            <rect x="98" y="10" width="80" height="60" rx="6" fill="#1a1f2e" stroke="#f97316" stroke-width="2"></rect>
+            <text x="138" y="32" fill="#f97316" font-size="8" text-anchor="middle" font-weight="bold">Boiler</text>
+            <text x="138" y="45" fill="#ef4444" font-size="16" text-anchor="middle">🔥</text>
+            <text x="138" y="60" fill="#e5e7eb" font-size="6" text-anchor="middle">Furnace</text>
+            <!-- Steam arrow -->
+            <line x1="178" y1="35" x2="218" y2="35" stroke="#e5e7eb" stroke-width="1.5" stroke-dasharray="4,2"></line>
+            <polygon points="215,32 222,35 215,38" fill="#e5e7eb"></polygon>
+            <text x="198" y="28" fill="#e5e7eb" font-size="5">Steam</text>
+            <!-- Superheater -->
+            <rect x="222" y="20" width="55" height="30" rx="4" fill="#1a1f2e" stroke="#f97316" stroke-width="1"></rect>
+            <text x="250" y="38" fill="#f97316" font-size="6" text-anchor="middle">Superheater</text>
+            <!-- Steam to turbine -->
+            <line x1="277" y1="35" x2="310" y2="35" stroke="#e5e7eb" stroke-width="1.5" stroke-dasharray="4,2"></line>
+            <polygon points="307,32 314,35 307,38" fill="#e5e7eb"></polygon>
+            <!-- Turbine -->
+            <rect x="314" y="15" width="70" height="40" rx="6" fill="#1a1f2e" stroke="#facc15" stroke-width="2"></rect>
+            <text x="349" y="32" fill="#facc15" font-size="8" text-anchor="middle" font-weight="bold">Turbine</text>
+            <text x="349" y="46" fill="#facc15" font-size="6" text-anchor="middle">⚙️ Spinning</text>
+            <!-- Shaft to Generator -->
+            <line x1="384" y1="35" x2="420" y2="35" stroke="#facc15" stroke-width="2"></line>
+            <!-- Generator -->
+            <circle cx="440" cy="35" r="20" fill="#1a1f2e" stroke="#00f5ff" stroke-width="2"></circle>
+            <text x="440" y="38" fill="#00f5ff" font-size="10" text-anchor="middle" font-weight="bold">G</text>
+            <!-- Electrical output -->
+            <line x1="460" y1="35" x2="500" y2="35" stroke="#facc15" stroke-width="1.5"></line>
+            <text x="510" y="38" fill="#facc15" font-size="8">⚡</text>
+            <text x="530" y="38" fill="#facc15" font-size="6">Grid</text>
+            <!-- Exhaust steam down to condenser -->
+            <line x1="349" y1="55" x2="349" y2="100" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4,2"></line>
+            <polygon points="346,97 349,104 352,97" fill="#60a5fa"></polygon>
+            <!-- Condenser -->
+            <rect x="314" y="105" width="70" height="35" rx="4" fill="#1a1f2e" stroke="#60a5fa" stroke-width="1.5"></rect>
+            <text x="349" y="125" fill="#60a5fa" font-size="7" text-anchor="middle">Condenser</text>
+            <!-- Cooling tower -->
+            <path d="M430,110 Q440,95 450,110 L448,145 Q440,140 432,145 Z" fill="#1a1f2e" stroke="#60a5fa" stroke-width="1"></path>
+            <text x="440" y="155" fill="#60a5fa" font-size="5" text-anchor="middle">Cooling Tower</text>
+            <line x1="384" y1="122" x2="430" y2="122" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"></line>
+            <!-- Condensate to pump -->
+            <line x1="349" y1="140" x2="349" y2="170" stroke="#00f5ff" stroke-width="1.5"></line>
+            <polygon points="346,167 349,174 352,167" fill="#00f5ff"></polygon>
+            <!-- Feed Pump -->
+            <rect x="324" y="175" width="50" height="25" rx="4" fill="#1a1f2e" stroke="#00f5ff" stroke-width="1"></rect>
+            <text x="349" y="191" fill="#00f5ff" font-size="7" text-anchor="middle">Pump</text>
+            <!-- Back to boiler -->
+            <line x1="324" y1="188" x2="138" y2="188" stroke="#00f5ff" stroke-width="1.5"></line>
+            <line x1="138" y1="188" x2="138" y2="70" stroke="#00f5ff" stroke-width="1.5"></line>
+            <polygon points="135,73 138,66 141,73" fill="#00f5ff"></polygon>
+            <!-- Chimney -->
+            <rect x="50" y="80" width="15" height="50" fill="#374151" stroke="#6b7280" stroke-width="0.5"></rect>
+            <text x="57" y="140" fill="#6b7280" font-size="5" text-anchor="middle">Stack</text>
+            <!-- Smoke particles -->
+            <circle cx="55" cy="76" r="3" fill="#6b7280" opacity="0.4"></circle>
+            <circle cx="60" cy="70" r="2" fill="#6b7280" opacity="0.3"></circle>
+            <circle cx="52" cy="65" r="2.5" fill="#6b7280" opacity="0.25"></circle>
+          </svg>
+        </div>
+
+        <!-- Rankine T-s style diagram -->
+        <p class="pp-anim-label" style="color:#ef4444; margin-top:16px;">📊 Rankine Cycle Efficiency</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div style="background:rgba(0,0,0,0.2); padding:12px; border-radius:8px; border:1px solid var(--pp-border);">
+            <p style="font-size:10px; color:#f97316; font-family:'Orbitron',monospace; text-align:center;">RANKINE PROCESS</p>
+            <svg viewBox="0 0 200 150" width="100%" style="margin-top:8px;">
+              <!-- Axes -->
+              <line x1="30" y1="130" x2="180" y2="130" stroke="#5a8aaa" stroke-width="1"></line>
+              <line x1="30" y1="130" x2="30" y2="10" stroke="#5a8aaa" stroke-width="1"></line>
+              <text x="105" y="145" fill="#5a8aaa" font-size="7" text-anchor="middle">s (entropy)</text>
+              <text x="15" y="70" fill="#5a8aaa" font-size="7" text-anchor="middle" transform="rotate(-90,15,70)">T</text>
+              <!-- Cycle path -->
+              <path d="M50,30 L120,90" stroke="#facc15" stroke-width="2" fill="none"></path>
+              <text x="90" y="55" fill="#facc15" font-size="6">1→2 Turbine</text>
+              <path d="M120,90 L60,90" stroke="#60a5fa" stroke-width="2" fill="none"></path>
+              <text x="90" y="100" fill="#60a5fa" font-size="6">2→3 Condenser</text>
+              <path d="M60,90 L45,35" stroke="#00f5ff" stroke-width="2" fill="none"></path>
+              <text x="40" y="65" fill="#00f5ff" font-size="6">3→4 Pump</text>
+              <path d="M45,35 L50,30" stroke="#f97316" stroke-width="2" fill="none"></path>
+              <text x="55" y="25" fill="#f97316" font-size="6">4→1 Boiler</text>
+              <!-- Points -->
+              <circle cx="50" cy="30" r="3" fill="#facc15"></circle><text x="50" y="22" fill="#facc15" font-size="7" text-anchor="middle">1</text>
+              <circle cx="120" cy="90" r="3" fill="#60a5fa"></circle><text x="128" y="88" fill="#60a5fa" font-size="7">2</text>
+              <circle cx="60" cy="90" r="3" fill="#00f5ff"></circle><text x="55" y="100" fill="#00f5ff" font-size="7">3</text>
+              <circle cx="45" cy="35" r="3" fill="#f97316"></circle><text x="38" y="32" fill="#f97316" font-size="7">4</text>
+            </svg>
+          </div>
+          <div>
+            <!-- Sankey energy flow -->
+            <p style="font-size:10px; color:#f97316; font-family:'Orbitron',monospace; text-align:center;">ENERGY SANKEY FLOW</p>
+            <div style="margin-top:10px;">
+              <div class="pp-sankey-row">
+                <span class="pp-sankey-label">Input</span>
+                <div class="pp-sankey-bar" data-val="100%" style="width:100%; background:linear-gradient(90deg,#f97316,#ef4444);"></div>
+              </div>
+              <div class="pp-sankey-row">
+                <span class="pp-sankey-label">Boiler loss</span>
+                <div class="pp-sankey-bar" data-val="12%" style="width:12%; background:#ef4444;"></div>
+              </div>
+              <div class="pp-sankey-row">
+                <span class="pp-sankey-label">Turbine loss</span>
+                <div class="pp-sankey-bar" data-val="15%" style="width:15%; background:#ef4444;"></div>
+              </div>
+              <div class="pp-sankey-row">
+                <span class="pp-sankey-label">Condenser</span>
+                <div class="pp-sankey-bar" data-val="35%" style="width:35%; background:#ef4444;"></div>
+              </div>
+              <div class="pp-sankey-row">
+                <span class="pp-sankey-label">Gen loss</span>
+                <div class="pp-sankey-bar" data-val="2%" style="width:2%; background:#ef4444; min-width:18px;"></div>
+              </div>
+              <div class="pp-sankey-row">
+                <span class="pp-sankey-label" style="color:#00ff88;">Output</span>
+                <div class="pp-sankey-bar" data-val="~36%" style="width:36%; background:linear-gradient(90deg,#00ff88,#22c55e);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rankine Efficiency Calculator -->
+        <p class="pp-anim-label" style="color:#ef4444; margin-top:16px;">🧮 Rankine Efficiency Calculator</p>
+        <div style="max-width:500px; margin:0 auto;">
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
+            <label style="font-size:10px; color:var(--pp-muted);">h₁ (kJ/kg): <input type="number" id="rk-h1" value="3200" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">h₂ (kJ/kg): <input type="number" id="rk-h2" value="2300" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">h₃ (kJ/kg): <input type="number" id="rk-h3" value="192" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">h₄ (kJ/kg): <input type="number" id="rk-h4" value="195" class="pp-input-sm"></label>
+          </div>
+          <button class="pp-calc-btn" id="btn-rankine-calc" style="margin-top:8px; width:100%;">Compute η<sub>Rankine</sub></button>
+          <div id="rankine-result" style="display:none; margin-top:10px; padding:10px; background:rgba(239,68,68,0.06); border-radius:8px; border:1px solid rgba(239,68,68,0.2); font-size:12px; font-family:'Share Tech Mono',monospace; text-align:center;"></div>
+        </div>
+
+        <!-- Overall Thermal Efficiency -->
+        <p class="pp-anim-label" style="color:#ef4444; margin-top:16px;">🏭 Overall Thermal Efficiency</p>
+        <div style="max-width:500px; margin:0 auto;">
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
+            <label style="font-size:10px; color:var(--pp-muted);">η<sub>boiler</sub> (%): <input type="number" id="th-boiler" value="88" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">η<sub>turbine</sub> (%): <input type="number" id="th-turbine" value="85" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">η<sub>generator</sub> (%): <input type="number" id="th-gen" value="98" class="pp-input-sm"></label>
+          </div>
+          <button class="pp-calc-btn" id="btn-thermal-eta" style="margin-top:8px; width:100%;">Compute η<sub>overall</sub></button>
+          <div id="thermal-eta-result" style="display:none; margin-top:10px; padding:10px; background:rgba(239,68,68,0.06); border-radius:8px; border:1px solid rgba(239,68,68,0.2); font-size:12px; font-family:'Share Tech Mono',monospace; text-align:center;"></div>
+        </div>
+
+        <!-- Heat Rate Gauge -->
+        <p class="pp-anim-label" style="color:#ef4444; margin-top:16px;">🌡️ Heat Rate Gauge</p>
+        <div style="max-width:400px; margin:0 auto; text-align:center;">
+          <div style="display:flex; align-items:center; gap:12px; justify-content:center;">
+            <div style="text-align:center;">
+              <div style="font-size:10px; color:#00ff88; font-family:'Orbitron',monospace;">IDEAL</div>
+              <div style="font-size:20px; color:#00ff88; font-family:'Orbitron',monospace;">3,600</div>
+              <div style="font-size:8px; color:var(--pp-muted);">kJ/kWh</div>
+            </div>
+            <div style="font-size:18px; color:var(--pp-muted);">→</div>
+            <div style="text-align:center;">
+              <div style="font-size:10px; color:#ef4444; font-family:'Orbitron',monospace;">ACTUAL</div>
+              <div style="font-size:20px; color:#ef4444; font-family:'Orbitron',monospace;">10,000</div>
+              <div style="font-size:8px; color:var(--pp-muted);">kJ/kWh</div>
+            </div>
+            <div style="font-size:18px; color:var(--pp-muted);">=</div>
+            <div style="text-align:center;">
+              <div style="font-size:10px; color:#facc15; font-family:'Orbitron',monospace;">η</div>
+              <div style="font-size:20px; color:#facc15; font-family:'Orbitron',monospace;">36%</div>
+              <div style="font-size:8px; color:var(--pp-muted);">3600/10000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="pp-card" id="c15">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#60a5fa 30%,#ef4444 70%,transparent);"></div>
+      <div class="pp-section-title" style="color:#a78bfa;">📊 Hydro + Thermal Complete Summary</div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-summary-grid">
+          <div class="pp-summary-box" style="border-top:3px solid #60a5fa;">
+            <h4 style="color:#60a5fa;">💧 All Key Hydro Formulas</h4>
+            <div style="font-size:11px; line-height:2;">
+              $P_{kW} = 9.81 \times 10^{-3} \cdot WQH\eta$<br>
+              $P_{HP} = WQH\eta / 75$<br>
+              $N_s = N\sqrt{P}/H^{5/4}$<br>
+              $H_{net} = H_g - H_f$<br>
+              $H_f = fLV^2/(2gD)$ (Darcy)<br>
+              $H_f = 4f'LV^2/(2gD)$ (Fanning)<br>
+              $f_{Darcy} = 4f_{Fanning}$
+            </div>
+          </div>
+          <div class="pp-summary-box" style="border-top:3px solid #ef4444;">
+            <h4 style="color:#ef4444;">🔥 Thermal Formulas</h4>
+            <div style="font-size:11px; line-height:2;">
+              $\eta_{Rankine} = \frac{(h_1-h_2)-(h_4-h_3)}{h_1-h_4}$<br>
+              $\eta = 3600/\text{Heat rate}$<br>
+              $\eta_{overall} = \prod \eta_i$<br>
+              Heat rate: ideal 3600 kJ/kWh<br>
+              Actual: 8000–12000 kJ/kWh
+            </div>
+          </div>
+        </div>
+
+        <p style="color:#60a5fa; font-weight:600; margin:16px 0 8px;">Turbine Selection Guide:</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
+          <div style="background:rgba(96,165,250,0.08); padding:10px; border-radius:8px; border-top:3px solid #60a5fa; text-align:center;">
+            <p style="color:#60a5fa; font-size:11px; font-weight:bold;">H &lt; 30 m</p>
+            <p style="color:#60a5fa; font-size:14px; font-family:'Orbitron',monospace;">Kaplan</p>
+            <p style="font-size:10px; color:var(--pp-muted);">Ns = 300–900</p>
+          </div>
+          <div style="background:rgba(0,245,255,0.08); padding:10px; border-radius:8px; border-top:3px solid #00f5ff; text-align:center;">
+            <p style="color:#00f5ff; font-size:11px; font-weight:bold;">30 &lt; H &lt; 300 m</p>
+            <p style="color:#00f5ff; font-size:14px; font-family:'Orbitron',monospace;">Francis</p>
+            <p style="font-size:10px; color:var(--pp-muted);">Ns = 50–300</p>
+          </div>
+          <div style="background:rgba(250,204,21,0.08); padding:10px; border-radius:8px; border-top:3px solid #facc15; text-align:center;">
+            <p style="color:#facc15; font-size:11px; font-weight:bold;">H &gt; 300 m</p>
+            <p style="color:#facc15; font-size:14px; font-family:'Orbitron',monospace;">Pelton</p>
+            <p style="font-size:10px; color:var(--pp-muted);">Ns = 10–50</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animation Zone: Master Calculators -->
+      <div class="pp-anim-zone" id="anim-zone-15">
+        <p class="pp-anim-label" style="color:#a78bfa;">⚡ Master Turbine Selector</p>
+        <div style="max-width:400px; margin:0 auto;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+            <label style="font-size:10px; color:var(--pp-muted);">H (m): <input type="number" id="turb-sel-H" value="150" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">N (rpm): <input type="number" id="turb-sel-N" value="300" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">P (HP): <input type="number" id="turb-sel-P" value="5000" class="pp-input-sm"></label>
+          </div>
+          <button class="pp-calc-btn" id="btn-turb-sel" style="margin-top:8px; width:100%;">Select Turbine</button>
+          <div id="turb-sel-result" style="display:none; margin-top:10px; padding:12px; border-radius:8px; font-size:13px; font-family:'Share Tech Mono',monospace; text-align:center;"></div>
+        </div>
+
+        <!-- Complete Hydro Power Calc -->
+        <p class="pp-anim-label" style="color:#60a5fa; margin-top:20px;">⚡ Complete Hydro Power Calculator</p>
+        <div style="max-width:500px; margin:0 auto;">
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
+            <label style="font-size:10px; color:var(--pp-muted);">Q (m³/s): <input type="number" id="hp-Q" value="50" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">H<sub>g</sub> (m): <input type="number" id="hp-Hg" value="200" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">η (%): <input type="number" id="hp-eta" value="88" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">f: <input type="number" id="hp-f" value="0.02" step="0.001" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">L (m): <input type="number" id="hp-L" value="500" class="pp-input-sm"></label>
+            <label style="font-size:10px; color:var(--pp-muted);">D (m): <input type="number" id="hp-D" value="2" class="pp-input-sm"></label>
+          </div>
+          <button class="pp-calc-btn" id="btn-hp-calc" style="margin-top:8px; width:100%;">Compute Power (kW &amp; HP)</button>
+          <div id="hp-result" style="display:none; margin-top:10px; padding:10px; background:rgba(96,165,250,0.06); border-radius:8px; border:1px solid rgba(96,165,250,0.2); font-size:12px; font-family:'Share Tech Mono',monospace;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-module-divider">
+      <span class="pp-module-divider-tag">Module 2 — Thermal (Steam) Power Plant</span>
+    </div>
+<div class="pp-card m2-thermal" id="c16">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#ef4444;font-size:14px;">🔥</span>
+        Module 2 · Energy Flow &amp; System Overview
+      </div>
+
+      <div class="pp-definition-box">
+        A <strong>Thermal Power Plant</strong> converts chemical energy in fossil fuels (coal, gas, oil) to electrical energy through a heat→mechanical→electrical chain. The <strong>Rankine Cycle</strong> is the theoretical basis for steam plant operation.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Energy Conversion Chain</div>
+        <div class="pp-formula-row">$$\text{Fuel (Chemical)} \xrightarrow{\text{Boiler}} \text{Steam (Thermal)} \xrightarrow{\text{Turbine}} \text{Shaft (Mech)} \xrightarrow{\text{Generator}} \text{Electricity}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Rankine Cycle Key Processes</div>
+        <div class="pp-formula-row">$$1 \to 2:\;\text{Isentropic expansion in turbine}\quad W_T = h_1 - h_2$$</div>
+        <div class="pp-formula-row">$$2 \to 3:\;\text{Constant-pressure heat rejection}\quad Q_{out} = h_2 - h_3$$</div>
+        <div class="pp-formula-row">$$3 \to 4:\;\text{Isentropic compression in pump}\quad W_P = h_4 - h_3$$</div>
+        <div class="pp-formula-row">$$4 \to 1:\;\text{Constant-pressure heat addition}\quad Q_{in} = h_1 - h_4$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Cycle Efficiency</div>
+        <div class="pp-formula-row">$$\eta_{Rankine} = \frac{W_T - W_P}{Q_{in}} = \frac{(h_1 - h_2) - (h_4 - h_3)}{h_1 - h_4}$$</div>
+        <div class="pp-formula-row">$$\text{Heat Rate} = \frac{3600}{\eta_{overall}} \;\text{kJ/kWh}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Typical Efficiencies</div>
+        <table class="pp-data-table">
+          <tbody><tr><th>Component</th><th>Symbol</th><th>Typical Range</th></tr>
+          <tr><td>Boiler</td><td>η<sub>b</sub></td><td>85–92%</td></tr>
+          <tr><td>Turbine</td><td>η<sub>t</sub></td><td>80–90%</td></tr>
+          <tr><td>Generator</td><td>η<sub>g</sub></td><td>95–98%</td></tr>
+          <tr><td>Overall Plant</td><td>η<sub>o</sub></td><td>33–42%</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-16" style="min-height:260px;">
+        <div class="pp-anim-label">🔥 Energy Flow Chain &amp; Rankine Cycle</div>
+
+        <!-- Interactive Energy Chain -->
+        <div class="pp-energy-chain" id="energyChainC16">
+          <div class="pp-chain-node" style="border-color:#6b7280">
+            <span class="pp-chain-icon">⛏️</span>
+            <span class="pp-chain-label">Fuel</span>
+            <span class="pp-chain-pct" style="color:#e5e7eb">100%</span>
+          </div>
+          <span class="pp-chain-arrow">→</span>
+          <div class="pp-chain-node" style="border-color:#f97316">
+            <span class="pp-chain-icon">🔥</span>
+            <span class="pp-chain-label">Boiler</span>
+            <span class="pp-chain-pct" style="color:#f97316">η<sub>b</sub></span>
+            <span class="pp-chain-loss">≈8–15% loss</span>
+          </div>
+          <span class="pp-chain-arrow">→</span>
+          <div class="pp-chain-node" style="border-color:#facc15">
+            <span class="pp-chain-icon">💨</span>
+            <span class="pp-chain-label">Steam</span>
+            <span class="pp-chain-pct" style="color:#facc15">~88%</span>
+          </div>
+          <span class="pp-chain-arrow">→</span>
+          <div class="pp-chain-node" style="border-color:#00f5ff">
+            <span class="pp-chain-icon">⚙️</span>
+            <span class="pp-chain-label">Turbine</span>
+            <span class="pp-chain-pct" style="color:#00f5ff">η<sub>t</sub></span>
+            <span class="pp-chain-loss">≈10–20% loss</span>
+          </div>
+          <span class="pp-chain-arrow">→</span>
+          <div class="pp-chain-node" style="border-color:#00ff88">
+            <span class="pp-chain-icon">⚡</span>
+            <span class="pp-chain-label">Generator</span>
+            <span class="pp-chain-pct" style="color:#00ff88">η<sub>g</sub></span>
+            <span class="pp-chain-loss">≈2–5% loss</span>
+          </div>
+          <span class="pp-chain-arrow">→</span>
+          <div class="pp-chain-node" style="border-color:#ef4444">
+            <span class="pp-chain-icon">🔌</span>
+            <span class="pp-chain-label">Output</span>
+            <span class="pp-chain-pct" style="color:#ef4444">~36%</span>
+          </div>
+        </div>
+
+        <!-- Rankine Efficiency Calculator -->
+        <div style="margin-top:16px;padding:12px;background:rgba(0,0,0,0.2);border:1px solid var(--pp-border);border-radius:8px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#ef4444;letter-spacing:2px;margin-bottom:8px;">RANKINE CYCLE CALCULATOR</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">h₁ (Turbine inlet) kJ/kg
+              <input type="number" class="pp-input-sm" id="c16h1" value="3400" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">h₂ (Turbine exit) kJ/kg
+              <input type="number" class="pp-input-sm" id="c16h2" value="2400" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">h₃ (Condenser exit) kJ/kg
+              <input type="number" class="pp-input-sm" id="c16h3" value="192" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">h₄ (Pump exit) kJ/kg
+              <input type="number" class="pp-input-sm" id="c16h4" value="200" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="calcRankineC16()" style="margin-top:8px;width:100%;">Calculate Rankine η</button>
+          <div id="c16RankineOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m2-thermal" id="c17">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#ef4444;font-size:14px;">🏭</span>
+        Module 2 · Single Line Diagram: Complete Plant
+      </div>
+
+      <div class="pp-definition-box">
+        The thermal power plant converts fuel energy through four interconnected circuits: <strong style="color:#6b7280">Coal &amp; Ash</strong>, <strong style="color:#f97316">Air &amp; Flue Gas</strong>, <strong style="color:#facc15">Feed Water &amp; Steam</strong>, and <strong style="color:#60a5fa">Cooling Water</strong>. Each circuit forms a closed or open loop with dedicated components.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Key Process Equations</div>
+        <div class="pp-formula-row">$$\text{Combustion:}\quad \text{C} + \text{O}_2 \to \text{CO}_2 + 393.5\;\text{kJ/mol}$$</div>
+        <div class="pp-formula-row">$$\text{Steam Generation:}\quad Q_{boiler} = \dot{m}_s(h_1 - h_4)$$</div>
+        <div class="pp-formula-row">$$\text{Turbine Work:}\quad W_T = \dot{m}_s(h_1 - h_2)$$</div>
+        <div class="pp-formula-row">$$\text{Condenser Load:}\quad Q_c = \dot{m}_s(h_2 - h_3)$$</div>
+        <div class="pp-formula-row">$$\text{Pump Work:}\quad W_P = \dot{m}_s \cdot v_f(P_4 - P_3)$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Mass &amp; Energy Balance</div>
+        <div class="pp-formula-row">$$\dot{m}_{fuel} \times CV = \dot{m}_s(h_1 - h_4) / \eta_b$$</div>
+        <div class="pp-formula-row">$$\text{Coal Rate} = \frac{3600 \times P_{MW}}{\eta_o \times CV} \;\text{tonnes/hr}$$</div>
+      </div>
+
+      
+    <div class="pp-anim-zone" id="anim-zone-17" style="min-height:260px;">
+      <style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+
+  :root {
+    --coal:   #c0392b;
+    --steam:  #1abc9c;
+    --flue:   #c8a800;
+    --ash:    #7f8c8d;
+    --water:  #2980b9;
+    --elec:   #f39c12;
+    --bg:     #0d1117;
+    --panel:  #161b22;
+    --border: #30363d;
+    --text:   #e6edf3;
+    --muted:  #8b949e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .new-diagram-wrapper {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+  }
+
+  .new-diagram-wrapper h1 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .new-diagram-wrapper .subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .75rem;
+    color: var(--muted);
+    letter-spacing: .2em;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  /* ── Legend ── */
+  .new-diagram-wrapper .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .new-diagram-wrapper .leg { display: flex; align-items: center; gap: 6px; font-size: .78rem; letter-spacing: .05em; }
+  .new-diagram-wrapper .leg-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+  /* ── SVG container ── */
+  .new-diagram-wrapper .diagram-wrap {
+    width: 100%;
+    max-width: 960px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 40px #00000088;
+  }
+
+  .new-diagram-wrapper svg { width: 100%; height: auto; display: block; }
+
+  /* ── Component boxes ── */
+  .new-diagram-wrapper .box {
+    rx: 4; ry: 4;
+    filter: drop-shadow(0 2px 6px #0008);
+  }
+
+  /* ── Labels ── */
+  .new-diagram-wrapper .lbl {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    fill: #fff;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+  }
+  .new-diagram-wrapper .lbl-out {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    fill: var(--muted);
+    text-anchor: middle;
+    pointer-events: none;
+  }
+
+  /* ── Animated flow dots ── */
+  @keyframes flowCoal   { from{stroke-dashoffset:200} to{stroke-dashoffset:0} }
+  @keyframes flowSteam  { from{stroke-dashoffset:200} to{stroke-dashoffset:0} }
+  @keyframes flowFlue   { from{stroke-dashoffset:200} to{stroke-dashoffset:0} }
+  @keyframes flowWater  { from{stroke-dashoffset:200} to{stroke-dashoffset:0} }
+  @keyframes flowElec   { from{stroke-dashoffset:200} to{stroke-dashoffset:0} }
+
+  .flow-coal  { stroke:var(--coal);  stroke-width:3; fill:none; stroke-dasharray:6 10; animation:flowCoal  1.4s linear infinite; }
+  .flow-steam { stroke:var(--steam); stroke-width:3; fill:none; stroke-dasharray:6 10; animation:flowSteam 1.2s linear infinite; }
+  .flow-flue  { stroke:var(--flue);  stroke-width:3; fill:none; stroke-dasharray:6 10; animation:flowFlue  1.6s linear infinite; }
+  .flow-water { stroke:var(--water); stroke-width:3; fill:none; stroke-dasharray:6 10; animation:flowWater 1.8s linear infinite; }
+  .flow-elec  { stroke:var(--elec);  stroke-width:3; fill:none; stroke-dasharray:6 10; animation:flowElec  1.0s linear infinite; }
+
+  /* base pipe (static) */
+  .pipe-coal  { stroke:var(--coal);  stroke-width:1.5; fill:none; opacity:.35; }
+  .pipe-steam { stroke:var(--steam); stroke-width:1.5; fill:none; opacity:.35; }
+  .pipe-flue  { stroke:var(--flue);  stroke-width:1.5; fill:none; opacity:.35; }
+  .pipe-water { stroke:var(--water); stroke-width:1.5; fill:none; opacity:.35; }
+  .pipe-elec  { stroke:var(--elec);  stroke-width:1.5; fill:none; opacity:.35; }
+
+  /* arrowheads */
+  .arrow-coal  { fill:var(--coal); }
+  .arrow-steam { fill:var(--steam);}
+  .arrow-flue  { fill:var(--flue); }
+  .arrow-water { fill:var(--water);}
+  .arrow-elec  { fill:var(--elec); }
+
+
+
+  /* chimney smoke handled via SVG animate elements */
+
+  /* pulse on boiler */
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
+  .pulse { animation: pulse 2s ease-in-out infinite; }
+
+  /* alternator glow pulse */
+  @keyframes altGlow {
+    0%,100%{ filter:drop-shadow(0 0 4px #f39c12) drop-shadow(0 0 10px #e67e22); }
+    50%    { filter:drop-shadow(0 0 10px #ffe066) drop-shadow(0 0 22px #f39c12); }
+  }
+  .alt-glow { animation: altGlow 1s ease-in-out infinite; }
+
+  /* coal storage pulse */
+  @keyframes coalPulse { 0%,100%{opacity:1} 50%{opacity:.55} }
+  .coal-pulse { animation: coalPulse 1.2s ease-in-out infinite; }
+
+  /* economizer heat shimmer */
+  @keyframes econGlow { 0%,100%{opacity:1} 50%{opacity:.6} }
+  .econ-glow { animation: econGlow 1.5s ease-in-out infinite; }
+
+  /* condenser ripple */
+  @keyframes condRipple { 0%{opacity:.7;r:4} 100%{opacity:0;r:14} }
+
+  /* ── Orbiting stars inside draught fans ── */
+  @keyframes orbitIDF  { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
+  @keyframes orbitIDF2 { from{transform:rotate(180deg)} to{transform:rotate(540deg)} }
+  @keyframes orbitFDF  { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
+  @keyframes orbitFDF2 { from{transform:rotate(180deg)} to{transform:rotate(540deg)} }
+  @keyframes starGlow {
+    0%,100%{ filter:drop-shadow(0 0 3px #ffe566) drop-shadow(0 0 8px #ffb700); opacity:1; }
+    50%    { filter:drop-shadow(0 0 7px #fff9b0) drop-shadow(0 0 16px #ffd000); opacity:.7; }
+  }
+  .idf-star1 { animation:orbitIDF  1.8s linear infinite; transform-box:fill-box; transform-origin:640px 100px; }
+  .idf-star2 { animation:orbitIDF2 1.8s linear infinite; transform-box:fill-box; transform-origin:640px 100px; }
+  .fdf-star1 { animation:orbitFDF  1.8s linear infinite; transform-box:fill-box; transform-origin:680px 170px; }
+  .fdf-star2 { animation:orbitFDF2 1.8s linear infinite; transform-box:fill-box; transform-origin:680px 170px; }
+  .star-shape { animation:starGlow 1.4s ease-in-out infinite; }
+
+
+      </style>
+      <div class="new-diagram-wrapper" style="width:100%; position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; border-radius:12px;">
+
+
+<h1>⚡ Thermal Power Plant</h1>
+<div class="subtitle">ANIMATED PROCESS FLOW DIAGRAM</div>
+
+<div class="legend">
+  <div class="leg"><div class="leg-dot" style="background:var(--coal)"></div> Coal / Ash</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--steam)"></div> Steam Cycle</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--flue)"></div> Flue Gases / Air</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--water)"></div> Cooling Water</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--elec)"></div> Electricity</div>
+</div>
+
+<div class="diagram-wrap">
+<svg viewBox="0 0 920 680" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- arrowhead markers -->
+  <marker id="ac" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" class="arrow-coal"></polygon></marker>
+  <marker id="as" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" class="arrow-steam"></polygon></marker>
+  <marker id="af" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" class="arrow-flue"></polygon></marker>
+  <marker id="aw" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" class="arrow-water"></polygon></marker>
+  <marker id="ae" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" class="arrow-elec"></polygon></marker>
+
+  <!-- glow filters -->
+  <filter id="glow-steam" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="3" result="blur"></feGaussianBlur>
+    <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+  </filter>
+  <filter id="glow-flue" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="3" result="blur"></feGaussianBlur>
+    <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+  </filter>
+  <radialGradient id="boilerGrad" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#e74c3c"></stop>
+    <stop offset="100%" stop-color="#922b21"></stop>
+  </radialGradient>
+  <radialGradient id="turbineGrad" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#1abc9c"></stop>
+    <stop offset="100%" stop-color="#0e7d68"></stop>
+  </radialGradient>
+</defs>
+
+<!-- ════════════════════════════════════
+     PIPES  (static base)
+════════════════════════════════════ -->
+<!-- Coal feed -->
+<line class="pipe-coal" x1="50" y1="300" x2="110" y2="300"></line>
+<line class="pipe-coal" x1="170" y1="300" x2="230" y2="300"></line>
+<line class="pipe-coal" x1="290" y1="300" x2="340" y2="300"></line>
+<!-- Ash return -->
+<line class="pipe-coal" x1="290" y1="360" x2="230" y2="360"></line>
+<line class="pipe-coal" x1="170" y1="360" x2="110" y2="360"></line>
+<line class="pipe-coal" x1="50" y1="360" x2="110" y2="360"></line>
+
+<!-- Boiler → SuperHeater → Valve → Turbine (steam, horizontal) -->
+<line class="pipe-steam" x1="400" y1="300" x2="470" y2="300"></line>
+<line class="pipe-steam" x1="530" y1="300" x2="580" y2="300"></line>
+<line class="pipe-steam" x1="620" y1="300" x2="660" y2="300"></line>
+<!-- Turbine → Alternator -->
+<line class="pipe-elec" x1="730" y1="300" x2="790" y2="300"></line>
+<!-- Turbine → Feed Water Heater (down) -->
+<line class="pipe-steam" x1="695" y1="340" x2="695" y2="390"></line>
+<line class="pipe-steam" x1="580" y1="410" x2="695" y2="410"></line>
+<line class="pipe-steam" x1="580" y1="390" x2="580" y2="410"></line>
+<!-- Feed Water Heater → Feed Water Pump -->
+<line class="pipe-steam" x1="580" y1="430" x2="580" y2="480"></line>
+<line class="pipe-steam" x1="540" y1="500" x2="580" y2="500"></line>
+<!-- Feed Water Pump → Condenser -->
+<line class="pipe-water" x1="520" y1="500" x2="480" y2="500"></line>
+<line class="pipe-water" x1="460" y1="520" x2="460" y2="540"></line>
+<!-- Condenser loop -->
+<line class="pipe-water" x1="400" y1="555" x2="330" y2="555"></line>
+<line class="pipe-water" x1="330" y1="555" x2="330" y2="490"></line>
+<!-- Boiler ↔ Economizer via water feed (vertical left) -->
+<line class="pipe-steam" x1="370" y1="490" x2="370" y2="230"></line>
+<line class="pipe-steam" x1="370" y1="230" x2="420" y2="230"></line>
+<!-- Turbine exhaust down to condenser -->
+<line class="pipe-steam" x1="695" y1="340" x2="695" y2="410"></line>
+<line class="pipe-steam" x1="695" y1="410" x2="695" y2="555"></line>
+<line class="pipe-steam" x1="695" y1="555" x2="500" y2="555"></line>
+
+<!-- Cooling Tower → Condenser -->
+<line class="pipe-water" x1="770" y1="555" x2="700" y2="555"></line>
+<!-- Cooling Tower ↑ natural water source (bottom) -->
+<line class="pipe-water" x1="800" y1="590" x2="800" y2="640"></line>
+<line class="pipe-water" x1="460" y1="640" x2="800" y2="640"></line>
+<line class="pipe-water" x1="460" y1="610" x2="460" y2="640"></line>
+<!-- Water Treatment → Feed Water Pump -->
+<line class="pipe-water" x1="330" y1="600" x2="330" y2="490"></line>
+
+<!-- Flue: Boiler → SuperHeater → Economizer → Air Preheater → Chimney -->
+<line class="pipe-flue" x1="400" y1="265" x2="480" y2="265"></line>
+<line class="pipe-flue" x1="480" y1="265" x2="480" y2="210"></line>
+<line class="pipe-flue" x1="420" y1="210" x2="480" y2="210"></line>
+<line class="pipe-flue" x1="420" y1="210" x2="420" y2="170"></line>
+<line class="pipe-flue" x1="420" y1="170" x2="460" y2="170"></line>
+<line class="pipe-flue" x1="500" y1="170" x2="580" y2="170"></line>
+<line class="pipe-flue" x1="580" y1="100" x2="580" y2="170"></line>
+<line class="pipe-flue" x1="580" y1="100" x2="640" y2="100"></line>
+<!-- Air Preheater → Boiler (hot air) -->
+<line class="pipe-flue" x1="460" y1="155" x2="400" y2="155"></line>
+<line class="pipe-flue" x1="400" y1="155" x2="400" y2="265"></line>
+<!-- Forced Draught Fan → Air Preheater -->
+<line class="pipe-flue" x1="660" y1="170" x2="620" y2="170"></line>
+<line class="pipe-flue" x1="500" y1="170" x2="540" y2="170"></line>
+
+<!-- ════════════════════════════════════
+     ANIMATED FLOW OVERLAYS
+════════════════════════════════════ -->
+<!-- Coal -->
+<line class="flow-coal" x1="50" y1="300" x2="340" y2="300" marker-end="url(#ac)"></line>
+<!-- Ash -->
+<line class="flow-coal" x1="290" y1="360" x2="50" y2="360" marker-end="url(#ac)" style="animation-direction:reverse"></line>
+<!-- Steam main -->
+<line class="flow-steam" x1="400" y1="300" x2="660" y2="300" marker-end="url(#as)"></line>
+<!-- Electricity -->
+<line class="flow-elec" x1="730" y1="300" x2="790" y2="300" marker-end="url(#ae)"></line>
+<!-- Turbine → FWH -->
+<polyline class="flow-steam" points="695,340 695,410 580,410 580,430" marker-end="url(#as)"></polyline>
+<!-- FWH → FWP → condenser (water cycle) -->
+<polyline class="flow-water" points="580,480 580,500 460,500 460,555" marker-end="url(#aw)"></polyline>
+<!-- Condenser → back loop -->
+<polyline class="flow-water" points="460,555 330,555 330,490 370,490" marker-end="url(#aw)"></polyline>
+<!-- Feed back to economizer/boiler -->
+<polyline class="flow-steam" points="370,490 370,230 420,230" marker-end="url(#as)"></polyline>
+<!-- Exhaust steam → condenser -->
+<polyline class="flow-steam" points="695,340 695,555 500,555" marker-end="url(#as)"></polyline>
+<!-- Cooling water -->
+<polyline class="flow-water" points="800,590 800,640 460,640 460,610" marker-end="url(#aw)"></polyline>
+<line class="flow-water" x1="770" y1="555" x2="505" y2="555" marker-end="url(#aw)"></line>
+<!-- Flue gases -->
+<polyline class="flow-flue" points="400,265 480,265 480,210 420,210 420,170 460,170" marker-end="url(#af)"></polyline>
+<polyline class="flow-flue" points="500,170 580,170 580,100 660,100" marker-end="url(#af)"></polyline>
+<!-- Hot air feed back -->
+<polyline class="flow-flue" points="460,155 400,155 400,265" marker-end="url(#af)"></polyline>
+<!-- Forced draught fan → preheater -->
+<line class="flow-flue" x1="660" y1="170" x2="505" y2="170" marker-end="url(#af)"></line>
+
+<!-- ════════════════════════════════════
+     COMPONENTS
+════════════════════════════════════ -->
+
+<!-- Coal Storage – pulsing glow + moving coal particles -->
+<rect x="10" y="280" width="90" height="40" rx="4" fill="#922b21"></rect>
+<!-- coal chunk particles moving left-to-right inside box -->
+<rect x="18" y="291" width="8" height="6" rx="2" fill="#3d1a0e" opacity="0.9">
+  <animate attributeName="x" from="15" to="88" dur="1.4s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" from="0" to="1" dur="0.2s" repeatCount="indefinite"></animate>
+</rect>
+<rect x="35" y="302" width="7" height="5" rx="2" fill="#5a2510" opacity="0.85">
+  <animate attributeName="x" from="15" to="88" dur="1.4s" begin="0.45s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" from="0" to="0.9" dur="0.2s" begin="0.45s" repeatCount="indefinite"></animate>
+</rect>
+<rect x="55" y="292" width="6" height="6" rx="2" fill="#3d1a0e" opacity="0.8">
+  <animate attributeName="x" from="15" to="88" dur="1.4s" begin="0.9s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" from="0" to="0.85" dur="0.2s" begin="0.9s" repeatCount="indefinite"></animate>
+</rect>
+<!-- glowing border pulse -->
+<rect x="10" y="280" width="90" height="40" rx="4" fill="none" stroke="#e74c3c" stroke-width="1.5">
+  <animate attributeName="stroke-opacity" values="1;0.2;1" dur="1.2s" repeatCount="indefinite"></animate>
+</rect>
+<text class="lbl" x="55" y="300">Coal</text>
+<text class="lbl" x="55" y="311">Storage</text>
+
+<!-- Coal Handling Plant – conveyor belt dots -->
+<rect x="110" y="280" width="90" height="40" rx="4" fill="#c0392b"></rect>
+<!-- moving conveyor line -->
+<line x1="118" y1="308" x2="192" y2="308" stroke="#7b0e00" stroke-width="2" opacity="0.6"></line>
+<!-- coal pieces on conveyor -->
+<rect x="120" y="302" width="7" height="5" rx="1" fill="#2c1010">
+  <animate attributeName="x" from="118" to="192" dur="1.1s" repeatCount="indefinite"></animate>
+</rect>
+<rect x="145" y="302" width="6" height="5" rx="1" fill="#3e1515">
+  <animate attributeName="x" from="118" to="192" dur="1.1s" begin="0.37s" repeatCount="indefinite"></animate>
+</rect>
+<rect x="170" y="302" width="7" height="5" rx="1" fill="#2c1010">
+  <animate attributeName="x" from="118" to="192" dur="1.1s" begin="0.74s" repeatCount="indefinite"></animate>
+</rect>
+<rect x="110" y="280" width="90" height="40" rx="4" fill="none" stroke="#e74c3c" stroke-width="1.5">
+  <animate attributeName="stroke-opacity" values="1;0.2;1" dur="1.1s" repeatCount="indefinite"></animate>
+</rect>
+<text class="lbl" x="155" y="291">Coal</text>
+<text class="lbl" x="155" y="300">Handling</text>
+<text class="lbl" x="155" y="309">Plant</text>
+
+<!-- Ash Storage – falling ash particles accumulating -->
+<rect x="10" y="340" width="90" height="40" rx="4" fill="#4a5355"></rect>
+<!-- ash particle 1 -->
+<circle cx="30" cy="344" r="2.5" fill="#bdc3c7">
+  <animate attributeName="cy" from="344" to="372" dur="1.3s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0;0.9;0.9;0" dur="1.3s" repeatCount="indefinite"></animate>
+</circle>
+<!-- ash particle 2 -->
+<circle cx="50" cy="344" r="2" fill="#95a5a6">
+  <animate attributeName="cy" from="344" to="372" dur="1.3s" begin="0.43s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0;0.85;0.85;0" dur="1.3s" begin="0.43s" repeatCount="indefinite"></animate>
+</circle>
+<!-- ash particle 3 -->
+<circle cx="70" cy="344" r="2.5" fill="#bdc3c7">
+  <animate attributeName="cy" from="344" to="372" dur="1.3s" begin="0.86s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0;0.9;0.9;0" dur="1.3s" begin="0.86s" repeatCount="indefinite"></animate>
+</circle>
+<!-- ash pile at bottom (shimmer) -->
+<rect x="13" y="370" width="84" height="7" rx="2" fill="#7f8c8d">
+  <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.3s" repeatCount="indefinite"></animate>
+</rect>
+<!-- border glow -->
+<rect x="10" y="340" width="90" height="40" rx="4" fill="none" stroke="#95a5a6" stroke-width="1.2">
+  <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="1.3s" repeatCount="indefinite"></animate>
+</rect>
+<text class="lbl" x="55" y="355">Ash</text>
+<text class="lbl" x="55" y="365">Storage</text>
+
+<!-- Ash Handling Plant – conveyor moving ash left (reverse direction) -->
+<rect x="110" y="340" width="90" height="40" rx="4" fill="#6d7c7d"></rect>
+<!-- conveyor line -->
+<line x1="118" y1="368" x2="192" y2="368" stroke="#3d4d4e" stroke-width="2" opacity="0.6"></line>
+<!-- ash pieces moving right-to-left -->
+<rect x="185" y="362" width="7" height="5" rx="1" fill="#aab3b4">
+  <animate attributeName="x" from="192" to="118" dur="1.1s" repeatCount="indefinite"></animate>
+</rect>
+<rect x="160" y="362" width="6" height="5" rx="1" fill="#8fa0a1">
+  <animate attributeName="x" from="192" to="118" dur="1.1s" begin="0.37s" repeatCount="indefinite"></animate>
+</rect>
+<rect x="135" y="362" width="7" height="5" rx="1" fill="#aab3b4">
+  <animate attributeName="x" from="192" to="118" dur="1.1s" begin="0.74s" repeatCount="indefinite"></animate>
+</rect>
+<!-- pulsing border -->
+<rect x="110" y="340" width="90" height="40" rx="4" fill="none" stroke="#bdc3c7" stroke-width="1.2">
+  <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="1.1s" repeatCount="indefinite"></animate>
+</rect>
+<text class="lbl" x="155" y="351">Ash</text>
+<text class="lbl" x="155" y="360">Handling</text>
+<text class="lbl" x="155" y="369">Plant</text>
+
+<!-- Boiler (circle) -->
+<circle cx="370" cy="300" r="45" fill="url(#boilerGrad)" class="box pulse" filter="url(#glow-steam)"></circle>
+<text class="lbl" x="370" y="296" font-size="13" font-weight="700">BOILER</text>
+<text class="lbl" x="370" y="310" font-size="9" fill="#f1948a">🔥 HIGH TEMP</text>
+<!-- flame detail -->
+<ellipse cx="370" cy="318" rx="10" ry="6" fill="#f39c12" opacity=".6"></ellipse>
+
+<!-- SuperHeater -->
+<rect x="470" y="282" width="65" height="36" rx="4" fill="#1a6b5e" class="box"></rect>
+<text class="lbl" x="502" y="296">Super</text>
+<text class="lbl" x="502" y="308">Heater</text>
+
+<!-- Valve -->
+<polygon points="580,285 620,300 580,315" fill="#2ecc71" class="box"></polygon>
+<text class="lbl-out" x="600" y="278">Valve</text>
+
+<!-- Turbine (center 665,300) -->
+<rect x="630" y="278" width="70" height="44" rx="6" fill="#0e4d3e" class="box"></rect>
+<!-- spinning rotor blades around center 665,300 -->
+<g>
+  <rect x="663" y="284" width="4" height="11" rx="2" fill="#a3e4d7"></rect>
+  <rect x="663" y="284" width="4" height="11" rx="2" fill="#64c8b4" transform="rotate(60 665 300)"></rect>
+  <rect x="663" y="284" width="4" height="11" rx="2" fill="#a3e4d7" transform="rotate(120 665 300)"></rect>
+  <rect x="663" y="284" width="4" height="11" rx="2" fill="#64c8b4" transform="rotate(180 665 300)"></rect>
+  <rect x="663" y="284" width="4" height="11" rx="2" fill="#a3e4d7" transform="rotate(240 665 300)"></rect>
+  <rect x="663" y="284" width="4" height="11" rx="2" fill="#64c8b4" transform="rotate(300 665 300)"></rect>
+  <!-- hub -->
+  <circle cx="665" cy="300" r="4" fill="#1abc9c"></circle>
+  <circle cx="665" cy="300" r="1.5" fill="#fff" opacity=".9"></circle>
+  <animateTransform attributeName="transform" type="rotate" from="0 665 300" to="360 665 300" dur="0.45s" repeatCount="indefinite"></animateTransform>
+</g>
+<text class="lbl" x="665" y="334" font-size="10">TURBINE</text>
+
+<!-- Alternator (cx=810, cy=300, r=28) -->
+<circle cx="810" cy="300" r="28" fill="#5a3e00" class="box alt-glow"></circle>
+<!-- stator ring -->
+<circle cx="810" cy="300" r="24" fill="none" stroke="#f39c12" stroke-width="1.5" opacity=".5"></circle>
+<!-- spinning rotor coils -->
+<g>
+  <!-- 4 coil bars at 45° intervals -->
+  <rect x="808" y="276" width="4" height="14" rx="2" fill="#f39c12"></rect>
+  <rect x="808" y="276" width="4" height="14" rx="2" fill="#ffe066" transform="rotate(90 810 300)"></rect>
+  <rect x="808" y="276" width="4" height="14" rx="2" fill="#f39c12" transform="rotate(180 810 300)"></rect>
+  <rect x="808" y="276" width="4" height="14" rx="2" fill="#ffe066" transform="rotate(270 810 300)"></rect>
+  <!-- diagonal coils -->
+  <rect x="808" y="276" width="4" height="14" rx="2" fill="#e67e22" opacity=".7" transform="rotate(45 810 300)"></rect>
+  <rect x="808" y="276" width="4" height="14" rx="2" fill="#e67e22" opacity=".7" transform="rotate(135 810 300)"></rect>
+  <rect x="808" y="276" width="4" height="14" rx="2" fill="#e67e22" opacity=".7" transform="rotate(225 810 300)"></rect>
+  <rect x="808" y="276" width="4" height="14" rx="2" fill="#e67e22" opacity=".7" transform="rotate(315 810 300)"></rect>
+  <!-- hub -->
+  <circle cx="810" cy="300" r="5" fill="#f39c12"></circle>
+  <circle cx="810" cy="300" r="2" fill="#fff" opacity=".95"></circle>
+  <animateTransform attributeName="transform" type="rotate" from="0 810 300" to="360 810 300" dur="0.7s" repeatCount="indefinite"></animateTransform>
+</g>
+<text class="lbl" x="810" y="335" font-size="9">ALTERNATOR</text>
+
+<!-- Feed Water Heater -->
+<rect x="490" y="390" width="130" height="35" rx="4" fill="#1f618d" class="box"></rect>
+<text class="lbl" x="555" y="408">Feed Water Heater</text>
+
+<!-- Feed Water Pump (cx=540, cy=500, r=22) – spinning impeller -->
+<circle cx="540" cy="500" r="22" fill="#1a3a52"></circle>
+<circle cx="540" cy="500" r="19" fill="none" stroke="#2980b9" stroke-width="1" opacity="0.5"></circle>
+<!-- spinning impeller blades -->
+<g>
+  <rect x="538" y="481" width="4" height="10" rx="2" fill="#5dade2"></rect>
+  <rect x="538" y="481" width="4" height="10" rx="2" fill="#3498db" transform="rotate(72  540 500)"></rect>
+  <rect x="538" y="481" width="4" height="10" rx="2" fill="#5dade2" transform="rotate(144 540 500)"></rect>
+  <rect x="538" y="481" width="4" height="10" rx="2" fill="#3498db" transform="rotate(216 540 500)"></rect>
+  <rect x="538" y="481" width="4" height="10" rx="2" fill="#5dade2" transform="rotate(288 540 500)"></rect>
+  <!-- hub -->
+  <circle cx="540" cy="500" r="4" fill="#2980b9"></circle>
+  <circle cx="540" cy="500" r="1.8" fill="#fff" opacity="0.9"></circle>
+  <animateTransform attributeName="transform" type="rotate" from="0 540 500" to="360 540 500" dur="0.8s" repeatCount="indefinite"></animateTransform>
+</g>
+<text class="lbl" x="540" y="527" font-size="9">FEED PUMP</text>
+
+<!-- Condenser – ripple condensation animation -->
+<rect x="400" y="535" width="100" height="40" rx="4" fill="#0d2d45"></rect>
+<!-- heat exchange tubes (static) -->
+<line x1="412" y1="548" x2="488" y2="548" stroke="#2980b9" stroke-width="1.5" opacity="0.4"></line>
+<line x1="412" y1="555" x2="488" y2="555" stroke="#1abc9c" stroke-width="1.5" opacity="0.4"></line>
+<line x1="412" y1="562" x2="488" y2="562" stroke="#2980b9" stroke-width="1.5" opacity="0.4"></line>
+<!-- ripple circles expanding from center -->
+<circle cx="450" cy="555" r="4" fill="none" stroke="#5dade2" stroke-width="1.5">
+  <animate attributeName="r" values="4;16" dur="1.6s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0.8;0" dur="1.6s" repeatCount="indefinite"></animate>
+</circle>
+<circle cx="450" cy="555" r="4" fill="none" stroke="#85c1e9" stroke-width="1">
+  <animate attributeName="r" values="4;16" dur="1.6s" begin="0.53s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0.7;0" dur="1.6s" begin="0.53s" repeatCount="indefinite"></animate>
+</circle>
+<circle cx="450" cy="555" r="4" fill="none" stroke="#5dade2" stroke-width="1">
+  <animate attributeName="r" values="4;16" dur="1.6s" begin="1.06s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0.6;0" dur="1.6s" begin="1.06s" repeatCount="indefinite"></animate>
+</circle>
+<text class="lbl" x="450" y="583" font-size="10">CONDENSER</text>
+
+<!-- Cooling Tower – falling water droplets inside -->
+<polygon points="755,540 845,540 830,600 770,600" fill="#2c3a40"></polygon>
+<polygon points="755,540 845,540 830,600 770,600" fill="none" stroke="#566573" stroke-width="1.2"></polygon>
+<!-- droplet 1 -->
+<circle cx="790" cy="548" r="2.5" fill="#5dade2">
+  <animate attributeName="cy" from="548" to="596" dur="1.2s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0;1;1;0" dur="1.2s" repeatCount="indefinite"></animate>
+</circle>
+<!-- droplet 2 -->
+<circle cx="800" cy="548" r="2" fill="#85c1e9">
+  <animate attributeName="cy" from="548" to="596" dur="1.2s" begin="0.4s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.4s" repeatCount="indefinite"></animate>
+</circle>
+<!-- droplet 3 -->
+<circle cx="815" cy="548" r="2.5" fill="#5dade2">
+  <animate attributeName="cy" from="548" to="596" dur="1.2s" begin="0.8s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.8s" repeatCount="indefinite"></animate>
+</circle>
+<!-- droplet 4 -->
+<circle cx="780" cy="548" r="2" fill="#aed6f1">
+  <animate attributeName="cy" from="548" to="596" dur="1.2s" begin="0.2s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.2s" repeatCount="indefinite"></animate>
+</circle>
+<!-- water pool shimmer at bottom -->
+<rect x="773" y="591" width="54" height="5" rx="2" fill="#2471a3" opacity="0.5">
+  <animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.2s" repeatCount="indefinite"></animate>
+</rect>
+<text class="lbl" x="800" y="572">Cooling</text>
+<text class="lbl" x="800" y="583">Tower</text>
+
+<!-- Water Treatment Plant – bubbles rising through filter -->
+<rect x="290" y="575" width="85" height="50" rx="4" fill="#0d2d45"></rect>
+<!-- filter layers -->
+<rect x="293" y="610" width="79" height="5" rx="1" fill="#1a5276" opacity="0.8"></rect>
+<rect x="293" y="603" width="79" height="5" rx="1" fill="#1f618d" opacity="0.6"></rect>
+<!-- rising bubbles (water being treated) -->
+<circle cx="310" cy="620" r="2" fill="#5dade2">
+  <animate attributeName="cy" from="620" to="578" dur="1.5s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0;0.9;0.9;0" dur="1.5s" repeatCount="indefinite"></animate>
+</circle>
+<circle cx="332" cy="620" r="1.5" fill="#85c1e9">
+  <animate attributeName="cy" from="620" to="578" dur="1.5s" begin="0.5s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0;0.8;0.8;0" dur="1.5s" begin="0.5s" repeatCount="indefinite"></animate>
+</circle>
+<circle cx="355" cy="620" r="2" fill="#5dade2">
+  <animate attributeName="cy" from="620" to="578" dur="1.5s" begin="1.0s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values="0;0.9;0.9;0" dur="1.5s" begin="1.0s" repeatCount="indefinite"></animate>
+</circle>
+<!-- pulsing blue border -->
+<rect x="290" y="575" width="85" height="50" rx="4" fill="none" stroke="#2980b9" stroke-width="1.2">
+  <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="1.5s" repeatCount="indefinite"></animate>
+</rect>
+<text class="lbl" x="332" y="591">Water</text>
+<text class="lbl" x="332" y="601">Treatment</text>
+<text class="lbl" x="332" y="611">Plant</text>
+
+<!-- Natural Water Source label -->
+<text class="lbl-out" x="540" y="658">Natural Water Source</text>
+
+<!-- Economizer – animated heat absorption effect -->
+<rect x="420" y="195" width="80" height="30" rx="4" fill="#3d2e00"></rect>
+<!-- heat tube lines with pulsing glow -->
+<line x1="430" y1="205" x2="490" y2="205" stroke="#f39c12" stroke-width="2" opacity="0.6">
+  <animate attributeName="opacity" values="0.3;0.9;0.3" dur="1.5s" repeatCount="indefinite"></animate>
+</line>
+<line x1="430" y1="213" x2="490" y2="213" stroke="#e67e22" stroke-width="2" opacity="0.6">
+  <animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.5s" repeatCount="indefinite"></animate>
+</line>
+<line x1="430" y1="220" x2="490" y2="220" stroke="#f39c12" stroke-width="2" opacity="0.6">
+  <animate attributeName="opacity" values="0.3;0.9;0.3" dur="1.5s" begin="0.5s" repeatCount="indefinite"></animate>
+</line>
+<!-- glowing border -->
+<rect x="420" y="195" width="80" height="30" rx="4" fill="none" stroke="#f39c12" stroke-width="1.2">
+  <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="1.5s" repeatCount="indefinite"></animate>
+</rect>
+<text class="lbl" x="460" y="212">Economizer</text>
+
+<!-- Air Preheater -->
+<rect x="420" y="150" width="80" height="30" rx="4" fill="#9a7d0a" class="box"></rect>
+<text class="lbl" x="460" y="166">Air Preheater</text>
+
+<!-- Hot Air label -->
+<text class="lbl-out" x="390" y="145">Hot Air</text>
+
+<!-- Flue Gases labels -->
+<text class="lbl-out" x="480" y="258">Flue Gases</text>
+<text class="lbl-out" x="460" y="195">Flue Gases</text>
+<text class="lbl-out" x="540" y="163">Flue Gases</text>
+
+<!-- Induced Draught Fan (cx=640, cy=100, r=18) -->
+<circle cx="640" cy="100" r="18" fill="#2a3010" stroke="#8fa832" stroke-width="1.2"></circle>
+<!-- Spinning fan blades -->
+<g>
+  <!-- blade 1 -->
+  <ellipse cx="640" cy="91" rx="3.5" ry="7" fill="#e8d44d" opacity="0.9"></ellipse>
+  <!-- blade 2 (60°) -->
+  <ellipse cx="647.8" cy="104.5" rx="3.5" ry="7" fill="#c8b830" opacity="0.9" transform="rotate(60 647.8 104.5)"></ellipse>
+  <!-- blade 3 (120°) -->
+  <ellipse cx="632.2" cy="104.5" rx="3.5" ry="7" fill="#e8d44d" opacity="0.9" transform="rotate(-60 632.2 104.5)"></ellipse>
+  <!-- center hub -->
+  <circle cx="640" cy="100" r="3" fill="#fff" opacity="0.9"></circle>
+  <animateTransform attributeName="transform" type="rotate" from="0 640 100" to="360 640 100" dur="0.6s" repeatCount="indefinite"></animateTransform>
+</g>
+<text class="lbl-out" x="640" y="76">Induced</text>
+<text class="lbl-out" x="640" y="66">Draught Fan</text>
+
+<!-- Forced Draught Fan (cx=680, cy=170, r=18) -->
+<circle cx="680" cy="170" r="18" fill="#2a3010" stroke="#8fa832" stroke-width="1.2"></circle>
+<!-- Spinning fan blades -->
+<g>
+  <!-- blade 1 -->
+  <ellipse cx="680" cy="161" rx="3.5" ry="7" fill="#e8d44d" opacity="0.9"></ellipse>
+  <!-- blade 2 (60°) -->
+  <ellipse cx="687.8" cy="174.5" rx="3.5" ry="7" fill="#c8b830" opacity="0.9" transform="rotate(60 687.8 174.5)"></ellipse>
+  <!-- blade 3 (120°) -->
+  <ellipse cx="672.2" cy="174.5" rx="3.5" ry="7" fill="#e8d44d" opacity="0.9" transform="rotate(-60 672.2 174.5)"></ellipse>
+  <!-- center hub -->
+  <circle cx="680" cy="170" r="3" fill="#fff" opacity="0.9"></circle>
+  <animateTransform attributeName="transform" type="rotate" from="0 680 170" to="360 680 170" dur="0.6s" repeatCount="indefinite"></animateTransform>
+</g>
+<text class="lbl-out" x="700" y="164">Forced</text>
+<text class="lbl-out" x="700" y="174">Draught Fan</text>
+
+<!-- Chimney (trapezoid) -->
+<polygon points="660,140 700,140 690,60 670,60" fill="#b7950b" class="box"></polygon>
+<text class="lbl" x="680" y="115">Chim-</text>
+<text class="lbl" x="680" y="125">ney</text>
+<!-- Smoke puffs – SVG-native animation, rises from chimney top (y≈58) -->
+<!-- Puff 1 -->
+<circle cx="678" cy="58" r="4" fill="#c8c8c8">
+  <animate attributeName="cy" from="58" to="10" dur="2.2s" repeatCount="indefinite"></animate>
+  <animate attributeName="cx" from="678" to="672" dur="2.2s" repeatCount="indefinite"></animate>
+  <animate attributeName="r" from="4" to="10" dur="2.2s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" from="0.8" to="0" dur="2.2s" repeatCount="indefinite"></animate>
+</circle>
+<!-- Puff 2 (offset 0.7s) -->
+<circle cx="680" cy="58" r="3.5" fill="#b8b8b8">
+  <animate attributeName="cy" from="58" to="8" dur="2.2s" begin="0.7s" repeatCount="indefinite"></animate>
+  <animate attributeName="cx" from="680" to="686" dur="2.2s" begin="0.7s" repeatCount="indefinite"></animate>
+  <animate attributeName="r" from="3.5" to="9" dur="2.2s" begin="0.7s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" from="0.75" to="0" dur="2.2s" begin="0.7s" repeatCount="indefinite"></animate>
+</circle>
+<!-- Puff 3 (offset 1.4s) -->
+<circle cx="676" cy="58" r="5" fill="#d2d2d2">
+  <animate attributeName="cy" from="58" to="6" dur="2.2s" begin="1.4s" repeatCount="indefinite"></animate>
+  <animate attributeName="cx" from="676" to="670" dur="2.2s" begin="1.4s" repeatCount="indefinite"></animate>
+  <animate attributeName="r" from="5" to="12" dur="2.2s" begin="1.4s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" from="0.7" to="0" dur="2.2s" begin="1.4s" repeatCount="indefinite"></animate>
+</circle>
+
+<!-- Exhaust Steam label -->
+<text class="lbl-out" x="760" y="380">Exhaust Steam</text>
+
+<!-- ════════════════════════════════════
+     CONNECTOR PIPES (static final draws on top)
+════════════════════════════════════ -->
+<!-- Induced draught fan → chimney -->
+<line class="pipe-flue" x1="658" y1="100" x2="660" y2="100"></line>
+<!-- Boiler → ash downward -->
+<line class="pipe-coal" x1="340" y1="330" x2="290" y2="360"></line>
+<line class="flow-coal" x1="340" y1="330" x2="295" y2="358" marker-end="url(#ac)"></line>
+
+</svg>
+</div>
+
+<p style="text-align:center;margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.1em;">
+  COAL → STEAM → TURBINE → ELECTRICITY &nbsp;|&nbsp; ANIMATED PROCESS FLOW
+</p>
+
+
+      </div>
+    
+      </div>
+</div>
+<div class="pp-card m2-thermal" id="c18">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#ef4444;font-size:14px;">🔧</span>
+        Module 2 · Components of Steam Power Plant
+      </div>
+
+      <div class="pp-definition-box">
+        A modern steam power plant has <strong>13+ major components</strong> working in concert. Each component has specific thermodynamic functions, design parameters, and efficiency targets.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Boiler Efficiency (Direct Method)</div>
+        <div class="pp-formula-row">$$\eta_{boiler} = \frac{\dot{m}_s(h_1 - h_{fw})}{m_f \times CV} \times 100\%$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Superheater &amp; Economiser</div>
+        <div class="pp-formula-row">$$Q_{SH} = \dot{m}_s(h_{sup} - h_{sat})$$</div>
+        <div class="pp-formula-row">$$Q_{eco} = \dot{m}_s \cdot C_{pw}(T_{fw,out} - T_{fw,in})$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Condenser Performance</div>
+        <div class="pp-formula-row">$$\text{Vacuum Efficiency} = \frac{P_{barometric} - P_{condenser}}{P_{barometric}} \times 100\%$$</div>
+        <div class="pp-formula-row">$$\text{Condenser Efficiency} = \frac{T_{sat} - T_{cw,out}}{T_{sat} - T_{cw,in}} \times 100\%$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Draught Pressure (Natural)</div>
+        <div class="pp-formula-row">$$h_w = 353H\left(\frac{1}{T_a} - \frac{1}{T_g}\right) \;\text{mm of water}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Boiler Types</div>
+        <table class="pp-data-table">
+          <tbody><tr><th>Feature</th><th>Fire-Tube</th><th>Water-Tube</th></tr>
+          <tr><td>Gases flow in</td><td>Tubes</td><td>Outside tubes</td></tr>
+          <tr><td>Water in</td><td>Shell</td><td>Tubes</td></tr>
+          <tr><td>Pressure</td><td>≤ 25 bar</td><td>Up to 200+ bar</td></tr>
+          <tr><td>Capacity</td><td>Small (≤ 15 T/hr)</td><td>Large (up to 2000 T/hr)</td></tr>
+          <tr><td>Examples</td><td>Lancashire, Cochran</td><td>Babcock-Wilcox, Benson</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-18" style="min-height:260px;">
+        <div class="pp-anim-label">🔧 Plant Components Explorer</div>
+
+        <!-- Boiler Type Toggle -->
+        <div class="pp-boiler-toggle">
+          <button class="pp-boiler-btn active" onclick="toggleBoilerC18(this,'fire')">🔥 Fire-Tube</button>
+          <button class="pp-boiler-btn" onclick="toggleBoilerC18(this,'water')">💧 Water-Tube</button>
+        </div>
+        <div id="c18BoilerInfo" style="text-align:center;padding:8px;background:rgba(0,0,0,0.15);border-radius:6px;font-size:11px;color:var(--pp-muted);margin-bottom:12px;">
+          <strong style="color:#f97316">Fire-Tube:</strong> Hot gases flow inside tubes, water surrounds them in shell. Simple, low pressure (≤25 bar). E.g. Lancashire, Cochran, Locomotive boilers.
+        </div>
+
+        <!-- Component Grid -->
+        <div class="pp-comp-grid" id="c18CompGrid">
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">🔥</span>
+            <span class="pp-comp-name">Boiler</span>
+            <span class="pp-comp-func">Converts water to steam using combustion heat. Types: fire-tube, water-tube. η: 85–92%</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">🌡️</span>
+            <span class="pp-comp-name">Superheater</span>
+            <span class="pp-comp-func">Raises steam temp beyond saturation. Convective or radiant type. Improves η &amp; reduces moisture.</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">♻️</span>
+            <span class="pp-comp-name">Economiser</span>
+            <span class="pp-comp-func">Pre-heats feed water using exhaust gas. Saves 5–10% fuel. Placed after superheater in gas path.</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">🌬️</span>
+            <span class="pp-comp-name">Air Pre-heater</span>
+            <span class="pp-comp-func">Heats combustion air using flue gas. Recuperative or regenerative (Ljungström). Improves combustion.</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">⚙️</span>
+            <span class="pp-comp-name">Turbine</span>
+            <span class="pp-comp-func">Converts steam kinetic energy to shaft work. Types: impulse (De Laval, Curtis) &amp; reaction (Parsons). η: 80–90%</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">⚡</span>
+            <span class="pp-comp-name">Generator</span>
+            <span class="pp-comp-func">Converts mechanical to electrical energy. Synchronous type, 3000/3600 RPM. η: 95–98%</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">❄️</span>
+            <span class="pp-comp-name">Condenser</span>
+            <span class="pp-comp-func">Condenses exhaust steam at low pressure. Surface or jet type. Creates vacuum for better turbine η.</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">💨</span>
+            <span class="pp-comp-name">Cooling Tower</span>
+            <span class="pp-comp-func">Rejects heat from cooling water to atmosphere. Natural draught (hyperbolic) or mechanical draught.</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">⬆️</span>
+            <span class="pp-comp-name">BF Pump</span>
+            <span class="pp-comp-func">Boiler Feed Pump raises water pressure to boiler level. Centrifugal, multi-stage. Consumes 2–3% of plant output.</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">🧹</span>
+            <span class="pp-comp-name">ESP</span>
+            <span class="pp-comp-func">Electrostatic Precipitator removes 99%+ fly ash. Corona discharge charges particles for collection.</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">🌫️</span>
+            <span class="pp-comp-name">ID Fan</span>
+            <span class="pp-comp-func">Induced Draught fan pulls flue gas through boiler. Creates negative pressure in furnace.</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">🌬️</span>
+            <span class="pp-comp-name">FD Fan</span>
+            <span class="pp-comp-func">Forced Draught fan pushes air into furnace. Creates positive pressure. Located before air pre-heater.</span>
+          </div>
+          <div class="pp-comp-card" onclick="toggleCompC18(this)">
+            <span class="pp-comp-icon">🏭</span>
+            <span class="pp-comp-name">Chimney</span>
+            <span class="pp-comp-func">Discharges flue gas at height for dispersion. Provides natural draught. Height: 150–275 m for modern plants.</span>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m2-thermal" id="c19">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#ef4444;font-size:14px;">🔄</span>
+        Module 2 · Four Circuits in Detail
+      </div>
+
+      <div class="pp-definition-box">
+        Every thermal power plant operates through four interconnected circuits. Understanding each circuit's components, flow path, and losses is essential for plant design and operation.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">1. Coal &amp; Ash Circuit</div>
+        <div class="pp-formula-row">$$\text{Coal consumption} = \frac{P_{MW} \times 3600}{\eta_{overall} \times CV} \;\text{tonnes/hr}$$</div>
+        <div class="pp-formula-row">$$\text{Ash produced} = \text{Coal} \times \text{Ash fraction} \;\text{(typically }30\text{–}45\%\text{ for Indian coal)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">2. Air &amp; Flue Gas Circuit</div>
+        <div class="pp-formula-row">$$\text{Air required} = \frac{\text{kg of air}}{\text{kg of fuel}} \approx 15\text{–}20\;\text{(with excess air)}$$</div>
+        <div class="pp-formula-row">$$\text{Natural draught:}\quad h_w = 353H\left(\frac{1}{T_a} - \frac{1}{T_g}\right)$$</div>
+        <div class="pp-formula-row">$$\text{Chimney height for draught:}\quad H = \frac{h_w}{353\left(\frac{1}{T_a} - \frac{1}{T_g}\right)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">3. Feed Water &amp; Steam Circuit</div>
+        <div class="pp-formula-row">$$\text{Steam rate} = \frac{3600}{W_{net}} \;\text{kg/kWh}$$</div>
+        <div class="pp-formula-row">$$\text{Reheat improvement:}\quad \Delta\eta \approx 3\text{–}5\%$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">4. Cooling Water Circuit</div>
+        <div class="pp-formula-row">$$Q_{rejected} = \dot{m}_{cw} \times C_p \times \Delta T_{cw}$$</div>
+        <div class="pp-formula-row">$$\text{CW flow rate} = \frac{Q_c}{C_p \times \Delta T_{cw}} \;\text{m}^3\text{/hr}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-19" style="min-height:260px;">
+        <div class="pp-anim-label">🔄 Circuit Calculators</div>
+
+        <!-- Tab selector for circuit calcs -->
+        <div class="pp-circuit-tabs">
+          <button class="pp-circuit-tab active" data-circuit="coal" onclick="switchCalcC19(this,'coal')">⛏️ Coal Calc</button>
+          <button class="pp-circuit-tab" data-circuit="fluegas" onclick="switchCalcC19(this,'draught')">🌫️ Draught Calc</button>
+          <button class="pp-circuit-tab" data-circuit="steam" onclick="switchCalcC19(this,'steam')">💨 Steam Rate</button>
+          <button class="pp-circuit-tab" data-circuit="cooling" onclick="switchCalcC19(this,'cooling')">💧 CW Flow</button>
+        </div>
+
+        <!-- Coal Consumption Calculator -->
+        <div class="pp-circuit-scene" id="c19-coal">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#6b7280;letter-spacing:2px;margin-bottom:8px;">COAL CONSUMPTION CALCULATOR</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Power (MW)
+              <input type="number" class="pp-input-sm" id="c19coalP" value="500" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">η overall (%)
+              <input type="number" class="pp-input-sm" id="c19coalEta" value="36" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">CV (kJ/kg)
+              <input type="number" class="pp-input-sm" id="c19coalCV" value="15000" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="calcCoalC19()" style="margin-top:8px;width:100%;">Calculate Coal Rate</button>
+          <div id="c19coalOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+
+        <!-- Draught Calculator -->
+        <div class="pp-circuit-scene" id="c19-draught" style="display:none;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#9ca3af;letter-spacing:2px;margin-bottom:8px;">NATURAL DRAUGHT CALCULATOR</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Chimney H (m)
+              <input type="number" class="pp-input-sm" id="c19drH" value="200" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">T<sub>air</sub> (K)
+              <input type="number" class="pp-input-sm" id="c19drTa" value="300" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">T<sub>gas</sub> (K)
+              <input type="number" class="pp-input-sm" id="c19drTg" value="450" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="calcDraughtC19()" style="margin-top:8px;width:100%;">Calculate Draught</button>
+          <div id="c19draughtOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+
+        <!-- Steam Rate Calculator -->
+        <div class="pp-circuit-scene" id="c19-steam" style="display:none;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">STEAM RATE CALCULATOR</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">h₁ (kJ/kg)
+              <input type="number" class="pp-input-sm" id="c19stH1" value="3400" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">h₂ (kJ/kg)
+              <input type="number" class="pp-input-sm" id="c19stH2" value="2400" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">h₃ (kJ/kg)
+              <input type="number" class="pp-input-sm" id="c19stH3" value="192" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">h₄ (kJ/kg)
+              <input type="number" class="pp-input-sm" id="c19stH4" value="200" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="calcSteamRateC19()" style="margin-top:8px;width:100%;">Calculate Steam Rate</button>
+          <div id="c19steamOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+
+        <!-- CW Flow Calculator -->
+        <div class="pp-circuit-scene" id="c19-cooling" style="display:none;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#60a5fa;letter-spacing:2px;margin-bottom:8px;">COOLING WATER FLOW CALCULATOR</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Q<sub>condenser</sub> (MW)
+              <input type="number" class="pp-input-sm" id="c19cwQ" value="600" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">ΔT (°C)
+              <input type="number" class="pp-input-sm" id="c19cwDT" value="10" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">Cp (kJ/kg·K)
+              <input type="number" class="pp-input-sm" id="c19cwCp" value="4.18" step="0.01" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="calcCWFlowC19()" style="margin-top:8px;width:100%;">Calculate CW Flow</button>
+          <div id="c19cwOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m2-thermal" id="c20">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#ef4444;font-size:14px;">📊</span>
+        Module 2 · Thermal Plant Efficiency Analysis
+      </div>
+
+      <div class="pp-definition-box">
+        Plant efficiency is the ratio of electrical output to fuel energy input. Three efficiency benchmarks: <strong style="color:#facc15">Carnot</strong> (theoretical max), <strong style="color:#00f5ff">Rankine</strong> (ideal cycle), and <strong style="color:#f97316">Actual</strong> (with losses). Modern plants achieve 36–42% overall efficiency.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Carnot Efficiency (Theoretical Maximum)</div>
+        <div class="pp-formula-row">$$\eta_{Carnot} = 1 - \frac{T_{sink}}{T_{source}} = 1 - \frac{T_L}{T_H}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Rankine Efficiency (Ideal Cycle)</div>
+        <div class="pp-formula-row">$$\eta_{Rankine} = \frac{(h_1 - h_2) - (h_4 - h_3)}{h_1 - h_4}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Heat Rate &amp; Heat Balance</div>
+        <div class="pp-formula-row">$$\text{Heat Rate} = \frac{3600}{\eta_{overall}} \;\text{kJ/kWh}$$</div>
+        <div class="pp-formula-row">$$\eta_{overall} = \eta_{boiler} \times \eta_{turbine} \times \eta_{generator} \times \eta_{aux}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Improvement Methods</div>
+        <table class="pp-data-table">
+          <tbody><tr><th>Method</th><th>η Improvement</th><th>Mechanism</th></tr>
+          <tr><td>Reheat</td><td>+3–5%</td><td>Steam re-enters boiler between HP &amp; LP stages</td></tr>
+          <tr><td>Regeneration</td><td>+3–5%</td><td>Feed water heated by extracted steam</td></tr>
+          <tr><td>Supercritical</td><td>+3–4%</td><td>Higher P &amp; T → higher Carnot limit</td></tr>
+          <tr><td>Combined Cycle</td><td>+15–20%</td><td>Gas turbine exhaust drives steam cycle</td></tr>
+        </tbody></table>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Energy Balance (per 100% fuel input)</div>
+        <table class="pp-data-table">
+          <tbody><tr><th>Item</th><th>% of Input</th></tr>
+          <tr><td>Electrical Output</td><td>33–42%</td></tr>
+          <tr><td>Condenser Loss</td><td>38–45%</td></tr>
+          <tr><td>Flue Gas Loss</td><td>6–10%</td></tr>
+          <tr><td>Boiler Radiation</td><td>1–2%</td></tr>
+          <tr><td>Unburnt Fuel</td><td>1–3%</td></tr>
+          <tr><td>Auxiliary Power</td><td>5–8%</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-20" style="min-height:260px;">
+        <div class="pp-anim-label">📊 Efficiency Analysis Dashboard</div>
+
+        <!-- Sankey-style Energy Flow -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#ef4444;letter-spacing:2px;margin-bottom:8px;">ENERGY BALANCE (SANKEY)</div>
+        <div class="pp-sankey-wrap" id="c20Sankey">
+          <div class="pp-sankey-row">
+            <span class="pp-sankey-label" style="color:#e5e7eb;width:100px;">Fuel Input</span>
+            <div class="pp-sankey-track"><div class="pp-sankey-bar" style="width:100%;background:linear-gradient(90deg,#f97316,#ef4444);"></div></div>
+            <span class="pp-sankey-val" style="color:#f97316">100%</span>
+          </div>
+          <div class="pp-sankey-row">
+            <span class="pp-sankey-label" style="color:#00ff88;width:100px;">Elec Output</span>
+            <div class="pp-sankey-track"><div class="pp-sankey-bar" id="c20sankeyOut" style="width:36%;background:linear-gradient(90deg,#00ff88,#00f5ff);"></div></div>
+            <span class="pp-sankey-val" id="c20sankeyOutVal" style="color:#00ff88">36%</span>
+          </div>
+          <div class="pp-sankey-row">
+            <span class="pp-sankey-label" style="color:#60a5fa;width:100px;">Condenser</span>
+            <div class="pp-sankey-track"><div class="pp-sankey-bar" id="c20sankeyCondenser" style="width:42%;background:linear-gradient(90deg,#60a5fa,#06b6d4);"></div></div>
+            <span class="pp-sankey-val" id="c20sankeyCondenserVal" style="color:#60a5fa">42%</span>
+          </div>
+          <div class="pp-sankey-row">
+            <span class="pp-sankey-label" style="color:#9ca3af;width:100px;">Flue Gas</span>
+            <div class="pp-sankey-track"><div class="pp-sankey-bar" id="c20sankeyFlue" style="width:8%;background:linear-gradient(90deg,#9ca3af,#6b7280);"></div></div>
+            <span class="pp-sankey-val" id="c20sankeyFlueVal" style="color:#9ca3af">8%</span>
+          </div>
+          <div class="pp-sankey-row">
+            <span class="pp-sankey-label" style="color:#6b7280;width:100px;">Other Losses</span>
+            <div class="pp-sankey-track"><div class="pp-sankey-bar" id="c20sankeyOther" style="width:14%;background:linear-gradient(90deg,#6b7280,#4b5563);"></div></div>
+            <span class="pp-sankey-val" id="c20sankeyOtherVal" style="color:#6b7280">14%</span>
+          </div>
+        </div>
+
+        <!-- Efficiency Comparison Calculator -->
+        <div style="margin-top:16px;padding:12px;background:rgba(0,0,0,0.2);border:1px solid var(--pp-border);border-radius:8px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#ef4444;letter-spacing:2px;margin-bottom:8px;">CARNOT vs RANKINE vs ACTUAL</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">T<sub>source</sub> (°C)
+              <input type="number" class="pp-input-sm" id="c20Th" value="540" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">T<sub>sink</sub> (°C)
+              <input type="number" class="pp-input-sm" id="c20Tl" value="40" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">η<sub>boiler</sub> (%)
+              <input type="number" class="pp-input-sm" id="c20etaB" value="88" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">η<sub>turbine</sub> (%)
+              <input type="number" class="pp-input-sm" id="c20etaT" value="85" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">η<sub>generator</sub> (%)
+              <input type="number" class="pp-input-sm" id="c20etaG" value="97" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">η<sub>auxiliary</sub> (%)
+              <input type="number" class="pp-input-sm" id="c20etaA" value="93" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="calcEffC20()" style="margin-top:8px;width:100%;">Compare Efficiencies</button>
+          <div id="c20EffOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+
+        <!-- Heat Rate Chart -->
+        <div class="pp-hr-chart-wrap" style="margin-top:12px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#ef4444;letter-spacing:2px;margin-bottom:6px;">HEAT RATE vs EFFICIENCY</div>
+          <canvas id="c20HRChart"></canvas>
+        </div>
+      </div>
+</div>
+<div class="pp-card m2-thermal" id="c21">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#ef4444;font-size:14px;">📑</span>
+        Module 2 · Complete Reference &amp; Master Calculator
+      </div>
+
+      <div class="pp-definition-box">
+        Comprehensive reference card combining all Module 2 formulas, component data, and a master thermal plant calculator for quick problem solving.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Master Formula Sheet</div>
+
+        <div class="pp-formula-row">$$\eta_{Carnot} = 1 - \frac{T_L}{T_H}$$</div>
+        <div class="pp-formula-row">$$\eta_{Rankine} = \frac{(h_1 - h_2) - (h_4 - h_3)}{h_1 - h_4}$$</div>
+        <div class="pp-formula-row">$$\eta_{overall} = \eta_b \times \eta_t \times \eta_g \times \eta_{aux}$$</div>
+        <div class="pp-formula-row">$$\text{Heat Rate} = \frac{3600}{\eta_{overall}} \;\text{kJ/kWh}$$</div>
+        <div class="pp-formula-row">$$\text{Coal Rate} = \frac{P_{MW} \times 3600}{\eta_o \times CV} \;\text{tonnes/hr}$$</div>
+        <div class="pp-formula-row">$$h_w = 353H\left(\frac{1}{T_a} - \frac{1}{T_g}\right) \;\text{mm of water}$$</div>
+        <div class="pp-formula-row">$$\eta_{boiler} = \frac{\dot{m}_s(h_1 - h_{fw})}{m_f \times CV} \times 100\%$$</div>
+        <div class="pp-formula-row">$$Q_{rejected} = \dot{m}_{cw} \times C_p \times \Delta T_{cw}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Quick Reference: Indian Thermal Plants</div>
+        <table class="pp-data-table">
+          <tbody><tr><th>Plant</th><th>Capacity</th><th>Type</th><th>State</th></tr>
+          <tr><td>Vindhyachal</td><td>4,760 MW</td><td>Coal</td><td>Madhya Pradesh</td></tr>
+          <tr><td>Mundra</td><td>4,620 MW</td><td>Coal</td><td>Gujarat</td></tr>
+          <tr><td>Talcher</td><td>3,000 MW</td><td>Coal</td><td>Odisha</td></tr>
+          <tr><td>Sipat</td><td>2,980 MW</td><td>Coal</td><td>Chhattisgarh</td></tr>
+          <tr><td>Rihand</td><td>3,000 MW</td><td>Coal</td><td>Uttar Pradesh</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-21" style="min-height:260px;">
+        <div class="pp-anim-label">📑 Master Thermal Plant Calculator</div>
+
+        <!-- Master Calculator -->
+        <div style="padding:12px;background:rgba(0,0,0,0.2);border:1px solid var(--pp-border);border-radius:8px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#ef4444;letter-spacing:2px;margin-bottom:10px;">COMPLETE THERMAL PLANT ANALYSIS</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Plant Power (MW)
+              <input type="number" class="pp-input-sm" id="c21P" value="500" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">Coal CV (kJ/kg)
+              <input type="number" class="pp-input-sm" id="c21CV" value="15000" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">Ash Fraction (%)
+              <input type="number" class="pp-input-sm" id="c21ash" value="35" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">η Boiler (%)
+              <input type="number" class="pp-input-sm" id="c21eB" value="88" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">η Turbine (%)
+              <input type="number" class="pp-input-sm" id="c21eT" value="85" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">η Generator (%)
+              <input type="number" class="pp-input-sm" id="c21eG" value="97" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">η Auxiliary (%)
+              <input type="number" class="pp-input-sm" id="c21eA" value="93" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">T<sub>source</sub> (°C)
+              <input type="number" class="pp-input-sm" id="c21Th" value="540" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">T<sub>sink</sub> (°C)
+              <input type="number" class="pp-input-sm" id="c21Tl" value="40" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="calcMasterC21()" style="margin-top:10px;width:100%;">🔥 Run Complete Analysis</button>
+          <div id="c21MasterOut" style="margin-top:10px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#00ff88;min-height:40px;line-height:1.6;"></div>
+        </div>
+
+        <!-- Summary Grid -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(120px, 1fr));gap:8px;margin-top:12px;" id="c21SummaryGrid">
+          <div class="pp-stat-card">
+            <div class="pp-stat-value" id="c21sumEta" style="color:#ef4444">—</div>
+            <div class="pp-stat-label">Overall η</div>
+          </div>
+          <div class="pp-stat-card">
+            <div class="pp-stat-value" id="c21sumHR" style="color:#f97316">—</div>
+            <div class="pp-stat-label">Heat Rate</div>
+          </div>
+          <div class="pp-stat-card">
+            <div class="pp-stat-value" id="c21sumCoal" style="color:#facc15">—</div>
+            <div class="pp-stat-label">Coal t/hr</div>
+          </div>
+          <div class="pp-stat-card">
+            <div class="pp-stat-value" id="c21sumCarnot" style="color:#00f5ff">—</div>
+            <div class="pp-stat-label">Carnot η</div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="pp-module-divider">
+      <span class="pp-module-divider-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.4);background:rgba(167,139,250,0.06);box-shadow:0 0 20px rgba(167,139,250,0.15);">Module 3 — Coal Classification &amp; Nuclear Power Plant</span>
+    </div>
+</div><div class="topic-bottom-nav">
+        <a href="../hydro-power/index.html" class="topic-btn prev-btn">← Hydro Power</a>
+        <a href="../../index.html" class="topic-btn back-btn">All Topics</a>
+        <a href="../coal-fuels/index.html" class="topic-btn next-btn">Coal &amp; Fuels →</a>
+    </div></main>
+
+  <!-- Scroll to top -->
+  <div class="pp-scroll-top" id="ppScrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="../../../../../../shared/js/hero-bg.js"></script>
+  <script src="../../../../../../shared/js/formulas.js"></script>
+  <script src="../../../../../../shared/js/app.js"></script>
+
+  
+
+  <!-- Bookmark corner buttons -->
+  
+  
+
+
+
+<script src="../../js/powerplant-inline.js"></script><script src="../../../../../../shared/js/topic-nav.js"></script></body></html>

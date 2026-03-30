@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurements &amp; Instrumentation Formula Book</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+    <!-- Libraries: GSAP, D3, Chart.js, AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="../../css/measurements.css">
+
+    <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+    <link rel="stylesheet" href="../../../../shared/css/topic-page.css">
+    <title>📡 Lissajous Phase, DVM, Q-Meter & Sensors | MEASUREMENTS | EE Hub</title>
+</head>
+<body >
+    <nav class="navbar" role="navigation">
+        <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+            <li><a href="../../../machines/index.html">Machines</a></li>
+            <li><a href="../../../measurements/index.html" class="active">Measurements</a></li>
+            <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+            <li><a href="../../../power-plant/index.html">Power Plant</a></li>
+            <li><a href="../../../control/index.html">Control Systems</a></li>
+            <li><a href="../../../electronics/index.html">Electronics</a></li>
+            <li><a href="../../../signals/index.html">Signals</a></li>
+            <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+            <li><a href="../../../estimation/index.html">Estimation</a></li>
+            <li><a href="../../../utilization/index.html">Utilization</a></li>
+        </ul>
+        <div class="navbar__actions">
+        <div class="search-box">
+            <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+<path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path><path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path><path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z M365.3,278.3c-28.1,8.5-56.8,2.8-84.2-5.8c-13.8-4.3-27.6-9.1-40.7-15.2c-6.8-3.2-13.6-6.7-19.9-10.9c-5.5-3.6-10.5-7.9-15.9-11.7c-1.7-1.2-2.1-2.8-1.8-4.3c-17.7-23.8-31.1-52.7-29-82.9c2.2-31.5,21.9-58.1,46.9-76.2c38.9-28.1,94.6-38.9,137.8-13.8c21.4,12.4,39.2,30.6,53.1,51c13.4,19.8,24.7,42.6,28.6,66.5C448,222.4,408.4,265.3,365.3,278.3z"></path><path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2zM471.5 185.5c-1.3-13.1-5.2-25-11.2-35.9 7.3 23.4 8.9 48.1 0 71.7-16.2 43.3-59.2 75.9-104.7 81.9-29.7 3.9-60.6-4.4-89-12.2-26.6-7.3-52.8-18-75.2-34.4-3.3.9-7.4-1.3-6.3-5.5.2-.8.5-1.6.8-2.3-7.6-8.8-14.4-18.3-19.9-28.5-4.7-8.8-8.7-18-11.6-27.5 0 5 0 10 .3 15 1.1 20.3 5.2 41.3 19 56.9.5-1 1.3-1.8 2.7-2.3 10.2-3.5 19.2 1.8 26.9 8.1 5.3 4.3 8.2 7.9 11.5 13.8 2.2 3.9 11.9 19.9 9.2 27.2 25.7 11.4 52.5 16.5 80.5 18.4 29.3 2 59.3 1.9 85.5-13.2 23.8-13.7 45.1-34.1 61.4-56.1C467.7 238.3 474.2 212.8 471.5 185.5z"></path><path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z M338.3,272.7c-23.4,0.8-47.2-6.9-69.1-14.6c-10.5-3.7-20.7-7.9-30.7-12.8c-9.3-4.7-17.2-10.7-25.5-16.7c-0.1-0.8-0.4-1.6-1-2.4c-15.3-20.3-27.2-43.7-28.4-69.5c-1.2-26.7,12.3-49.8,31.2-67.6c35.4-33.2,92.6-47.4,136.8-23.9c22,11.7,39.7,31,53.4,51.5c13.1,19.6,24.7,43.7,26.1,67.5C434.1,232.5,382.8,271.2,338.3,272.7z"></path><path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z M175.8,101.4c27-39.9,75.8-68.4,123.6-72.9c50.1-4.7,93.1,28.5,121.4,66.9c14.4,19.6,25.6,41.6,32.2,65c6.4,23.1,4.2,46.3-6.5,67.7c-18.2,36.7-57.9,62.5-98.5,65.8c-13.8,1.1-28-1.1-41.6-3.7c-13.3-2.6-26.5-5.9-39.6-9.5c-24.9-6.8-49.8-17.3-70.6-33c0.2-1.1-0.1-2.3-1.1-3.5c-17.1-19.6-30.2-43-34.8-68.9C155.8,149.6,161.1,123.1,175.8,101.4z M137.8,426.1c-7.3,4.7-15.3,8.4-23.9,10.4c-10.6,2.4-22.1,1.5-31.3-4.7c-8.4-5.7-12.9-15-14.6-24.8c-1.9-11.1-0.4-21.9,3.4-32c0.7-0.1,1.4-0.3,2-0.8c8-4.9,20.3-2.7,28.9-1c4.7,0.9,9.3,2.3,13.7,4.1c3.1,1.3,3.5,2.1,5.5,5.2c4.5,7,7.9,14.9,11.1,22.6c1.6,3.8,3,7.6,4.2,11.5c0.4,1.3,0.8,2.7,1,4.1c0,0.1,0,0.3,0.1,0.4C137,422.6,137,424.6,137.8,426.1z M213.9,308.2c-1.6,0.1-3.1,1-3.7,3.1c-9.1,28.8-21.3,57.1-39,81.7c-6.7,9.3-14.6,18.4-23.6,25.9c-1.7-13.6-14.8-36.8-17.3-41c-1.9-3.2-4.1-6.4-7.5-8.2c-5.2-2.9-11.1-4.5-16.9-5.8c-8.8-2.1-19.3-3.4-28.6-1.4c5.5-9.6,12.7-18.5,20.2-26.2c24.4-24.9,54-45,83.4-63.5c0.8-0.5,1.4-1.1,1.7-1.8c5.8-0.4,11.4,4.7,15.7,8.1c3.2,2.6,4.9,4.7,7,8.3c2.3,4,4.4,8.2,6.3,12.4c0.9,1.9,1.7,3.9,2.4,5.9c0.2,0.5,0.3,0.8,0.4,1.2C214.1,307.4,214,307.8,213.9,308.2z M451.4,260.4c-16.3,22.1-37.6,42.4-61.4,56.1c-26.2,15.1-56.1,15.2-85.5,13.2c-28-1.9-54.7-7.1-80.5-18.4c2.7-7.2-7-23.2-9.2-27.2c-3.3-5.9-6.2-9.5-11.5-13.8c-7.8-6.3-16.8-11.6-26.9-8.1c-1.4,0.5-2.2,1.3-2.7,2.3c-13.9-15.6-18-36.6-19-56.9c-0.3-5-0.3-10-0.3-15c2.9,9.5,6.9,18.7,11.6,27.5c5.5,10.2,12.3,19.7,19.9,28.5c-0.3,0.7-0.6,1.5-0.8,2.3c-1.1,4.2,3,6.4,6.3,5.5c22.4,16.5,48.6,27.1,75.2,34.4c28.4,7.8,59.4,16.1,89,12.2c45.6-6,88.6-38.6,104.7-81.9c8.8-23.7,7.3-48.3,0-71.7c6,10.9,9.9,22.9,11.2,35.9C474.2,212.8,467.7,238.3,451.4,260.4z"></path>
+</svg></span>
+            <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+        </div>
+    </div>
+    </nav>
+    
+    <!-- Topic Nav Script (Shared) -->
+    <script src="../../../../shared/js/topic-nav.js"></script>
+
+    <div class="breadcrumb" style="margin-top: 80px;">
+        <span class="home-icon">🏠</span> 
+        <span class="delimiter">/</span> 
+        <a href="../../index.html" style="text-transform: capitalize;">measurements</a> 
+        <span class="delimiter">/</span> 
+        <span class="current-topic">📡 Lissajous Phase, DVM, Q-Meter & Sensors</span>
+    </div>
+
+    <main class="topic-main-container">
+        <section id="mod11" class="module-section">
+                <h2 class="module-title" style="color:#a78bfa">Module 11 — Lissajous Phase, DVM, Q-Meter, Transducers &amp; Sensors</h2>
+
+                <!-- ── CARD 11.1 — Lissajous Patterns: Phase Measurement ── -->
+                <div class="machine-card" id="m11-card1">
+                    <div class="card-strip" style="background:#a78bfa"></div>
+                    <div class="card-header">
+                        <span class="m11-badge">11.1</span>
+                        <h3>Lissajous Patterns: Phase Measurement</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#a78bfa;font-weight:600;font-size:0.8rem;margin:2px 0">Pattern Shape vs Phase Angle</p>
+                        <p style="color:#00f5ff;font-size:0.75rem;margin:2px 0">φ = 0° or 360°: Straight line (Q I &amp; III)</p>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">0° &lt; φ &lt; 90° or 270° &lt; φ &lt; 360°: Ellipse (Q I &amp; III)</p>
+                        <p style="color:#a78bfa;font-size:0.75rem;margin:2px 0">φ = 90° or 270°: Circle</p>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">90° &lt; φ &lt; 180° or 180° &lt; φ &lt; 270°: Ellipse (Q II &amp; IV)</p>
+                        <p style="color:#fb7185;font-size:0.75rem;margin:2px 0">φ = 180°: Straight line (Q II &amp; IV)</p>
+                        <p style="color:#facc15;font-size:0.72rem;margin:4px 0">0°→180°: Clockwise | 180°→360°: Anti-clockwise</p>
+
+                        <p style="color:#00ff88;font-weight:600;font-size:0.78rem;margin:6px 0">Phase Measurement:</p>
+                        <div class="katex-render" data-formula="\boxed{\phi = \sin^{-1}\!\left(\frac{X_0}{X_m}\right) = \sin^{-1}\!\left(\frac{Y_0}{Y_m}\right)} \quad \text{(Q I,III)}"></div>
+                        <div class="katex-render" data-formula="\phi = 180° - \sin^{-1}\!\left(\frac{X_0}{X_m}\right) \quad \text{(Q II,IV)}"></div>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">Second possibility: φ₂ = 360° − φ</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Live Lissajous with phase -->
+                        <svg id="m11-liss-screen" viewBox="0 0 200 200" style="width:100%;max-width:200px;display:block;margin:0 auto;background:#001a1a;border:2px solid #a78bfa;border-radius:8px">
+                            <!-- Axes -->
+                            <line x1="100" y1="0" x2="100" y2="200" stroke="#1e293b" stroke-width="0.5"></line>
+                            <line x1="0" y1="100" x2="200" y2="100" stroke="#1e293b" stroke-width="0.5"></line>
+                            <!-- Quadrant labels -->
+                            <text x="150" y="50" fill="#334155" font-size="9" text-anchor="middle">Q I</text>
+                            <text x="50" y="50" fill="#334155" font-size="9" text-anchor="middle">Q II</text>
+                            <text x="50" y="160" fill="#334155" font-size="9" text-anchor="middle">Q III</text>
+                            <text x="150" y="160" fill="#334155" font-size="9" text-anchor="middle">Q IV</text>
+                            <!-- Lissajous path -->
+                            <path id="m11-liss-path" d="" fill="none" stroke="#00ff88" stroke-width="1.8"></path>
+                            <!-- X0 measurement arrow -->
+                            <line id="m11-x0-line" x1="100" y1="100" x2="100" y2="100" stroke="#facc15" stroke-width="1" stroke-dasharray="3 2"></line>
+                            <text id="m11-x0-label" x="105" y="105" fill="#facc15" font-size="7">X₀</text>
+                            <!-- Xm measurement arrow -->
+                            <line id="m11-xm-line" x1="100" y1="100" x2="100" y2="100" stroke="#f97316" stroke-width="1" stroke-dasharray="3 2"></line>
+                            <text id="m11-xm-label" x="105" y="105" fill="#f97316" font-size="7">X<tspan font-size="5">m</tspan></text>
+                            <!-- Direction arrow -->
+                            <text id="m11-dir-arrow" x="100" y="190" fill="#facc15" font-size="10" text-anchor="middle">↻ CW</text>
+                        </svg>
+
+                        <!-- φ slider -->
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:6px">
+                            <label style="color:#94a3b8;font-size:0.75rem">φ</label>
+                            <input type="range" id="m11-liss-phi" class="m11-slider" min="0" max="360" value="0" step="1">
+                            <span id="m11-liss-phi-val" style="color:#a78bfa;font-family:Orbitron;font-size:0.8rem">0</span>°
+                        </div>
+
+                        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m11-liss-shape" class="m11-app-tag" style="border-color:#00ff88;color:#00ff88">Line (Q I,III)</span>
+                            <span id="m11-liss-quad" class="m11-app-tag" style="border-color:#a78bfa;color:#a78bfa">φ = sin⁻¹(X₀/Xm)</span>
+                            <span id="m11-liss-computed" class="m11-app-tag" style="border-color:#facc15;color:#facc15">φ = 0°</span>
+                        </div>
+
+                        <!-- Preset gallery -->
+                        <div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+                            <button class="m11-btn m11-liss-preset" data-p="0">0° Line</button>
+                            <button class="m11-btn m11-liss-preset" data-p="45">45° Ellipse</button>
+                            <button class="m11-btn m11-liss-preset" data-p="90">90° Circle</button>
+                            <button class="m11-btn m11-liss-preset" data-p="135">135° Ellipse</button>
+                            <button class="m11-btn m11-liss-preset" data-p="180">180° Line</button>
+                            <button class="m11-btn m11-liss-preset" data-p="270">270° Circle</button>
+                        </div>
+                    </div>
+
+                    <div id="m11-liss-calc" class="m11-calc-zone">
+                        <h4 style="color:#a78bfa;margin:0 0 6px">🌀 Lissajous Phase Calculator</h4>
+                        <div class="m11-calc-row">
+                            <label>X₀:</label><input type="number" id="m11-lpc-x0" value="0.5" step="0.01">
+                            <label>X<sub>m</sub>:</label><input type="number" id="m11-lpc-xm" value="1" step="0.01">
+                        </div>
+                        <div class="m11-calc-row" style="margin-top:4px">
+                            <label style="color:#94a3b8;font-size:0.72rem">Quadrant:</label>
+                            <select id="m11-lpc-quad" style="background:#0f172a;border:1px solid rgba(167,139,250,0.3);color:#f8fafc;border-radius:4px;padding:2px 8px;font-size:0.78rem">
+                                <option value="13">Q I &amp; III</option>
+                                <option value="24">Q II &amp; IV</option>
+                            </select>
+                        </div>
+                        <div id="m11-lpc-result" class="m11-calc-result">—</div>
+                    </div>
+
+                    <div class="m11-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m11-footer-btn" onclick="document.getElementById('m11-liss-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m11-footer-btn m11-bookmark-btn" data-card="m11-lissajous-phase">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 11.2 — Digital Voltmeters (DVM) ── -->
+                <div class="machine-card" id="m11-card2">
+                    <div class="card-strip" style="background:#a78bfa"></div>
+                    <div class="card-header">
+                        <span class="m11-badge">11.2</span>
+                        <h3>Digital Voltmeters (DVM)</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#a78bfa;font-weight:600;font-size:0.8rem;margin:2px 0">DVM Resolution</p>
+                        <div class="katex-render" data-formula="\boxed{\text{Resolution} = \frac{1}{10^N}} \quad \text{Sensitivity} = \text{Resolution}\times\text{Range}"></div>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">N = number of full digits | 3½ digit: N=3, Res=0.1%</p>
+
+                        <p style="color:#00f5ff;font-weight:600;font-size:0.78rem;margin:6px 0">Dual Slope Integrating DVM</p>
+                        <div class="katex-render" data-formula="V_x \cdot T_1 = V_{ref} \cdot T_2 \;\Rightarrow\; \boxed{V_x = V_{ref}\cdot\frac{T_2}{T_1}}"></div>
+                        <div class="katex-render" data-formula="V_x = \frac{V_{ref}}{10^N}\cdot X \quad (X = \text{counter reading})"></div>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">T₁ = integration | T₂ = de-integration | T<sub>conv</sub> = T₁+T₂</p>
+                        <p style="color:#facc15;font-size:0.72rem;margin:2px 0">Noise rejection: T₁ = n·T₀ where T₀ = 1/50Hz = 20ms</p>
+                        <p style="color:#00ff88;font-size:0.72rem;margin:2px 0">Advantages: Noise rejection, high accuracy (independent of RC), auto-zero</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Dual slope waveform -->
+                        <svg id="m11-dvm-svg" viewBox="0 0 300 150" style="width:100%;max-width:300px;display:block;margin:0 auto">
+                            <!-- Axes -->
+                            <line x1="30" y1="120" x2="290" y2="120" stroke="#475569" stroke-width="1"></line>
+                            <line x1="30" y1="10" x2="30" y2="120" stroke="#475569" stroke-width="1"></line>
+                            <text x="28" y="8" fill="#94a3b8" font-size="6">V<tspan font-size="4">out</tspan></text>
+                            <text x="292" y="118" fill="#94a3b8" font-size="6">t</text>
+                            <!-- Integration ramp (Phase 1) -->
+                            <line id="m11-dvm-ramp1" x1="40" y1="120" x2="150" y2="30" stroke="#00f5ff" stroke-width="2"></line>
+                            <!-- De-integration ramp (Phase 2) -->
+                            <line id="m11-dvm-ramp2" x1="150" y1="30" x2="240" y2="120" stroke="#fb7185" stroke-width="2"></line>
+                            <!-- T1 bracket -->
+                            <line x1="40" y1="130" x2="150" y2="130" stroke="#00f5ff" stroke-width="1" marker-start="url(#m11arr)" marker-end="url(#m11arr)"></line>
+                            <text x="95" y="140" fill="#00f5ff" font-size="7" text-anchor="middle">T₁</text>
+                            <!-- T2 bracket -->
+                            <line id="m11-dvm-t2line" x1="150" y1="130" x2="240" y2="130" stroke="#fb7185" stroke-width="1" marker-start="url(#m11arr2)" marker-end="url(#m11arr2)"></line>
+                            <text id="m11-dvm-t2lbl" x="195" y="140" fill="#fb7185" font-size="7" text-anchor="middle">T₂</text>
+                            <!-- Switch point -->
+                            <circle cx="150" cy="30" r="3" fill="#facc15"></circle>
+                            <text x="155" y="26" fill="#facc15" font-size="6">switch to −V<tspan font-size="4">ref</tspan></text>
+                            <!-- Zero crossing dot -->
+                            <circle id="m11-dvm-zero" cx="240" cy="120" r="3" fill="#00ff88"></circle>
+                            <defs>
+                                <marker id="m11arr" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#00f5ff"></path></marker>
+                                <marker id="m11arr2" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#fb7185"></path></marker>
+                            </defs>
+                            <!-- Labels -->
+                            <text x="80" y="65" fill="#00f5ff" font-size="6" transform="rotate(-35,80,65)">slope=V<tspan font-size="4">x</tspan>/RC</text>
+                            <text x="185" y="65" fill="#fb7185" font-size="6" transform="rotate(35,185,65)">slope=−V<tspan font-size="4">ref</tspan>/RC</text>
+                        </svg>
+
+                        <!-- Vx slider -->
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:4px">
+                            <label style="color:#94a3b8;font-size:0.75rem">V<sub>x</sub></label>
+                            <input type="range" id="m11-dvm-vx" class="m11-slider" min="0.1" max="5" value="2" step="0.1">
+                            <span id="m11-dvm-vx-val" style="color:#00f5ff;font-family:Orbitron;font-size:0.8rem">2.0</span> V
+                        </div>
+
+                        <!-- 7-segment display -->
+                        <div style="display:flex;gap:6px;justify-content:center;margin-top:6px">
+                            <span id="m11-7seg" style="font-family:Orbitron;font-size:1.4rem;color:#00ff88;background:#0a0a0f;padding:4px 14px;border:1px solid rgba(0,255,136,0.3);border-radius:6px;letter-spacing:3px">0000</span>
+                        </div>
+
+                        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m11-dvm-t2badge" class="m11-app-tag" style="border-color:#fb7185;color:#fb7185">T₂ ∝ V<sub>x</sub></span>
+                            <span id="m11-dvm-counter" class="m11-app-tag" style="border-color:#00ff88;color:#00ff88">Count = —</span>
+                        </div>
+
+                        <!-- N selector -->
+                        <div style="display:flex;align-items:center;gap:6px;justify-content:center;margin-top:6px">
+                            <label style="color:#94a3b8;font-size:0.72rem">Digits (N):</label>
+                            <select id="m11-dvm-N" style="background:#0f172a;border:1px solid rgba(167,139,250,0.3);color:#f8fafc;border-radius:4px;padding:2px 6px;font-size:0.78rem">
+                                <option value="3">3 (0.1%)</option>
+                                <option value="3.5">3½ (0.05%)</option>
+                                <option value="4" selected="">4 (0.01%)</option>
+                                <option value="4.5">4½</option>
+                                <option value="5">5</option>
+                            </select>
+                            <span id="m11-dvm-res-badge" class="m11-app-tag" style="border-color:#a78bfa;color:#a78bfa">Res = 0.01%</span>
+                        </div>
+                    </div>
+
+                    <div id="m11-dvm-calc" class="m11-calc-zone">
+                        <h4 style="color:#a78bfa;margin:0 0 6px">📟 DVM Resolution &amp; Dual Slope</h4>
+                        <div class="m11-calc-row">
+                            <label>N digits:</label><input type="number" id="m11-dvmc-N" value="4" step="0.5">
+                            <label>Range (V):</label><input type="number" id="m11-dvmc-range" value="10" step="0.1">
+                        </div>
+                        <div id="m11-dvmc-res-result" class="m11-calc-result">—</div>
+                        <h4 style="color:#a78bfa;margin:8px 0 6px">Dual Slope</h4>
+                        <div class="m11-calc-row">
+                            <label>V<sub>ref</sub> (V):</label><input type="number" id="m11-dvmc-vref" value="5" step="0.1">
+                            <label>T₁ (ms):</label><input type="number" id="m11-dvmc-t1" value="20">
+                            <label>T₂ (ms):</label><input type="number" id="m11-dvmc-t2" value="8">
+                        </div>
+                        <div id="m11-dvmc-ds-result" class="m11-calc-result">—</div>
+                    </div>
+
+                    <div class="m11-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m11-footer-btn" onclick="document.getElementById('m11-dvm-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m11-footer-btn m11-bookmark-btn" data-card="m11-dvm">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 11.3 — Q-Meter: Quality Factor Measurement ── -->
+                <div class="machine-card" id="m11-card3">
+                    <div class="card-strip" style="background:#a78bfa"></div>
+                    <div class="card-header">
+                        <span class="m11-badge">11.3</span>
+                        <h3>Q-Meter: Quality Factor Measurement</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">Principle: Series Resonance | At resonance: V<sub>C</sub> = Q × V<sub>source</sub></p>
+                        <div class="katex-render" data-formula="\boxed{Q = \frac{\omega L}{R}} \qquad Q_{true} = Q_m\!\left[1+\frac{R_s}{R}\right]"></div>
+                        <p style="color:#f97316;font-weight:600;font-size:0.78rem;margin:4px 0">Distributed Capacitance</p>
+                        <div class="katex-render" data-formula="\boxed{C_d = \frac{C_1 n^2 - C_2}{n^2 - 1}} \quad f_2 = n\cdot f_1"></div>
+                        <div class="katex-render" data-formula="L = \frac{1}{4\pi^2 f_s^2(C+C_d)} \qquad R = \frac{\omega L}{Q}"></div>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">Applications: Q factor, BW, L, C<sub>d</sub>, Capacitance</p>
+                        <p style="color:#fb7185;font-size:0.72rem;margin:2px 0">%err(Q) = −R<sub>s</sub>/(R+R<sub>s</sub>)×100 | %err(C<sub>d</sub>) = −C<sub>d</sub>/(C+C<sub>d</sub>)×100</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Q-Meter circuit SVG -->
+                        <svg id="m11-qm-svg" viewBox="0 0 300 120" style="width:100%;max-width:300px;display:block;margin:0 auto">
+                            <!-- Source -->
+                            <circle cx="30" cy="60" r="14" fill="none" stroke="#a78bfa" stroke-width="1.5"></circle>
+                            <text x="30" y="63" fill="#a78bfa" font-size="8" text-anchor="middle">V<tspan font-size="5">s</tspan></text>
+                            <!-- R -->
+                            <rect x="60" y="52" width="36" height="16" rx="3" fill="rgba(251,113,133,0.08)" stroke="#fb7185" stroke-width="1"></rect>
+                            <text x="78" y="63" fill="#fb7185" font-size="7" text-anchor="middle">R</text>
+                            <!-- L (coil) -->
+                            <path d="M108 60 Q114 45 120 60 Q126 75 132 60 Q138 45 144 60" fill="none" stroke="#00f5ff" stroke-width="1.5"></path>
+                            <text x="126" y="46" fill="#00f5ff" font-size="7" text-anchor="middle">L</text>
+                            <!-- C -->
+                            <line x1="160" y1="50" x2="160" y2="70" stroke="#facc15" stroke-width="2"></line>
+                            <line x1="168" y1="50" x2="168" y2="70" stroke="#facc15" stroke-width="2"></line>
+                            <text x="164" y="44" fill="#facc15" font-size="7" text-anchor="middle">C</text>
+                            <!-- Cd (stray) -->
+                            <line x1="160" y1="80" x2="160" y2="94" stroke="#f97316" stroke-width="1" stroke-dasharray="2 1"></line>
+                            <line x1="157" y1="94" x2="163" y2="94" stroke="#f97316" stroke-width="1.5"></line>
+                            <line x1="157" y1="98" x2="163" y2="98" stroke="#f97316" stroke-width="1.5"></line>
+                            <text x="172" y="97" fill="#f97316" font-size="6">C<tspan font-size="4">d</tspan></text>
+                            <!-- Voltmeter across C -->
+                            <circle cx="200" cy="60" r="12" fill="none" stroke="#00ff88" stroke-width="1"></circle>
+                            <text x="200" y="63" fill="#00ff88" font-size="7" text-anchor="middle">V</text>
+                            <!-- Wires -->
+                            <line x1="44" y1="60" x2="60" y2="60" stroke="#475569" stroke-width="1"></line>
+                            <line x1="96" y1="60" x2="108" y2="60" stroke="#475569" stroke-width="1"></line>
+                            <line x1="144" y1="60" x2="160" y2="60" stroke="#475569" stroke-width="1"></line>
+                            <line x1="168" y1="60" x2="188" y2="60" stroke="#475569" stroke-width="1"></line>
+                            <line x1="212" y1="60" x2="230" y2="60" stroke="#475569" stroke-width="1"></line>
+                            <line x1="230" y1="60" x2="230" y2="100" stroke="#475569" stroke-width="1"></line>
+                            <line x1="230" y1="100" x2="30" y2="100" stroke="#475569" stroke-width="1"></line>
+                            <line x1="30" y1="74" x2="30" y2="100" stroke="#475569" stroke-width="1"></line>
+                            <!-- Resonance label -->
+                            <text id="m11-qm-res-lbl" x="150" y="14" fill="#facc15" font-size="7" text-anchor="middle">At resonance: V<tspan font-size="4">C</tspan> = Q × V<tspan font-size="4">s</tspan></text>
+                        </svg>
+
+                        <!-- Q measurement -->
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:4px">
+                            <label style="color:#94a3b8;font-size:0.75rem">f (kHz)</label>
+                            <input type="range" id="m11-qm-f" class="m11-slider" min="10" max="1000" value="500" step="10">
+                            <span id="m11-qm-f-val" style="color:#a78bfa;font-family:Orbitron;font-size:0.8rem">500</span>
+                        </div>
+                        <div id="m11-qm-chart" style="width:100%;max-width:280px;margin:6px auto"></div>
+                        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m11-qm-q-badge" class="m11-app-tag" style="border-color:#facc15;color:#facc15">Q = —</span>
+                            <span id="m11-qm-vc-badge" class="m11-app-tag" style="border-color:#00ff88;color:#00ff88">V<sub>C</sub> = —</span>
+                        </div>
+                    </div>
+
+                    <div id="m11-qm-calc" class="m11-calc-zone">
+                        <h4 style="color:#a78bfa;margin:0 0 6px">🔬 Q-Meter Calculator</h4>
+                        <div class="m11-calc-row">
+                            <label>ω (rad/s):</label><input type="number" id="m11-qmc-w" value="31416">
+                            <label>L (mH):</label><input type="number" id="m11-qmc-L" value="10" step="0.1">
+                            <label>R (Ω):</label><input type="number" id="m11-qmc-R" value="5" step="0.1">
+                        </div>
+                        <div id="m11-qmc-q-result" class="m11-calc-result">—</div>
+                        <h4 style="color:#a78bfa;margin:8px 0 6px">Distributed Capacitance</h4>
+                        <div class="m11-calc-row">
+                            <label>C₁ (pF):</label><input type="number" id="m11-qmc-c1" value="400" step="1">
+                            <label>C₂ (pF):</label><input type="number" id="m11-qmc-c2" value="100" step="1">
+                            <label>n (f₂/f₁):</label><input type="number" id="m11-qmc-n" value="2" step="0.1">
+                        </div>
+                        <div id="m11-qmc-cd-result" class="m11-calc-result">—</div>
+                        <h4 style="color:#a78bfa;margin:8px 0 6px">True Q</h4>
+                        <div class="m11-calc-row">
+                            <label>Q<sub>m</sub>:</label><input type="number" id="m11-qmc-qm" value="50" step="1">
+                            <label>R<sub>s</sub> (Ω):</label><input type="number" id="m11-qmc-rs" value="0.5" step="0.01">
+                            <label>R (Ω):</label><input type="number" id="m11-qmc-r2" value="5" step="0.1">
+                        </div>
+                        <div id="m11-qmc-qt-result" class="m11-calc-result">—</div>
+                    </div>
+
+                    <div class="m11-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m11-footer-btn" onclick="document.getElementById('m11-qm-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m11-footer-btn m11-bookmark-btn" data-card="m11-qmeter">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 11.4 — Galvanometer & Transducer Overview ── -->
+                <div class="machine-card" id="m11-card4">
+                    <div class="card-strip" style="background:#a78bfa"></div>
+                    <div class="card-header">
+                        <span class="m11-badge">11.4</span>
+                        <h3>Galvanometer &amp; Transducer Overview</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#00f5ff;font-weight:600;font-size:0.78rem;margin:2px 0">D'Arsonval Galvanometer</p>
+                        <div class="katex-render" data-formula="T_d = BINA \quad T_c = K\theta \quad \boxed{\theta = \frac{NBA}{K}\cdot I = \frac{G}{K}\cdot I}"></div>
+                        <div class="katex-render" data-formula="S_I = \frac{\theta}{I} = \frac{NBA}{K} = \frac{G}{K}\;\text{(rad/A)}"></div>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">Types: Tangent, Astatic, Mirror, Ballistic, D'Arsonval/Weston</p>
+
+                        <p style="color:#a78bfa;font-weight:600;font-size:0.78rem;margin:6px 0">Transducer Classification</p>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">Converts one form of energy to another (also: pick-up)</p>
+                        <p style="color:#00ff88;font-size:0.72rem;margin:2px 0">Active (self-generating): Piezo, Photovoltaic, Thermocouple</p>
+                        <p style="color:#60a5fa;font-size:0.72rem;margin:2px 0">Passive (needs power): LVDT, Thermistor, RTD, Capacitive</p>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">By function — Primary: Bellows, Bourdon, Thermistor | Secondary: LVDT</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Galvanometer SVG -->
+                        <svg id="m11-galv-svg" viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:0 auto">
+                            <!-- Magnet -->
+                            <rect x="30" y="20" width="30" height="90" rx="4" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="1.5"></rect>
+                            <text x="45" y="68" fill="#ef4444" font-size="10" text-anchor="middle">N</text>
+                            <rect x="200" y="20" width="30" height="90" rx="4" fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="1.5"></rect>
+                            <text x="215" y="68" fill="#60a5fa" font-size="10" text-anchor="middle">S</text>
+                            <!-- Coil -->
+                            <rect x="90" y="35" width="80" height="60" rx="4" fill="none" stroke="#00f5ff" stroke-width="1.5"></rect>
+                            <text x="130" y="69" fill="#00f5ff" font-size="8" text-anchor="middle">Coil</text>
+                            <!-- Pointer -->
+                            <line id="m11-galv-ptr" x1="130" y1="10" x2="130" y2="35" stroke="#facc15" stroke-width="2"></line>
+                            <!-- Scale arc -->
+                            <path d="M 80 12 A 50 50 0 0 1 180 12" fill="none" stroke="#334155" stroke-width="1"></path>
+                            <!-- Scale marks -->
+                            <line x1="80" y1="12" x2="80" y2="6" stroke="#334155" stroke-width="1"></line>
+                            <line x1="130" y1="4" x2="130" y2="0" stroke="#334155" stroke-width="1"></line>
+                            <line x1="180" y1="12" x2="180" y2="6" stroke="#334155" stroke-width="1"></line>
+                            <text x="75" y="5" fill="#94a3b8" font-size="5" text-anchor="end">−</text>
+                            <text x="130" y="-2" fill="#94a3b8" font-size="5" text-anchor="middle">0</text>
+                            <text x="185" y="5" fill="#94a3b8" font-size="5">+</text>
+                            <!-- Spring -->
+                            <path d="M130 35 Q125 30 130 25 Q135 20 130 15" fill="none" stroke="#facc15" stroke-width="1" stroke-dasharray="2 1"></path>
+                            <text x="142" y="25" fill="#facc15" font-size="5">Spring</text>
+                            <!-- θ label -->
+                            <text id="m11-galv-theta" x="130" y="120" fill="#00f5ff" font-size="8" text-anchor="middle">θ = 0°</text>
+                        </svg>
+
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:4px">
+                            <label style="color:#94a3b8;font-size:0.75rem">I (mA)</label>
+                            <input type="range" id="m11-galv-I" class="m11-slider" min="-50" max="50" value="0" step="1">
+                            <span id="m11-galv-I-val" style="color:#00f5ff;font-family:Orbitron;font-size:0.8rem">0</span>
+                        </div>
+
+                        <!-- Transducer classification tree -->
+                        <p style="color:#a78bfa;font-size:0.78rem;text-align:center;margin:8px 0 4px">Transducer Classification</p>
+                        <div id="m11-trans-tree" style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap">
+                            <div style="border:1px solid #00ff88;border-radius:6px;padding:4px 8px;font-size:0.68rem;text-align:center">
+                                <span style="color:#00ff88;font-weight:600">Active</span><br>
+                                <span style="color:#94a3b8">Piezo · Photovoltaic<br>Thermocouple</span>
+                            </div>
+                            <div style="border:1px solid #60a5fa;border-radius:6px;padding:4px 8px;font-size:0.68rem;text-align:center">
+                                <span style="color:#60a5fa;font-weight:600">Passive</span><br>
+                                <span style="color:#94a3b8">LVDT · Thermistor<br>RTD · Capacitive</span>
+                            </div>
+                            <div style="border:1px solid #f97316;border-radius:6px;padding:4px 8px;font-size:0.68rem;text-align:center">
+                                <span style="color:#f97316;font-weight:600">Analog</span><br>
+                                <span style="color:#94a3b8">LVDT · Strain<br>gauge · Thermistor</span>
+                            </div>
+                            <div style="border:1px solid #a78bfa;border-radius:6px;padding:4px 8px;font-size:0.68rem;text-align:center">
+                                <span style="color:#a78bfa;font-weight:600">Digital</span><br>
+                                <span style="color:#94a3b8">Encoder · Digital<br>tachometer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="m11-galv-calc" class="m11-calc-zone">
+                        <h4 style="color:#a78bfa;margin:0 0 6px">📡 Galvanometer Deflection Calculator</h4>
+                        <div class="m11-calc-row">
+                            <label>B (T):</label><input type="number" id="m11-gc-B" value="0.2" step="0.01">
+                            <label>N:</label><input type="number" id="m11-gc-N" value="100">
+                            <label>A (cm²):</label><input type="number" id="m11-gc-A" value="4" step="0.1">
+                            <label>K (N·m/rad):</label><input type="number" id="m11-gc-K" value="0.0001" step="0.00001">
+                            <label>I (mA):</label><input type="number" id="m11-gc-I" value="10" step="0.1">
+                        </div>
+                        <div id="m11-gc-result" class="m11-calc-result">—</div>
+                    </div>
+
+                    <div class="m11-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m11-footer-btn" onclick="document.getElementById('m11-galv-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m11-footer-btn m11-bookmark-btn" data-card="m11-galv-trans">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 11.5 — Strain Gauge & Thermistor ── -->
+                <div class="machine-card" id="m11-card5">
+                    <div class="card-strip" style="background:#a78bfa"></div>
+                    <div class="card-header">
+                        <span class="m11-badge">11.5</span>
+                        <h3>Strain Gauge &amp; Thermistor</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#f97316;font-weight:600;font-size:0.78rem;margin:2px 0">Strain Gauge</p>
+                        <div class="katex-render" data-formula="\boxed{G_f = \frac{\Delta R/R}{\Delta L/L} = \frac{\Delta R/R}{\varepsilon}} = 1+2\gamma+\frac{\delta\rho/\rho}{\varepsilon}"></div>
+                        <div class="katex-render" data-formula="\text{Metal: } G_f \approx 1+2\gamma \approx 2\text{–}4 \quad \text{Semi: } G_f > 100"></div>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">γ = Poisson's ratio | ε = ΔL/L (strain) | Lateral strain = −γ·ε</p>
+
+                        <p style="color:#fb7185;font-weight:600;font-size:0.78rem;margin:6px 0">Thermistor (NTC)</p>
+                        <div class="katex-render" data-formula="\boxed{R_{T_1} = R_{T_2}\exp\!\left[\beta\!\left(\frac{1}{T_1}-\frac{1}{T_2}\right)\right]}"></div>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">NTC: T↑→R↓ | β=2000–5000K | Range: −100°C to 300°C | 0.5Ω to 75MΩ</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Strain gauge SVG -->
+                        <svg id="m11-sg-svg" viewBox="0 0 260 80" style="width:100%;max-width:260px;display:block;margin:0 auto">
+                            <!-- Base surface -->
+                            <rect x="10" y="50" width="240" height="20" rx="2" fill="rgba(148,163,184,0.05)" stroke="#475569" stroke-width="1"></rect>
+                            <text x="130" y="66" fill="#475569" font-size="6" text-anchor="middle">Test specimen</text>
+                            <!-- Strain gauge grid -->
+                            <rect x="60" y="20" width="140" height="28" rx="4" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1"></rect>
+                            <path d="M75 26 L75 42 M85 42 L85 26 M95 26 L95 42 M105 42 L105 26 M115 26 L115 42 M125 42 L125 26 M135 26 L135 42 M145 42 L145 26 M155 26 L155 42 M165 42 L165 26 M175 26 L175 42 M185 42 L185 26" stroke="#f97316" stroke-width="1" fill="none"></path>
+                            <!-- Force arrows -->
+                            <text x="20" y="38" fill="#ef4444" font-size="10">←F</text>
+                            <text x="215" y="38" fill="#ef4444" font-size="10">F→</text>
+                            <!-- ΔR badge -->
+                            <text id="m11-sg-dr" x="130" y="14" fill="#f97316" font-size="7" text-anchor="middle">ΔR/R = 0</text>
+                        </svg>
+
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:4px">
+                            <label style="color:#94a3b8;font-size:0.75rem">ε (μstrain)</label>
+                            <input type="range" id="m11-sg-eps" class="m11-slider" min="0" max="5000" value="1000" step="50">
+                            <span id="m11-sg-eps-val" style="color:#f97316;font-family:Orbitron;font-size:0.8rem">1000</span>
+                        </div>
+
+                        <!-- Metal vs Semiconductor Gf bar chart -->
+                        <div id="m11-gf-chart" style="width:100%;max-width:260px;margin:8px auto"></div>
+
+                        <!-- Thermistor R vs T curve -->
+                        <p style="color:#fb7185;font-size:0.78rem;text-align:center;margin:6px 0 2px">Thermistor R vs T (NTC)</p>
+                        <div id="m11-therm-chart" style="width:100%;max-width:280px;margin:0 auto"></div>
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:2px">
+                            <label style="color:#94a3b8;font-size:0.72rem">β</label>
+                            <input type="range" id="m11-therm-beta" class="m11-slider" min="2000" max="5000" value="3500" step="100">
+                            <span id="m11-therm-beta-val" style="color:#fb7185;font-family:Orbitron;font-size:0.75rem">3500</span> K
+                        </div>
+                    </div>
+
+                    <div id="m11-sg-calc" class="m11-calc-zone">
+                        <h4 style="color:#a78bfa;margin:0 0 6px">📏 Strain Gauge Calculator</h4>
+                        <div class="m11-calc-row">
+                            <label>ΔR/R:</label><input type="number" id="m11-sgc-dr" value="0.002" step="0.0001">
+                            <label>ΔL/L (ε):</label><input type="number" id="m11-sgc-dl" value="0.001" step="0.0001">
+                        </div>
+                        <div id="m11-sgc-result" class="m11-calc-result">—</div>
+                        <h4 style="color:#a78bfa;margin:8px 0 6px">🌡️ Thermistor Resistance</h4>
+                        <div class="m11-calc-row">
+                            <label>R<sub>T2</sub> (kΩ):</label><input type="number" id="m11-thc-rt2" value="10" step="0.1">
+                            <label>β (K):</label><input type="number" id="m11-thc-beta" value="3500" step="100">
+                            <label>T₁ (°C):</label><input type="number" id="m11-thc-t1" value="50">
+                            <label>T₂ (°C):</label><input type="number" id="m11-thc-t2" value="25">
+                        </div>
+                        <div id="m11-thc-result" class="m11-calc-result">—</div>
+                    </div>
+
+                    <div class="m11-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m11-footer-btn" onclick="document.getElementById('m11-sg-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m11-footer-btn m11-bookmark-btn" data-card="m11-strain-therm">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 11.6 — Thermocouple & LVDT ── -->
+                <div class="machine-card" id="m11-card6">
+                    <div class="card-strip" style="background:#a78bfa"></div>
+                    <div class="card-header">
+                        <span class="m11-badge">11.6</span>
+                        <h3>Thermocouple &amp; LVDT</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#ef4444;font-weight:600;font-size:0.78rem;margin:2px 0">Thermocouple (Seebeck Effect)</p>
+                        <div class="katex-render" data-formula="\boxed{E = a(\Delta\theta) + b(\Delta\theta)^2}"></div>
+                        <div style="overflow-x:auto;margin:4px 0">
+                            <table class="m11-comparison-table" style="font-size:0.68rem">
+                                <thead><tr><th>(+) Metal</th><th>(−) Metal</th><th>Range</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Copper</td><td>Constantan</td><td>−250 to +400 °C</td></tr>
+                                    <tr><td>Iron</td><td>Constantan</td><td>−200 to +850 °C</td></tr>
+                                    <tr><td>Pt-Rh</td><td>Platinum</td><td>0 to +1400 °C</td></tr>
+                                    <tr><td>Rhodium</td><td>Iridium</td><td>0 to +2100 °C</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="color:#00f5ff;font-weight:600;font-size:0.78rem;margin:6px 0">LVDT — Linear Variable Differential Transformer</p>
+                        <div class="katex-render" data-formula="V_{out}=V_{S1}-V_{S2} \qquad \boxed{S_{LVDT}=\frac{V_{out}}{\text{displacement}}\;\text{(V/mm)}}"></div>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">Center: V<sub>out</sub>=0 | Right: +ve | Left: −ve | Range: ±125–250mm</p>
+                        <p style="color:#00ff88;font-size:0.72rem;margin:2px 0">Advantages: Frictionless, infinite resolution, high sensitivity, linear</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Thermocouple SVG -->
+                        <p style="color:#ef4444;font-size:0.78rem;text-align:center;margin:0 0 4px">Thermocouple — Seebeck Effect</p>
+                        <svg id="m11-tc-svg" viewBox="0 0 260 80" style="width:100%;max-width:260px;display:block;margin:0 auto">
+                            <!-- Metal A -->
+                            <line x1="60" y1="25" x2="130" y2="25" stroke="#ef4444" stroke-width="3"></line>
+                            <text x="95" y="20" fill="#ef4444" font-size="6" text-anchor="middle">Metal A (+)</text>
+                            <!-- Metal B -->
+                            <line x1="60" y1="55" x2="130" y2="55" stroke="#60a5fa" stroke-width="3"></line>
+                            <text x="95" y="68" fill="#60a5fa" font-size="6" text-anchor="middle">Metal B (−)</text>
+                            <!-- Hot junction -->
+                            <circle cx="60" cy="40" r="10" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1.5"></circle>
+                            <line x1="60" y1="25" x2="60" y2="55" stroke="#facc15" stroke-width="2"></line>
+                            <text x="60" y="43" fill="#facc15" font-size="6" text-anchor="middle">Hot</text>
+                            <!-- Cold junction -->
+                            <circle cx="130" cy="40" r="10" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"></circle>
+                            <line x1="130" y1="25" x2="130" y2="55" stroke="#60a5fa" stroke-width="2"></line>
+                            <text x="130" y="43" fill="#60a5fa" font-size="6" text-anchor="middle">Cold</text>
+                            <!-- Voltmeter -->
+                            <line x1="130" y1="25" x2="190" y2="25" stroke="#94a3b8" stroke-width="1"></line>
+                            <line x1="130" y1="55" x2="190" y2="55" stroke="#94a3b8" stroke-width="1"></line>
+                            <circle cx="210" cy="40" r="16" fill="none" stroke="#00ff88" stroke-width="1.5"></circle>
+                            <text x="210" y="43" fill="#00ff88" font-size="8" text-anchor="middle">V</text>
+                            <line x1="190" y1="25" x2="210" y2="24" stroke="#94a3b8" stroke-width="1"></line>
+                            <line x1="190" y1="55" x2="210" y2="56" stroke="#94a3b8" stroke-width="1"></line>
+                            <!-- EMF label -->
+                            <text id="m11-tc-emf" x="210" y="70" fill="#facc15" font-size="7" text-anchor="middle">E = — mV</text>
+                        </svg>
+
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:2px">
+                            <label style="color:#94a3b8;font-size:0.72rem">ΔT (°C)</label>
+                            <input type="range" id="m11-tc-dt" class="m11-slider" min="0" max="500" value="100" step="5">
+                            <span id="m11-tc-dt-val" style="color:#ef4444;font-family:Orbitron;font-size:0.8rem">100</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:6px;justify-content:center;margin-top:2px">
+                            <label style="color:#94a3b8;font-size:0.72rem">Type:</label>
+                            <select id="m11-tc-type" style="background:#0f172a;border:1px solid rgba(167,139,250,0.3);color:#f8fafc;border-radius:4px;padding:2px 6px;font-size:0.75rem">
+                                <option value="cu">Cu–Constantan</option>
+                                <option value="fe">Fe–Constantan</option>
+                                <option value="pt">Pt/Rh–Pt</option>
+                                <option value="rh">Rh–Ir</option>
+                            </select>
+                        </div>
+
+                        <!-- LVDT -->
+                        <p style="color:#00f5ff;font-size:0.78rem;text-align:center;margin:8px 0 4px">LVDT Cross-Section</p>
+                        <svg id="m11-lvdt-svg" viewBox="0 0 280 80" style="width:100%;max-width:280px;display:block;margin:0 auto">
+                            <!-- S1 secondary -->
+                            <rect x="30" y="15" width="70" height="50" rx="4" fill="rgba(0,245,255,0.04)" stroke="#00f5ff" stroke-width="1"></rect>
+                            <text x="65" y="43" fill="#00f5ff" font-size="8" text-anchor="middle">S₁</text>
+                            <!-- Primary -->
+                            <rect x="105" y="10" width="70" height="60" rx="4" fill="rgba(250,204,21,0.04)" stroke="#facc15" stroke-width="1.5"></rect>
+                            <text x="140" y="43" fill="#facc15" font-size="8" text-anchor="middle">Primary</text>
+                            <!-- S2 secondary -->
+                            <rect x="180" y="15" width="70" height="50" rx="4" fill="rgba(251,113,133,0.04)" stroke="#fb7185" stroke-width="1"></rect>
+                            <text x="215" y="43" fill="#fb7185" font-size="8" text-anchor="middle">S₂</text>
+                            <!-- Core -->
+                            <rect id="m11-lvdt-core" x="110" y="30" width="60" height="20" rx="3" fill="rgba(148,163,184,0.15)" stroke="#94a3b8" stroke-width="1.5"></rect>
+                            <text id="m11-lvdt-core-lbl" x="140" y="43" fill="#94a3b8" font-size="6" text-anchor="middle">Core</text>
+                        </svg>
+
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:4px">
+                            <label style="color:#94a3b8;font-size:0.72rem">Core position</label>
+                            <input type="range" id="m11-lvdt-pos" class="m11-slider" min="-100" max="100" value="0" step="1">
+                            <span id="m11-lvdt-pos-val" style="color:#a78bfa;font-family:Orbitron;font-size:0.8rem">0</span>%
+                        </div>
+                        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m11-lvdt-vout" class="m11-app-tag" style="border-color:#00ff88;color:#00ff88">V<sub>out</sub> = 0 (Null)</span>
+                        </div>
+
+                        <!-- LVDT linearity chart -->
+                        <div id="m11-lvdt-chart" style="width:100%;max-width:260px;margin:4px auto"></div>
+                    </div>
+
+                    <div id="m11-tc-calc" class="m11-calc-zone">
+                        <h4 style="color:#a78bfa;margin:0 0 6px">🌡️ Thermocouple EMF Calculator</h4>
+                        <div class="m11-calc-row">
+                            <label>a (mV/°C):</label><input type="number" id="m11-tcc-a" value="0.04" step="0.001">
+                            <label>b (mV/°C²):</label><input type="number" id="m11-tcc-b" value="0.00005" step="0.000001">
+                            <label>Δθ (°C):</label><input type="number" id="m11-tcc-dth" value="200" step="1">
+                        </div>
+                        <div id="m11-tcc-result" class="m11-calc-result">—</div>
+                    </div>
+
+                    <div class="m11-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m11-footer-btn" onclick="document.getElementById('m11-tc-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m11-footer-btn m11-bookmark-btn" data-card="m11-tc-lvdt">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 11.7 — Piezoelectric Transducer & Measurements ── -->
+                <div class="machine-card" id="m11-card7">
+                    <div class="card-strip" style="background:#a78bfa"></div>
+                    <div class="card-header">
+                        <span class="m11-badge">11.7</span>
+                        <h3>Piezoelectric Transducer &amp; Measurements</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#a78bfa;font-weight:600;font-size:0.78rem;margin:2px 0">Piezoelectric Effect — Dynamic Pressure/Force</p>
+                        <div class="katex-render" data-formula="\boxed{d = \frac{Q}{F}\;\text{(C/N)}} \quad \boxed{g = \frac{E}{p} = \frac{V}{t\cdot p}\;\text{(V·m/N)}}"></div>
+                        <div class="katex-render" data-formula="\boxed{E_0 = g\cdot t\cdot p}"></div>
+                        <p style="color:#94a3b8;font-size:0.72rem;margin:2px 0">Natural: Quartz, Rochelle salt | Synthetic: BaTiO₃, KDP</p>
+
+                        <p style="color:#f97316;font-weight:600;font-size:0.78rem;margin:6px 0">Temperature Sensor Ranges</p>
+                        <p style="color:#94a3b8;font-size:0.68rem;margin:2px 0">Bimetallic ~27°C | Thermistor −100→300°C | RTD →600°C | TC →1400°C | Pyrometer 1200→3500°C</p>
+
+                        <p style="color:#60a5fa;font-weight:600;font-size:0.78rem;margin:4px 0">Low-Pressure Gauges</p>
+                        <p style="color:#94a3b8;font-size:0.68rem;margin:2px 0">Pirani 10⁻³–10⁻¹ | TC vacuum ≤10⁻² | McLeod ~10⁻⁴ | Ionization 10⁻⁷–10⁻⁸ mmHg</p>
+                        <p style="color:#94a3b8;font-size:0.68rem;margin:2px 0">Mechanical: Bourdon &gt; Bellow &gt; Diaphragm | High: Bridgman</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Piezoelectric crystal SVG -->
+                        <svg id="m11-piezo-svg" viewBox="0 0 260 110" style="width:100%;max-width:260px;display:block;margin:0 auto">
+                            <!-- Crystal -->
+                            <rect x="80" y="30" width="100" height="50" rx="6" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5"></rect>
+                            <text x="130" y="58" fill="#a78bfa" font-size="8" text-anchor="middle">Quartz Crystal</text>
+                            <!-- Force arrows -->
+                            <line x1="130" y1="5" x2="130" y2="28" stroke="#ef4444" stroke-width="2" marker-end="url(#m11farr)"></line>
+                            <text x="140" y="14" fill="#ef4444" font-size="7">F ↓</text>
+                            <line x1="130" y1="105" x2="130" y2="82" stroke="#ef4444" stroke-width="2" marker-end="url(#m11farr)"></line>
+                            <text x="140" y="100" fill="#ef4444" font-size="7">F ↑</text>
+                            <!-- Charge faces -->
+                            <text x="75" y="58" fill="#facc15" font-size="12" text-anchor="end">+</text>
+                            <text x="185" y="58" fill="#facc15" font-size="12">−</text>
+                            <!-- Output leads -->
+                            <line x1="80" y1="55" x2="40" y2="55" stroke="#facc15" stroke-width="1"></line>
+                            <line x1="180" y1="55" x2="220" y2="55" stroke="#facc15" stroke-width="1"></line>
+                            <!-- Voltage label -->
+                            <text id="m11-piezo-v" x="130" y="100" fill="#a78bfa" font-size="7" text-anchor="middle">E₀ = — V</text>
+                            <defs><marker id="m11farr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#ef4444"></path></marker></defs>
+                        </svg>
+
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:4px">
+                            <label style="color:#94a3b8;font-size:0.75rem">F (N)</label>
+                            <input type="range" id="m11-piezo-F" class="m11-slider" min="0" max="1000" value="100" step="10">
+                            <span id="m11-piezo-F-val" style="color:#a78bfa;font-family:Orbitron;font-size:0.8rem">100</span>
+                        </div>
+                        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m11-piezo-q" class="m11-app-tag" style="border-color:#facc15;color:#facc15">Q = — pC</span>
+                            <span id="m11-piezo-eo" class="m11-app-tag" style="border-color:#a78bfa;color:#a78bfa">E₀ = — V</span>
+                        </div>
+
+                        <!-- Temperature sensor range chart -->
+                        <p style="color:#f97316;font-size:0.78rem;text-align:center;margin:8px 0 2px">Temperature Sensor Ranges</p>
+                        <div id="m11-temp-range-chart" style="width:100%;max-width:280px;margin:0 auto"></div>
+
+                        <!-- Pressure gauge chart -->
+                        <p style="color:#60a5fa;font-size:0.78rem;text-align:center;margin:6px 0 2px">Vacuum Gauge Ranges (mmHg)</p>
+                        <div id="m11-pressure-chart" style="width:100%;max-width:280px;margin:0 auto"></div>
+                    </div>
+
+                    <div id="m11-piezo-calc" class="m11-calc-zone">
+                        <h4 style="color:#a78bfa;margin:0 0 6px">⚡ Piezoelectric Calculator</h4>
+                        <div class="m11-calc-row">
+                            <label>d (pC/N):</label><input type="number" id="m11-pc-d" value="2.3" step="0.1">
+                            <label>F (N):</label><input type="number" id="m11-pc-F" value="100">
+                            <label>g (mV·m/N):</label><input type="number" id="m11-pc-g" value="50" step="1">
+                            <label>t (mm):</label><input type="number" id="m11-pc-t" value="2" step="0.1">
+                            <label>p (kPa):</label><input type="number" id="m11-pc-p" value="500" step="10">
+                        </div>
+                        <div id="m11-pc-result" class="m11-calc-result">—</div>
+                    </div>
+
+                    <div class="m11-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m11-footer-btn" onclick="document.getElementById('m11-piezo-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m11-footer-btn m11-bookmark-btn" data-card="m11-piezo">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 11.8 — Module 11 Complete Reference ── -->
+                <div class="machine-card" id="m11-card8">
+                    <div class="card-strip" style="background:#a78bfa"></div>
+                    <div class="card-header">
+                        <span class="m11-badge">11.8</span>
+                        <h3>Module 11: Complete Reference</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <div style="overflow-x:auto">
+                            <table class="m11-comparison-table">
+                                <thead><tr><th>Topic</th><th>Key Formula</th></tr></thead>
+                                <tbody>
+                                    <tr><td style="color:#00ff88">Lissajous</td><td>φ = sin⁻¹(X₀/X<sub>m</sub>) (Q I,III) | 180°−sin⁻¹(…) (Q II,IV)</td></tr>
+                                    <tr><td style="color:#00f5ff">DVM</td><td>Res = 1/10<sup>N</sup> | V<sub>x</sub>=V<sub>ref</sub>·T₂/T₁</td></tr>
+                                    <tr><td style="color:#facc15">Q-Meter</td><td>Q = ωL/R | C<sub>d</sub> = (C₁n²−C₂)/(n²−1)</td></tr>
+                                    <tr><td style="color:#00f5ff">Galvanometer</td><td>θ = (NBA/K)·I</td></tr>
+                                    <tr><td style="color:#f97316">Strain Gauge</td><td>G<sub>f</sub> = (ΔR/R)/ε = 1+2γ (metal)</td></tr>
+                                    <tr><td style="color:#fb7185">Thermistor</td><td>R<sub>T1</sub>=R<sub>T2</sub>·exp[β(1/T₁−1/T₂)]</td></tr>
+                                    <tr><td style="color:#ef4444">Thermocouple</td><td>E = a(Δθ)+b(Δθ)²</td></tr>
+                                    <tr><td style="color:#00f5ff">LVDT</td><td>S = V<sub>out</sub>/displacement (V/mm)</td></tr>
+                                    <tr><td style="color:#a78bfa">Piezoelectric</td><td>d=Q/F | g=V/(t·p) | E₀=g·t·p</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Formula flip cards -->
+                        <p style="color:#a78bfa;font-size:0.78rem;text-align:center;margin:0 0 6px">Click to reveal formula</p>
+                        <div id="m11-flip-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;padding:0 4px">
+                            <div class="m11-flip-card" data-front="Lissajous Phase" data-back="φ = sin⁻¹(X₀/Xm)">
+                                <div style="background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.2);border-radius:6px;padding:8px;text-align:center;cursor:pointer;font-size:0.72rem;color:#00ff88;min-height:40px;display:flex;align-items:center;justify-content:center">Lissajous Phase</div>
+                            </div>
+                            <div class="m11-flip-card" data-front="DVM Resolution" data-back="1/10ᴺ">
+                                <div style="background:rgba(0,245,255,0.06);border:1px solid rgba(0,245,255,0.2);border-radius:6px;padding:8px;text-align:center;cursor:pointer;font-size:0.72rem;color:#00f5ff;min-height:40px;display:flex;align-items:center;justify-content:center">DVM Resolution</div>
+                            </div>
+                            <div class="m11-flip-card" data-front="Q Factor" data-back="Q = ωL/R">
+                                <div style="background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.2);border-radius:6px;padding:8px;text-align:center;cursor:pointer;font-size:0.72rem;color:#facc15;min-height:40px;display:flex;align-items:center;justify-content:center">Q Factor</div>
+                            </div>
+                            <div class="m11-flip-card" data-front="Galvanometer" data-back="θ = (NBA/K)·I">
+                                <div style="background:rgba(0,245,255,0.06);border:1px solid rgba(0,245,255,0.2);border-radius:6px;padding:8px;text-align:center;cursor:pointer;font-size:0.72rem;color:#00f5ff;min-height:40px;display:flex;align-items:center;justify-content:center">Galvanometer</div>
+                            </div>
+                            <div class="m11-flip-card" data-front="Gauge Factor" data-back="Gf = (ΔR/R)/ε">
+                                <div style="background:rgba(249,115,22,0.06);border:1px solid rgba(249,115,22,0.2);border-radius:6px;padding:8px;text-align:center;cursor:pointer;font-size:0.72rem;color:#f97316;min-height:40px;display:flex;align-items:center;justify-content:center">Gauge Factor</div>
+                            </div>
+                            <div class="m11-flip-card" data-front="Thermistor" data-back="R=R₀·exp[β(1/T-1/T₀)]">
+                                <div style="background:rgba(251,113,133,0.06);border:1px solid rgba(251,113,133,0.2);border-radius:6px;padding:8px;text-align:center;cursor:pointer;font-size:0.72rem;color:#fb7185;min-height:40px;display:flex;align-items:center;justify-content:center">Thermistor</div>
+                            </div>
+                            <div class="m11-flip-card" data-front="Thermocouple" data-back="E=a(Δθ)+b(Δθ)²">
+                                <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:6px;padding:8px;text-align:center;cursor:pointer;font-size:0.72rem;color:#ef4444;min-height:40px;display:flex;align-items:center;justify-content:center">Thermocouple</div>
+                            </div>
+                            <div class="m11-flip-card" data-front="Piezoelectric" data-back="E₀ = g·t·p">
+                                <div style="background:rgba(167,139,250,0.06);border:1px solid rgba(167,139,250,0.2);border-radius:6px;padding:8px;text-align:center;cursor:pointer;font-size:0.72rem;color:#a78bfa;min-height:40px;display:flex;align-items:center;justify-content:center">Piezoelectric</div>
+                            </div>
+                        </div>
+
+                        <!-- Sensor quiz -->
+                        <p style="color:#a78bfa;font-size:0.78rem;text-align:center;margin:10px 0 4px">Sensor Selector Quiz</p>
+                        <div id="m11-quiz" style="text-align:center">
+                            <p id="m11-quiz-q" style="color:#f8fafc;font-size:0.78rem;margin:2px 0">Measure temperature up to 2000°C?</p>
+                            <div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                                <button class="m11-btn m11-quiz-btn" data-a="0">Thermistor</button>
+                                <button class="m11-btn m11-quiz-btn" data-a="0">RTD</button>
+                                <button class="m11-btn m11-quiz-btn" data-a="1">Thermocouple (Rh/Ir)</button>
+                                <button class="m11-btn m11-quiz-btn" data-a="0">Strain Gauge</button>
+                            </div>
+                            <p id="m11-quiz-feedback" style="color:#00ff88;font-size:0.75rem;margin:4px 0;min-height:18px"></p>
+                        </div>
+                    </div>
+
+                    <div class="m11-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m11-footer-btn m11-bookmark-btn" data-card="m11-reference">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+    </main>
+
+    <div class="topic-nav-footer">
+        <a href="../cro-electronic-measurements/index.html" class="btn-nav btn-prev">← Previous: 📺 CRO & Electronic Measurements</a>
+        <div class="btn-disabled"></div>
+    </div>
+
+    
+</body>
+</html>

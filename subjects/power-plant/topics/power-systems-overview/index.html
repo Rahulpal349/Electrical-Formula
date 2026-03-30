@@ -1,0 +1,799 @@
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Systems — Power Plant Engineering</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;family=Exo+2:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+  
+<link rel="stylesheet" href="../../css/powerplant-inline.css"><link rel="stylesheet" href="../../../../../../shared/css/topic-page.css"></head>
+
+<body data-page-category="powerplant" class="pp-body">
+
+  <!-- Sidebar Toggle -->
+  <button class="pp-sidebar-toggle" id="ppSbToggle" aria-label="Toggle sidebar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <div class="pp-sidebar__overlay" id="ppSbOverlay"></div>
+
+  <!-- Glassmorphism Sidebar -->
+  <aside class="pp-sidebar" id="ppSidebar">
+    <div class="pp-sidebar__header">
+      <div class="pp-sidebar__profile">
+        <div class="pp-sidebar__avatar">⚡</div>
+        <div class="pp-sidebar__info">
+          <span class="pp-sidebar__label">Power Plant</span>
+          <span class="pp-sidebar__name">ENGINEERING</span>
+        </div>
+      </div>
+      <button class="pp-sidebar__close" id="ppSbClose" aria-label="Close sidebar">✕</button>
+    </div>
+    <div class="pp-sidebar__section-label">MODULES</div>
+    <ul class="pp-sidebar__nav">
+      <li><a class="pp-sidebar__link active" data-mod="1" style="--mod-color:#f97316;" href="../power-systems-overview/index.html"><span class="pp-sidebar__icon">⚡</span><span class="pp-sidebar__link-text">Power Systems</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="2" style="--mod-color:#60a5fa;" href="../hydro-power/index.html"><span class="pp-sidebar__icon">💧</span><span class="pp-sidebar__link-text">Hydro Power</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="3" style="--mod-color:#ef4444;" href="../thermal-steam/index.html"><span class="pp-sidebar__icon">🔥</span><span class="pp-sidebar__link-text">Thermal Steam</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="4" style="--mod-color:#f97316;" href="../coal-fuels/index.html"><span class="pp-sidebar__icon">⛏️</span><span class="pp-sidebar__link-text">Coal &amp; Fuels</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="5" style="--mod-color:#a78bfa;" href="../nuclear-power/index.html"><span class="pp-sidebar__icon">☢️</span><span class="pp-sidebar__link-text">Nuclear Power</span><span class="pp-sidebar__link-count">10</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="6" style="--mod-color:#f97316;" href="../diesel-power/index.html"><span class="pp-sidebar__icon">🛢️</span><span class="pp-sidebar__link-text">Diesel Power</span><span class="pp-sidebar__link-count">1</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="7" style="--mod-color:#f97316;" href="../gas-turbine/index.html"><span class="pp-sidebar__icon">🌀</span><span class="pp-sidebar__link-text">Gas Turbine</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="8" style="--mod-color:#facc15;" href="../solar-energy/index.html"><span class="pp-sidebar__icon">☀️</span><span class="pp-sidebar__link-text">Solar Energy</span><span class="pp-sidebar__link-count">9</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="9" style="--mod-color:#facc15;" href="../solar-collectors/index.html"><span class="pp-sidebar__icon">🌡️</span><span class="pp-sidebar__link-text">Solar Collectors</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="10" style="--mod-color:#00f5ff;" href="../geothermal-mhd/index.html"><span class="pp-sidebar__icon">🌋</span><span class="pp-sidebar__link-text">Geothermal &amp; MHD</span><span class="pp-sidebar__link-count">6</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="0" style="--mod-color:#00ff88;" href="../../index.html"><span class="pp-sidebar__icon">📋</span><span class="pp-sidebar__link-text">All Modules</span><span class="pp-sidebar__link-count">56</span></a></li>
+    </ul>
+    <div class="pp-sidebar__footer">
+      <div class="pp-sidebar__footer-text">
+        Chapters: <span>56</span> • Formulas: <span>400+</span><br>
+        Animations: <span>120+</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Unified Navbar -->
+  <nav class="navbar" role="navigation">
+    <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+    <ul class="navbar__links">
+      <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+      <li><a href="../../../machines/index.html">Machines</a></li>
+      <li><a href="../../../measurements/index.html">Measurements</a></li>
+      <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+      <li><a href="../../../power-plant/index.html" class="active">Power Plant</a></li>
+      <li><a href="../../../control/index.html">Control Systems</a></li>
+      <li><a href="../../../electronics/index.html">Electronics</a></li>
+      <li><a href="../../../signals/index.html">Signals</a></li>
+      <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+      <li><a href="../../../estimation/index.html">Estimation</a></li>
+      <li><a href="../../../utilization/index.html">Utilization</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <div class="search-box">
+        <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+          <path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path>
+          <path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path>
+          <path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z"></path>
+          <path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2z"></path>
+          <path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z"></path>
+          <path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z"></path>
+        </svg></span>
+        <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Particles -->
+  <div class="pp-particles" id="pp-particles"></div>
+
+  <!-- Hero Section (measurements-style) -->
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10"></path>
+    </svg>
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style="text-align:center;">
+        Power <span class="pp-neon-text">Plant</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter" data-text="Generation · Thermal · Hydro · Nuclear · Solar · Gas Turbine"></p>
+      <div class="pp-hero-icons">
+        <div class="pp-hero-icon">🏭</div>
+        <div class="pp-hero-icon">💧</div>
+        <div class="pp-hero-icon">☢️</div>
+        <div class="pp-hero-icon">☀️</div>
+      </div>
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#c1" class="pp-hero-cta">⚡ Explore Power Plants</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pp-main"><div class="topic-breadcrumb">
+        <a href="../../../../index.html">EE Hub</a> › 
+        <a href="../../index.html">Power Plant</a> › 
+        <span>Power Systems</span>
+    </div><div class="topic-content"><div class="pp-card" id="c1">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#f97316,transparent);"></div>
+      <div class="pp-section-title">🏭 Power System: Definition &amp; Functions</div>
+
+      <div class="pp-definition-box" style="border-color:#f97316;">
+        "A system that deals with the business of:<br>
+        &nbsp;&nbsp;i. Generation &nbsp;&nbsp;ii. Transmission &nbsp;&nbsp;iii. Distribution of electrical energy"
+      </div>
+
+      <!-- Formula Zone -->
+      <div class="pp-formula-zone">
+        <p style="color:#f97316; font-weight:600; margin-bottom:8px;">Power System Function Chain:</p>
+        <div style="text-align:center;">
+          $$ \text{Source of fuel} \rightarrow \text{Energy conversion} \rightarrow \text{Transmission \&amp; Distribution} \rightarrow \text{Energy Utilization} $$
+        </div>
+
+        <p style="color:#f97316; font-weight:600; margin:16px 0 8px;">Energy Storage Types:</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:13px;">
+          <div>$\text{SMES} \rightarrow \text{Superconducting magnetic energy}$</div>
+          <div>$\text{Compressed air} \rightarrow \text{High pressure storage}$</div>
+          <div>$\text{Flywheel} \rightarrow \text{Mechanical energy}$</div>
+          <div>$\text{Inverter/UPS} \rightarrow \text{Electrical storage}$</div>
+        </div>
+
+        <p style="color:#f97316; font-weight:600; margin:16px 0 8px;">SMES (Superconducting Magnetic Energy Store):</p>
+        <div style="text-align:center;">
+          $$ E = \frac{1}{2}LI^2 \quad \text{(Magnetic energy stored)} $$
+          $$ T_{critical} \approx 4\,K \text{ (liquid helium cooled)} $$
+        </div>
+        <p style="font-size:12px; color:var(--pp-muted);">Parts: i. Superconducting coil &nbsp; ii. Cryostat &nbsp; iii. Cryogenic Refrigerator</p>
+
+        <p style="color:#f97316; font-weight:600; margin:16px 0 8px;">Compressed Air Energy Storage:</p>
+        <div style="text-align:center;">
+          $$ W = \int_{V_1}^{V_2} P\,dV \quad \text{(Work done in compression)} $$
+        </div>
+      </div>
+
+      <!-- Animation Zone -->
+      <div class="pp-anim-zone" id="anim-zone-1">
+        <p class="pp-anim-label">⚡ Energy Flow Chain Animation</p>
+        <svg viewBox="0 0 800 120" width="100%" style="max-width:800px; margin:0 auto; display:block;">
+          <!-- Stage nodes -->
+          <g id="flow-stage-0" class="flow-stage" style="cursor:pointer;">
+            <rect x="10" y="30" width="100" height="55" rx="8" fill="#1a1f2e" stroke="#f97316" stroke-width="1.5"></rect>
+            <text x="60" y="52" fill="#facc15" font-size="10" text-anchor="middle" font-family="Orbitron">Fuel</text>
+            <text x="60" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Coal/Gas/Water</text>
+          </g>
+          <line x1="114" y1="57" x2="148" y2="57" stroke="#333" stroke-width="1.5" class="flow-arrow" id="fa-0"></line>
+          <polygon points="145,52 155,57 145,62" fill="#f97316" class="flow-pulse" id="fp-0"></polygon>
+
+          <g id="flow-stage-1" class="flow-stage" style="cursor:pointer;">
+            <rect x="158" y="30" width="100" height="55" rx="8" fill="#1a1f2e" stroke="#ef4444" stroke-width="1.5"></rect>
+            <text x="208" y="52" fill="#ef4444" font-size="10" text-anchor="middle" font-family="Orbitron">Convert</text>
+            <text x="208" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Steam/Hydro/Nuclear</text>
+          </g>
+          <line x1="262" y1="57" x2="296" y2="57" stroke="#333" stroke-width="1.5" class="flow-arrow" id="fa-1"></line>
+          <polygon points="293,52 303,57 293,62" fill="#ef4444" class="flow-pulse" id="fp-1"></polygon>
+
+          <g id="flow-stage-2" class="flow-stage" style="cursor:pointer;">
+            <rect x="306" y="30" width="100" height="55" rx="8" fill="#1a1f2e" stroke="#a78bfa" stroke-width="1.5"></rect>
+            <text x="356" y="52" fill="#a78bfa" font-size="10" text-anchor="middle" font-family="Orbitron">Step-Up</text>
+            <text x="356" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Transformer</text>
+          </g>
+          <line x1="410" y1="57" x2="444" y2="57" stroke="#333" stroke-width="1.5" class="flow-arrow" id="fa-2"></line>
+          <polygon points="441,52 451,57 441,62" fill="#a78bfa" class="flow-pulse" id="fp-2"></polygon>
+
+          <g id="flow-stage-3" class="flow-stage" style="cursor:pointer;">
+            <rect x="454" y="30" width="100" height="55" rx="8" fill="#1a1f2e" stroke="#00f5ff" stroke-width="1.5"></rect>
+            <text x="504" y="52" fill="#00f5ff" font-size="10" text-anchor="middle" font-family="Orbitron">HV Line</text>
+            <text x="504" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Transmission</text>
+          </g>
+          <line x1="558" y1="57" x2="592" y2="57" stroke="#333" stroke-width="1.5" class="flow-arrow" id="fa-3"></line>
+          <polygon points="589,52 599,57 589,62" fill="#00f5ff" class="flow-pulse" id="fp-3"></polygon>
+
+          <g id="flow-stage-4" class="flow-stage" style="cursor:pointer;">
+            <rect x="602" y="30" width="100" height="55" rx="8" fill="#1a1f2e" stroke="#00ff88" stroke-width="1.5"></rect>
+            <text x="652" y="52" fill="#00ff88" font-size="10" text-anchor="middle" font-family="Orbitron">Distribute</text>
+            <text x="652" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Step-Down → Load</text>
+          </g>
+
+          <!-- Click tooltip area -->
+          <text id="flow-tooltip" x="400" y="110" fill="#f97316" font-size="10" text-anchor="middle" opacity="0"></text>
+        </svg>
+
+        <!-- Storage Type Selector -->
+        <p class="pp-anim-label" style="margin-top:16px;">🔋 Storage Types</p>
+        <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:10px;">
+          <button class="pp-storage-btn active" data-store="smes">⚡ SMES</button>
+          <button class="pp-storage-btn" data-store="air">💨 Compressed Air</button>
+          <button class="pp-storage-btn" data-store="flywheel">🔄 Flywheel</button>
+          <button class="pp-storage-btn" data-store="ups">🔋 Inverter/UPS</button>
+        </div>
+        <div id="storage-display" style="text-align:center; min-height:60px;">
+          <svg viewBox="0 0 200 60" width="200" id="storage-svg">
+            <!-- SMES coil default -->
+            <circle cx="100" cy="30" r="22" fill="none" stroke="#a78bfa" stroke-width="2" id="store-shape"></circle>
+            <path d="M85,30 Q85,15 100,15 Q115,15 115,30" stroke="#a78bfa" stroke-width="1.5" fill="none" id="store-inner" stroke-dasharray="3,2"></path>
+            <text x="100" y="34" fill="#a78bfa" font-size="9" text-anchor="middle" id="store-label">E = ½LI²</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card Footer -->
+</div>
+<div class="pp-card" id="c2">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#f97316,transparent);"></div>
+      <div class="pp-section-title">⚙️ Types of Generating Units &amp; Energy Sources</div>
+
+      <!-- Generating Units Grid -->
+      <div class="pp-gen-grid" style="margin-bottom:20px;">
+        <div class="pp-gen-item" data-formula="P = ηₜ × m × CV" style="border-top:2px solid #f97316;">
+          <span class="pp-gen-icon">🔥</span>
+          <div class="pp-gen-label" style="color:#f97316;">Hydro Carbon</div>
+          <div class="pp-gen-sub">Coal, Oil, Natural Gas</div>
+        </div>
+        <div class="pp-gen-item" data-formula="P = ρgQHη" style="border-top:2px solid #60a5fa;">
+          <span class="pp-gen-icon">💧</span>
+          <div class="pp-gen-label" style="color:#60a5fa;">Water</div>
+          <div class="pp-gen-sub">Hydro Power Station</div>
+        </div>
+        <div class="pp-gen-item" data-formula="E = mc²" style="border-top:2px solid #a78bfa;">
+          <span class="pp-gen-icon">⚛️</span>
+          <div class="pp-gen-label" style="color:#a78bfa;">Nuclear</div>
+          <div class="pp-gen-sub">Fission of Uranium</div>
+        </div>
+        <div class="pp-gen-item" data-formula="P = G·A·η" style="border-top:2px solid #facc15;">
+          <span class="pp-gen-icon">☀️</span>
+          <div class="pp-gen-label" style="color:#facc15;">Solar</div>
+          <div class="pp-gen-sub">Photovoltaic</div>
+        </div>
+        <div class="pp-gen-item" data-formula="P = ½ρAv³Cₚ" style="border-top:2px solid #00f5ff;">
+          <span class="pp-gen-icon">🌬️</span>
+          <div class="pp-gen-label" style="color:#00f5ff;">Wind</div>
+          <div class="pp-gen-sub">Wind Turbine</div>
+        </div>
+        <div class="pp-gen-item" data-formula="P = ρgQHη (tidal)" style="border-top:2px solid #06b6d4;">
+          <span class="pp-gen-icon">🌊</span>
+          <div class="pp-gen-label" style="color:#06b6d4;">Tidal</div>
+          <div class="pp-gen-sub">Ocean Tidal Energy</div>
+        </div>
+        <div class="pp-gen-item" data-formula="P = m·cₚ·ΔT" style="border-top:2px solid #fb7185;">
+          <span class="pp-gen-icon">🌋</span>
+          <div class="pp-gen-label" style="color:#fb7185;">Geothermal</div>
+          <div class="pp-gen-sub">Earth Heat Energy</div>
+        </div>
+      </div>
+      <div id="gen-hover-formula" style="text-align:center; min-height:24px; font-size:14px; color:#f97316; font-family:'Share Tech Mono',monospace; transition:opacity 0.3s; opacity:0;"></div>
+
+      <!-- Formula Zone: Energy Formulas -->
+      <div class="pp-formula-zone">
+        <p style="color:#f97316; font-weight:600; margin-bottom:8px;">Energy Source Classification:</p>
+        <div class="pp-energy-tree">
+          <div class="pp-energy-branch">
+            <div class="pp-branch-header comm">Commercial</div>
+            <div class="pp-branch-items">
+              <div class="pp-branch-item">Coal, Natural Gas, Petroleum</div>
+            </div>
+          </div>
+          <div class="pp-energy-branch">
+            <div class="pp-branch-header non-comm">Non-Commercial</div>
+            <div class="pp-branch-items">
+              <div class="pp-branch-item">Fuel Wood, Animal Energy</div>
+            </div>
+          </div>
+          <div class="pp-energy-branch">
+            <div class="pp-branch-header renew">Renewable</div>
+            <div class="pp-branch-items">
+              <div class="pp-branch-item" style="color:#00ff88;">Solar, Wind, Tidal, Hydro, Geothermal, Biogas</div>
+            </div>
+          </div>
+          <div class="pp-energy-branch">
+            <div class="pp-branch-header non-renew">Non-Renewable</div>
+            <div class="pp-branch-items">
+              <div class="pp-branch-item" style="color:#ef4444;">Coal, Petroleum, Natural Gas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conventional vs Non-Conventional -->
+        <p style="color:#f97316; font-weight:600; margin:16px 0 8px;">Conventional vs Non-Conventional:</p>
+        <div class="pp-compare-grid">
+          <div class="pp-compare-col conventional">
+            <div class="pp-compare-header">🔴 Conventional</div>
+            <div class="pp-compare-point"><span class="pp-compare-dot">▪</span>Exhaustible except Hydro</div>
+            <div class="pp-compare-point"><span class="pp-compare-dot">▪</span>Cause pollution (smoke, ash)</div>
+            <div class="pp-compare-point"><span class="pp-compare-dot">▪</span>Huge expenditure to generate</div>
+            <div class="pp-compare-point"><span class="pp-compare-dot">▪</span>Expensive to maintain (long transmission)</div>
+            <div class="pp-compare-point"><span class="pp-compare-dot">▪</span><strong style="color:#ef4444;">Ex:</strong> Coal, Natural Gas, Fire-wood</div>
+          </div>
+          <div class="pp-compare-col non-conventional">
+            <div class="pp-compare-header">🟢 Non-Conventional</div>
+            <div class="pp-compare-point"><span class="pp-compare-dot">▪</span>Non-exhaustible, recently identified</div>
+            <div class="pp-compare-point"><span class="pp-compare-dot">▪</span>Generally pollution free</div>
+            <div class="pp-compare-point"><span class="pp-compare-dot">▪</span>Low expenditure required</div>
+            <div class="pp-compare-point"><span class="pp-compare-dot">▪</span>Less expensive — local use, easy maintenance</div>
+            <div class="pp-compare-point"><span class="pp-compare-dot">▪</span><strong style="color:#00ff88;">Ex:</strong> Geothermal, Solar, Wind, Tidal, Biogas</div>
+          </div>
+        </div>
+
+        <!-- Key Formulas -->
+        <p style="color:#f97316; font-weight:600; margin:20px 0 8px;">Key Power Generation Formulas:</p>
+
+        <div style="background:rgba(239,68,68,0.05); padding:10px 14px; border-radius:8px; border-left:3px solid #a78bfa; margin-bottom:8px;">
+          <p style="color:#a78bfa; font-weight:600; font-size:13px;">Nuclear Energy:</p>
+          $$ E = mc^2 \qquad {}^{235}_{92}\text{U}{:}\ \approx 200\,\text{MeV/fission} $$
+          $$ 1\,\text{kg U-235} \equiv 2.7\times10^6\,\text{kg coal} $$
+        </div>
+
+        <div style="background:rgba(96,165,250,0.05); padding:10px 14px; border-radius:8px; border-left:3px solid #60a5fa; margin-bottom:8px;">
+          <p style="color:#60a5fa; font-weight:600; font-size:13px;">Hydro Energy:</p>
+          $$ P = \rho g Q H \cdot \eta \quad\text{(W)} $$
+          <p style="font-size:11px; color:var(--pp-muted);">ρ = 1000 kg/m³, g = 9.81 m/s², Q = flow (m³/s), H = head (m), η = efficiency</p>
+        </div>
+
+        <div style="background:rgba(250,204,21,0.05); padding:10px 14px; border-radius:8px; border-left:3px solid #facc15; margin-bottom:8px;">
+          <p style="color:#facc15; font-weight:600; font-size:13px;">Solar Energy:</p>
+          $$ P_{solar} = G \cdot A \cdot \eta_{panel} $$
+          <p style="font-size:11px; color:var(--pp-muted);">G = Solar irradiance (typically 1000 W/m²)</p>
+        </div>
+
+        <div style="background:rgba(0,245,255,0.05); padding:10px 14px; border-radius:8px; border-left:3px solid #00f5ff; margin-bottom:8px;">
+          <p style="color:#00f5ff; font-weight:600; font-size:13px;">Wind Energy:</p>
+          $$ P_{wind} = \frac{1}{2}\rho_{air} A v^3 \cdot C_p $$
+          <p style="font-size:11px; color:var(--pp-muted);">ρ_air ≈ 1.225 kg/m³, A = swept area (m²), v = wind speed (m/s)</p>
+          <div style="display:inline-block; background:rgba(0,245,255,0.1); border:1px solid #00f5ff; border-radius:4px; padding:2px 8px; font-size:11px; color:#00f5ff; margin-top:4px;">
+            Betz limit: $C_{p,max} = \frac{16}{27} \approx 0.593$
+          </div>
+        </div>
+      </div>
+
+      <!-- Animation Zone: Calculators -->
+      <div class="pp-anim-zone" id="anim-zone-2">
+        <p class="pp-anim-label">💨 Wind Power Calculator</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; max-width:400px; margin:0 auto;">
+          <label style="font-size:11px; color:var(--pp-muted);">Wind speed v (m/s): <span id="wind-v-val" style="color:#00f5ff;">10</span>
+            <input type="range" id="wind-v" min="1" max="25" value="10" step="0.5" class="pp-slider" style="width:100%;">
+          </label>
+          <label style="font-size:11px; color:var(--pp-muted);">Rotor D (m): <span id="wind-d-val" style="color:#00f5ff;">50</span>
+            <input type="range" id="wind-d" min="10" max="150" value="50" step="5" class="pp-slider" style="width:100%;">
+          </label>
+        </div>
+        <div id="wind-result" style="text-align:center; padding:8px; margin-top:8px; background:rgba(0,245,255,0.08); border-radius:6px; font-family:'Share Tech Mono',monospace; color:#00f5ff; font-size:14px;">
+          P = — kW
+        </div>
+        <div style="text-align:center; margin-top:4px;">
+          <span style="background:rgba(0,245,255,0.1); border:1px solid #00f5ff; border-radius:4px; padding:2px 10px; font-size:10px; color:#00f5ff;">v³ law: Double wind speed = 8× power</span>
+        </div>
+
+        <p class="pp-anim-label" style="margin-top:16px;">💧 Hydro Power Calculator</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; max-width:500px; margin:0 auto;">
+          <label style="font-size:11px; color:var(--pp-muted);">Q (m³/s): <span id="hydro-q-val" style="color:#60a5fa;">50</span>
+            <input type="range" id="hydro-q" min="1" max="500" value="50" step="1" class="pp-slider hydro-slider" style="width:100%;">
+          </label>
+          <label style="font-size:11px; color:var(--pp-muted);">H (m): <span id="hydro-h-val" style="color:#60a5fa;">100</span>
+            <input type="range" id="hydro-h" min="5" max="500" value="100" step="5" class="pp-slider hydro-slider" style="width:100%;">
+          </label>
+          <label style="font-size:11px; color:var(--pp-muted);">η (%): <span id="hydro-e-val" style="color:#60a5fa;">85</span>
+            <input type="range" id="hydro-e" min="50" max="98" value="85" step="1" class="pp-slider hydro-slider" style="width:100%;">
+          </label>
+        </div>
+        <div id="hydro-result" style="text-align:center; padding:8px; margin-top:8px; background:rgba(96,165,250,0.08); border-radius:6px; font-family:'Share Tech Mono',monospace; color:#60a5fa; font-size:14px;">
+          P = — MW
+        </div>
+
+        <p class="pp-anim-label" style="margin-top:16px;">☀️ Solar Power Calculator</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; max-width:500px; margin:0 auto;">
+          <label style="font-size:11px; color:var(--pp-muted);">G (W/m²): <span id="solar-g-val" style="color:#facc15;">1000</span>
+            <input type="range" id="solar-g" min="200" max="1400" value="1000" step="50" class="pp-slider solar-slider" style="width:100%;">
+          </label>
+          <label style="font-size:11px; color:var(--pp-muted);">A (m²): <span id="solar-a-val" style="color:#facc15;">100</span>
+            <input type="range" id="solar-a" min="10" max="10000" value="100" step="10" class="pp-slider solar-slider" style="width:100%;">
+          </label>
+          <label style="font-size:11px; color:var(--pp-muted);">η (%): <span id="solar-e-val" style="color:#facc15;">20</span>
+            <input type="range" id="solar-e" min="5" max="40" value="20" step="1" class="pp-slider solar-slider" style="width:100%;">
+          </label>
+        </div>
+        <div id="solar-result" style="text-align:center; padding:8px; margin-top:8px; background:rgba(250,204,21,0.08); border-radius:6px; font-family:'Share Tech Mono',monospace; color:#facc15; font-size:14px;">
+          P = — kW
+        </div>
+      </div>
+</div>
+<div class="pp-card" id="c3">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#f97316,transparent);"></div>
+      <div class="pp-section-title">🇮🇳 India's Power Scenario</div>
+
+      <div class="pp-formula-zone">
+        <!-- Installed Capacity Tables -->
+        <div class="pp-two-col">
+          <div>
+            <p style="color:#f97316; font-weight:600; font-size:13px; margin-bottom:8px;">Installed Capacity by Sector:</p>
+            <table class="pp-data-table">
+              <thead><tr><th>Sector</th><th class="pp-mw">MW</th><th class="pp-pct">%</th></tr></thead>
+              <tbody>
+                <tr><td>Central Sector</td><td class="pp-mw">94,027</td><td class="pp-pct">25.2%</td></tr>
+                <tr><td>State Sector</td><td class="pp-mw">1,03,617</td><td class="pp-pct">27.8%</td></tr>
+                <tr><td>Private Sector</td><td class="pp-mw">1,75,050</td><td class="pp-pct">47%</td></tr>
+                <tr class="total-row"><td><strong>Total</strong></td><td><strong>3,72,694</strong></td><td><strong>100%</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <p style="color:#f97316; font-weight:600; font-size:13px; margin-bottom:8px;">Generation by Source:</p>
+            <table class="pp-data-table">
+              <thead><tr><th>Source</th><th class="pp-mw">MW</th><th class="pp-pct">%</th></tr></thead>
+              <tbody>
+                <tr><td>Thermal</td><td class="pp-mw">2,31,421</td><td class="pp-pct">61.1%</td></tr>
+                <tr><td>Hydroelectric</td><td class="pp-mw">45,699</td><td class="pp-pct">12.3%</td></tr>
+                <tr><td>Nuclear</td><td class="pp-mw">6,780</td><td class="pp-pct">1.8%</td></tr>
+                <tr><td>Renewable</td><td class="pp-mw">88,793</td><td class="pp-pct">23.8%</td></tr>
+                <tr class="total-row"><td><strong>Total</strong></td><td><strong>3,72,693</strong></td><td><strong>100%</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Regional Grids -->
+        <p style="color:#f97316; font-weight:600; margin:20px 0 8px;">Five Regional Grids:</p>
+        <div class="pp-regions-grid">
+          <div class="pp-region-chip" style="border-top:2px solid #facc15;"><span class="pp-region-num" style="color:#facc15;">1</span><div class="pp-region-name">Northern</div></div>
+          <div class="pp-region-chip" style="border-top:2px solid #00f5ff;"><span class="pp-region-num" style="color:#00f5ff;">2</span><div class="pp-region-name">Eastern</div></div>
+          <div class="pp-region-chip" style="border-top:2px solid #fb7185;"><span class="pp-region-num" style="color:#fb7185;">3</span><div class="pp-region-name">North-Eastern</div></div>
+          <div class="pp-region-chip" style="border-top:2px solid #f97316;"><span class="pp-region-num" style="color:#f97316;">4</span><div class="pp-region-name">Western</div></div>
+          <div class="pp-region-chip" style="border-top:2px solid #a78bfa;"><span class="pp-region-num" style="color:#a78bfa;">5</span><div class="pp-region-name">Southern</div></div>
+        </div>
+
+        <!-- History Timeline -->
+        <p style="color:#f97316; font-weight:600; margin:20px 0 8px;">History of Power Systems in India:</p>
+        <div class="pp-timeline">
+          <div class="pp-timeline-item"><div class="pp-timeline-year">1989</div><div class="pp-timeline-text">Power Grid Corporation of India formed</div></div>
+          <div class="pp-timeline-item"><div class="pp-timeline-year">1990</div><div class="pp-timeline-text">First HVDC bi-pole line formed ⚡</div></div>
+          <div class="pp-timeline-item"><div class="pp-timeline-year">1998</div><div class="pp-timeline-text">First 765 kV line erected 🗼</div></div>
+        </div>
+
+        <!-- Green Power -->
+        <p style="color:#00ff88; font-weight:600; margin:20px 0 8px;">Green Power Sources:</p>
+        <div class="pp-green-grid">
+          <div class="pp-green-card"><span class="pp-green-icon">💧</span><div class="pp-green-label">Hydro</div></div>
+          <div class="pp-green-card"><span class="pp-green-icon">☀️</span><div class="pp-green-label">Solar</div></div>
+          <div class="pp-green-card"><span class="pp-green-icon">🌬️</span><div class="pp-green-label">Wind</div></div>
+          <div class="pp-green-card"><span class="pp-green-icon">🌊</span><div class="pp-green-label">Tidal</div></div>
+          <div class="pp-green-card"><span class="pp-green-icon">🌋</span><div class="pp-green-label">Geothermal</div></div>
+        </div>
+
+        <!-- Load/Plant factors -->
+        <p style="color:#f97316; font-weight:600; margin:20px 0 8px;">Key Factors:</p>
+        <div style="text-align:center;">
+          $$ \text{Load factor} = \frac{\text{Average load}}{\text{Maximum load}} $$
+          $$ \text{Plant capacity factor} = \frac{\text{Actual energy generated}}{\text{Maximum possible energy}} $$
+          $$ \text{Plant use factor} = \frac{\text{kWh generated}}{\text{Plant capacity} \times \text{hours used}} $$
+        </div>
+      </div>
+
+      <!-- Animation Zone -->
+      <div class="pp-anim-zone" id="anim-zone-3">
+        <p class="pp-anim-label">📊 India Power Generation Share</p>
+        <!-- Animated Bars -->
+        <div class="pp-bar-chart" id="ppBarChart">
+          <div class="pp-bar-row"><div class="pp-bar-label">Thermal 🔥</div><div class="pp-bar-track"><div class="pp-bar-fill thermal" data-pct="61.1%" data-w="61.1"></div></div></div>
+          <div class="pp-bar-row"><div class="pp-bar-label">Renewable 🌿</div><div class="pp-bar-track"><div class="pp-bar-fill renewable" data-pct="23.8%" data-w="23.8"></div></div></div>
+          <div class="pp-bar-row"><div class="pp-bar-label">Hydro 💧</div><div class="pp-bar-track"><div class="pp-bar-fill hydro" data-pct="12.3%" data-w="12.3"></div></div></div>
+          <div class="pp-bar-row"><div class="pp-bar-label">Nuclear ⚛️</div><div class="pp-bar-track"><div class="pp-bar-fill nuclear" data-pct="1.8%" data-w="1.8"></div></div></div>
+        </div>
+
+        <p class="pp-anim-label" style="margin-top:16px;">🏢 Sector Breakdown</p>
+        <div class="pp-bar-chart" id="ppSectorChart">
+          <div class="pp-bar-row"><div class="pp-bar-label">Private</div><div class="pp-bar-track"><div class="pp-bar-fill" data-pct="47%" data-w="47" style="background:linear-gradient(90deg,#eab308,#facc15);"></div></div></div>
+          <div class="pp-bar-row"><div class="pp-bar-label">State</div><div class="pp-bar-track"><div class="pp-bar-fill" data-pct="27.8%" data-w="27.8" style="background:linear-gradient(90deg,#7c3aed,#a78bfa);"></div></div></div>
+          <div class="pp-bar-row"><div class="pp-bar-label">Central</div><div class="pp-bar-track"><div class="pp-bar-fill" data-pct="25.2%" data-w="25.2" style="background:linear-gradient(90deg,#2563eb,#60a5fa);"></div></div></div>
+        </div>
+
+        <p class="pp-anim-label" style="margin-top:16px;">🟢 Green Power Calculator</p>
+        <div style="max-width:400px; margin:0 auto;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:11px;">
+            <label style="color:var(--pp-muted);">Thermal %: <input type="number" id="mix-thermal" value="61" min="0" max="100" class="pp-input-sm"></label>
+            <label style="color:var(--pp-muted);">Hydro %: <input type="number" id="mix-hydro" value="12" min="0" max="100" class="pp-input-sm"></label>
+            <label style="color:var(--pp-muted);">Nuclear %: <input type="number" id="mix-nuclear" value="2" min="0" max="100" class="pp-input-sm"></label>
+            <label style="color:var(--pp-muted);">Renewable %: <input type="number" id="mix-renew" value="25" min="0" max="100" class="pp-input-sm"></label>
+          </div>
+          <button class="pp-calc-btn" id="btn-green-calc" style="margin-top:8px; width:100%;">Calculate Green % &amp; CO₂ Saved</button>
+          <div id="green-calc-result" style="display:none; margin-top:8px; padding:8px; background:rgba(0,255,136,0.08); border-radius:6px; font-size:13px; color:#00ff88; text-align:center;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card" id="c4">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#f97316,transparent);"></div>
+      <div class="pp-section-title">📊 Power Plant Performance Parameters</div>
+
+      <div class="pp-formula-zone">
+        <!-- Performance Formulas Grid -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="pp-perf-box">
+            <p class="pp-perf-title">1. Connected Load</p>
+            <p class="pp-perf-desc">Sum of ratings of all equipment connected to supply</p>
+          </div>
+          <div class="pp-perf-box">
+            <p class="pp-perf-title">2. Maximum Demand</p>
+            <p class="pp-perf-desc">Greatest demand of load on power station over a given period</p>
+          </div>
+          <div class="pp-perf-box" style="border-color:#f97316;">
+            <p class="pp-perf-title" style="color:#f97316;">3. Demand Factor</p>
+            <div style="text-align:center;">$$ \boxed{\text{DF} = \frac{\text{Max demand}}{\text{Connected load}}} \quad (&lt; 1) $$</div>
+          </div>
+          <div class="pp-perf-box" style="border-color:#00f5ff;">
+            <p class="pp-perf-title" style="color:#00f5ff;">4. Average Load</p>
+            <div style="text-align:center;">$$ \text{Avg load} = \frac{\text{Total kWh}}{\text{Hours}} $$</div>
+          </div>
+          <div class="pp-perf-box" style="border-color:#00ff88;">
+            <p class="pp-perf-title" style="color:#00ff88;">5. Load Factor</p>
+            <div style="text-align:center;">$$ \boxed{\text{LF} = \frac{\text{Average load}}{\text{Maximum demand}}} \quad (&lt; 1) $$</div>
+            <p style="font-size:10px; color:#00ff88;">High LF → Better utilization</p>
+          </div>
+          <div class="pp-perf-box" style="border-color:#a78bfa;">
+            <p class="pp-perf-title" style="color:#a78bfa;">6. Diversity Factor</p>
+            <div style="text-align:center;">$$ \boxed{\text{DivF} = \frac{\sum \text{Individual max demands}}{\text{Simultaneous max demand}}} \quad (\geq 1) $$</div>
+          </div>
+          <div class="pp-perf-box" style="border-color:#facc15;">
+            <p class="pp-perf-title" style="color:#facc15;">7. Plant Capacity Factor</p>
+            <div style="text-align:center;">$$ \boxed{\text{PCF} = \frac{\text{Actual kWh}}{P_{rated} \times 8760\,h}} $$</div>
+          </div>
+          <div class="pp-perf-box" style="border-color:#fb7185;">
+            <p class="pp-perf-title" style="color:#fb7185;">8. Plant Use Factor</p>
+            <div style="text-align:center;">$$ \boxed{\text{PUF} = \frac{\text{kWh generated}}{P_{cap} \times \text{hrs used}}} $$</div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
+          <div class="pp-perf-box">
+            <p class="pp-perf-title">9. Reserve Capacity</p>
+            <div style="text-align:center;">$$ \text{Reserve} = \text{Plant cap} - \text{Max demand} $$</div>
+          </div>
+          <div class="pp-perf-box">
+            <p class="pp-perf-title">10. Units per Annum</p>
+            <div style="text-align:center;">$$ \text{Units} = \text{Avg load (kW)} \times 8760\,h $$</div>
+          </div>
+        </div>
+
+        <div class="pp-perf-box" style="border-color:#f97316; margin-top:10px;">
+          <p class="pp-perf-title" style="color:#f97316;">11. Cost of Generation</p>
+          <div style="text-align:center;">$$ \text{Cost/kWh} = \frac{\text{Total annual cost (₹)}}{\text{Total units (kWh)}} $$</div>
+        </div>
+
+        <!-- Tariff Types -->
+        <p style="color:#f97316; font-weight:600; margin:20px 0 8px;">Tariff Types:</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          <div class="pp-highlight"><strong>1. Simple Tariff</strong><br>Fixed rate per kWh</div>
+          <div class="pp-highlight"><strong>2. Flat Demand</strong><br>Based on max demand only</div>
+          <div class="pp-highlight"><strong>3. Two-Part</strong><br>$\text{Cost} = a\cdot MD + b\cdot kWh$</div>
+          <div class="pp-highlight"><strong>4. Three-Part</strong><br>$\text{Cost} = a\cdot MD + b\cdot kWh + c$</div>
+        </div>
+      </div>
+
+      <!-- Animation Zone -->
+      <div class="pp-anim-zone" id="anim-zone-4">
+        <!-- 24-Hour Load Curve -->
+        <p class="pp-anim-label">📈 24-Hour Load Curve</p>
+        <div style="position:relative; height:240px; max-width:700px; margin:0 auto;">
+          <canvas id="loadCurveChart"></canvas>
+        </div>
+        <div id="load-curve-stats" style="display:flex; gap:16px; justify-content:center; margin-top:8px; font-size:12px; font-family:'Share Tech Mono',monospace; flex-wrap:wrap;">
+          <span style="color:#facc15;">Peak: <span id="lc-peak">—</span> MW</span>
+          <span style="color:#00f5ff;">Average: <span id="lc-avg">—</span> MW</span>
+          <span style="color:#00ff88;">Load Factor: <span id="lc-lf">—</span></span>
+          <span style="color:#f97316;">Units: <span id="lc-units">—</span> MWh</span>
+        </div>
+
+        <!-- Performance Calculator -->
+        <p class="pp-anim-label" style="margin-top:20px;">🔧 Plant Performance Calculator</p>
+        <div style="max-width:500px; margin:0 auto;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+            <label style="font-size:11px; color:var(--pp-muted);">Connected Load (kW): <input type="number" id="perf-cl" value="1000" class="pp-input-sm"></label>
+            <label style="font-size:11px; color:var(--pp-muted);">Max Demand (kW): <input type="number" id="perf-md" value="800" class="pp-input-sm"></label>
+            <label style="font-size:11px; color:var(--pp-muted);">Avg Load (kW): <input type="number" id="perf-al" value="500" class="pp-input-sm"></label>
+            <label style="font-size:11px; color:var(--pp-muted);">Plant Capacity (kW): <input type="number" id="perf-pc" value="1200" class="pp-input-sm"></label>
+            <label style="font-size:11px; color:var(--pp-muted);">Hours Used: <input type="number" id="perf-hrs" value="7000" class="pp-input-sm"></label>
+            <label style="font-size:11px; color:var(--pp-muted);">Σ Individual MD (kW): <input type="number" id="perf-sum" value="1100" class="pp-input-sm"></label>
+          </div>
+          <button class="pp-calc-btn" id="btn-perf-calc" style="margin-top:8px; width:100%;">Calculate All Factors</button>
+          <div id="perf-result" style="display:none; margin-top:10px;"></div>
+        </div>
+
+        <!-- Tariff Calculator -->
+        <p class="pp-anim-label" style="margin-top:20px;">💰 Tariff Calculator</p>
+        <div style="max-width:400px; margin:0 auto;">
+          <div style="display:flex; gap:6px; justify-content:center; margin-bottom:8px;">
+            <button class="pp-tariff-btn active" data-tariff="simple">Simple</button>
+            <button class="pp-tariff-btn" data-tariff="two">Two-Part</button>
+            <button class="pp-tariff-btn" data-tariff="three">Three-Part</button>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+            <label style="font-size:11px; color:var(--pp-muted);">Max Demand (kW): <input type="number" id="tariff-md" value="500" class="pp-input-sm"></label>
+            <label style="font-size:11px; color:var(--pp-muted);">Units (kWh): <input type="number" id="tariff-kwh" value="50000" class="pp-input-sm"></label>
+            <label style="font-size:11px; color:var(--pp-muted);">Rate a (₹/kW): <input type="number" id="tariff-a" value="100" class="pp-input-sm"></label>
+            <label style="font-size:11px; color:var(--pp-muted);">Rate b (₹/kWh): <input type="number" id="tariff-b" value="5" class="pp-input-sm"></label>
+            <label style="font-size:11px; color:var(--pp-muted);" id="tariff-c-wrap">Fixed c (₹): <input type="number" id="tariff-c" value="5000" class="pp-input-sm"></label>
+          </div>
+          <button class="pp-calc-btn" id="btn-tariff-calc" style="margin-top:8px; width:100%;">Calculate Bill</button>
+          <div id="tariff-result" style="display:none; margin-top:8px; padding:8px; background:rgba(249,115,22,0.08); border-radius:6px; font-size:14px; color:#f97316; text-align:center; font-family:'Share Tech Mono',monospace;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card" id="c5">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#f97316,transparent);"></div>
+      <div class="pp-section-title">📋 Module 1 Complete Reference</div>
+
+      <div class="pp-formula-zone">
+        <p style="color:#f97316; font-weight:600; margin-bottom:12px;">Formula Quick Reference (Click to flip):</p>
+
+        <!-- Flip Cards -->
+        <div class="pp-flip-grid">
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:#60a5fa;">
+                <span style="font-size:24px;">💧</span>
+                <span style="color:#60a5fa;">Hydro Power</span>
+              </div>
+              <div class="pp-flip-back" style="border-color:#60a5fa;">$P = \rho g Q H \eta$</div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:#00f5ff;">
+                <span style="font-size:24px;">🌬️</span>
+                <span style="color:#00f5ff;">Wind Power</span>
+              </div>
+              <div class="pp-flip-back" style="border-color:#00f5ff;">$P = \frac{1}{2}\rho A v^3 C_p$</div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:#facc15;">
+                <span style="font-size:24px;">☀️</span>
+                <span style="color:#facc15;">Solar Power</span>
+              </div>
+              <div class="pp-flip-back" style="border-color:#facc15;">$P = G \cdot A \cdot \eta$</div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:#a78bfa;">
+                <span style="font-size:24px;">⚛️</span>
+                <span style="color:#a78bfa;">Nuclear Energy</span>
+              </div>
+              <div class="pp-flip-back" style="border-color:#a78bfa;">$E = mc^2$</div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:#00ff88;">
+                <span style="font-size:24px;">📊</span>
+                <span style="color:#00ff88;">Load Factor</span>
+              </div>
+              <div class="pp-flip-back" style="border-color:#00ff88;">$LF = \frac{\bar{P}}{P_{max}}$</div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:#f97316;">
+                <span style="font-size:24px;">📉</span>
+                <span style="color:#f97316;">Demand Factor</span>
+              </div>
+              <div class="pp-flip-back" style="border-color:#f97316;">$DF = \frac{P_{max}}{P_{connected}}$</div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:#06b6d4;">
+                <span style="font-size:24px;">🔀</span>
+                <span style="color:#06b6d4;">Diversity Factor</span>
+              </div>
+              <div class="pp-flip-back" style="border-color:#06b6d4;">$DivF = \frac{\sum P_{max,i}}{P_{max,sim}}$</div>
+            </div>
+          </div>
+          <div class="pp-flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="pp-flip-inner">
+              <div class="pp-flip-front" style="border-color:#fb7185;">
+                <span style="font-size:24px;">⚙️</span>
+                <span style="color:#fb7185;">Plant Capacity</span>
+              </div>
+              <div class="pp-flip-back" style="border-color:#fb7185;">$PCF = \frac{E_{actual}}{P_{rated} \times 8760}$</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- India Key Numbers -->
+        <p style="color:#f97316; font-weight:600; margin:20px 0 8px;">India Key Numbers:</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:8px;">
+          <div class="pp-stat-card">
+            <div class="pp-stat-value" style="color:#f97316;">3,72,694</div>
+            <div class="pp-stat-label">Total MW Installed</div>
+          </div>
+          <div class="pp-stat-card">
+            <div class="pp-stat-value" style="color:#ef4444;">61.1%</div>
+            <div class="pp-stat-label">Thermal Share</div>
+          </div>
+          <div class="pp-stat-card">
+            <div class="pp-stat-value" style="color:#00ff88;">23.8%</div>
+            <div class="pp-stat-label">Renewable Share</div>
+          </div>
+          <div class="pp-stat-card">
+            <div class="pp-stat-value" style="color:#facc15;">47%</div>
+            <div class="pp-stat-label">Private Sector</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animation Zone: Green Power Gauge -->
+      <div class="pp-anim-zone" id="anim-zone-5">
+        <p class="pp-anim-label">🟢 Green Power Meter</p>
+        <div style="text-align:center;">
+          <svg viewBox="0 0 200 120" width="200" id="green-gauge-svg">
+            <!-- Gauge arc -->
+            <path d="M 30 100 A 70 70 0 0 1 170 100" fill="none" stroke="#1a1f2e" stroke-width="12" stroke-linecap="round"></path>
+            <path d="M 30 100 A 70 70 0 0 1 170 100" fill="none" stroke="url(#gaugeGrad)" stroke-width="12" stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="220" id="gauge-fill"></path>
+            <defs>
+              <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ef4444"></stop>
+                <stop offset="50%" stop-color="#facc15"></stop>
+                <stop offset="100%" stop-color="#00ff88"></stop>
+              </linearGradient>
+            </defs>
+            <text x="100" y="90" fill="#00ff88" font-size="22" text-anchor="middle" font-family="Orbitron" font-weight="bold" id="gauge-pct">25.6%</text>
+            <text x="100" y="110" fill="#94a3b8" font-size="9" text-anchor="middle">Renewable Energy Share</text>
+          </svg>
+        </div>
+        <div style="text-align:center; margin-top:6px;">
+          <div style="background:rgba(0,255,136,0.06); border:1px solid rgba(0,255,136,0.2); border-radius:6px; padding:8px; max-width:350px; margin:0 auto;">
+            <p style="font-size:11px; color:#00ff88; font-family:'Orbitron',monospace; letter-spacing:1px;">TARGET: 500 GW BY 2030</p>
+            <div style="height:8px; background:#1a1f2e; border-radius:4px; overflow:hidden; margin-top:6px;">
+              <div id="target-progress" style="height:100%; width:0%; background:linear-gradient(90deg,#00ff88,#facc15); border-radius:4px; transition:width 1.5s ease;"></div>
+            </div>
+            <p style="font-size:10px; color:var(--pp-muted); margin-top:4px;">Current: ~372 GW / 500 GW (<span id="target-pct">0</span>%)</p>
+          </div>
+        </div>
+      </div>
+</div>
+</div><div class="topic-bottom-nav">
+        <div></div>
+        <a href="../../index.html" class="topic-btn back-btn">All Topics</a>
+        <a href="../hydro-power/index.html" class="topic-btn next-btn">Hydro Power →</a>
+    </div></main>
+
+  <!-- Scroll to top -->
+  <div class="pp-scroll-top" id="ppScrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="../../../../../../shared/js/hero-bg.js"></script>
+  <script src="../../../../../../shared/js/formulas.js"></script>
+  <script src="../../../../../../shared/js/app.js"></script>
+
+  
+
+  <!-- Bookmark corner buttons -->
+  
+  
+
+
+
+<script src="../../js/powerplant-inline.js"></script><script src="../../../../../../shared/js/topic-nav.js"></script></body></html>

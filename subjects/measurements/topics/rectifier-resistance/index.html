@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurements &amp; Instrumentation Formula Book</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+    <!-- Libraries: GSAP, D3, Chart.js, AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="../../css/measurements.css">
+
+    <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+    <link rel="stylesheet" href="../../../../shared/css/topic-page.css">
+    <title>⚡ Rectifier & Resistance | MEASUREMENTS | EE Hub</title>
+</head>
+<body >
+    <nav class="navbar" role="navigation">
+        <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+            <li><a href="../../../machines/index.html">Machines</a></li>
+            <li><a href="../../../measurements/index.html" class="active">Measurements</a></li>
+            <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+            <li><a href="../../../power-plant/index.html">Power Plant</a></li>
+            <li><a href="../../../control/index.html">Control Systems</a></li>
+            <li><a href="../../../electronics/index.html">Electronics</a></li>
+            <li><a href="../../../signals/index.html">Signals</a></li>
+            <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+            <li><a href="../../../estimation/index.html">Estimation</a></li>
+            <li><a href="../../../utilization/index.html">Utilization</a></li>
+        </ul>
+        <div class="navbar__actions">
+        <div class="search-box">
+            <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+<path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path><path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path><path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z M365.3,278.3c-28.1,8.5-56.8,2.8-84.2-5.8c-13.8-4.3-27.6-9.1-40.7-15.2c-6.8-3.2-13.6-6.7-19.9-10.9c-5.5-3.6-10.5-7.9-15.9-11.7c-1.7-1.2-2.1-2.8-1.8-4.3c-17.7-23.8-31.1-52.7-29-82.9c2.2-31.5,21.9-58.1,46.9-76.2c38.9-28.1,94.6-38.9,137.8-13.8c21.4,12.4,39.2,30.6,53.1,51c13.4,19.8,24.7,42.6,28.6,66.5C448,222.4,408.4,265.3,365.3,278.3z"></path><path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2zM471.5 185.5c-1.3-13.1-5.2-25-11.2-35.9 7.3 23.4 8.9 48.1 0 71.7-16.2 43.3-59.2 75.9-104.7 81.9-29.7 3.9-60.6-4.4-89-12.2-26.6-7.3-52.8-18-75.2-34.4-3.3.9-7.4-1.3-6.3-5.5.2-.8.5-1.6.8-2.3-7.6-8.8-14.4-18.3-19.9-28.5-4.7-8.8-8.7-18-11.6-27.5 0 5 0 10 .3 15 1.1 20.3 5.2 41.3 19 56.9.5-1 1.3-1.8 2.7-2.3 10.2-3.5 19.2 1.8 26.9 8.1 5.3 4.3 8.2 7.9 11.5 13.8 2.2 3.9 11.9 19.9 9.2 27.2 25.7 11.4 52.5 16.5 80.5 18.4 29.3 2 59.3 1.9 85.5-13.2 23.8-13.7 45.1-34.1 61.4-56.1C467.7 238.3 474.2 212.8 471.5 185.5z"></path><path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z M338.3,272.7c-23.4,0.8-47.2-6.9-69.1-14.6c-10.5-3.7-20.7-7.9-30.7-12.8c-9.3-4.7-17.2-10.7-25.5-16.7c-0.1-0.8-0.4-1.6-1-2.4c-15.3-20.3-27.2-43.7-28.4-69.5c-1.2-26.7,12.3-49.8,31.2-67.6c35.4-33.2,92.6-47.4,136.8-23.9c22,11.7,39.7,31,53.4,51.5c13.1,19.6,24.7,43.7,26.1,67.5C434.1,232.5,382.8,271.2,338.3,272.7z"></path><path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z M175.8,101.4c27-39.9,75.8-68.4,123.6-72.9c50.1-4.7,93.1,28.5,121.4,66.9c14.4,19.6,25.6,41.6,32.2,65c6.4,23.1,4.2,46.3-6.5,67.7c-18.2,36.7-57.9,62.5-98.5,65.8c-13.8,1.1-28-1.1-41.6-3.7c-13.3-2.6-26.5-5.9-39.6-9.5c-24.9-6.8-49.8-17.3-70.6-33c0.2-1.1-0.1-2.3-1.1-3.5c-17.1-19.6-30.2-43-34.8-68.9C155.8,149.6,161.1,123.1,175.8,101.4z M137.8,426.1c-7.3,4.7-15.3,8.4-23.9,10.4c-10.6,2.4-22.1,1.5-31.3-4.7c-8.4-5.7-12.9-15-14.6-24.8c-1.9-11.1-0.4-21.9,3.4-32c0.7-0.1,1.4-0.3,2-0.8c8-4.9,20.3-2.7,28.9-1c4.7,0.9,9.3,2.3,13.7,4.1c3.1,1.3,3.5,2.1,5.5,5.2c4.5,7,7.9,14.9,11.1,22.6c1.6,3.8,3,7.6,4.2,11.5c0.4,1.3,0.8,2.7,1,4.1c0,0.1,0,0.3,0.1,0.4C137,422.6,137,424.6,137.8,426.1z M213.9,308.2c-1.6,0.1-3.1,1-3.7,3.1c-9.1,28.8-21.3,57.1-39,81.7c-6.7,9.3-14.6,18.4-23.6,25.9c-1.7-13.6-14.8-36.8-17.3-41c-1.9-3.2-4.1-6.4-7.5-8.2c-5.2-2.9-11.1-4.5-16.9-5.8c-8.8-2.1-19.3-3.4-28.6-1.4c5.5-9.6,12.7-18.5,20.2-26.2c24.4-24.9,54-45,83.4-63.5c0.8-0.5,1.4-1.1,1.7-1.8c5.8-0.4,11.4,4.7,15.7,8.1c3.2,2.6,4.9,4.7,7,8.3c2.3,4,4.4,8.2,6.3,12.4c0.9,1.9,1.7,3.9,2.4,5.9c0.2,0.5,0.3,0.8,0.4,1.2C214.1,307.4,214,307.8,213.9,308.2z M451.4,260.4c-16.3,22.1-37.6,42.4-61.4,56.1c-26.2,15.1-56.1,15.2-85.5,13.2c-28-1.9-54.7-7.1-80.5-18.4c2.7-7.2-7-23.2-9.2-27.2c-3.3-5.9-6.2-9.5-11.5-13.8c-7.8-6.3-16.8-11.6-26.9-8.1c-1.4,0.5-2.2,1.3-2.7,2.3c-13.9-15.6-18-36.6-19-56.9c-0.3-5-0.3-10-0.3-15c2.9,9.5,6.9,18.7,11.6,27.5c5.5,10.2,12.3,19.7,19.9,28.5c-0.3,0.7-0.6,1.5-0.8,2.3c-1.1,4.2,3,6.4,6.3,5.5c22.4,16.5,48.6,27.1,75.2,34.4c28.4,7.8,59.4,16.1,89,12.2c45.6-6,88.6-38.6,104.7-81.9c8.8-23.7,7.3-48.3,0-71.7c6,10.9,9.9,22.9,11.2,35.9C474.2,212.8,467.7,238.3,451.4,260.4z"></path>
+</svg></span>
+            <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+        </div>
+    </div>
+    </nav>
+    
+    <!-- Topic Nav Script (Shared) -->
+    <script src="../../../../shared/js/topic-nav.js"></script>
+
+    <div class="breadcrumb" style="margin-top: 80px;">
+        <span class="home-icon">🏠</span> 
+        <span class="delimiter">/</span> 
+        <a href="../../index.html" style="text-transform: capitalize;">measurements</a> 
+        <span class="delimiter">/</span> 
+        <span class="current-topic">⚡ Rectifier & Resistance</span>
+    </div>
+
+    <main class="topic-main-container">
+        <section id="mod3" class="module-section">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 3 <span class="module-subtitle">— Rectifier Instruments &amp; Resistance Measurement</span></h2>
+                    <div class="module-line" style="background: #00ff88; box-shadow: 0 0 10px #00ff88;"></div>
+                </div>
+
+                <div class="card-grid">
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.1: HALF WAVE RECTIFIER METER         -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>📊 3.1 Half Wave Rectifier Meter</h3>
+                            <span class="m3-badge">HW · FF = 2.22 · 45% Sensitivity</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:10px; text-align:center;">Average Output</h4>
+                                <div class="formula text-sm">$$ V_{avg} = \frac{V_m}{\pi} = 0.45\,V_m $$</div>
+                                <div class="formula text-sm">$$ I_{avg} = 0.45\,I_m $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Form Factor</h4>
+                                <div class="formula text-sm">$$ FF_{HW} = \frac{V_{rms}}{V_{avg}} = \frac{V_m/\sqrt{2}}{V_m/\pi} $$</div>
+                                <div class="formula text-sm">$$ \boxed{FF_{HW} = \frac{\pi}{\sqrt{2}} \approx 2.22} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:10px; text-align:center;">Reading &amp; Sensitivity</h4>
+                                <div class="formula text-sm">$$ \boxed{\text{HW reading} = 2.22 \times \text{PMMC}} $$</div>
+                                <div class="formula text-sm">$$ S_{ac} = 0.45\,S_{dc} $$</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#f97316; text-align:center; margin-bottom:8px;">Range Extension (Half Wave)</h4>
+                            <div style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:15px;">
+                                <div class="formula text-sm">DC: $$ \boxed{R_s = S_{ac}V - R_m - R_d} $$</div>
+                                <div class="formula text-sm">AC: $$ R_s = 0.45\,S_{dc}V - R_m - R_d $$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height:340px; flex-direction:column; gap:10px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- HW Rectifier circuit SVG -->
+                                <svg id="m3-hw-circuit" viewBox="0 0 300 180" width="290" height="175">
+                                    <!-- AC source -->
+                                    <circle cx="30" cy="90" r="18" fill="none" stroke="#00f5ff" stroke-width="2"></circle>
+                                    <path d="M 22 90 Q 26 82 30 90 Q 34 98 38 90" fill="none" stroke="#00f5ff" stroke-width="1.5"></path>
+                                    <text x="30" y="120" fill="#94a3b8" font-size="8" text-anchor="middle">AC Source</text>
+                                    <!-- Wire to diode -->
+                                    <line x1="48" y1="90" x2="90" y2="90" stroke="#fff" stroke-width="1.5"></line>
+                                    <!-- Diode -->
+                                    <polygon points="100,78 100,102 125,90" fill="rgba(249,115,22,0.2)" stroke="#f97316" stroke-width="2"></polygon>
+                                    <line x1="125" y1="78" x2="125" y2="102" stroke="#f97316" stroke-width="2"></line>
+                                    <text x="112" y="72" fill="#f97316" font-size="8" text-anchor="middle">D</text>
+                                    <!-- Wire diode to PMMC -->
+                                    <line x1="125" y1="90" x2="180" y2="90" stroke="#facc15" stroke-width="1.5"></line>
+                                    <!-- PMMC meter -->
+                                    <rect x="180" y="70" width="70" height="40" rx="8" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="2"></rect>
+                                    <text x="215" y="87" fill="#00ff88" font-size="9" text-anchor="middle">PMMC</text>
+                                    <text x="215" y="99" fill="#94a3b8" font-size="7" text-anchor="middle">reads V_avg</text>
+                                    <!-- Return wire -->
+                                    <line x1="250" y1="90" x2="270" y2="90" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="270" y1="90" x2="270" y2="145" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="270" y1="145" x2="30" y2="145" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="30" y1="145" x2="30" y2="108" stroke="#fff" stroke-width="1.5"></line>
+                                    <!-- Blocked half indicator -->
+                                    <text x="112" y="145" fill="#94a3b8" font-size="7" text-anchor="middle">−ve half blocked</text>
+                                    <!-- Current flow arrow (positive) -->
+                                    <polygon id="m3-hw-arrow" points="155,85 155,95 165,90" fill="#facc15" opacity="0.8"></polygon>
+                                    <!-- Sensitivity badge -->
+                                    <rect x="180" y="125" width="76" height="18" rx="5" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="0.8"></rect>
+                                    <text x="218" y="137" fill="#f97316" font-size="7" text-anchor="middle">S_ac = 45% S_dc</text>
+                                </svg>
+                                <!-- Waveform comparison -->
+                                <div id="m3-hw-wave" style="width:300px; height:175px;"></div>
+                            </div>
+                            <!-- Sensitivity bars -->
+                            <div id="m3-hw-sens" style="width:100%; max-width:400px; height:80px; margin:0 auto;"></div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-hw-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">🧮 HW Rectifier Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>PMMC (V):</label><input type="number" id="m3-hw-pmmc" value="5" min="0" step="0.1">
+                                <label>S<sub>dc</sub> (Ω/V):</label><input type="number" id="m3-hw-sdc" value="20000" min="0" step="100">
+                                <label>V (range):</label><input type="number" id="m3-hw-v" value="50" min="0" step="1">
+                            </div>
+                            <div class="m3-calc-row">
+                                <label>R<sub>m</sub> (Ω):</label><input type="number" id="m3-hw-rm" value="500" min="0" step="10">
+                                <label>R<sub>d</sub> (Ω):</label><input type="number" id="m3-hw-rd" value="100" min="0" step="10">
+                            </div>
+                            <div class="m3-calc-result" id="m3-hw-result">HW reading = —, R_s = —</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('FF_{HW} = \\frac{\\pi}{\\sqrt{2}} \\approx 2.22')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-hw-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-hw">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.2: FULL WAVE RECTIFIER METER         -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>📊 3.2 Full Wave Rectifier Meter</h3>
+                            <span class="m3-badge">FW · FF = 1.11 · 90% Sensitivity</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:10px; text-align:center;">Average Output</h4>
+                                <div class="formula text-sm">$$ V_{avg} = \frac{2V_m}{\pi} = 0.9\,V_m $$</div>
+                                <div class="formula text-sm">$$ I_{avg} = 0.9\,I_{rms} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Form Factor</h4>
+                                <div class="formula text-sm">$$ FF_{FW} = \frac{V_m/\sqrt{2}}{2V_m/\pi} = \frac{\pi}{2\sqrt{2}} $$</div>
+                                <div class="formula text-sm">$$ \boxed{FF_{FW} \approx 1.11} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:10px; text-align:center;">Reading &amp; Sensitivity</h4>
+                                <div class="formula text-sm">$$ \boxed{\text{FW reading} = 1.11 \times \text{PMMC}} $$</div>
+                                <div class="formula text-sm">$$ S_{ac} = 0.9\,S_{dc} $$</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#00f5ff; text-align:center; margin-bottom:8px;">Range Extension (Full Wave)</h4>
+                            <div style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:15px;">
+                                <div class="formula text-sm">DC: $$ \boxed{R_s = S_{ac}V - R_m - 2R_d} $$</div>
+                                <div class="formula text-sm">AC: $$ R_s = 0.9\,S_{dc}V - R_m - 2R_d $$</div>
+                            </div>
+                        </div>
+                        <!-- HW vs FW comparison table -->
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#00ff88; text-align:center; margin-bottom:10px;">Half Wave vs Full Wave Comparison</h4>
+                            <div class="m3-comparison-table-wrap">
+                                <table class="m3-comparison-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Parameter</th>
+                                            <th style="color:#f97316;">Half Wave</th>
+                                            <th style="color:#00f5ff;">Full Wave</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>$V_{avg}$</td><td>$V_m/\pi$</td><td>$2V_m/\pi$</td></tr>
+                                        <tr><td>Form Factor</td><td style="color:#f97316;">2.22</td><td style="color:#00f5ff;">1.11</td></tr>
+                                        <tr><td>Sensitivity</td><td>$0.45\,S_{dc}$</td><td>$0.90\,S_{dc}$</td></tr>
+                                        <tr><td>Diode drop</td><td>$-R_d$</td><td>$-2R_d$</td></tr>
+                                        <tr><td>Ripple</td><td style="color:#ef4444;">High</td><td style="color:#00ff88;">Low</td></tr>
+                                        <tr><td>Accuracy</td><td style="color:#ef4444;">Lower</td><td style="color:#00ff88;">Higher</td></tr>
+                                        <tr><td>$k_r$ ratio</td><td colspan="2" style="color:#facc15; text-align:center;">$k_r(HW)/k_r(FW) = 2.22/1.11 = 2$</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height:380px; flex-direction:column; gap:10px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- FW bridge rectifier SVG -->
+                                <svg id="m3-fw-circuit" viewBox="0 0 320 200" width="310" height="195">
+                                    <!-- AC source -->
+                                    <circle cx="30" cy="100" r="18" fill="none" stroke="#00f5ff" stroke-width="2"></circle>
+                                    <path d="M 22 100 Q 26 92 30 100 Q 34 108 38 100" fill="none" stroke="#00f5ff" stroke-width="1.5"></path>
+                                    <!-- Bridge diamond -->
+                                    <g transform="translate(140,100)">
+                                        <!-- Diamond outline -->
+                                        <line x1="0" y1="-55" x2="55" y2="0" stroke="#475569" stroke-width="1"></line>
+                                        <line x1="55" y1="0" x2="0" y2="55" stroke="#475569" stroke-width="1"></line>
+                                        <line x1="0" y1="55" x2="-55" y2="0" stroke="#475569" stroke-width="1"></line>
+                                        <line x1="-55" y1="0" x2="0" y2="-55" stroke="#475569" stroke-width="1"></line>
+                                        <!-- D1 (top-right) -->
+                                        <polygon points="15,-40 35,-20 25,-27" fill="rgba(250,204,21,0.3)" stroke="#facc15" stroke-width="1.5"></polygon>
+                                        <text x="35" y="-35" fill="#facc15" font-size="7">D1</text>
+                                        <!-- D2 (bottom-right) -->
+                                        <polygon points="35,20 15,40 25,33" fill="rgba(167,139,250,0.3)" stroke="#a78bfa" stroke-width="1.5"></polygon>
+                                        <text x="35" y="40" fill="#a78bfa" font-size="7">D2</text>
+                                        <!-- D3 (bottom-left) -->
+                                        <polygon points="-15,40 -35,20 -25,27" fill="rgba(250,204,21,0.3)" stroke="#facc15" stroke-width="1.5"></polygon>
+                                        <text x="-48" y="40" fill="#facc15" font-size="7">D3</text>
+                                        <!-- D4 (top-left) -->
+                                        <polygon points="-35,-20 -15,-40 -25,-33" fill="rgba(167,139,250,0.3)" stroke="#a78bfa" stroke-width="1.5"></polygon>
+                                        <text x="-48" y="-35" fill="#a78bfa" font-size="7">D4</text>
+                                        <!-- Labels -->
+                                        <text x="0" y="-60" fill="#fff" font-size="8" text-anchor="middle">+</text>
+                                        <text x="0" y="68" fill="#fff" font-size="8" text-anchor="middle">−</text>
+                                    </g>
+                                    <!-- Input wires -->
+                                    <line x1="48" y1="100" x2="85" y2="100" stroke="#00f5ff" stroke-width="1.5"></line>
+                                    <line x1="85" y1="100" x2="85" y2="55" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="85" y1="55" x2="140" y2="55" stroke="#fff" stroke-width="1"></line>
+                                    <line x1="85" y1="100" x2="85" y2="145" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="85" y1="145" x2="140" y2="145" stroke="#fff" stroke-width="1"></line>
+                                    <!-- Output to PMMC -->
+                                    <line x1="195" y1="100" x2="230" y2="100" stroke="#00ff88" stroke-width="1.5"></line>
+                                    <line x1="140" y1="45" x2="140" y2="35" stroke="#00ff88" stroke-width="1.5"></line>
+                                    <line x1="140" y1="35" x2="260" y2="35" stroke="#00ff88" stroke-width="1.5"></line>
+                                    <line x1="260" y1="35" x2="260" y2="80" stroke="#00ff88" stroke-width="1.5"></line>
+                                    <line x1="140" y1="155" x2="140" y2="165" stroke="#00ff88" stroke-width="1.5"></line>
+                                    <line x1="140" y1="165" x2="260" y2="165" stroke="#00ff88" stroke-width="1.5"></line>
+                                    <line x1="260" y1="165" x2="260" y2="120" stroke="#00ff88" stroke-width="1.5"></line>
+                                    <!-- PMMC -->
+                                    <rect x="230" y="80" width="60" height="40" rx="8" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="2"></rect>
+                                    <text x="260" y="97" fill="#00ff88" font-size="9" text-anchor="middle">PMMC</text>
+                                    <text x="260" y="110" fill="#94a3b8" font-size="7" text-anchor="middle">reads 2V_m/π</text>
+                                    <!-- Path labels -->
+                                    <text x="160" y="18" fill="#facc15" font-size="7" text-anchor="middle" id="m3-fw-path1">+ve: D1→D3 (gold)</text>
+                                    <text x="160" y="190" fill="#a78bfa" font-size="7" text-anchor="middle" id="m3-fw-path2">−ve: D2→D4 (purple)</text>
+                                </svg>
+                                <!-- Waveform comparison D3 -->
+                                <div id="m3-fw-wave" style="width:300px; height:195px;"></div>
+                            </div>
+                            <div style="display:flex; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Form factor bars -->
+                                <div id="m3-fw-ff" style="width:200px; height:120px;"></div>
+                                <!-- Sensitivity gauge -->
+                                <div id="m3-fw-sens" style="width:250px; height:120px;"></div>
+                            </div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-fw-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">🧮 FW Rectifier Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>PMMC (V):</label><input type="number" id="m3-fw-pmmc" value="5" min="0" step="0.1">
+                                <label>S<sub>dc</sub> (Ω/V):</label><input type="number" id="m3-fw-sdc" value="20000" min="0" step="100">
+                                <label>V (range):</label><input type="number" id="m3-fw-v" value="50" min="0" step="1">
+                            </div>
+                            <div class="m3-calc-row">
+                                <label>R<sub>m</sub> (Ω):</label><input type="number" id="m3-fw-rm" value="500" min="0" step="10">
+                                <label>R<sub>d</sub> (Ω):</label><input type="number" id="m3-fw-rd" value="100" min="0" step="10">
+                            </div>
+                            <div class="m3-calc-result" id="m3-fw-result">FW reading = —, R_s = —</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('FF_{FW} = \\frac{\\pi}{2\\sqrt{2}} \\approx 1.11')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-fw-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-fw">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.3: RESISTANCE CLASSIFICATION          -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>🔍 3.3 Measurement of Resistance — Classification</h3>
+                            <span class="m3-badge">Low · Medium · High</span>
+                        </div>
+                        <div class="formula-zone">
+                            <div class="m3-comparison-table-wrap">
+                                <table class="m3-comparison-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Classification</th>
+                                            <th>Value of R</th>
+                                            <th>Primary Methods</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="color:#60a5fa;">Low Resistance</td>
+                                            <td>$R &lt; 1\,\Omega$</td>
+                                            <td>Kelvin Bridge, Potentiometer, A-V Method</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color:#facc15;">Medium Resistance</td>
+                                            <td>$1\,\Omega &lt; R &lt; 100\,k\Omega$</td>
+                                            <td>Wheatstone Bridge, A-V Method, Ohmmeter</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color:#ef4444;">High Resistance</td>
+                                            <td>$R &gt; 100\,k\Omega$</td>
+                                            <td>Megger, Loss of Charge, A-V Method</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#00ff88; text-align:center; margin-bottom:8px;">Ammeter-Voltmeter Principle</h4>
+                            <div class="formula text-sm" style="text-align:center;">$$ \boxed{R_m = \frac{V}{I}} $$</div>
+                        </div>
+                        <div class="anim-zone" style="height:280px; flex-direction:column; gap:12px;">
+                            <!-- Log scale R classification -->
+                            <div id="m3-rclass-scale" style="width:100%; max-width:700px; height:140px; margin:0 auto;"></div>
+                            <!-- Methods tree -->
+                            <div id="m3-rclass-tree" style="width:100%; max-width:700px; height:120px; margin:0 auto;"></div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('R_m = \\frac{V}{I}')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-rclass">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.4: AMMETER-VOLTMETER METHOD          -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>🔌 3.4 Ammeter-Voltmeter Method</h3>
+                            <span class="m3-badge">Case I · Case II · R_critical</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:10px; text-align:center;">Case I — Ammeter Near R</h4>
+                                <div class="formula text-sm">$$ R_m = R_A + R_x $$</div>
+                                <div class="formula text-sm">$$ \boxed{\% \text{error} = \frac{R_A}{R_x}\times 100} $$</div>
+                                <div class="formula text-xs" style="color:#f97316;">Use when $R_x \gg R_A$ (High R)</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#60a5fa; margin-bottom:10px; text-align:center;">Case II — Voltmeter Near R</h4>
+                                <div class="formula text-sm">$$ R_m = \frac{R_V R_x}{R_V + R_x} $$</div>
+                                <div class="formula text-sm">$$ \boxed{\% \text{error} = -\frac{R_x}{R_V}\times 100} $$</div>
+                                <div class="formula text-xs" style="color:#60a5fa;">Use when $R_x \ll R_V$ (Low R)</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:10px; text-align:center;">Optimal Selection</h4>
+                                <div class="formula text-sm">$$ \boxed{R_{critical} = \sqrt{R_A \times R_V}} $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">$R_x &gt; R_{crit}$: Case I</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">$R_x &lt; R_{crit}$: Case II</div>
+                            </div>
+                        </div>
+                        <!-- Comparison table -->
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <div class="m3-comparison-table-wrap">
+                                <table class="m3-comparison-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Parameter</th>
+                                            <th style="color:#f97316;">Case I (A near)</th>
+                                            <th style="color:#60a5fa;">Case II (V near)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>$R_m$ formula</td><td>$R_A + R_x$</td><td>$R_V \| R_x$</td></tr>
+                                        <tr><td>Error formula</td><td style="color:#ef4444;">$+R_A/R_x$</td><td style="color:#60a5fa;">$-R_x/R_V$</td></tr>
+                                        <tr><td>Error type</td><td style="color:#ef4444;">Always positive (+)</td><td style="color:#60a5fa;">Always negative (−)</td></tr>
+                                        <tr><td>Use when</td><td>$R_x \gg R_A$ (large R)</td><td>$R_x \ll R_V$ (small R)</td></tr>
+                                        <tr><td>Best for</td><td style="color:#f97316;">High resistance</td><td style="color:#60a5fa;">Low resistance</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height:420px; flex-direction:column; gap:12px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Case I circuit SVG -->
+                                <svg id="m3-av-case1" viewBox="0 0 240 170" width="230" height="165">
+                                    <text x="120" y="14" fill="#f97316" font-size="10" text-anchor="middle" font-weight="bold">Case I — Ammeter Near R</text>
+                                    <!-- Battery -->
+                                    <line x1="20" y1="40" x2="20" y2="140" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="20" y1="40" x2="60" y2="40" stroke="#fff" stroke-width="1.5"></line>
+                                    <text x="15" y="95" fill="#94a3b8" font-size="8" text-anchor="end">E</text>
+                                    <!-- Ammeter -->
+                                    <circle cx="90" cy="40" r="16" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="2"></circle>
+                                    <text x="90" y="44" fill="#00ff88" font-size="10" text-anchor="middle">A</text>
+                                    <!-- Rx -->
+                                    <rect x="130" y="25" width="60" height="30" rx="5" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="2"></rect>
+                                    <text x="160" y="44" fill="#f97316" font-size="10" text-anchor="middle">R<tspan baseline-shift="sub" font-size="7">x</tspan></text>
+                                    <!-- Wires -->
+                                    <line x1="106" y1="40" x2="130" y2="40" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="190" y1="40" x2="220" y2="40" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="220" y1="40" x2="220" y2="140" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="220" y1="140" x2="20" y2="140" stroke="#fff" stroke-width="1.5"></line>
+                                    <!-- Voltmeter across A+Rx combined -->
+                                    <line x1="60" y1="40" x2="60" y2="85" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <line x1="220" y1="40" x2="220" y2="85" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <circle cx="140" cy="100" r="16" fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="2"></circle>
+                                    <text x="140" y="104" fill="#60a5fa" font-size="10" text-anchor="middle">V</text>
+                                    <line x1="60" y1="100" x2="124" y2="100" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <line x1="156" y1="100" x2="220" y2="100" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <!-- Error label -->
+                                    <text x="120" y="160" fill="#ef4444" font-size="8" text-anchor="middle" id="m3-av-err1">Error = +R_A/R_x = —%</text>
+                                </svg>
+                                <!-- Case II circuit SVG -->
+                                <svg id="m3-av-case2" viewBox="0 0 240 170" width="230" height="165">
+                                    <text x="120" y="14" fill="#60a5fa" font-size="10" text-anchor="middle" font-weight="bold">Case II — Voltmeter Near R</text>
+                                    <!-- Battery -->
+                                    <line x1="20" y1="40" x2="20" y2="140" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="20" y1="40" x2="50" y2="40" stroke="#fff" stroke-width="1.5"></line>
+                                    <text x="15" y="95" fill="#94a3b8" font-size="8" text-anchor="end">E</text>
+                                    <!-- Ammeter -->
+                                    <circle cx="70" cy="40" r="16" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="2"></circle>
+                                    <text x="70" y="44" fill="#00ff88" font-size="10" text-anchor="middle">A</text>
+                                    <!-- Rx -->
+                                    <rect x="130" y="25" width="60" height="30" rx="5" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="2"></rect>
+                                    <text x="160" y="44" fill="#60a5fa" font-size="10" text-anchor="middle">R<tspan baseline-shift="sub" font-size="7">x</tspan></text>
+                                    <!-- Wires -->
+                                    <line x1="86" y1="40" x2="130" y2="40" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="190" y1="40" x2="220" y2="40" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="220" y1="40" x2="220" y2="140" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="220" y1="140" x2="20" y2="140" stroke="#fff" stroke-width="1.5"></line>
+                                    <!-- Voltmeter directly across Rx -->
+                                    <line x1="130" y1="40" x2="130" y2="85" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <line x1="190" y1="40" x2="190" y2="85" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <circle cx="160" cy="100" r="16" fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="2"></circle>
+                                    <text x="160" y="104" fill="#60a5fa" font-size="10" text-anchor="middle">V</text>
+                                    <line x1="130" y1="100" x2="144" y2="100" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <line x1="176" y1="100" x2="190" y2="100" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <!-- Error label -->
+                                    <text x="120" y="160" fill="#60a5fa" font-size="8" text-anchor="middle" id="m3-av-err2">Error = −R_x/R_V = —%</text>
+                                </svg>
+                            </div>
+                            <!-- Error crossover D3 chart -->
+                            <div id="m3-av-crossover" style="width:100%; max-width:500px; height:180px; margin:0 auto;"></div>
+                            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                                <div class="interactive-slider-group" style="max-width:200px;">
+                                    <label>R<sub>x</sub> (Ω):</label>
+                                    <input type="range" id="m3-av-rx" min="1" max="1000000" value="1000" class="m3-slider">
+                                    <span id="m3-av-rx-val" style="color:#00ff88; min-width:55px;">1 kΩ</span>
+                                </div>
+                                <div class="interactive-slider-group" style="max-width:200px;">
+                                    <label>R<sub>A</sub> (Ω):</label>
+                                    <input type="range" id="m3-av-ra" min="1" max="100" value="10" class="m3-slider">
+                                    <span id="m3-av-ra-val" style="color:#f97316; min-width:35px;">10Ω</span>
+                                </div>
+                                <div class="interactive-slider-group" style="max-width:200px;">
+                                    <label>R<sub>V</sub> (kΩ):</label>
+                                    <input type="range" id="m3-av-rv" min="10" max="10000" value="1000" class="m3-slider">
+                                    <span id="m3-av-rv-val" style="color:#60a5fa; min-width:55px;">1 MΩ</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-av-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">🧮 A-V Method Error Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>R<sub>x</sub> (Ω):</label><input type="number" id="m3-avc-rx" value="1000" min="0" step="1">
+                                <label>R<sub>A</sub> (Ω):</label><input type="number" id="m3-avc-ra" value="10" min="0" step="0.1">
+                                <label>R<sub>V</sub> (Ω):</label><input type="number" id="m3-avc-rv" value="1000000" min="0" step="100">
+                            </div>
+                            <div class="m3-calc-result" id="m3-avc-result">Case I err = —%, Case II err = —%, R_crit = —</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('R_{critical} = \\sqrt{R_A \\times R_V}')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-av-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-av">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.5: WHEATSTONE BRIDGE                 -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>🌉 3.5 Wheatstone Bridge</h3>
+                            <span class="m3-badge">Balance · PS = QR · Sensitivity</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:10px; text-align:center;">Balance Condition</h4>
+                                <div class="formula text-sm">$$ \frac{P}{Q} = \frac{R}{S} \quad \Rightarrow \quad PS = QR $$</div>
+                                <div class="formula text-sm">$$ \boxed{S = \frac{QR}{P}} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Sensitivity</h4>
+                                <div class="formula text-sm">$$ \delta V = \frac{E}{4}\cdot\frac{\delta R}{R} $$</div>
+                                <div class="formula text-sm">$$ I_g = \frac{E\cdot\delta R/R}{4(R_g + R_{th})} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:10px; text-align:center;">Thévenin Resistance</h4>
+                                <div class="formula text-sm">$$ R_{th} = \frac{PQ}{P+Q} + \frac{RS}{R+S} $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">Range: $1\,\Omega$ – $100\,k\Omega$</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#ef4444; text-align:center; margin-bottom:8px;">Errors &amp; Limitations</h4>
+                            <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">
+                                <div class="m3-app-tag" style="border-color:#ef4444; color:#ef4444;">Contact resistance</div>
+                                <div class="m3-app-tag" style="border-color:#ef4444; color:#ef4444;">Thermoelectric EMF</div>
+                                <div class="m3-app-tag" style="border-color:#ef4444; color:#ef4444;">Heating by test current</div>
+                                <div class="m3-app-tag" style="border-color:#ef4444; color:#ef4444;">Lead resistance (low R)</div>
+                                <div class="m3-app-tag" style="border-color:#facc15; color:#facc15;">Not suitable for very low R → Use Kelvin</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="min-height:340px; flex-direction:column; gap:12px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Wheatstone bridge SVG -->
+                                <svg id="m3-wb-svg" viewBox="0 0 280 250" width="270" height="245">
+                                    <text x="140" y="15" fill="#00ff88" font-size="10" text-anchor="middle" font-weight="bold">Wheatstone Bridge</text>
+                                    <!-- Diamond: A=top, B=right, C=bottom, D=left -->
+                                    <!-- P: A→B (top-right) -->
+                                    <rect x="155" y="42" width="55" height="28" rx="5" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="1.5" transform="rotate(45,182,56)"></rect>
+                                    <text x="195" y="45" fill="#00ff88" font-size="10">P</text>
+                                    <!-- Q: B→C (bottom-right) -->
+                                    <rect x="155" y="142" width="55" height="28" rx="5" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="1.5" transform="rotate(-45,182,156)"></rect>
+                                    <text x="195" y="175" fill="#00ff88" font-size="10">Q</text>
+                                    <!-- R: A→D (top-left) -->
+                                    <rect x="55" y="42" width="55" height="28" rx="5" fill="rgba(250,204,21,0.08)" stroke="#facc15" stroke-width="1.5" transform="rotate(-45,82,56)"></rect>
+                                    <text x="55" y="45" fill="#facc15" font-size="10">R</text>
+                                    <!-- S: D→C (bottom-left, unknown) -->
+                                    <rect x="55" y="142" width="55" height="28" rx="5" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5" transform="rotate(45,82,156)"></rect>
+                                    <text x="55" y="175" fill="#f97316" font-size="10">S = ?</text>
+                                    <!-- Nodes -->
+                                    <circle cx="140" cy="30" r="4" fill="#fff"></circle>  <!-- A (top) -->
+                                    <circle cx="240" cy="110" r="4" fill="#fff"></circle> <!-- B (right) -->
+                                    <circle cx="140" cy="190" r="4" fill="#fff"></circle> <!-- C (bottom) -->
+                                    <circle cx="40" cy="110" r="4" fill="#fff"></circle>  <!-- D (left) -->
+                                    <text x="140" y="25" fill="#94a3b8" font-size="8" text-anchor="middle">A</text>
+                                    <text x="250" y="113" fill="#94a3b8" font-size="8">B</text>
+                                    <text x="140" y="205" fill="#94a3b8" font-size="8" text-anchor="middle">C</text>
+                                    <text x="28" y="113" fill="#94a3b8" font-size="8" text-anchor="end">D</text>
+                                    <!-- Diamond lines -->
+                                    <line x1="140" y1="30" x2="240" y2="110" stroke="#555" stroke-width="1.5"></line>
+                                    <line x1="240" y1="110" x2="140" y2="190" stroke="#555" stroke-width="1.5"></line>
+                                    <line x1="140" y1="190" x2="40" y2="110" stroke="#555" stroke-width="1.5"></line>
+                                    <line x1="40" y1="110" x2="140" y2="30" stroke="#555" stroke-width="1.5"></line>
+                                    <!-- Galvanometer (B↔D) -->
+                                    <line x1="60" y1="110" x2="120" y2="110" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <circle cx="140" cy="110" r="14" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="2"></circle>
+                                    <text x="140" y="114" fill="#a78bfa" font-size="10" text-anchor="middle">G</text>
+                                    <line x1="160" y1="110" x2="220" y2="110" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <!-- Galvanometer needle -->
+                                    <line id="m3-wb-needle" x1="140" y1="110" x2="140" y2="96" stroke="#ef4444" stroke-width="2" stroke-linecap="round"></line>
+                                    <!-- Battery (A↔C vertical) -->
+                                    <line x1="140" y1="190" x2="140" y2="220" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="120" y1="220" x2="160" y2="220" stroke="#fff" stroke-width="2"></line>
+                                    <line x1="130" y1="225" x2="150" y2="225" stroke="#fff" stroke-width="1.2"></line>
+                                    <text x="165" y="225" fill="#94a3b8" font-size="8">E</text>
+                                    <line x1="140" y1="225" x2="140" y2="235" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="140" y1="235" x2="250" y2="235" stroke="#fff" stroke-width="1"></line>
+                                    <line x1="250" y1="235" x2="250" y2="30" stroke="#fff" stroke-width="1"></line>
+                                    <line x1="250" y1="30" x2="140" y2="30" stroke="#fff" stroke-width="1"></line>
+                                    <!-- Balance label -->
+                                    <text x="140" y="245" fill="#00ff88" font-size="9" text-anchor="middle" id="m3-wb-status">Adjust R to balance → I_g = 0</text>
+                                </svg>
+                                <!-- Sensitivity chart -->
+                                <div id="m3-wb-sens" style="width:280px; height:245px;"></div>
+                            </div>
+                            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                                <div class="interactive-slider-group" style="max-width:160px;">
+                                    <label>P (Ω):</label>
+                                    <input type="range" id="m3-wb-p" min="10" max="10000" value="1000" class="m3-slider">
+                                    <span id="m3-wb-p-val" style="color:#00ff88; min-width:45px;">1 kΩ</span>
+                                </div>
+                                <div class="interactive-slider-group" style="max-width:160px;">
+                                    <label>Q (Ω):</label>
+                                    <input type="range" id="m3-wb-q" min="10" max="10000" value="1000" class="m3-slider">
+                                    <span id="m3-wb-q-val" style="color:#00ff88; min-width:45px;">1 kΩ</span>
+                                </div>
+                                <div class="interactive-slider-group" style="max-width:160px;">
+                                    <label>R (Ω):</label>
+                                    <input type="range" id="m3-wb-r" min="10" max="10000" value="500" class="m3-slider">
+                                    <span id="m3-wb-r-val" style="color:#facc15; min-width:45px;">500 Ω</span>
+                                </div>
+                                <div class="interactive-slider-group" style="max-width:160px;">
+                                    <label>S (Ω):</label>
+                                    <input type="range" id="m3-wb-s" min="10" max="10000" value="500" class="m3-slider">
+                                    <span id="m3-wb-s-val" style="color:#f97316; min-width:45px;">500 Ω</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-wb-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">🧮 Wheatstone Bridge Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>P (Ω):</label><input type="number" id="m3-wbc-p" value="1000" min="0" step="1">
+                                <label>Q (Ω):</label><input type="number" id="m3-wbc-q" value="1000" min="0" step="1">
+                                <label>R (Ω):</label><input type="number" id="m3-wbc-r" value="470" min="0" step="1">
+                            </div>
+                            <div class="m3-calc-result" id="m3-wbc-result">S = QR/P = —, Balance: PS = QR?</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('S = \\frac{QR}{P}, \\quad PS = QR')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-wb-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-wb">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.6: KELVIN DOUBLE BRIDGE              -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>🌉 3.6 Kelvin Double Bridge</h3>
+                            <span class="m3-badge">Low R · Lead Elimination · ±0.1%</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:10px; text-align:center;">General Balance</h4>
+                                <div class="formula text-sm">$$ X = R\frac{P}{Q} + \frac{pq}{p+q+r}\left(\frac{P}{Q}-\frac{p}{q}\right)r $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:10px; text-align:center;">Simplified ($P/Q = p/q$)</h4>
+                                <div class="formula text-sm">$$ \boxed{X = R\cdot\frac{P}{Q}} $$</div>
+                                <div class="formula text-xs" style="color:#00ff88;">Lead resistance r eliminated!</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Condition</h4>
+                                <div class="formula text-sm">$$ \boxed{\frac{P}{Q} = \frac{p}{q}} $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">Inner = Outer ratio arms</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">Range: $R &lt; 1\,\Omega$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height:320px; flex-direction:column; gap:12px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Kelvin bridge SVG -->
+                                <svg id="m3-kb-svg" viewBox="0 0 340 220" width="330" height="215">
+                                    <text x="170" y="15" fill="#a78bfa" font-size="10" text-anchor="middle" font-weight="bold">Kelvin Double Bridge</text>
+                                    <!-- Main bar: X — r — R -->
+                                    <rect x="30" y="90" width="70" height="30" rx="5" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="2"></rect>
+                                    <text x="65" y="109" fill="#a78bfa" font-size="10" text-anchor="middle">X</text>
+                                    <rect x="120" y="90" width="50" height="30" rx="5" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="2" id="m3-kb-link"></rect>
+                                    <text x="145" y="109" fill="#f97316" font-size="10" text-anchor="middle">r</text>
+                                    <rect x="190" y="90" width="70" height="30" rx="5" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="2"></rect>
+                                    <text x="225" y="109" fill="#00ff88" font-size="10" text-anchor="middle">R</text>
+                                    <!-- Wires connecting bar -->
+                                    <line x1="100" y1="105" x2="120" y2="105" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="170" y1="105" x2="190" y2="105" stroke="#fff" stroke-width="1.5"></line>
+                                    <!-- Outer arms P, Q -->
+                                    <line x1="30" y1="90" x2="30" y2="50" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="30" y1="50" x2="110" y2="50" stroke="#fff" stroke-width="1"></line>
+                                    <rect x="110" y="38" width="40" height="24" rx="4" fill="rgba(0,255,136,0.05)" stroke="#00ff88" stroke-width="1.5"></rect>
+                                    <text x="130" y="54" fill="#00ff88" font-size="9" text-anchor="middle">P</text>
+                                    <line x1="150" y1="50" x2="200" y2="50" stroke="#fff" stroke-width="1"></line>
+                                    <rect x="200" y="38" width="40" height="24" rx="4" fill="rgba(0,255,136,0.05)" stroke="#00ff88" stroke-width="1.5"></rect>
+                                    <text x="220" y="54" fill="#00ff88" font-size="9" text-anchor="middle">Q</text>
+                                    <line x1="240" y1="50" x2="290" y2="50" stroke="#fff" stroke-width="1"></line>
+                                    <line x1="290" y1="50" x2="290" y2="90" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="260" y1="105" x2="290" y2="105" stroke="#fff" stroke-width="1.5"></line>
+                                    <!-- Inner arms p, q -->
+                                    <line x1="120" y1="120" x2="120" y2="155" stroke="#fff" stroke-width="1"></line>
+                                    <rect x="120" y="155" width="35" height="22" rx="4" fill="rgba(250,204,21,0.05)" stroke="#facc15" stroke-width="1.5"></rect>
+                                    <text x="137" y="170" fill="#facc15" font-size="9" text-anchor="middle">p</text>
+                                    <line x1="155" y1="166" x2="175" y2="166" stroke="#fff" stroke-width="1"></line>
+                                    <rect x="175" y="155" width="35" height="22" rx="4" fill="rgba(250,204,21,0.05)" stroke="#facc15" stroke-width="1.5"></rect>
+                                    <text x="192" y="170" fill="#facc15" font-size="9" text-anchor="middle">q</text>
+                                    <line x1="210" y1="166" x2="230" y2="166" stroke="#fff" stroke-width="1"></line>
+                                    <line x1="170" y1="120" x2="170" y2="155" stroke="#fff" stroke-width="1"></line>
+                                    <!-- Waiting…the inner arms connect between r junctions -->
+                                    <!-- Galvanometer from p/q junction to P/Q junction -->
+                                    <line x1="175" y1="50" x2="175" y2="155" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 2"></line>
+                                    <circle cx="175" cy="100" r="10" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1.5"></circle>
+                                    <text x="175" y="103" fill="#a78bfa" font-size="8" text-anchor="middle">G</text>
+                                    <!-- Battery at bottom -->
+                                    <line x1="30" y1="120" x2="30" y2="200" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="30" y1="200" x2="290" y2="200" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="290" y1="200" x2="290" y2="120" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="150" y1="200" x2="150" y2="210" stroke="#fff" stroke-width="2"></line>
+                                    <line x1="160" y1="200" x2="160" y2="207" stroke="#fff" stroke-width="1.2"></line>
+                                    <text x="170" y="210" fill="#94a3b8" font-size="8">E</text>
+                                    <!-- Status -->
+                                    <text x="170" y="215" fill="#00ff88" font-size="8" text-anchor="middle" id="m3-kb-status">P/Q = p/q → lead r eliminated ✓</text>
+                                </svg>
+                                <!-- Error comparison: Wheatstone vs Kelvin -->
+                                <div id="m3-kb-compare" style="width:280px; height:215px;"></div>
+                            </div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-kb-calc">
+                            <h4 style="color:#a78bfa; margin-bottom:10px;">🧮 Kelvin Bridge Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>R (Ω):</label><input type="number" id="m3-kbc-r" value="0.1" min="0" step="0.001">
+                                <label>P (Ω):</label><input type="number" id="m3-kbc-p" value="1000" min="0" step="1">
+                                <label>Q (Ω):</label><input type="number" id="m3-kbc-q" value="1000" min="0" step="1">
+                            </div>
+                            <div class="m3-calc-result" id="m3-kbc-result">X = R·P/Q = —, Condition: P/Q = p/q?</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('X = R \\cdot \\frac{P}{Q}')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-kb-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-kb">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.7: RESISTANCE METHODS SUMMARY        -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>📊 3.7 Resistance Measurement — Methods Summary</h3>
+                            <span class="m3-badge">All Methods · Decision Tree · Accuracy</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#60a5fa; margin-bottom:8px; text-align:center;">Low R (&lt; 1 Ω)</h4>
+                                <div class="formula text-xs" style="color:#60a5fa;">1. Kelvin Bridge: $X = R \cdot P/Q$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">2. A-V Method (Case II)</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">3. Potentiometer</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">4. Ducter</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:8px; text-align:center;">Medium R (1 Ω – 100 kΩ)</h4>
+                                <div class="formula text-xs" style="color:#facc15;">1. Wheatstone Bridge: $S = QR/P$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">2. A-V Method (Case I or II)</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">3. Substitution method</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">4. Ohmmeter</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#ef4444; margin-bottom:8px; text-align:center;">High R (&gt; 100 kΩ)</h4>
+                                <div class="formula text-xs" style="color:#ef4444;">1. Megger: $R = V_{test}/I_{leak}$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">2. Loss of Charge: $V = V_0 e^{-t/RC}$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">3. A-V Method (Case I)</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">4. Wheatstone (high R arms)</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#00ff88; text-align:center; margin-bottom:8px;">Loss of Charge &amp; Megger</h4>
+                            <div style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:15px;">
+                                <div class="formula text-sm">$$ V = V_0 e^{-t/RC};\quad R = \frac{t}{C\ln(V_0/V)} $$</div>
+                                <div class="formula text-sm">$$ R_{insulation} = \frac{V_{test}}{I_{leakage}} $$</div>
+                            </div>
+                        </div>
+                        <!-- Accuracy comparison table -->
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <div class="m3-comparison-table-wrap">
+                                <table class="m3-comparison-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Method</th>
+                                            <th>Range</th>
+                                            <th>Accuracy</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>A-V Method</td><td>Any</td><td>±1% to ±5%</td></tr>
+                                        <tr><td style="color:#facc15;">Wheatstone Bridge</td><td>1 Ω – 100 kΩ</td><td style="color:#00ff88;">±0.1%</td></tr>
+                                        <tr><td style="color:#a78bfa;">Kelvin Bridge</td><td>&lt; 1 Ω</td><td style="color:#00ff88;">±0.1% to ±0.5%</td></tr>
+                                        <tr><td style="color:#ef4444;">Megger</td><td>&gt; 1 MΩ</td><td>±5%</td></tr>
+                                        <tr><td>Potentiometer</td><td>Low R</td><td style="color:#00ff88;">±0.05%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height:340px; flex-direction:column; gap:12px;">
+                            <!-- R range selector + method recommendation -->
+                            <div id="m3-sum-range" style="width:100%; max-width:700px; height:100px; margin:0 auto;"></div>
+                            <!-- Accuracy bars D3 -->
+                            <div id="m3-sum-accuracy" style="width:100%; max-width:700px; height:140px; margin:0 auto;"></div>
+                            <div class="interactive-slider-group" style="max-width:500px; margin:0 auto;">
+                                <label>Select R value:</label>
+                                <input type="range" id="m3-sum-r" min="-3" max="9" value="3" step="0.1" class="m3-slider">
+                                <span id="m3-sum-r-val" style="color:#00ff88; min-width:70px;">1 kΩ</span>
+                            </div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-loc-calc">
+                            <h4 style="color:#ef4444; margin-bottom:10px;">📉 Loss of Charge Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>V₀ (V):</label><input type="number" id="m3-loc-v0" value="100" min="0" step="1">
+                                <label>V (V):</label><input type="number" id="m3-loc-v" value="37" min="0.01" step="1">
+                                <label>t (s):</label><input type="number" id="m3-loc-t" value="60" min="0" step="1">
+                                <label>C (µF):</label><input type="number" id="m3-loc-c" value="1" min="0.001" step="0.01">
+                            </div>
+                            <div class="m3-calc-result" id="m3-loc-result">R = —</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('R = \\frac{t}{C \\ln(V_0/V)}')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-loc-calc').classList.toggle('open')">🧮 Loss of Charge</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-sum">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.8: THEVENIN EQUIVALENT OF WB        -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>🌉 3.8 Thevenin Equivalent of Wheatstone Bridge</h3>
+                            <span class="m3-badge">Vth · Rth · Ig Analysis</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:10px; text-align:center;">Crossover Resistance</h4>
+                                <div class="formula text-sm">$$ |\varepsilon_1| = |\varepsilon_2| \quad \Rightarrow \quad \frac{R_A}{R_T} = \frac{R_T}{R_V} $$</div>
+                                <div class="formula text-sm">$$ \boxed{R_T = \sqrt{R_A R_V}} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:10px; text-align:center;">Thevenin Voltage</h4>
+                                <div class="formula text-sm">$$ V_{th} = V\!\left[\frac{P}{P\!+\!Q} - \frac{R}{R\!+\!S}\right] $$</div>
+                                <div class="formula text-sm">$$ \boxed{V_{th} = \frac{V(PS - QR)}{(P\!+\!Q)(R\!+\!S)}} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:10px; text-align:center;">Thevenin Resistance</h4>
+                                <div class="formula text-sm">$$ \boxed{R_{th} = \frac{PQ}{P\!+\!Q} + \frac{RS}{R\!+\!S}} $$</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.8rem;">At balance: $V_{th}=0$ since $PS=QR$</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#00ff88; text-align:center; margin-bottom:8px;">Galvanometer Current (Unbalanced)</h4>
+                            <div style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:15px;">
+                                <div class="formula text-sm">$$ I_g = \frac{V_{th}}{R_{th} + R_g} = \frac{V(PS - QR)}{(P\!+\!Q)(R\!+\!S)(R_{th}\!+\!R_g)} $$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height:380px; flex-direction:column; gap:12px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Thevenin conversion SVG -->
+                                <svg id="m3-thev-svg" viewBox="0 0 340 220" width="330" height="215" style="background:rgba(0,0,0,0.2); border-radius:8px;">
+                                    <!-- Bridge diamond -->
+                                    <line x1="90" y1="30" x2="170" y2="90" stroke="#a78bfa" stroke-width="2"></line>
+                                    <line x1="170" y1="90" x2="90" y2="150" stroke="#a78bfa" stroke-width="2"></line>
+                                    <line x1="90" y1="30" x2="10" y2="90" stroke="#00f5ff" stroke-width="2"></line>
+                                    <line x1="10" y1="90" x2="90" y2="150" stroke="#00f5ff" stroke-width="2"></line>
+                                    <!-- Labels -->
+                                    <text x="130" y="55" fill="#a78bfa" font-size="10" text-anchor="middle">P</text>
+                                    <text x="130" y="130" fill="#a78bfa" font-size="10" text-anchor="middle">Q</text>
+                                    <text x="45" y="55" fill="#00f5ff" font-size="10" text-anchor="middle">R</text>
+                                    <text x="45" y="130" fill="#00f5ff" font-size="10" text-anchor="middle">S</text>
+                                    <!-- Battery -->
+                                    <line x1="90" y1="30" x2="90" y2="10" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="90" y1="150" x2="90" y2="170" stroke="#fff" stroke-width="1.5"></line>
+                                    <text x="90" y="185" fill="#94a3b8" font-size="8" text-anchor="middle">V (Battery)</text>
+                                    <!-- Galvanometer -->
+                                    <line x1="10" y1="90" x2="170" y2="90" stroke="#333" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <circle cx="90" cy="90" r="10" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="1.5"></circle>
+                                    <text x="90" y="93" fill="#00ff88" font-size="8" text-anchor="middle">G</text>
+                                    <!-- Thevenin equivalent -->
+                                    <text x="260" y="20" fill="#94a3b8" font-size="9" text-anchor="middle">Thevenin Equiv.</text>
+                                    <!-- Vth source -->
+                                    <circle cx="260" cy="55" r="14" fill="none" stroke="#a78bfa" stroke-width="2"></circle>
+                                    <text x="260" y="59" fill="#a78bfa" font-size="8" text-anchor="middle" id="m3-thev-vth-label">Vth</text>
+                                    <!-- Rth box -->
+                                    <rect x="240" y="85" width="40" height="20" rx="4" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"></rect>
+                                    <text x="260" y="99" fill="#f97316" font-size="8" text-anchor="middle" id="m3-thev-rth-label">Rth</text>
+                                    <!-- Rg box -->
+                                    <rect x="240" y="120" width="40" height="20" rx="4" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="1.5"></rect>
+                                    <text x="260" y="134" fill="#00ff88" font-size="8" text-anchor="middle">Rg</text>
+                                    <!-- Wires -->
+                                    <line x1="260" y1="69" x2="260" y2="85" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="260" y1="105" x2="260" y2="120" stroke="#fff" stroke-width="1.5"></line>
+                                    <!-- Ig indicator -->
+                                    <text x="260" y="160" fill="#00ff88" font-size="9" text-anchor="middle" id="m3-thev-ig-label">Ig = —</text>
+                                    <!-- Balance status -->
+                                    <text x="260" y="200" fill="#00ff88" font-size="9" text-anchor="middle" font-weight="bold" id="m3-thev-status">—</text>
+                                </svg>
+                                <!-- Vth & Rth live chart -->
+                                <div id="m3-thev-chart" style="width:320px; height:210px;"></div>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:640px; margin:0 auto; width:100%;">
+                                <div class="interactive-slider-group" style="flex:1; min-width:130px;">
+                                    <label>P: <span id="m3-thev-p-val">100Ω</span></label>
+                                    <input type="range" id="m3-thev-p" min="10" max="1000" value="100" step="10" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:130px;">
+                                    <label>Q: <span id="m3-thev-q-val">100Ω</span></label>
+                                    <input type="range" id="m3-thev-q" min="10" max="1000" value="100" step="10" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:130px;">
+                                    <label>R: <span id="m3-thev-r-val">100Ω</span></label>
+                                    <input type="range" id="m3-thev-r" min="10" max="1000" value="100" step="10" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:130px;">
+                                    <label>S: <span id="m3-thev-s-val">100Ω</span></label>
+                                    <input type="range" id="m3-thev-s" min="10" max="1000" value="100" step="10" class="m3-slider">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-thev-calc">
+                            <h4 style="color:#a78bfa; margin-bottom:10px;">🌉 Thevenin Bridge Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>P (Ω):</label><input type="number" id="m3-thc-p" value="100" min="1" step="1">
+                                <label>Q (Ω):</label><input type="number" id="m3-thc-q" value="100" min="1" step="1">
+                                <label>R (Ω):</label><input type="number" id="m3-thc-r" value="100" min="1" step="1">
+                                <label>S (Ω):</label><input type="number" id="m3-thc-s" value="100" min="1" step="1">
+                            </div>
+                            <div class="m3-calc-row">
+                                <label>V (V):</label><input type="number" id="m3-thc-v" value="10" min="0.1" step="0.1">
+                                <label>Rg (Ω):</label><input type="number" id="m3-thc-rg" value="100" min="1" step="1">
+                            </div>
+                            <div class="m3-calc-result" id="m3-thc-result">Vth = — | Rth = — | Ig = —</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('V_{th}=\\frac{V(PS-QR)}{(P+Q)(R+S)},\\;R_{th}=\\frac{PQ}{P+Q}+\\frac{RS}{R+S}')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-thev-calc').classList.toggle('open')">🧮 Thevenin Calc</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-thev">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.9: BRIDGE & GALVANOMETER SENSITIVITY -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>📐 3.9 Bridge &amp; Galvanometer Sensitivity</h3>
+                            <span class="m3-badge">SI · SV · SB · Max Sensitivity</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:10px; text-align:center;">Current Sensitivity</h4>
+                                <div class="formula text-sm">$$ \boxed{S_I = \frac{\theta}{I_g} \;\text{mm/μA}} $$</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.75rem;">Deflection per unit galvanometer current</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Voltage Sensitivity</h4>
+                                <div class="formula text-sm">$$ \boxed{S_V = \frac{\theta}{V_{th}} \;\text{mm/V}} $$</div>
+                                <div class="formula text-sm">$$ S_V = \frac{S_I}{R_g} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:10px; text-align:center;">Bridge Sensitivity</h4>
+                                <div class="formula text-sm">$$ \boxed{S_B = \frac{\theta}{\Delta R/R} \;\text{mm}} $$</div>
+                                <div class="formula text-sm">$$ S_B = \frac{S_I \cdot V}{4(R_g + R_{th})} $$</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#fb7185; text-align:center; margin-bottom:8px;">Maximum Bridge Sensitivity</h4>
+                            <div style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:15px;">
+                                <div class="formula text-sm">$$ \boxed{S_{B_{max}} = \frac{V \cdot S_I}{4}} \quad \text{at } P=Q=R=S $$</div>
+                                <div class="formula text-sm">$$ R_{th(min)} = R, \quad R_g = R_{th} = R $$</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height:420px; flex-direction:column; gap:12px;">
+                            <!-- Sensitivity triptych -->
+                            <div style="display:flex; width:100%; gap:12px; flex-wrap:wrap; justify-content:center;">
+                                <div id="m3-sens-triptych" style="width:100%; max-width:700px; height:140px;"></div>
+                            </div>
+                            <!-- SB vs arm ratio chart -->
+                            <div id="m3-sens-sb-chart" style="width:100%; max-width:700px; height:140px; margin:0 auto;"></div>
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:640px; margin:0 auto; width:100%;">
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>SI (mm/μA): <span id="m3-sens-si-val">5</span></label>
+                                    <input type="range" id="m3-sens-si" min="0.5" max="20" value="5" step="0.5" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>V (V): <span id="m3-sens-v-val">10</span></label>
+                                    <input type="range" id="m3-sens-v" min="1" max="50" value="10" step="1" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>Rg (Ω): <span id="m3-sens-rg-val">100</span></label>
+                                    <input type="range" id="m3-sens-rg" min="10" max="1000" value="100" step="10" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>ΔR/R: <span id="m3-sens-dr-val">0.01</span></label>
+                                    <input type="range" id="m3-sens-dr" min="0.001" max="0.1" value="0.01" step="0.001" class="m3-slider">
+                                </div>
+                            </div>
+                            <div id="m3-sens-status" style="text-align:center; font-family:Orbitron,monospace; color:#00ff88; font-size:0.9rem;">—</div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-sens-calc">
+                            <h4 style="color:#00f5ff; margin-bottom:10px;">📐 Sensitivity Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>SI (mm/μA):</label><input type="number" id="m3-sc-si" value="5" min="0.1" step="0.1">
+                                <label>V (V):</label><input type="number" id="m3-sc-v" value="10" min="0.1" step="0.1">
+                                <label>Rg (Ω):</label><input type="number" id="m3-sc-rg" value="100" min="1" step="1">
+                                <label>Rth (Ω):</label><input type="number" id="m3-sc-rth" value="100" min="1" step="1">
+                            </div>
+                            <div class="m3-calc-result" id="m3-sc-result">SV = — | SB = — | SBmax = —</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('S_B=\\frac{S_I V}{4(R_g+R_{th})},\\;S_{B_{max}}=\\frac{VS_I}{4}')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-sens-calc').classList.toggle('open')">🧮 Sensitivity Calc</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-sens">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.10: KELVIN DOUBLE BRIDGE COMPLETE   -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>🔗 3.10 Kelvin Double Bridge: Complete Analysis</h3>
+                            <span class="m3-badge">P/Q = p/q · Link Elimination · Potentiometer</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:10px; text-align:center;">Kelvin Balance Equation</h4>
+                                <div class="formula text-sm">$$ R_x = R\!\cdot\!\frac{P}{Q} + \frac{r \cdot pq}{p\!+\!q\!+\!r}\!\left(\frac{P}{Q}-\frac{p}{q}\right) $$</div>
+                                <div class="formula text-sm">$$ \boxed{\frac{P}{Q}=\frac{p}{q} \;\Rightarrow\; R_x = R\!\cdot\!\frac{P}{Q}} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Potentiometer Method</h4>
+                                <div class="formula text-sm">$$ \frac{E_x}{E_s} = \frac{\ell_x}{\ell_s} = \frac{R_x}{R_s} $$</div>
+                                <div class="formula text-sm">$$ \boxed{R_x = R_s \cdot \frac{\ell_x}{\ell_s}} $$</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.75rem;">Accuracy: ±0.01% to ±0.05% (best for low R)</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height:420px; flex-direction:column; gap:12px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Kelvin bridge complete SVG -->
+                                <svg id="m3-kb2-svg" viewBox="0 0 340 220" width="330" height="215" style="background:rgba(0,0,0,0.2); border-radius:8px;">
+                                    <!-- Outer arms P, Q -->
+                                    <line x1="170" y1="30" x2="290" y2="110" stroke="#00f5ff" stroke-width="2"></line>
+                                    <line x1="290" y1="110" x2="170" y2="190" stroke="#00f5ff" stroke-width="2"></line>
+                                    <text x="240" y="60" fill="#00f5ff" font-size="10">P</text>
+                                    <text x="240" y="165" fill="#00f5ff" font-size="10">Q</text>
+                                    <!-- Inner arms p, q -->
+                                    <line x1="70" y1="60" x2="130" y2="110" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4 2"></line>
+                                    <line x1="130" y1="110" x2="70" y2="160" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4 2"></line>
+                                    <text x="90" y="78" fill="#a78bfa" font-size="9">p</text>
+                                    <text x="90" y="152" fill="#a78bfa" font-size="9">q</text>
+                                    <!-- X and R -->
+                                    <rect x="10" y="60" width="60" height="25" rx="4" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="1.5"></rect>
+                                    <text x="40" y="77" fill="#00ff88" font-size="9" text-anchor="middle">X</text>
+                                    <rect x="10" y="135" width="60" height="25" rx="4" fill="rgba(250,204,21,0.08)" stroke="#facc15" stroke-width="1.5"></rect>
+                                    <text x="40" y="152" fill="#facc15" font-size="9" text-anchor="middle">R</text>
+                                    <!-- Link r (yoke) -->
+                                    <line x1="40" y1="85" x2="40" y2="135" stroke="#f97316" stroke-width="2.5" id="m3-kb2-link"></line>
+                                    <text x="50" y="113" fill="#f97316" font-size="9">r (link)</text>
+                                    <!-- Galvanometer -->
+                                    <circle cx="170" cy="110" r="10" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="1.5"></circle>
+                                    <text x="170" y="113" fill="#00ff88" font-size="8" text-anchor="middle">G</text>
+                                    <!-- Status -->
+                                    <text x="170" y="210" fill="#00ff88" font-size="9" text-anchor="middle" id="m3-kb2-status">P/Q = p/q → r eliminated</text>
+                                </svg>
+                                <!-- Potentiometer slide wire SVG -->
+                                <svg id="m3-pot-svg" viewBox="0 0 300 180" width="290" height="175" style="background:rgba(0,0,0,0.2); border-radius:8px;">
+                                    <text x="150" y="14" fill="#94a3b8" font-size="9" text-anchor="middle">Potentiometer Slide Wire</text>
+                                    <!-- Slide wire -->
+                                    <line x1="30" y1="80" x2="270" y2="80" stroke="#facc15" stroke-width="3"></line>
+                                    <!-- Sliding contact -->
+                                    <circle cx="150" cy="80" r="6" fill="#00ff88" stroke="#fff" stroke-width="1.5" id="m3-pot-contact"></circle>
+                                    <!-- Standard R section -->
+                                    <line x1="30" y1="80" x2="30" y2="130" stroke="#94a3b8" stroke-width="1.5"></line>
+                                    <rect x="10" y="130" width="40" height="18" rx="3" fill="rgba(250,204,21,0.1)" stroke="#facc15" stroke-width="1"></rect>
+                                    <text x="30" y="143" fill="#facc15" font-size="8" text-anchor="middle">Rs</text>
+                                    <!-- Unknown R section -->
+                                    <line x1="270" y1="80" x2="270" y2="130" stroke="#94a3b8" stroke-width="1.5"></line>
+                                    <rect x="250" y="130" width="40" height="18" rx="3" fill="rgba(0,255,136,0.1)" stroke="#00ff88" stroke-width="1"></rect>
+                                    <text x="270" y="143" fill="#00ff88" font-size="8" text-anchor="middle">Rx</text>
+                                    <!-- Length labels -->
+                                    <line x1="30" y1="60" x2="150" y2="60" stroke="#facc15" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <text x="90" y="55" fill="#facc15" font-size="8" text-anchor="middle">ℓs</text>
+                                    <line x1="150" y1="60" x2="270" y2="60" stroke="#00ff88" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <text x="210" y="55" fill="#00ff88" font-size="8" text-anchor="middle">ℓx</text>
+                                    <!-- Null badge -->
+                                    <rect x="95" y="150" width="110" height="20" rx="6" fill="rgba(0,255,136,0.1)" stroke="#00ff88" stroke-width="1"></rect>
+                                    <text x="150" y="164" fill="#00ff88" font-size="8" text-anchor="middle">Null method · No loading</text>
+                                </svg>
+                            </div>
+                            <!-- Accuracy comparison -->
+                            <div id="m3-kb2-accuracy" style="width:100%; max-width:700px; height:100px; margin:0 auto;"></div>
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:640px; margin:0 auto; width:100%;">
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>r (link Ω): <span id="m3-kb2-r-val">0.1</span></label>
+                                    <input type="range" id="m3-kb2-r-slider" min="0.01" max="1" value="0.1" step="0.01" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>P/Q ratio: <span id="m3-kb2-pq-val">1.0</span></label>
+                                    <input type="range" id="m3-kb2-pq" min="0.5" max="2" value="1" step="0.05" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>p/q ratio: <span id="m3-kb2-ppq-val">1.0</span></label>
+                                    <input type="range" id="m3-kb2-ppq" min="0.5" max="2" value="1" step="0.05" class="m3-slider">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-kb2-calc">
+                            <h4 style="color:#a78bfa; margin-bottom:10px;">🔗 Kelvin Bridge Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>R (Ω):</label><input type="number" id="m3-kb2c-r" value="0.1" min="0.001" step="0.001">
+                                <label>P:</label><input type="number" id="m3-kb2c-p" value="100" min="1" step="1">
+                                <label>Q:</label><input type="number" id="m3-kb2c-q" value="100" min="1" step="1">
+                                <label>p:</label><input type="number" id="m3-kb2c-pp" value="50" min="1" step="1">
+                                <label>q:</label><input type="number" id="m3-kb2c-qq" value="50" min="1" step="1">
+                                <label>r (Ω):</label><input type="number" id="m3-kb2c-rr" value="0.05" min="0.001" step="0.001">
+                            </div>
+                            <div class="m3-calc-result" id="m3-kb2c-result">Rx = —</div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-pot-calc">
+                            <h4 style="color:#facc15; margin-bottom:10px;">📏 Potentiometer R Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>Rs (Ω):</label><input type="number" id="m3-potc-rs" value="0.1" min="0.001" step="0.001">
+                                <label>ℓx (cm):</label><input type="number" id="m3-potc-lx" value="60" min="1" step="1">
+                                <label>ℓs (cm):</label><input type="number" id="m3-potc-ls" value="40" min="1" step="1">
+                            </div>
+                            <div class="m3-calc-result" id="m3-potc-result">Rx = —</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('R_x=R\\cdot\\frac{P}{Q}+\\frac{r\\cdot pq}{p+q+r}\\left(\\frac{P}{Q}-\\frac{p}{q}\\right)')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-kb2-calc').classList.toggle('open')">🧮 Kelvin Bridge</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-pot-calc').classList.toggle('open')">🧮 Potentiometer</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-kb2">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.11: MEDIUM RESISTANCE MEASUREMENT    -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>🔌 3.11 Measurement of Medium Resistance</h3>
+                            <span class="m3-badge">Wheatstone Balance · PS = QR · ±0.1%</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Wheatstone Balance</h4>
+                                <div class="formula text-sm">$$ \frac{P}{Q} = \frac{R}{S} \quad (I_g = 0) $$</div>
+                                <div class="formula text-sm">$$ \boxed{S = \frac{QR}{P}} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:10px; text-align:center;">Balance Derivation</h4>
+                                <div class="formula text-sm">$$ V_{BD}=0 \;\Rightarrow\; I_1 P = I_2 R $$</div>
+                                <div class="formula text-sm">$$ I_1 Q = I_2 S \;\Rightarrow\; PS = QR $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:10px; text-align:center;">Methods (1Ω–100kΩ)</h4>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.8rem;">1. Ammeter-Voltmeter (V-I method)</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.8rem;">2. Substitution method</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.8rem;">3. Wheatstone bridge (±0.1%)</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.8rem;">4. Ohmmeter method</div>
+                            </div>
+                        </div>
+                        <div class="anim-zone" style="height:380px; flex-direction:column; gap:12px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Wheatstone bridge complete SVG -->
+                                <svg id="m3-med-wb-svg" viewBox="0 0 300 250" width="290" height="245" style="background:rgba(0,0,0,0.2); border-radius:8px;">
+                                    <text x="150" y="14" fill="#94a3b8" font-size="9" text-anchor="middle">Wheatstone Bridge — Complete</text>
+                                    <!-- Diamond layout -->
+                                    <line x1="150" y1="35" x2="260" y2="115" stroke="#facc15" stroke-width="2"></line>
+                                    <line x1="260" y1="115" x2="150" y2="195" stroke="#facc15" stroke-width="2"></line>
+                                    <line x1="150" y1="35" x2="40" y2="115" stroke="#00f5ff" stroke-width="2"></line>
+                                    <line x1="40" y1="115" x2="150" y2="195" stroke="#00f5ff" stroke-width="2"></line>
+                                    <!-- Arm labels -->
+                                    <text x="210" y="68" fill="#facc15" font-size="11" font-weight="bold">P</text>
+                                    <text x="210" y="168" fill="#facc15" font-size="11" font-weight="bold">Q</text>
+                                    <text x="85" y="68" fill="#00f5ff" font-size="11" font-weight="bold">R</text>
+                                    <text x="85" y="168" fill="#00f5ff" font-size="11" font-weight="bold" id="m3-med-s-label">S=?</text>
+                                    <!-- Galvanometer -->
+                                    <line x1="40" y1="115" x2="260" y2="115" stroke="#333" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <circle cx="150" cy="115" r="12" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="2"></circle>
+                                    <text x="150" y="119" fill="#00ff88" font-size="9" text-anchor="middle">G</text>
+                                    <!-- Needle -->
+                                    <line x1="150" y1="115" x2="150" y2="103" stroke="#00ff88" stroke-width="2" id="m3-med-needle"></line>
+                                    <!-- Battery -->
+                                    <line x1="150" y1="35" x2="150" y2="18" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="150" y1="195" x2="150" y2="212" stroke="#fff" stroke-width="1.5"></line>
+                                    <text x="150" y="228" fill="#94a3b8" font-size="8" text-anchor="middle">E (Battery)</text>
+                                    <!-- Node labels -->
+                                    <circle cx="150" cy="35" r="3" fill="#fff"></circle>
+                                    <text x="160" y="32" fill="#fff" font-size="7">A</text>
+                                    <circle cx="260" cy="115" r="3" fill="#fff"></circle>
+                                    <text x="268" y="113" fill="#fff" font-size="7">B</text>
+                                    <circle cx="150" cy="195" r="3" fill="#fff"></circle>
+                                    <text x="160" y="198" fill="#fff" font-size="7">C</text>
+                                    <circle cx="40" cy="115" r="3" fill="#fff"></circle>
+                                    <text x="28" y="113" fill="#fff" font-size="7">D</text>
+                                    <!-- Balance badge -->
+                                    <rect x="95" y="232" width="110" height="16" rx="5" fill="rgba(0,255,136,0.1)" stroke="#00ff88" stroke-width="1" id="m3-med-badge-bg"></rect>
+                                    <text x="150" y="243" fill="#00ff88" font-size="8" text-anchor="middle" id="m3-med-badge">PS = QR ✓</text>
+                                </svg>
+                                <!-- Balance procedure steps -->
+                                <div id="m3-med-steps" style="width:320px; height:240px;"></div>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:600px; margin:0 auto; width:100%;">
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>P: <span id="m3-med-p-val">100Ω</span></label>
+                                    <input type="range" id="m3-med-p" min="10" max="1000" value="100" step="10" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>Q: <span id="m3-med-q-val">100Ω</span></label>
+                                    <input type="range" id="m3-med-q" min="10" max="1000" value="100" step="10" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>R: <span id="m3-med-r-val">100Ω</span></label>
+                                    <input type="range" id="m3-med-r" min="10" max="1000" value="100" step="10" class="m3-slider">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-med-calc">
+                            <h4 style="color:#facc15; margin-bottom:10px;">🔌 Wheatstone Bridge Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>P (Ω):</label><input type="number" id="m3-medc-p" value="100" min="1" step="1">
+                                <label>Q (Ω):</label><input type="number" id="m3-medc-q" value="100" min="1" step="1">
+                                <label>R (Ω):</label><input type="number" id="m3-medc-r" value="100" min="1" step="1">
+                            </div>
+                            <div class="m3-calc-result" id="m3-medc-result">S = QR/P = —</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('S=\\frac{QR}{P},\\;PS=QR')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-med-calc').classList.toggle('open')">🧮 Bridge Calc</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-med">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 3.12: OHMMETER: SERIES & SHUNT TYPES  -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m3-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>🔋 3.12 Ohmmeter: Series &amp; Shunt Types</h3>
+                            <span class="m3-badge">Series Scale 0→∞ · Shunt ∞→0 · Non-Linear</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:10px; text-align:center;">Series Ohmmeter</h4>
+                                <div class="formula text-sm">$$ \boxed{I = \frac{V}{R_1 + R_x}} $$</div>
+                                <div class="formula text-sm">Mid-scale: $R_{mid} = R_1 = \frac{V}{I_{FSD}}$</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.75rem;">Scale: 0Ω right → ∞ left</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:10px; text-align:center;">Shunt Ohmmeter</h4>
+                                <div class="formula text-sm">$$ \boxed{I_m = \frac{V \cdot R_x}{R_1(R_m\!+\!R_x)\!+\!R_m R_x}} $$</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.75rem;">Scale: 0Ω left → ∞ right</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.75rem;">Suitable for low R measurement</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Scale Behavior</h4>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.8rem;">$R_x=0$: $I=I_{FSD}$ (full)</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.8rem;">$R_x=R_1$: $I=I_{FSD}/2$ (mid)</div>
+                                <div class="formula text-sm" style="color:#94a3b8; font-size:0.8rem;">$R_x→∞$: $I→0$ (zero)</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#facc15; text-align:center; margin-bottom:6px; font-size:0.85rem;">Series vs Shunt Comparison</h4>
+                            <table class="m3-comparison-table" style="max-width:600px; margin:0 auto;">
+                                <thead><tr><th>Parameter</th><th style="color:#00f5ff;">Series</th><th style="color:#f97316;">Shunt</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Open (Rx=∞)</td><td>I=0, LEFT (∞)</td><td>I=I_FSD, RIGHT (∞)</td></tr>
+                                    <tr><td>Short (Rx=0)</td><td>I=I_FSD, RIGHT (0Ω)</td><td>I=0, LEFT (0Ω)</td></tr>
+                                    <tr><td>Scale dir</td><td>0Ω right → ∞ left</td><td>0Ω left → ∞ right</td></tr>
+                                    <tr><td>Best for</td><td>Medium-High R</td><td>Low R</td></tr>
+                                    <tr><td>Common</td><td style="color:#00ff88;">✓ Standard</td><td>Less common</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="anim-zone" style="height:460px; flex-direction:column; gap:12px;">
+                            <!-- Toggle: Series / Shunt -->
+                            <div style="display:flex; gap:10px; justify-content:center;">
+                                <button class="m3-btn active" id="m3-ohm-series-btn" onclick="document.getElementById('m3-ohm-series-btn').classList.add('active'); document.getElementById('m3-ohm-shunt-btn').classList.remove('active'); if(typeof window.m3OhmToggle==='function') window.m3OhmToggle('series');">Series Ohmmeter</button>
+                                <button class="m3-btn" id="m3-ohm-shunt-btn" onclick="document.getElementById('m3-ohm-shunt-btn').classList.add('active'); document.getElementById('m3-ohm-series-btn').classList.remove('active'); if(typeof window.m3OhmToggle==='function') window.m3OhmToggle('shunt');">Shunt Ohmmeter</button>
+                            </div>
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Ohmmeter SVG -->
+                                <svg id="m3-ohm-svg" viewBox="0 0 340 200" width="330" height="195" style="background:rgba(0,0,0,0.2); border-radius:8px;">
+                                    <text x="170" y="14" fill="#94a3b8" font-size="9" text-anchor="middle" id="m3-ohm-title">Series Ohmmeter</text>
+                                    <!-- Battery -->
+                                    <rect x="15" y="65" width="35" height="50" rx="4" fill="rgba(250,204,21,0.1)" stroke="#facc15" stroke-width="1.5"></rect>
+                                    <text x="32" y="93" fill="#facc15" font-size="8" text-anchor="middle">V</text>
+                                    <!-- R1 (limiting) -->
+                                    <rect x="70" y="75" width="45" height="22" rx="4" fill="rgba(0,245,255,0.08)" stroke="#00f5ff" stroke-width="1.5"></rect>
+                                    <text x="92" y="90" fill="#00f5ff" font-size="8" text-anchor="middle">R₁</text>
+                                    <!-- Wire -->
+                                    <line x1="50" y1="86" x2="70" y2="86" stroke="#fff" stroke-width="1.5"></line>
+                                    <line x1="115" y1="86" x2="140" y2="86" stroke="#fff" stroke-width="1.5"></line>
+                                    <!-- Meter -->
+                                    <circle cx="170" cy="86" r="25" fill="rgba(0,255,136,0.05)" stroke="#00ff88" stroke-width="2"></circle>
+                                    <text x="170" y="82" fill="#00ff88" font-size="7" text-anchor="middle">PMMC</text>
+                                    <!-- Meter needle -->
+                                    <line x1="170" y1="86" x2="170" y2="64" stroke="#00ff88" stroke-width="2" id="m3-ohm-needle"></line>
+                                    <!-- Scale arc -->
+                                    <path d="M 148 68 A 25 25 0 0 1 192 68" fill="none" stroke="#94a3b8" stroke-width="1"></path>
+                                    <text x="146" y="63" fill="#ef4444" font-size="6">∞</text>
+                                    <text x="190" y="63" fill="#00ff88" font-size="6">0</text>
+                                    <text x="170" y="60" fill="#facc15" font-size="5" text-anchor="middle">mid</text>
+                                    <!-- Terminals A-B -->
+                                    <line x1="195" y1="86" x2="240" y2="86" stroke="#fff" stroke-width="1.5"></line>
+                                    <rect x="240" y="70" width="55" height="32" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4 2"></rect>
+                                    <text x="267" y="90" fill="#f97316" font-size="9" text-anchor="middle" id="m3-ohm-rx-label">Rx</text>
+                                    <text x="240" y="64" fill="#94a3b8" font-size="7">A</text>
+                                    <text x="290" y="64" fill="#94a3b8" font-size="7">B</text>
+                                    <!-- Return wire -->
+                                    <line x1="295" y1="86" x2="310" y2="86" stroke="#fff" stroke-width="1"></line>
+                                    <line x1="310" y1="86" x2="310" y2="145" stroke="#fff" stroke-width="1"></line>
+                                    <line x1="310" y1="145" x2="32" y2="145" stroke="#fff" stroke-width="1"></line>
+                                    <line x1="32" y1="145" x2="32" y2="115" stroke="#fff" stroke-width="1"></line>
+                                    <!-- Current indicator -->
+                                    <text x="170" y="170" fill="#00ff88" font-size="9" text-anchor="middle" id="m3-ohm-current">I = V/(R₁+Rx)</text>
+                                    <text x="170" y="192" fill="#94a3b8" font-size="8" text-anchor="middle" id="m3-ohm-reading">—</text>
+                                </svg>
+                                <!-- I vs Rx curve (D3) -->
+                                <div id="m3-ohm-curve" style="width:320px; height:190px;"></div>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:600px; margin:0 auto; width:100%;">
+                                <div class="interactive-slider-group" style="flex:1; min-width:130px;">
+                                    <label>Rx: <span id="m3-ohm-rx-val">100Ω</span></label>
+                                    <input type="range" id="m3-ohm-rx" min="0" max="2000" value="100" step="10" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:130px;">
+                                    <label>R₁: <span id="m3-ohm-r1-val">100Ω</span></label>
+                                    <input type="range" id="m3-ohm-r1" min="10" max="500" value="100" step="10" class="m3-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:130px;">
+                                    <label>V: <span id="m3-ohm-vbat-val">3V</span></label>
+                                    <input type="range" id="m3-ohm-vbat" min="1" max="12" value="3" step="0.5" class="m3-slider">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-ohm-series-calc">
+                            <h4 style="color:#00f5ff; margin-bottom:10px;">🔋 Series Ohmmeter Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>V (V):</label><input type="number" id="m3-osc-v" value="3" min="0.1" step="0.1">
+                                <label>R₁ (Ω):</label><input type="number" id="m3-osc-r1" value="100" min="1" step="1">
+                                <label>Rx (Ω):</label><input type="number" id="m3-osc-rx" value="100" min="0" step="1">
+                            </div>
+                            <div class="m3-calc-result" id="m3-osc-result">I = — | θ = —</div>
+                        </div>
+                        <div class="m3-calc-zone" id="m3-ohm-shunt-calc">
+                            <h4 style="color:#f97316; margin-bottom:10px;">🔋 Shunt Ohmmeter Calculator</h4>
+                            <div class="m3-calc-row">
+                                <label>V (V):</label><input type="number" id="m3-oshc-v" value="3" min="0.1" step="0.1">
+                                <label>R₁ (Ω):</label><input type="number" id="m3-oshc-r1" value="100" min="1" step="1">
+                                <label>Rm (Ω):</label><input type="number" id="m3-oshc-rm" value="50" min="1" step="1">
+                                <label>Rx (Ω):</label><input type="number" id="m3-oshc-rx" value="100" min="0" step="1">
+                            </div>
+                            <div class="m3-calc-result" id="m3-oshc-result">Im = —</div>
+                        </div>
+                        <div class="m3-card-footer">
+                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('I=\\frac{V}{R_1+R_x},\\;R_{mid}=R_1=\\frac{V}{I_{FSD}}')">📋 Copy LaTeX</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-ohm-series-calc').classList.toggle('open')">🧮 Series Calc</button>
+                            <button class="m3-footer-btn" onclick="document.getElementById('m3-ohm-shunt-calc').classList.toggle('open')">🧮 Shunt Calc</button>
+                            <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-ohm">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+    </main>
+
+    <div class="topic-nav-footer">
+        <a href="../measuring-instruments/index.html" class="btn-nav btn-prev">← Previous: 🎛️ Measuring Instruments</a>
+        <a href="../high-r-ac-bridges/index.html" class="btn-nav btn-next">Next: 🌉 High R & AC Bridges →</a>
+    </div>
+
+    
+</body>
+</html>

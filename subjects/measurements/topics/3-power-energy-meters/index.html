@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurements &amp; Instrumentation Formula Book</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+    <!-- Libraries: GSAP, D3, Chart.js, AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="../../css/measurements.css">
+
+    <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+    <link rel="stylesheet" href="../../../../shared/css/topic-page.css">
+    <title>📟 3-φ Power & Energy Meters | MEASUREMENTS | EE Hub</title>
+</head>
+<body >
+    <nav class="navbar" role="navigation">
+        <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+            <li><a href="../../../machines/index.html">Machines</a></li>
+            <li><a href="../../../measurements/index.html" class="active">Measurements</a></li>
+            <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+            <li><a href="../../../power-plant/index.html">Power Plant</a></li>
+            <li><a href="../../../control/index.html">Control Systems</a></li>
+            <li><a href="../../../electronics/index.html">Electronics</a></li>
+            <li><a href="../../../signals/index.html">Signals</a></li>
+            <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+            <li><a href="../../../estimation/index.html">Estimation</a></li>
+            <li><a href="../../../utilization/index.html">Utilization</a></li>
+        </ul>
+        <div class="navbar__actions">
+        <div class="search-box">
+            <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+<path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path><path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path><path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z M365.3,278.3c-28.1,8.5-56.8,2.8-84.2-5.8c-13.8-4.3-27.6-9.1-40.7-15.2c-6.8-3.2-13.6-6.7-19.9-10.9c-5.5-3.6-10.5-7.9-15.9-11.7c-1.7-1.2-2.1-2.8-1.8-4.3c-17.7-23.8-31.1-52.7-29-82.9c2.2-31.5,21.9-58.1,46.9-76.2c38.9-28.1,94.6-38.9,137.8-13.8c21.4,12.4,39.2,30.6,53.1,51c13.4,19.8,24.7,42.6,28.6,66.5C448,222.4,408.4,265.3,365.3,278.3z"></path><path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2zM471.5 185.5c-1.3-13.1-5.2-25-11.2-35.9 7.3 23.4 8.9 48.1 0 71.7-16.2 43.3-59.2 75.9-104.7 81.9-29.7 3.9-60.6-4.4-89-12.2-26.6-7.3-52.8-18-75.2-34.4-3.3.9-7.4-1.3-6.3-5.5.2-.8.5-1.6.8-2.3-7.6-8.8-14.4-18.3-19.9-28.5-4.7-8.8-8.7-18-11.6-27.5 0 5 0 10 .3 15 1.1 20.3 5.2 41.3 19 56.9.5-1 1.3-1.8 2.7-2.3 10.2-3.5 19.2 1.8 26.9 8.1 5.3 4.3 8.2 7.9 11.5 13.8 2.2 3.9 11.9 19.9 9.2 27.2 25.7 11.4 52.5 16.5 80.5 18.4 29.3 2 59.3 1.9 85.5-13.2 23.8-13.7 45.1-34.1 61.4-56.1C467.7 238.3 474.2 212.8 471.5 185.5z"></path><path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z M338.3,272.7c-23.4,0.8-47.2-6.9-69.1-14.6c-10.5-3.7-20.7-7.9-30.7-12.8c-9.3-4.7-17.2-10.7-25.5-16.7c-0.1-0.8-0.4-1.6-1-2.4c-15.3-20.3-27.2-43.7-28.4-69.5c-1.2-26.7,12.3-49.8,31.2-67.6c35.4-33.2,92.6-47.4,136.8-23.9c22,11.7,39.7,31,53.4,51.5c13.1,19.6,24.7,43.7,26.1,67.5C434.1,232.5,382.8,271.2,338.3,272.7z"></path><path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z M175.8,101.4c27-39.9,75.8-68.4,123.6-72.9c50.1-4.7,93.1,28.5,121.4,66.9c14.4,19.6,25.6,41.6,32.2,65c6.4,23.1,4.2,46.3-6.5,67.7c-18.2,36.7-57.9,62.5-98.5,65.8c-13.8,1.1-28-1.1-41.6-3.7c-13.3-2.6-26.5-5.9-39.6-9.5c-24.9-6.8-49.8-17.3-70.6-33c0.2-1.1-0.1-2.3-1.1-3.5c-17.1-19.6-30.2-43-34.8-68.9C155.8,149.6,161.1,123.1,175.8,101.4z M137.8,426.1c-7.3,4.7-15.3,8.4-23.9,10.4c-10.6,2.4-22.1,1.5-31.3-4.7c-8.4-5.7-12.9-15-14.6-24.8c-1.9-11.1-0.4-21.9,3.4-32c0.7-0.1,1.4-0.3,2-0.8c8-4.9,20.3-2.7,28.9-1c4.7,0.9,9.3,2.3,13.7,4.1c3.1,1.3,3.5,2.1,5.5,5.2c4.5,7,7.9,14.9,11.1,22.6c1.6,3.8,3,7.6,4.2,11.5c0.4,1.3,0.8,2.7,1,4.1c0,0.1,0,0.3,0.1,0.4C137,422.6,137,424.6,137.8,426.1z M213.9,308.2c-1.6,0.1-3.1,1-3.7,3.1c-9.1,28.8-21.3,57.1-39,81.7c-6.7,9.3-14.6,18.4-23.6,25.9c-1.7-13.6-14.8-36.8-17.3-41c-1.9-3.2-4.1-6.4-7.5-8.2c-5.2-2.9-11.1-4.5-16.9-5.8c-8.8-2.1-19.3-3.4-28.6-1.4c5.5-9.6,12.7-18.5,20.2-26.2c24.4-24.9,54-45,83.4-63.5c0.8-0.5,1.4-1.1,1.7-1.8c5.8-0.4,11.4,4.7,15.7,8.1c3.2,2.6,4.9,4.7,7,8.3c2.3,4,4.4,8.2,6.3,12.4c0.9,1.9,1.7,3.9,2.4,5.9c0.2,0.5,0.3,0.8,0.4,1.2C214.1,307.4,214,307.8,213.9,308.2z M451.4,260.4c-16.3,22.1-37.6,42.4-61.4,56.1c-26.2,15.1-56.1,15.2-85.5,13.2c-28-1.9-54.7-7.1-80.5-18.4c2.7-7.2-7-23.2-9.2-27.2c-3.3-5.9-6.2-9.5-11.5-13.8c-7.8-6.3-16.8-11.6-26.9-8.1c-1.4,0.5-2.2,1.3-2.7,2.3c-13.9-15.6-18-36.6-19-56.9c-0.3-5-0.3-10-0.3-15c2.9,9.5,6.9,18.7,11.6,27.5c5.5,10.2,12.3,19.7,19.9,28.5c-0.3,0.7-0.6,1.5-0.8,2.3c-1.1,4.2,3,6.4,6.3,5.5c22.4,16.5,48.6,27.1,75.2,34.4c28.4,7.8,59.4,16.1,89,12.2c45.6-6,88.6-38.6,104.7-81.9c8.8-23.7,7.3-48.3,0-71.7c6,10.9,9.9,22.9,11.2,35.9C474.2,212.8,467.7,238.3,451.4,260.4z"></path>
+</svg></span>
+            <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+        </div>
+    </div>
+    </nav>
+    
+    <!-- Topic Nav Script (Shared) -->
+    <script src="../../../../shared/js/topic-nav.js"></script>
+
+    <div class="breadcrumb" style="margin-top: 80px;">
+        <span class="home-icon">🏠</span> 
+        <span class="delimiter">/</span> 
+        <a href="../../index.html" style="text-transform: capitalize;">measurements</a> 
+        <span class="delimiter">/</span> 
+        <span class="current-topic">📟 3-φ Power & Energy Meters</span>
+    </div>
+
+    <main class="topic-main-container">
+        <section id="mod9" class="module-section">
+                <h2 class="module-title" style="color:#f97316">Module 9 — 3-φ Power, Reactive Power &amp; Energy Meters</h2>
+
+                <!-- ── CARD 9.1 — Two Wattmeter Method: Complete Analysis ── -->
+                <div class="machine-card" id="m9-card1">
+                    <div class="card-strip" style="background:#f97316"></div>
+                    <div class="card-header">
+                        <span class="m9-badge">9.1</span>
+                        <h3>Two Wattmeter Method: Complete Analysis</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p>For balanced inductive 3-φ load:</p>
+                        <div class="katex-render" data-formula="W_1 = V_L I_L\cos(30° - \phi)"></div>
+                        <div class="katex-render" data-formula="W_2 = V_L I_L\cos(30° + \phi)"></div>
+                        <div class="katex-render" data-formula="\boxed{P = W_1 + W_2 = \sqrt{3}\,V_L I_L\cos\phi}"></div>
+                        <div class="katex-render" data-formula="\boxed{Q = \sqrt{3}(W_1 - W_2) = \sqrt{3}\,V_L I_L\sin\phi}"></div>
+                        <div class="katex-render" data-formula="\phi = \tan^{-1}\!\left[\frac{\sqrt{3}(W_1-W_2)}{W_1+W_2}\right]"></div>
+                        <div class="katex-render" data-formula="\cos\phi = \cos\!\left[\tan^{-1}\!\left(\frac{\sqrt{3}(W_1-W_2)}{W_1+W_2}\right)\right]"></div>
+                    </div>
+
+                    <!-- Relationship table -->
+                    <div style="overflow-x:auto;margin:0.6rem 0">
+                        <table class="m9-comparison-table" id="m9-phi-table">
+                            <thead><tr>
+                                <th>φ</th><th>cos φ</th><th>W₁ vs W₂</th>
+                            </tr></thead>
+                            <tbody>
+                                <tr data-phi="0"><td>0°</td><td>1 (UPF)</td><td>W₁ = W₂</td></tr>
+                                <tr data-phi="30"><td>30°</td><td>0.866 lag</td><td>W₁ = 2W₂</td></tr>
+                                <tr data-phi="60"><td>60°</td><td>0.5 lag</td><td>W₂ = 0</td></tr>
+                                <tr data-phi="lt60"><td>0° &lt; φ &lt; 60°</td><td>0.5 &lt; cos φ &lt; 1</td><td>W₁(+), W₂(+)</td></tr>
+                                <tr data-phi="90"><td>90°</td><td>0</td><td>W₁ = −W₂</td></tr>
+                                <tr data-phi="gt60"><td>60° &lt; φ &lt; 90°</td><td>0 &lt; cos φ &lt; 0.5</td><td>W₁(+), W₂(−)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- 3-φ two wattmeter circuit SVG -->
+                        <svg id="m9-2w-circuit" viewBox="0 0 280 160" style="width:100%;max-width:280px;display:block;margin:0 auto">
+                            <!-- R line -->
+                            <line x1="10" y1="30" x2="260" y2="30" stroke="#ef4444" stroke-width="2"></line>
+                            <text x="5" y="28" fill="#ef4444" font-size="10">R</text>
+                            <!-- Y line -->
+                            <line x1="10" y1="70" x2="260" y2="70" stroke="#facc15" stroke-width="2"></line>
+                            <text x="5" y="68" fill="#facc15" font-size="10">Y</text>
+                            <!-- B line -->
+                            <line x1="10" y1="110" x2="260" y2="110" stroke="#60a5fa" stroke-width="2"></line>
+                            <text x="5" y="108" fill="#60a5fa" font-size="10">B</text>
+                            <!-- W1: CC in R, PC between R&B -->
+                            <rect x="70" y="21" width="35" height="18" rx="4" fill="rgba(0,245,255,0.08)" stroke="#00f5ff" stroke-width="1.5"></rect>
+                            <text x="87" y="34" fill="#00f5ff" font-size="8" text-anchor="middle">W₁</text>
+                            <line x1="87" y1="39" x2="87" y2="110" stroke="#00f5ff" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"></line>
+                            <!-- W2: CC in Y, PC between Y&B -->
+                            <rect x="150" y="61" width="35" height="18" rx="4" fill="rgba(250,204,21,0.08)" stroke="#facc15" stroke-width="1.5"></rect>
+                            <text x="167" y="74" fill="#facc15" font-size="8" text-anchor="middle">W₂</text>
+                            <line x1="167" y1="79" x2="167" y2="110" stroke="#facc15" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"></line>
+                            <!-- Load box -->
+                            <rect x="220" y="20" width="35" height="100" rx="6" fill="rgba(255,255,255,0.02)" stroke="#475569" stroke-width="1.5"></rect>
+                            <text x="237" y="75" fill="#fff" font-size="9" text-anchor="middle">Load</text>
+                            <text x="140" y="150" fill="#60a5fa" font-size="8" text-anchor="middle">B = common voltage ref</text>
+                        </svg>
+
+                        <!-- φ slider -->
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:6px">
+                            <label style="color:#94a3b8;font-size:0.75rem">φ</label>
+                            <input type="range" id="m9-2w-phi" class="m9-slider" min="0" max="90" value="30" step="1">
+                            <span id="m9-2w-phi-val" style="color:#f97316;font-family:Orbitron;font-size:0.8rem">30</span>°
+                        </div>
+
+                        <!-- W1, W2 bars + badges -->
+                        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+                            <span id="m9-2w-w1badge" class="m9-app-tag" style="border-color:#00f5ff;color:#00f5ff">W₁ = 0 W</span>
+                            <span id="m9-2w-w2badge" class="m9-app-tag" style="border-color:#facc15;color:#facc15">W₂ = 0 W</span>
+                            <span id="m9-2w-revbadge" class="m9-app-tag" style="border-color:#ef4444;color:#ef4444;display:none">⚠️ Reverse W₂</span>
+                        </div>
+                        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m9-2w-pbadge" class="m9-app-tag" style="border-color:#00ff88;color:#00ff88">P = 0 W</span>
+                            <span id="m9-2w-qbadge" class="m9-app-tag" style="border-color:#fb7185;color:#fb7185">Q = 0 VAR</span>
+                            <span id="m9-2w-pfbadge" class="m9-app-tag" style="border-color:#f97316;color:#f97316">cosφ = 1</span>
+                        </div>
+
+                        <!-- D3 chart: W1, W2, P, Q bars -->
+                        <div id="m9-2w-bar-chart" style="width:100%;max-width:320px;margin:8px auto"></div>
+
+                        <!-- Power triangle -->
+                        <svg id="m9-power-tri" viewBox="0 0 240 180" style="width:100%;max-width:240px;display:block;margin:4px auto">
+                            <line id="m9-tri-P" x1="20" y1="150" x2="200" y2="150" stroke="#00ff88" stroke-width="2"></line>
+                            <text id="m9-tri-P-lbl" x="110" y="168" fill="#00ff88" font-size="9" text-anchor="middle">P</text>
+                            <line id="m9-tri-Q" x1="200" y1="150" x2="200" y2="30" stroke="#fb7185" stroke-width="2"></line>
+                            <text id="m9-tri-Q-lbl" x="215" y="90" fill="#fb7185" font-size="9" text-anchor="middle">Q</text>
+                            <line id="m9-tri-S" x1="20" y1="150" x2="200" y2="30" stroke="#facc15" stroke-width="2"></line>
+                            <text id="m9-tri-S-lbl" x="95" y="80" fill="#facc15" font-size="9" text-anchor="middle">S</text>
+                            <path id="m9-tri-arc" d="" stroke="#f97316" stroke-width="1.5" fill="none"></path>
+                            <text id="m9-tri-phi-lbl" x="55" y="140" fill="#f97316" font-size="8">φ</text>
+                        </svg>
+                    </div>
+
+                    <!-- Calculator -->
+                    <div id="m9-2w-calc" class="m9-calc-zone">
+                        <h4 style="color:#f97316;margin:0 0 6px">⚡ Two Wattmeter Full Calculator</h4>
+                        <div class="m9-calc-row">
+                            <label>W₁ (W):</label><input type="number" id="m9-2wc-w1" value="1500">
+                            <label>W₂ (W):</label><input type="number" id="m9-2wc-w2" value="800">
+                        </div>
+                        <div id="m9-2wc-result" class="m9-calc-result">—</div>
+                    </div>
+
+                    <div class="m9-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m9-footer-btn" onclick="document.getElementById('m9-2w-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m9-footer-btn m9-bookmark-btn" data-card="m9-2w-method">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 9.2 — Measurement of Energy ── -->
+                <div class="machine-card" id="m9-card2">
+                    <div class="card-strip" style="background:#f97316"></div>
+                    <div class="card-header">
+                        <span class="m9-badge">9.2</span>
+                        <h3>Measurement of Energy</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <div class="katex-render" data-formula="\boxed{E = \int_0^T V\,i\,dt \quad \text{(Joules)}}"></div>
+                        <div class="katex-render" data-formula="1\,\text{kWh} = 3.6\times10^6\,\text{J}"></div>
+                        <p style="color:#94a3b8;font-size:0.78rem;margin:4px 0">Energy Meter = Integrating type instrument (Induction principle, no controlling torque)</p>
+                        <div class="katex-render" data-formula="\boxed{K = \frac{N}{P \times t}\;\text{(rev/kWh)}}"></div>
+                        <div class="katex-render" data-formula="E = \frac{N}{K}\;\text{kWh}"></div>
+                        <div class="katex-render" data-formula="n_{disc} = \frac{K \times P}{60}\;\text{RPM}"></div>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:4px 0">Three systems: 1. Driving (shunt+series coil) | 2. Moving (Al disc) | 3. Braking (permanent magnet)</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Energy meter cross-section SVG -->
+                        <svg id="m9-em-svg" viewBox="0 0 260 200" style="width:100%;max-width:260px;display:block;margin:0 auto">
+                            <!-- Shunt magnet (pressure coil) - U shape top -->
+                            <rect x="80" y="10" width="100" height="20" rx="4" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"></rect>
+                            <text x="130" y="24" fill="#a78bfa" font-size="8" text-anchor="middle">Shunt Magnet (PC)</text>
+                            <line x1="90" y1="30" x2="90" y2="60" stroke="#a78bfa" stroke-width="1.5"></line>
+                            <line x1="170" y1="30" x2="170" y2="60" stroke="#a78bfa" stroke-width="1.5"></line>
+                            <!-- Flux φsh -->
+                            <text x="78" y="50" fill="#facc15" font-size="7">φ<tspan font-size="5" dy="2">sh</tspan></text>
+                            <text x="172" y="50" fill="#facc15" font-size="7">φ<tspan font-size="5" dy="2">sh</tspan></text>
+                            <!-- Al disc -->
+                            <ellipse id="m9-disc" cx="130" cy="90" rx="50" ry="14" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="1.5"></ellipse>
+                            <text x="130" y="94" fill="#60a5fa" font-size="8" text-anchor="middle">Al Disc</text>
+                            <!-- Rotation arrow -->
+                            <path id="m9-disc-arrow" d="M 165 78 A 38 10 0 0 1 165 102" fill="none" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#m9arrow)"></path>
+                            <defs><marker id="m9arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#60a5fa"></path></marker></defs>
+                            <!-- Series magnet (current coil) -->
+                            <rect x="80" y="120" width="100" height="20" rx="4" fill="rgba(0,245,255,0.08)" stroke="#00f5ff" stroke-width="1.5"></rect>
+                            <text x="130" y="134" fill="#00f5ff" font-size="8" text-anchor="middle">Series Magnet (CC)</text>
+                            <!-- Flux φse -->
+                            <text x="78" y="118" fill="#00f5ff" font-size="7">φ<tspan font-size="5" dy="2">se</tspan></text>
+                            <!-- Braking magnet -->
+                            <rect x="200" y="75" width="30" height="30" rx="4" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1.5"></rect>
+                            <text x="215" y="94" fill="#ef4444" font-size="7" text-anchor="middle">Brake</text>
+                            <!-- Counter -->
+                            <rect x="12" y="150" width="55" height="28" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1.5"></rect>
+                            <text id="m9-kwh-display" x="40" y="168" fill="#f97316" font-size="10" font-family="Orbitron" text-anchor="middle">0.00</text>
+                            <text x="40" y="178" fill="#94a3b8" font-size="6" text-anchor="middle">kWh</text>
+                            <!-- N counter -->
+                            <rect x="193" y="150" width="55" height="28" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1.5"></rect>
+                            <text id="m9-rev-display" x="220" y="168" fill="#f97316" font-size="10" font-family="Orbitron" text-anchor="middle">0</text>
+                            <text x="220" y="178" fill="#94a3b8" font-size="6" text-anchor="middle">Rev</text>
+                            <!-- Speed badge -->
+                            <text id="m9-speed-badge" x="130" y="196" fill="#60a5fa" font-size="8" text-anchor="middle">Speed ∝ Power</text>
+                        </svg>
+
+                        <!-- Load P slider -->
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:6px">
+                            <label style="color:#94a3b8;font-size:0.75rem">Load P (kW)</label>
+                            <input type="range" id="m9-em-power" class="m9-slider" min="0" max="5" value="2" step="0.1">
+                            <span id="m9-em-power-val" style="color:#f97316;font-family:Orbitron;font-size:0.8rem">2</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:2px">
+                            <label style="color:#94a3b8;font-size:0.75rem">K (rev/kWh)</label>
+                            <input type="number" id="m9-em-K" style="width:60px;background:#0d1117;border:1px solid #334155;color:#f8fafc;border-radius:4px;padding:2px 4px;font-size:0.78rem" value="1200">
+                        </div>
+
+                        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+                            <button class="m9-btn" id="m9-em-start">▶ Start</button>
+                            <button class="m9-btn" id="m9-em-reset">⏹ Reset</button>
+                        </div>
+                        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m9-em-time" class="m9-app-tag" style="border-color:#94a3b8;color:#94a3b8">t = 0 s</span>
+                            <span id="m9-em-rpm-badge" class="m9-app-tag" style="border-color:#60a5fa;color:#60a5fa">0 RPM</span>
+                        </div>
+                    </div>
+
+                    <!-- Calculator: Energy Meter -->
+                    <div id="m9-em-calc" class="m9-calc-zone">
+                        <h4 style="color:#f97316;margin:0 0 6px">🔋 Energy Meter Calculator</h4>
+                        <div class="m9-calc-row">
+                            <label>K (rev/kWh):</label><input type="number" id="m9-emc-K" value="1200">
+                            <label>P (kW):</label><input type="number" id="m9-emc-P" value="2">
+                            <label>t (hours):</label><input type="number" id="m9-emc-t" value="1" step="0.01">
+                        </div>
+                        <div id="m9-emc-result" class="m9-calc-result">—</div>
+                    </div>
+
+                    <div class="m9-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m9-footer-btn" onclick="document.getElementById('m9-em-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m9-footer-btn m9-bookmark-btn" data-card="m9-energy">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 9.3 — Energy Meter: Working Principle ── -->
+                <div class="machine-card" id="m9-card3">
+                    <div class="card-strip" style="background:#f97316"></div>
+                    <div class="card-header">
+                        <span class="m9-badge">9.3</span>
+                        <h3>Energy Meter: Working Principle</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#94a3b8;font-size:0.78rem;margin:2px 0">Two alternating fluxes interact with eddy currents in Al disc → Driving torque</p>
+                        <div class="katex-render" data-formula="\phi_{sh} \propto V \quad\text{(shunt magnet)}"></div>
+                        <div class="katex-render" data-formula="\phi_{se} \propto I_L \quad\text{(series magnet)}"></div>
+                        <div class="katex-render" data-formula="T_{d} = \phi_{sh}\times I_{m_{se}} - \phi_{se}\times I_{m_{sh}} \propto VI\cos\phi = P"></div>
+                        <div class="katex-render" data-formula="T_{b} = K_b \times \omega_{disc}"></div>
+                        <p style="color:#94a3b8;font-size:0.78rem;margin:2px 0">At steady state: T<sub>d</sub> = T<sub>b</sub> → ω ∝ P → N<sub>total</sub> = ∫ω dt ∝ ∫P dt = E</p>
+                        <div class="katex-render" data-formula="\theta = 90° + \phi \quad\text{(ideal condition)}"></div>
+                        <div class="katex-render" data-formula="T_d \propto VI\sin\theta = VI\sin(90°+\phi) = VI\cos\phi = P"></div>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Phasor diagram -->
+                        <svg id="m9-phasor-svg" viewBox="0 0 240 220" style="width:100%;max-width:240px;display:block;margin:0 auto">
+                            <!-- Origin -->
+                            <circle cx="120" cy="120" r="2" fill="#475569"></circle>
+                            <!-- V reference (up) -->
+                            <line id="m9-ph-V" x1="120" y1="120" x2="120" y2="30" stroke="#facc15" stroke-width="2"></line>
+                            <text x="125" y="28" fill="#facc15" font-size="8">V</text>
+                            <!-- Ip (lags V ~85°) -->
+                            <line id="m9-ph-Ip" x1="120" y1="120" x2="195" y2="110" stroke="#a78bfa" stroke-width="1.5"></line>
+                            <text id="m9-ph-Ip-lbl" x="198" y="108" fill="#a78bfa" font-size="7">Ip</text>
+                            <!-- φsh (lags Ip) -->
+                            <line id="m9-ph-phish" x1="120" y1="120" x2="200" y2="145" stroke="#facc15" stroke-width="1.5" stroke-dasharray="4 2"></line>
+                            <text id="m9-ph-phish-lbl" x="203" y="148" fill="#facc15" font-size="7">φsh</text>
+                            <!-- Ic (lags V by φ) -->
+                            <line id="m9-ph-Ic" x1="120" y1="120" x2="160" y2="50" stroke="#00f5ff" stroke-width="1.5"></line>
+                            <text id="m9-ph-Ic-lbl" x="163" y="48" fill="#00f5ff" font-size="7">Ic</text>
+                            <!-- φse (in phase with Ic) -->
+                            <line id="m9-ph-phise" x1="120" y1="120" x2="160" y2="50" stroke="#00f5ff" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.5"></line>
+                            <!-- θ arc -->
+                            <path id="m9-ph-theta-arc" d="" stroke="#f97316" stroke-width="1.5" fill="none"></path>
+                            <text id="m9-ph-theta-lbl" x="140" y="175" fill="#f97316" font-size="8">θ = 90°+φ</text>
+                            <!-- φ arc indicator -->
+                            <path id="m9-ph-phi-arc" d="" stroke="#fb7185" stroke-width="1" fill="none"></path>
+                            <text id="m9-ph-phi-lbl" x="130" y="58" fill="#fb7185" font-size="7">φ</text>
+                        </svg>
+
+                        <!-- φ slider -->
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:6px">
+                            <label style="color:#94a3b8;font-size:0.75rem">Load φ</label>
+                            <input type="range" id="m9-ph-phi" class="m9-slider" min="0" max="85" value="30" step="1">
+                            <span id="m9-ph-phi-val" style="color:#f97316;font-family:Orbitron;font-size:0.8rem">30</span>°
+                        </div>
+
+                        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+                            <span id="m9-ph-speed-badge" class="m9-app-tag" style="border-color:#60a5fa;color:#60a5fa">Speed ∝ VIcosφ</span>
+                            <span id="m9-ph-theta-badge" class="m9-app-tag" style="border-color:#f97316;color:#f97316">θ = 120°</span>
+                        </div>
+
+                        <!-- Torque bars -->
+                        <div id="m9-torque-bars" style="width:100%;max-width:280px;margin:6px auto"></div>
+                    </div>
+
+                    <!-- Disc Speed Calculator -->
+                    <div id="m9-disc-calc" class="m9-calc-zone">
+                        <h4 style="color:#f97316;margin:0 0 6px">🌀 Disc Speed Calculator</h4>
+                        <div class="m9-calc-row">
+                            <label>K (rev/kWh):</label><input type="number" id="m9-dsc-K" value="1200">
+                            <label>P (kW):</label><input type="number" id="m9-dsc-P" value="2">
+                        </div>
+                        <div id="m9-dsc-result" class="m9-calc-result">—</div>
+                    </div>
+
+                    <div class="m9-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m9-footer-btn" onclick="document.getElementById('m9-disc-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m9-footer-btn m9-bookmark-btn" data-card="m9-principle">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 9.4 — Energy Meter: Compensations & Errors ── -->
+                <div class="machine-card" id="m9-card4">
+                    <div class="card-strip" style="background:#f97316"></div>
+                    <div class="card-header">
+                        <span class="m9-badge">9.4</span>
+                        <h3>Energy Meter: Compensations &amp; Errors</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#f97316;font-weight:600;font-size:0.8rem;margin:2px 0">Five Compensations:</p>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">1. <strong style="color:#00ff88">Lag Compensation</strong> — Shading coil → θ = 90°+φ</p>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">2. <strong style="color:#00f5ff">Low Load (Friction)</strong> — Shading loop → extra torque at light load</p>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">3. <strong style="color:#ef4444">Anti-Creep</strong> — Holes/slots in disc → disc cannot rotate at no load</p>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">4. <strong style="color:#facc15">Overload</strong> — Saturable shunt on series magnet → linearize</p>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">5. <strong style="color:#a78bfa">Over Voltage</strong> — Saturable shunt magnet → limit φ<sub>sh</sub></p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Tab selector for 5 compensation types -->
+                        <div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-bottom:8px">
+                            <button class="m9-btn active" data-comp="lag">Lag</button>
+                            <button class="m9-btn" data-comp="lowload">Low Load</button>
+                            <button class="m9-btn" data-comp="creep">Creep</button>
+                            <button class="m9-btn" data-comp="overload">Overload</button>
+                            <button class="m9-btn" data-comp="overvolt">Over V</button>
+                        </div>
+
+                        <!-- Compensation panels -->
+                        <div id="m9-comp-lag" class="m9-comp-panel" style="display:block">
+                            <svg viewBox="0 0 240 130" style="width:100%;max-width:240px;display:block;margin:0 auto">
+                                <!-- Shunt magnet pole -->
+                                <rect x="60" y="10" width="120" height="30" rx="4" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1.5"></rect>
+                                <text x="120" y="30" fill="#a78bfa" font-size="8" text-anchor="middle">Shunt Pole</text>
+                                <!-- Shading band -->
+                                <rect id="m9-shading-band" x="140" y="12" width="20" height="26" rx="2" fill="rgba(0,255,136,0.15)" stroke="#00ff88" stroke-width="1.5"></rect>
+                                <text x="150" y="50" fill="#00ff88" font-size="7" text-anchor="middle">Shading Band</text>
+                                <!-- Before/After labels -->
+                                <text x="40" y="75" fill="#ef4444" font-size="8">Before: θ ≠ 90°+φ</text>
+                                <text x="40" y="90" fill="#00ff88" font-size="8">After: θ = 90°+φ ✓</text>
+                                <text x="40" y="110" fill="#94a3b8" font-size="7">→ T<tspan font-size="5" dy="1">d</tspan> ∝ VIcosφ = P</text>
+                            </svg>
+                        </div>
+
+                        <div id="m9-comp-lowload" class="m9-comp-panel" style="display:none">
+                            <svg viewBox="0 0 240 130" style="width:100%;max-width:240px;display:block;margin:0 auto">
+                                <rect x="60" y="10" width="120" height="30" rx="4" fill="rgba(0,245,255,0.08)" stroke="#00f5ff" stroke-width="1.5"></rect>
+                                <text x="120" y="30" fill="#00f5ff" font-size="8" text-anchor="middle">Series Magnet</text>
+                                <ellipse cx="120" cy="65" rx="30" ry="8" fill="none" stroke="#00f5ff" stroke-width="1.5" stroke-dasharray="3 2"></ellipse>
+                                <text x="120" y="68" fill="#00f5ff" font-size="7" text-anchor="middle">Shading Loop</text>
+                                <text x="40" y="95" fill="#94a3b8" font-size="7">Light load → friction can stop disc</text>
+                                <text x="40" y="110" fill="#00ff88" font-size="7">Shading loop → extra torque overcomes friction ✓</text>
+                            </svg>
+                        </div>
+
+                        <div id="m9-comp-creep" class="m9-comp-panel" style="display:none">
+                            <svg viewBox="0 0 240 130" style="width:100%;max-width:240px;display:block;margin:0 auto">
+                                <!-- Disc with holes -->
+                                <ellipse cx="120" cy="50" rx="60" ry="16" fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="1.5"></ellipse>
+                                <circle cx="85" cy="48" r="5" fill="none" stroke="#ef4444" stroke-width="1.5"></circle>
+                                <circle cx="155" cy="48" r="5" fill="none" stroke="#ef4444" stroke-width="1.5"></circle>
+                                <text x="120" y="54" fill="#60a5fa" font-size="8" text-anchor="middle">Al Disc (with holes)</text>
+                                <text x="40" y="85" fill="#ef4444" font-size="7">Creeping = disc rotates at NO LOAD ✗</text>
+                                <text x="40" y="100" fill="#94a3b8" font-size="7">Cause: excess V on pressure coil</text>
+                                <text x="40" y="115" fill="#00ff88" font-size="7">Holes/slots → disc oscillates, stops ✓</text>
+                            </svg>
+                        </div>
+
+                        <div id="m9-comp-overload" class="m9-comp-panel" style="display:none">
+                            <svg viewBox="0 0 240 130" style="width:100%;max-width:240px;display:block;margin:0 auto">
+                                <text x="120" y="20" fill="#facc15" font-size="9" text-anchor="middle">Overload Compensation</text>
+                                <!-- Saturation curve -->
+                                <line x1="40" y1="110" x2="40" y2="30" stroke="#475569" stroke-width="1"></line>
+                                <line x1="40" y1="110" x2="210" y2="110" stroke="#475569" stroke-width="1"></line>
+                                <text x="35" y="28" fill="#94a3b8" font-size="6">φ</text>
+                                <text x="212" y="108" fill="#94a3b8" font-size="6">I</text>
+                                <!-- Saturation curve -->
+                                <path d="M 40 110 Q 80 50 130 45 Q 170 42 200 40" fill="none" stroke="#facc15" stroke-width="1.5"></path>
+                                <text x="120" y="128" fill="#94a3b8" font-size="7">Saturable shunt in series magnet → corrects non-linearity</text>
+                            </svg>
+                        </div>
+
+                        <div id="m9-comp-overvolt" class="m9-comp-panel" style="display:none">
+                            <svg viewBox="0 0 240 130" style="width:100%;max-width:240px;display:block;margin:0 auto">
+                                <text x="120" y="20" fill="#a78bfa" font-size="9" text-anchor="middle">Over Voltage Compensation</text>
+                                <line x1="40" y1="110" x2="40" y2="30" stroke="#475569" stroke-width="1"></line>
+                                <line x1="40" y1="110" x2="210" y2="110" stroke="#475569" stroke-width="1"></line>
+                                <text x="30" y="28" fill="#94a3b8" font-size="6">φsh</text>
+                                <text x="212" y="108" fill="#94a3b8" font-size="6">V</text>
+                                <path d="M 40 110 Q 80 50 130 42 Q 170 38 200 36" fill="none" stroke="#a78bfa" stroke-width="1.5"></path>
+                                <text x="120" y="128" fill="#94a3b8" font-size="7">Saturable shunt magnet → φsh stays ∝ V at high voltage</text>
+                            </svg>
+                        </div>
+
+                        <!-- Error vs load curve -->
+                        <div id="m9-error-load-chart" style="width:100%;max-width:310px;margin:10px auto"></div>
+                    </div>
+
+                    <!-- Meter Accuracy Test Calculator -->
+                    <div id="m9-acc-calc" class="m9-calc-zone">
+                        <h4 style="color:#f97316;margin:0 0 6px">📊 Meter Accuracy Test</h4>
+                        <div class="m9-calc-row">
+                            <label>K (rev/kWh):</label><input type="number" id="m9-acc-K" value="1200">
+                            <label>P (kW):</label><input type="number" id="m9-acc-P" value="2">
+                            <label>t (hours):</label><input type="number" id="m9-acc-t" value="0.5" step="0.01">
+                            <label>N<sub>actual</sub>:</label><input type="number" id="m9-acc-N" value="1210">
+                        </div>
+                        <div id="m9-acc-result" class="m9-calc-result">—</div>
+                    </div>
+
+                    <div class="m9-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m9-footer-btn" onclick="document.getElementById('m9-acc-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m9-footer-btn m9-bookmark-btn" data-card="m9-compensation">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 9.5 — Energy Meter: Complete Reference ── -->
+                <div class="machine-card" id="m9-card5">
+                    <div class="card-strip" style="background:#f97316"></div>
+                    <div class="card-header">
+                        <span class="m9-badge">9.5</span>
+                        <h3>Energy Meter: Complete Reference</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <div class="katex-render" data-formula="K = \frac{N}{kWh} = \frac{N}{P \times t}"></div>
+                        <div class="katex-render" data-formula="\%\text{Error} = \frac{N_{actual} - N_{expected}}{N_{expected}} \times 100"></div>
+                        <p style="color:#94a3b8;font-size:0.78rem;margin:4px 0">Two Wattmeter Summary:</p>
+                        <div class="katex-render" data-formula="P = W_1+W_2,\; Q=\sqrt{3}(W_1-W_2),\; S=\sqrt{P^2+Q^2}"></div>
+                        <div class="katex-render" data-formula="\tan\phi = \frac{\sqrt{3}(W_1-W_2)}{W_1+W_2},\; \cos\phi = P/S"></div>
+                    </div>
+
+                    <!-- Component summary table -->
+                    <div style="overflow-x:auto;margin:0.6rem 0">
+                        <table class="m9-comparison-table">
+                            <thead><tr>
+                                <th>Component</th><th>Function</th>
+                            </tr></thead>
+                            <tbody>
+                                <tr><td style="color:#a78bfa">Pressure coil (shunt)</td><td>Flux ∝ voltage, highly inductive</td></tr>
+                                <tr><td style="color:#00f5ff">Current coil (series)</td><td>Flux ∝ load current</td></tr>
+                                <tr><td style="color:#60a5fa">Al disc</td><td>Rotating element, eddy currents</td></tr>
+                                <tr><td style="color:#ef4444">Braking magnet</td><td>Speed control, speed ∝ power</td></tr>
+                                <tr><td style="color:#00ff88">Lag coil</td><td>Phase correction, θ = 90°+φ</td></tr>
+                                <tr><td style="color:#00f5ff">Shading loop</td><td>Low load friction compensation</td></tr>
+                                <tr><td style="color:#ef4444">Disc holes/slots</td><td>Anti-creep device</td></tr>
+                                <tr><td style="color:#f97316">Register/counter</td><td>Accumulates rev → kWh</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Interactive energy meter simulator -->
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center">
+                            <label style="color:#94a3b8;font-size:0.75rem">W₁ (W)</label>
+                            <input type="range" id="m9-sum-w1" class="m9-slider" min="-2000" max="5000" value="2000" step="50">
+                            <span id="m9-sum-w1-val" style="color:#00f5ff;font-family:Orbitron;font-size:0.75rem">2000</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:3px">
+                            <label style="color:#94a3b8;font-size:0.75rem">W₂ (W)</label>
+                            <input type="range" id="m9-sum-w2" class="m9-slider" min="-2000" max="5000" value="1000" step="50">
+                            <span id="m9-sum-w2-val" style="color:#facc15;font-family:Orbitron;font-size:0.75rem">1000</span>
+                        </div>
+
+                        <!-- Dashboard readout -->
+                        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+                            <span id="m9-sum-P" class="m9-app-tag" style="border-color:#00ff88;color:#00ff88">P = 3000 W</span>
+                            <span id="m9-sum-Q" class="m9-app-tag" style="border-color:#fb7185;color:#fb7185">Q = 0 VAR</span>
+                            <span id="m9-sum-S" class="m9-app-tag" style="border-color:#facc15;color:#facc15">S = 0 VA</span>
+                            <span id="m9-sum-pf" class="m9-app-tag" style="border-color:#f97316;color:#f97316">cosφ = 1</span>
+                            <span id="m9-sum-tanphi" class="m9-app-tag" style="border-color:#94a3b8;color:#94a3b8">tanφ = 0</span>
+                        </div>
+
+                        <!-- Summary power triangle -->
+                        <svg id="m9-sum-tri" viewBox="0 0 240 160" style="width:100%;max-width:240px;display:block;margin:6px auto">
+                            <line id="m9-st-P" x1="20" y1="130" x2="200" y2="130" stroke="#00ff88" stroke-width="2"></line>
+                            <text id="m9-st-P-lbl" x="110" y="148" fill="#00ff88" font-size="9" text-anchor="middle">P</text>
+                            <line id="m9-st-Q" x1="200" y1="130" x2="200" y2="20" stroke="#fb7185" stroke-width="2"></line>
+                            <text id="m9-st-Q-lbl" x="215" y="75" fill="#fb7185" font-size="9">Q</text>
+                            <line id="m9-st-S" x1="20" y1="130" x2="200" y2="20" stroke="#facc15" stroke-width="2"></line>
+                            <text id="m9-st-S-lbl" x="95" y="65" fill="#facc15" font-size="9">S</text>
+                            <path id="m9-st-arc" d="" stroke="#f97316" stroke-width="1.5" fill="none"></path>
+                            <text id="m9-st-phi-lbl" x="55" y="120" fill="#f97316" font-size="8">φ</text>
+                        </svg>
+
+                        <!-- PF zone chart -->
+                        <div id="m9-sum-pf-zone" style="width:100%;max-width:290px;margin:4px auto"></div>
+                    </div>
+
+                    <!-- Reactive Power + W1W2 Finder calculators -->
+                    <div id="m9-ref-calc" class="m9-calc-zone">
+                        <h4 style="color:#f97316;margin:0 0 6px">📐 Reactive Power Calculator</h4>
+                        <div class="m9-calc-row">
+                            <label>V<sub>L</sub> (V):</label><input type="number" id="m9-rpc-vl" value="415">
+                            <label>I<sub>L</sub> (A):</label><input type="number" id="m9-rpc-il" value="10">
+                            <label>φ (°):</label><input type="number" id="m9-rpc-phi" value="30">
+                        </div>
+                        <div id="m9-rpc-result" class="m9-calc-result">—</div>
+                        <h4 style="color:#f97316;margin:8px 0 6px">🎯 W₁ W₂ Relationship Finder</h4>
+                        <div class="m9-calc-row">
+                            <label>φ (°):</label><input type="number" id="m9-wrf-phi" value="30">
+                        </div>
+                        <div id="m9-wrf-result" class="m9-calc-result">—</div>
+                    </div>
+
+                    <div class="m9-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m9-footer-btn" onclick="document.getElementById('m9-ref-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m9-footer-btn m9-bookmark-btn" data-card="m9-reference">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+    </main>
+
+    <div class="topic-nav-footer">
+        <a href="../wattmeter-errors-polyphase/index.html" class="btn-nav btn-prev">← Previous: ⚖️ Wattmeter Errors & Polyphase</a>
+        <a href="../cro-electronic-measurements/index.html" class="btn-nav btn-next">Next: 📺 CRO & Electronic Measurements →</a>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical Circuits | EE Formula Hub</title>
+    <meta name="description" content="Complete Formula Reference ⚡ Animated ⚡ Interactive">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Orbitron:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- AOS (Animate on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Three.js & GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Chart.js & D3 (for later sections) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+    <link rel="stylesheet" href="../../css/circuit.css?v=1">
+    <link rel="stylesheet" href="../../css/ac-analysis.css">
+
+    <link rel="stylesheet" href="../../../../shared/css/topic-page.css">
+    <title>〰️ DC & AC Analysis | CIRCUIT | EE Hub</title>
+</head>
+<body data-page-category="circuit" class="custom-page dark-mode">
+    <nav class="navbar" role="navigation">
+        <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="../../../circuit/index.html" class="active">Circuit Theory</a></li>
+            <li><a href="../../../machines/index.html">Machines</a></li>
+            <li><a href="../../../measurements/index.html">Measurements</a></li>
+            <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+            <li><a href="../../../power-plant/index.html">Power Plant</a></li>
+            <li><a href="../../../control/index.html">Control Systems</a></li>
+            <li><a href="../../../electronics/index.html">Electronics</a></li>
+            <li><a href="../../../signals/index.html">Signals</a></li>
+            <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+            <li><a href="../../../estimation/index.html">Estimation</a></li>
+            <li><a href="../../../utilization/index.html">Utilization</a></li>
+        </ul>
+        <div class="navbar__actions">
+            <div class="search-box">
+                <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+                        <path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z">
+                        </path>
+                        <path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z">
+                        </path>
+                        <path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z M365.3,278.3c-28.1,8.5-56.8,2.8-84.2-5.8c-13.8-4.3-27.6-9.1-40.7-15.2c-6.8-3.2-13.6-6.7-19.9-10.9c-5.5-3.6-10.5-7.9-15.9-11.7c-1.7-1.2-2.1-2.8-1.8-4.3c-17.7-23.8-31.1-52.7-29-82.9c2.2-31.5,21.9-58.1,46.9-76.2c38.9-28.1,94.6-38.9,137.8-13.8c21.4,12.4,39.2,30.6,53.1,51c13.4,19.8,24.7,42.6,28.6,66.5C448,222.4,408.4,265.3,365.3,278.3z">
+                        </path>
+                        <path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2zM471.5 185.5c-1.3-13.1-5.2-25-11.2-35.9 7.3 23.4 8.9 48.1 0 71.7-16.2 43.3-59.2 75.9-104.7 81.9-29.7 3.9-60.6-4.4-89-12.2-26.6-7.3-52.8-18-75.2-34.4-3.3.9-7.4-1.3-6.3-5.5.2-.8.5-1.6.8-2.3-7.6-8.8-14.4-18.3-19.9-28.5-4.7-8.8-8.7-18-11.6-27.5 0 5 0 10 .3 15 1.1 20.3 5.2 41.3 19 56.9.5-1 1.3-1.8 2.7-2.3 10.2-3.5 19.2 1.8 26.9 8.1 5.3 4.3 8.2 7.9 11.5 13.8 2.2 3.9 11.9 19.9 9.2 27.2 25.7 11.4 52.5 16.5 80.5 18.4 29.3 2 59.3 1.9 85.5-13.2 23.8-13.7 45.1-34.1 61.4-56.1C467.7 238.3 474.2 212.8 471.5 185.5z">
+                        </path>
+                        <path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z M338.3,272.7c-23.4,0.8-47.2-6.9-69.1-14.6c-10.5-3.7-20.7-7.9-30.7-12.8c-9.3-4.7-17.2-10.7-25.5-16.7c-0.1-0.8-0.4-1.6-1-2.4c-15.3-20.3-27.2-43.7-28.4-69.5c-1.2-26.7,12.3-49.8,31.2-67.6c35.4-33.2,92.6-47.4,136.8-23.9c22,11.7,39.7,31,53.4,51.5c13.1,19.6,24.7,43.7,26.1,67.5C434.1,232.5,382.8,271.2,338.3,272.7z">
+                        </path>
+                        <path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z M175.8,101.4c27-39.9,75.8-68.4,123.6-72.9c50.1-4.7,93.1,28.5,121.4,66.9c14.4,19.6,25.6,41.6,32.2,65c6.4,23.1,4.2,46.3-6.5,67.7c-18.2,36.7-57.9,62.5-98.5,65.8c-13.8,1.1-28-1.1-41.6-3.7c-13.3-2.6-26.5-5.9-39.6-9.5c-24.9-6.8-49.8-17.3-70.6-33c0.2-1.1-0.1-2.3-1.1-3.5c-17.1-19.6-30.2-43-34.8-68.9C155.8,149.6,161.1,123.1,175.8,101.4z M137.8,426.1c-7.3,4.7-15.3,8.4-23.9,10.4c-10.6,2.4-22.1,1.5-31.3-4.7c-8.4-5.7-12.9-15-14.6-24.8c-1.9-11.1-0.4-21.9,3.4-32c0.7-0.1,1.4-0.3,2-0.8c8-4.9,20.3-2.7,28.9-1c4.7,0.9,9.3,2.3,13.7,4.1c3.1,1.3,3.5,2.1,5.5,5.2c4.5,7,7.9,14.9,11.1,22.6c1.6,3.8,3,7.6,4.2,11.5c0.4,1.3,0.8,2.7,1,4.1c0,0.1,0,0.3,0.1,0.4C137,422.6,137,424.6,137.8,426.1z M213.9,308.2c-1.6,0.1-3.1,1-3.7,3.1c-9.1,28.8-21.3,57.1-39,81.7c-6.7,9.3-14.6,18.4-23.6,25.9c-1.7-13.6-14.8-36.8-17.3-41c-1.9-3.2-4.1-6.4-7.5-8.2c-5.2-2.9-11.1-4.5-16.9-5.8c-8.8-2.1-19.3-3.4-28.6-1.4c5.5-9.6,12.7-18.5,20.2-26.2c24.4-24.9,54-45,83.4-63.5c0.8-0.5,1.4-1.1,1.7-1.8c5.8-0.4,11.4,4.7,15.7,8.1c3.2,2.6,4.9,4.7,7,8.3c2.3,4,4.4,8.2,6.3,12.4c0.9,1.9,1.7,3.9,2.4,5.9c0.2,0.5,0.3,0.8,0.4,1.2C214.1,307.4,214,307.8,213.9,308.2z M451.4,260.4c-16.3,22.1-37.6,42.4-61.4,56.1c-26.2,15.1-56.1,15.2-85.5,13.2c-28-1.9-54.7-7.1-80.5-18.4c2.7-7.2-7-23.2-9.2-27.2c-3.3-5.9-6.2-9.5-11.5-13.8c-7.8-6.3-16.8-11.6-26.9-8.1c-1.4,0.5-2.2,1.3-2.7,2.3c-13.9-15.6-18-36.6-19-56.9c-0.3-5-0.3-10-0.3-15c2.9,9.5,6.9,18.7,11.6,27.5c5.5,10.2,12.3,19.7,19.9,28.5c-0.3,0.7-0.6,1.5-0.8,2.3c-1.1,4.2,3,6.4,6.3,5.5c22.4,16.5,48.6,27.1,75.2,34.4c28.4,7.8,59.4,16.1,89,12.2c45.6-6,88.6-38.6,104.7-81.9c8.8-23.7,7.3-48.3,0-71.7c6,10.9,9.9,22.9,11.2,35.9C474.2,212.8,467.7,238.3,451.4,260.4z">
+                        </path>
+                    </svg></span>
+                <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Topic Nav Script (Shared) -->
+    <script src="../../../../shared/js/topic-nav.js"></script>
+
+    <div class="breadcrumb" style="margin-top: 80px;">
+        <span class="home-icon">🏠</span> 
+        <span class="delimiter">/</span> 
+        <a href="../../index.html" style="text-transform: capitalize;">circuit</a> 
+        <span class="delimiter">/</span> 
+        <span class="current-topic">〰️ DC & AC Analysis</span>
+    </div>
+
+    <main class="topic-main-container">
+        <section id="dc-ac-analysis" class="circuit-section" data-aos="fade-up">
+            <div class="section__header">
+                <h2>DC &amp; AC Circuit Analysis</h2>
+                <p>Fundamental laws, solving techniques, and alternating current properties.</p>
+            </div>
+
+            <!-- OHM'S LAW -->
+            <div class="subsection" data-aos="fade-up">
+                <h3 class="subsection__title">1. DC Analysis &amp; Ohm's Law</h3>
+                <div class="ohms-law-container card-panel">
+                    <div class="ohms-triangle" id="ohms-triangle">
+                        <svg viewBox="0 0 200 173.2" class="triangle-svg">
+                            <polygon points="100,0 200,173.2 0,173.2" fill="rgba(0,0,0,0.5)" stroke="var(--neon-cyan)" stroke-width="2"></polygon>
+                            <!-- Divider lines -->
+                            <line x1="50" y1="86.6" x2="150" y2="86.6" stroke="var(--text-secondary)" stroke-width="2"></line>
+                            <line x1="100" y1="86.6" x2="100" y2="173.2" stroke="var(--text-secondary)" stroke-width="2"></line>
+
+                            <!-- Clickable zones -->
+                            <g class="triangle-btn" data-target="v-formula">
+                                <path d="M 100,5 M 95,80 L 105,80 L 130,35 L 70,35 Z" fill="transparent" class="hover-zone"></path>
+                                <text x="100" y="60" text-anchor="middle" font-size="30" font-weight="bold" fill="var(--electric-yellow)">V</text>
+                            </g>
+                            <g class="triangle-btn" data-target="i-formula">
+                                <path d="M 10,165 L 90,165 L 90,95 L 45,95 Z" fill="transparent" class="hover-zone"></path>
+                                <text x="50" y="145" text-anchor="middle" font-size="30" font-weight="bold" fill="var(--neon-cyan)">I</text>
+                            </g>
+                            <g class="triangle-btn" data-target="r-formula">
+                                <path d="M 190,165 L 110,165 L 110,95 L 155,95 Z" fill="transparent" class="hover-zone"></path>
+                                <text x="150" y="145" text-anchor="middle" font-size="30" font-weight="bold" fill="var(--neon-cyan)">R</text>
+                            </g>
+                        </svg>
+                        <p class="text-sm flip-hint mt-2 text-center">Click V, I, or R to see formula</p>
+                    </div>
+
+                    <div class="ohms-display" id="ohms-display">
+                        <div class="ohms-formula-box active" id="default-formula">
+                            Select a parameter from the magic triangle!
+                        </div>
+                        <div class="ohms-formula-box" id="v-formula">
+                            <div class="formula">$$ V = I \times R $$</div>
+                            <p><strong>Voltage:</strong> The potential difference pushing the current.</p>
+                        </div>
+                        <div class="ohms-formula-box" id="i-formula">
+                            <div class="formula">$$ I = \frac{V}{R} $$</div>
+                            <p><strong>Current:</strong> The rate of flow of electric charge.</p>
+                        </div>
+                        <div class="ohms-formula-box" id="r-formula">
+                            <div class="formula">$$ R = \frac{V}{I} $$</div>
+                            <p><strong>Resistance:</strong> The opposition to current flow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AC PHASORS -->
+            <div class="subsection" data-aos="fade-up">
+                <h3 class="subsection__title">2. AC Waveforms &amp; Phasors</h3>
+                <div class="phasor-container card-panel">
+                    <div class="phasor-formulas">
+                        <p>AC signals are represented as rotating vectors (phasors) in the complex plane.</p>
+                        <div class="formula">$$ V(t) = V_m \sin(\omega t + \theta) $$</div>
+                        <div class="formula">$$ \mathbf{V} = V_{\text{rms}} \angle \theta = V_{\text{rms}} e^{j\theta}
+                            $$</div>
+                        <div class="mt-4 toggle-wrapper">
+                            <label class="switch-label text-sm">Animation Speed (ω):</label>
+                            <input type="range" id="phasor-speed" min="1" max="10" value="3" class="neon-slider" style="width:100%;">
+                        </div>
+                    </div>
+
+                    <div class="phasor-visualizer">
+                        <canvas id="phasorCanvas" width="500" height="250" style="width:100%; max-width:500px; height:auto;"></canvas>
+                        <div class="phasor-legend text-sm mt-2" style="display:flex; justify-content:center; gap:20px;">
+                            <span style="color:var(--neon-cyan)">■ Voltage Phasor</span>
+                            <span style="color:var(--electric-yellow)">■ Real-Time Waveform</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- UNIT 2: AC CIRCUIT ANALYSIS (PREMIUM INTERACTIVE UNIT) -->
+            <section id="ac-analysis-unit" class="section-container">
+                <h2 class="section-title neon-text" data-aos="fade-down" style="font-size: 2.5rem; margin-bottom: 30px; text-transform: uppercase;">
+                    AC Circuit Analysis
+                </h2>
+                <div class="ac-grid">
+
+                    <!-- CARD 1: Average & RMS Values -->
+                    <section class="ac-card" id="card-rms">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">3. Average &amp; RMS Values</h2>
+                            <span class="badge">Fundamental</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ V_{avg} = \frac{1}{T}\int_0^T v(t)\,dt \quad ; \quad V_{rms} =
+                                \sqrt{\frac{1}{T}\int_0^T
+                                v^2(t)\,dt} $$</p>
+                            <p>$$ \text{Peak Factor} = \frac{V_{peak}}{V_{rms}} \quad ; \quad \text{Form Factor} =
+                                \frac{V_{rms}}{V_{avg}} $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-wave-rms"></div>
+                        <div class="ac-controls">
+                            <div class="ac-control-group">
+                                <label>Amplitude ($V_m$): <span id="val-vm">100</span>V</label>
+                                <input type="range" id="slip-vm" class="ac-slider" min="10" max="200" value="100">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>Frequency ($f$): <span id="val-freq">50</span>Hz</label>
+                                <input type="range" id="slip-freq" class="ac-slider" min="10" max="100" value="50">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="rms">🧮 Calculator</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 2: Waveform Signal Table -->
+                    <section class="ac-card" id="card-table">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">4. Signal Waveform Reference</h2>
+                            <span class="badge">8 Waveforms</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <div class="waveform-tabs" style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                <button class="ac-tab active" data-type="sine">Sine</button>
+                                <button class="ac-tab" data-type="hw-rect">HW Rect</button>
+                                <button class="ac-tab" data-type="fw-rect">FW Rect</button>
+                                <button class="ac-tab" data-type="square">Square</button>
+                                <button class="ac-tab" data-type="triangular">Tri</button>
+                                <button class="ac-tab" data-type="sawtooth">Saw</button>
+                            </div>
+                            <div id="formula-display" style="font-size: 0.9rem; min-height: 40px;">
+                                $$ V_{rms} = \frac{V_m}{\sqrt{2}} \quad V_{avg} = 0 \quad (\text{Full Cycle}) $$
+                            </div>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-wave-table"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon">📋 Copy LaTeX</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 3: Phasor Representation -->
+                    <section class="ac-card" id="card-phasor">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">5. Phasor &amp; Power Fundamentals</h2>
+                            <span class="badge">Vector Domain</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ \mathbf{V} = V_{rms}\angle\phi \quad ; \quad Z = R + jX $$</p>
+                            <p>$$ P = VI\cos\phi \quad ; \quad Q = VI\sin\phi \quad ; \quad S = VI $$</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-phasor-fundamentals"></div>
+                        <div class="ac-controls">
+                            <div class="ac-control-group">
+                                <label>Phase $\phi$: <span id="val-phi">45</span>°</label>
+                                <input type="range" id="slip-phi" class="ac-slider" min="-90" max="90" value="45">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="phasor">🧮 Phasor Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 4: Series RL Circuit -->
+                    <section class="ac-card" id="card-rl">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">6. Series RL Circuit</h2>
+                            <span class="badge">Lagging</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ V = \sqrt{V_R^2 + V_L^2} \quad ; \quad \phi = \tan^{-1}(X_L/R) $$</p>
+                            <p>Current <strong>LAGS</strong> voltage by $\phi$. $\cos\phi$ is lagging.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-rl-phasor"></div>
+                        <div class="ac-controls">
+                            <div class="ac-control-group">
+                                <label>Resistance $R$: <span id="rl-val-r">50</span>Ω</label>
+                                <input type="range" id="rl-slip-r" class="ac-slider" min="10" max="100" value="50">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>Inductance $L$: <span id="rl-val-l">100</span>mH</label>
+                                <input type="range" id="rl-slip-l" class="ac-slider" min="10" max="500" value="100">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="impedance">⚡ Impedance</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 5: Series RC Circuit -->
+                    <section class="ac-card" id="card-rc">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">7. Series RC Circuit</h2>
+                            <span class="badge">Leading</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ V = \sqrt{V_R^2 + V_C^2} \quad ; \quad \phi = \tan^{-1}(X_C/R) $$</p>
+                            <p>Current <strong>LEADS</strong> voltage by $\phi$. $\cos\phi$ is leading.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-rc-phasor"></div>
+                        <div class="ac-controls">
+                            <div class="ac-control-group">
+                                <label>Resistance $R$: <span id="rc-val-r">50</span>Ω</label>
+                                <input type="range" id="rc-slip-r" class="ac-slider" min="10" max="100" value="50">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>Capacitance $C$: <span id="rc-val-c">50</span>μF</label>
+                                <input type="range" id="rc-slip-c" class="ac-slider" min="10" max="200" value="50">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="impedance">⚡ Impedance</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 6: Series RLC Circuit -->
+                    <section class="ac-card" id="card-rlc">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">8. Series RLC &amp; Resonance</h2>
+                            <span class="badge" id="rlc-status">Resonance</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ Z = \sqrt{R^2 + (X_L - X_C)^2} \quad ; \quad f_0 = \frac{1}{2\pi\sqrt{LC}} $$</p>
+                            <div id="rlc-mode-badge" style="padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; background: var(--unit-green); color: black; display: inline-block;">
+                                RESONANCE</div>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-rlc-phasor"></div>
+                        <div class="ac-controls">
+                            <div class="ac-control-group">
+                                <label>$L$: <span id="rlc-val-l">100</span>mH</label>
+                                <input type="range" id="rlc-slip-l" class="ac-slider" min="10" max="500" value="100">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>$C$: <span id="rlc-val-c">100</span>μF</label>
+                                <input type="range" id="rlc-slip-c" class="ac-slider" min="10" max="500" value="100">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>$f$: <span id="rlc-val-f">50</span>Hz</label>
+                                <input type="range" id="rlc-slip-f" class="ac-slider" min="10" max="1000" value="50">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="resonance">🎯 Resonance</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 7: Parallel RL Circuit -->
+                    <section class="ac-card" id="card-prl">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">9. Parallel RL Circuit</h2>
+                            <span class="badge">Admittance</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ I = \sqrt{I_R^2 + I_L^2} \quad ; \quad Y = \sqrt{G^2 + B_L^2} $$</p>
+                            <p>Voltage is common. Current <strong>LAGS</strong> by $\phi$.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-prl-phasor"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="impedance">⚡ Admittance</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 8: Parallel RC Circuit -->
+                    <section class="ac-card" id="card-prc">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">10. Parallel RC Circuit</h2>
+                            <span class="badge">Admittance</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ I = \sqrt{I_R^2 + I_C^2} \quad ; \quad Y = \sqrt{G^2 + B_C^2} $$</p>
+                            <p>Voltage is common. Current <strong>LEADS</strong> by $\phi$.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-prc-phasor"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="impedance">⚡ Admittance</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 9: Parallel Resonance (Practical) -->
+                    <section class="ac-card" id="card-pres-prac">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">11. Parallel Resonance (Practical)</h2>
+                            <span class="badge" style="background: var(--unit-orange);">Tank Circuit</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ \omega_r = \sqrt{\frac{1}{LC} - \frac{R^2}{L^2}} \quad ; \quad Z_{max} = \frac{L}{CR}
+                                $$</p>
+                            <p>Acts as a <strong>BAND-STOP</strong> filter. $I$ is minimum at $f_r$.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-pres-prac"></div>
+                        <div class="ac-card__controls">
+                            <div class="ac-control-group">
+                                <label>Resistance (R): <span id="pres-val-r">10</span>Ω</label>
+                                <input type="range" id="pres-slip-r" class="ac-slider" min="1" max="100" value="10">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>Q Factor: <span id="pres-val-q">...</span></label>
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="adv-resonance">🎯 Resonance Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 10: Series Resonance -->
+                    <section class="ac-card" id="card-sres">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">12. Series Resonance</h2>
+                            <span class="badge" style="background: var(--unit-green);">Acceptor</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ f_0 = \frac{1}{2\pi\sqrt{LC}} \quad ; \quad Q = \frac{\omega_0 L}{R} $$</p>
+                            <p>Voltage Magnifier: $V_L = V_C = QV$. $Z$ is minimum ($R$).</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-sres"></div>
+                        <div class="ac-card__controls">
+                            <div class="ac-control-group">
+                                <label>Quality (Q): <span id="sres-val-q">...</span></label>
+                                <input type="range" id="sres-slip-q" class="ac-slider" min="1" max="20" value="5">
+                            </div>
+                            <div class="badge-glow" id="v-mag-badge" style="display:none;">VOLTAGE MAGNIFIER</div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="adv-resonance">⚡ Q-Factor</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 11: Series vs Parallel Comparison -->
+                    <section class="ac-card" id="card-res-comp">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">13. Series vs Parallel Comparison</h2>
+                            <span class="toggle-btn" id="toggle-res-mode">Switch to Parallel</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <table class="ac-table-mini">
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th id="comp-mode-label">Series</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Impedance</td>
+                                        <td id="comp-val-z">Minimum (R)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Current</td>
+                                        <td id="comp-val-i">Maximum</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Filter</td>
+                                        <td id="comp-val-f">Band-Pass</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-res-comparison"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="freq-plotter">📊 Response Plot</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 12: Power in AC (Complete) -->
+                    <section class="ac-card" id="card-power-ac">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">14. Power in AC (Complete)</h2>
+                            <span class="badge">Power Triangle</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ S = P + jQ \quad ; \quad pf = \cos\phi = P/S $$</p>
+                            <p>$P$ (Watts), $Q$ (VAR), $S$ (VA).</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-power-triangle"></div>
+                        <div class="ac-card__controls">
+                            <div class="ac-control-group">
+                                <label>Real P: <span id="pwr-val-p">100</span>W</label>
+                                <input type="range" id="pwr-slip-p" class="ac-slider" min="0" max="200" value="100">
+                            </div>
+                            <div class="ac-control-group">
+                                <label>Reactive Q: <span id="pwr-val-q">50</span>VAR</label>
+                                <input type="range" id="pwr-slip-q" class="ac-slider" min="-150" max="150" value="50">
+                            </div>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="pfc-calc">💡 PF Correction</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 13: Electric vs Magnetic Analogy -->
+                    <section class="ac-card" id="card-mag-analogy">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">15. Electric vs Magnetic Analogy</h2>
+                            <span class="badge">Magnetism</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ EMF(V) \leftrightarrow MMF(NI) \quad ; \quad R \leftrightarrow \mathcal{S} $$</p>
+                            <p>Current $I \leftrightarrow \Phi$ (Flux). Conductivity $\sigma \leftrightarrow \mu$.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-mag-analogy"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="mag-ohm">🧲 Magnetic Ohm</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 14: Three Phase System -->
+                    <section class="ac-card" id="card-3phase">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">16. Three Phase Systems</h2>
+                            <span class="badge" id="pha-mode-badge" style="background: var(--unit-purple);">STAR
+                                (Y)</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p id="pha-formula">$$ V_L = \sqrt{3}V_{ph} \quad ; \quad I_L = I_{ph} $$</p>
+                            <p>Balanced Load: $P = \sqrt{3}V_L I_L \cos\phi$. Phase diff: 120°.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-3phase"></div>
+                        <div class="ac-card__controls">
+                            <button class="ac-btn-icon" id="toggle-3phase">Switch to Delta (Δ)</button>
+                        </div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="3phase-calc">⚡ 3-Phase Calc</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 15: Graph Theory Basics -->
+                    <section class="ac-card" id="card-graph-basics">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">17. Graph Theory: Topology</h2>
+                            <span class="badge">Network Science</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ \text{Rank} = N - 1 \quad ; \quad \sum \text{deg}(k) = 2B $$</p>
+                            <p>$N$ = Nodes, $B$ = Branches. Euler: $N - B + l = 1$.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-graph-basics"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="graph-analyzer">📐 Analyzer</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 16: Terminology Table -->
+                    <section class="ac-card" id="card-graph-terms">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">18. Trees, Twigs &amp; Links</h2>
+                            <span class="badge">Terminology</span>
+                        </div>
+                        <div class="ac-card__formula-zone" style="font-size: 0.8rem;">
+                            <table class="ac-table-mini">
+                                <thead>
+                                    <tr>
+                                        <th>Term</th>
+                                        <th>Notation</th>
+                                        <th>Formula</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Twig</td>
+                                        <td>Tree Branch</td>
+                                        <td>$N-1$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Link</td>
+                                        <td>Co-tree</td>
+                                        <td>$B-N+1$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Possible Trees</td>
+                                        <td>det[A][A']</td>
+                                        <td>$N^{N-2}$ (for complete)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-graph-tree"></div>
+                        <div class="ac-card__footer">
+                            <span class="text-xs" style="color:var(--text-muted)">Twigs cyan, Links gold</span>
+                        </div>
+                    </section>
+
+                    <!-- CARD 17: Incidence Matrix -->
+                    <section class="ac-card" id="card-inc-matrix">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">19. Incidence Matrix [A]</h2>
+                            <span class="badge">KCL Basis</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ [A][I_b] = [0] \quad ; \quad \text{Sum of column rows} = 0 $$</p>
+                            <p>Reduced matrix $[\tilde{A}]$ by deleting reference row.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-inc-matrix"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="matrix-verify">🔁 Verify Column Sum</button>
+                        </div>
+                    </section>
+
+                    <!-- CARD 18: Tie-set Matrix -->
+                    <section class="ac-card" id="card-tie-matrix">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">20. Tie-set (Loop) Matrix</h2>
+                            <span class="badge">KVL Basis</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ [B_f][V_b] = [0] \quad ; \quad \text{Rank} = B - N + 1 $$</p>
+                            <p>Each row = 1 Fundamental Loop using 1 Link.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-tie-matrix"></div>
+                        <div class="ac-card__footer">
+                            <span class="text-xs" style="color:var(--unit-purple)">[A][B_f]^T = 0</span>
+                        </div>
+                    </section>
+
+                    <!-- CARD 19: Cut-set Matrix -->
+                    <section class="ac-card" id="card-cut-matrix">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">21. Cut-set Matrix [Q]</h2>
+                            <span class="badge">Twig Dependent</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ [Q_f][I_b] = [0] \quad ; \quad \text{Rank} = N - 1 $$</p>
+                            <p>Each row corresponds to one fundamental Cut-set.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-cut-matrix"></div>
+                        <div class="ac-card__footer">
+                            <span class="text-xs" style="color:var(--unit-orange)">[B_f][Q_f]^T = 0</span>
+                        </div>
+                    </section>
+
+                    <!-- CARD 20: Principle of Duality -->
+                    <section class="ac-card" id="card-duality">
+                        <div class="ac-card__header">
+                            <h2 class="ac-card__title">22. Principle of Duality</h2>
+                            <span class="badge" style="background: var(--unit-gold);">Morphing Duals</span>
+                        </div>
+                        <div class="ac-card__formula-zone">
+                            <p>$$ R \leftrightarrow G \quad ; \quad L \leftrightarrow C \quad ; \quad V \leftrightarrow
+                                I $$</p>
+                            <p>Node analysis is dual to Mesh analysis.</p>
+                        </div>
+                        <div class="ac-card__animation-zone" id="plot-duality"></div>
+                        <div class="ac-card__footer">
+                            <button class="ac-btn-icon" data-calc="dual-finder">🔄 Find Dual Network</button>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <div class="topic-nav-footer">
+        <a href="../fundamental-concepts/index.html" class="btn-nav btn-prev">← Previous: 🔌 Fundamental Concepts</a>
+        <a href="../network-theorems/index.html" class="btn-nav btn-next">Next: 📐 Network Theorems →</a>
+    </div>
+
+    
+</body>
+</html>

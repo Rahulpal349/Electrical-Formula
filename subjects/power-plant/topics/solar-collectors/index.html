@@ -1,0 +1,725 @@
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Collectors — Power Plant Engineering</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;family=Exo+2:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+  
+<link rel="stylesheet" href="../../css/powerplant-inline.css"><link rel="stylesheet" href="../../../../../../shared/css/topic-page.css"></head>
+
+<body data-page-category="powerplant" class="pp-body">
+
+  <!-- Sidebar Toggle -->
+  <button class="pp-sidebar-toggle" id="ppSbToggle" aria-label="Toggle sidebar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <div class="pp-sidebar__overlay" id="ppSbOverlay"></div>
+
+  <!-- Glassmorphism Sidebar -->
+  <aside class="pp-sidebar" id="ppSidebar">
+    <div class="pp-sidebar__header">
+      <div class="pp-sidebar__profile">
+        <div class="pp-sidebar__avatar">⚡</div>
+        <div class="pp-sidebar__info">
+          <span class="pp-sidebar__label">Power Plant</span>
+          <span class="pp-sidebar__name">ENGINEERING</span>
+        </div>
+      </div>
+      <button class="pp-sidebar__close" id="ppSbClose" aria-label="Close sidebar">✕</button>
+    </div>
+    <div class="pp-sidebar__section-label">MODULES</div>
+    <ul class="pp-sidebar__nav">
+      <li><a class="pp-sidebar__link active" data-mod="1" style="--mod-color:#f97316;" href="../power-systems-overview/index.html"><span class="pp-sidebar__icon">⚡</span><span class="pp-sidebar__link-text">Power Systems</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="2" style="--mod-color:#60a5fa;" href="../hydro-power/index.html"><span class="pp-sidebar__icon">💧</span><span class="pp-sidebar__link-text">Hydro Power</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="3" style="--mod-color:#ef4444;" href="../thermal-steam/index.html"><span class="pp-sidebar__icon">🔥</span><span class="pp-sidebar__link-text">Thermal Steam</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="4" style="--mod-color:#f97316;" href="../coal-fuels/index.html"><span class="pp-sidebar__icon">⛏️</span><span class="pp-sidebar__link-text">Coal &amp; Fuels</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="5" style="--mod-color:#a78bfa;" href="../nuclear-power/index.html"><span class="pp-sidebar__icon">☢️</span><span class="pp-sidebar__link-text">Nuclear Power</span><span class="pp-sidebar__link-count">10</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="6" style="--mod-color:#f97316;" href="../diesel-power/index.html"><span class="pp-sidebar__icon">🛢️</span><span class="pp-sidebar__link-text">Diesel Power</span><span class="pp-sidebar__link-count">1</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="7" style="--mod-color:#f97316;" href="../gas-turbine/index.html"><span class="pp-sidebar__icon">🌀</span><span class="pp-sidebar__link-text">Gas Turbine</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="8" style="--mod-color:#facc15;" href="../solar-energy/index.html"><span class="pp-sidebar__icon">☀️</span><span class="pp-sidebar__link-text">Solar Energy</span><span class="pp-sidebar__link-count">9</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="9" style="--mod-color:#facc15;" href="../solar-collectors/index.html"><span class="pp-sidebar__icon">🌡️</span><span class="pp-sidebar__link-text">Solar Collectors</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="10" style="--mod-color:#00f5ff;" href="../geothermal-mhd/index.html"><span class="pp-sidebar__icon">🌋</span><span class="pp-sidebar__link-text">Geothermal &amp; MHD</span><span class="pp-sidebar__link-count">6</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="0" style="--mod-color:#00ff88;" href="../../index.html"><span class="pp-sidebar__icon">📋</span><span class="pp-sidebar__link-text">All Modules</span><span class="pp-sidebar__link-count">56</span></a></li>
+    </ul>
+    <div class="pp-sidebar__footer">
+      <div class="pp-sidebar__footer-text">
+        Chapters: <span>56</span> • Formulas: <span>400+</span><br>
+        Animations: <span>120+</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Unified Navbar -->
+  <nav class="navbar" role="navigation">
+    <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+    <ul class="navbar__links">
+      <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+      <li><a href="../../../machines/index.html">Machines</a></li>
+      <li><a href="../../../measurements/index.html">Measurements</a></li>
+      <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+      <li><a href="../../../power-plant/index.html" class="active">Power Plant</a></li>
+      <li><a href="../../../control/index.html">Control Systems</a></li>
+      <li><a href="../../../electronics/index.html">Electronics</a></li>
+      <li><a href="../../../signals/index.html">Signals</a></li>
+      <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+      <li><a href="../../../estimation/index.html">Estimation</a></li>
+      <li><a href="../../../utilization/index.html">Utilization</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <div class="search-box">
+        <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+          <path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path>
+          <path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path>
+          <path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z"></path>
+          <path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2z"></path>
+          <path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z"></path>
+          <path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z"></path>
+        </svg></span>
+        <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Particles -->
+  <div class="pp-particles" id="pp-particles"></div>
+
+  <!-- Hero Section (measurements-style) -->
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10"></path>
+    </svg>
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style="text-align:center;">
+        Power <span class="pp-neon-text">Plant</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter" data-text="Generation · Thermal · Hydro · Nuclear · Solar · Gas Turbine"></p>
+      <div class="pp-hero-icons">
+        <div class="pp-hero-icon">🏭</div>
+        <div class="pp-hero-icon">💧</div>
+        <div class="pp-hero-icon">☢️</div>
+        <div class="pp-hero-icon">☀️</div>
+      </div>
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#c1" class="pp-hero-cta">⚡ Explore Power Plants</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pp-main"><div class="topic-breadcrumb">
+        <a href="../../../../index.html">EE Hub</a> › 
+        <a href="../../index.html">Power Plant</a> › 
+        <span>Solar Collectors</span>
+    </div><div class="topic-content"><div class="pp-card m4p3-solar" id="c46">
+      <div class="pp-card-accent"></div>
+      <h2 class="pp-section-title">☀️ Solar Energy: Advantages, Disadvantages &amp; Efficiency</h2>
+
+      <div class="pp-definition-box">
+        <strong>Advantages:</strong> Renewable, reduces bills, diverse applications, low maintenance, advancing technology.<br>
+        <strong>Disadvantages:</strong> Expensive storage, weather dependent, no night use, large area, low conversion rate.<br>
+        <strong>Efficiency:</strong> Typical solar cell η ≈ 15%, overall 15–20%. Surface irradiance ≈ 1 kW/m² on a sunny day.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-row">$$\boxed{\eta_{solar,overall} = 15\text{ to }20\%}$$</div>
+        <div class="pp-formula-row">$$G_{surface} \approx 1\,\text{kW/m}^2 \quad \text{(normal sunny day)}$$</div>
+        <div class="pp-formula-row">$$E_{daily} = 120\times10^{15}\,\text{W}$$</div>
+        <div class="pp-formula-row">$$\text{Demand} = 5\%\text{ of total world energy demand}$$</div>
+        <div class="pp-formula-row" style="margin-top:10px;"><strong style="color:#facc15;">EM Radiation from Sun:</strong></div>
+        <div class="pp-formula-row">$$\text{IR: }\lambda &gt; 700\,\text{nm} \quad|\quad \text{Visible: }400\text{-}700\,\text{nm} \quad|\quad \text{UV: }\lambda &lt; 400\,\text{nm}$$</div>
+        <div class="pp-formula-row" style="margin-top:10px;"><strong style="color:#facc15;">Sunlight Recording Instruments:</strong></div>
+        <div class="pp-formula-row">$$G_{total} = G_{direct} + G_{diffuse} \quad\text{(Pyranometer)}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-46" style="min-height:260px;">
+        <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
+          <!-- Advantages vs Disadvantages balance -->
+          <div style="flex:1; min-width:200px; max-width:340px;">
+            <div class="pp-balance-label">⚖️ Advantages vs Disadvantages</div>
+            <div class="pp-balance-scale" id="c46Balance">
+              <div class="pp-balance-col" id="c46Adv"></div>
+              <div style="color:#facc15;font-size:22px;align-self:center;">⚖️</div>
+              <div class="pp-balance-col" id="c46Dis"></div>
+            </div>
+            <div class="pp-balance-label" id="c46BalLabel" style="font-size:10px; color:#f97316;">Storage cost = key challenge</div>
+          </div>
+          <!-- EM Spectrum -->
+          <div style="flex:1; min-width:200px; max-width:400px;">
+            <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;text-align:center;margin-bottom:4px;">Electromagnetic Spectrum</div>
+            <div class="pp-em-spectrum" id="c46Spectrum">
+              <div class="pp-em-seg" style="background:#6b21a8;" title="Gamma">γ</div>
+              <div class="pp-em-seg" style="background:#7c3aed;" title="X-ray">X</div>
+              <div class="pp-em-seg solar-zone" style="background:#a78bfa;" title="UV (λ<400nm)">UV</div>
+              <div class="pp-em-seg solar-zone" style="background:linear-gradient(90deg,#7c3aed,#3b82f6,#22c55e,#facc15,#f97316,#ef4444);" title="Visible (400-700nm)">Vis</div>
+              <div class="pp-em-seg solar-zone" style="background:#ef4444;" title="IR (λ>700nm)">IR</div>
+              <div class="pp-em-seg" style="background:#991b1b;" title="Microwave">μW</div>
+              <div class="pp-em-seg" style="background:#44403c;" title="Radio">Radio</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:7px;color:#9ca3af;font-family:'Share Tech Mono',monospace;">
+              <span>0.01nm</span><span>10nm</span><span>400nm</span><span>700nm</span><span>1mm</span><span>1m</span>
+            </div>
+            <div style="text-align:center;font-size:9px;color:#facc15;margin-top:2px;">Solar output zone: UV + Visible + IR</div>
+          </div>
+        </div>
+        <!-- Instruments -->
+        <div class="pp-instrument-row" id="c46Instruments">
+          <div class="pp-instr-card" onclick="showInstrC46(0)">
+            <div class="pp-instr-icon">🔮</div>
+            <div class="pp-instr-name">Sunshine Recorder</div>
+            <div class="pp-instr-desc">Campbell-Stokes glass sphere focuses sun onto paper strip → burn marks = hours of sunshine per day</div>
+          </div>
+          <div class="pp-instr-card" onclick="showInstrC46(1)">
+            <div class="pp-instr-icon">🌐</div>
+            <div class="pp-instr-name">Pyranometer</div>
+            <div class="pp-instr-desc">Dome-shaped sensor measures G<sub>total</sub> = G<sub>direct</sub> + G<sub>diffuse</sub> (all-sky radiation)</div>
+          </div>
+          <div class="pp-instr-card" onclick="showInstrC46(2)">
+            <div class="pp-instr-icon">🔭</div>
+            <div class="pp-instr-name">Pyrheliometer</div>
+            <div class="pp-instr-desc">Narrow tube pointed at sun → measures Direct Normal Irradiance (DNI) only</div>
+          </div>
+        </div>
+        <!-- Efficiency Gauge -->
+        <div style="margin-top:8px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;margin-bottom:4px;">Efficiency Gauge</div>
+          <div class="pp-eta-gauge">
+            <div class="pp-eta-fill" id="c46EtaFill" style="width:0%;background:linear-gradient(90deg,#facc15,#f59e0b);color:#000;">15%</div>
+            <div class="pp-eta-marker" style="left:33.7%;background:#fb7185;"><span class="pp-eta-marker-label" style="color:#fb7185;">S-Q 33.7%</span></div>
+            <div class="pp-eta-marker" style="left:93%;background:#00ff88;"><span class="pp-eta-marker-label" style="color:#00ff88;">Carnot 93%</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:8px;color:#9ca3af;font-family:'Share Tech Mono',monospace;">
+            <span>0%</span><span style="color:#facc15;">Practical: 15-20%</span><span>100%</span>
+          </div>
+        </div>
+        <!-- Surface Irradiance Calculator -->
+        <div style="margin-top:10px;background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.2);border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;">🌞 Surface Irradiance Calculator</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center;">
+            <label style="font-size:9px;color:#9ca3af;">τ<sub>atm</sub> (0–1):</label>
+            <input type="number" id="c46Tau" value="0.7" min="0" max="1" step="0.05" style="width:60px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:3px;font-size:10px;">
+            <button onclick="calcIrrC46()" style="background:#facc15;color:#000;border:none;border-radius:4px;padding:4px 10px;font-size:10px;font-family:'Orbitron',sans-serif;cursor:pointer;">Calculate</button>
+            <span id="c46IrrResult" style="font-size:11px;color:#00ff88;font-family:'Share Tech Mono',monospace;"></span>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4p3-solar" id="c47">
+      <div class="pp-card-accent"></div>
+      <h2 class="pp-section-title">🌞 Types of Solar Collectors</h2>
+
+      <div class="pp-definition-box">
+        <strong>Non-Tracking (T &lt; 100°C):</strong> Flat Plate, Evacuated Tube, CPC — stationary collectors.<br>
+        <strong>Tracking (T &gt; 100°C):</strong> 1-axis (Fresnel, Parabolic Trough, Cylindrical) and 2-axis (Solar Tower, Dish Stirling, Circular Fresnel).<br>
+        CR = A<sub>aperture</sub>/A<sub>receiver</sub>. Higher CR → higher temperature → higher Carnot efficiency.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-row">$$Q_u = \dot{m}c_p(T_{out}-T_{in}) = F_R[G\alpha - U_L(T_{in}-T_a)]\cdot A_c$$</div>
+        <div class="pp-formula-row">$$\boxed{\eta_c = \frac{Q_u}{G\cdot A_c} = F_R\left[\alpha - \frac{U_L(T_{in}-T_a)}{G}\right]}$$</div>
+        <div class="pp-formula-row">$$CR = \frac{A_{aperture}}{A_{receiver}} \qquad T_{max} = T_a + \frac{G\cdot CR\cdot\alpha}{U_L}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-47" style="min-height:260px;">
+        <!-- Collector Classification Tree -->
+        <div class="pp-collector-tree" id="c47Tree">
+          <div class="pp-ct-node pp-ct-root" onclick="toggleTreeC47('root')">☀️ Solar Collectors</div>
+          <div style="display:flex;justify-content:center;color:#facc15;font-size:14px;">↙ ↘</div>
+          <div class="pp-ct-branch">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div class="pp-ct-node pp-ct-low" onclick="toggleTreeC47('low')">❄️ Non-Tracking<br><span style="font-size:8px;">T &lt; 100°C</span></div>
+              <div class="pp-ct-branch" id="c47LowBranch" style="display:none;">
+                <div class="pp-ct-node pp-ct-low" onclick="showCollectorC47('fpc')" style="font-size:9px;">Flat Plate<br>80-100°C</div>
+                <div class="pp-ct-node pp-ct-low" onclick="showCollectorC47('evac')" style="font-size:9px;border-color:#a78bfa;color:#a78bfa;">Evac Tube<br>150-200°C</div>
+                <div class="pp-ct-node pp-ct-low" onclick="showCollectorC47('cpc')" style="font-size:9px;border-color:#f97316;color:#f97316;">CPC<br>100-200°C</div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div class="pp-ct-node pp-ct-high" onclick="toggleTreeC47('high')">🔥 Tracking<br><span style="font-size:8px;">T &gt; 100°C</span></div>
+              <div class="pp-ct-branch" id="c47HighBranch" style="display:none;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                  <div style="font-size:8px;color:#f97316;font-family:'Orbitron',sans-serif;">1-Axis</div>
+                  <div class="pp-ct-branch">
+                    <div class="pp-ct-node pp-ct-high" onclick="showCollectorC47('fresnel')" style="font-size:9px;">Fresnel<br>250-400°C</div>
+                    <div class="pp-ct-node pp-ct-high" onclick="showCollectorC47('trough')" style="font-size:9px;">Trough<br>300-550°C</div>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                  <div style="font-size:8px;color:#ef4444;font-family:'Orbitron',sans-serif;">2-Axis</div>
+                  <div class="pp-ct-branch">
+                    <div class="pp-ct-node pp-ct-high" onclick="showCollectorC47('tower')" style="font-size:9px;border-color:#ef4444;color:#ef4444;">Tower<br>500-1000°C</div>
+                    <div class="pp-ct-node pp-ct-high" onclick="showCollectorC47('dish')" style="font-size:9px;border-color:#fb7185;color:#fb7185;">Dish<br>750-1000°C</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Collector Detail Panel -->
+        <div class="pp-ct-detail" id="c47Detail" style="display:none;margin:8px auto;"></div>
+        <!-- Temperature Comparison Ladder -->
+        <div style="margin-top:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;margin-bottom:4px;">🌡️ Temperature Comparison</div>
+          <div class="pp-temp-ladder" id="c47TempLadder"></div>
+        </div>
+        <!-- Collector Efficiency Calculator -->
+        <div style="margin-top:10px;background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.2);border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;">📐 Collector Efficiency Calculator</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;">
+            <label style="font-size:8px;color:#9ca3af;">F<sub>R</sub>:</label>
+            <input type="number" id="c47FR" value="0.8" step="0.05" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">α:</label>
+            <input type="number" id="c47Alpha" value="0.9" step="0.05" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">U<sub>L</sub>:</label>
+            <input type="number" id="c47UL" value="4" step="0.5" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">T<sub>in</sub>(°C):</label>
+            <input type="number" id="c47Tin" value="60" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">T<sub>a</sub>(°C):</label>
+            <input type="number" id="c47Ta" value="25" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">G(W/m²):</label>
+            <input type="number" id="c47G" value="800" style="width:55px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">A<sub>c</sub>(m²):</label>
+            <input type="number" id="c47Ac" value="4" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <button onclick="calcCollectorC47()" style="background:#facc15;color:#000;border:none;border-radius:4px;padding:4px 10px;font-size:9px;font-family:'Orbitron',sans-serif;cursor:pointer;">Calculate</button>
+          </div>
+          <div id="c47CalcResult" style="font-size:11px;color:#00ff88;font-family:'Share Tech Mono',monospace;margin-top:4px;"></div>
+        </div>
+        <!-- CR Calculator -->
+        <div style="margin-top:8px;background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.2);border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;">🌡️ Concentration Ratio &amp; T<sub>max</sub></div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;">
+            <label style="font-size:8px;color:#9ca3af;">A<sub>ap</sub>(m²):</label>
+            <input type="number" id="c47Aap" value="100" style="width:55px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">A<sub>rec</sub>(m²):</label>
+            <input type="number" id="c47Arec" value="2" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">α:</label>
+            <input type="number" id="c47CRAlpha" value="0.9" step="0.05" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">U<sub>L</sub>:</label>
+            <input type="number" id="c47CRUL" value="5" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <button onclick="calcCRC47()" style="background:#facc15;color:#000;border:none;border-radius:4px;padding:4px 10px;font-size:9px;font-family:'Orbitron',sans-serif;cursor:pointer;">Calculate</button>
+          </div>
+          <div id="c47CRResult" style="font-size:11px;color:#00ff88;font-family:'Share Tech Mono',monospace;margin-top:4px;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4p3-solar" id="c48">
+      <div class="pp-card-accent"></div>
+      <h2 class="pp-section-title">🏭 Solar Thermal Power Plant</h2>
+
+      <div class="pp-definition-box">
+        <strong>CSP (Concentrating Solar Power):</strong> Uses mirrors/lenses to concentrate sunlight → heat HTF → steam → turbine → generator.<br>
+        <strong>Types:</strong> Parabolic Trough, Solar Tower, Dish/Stirling, Fresnel.<br>
+        <strong>Thermal Storage:</strong> Molten salt (285–565°C) enables 6–15 hours of power after sunset.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-row">$$Q_u = \dot{m}c_p(T_{out}-T_{in})$$</div>
+        <div class="pp-formula-row">$$Q_{HX} = U\cdot A_{HX}\cdot LMTD \qquad LMTD = \frac{\Delta T_1 - \Delta T_2}{\ln(\Delta T_1/\Delta T_2)}$$</div>
+        <div class="pp-formula-row">$$E_{stored} = \dot{m}_{salt}c_p\Delta T_{salt}$$</div>
+        <div class="pp-formula-row">$$\boxed{\eta_{CSP} = \eta_{collector}\times\eta_{HTF}\times\eta_{thermal}\times\eta_{electrical} \approx 15\text{-}20\%}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-48" style="min-height:260px;">
+        <!-- CSP Trough Plant Flow SVG -->
+        <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;margin-bottom:4px;">Parabolic Trough CSP — Complete Flow</div>
+        <div class="pp-csp-flow">
+          <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- Trough mirrors -->
+            <path d="M20,100 Q50,60 80,100" stroke="#e5e7eb" stroke-width="2" fill="none"></path>
+            <path d="M30,120 Q60,80 90,120" stroke="#e5e7eb" stroke-width="2" fill="none"></path>
+            <path d="M20,140 Q50,100 80,140" stroke="#e5e7eb" stroke-width="2" fill="none"></path>
+            <circle cx="50" cy="30" r="14" fill="#facc15" opacity="0.8"></circle>
+            <text x="50" y="34" text-anchor="middle" font-size="8" fill="#000" font-family="Orbitron">☀️</text>
+            <!-- Sun rays to focal tube -->
+            <line x1="50" y1="44" x2="50" y2="85" stroke="#facc15" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"></line>
+            <!-- Focal tube / HTF pipe -->
+            <rect x="40" y="85" width="20" height="6" rx="3" fill="#ef4444" opacity="0.8"></rect>
+            <text x="50" y="80" text-anchor="middle" font-size="7" fill="#ef4444" font-family="Share Tech Mono">HTF 390°C</text>
+            <!-- Arrow to Hot Tank -->
+            <line x1="60" y1="88" x2="140" y2="60" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowRed48)"></line>
+            <!-- Hot Tank -->
+            <rect x="140" y="40" width="50" height="50" rx="8" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1.5"></rect>
+            <text x="165" y="60" text-anchor="middle" font-size="7" fill="#ef4444" font-family="Orbitron">HOT</text>
+            <text x="165" y="72" text-anchor="middle" font-size="7" fill="#ef4444" font-family="Share Tech Mono">565°C</text>
+            <text x="165" y="83" text-anchor="middle" font-size="6" fill="#f97316" font-family="Share Tech Mono">Molten Salt</text>
+            <!-- Cold Tank -->
+            <rect x="140" y="120" width="50" height="50" rx="8" fill="rgba(96,165,250,0.2)" stroke="#60a5fa" stroke-width="1.5"></rect>
+            <text x="165" y="142" text-anchor="middle" font-size="7" fill="#60a5fa" font-family="Orbitron">COLD</text>
+            <text x="165" y="154" text-anchor="middle" font-size="7" fill="#60a5fa" font-family="Share Tech Mono">285°C</text>
+            <!-- Hot → HX -->
+            <line x1="190" y1="65" x2="250" y2="65" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowRed48)"></line>
+            <!-- Heat Exchanger -->
+            <rect x="250" y="40" width="60" height="55" rx="6" fill="rgba(250,204,21,0.1)" stroke="#facc15" stroke-width="1.5"></rect>
+            <text x="280" y="58" text-anchor="middle" font-size="7" fill="#facc15" font-family="Orbitron">Heat</text>
+            <text x="280" y="70" text-anchor="middle" font-size="7" fill="#facc15" font-family="Orbitron">Exchanger</text>
+            <text x="280" y="84" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Share Tech Mono">LMTD</text>
+            <!-- Cold return -->
+            <line x1="260" y1="95" x2="190" y2="130" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4,2"></line>
+            <!-- Steam out -->
+            <line x1="310" y1="60" x2="370" y2="60" stroke="#facc15" stroke-width="2" marker-end="url(#arrowGold48)"></line>
+            <text x="340" y="54" text-anchor="middle" font-size="6" fill="#e5e7eb" font-family="Share Tech Mono">Steam</text>
+            <!-- Turbine -->
+            <circle cx="395" cy="60" r="25" fill="rgba(250,204,21,0.15)" stroke="#facc15" stroke-width="1.5"></circle>
+            <text x="395" y="56" text-anchor="middle" font-size="7" fill="#facc15" font-family="Orbitron">⚙️</text>
+            <text x="395" y="68" text-anchor="middle" font-size="6" fill="#facc15" font-family="Orbitron">Turbine</text>
+            <!-- Generator -->
+            <line x1="420" y1="60" x2="460" y2="60" stroke="#00ff88" stroke-width="2" marker-end="url(#arrowGreen48)"></line>
+            <rect x="460" y="42" width="50" height="36" rx="6" fill="rgba(0,255,136,0.1)" stroke="#00ff88" stroke-width="1.5"></rect>
+            <text x="485" y="58" text-anchor="middle" font-size="7" fill="#00ff88" font-family="Orbitron">Gen</text>
+            <text x="485" y="70" text-anchor="middle" font-size="6" fill="#00ff88" font-family="Share Tech Mono">→ Grid</text>
+            <!-- Condenser -->
+            <line x1="395" y1="85" x2="395" y2="130" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrowBlue48)"></line>
+            <rect x="365" y="130" width="60" height="30" rx="6" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="1"></rect>
+            <text x="395" y="148" text-anchor="middle" font-size="7" fill="#60a5fa" font-family="Orbitron">Condenser</text>
+            <!-- Feed loop back -->
+            <path d="M365,145 Q280,180 260,95" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2" fill="none"></path>
+            <text x="300" y="175" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Share Tech Mono">Feed water return</text>
+            <!-- Arrows defs -->
+            <defs>
+              <marker id="arrowRed48" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#ef4444"></path></marker>
+              <marker id="arrowGold48" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#facc15"></path></marker>
+              <marker id="arrowGreen48" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#00ff88"></path></marker>
+              <marker id="arrowBlue48" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#60a5fa"></path></marker>
+            </defs>
+            <!-- Labels -->
+            <text x="50" y="160" text-anchor="middle" font-size="7" fill="#e5e7eb" font-family="Orbitron">Solar Field</text>
+            <text x="165" y="185" text-anchor="middle" font-size="7" fill="#f97316" font-family="Orbitron">Thermal Storage</text>
+            <text x="530" y="48" text-anchor="middle" font-size="6" fill="#00ff88" font-family="Share Tech Mono">η_CSP ≈ 15-20%</text>
+            <!-- Storage badge -->
+            <rect x="120" y="190" width="90" height="18" rx="4" fill="rgba(0,255,136,0.15)" stroke="#00ff88" stroke-width="1"></rect>
+            <text x="165" y="203" text-anchor="middle" font-size="7" fill="#00ff88" font-family="Orbitron">6-15h Storage</text>
+          </svg>
+        </div>
+
+        <!-- Thermal Storage Day/Night Toggle -->
+        <div style="margin-top:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;margin-bottom:4px;">☀️/🌙 Thermal Storage — Day vs Night</div>
+          <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <button onclick="toggleStorageC48('day')" id="c48DayBtn" style="background:#facc15;color:#000;border:none;border-radius:4px;padding:4px 12px;font-size:9px;font-family:'Orbitron',sans-serif;cursor:pointer;">☀️ Day</button>
+            <button onclick="toggleStorageC48('night')" id="c48NightBtn" style="background:rgba(96,165,250,0.2);color:#60a5fa;border:1px solid #60a5fa;border-radius:4px;padding:4px 12px;font-size:9px;font-family:'Orbitron',sans-serif;cursor:pointer;">🌙 Night</button>
+          </div>
+          <div class="pp-storage-anim" id="c48StorageAnim">
+            <div>
+              <div class="pp-tank" style="border-color:#ef4444;">
+                <div class="pp-tank-fill" id="c48HotFill" style="background:rgba(239,68,68,0.4);height:80%;"></div>
+              </div>
+              <div class="pp-tank-label" style="color:#ef4444;">Hot 565°C</div>
+            </div>
+            <div class="pp-tank-arrow" id="c48Arrow">→</div>
+            <div style="text-align:center;">
+              <div style="font-size:9px;color:#facc15;font-family:'Orbitron',sans-serif;" id="c48StorageLabel">Day: Charging ☀️</div>
+              <div style="font-size:8px;color:#00ff88;margin-top:2px;" id="c48StorageNote">HTF heats molten salt</div>
+            </div>
+            <div class="pp-tank-arrow" id="c48Arrow2">→</div>
+            <div>
+              <div class="pp-tank" style="border-color:#60a5fa;">
+                <div class="pp-tank-fill" id="c48ColdFill" style="background:rgba(96,165,250,0.4);height:20%;"></div>
+              </div>
+              <div class="pp-tank-label" style="color:#60a5fa;">Cold 285°C</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CSP vs PV Compare -->
+        <div style="margin-top:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;margin-bottom:4px;">CSP vs PV Comparison</div>
+          <table class="pp-csp-compare">
+            <tbody><tr><th>Parameter</th><th>CSP</th><th>PV Solar</th></tr>
+            <tr><td>Principle</td><td>Heat → Steam → Elec</td><td>Light → Direct Elec</td></tr>
+            <tr><td>Storage</td><td style="color:#00ff88;">Thermal (cheap) ✓</td><td style="color:#ef4444;">Battery (expensive)</td></tr>
+            <tr><td>Efficiency</td><td>15–20%</td><td>15–22%</td></tr>
+            <tr><td>Water Need</td><td style="color:#ef4444;">High (cooling)</td><td style="color:#00ff88;">Minimal ✓</td></tr>
+            <tr><td>Best Location</td><td>DNI &gt; 2000 kWh/m²</td><td>Any sunny area</td></tr>
+            <tr><td>Load Following</td><td style="color:#00ff88;">Good (storage) ✓</td><td style="color:#ef4444;">Poor (night)</td></tr>
+            <tr><td>Scale</td><td>Utility only</td><td style="color:#00ff88;">Any scale ✓</td></tr>
+          </tbody></table>
+        </div>
+
+        <!-- LMTD Calculator -->
+        <div style="margin-top:10px;background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.2);border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;">🌡️ LMTD &amp; CSP Power Calculator</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;">
+            <label style="font-size:8px;color:#9ca3af;">ΔT₁(°C):</label>
+            <input type="number" id="c48DT1" value="120" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">ΔT₂(°C):</label>
+            <input type="number" id="c48DT2" value="40" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">U(W/m²K):</label>
+            <input type="number" id="c48U" value="500" style="width:55px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">A<sub>HX</sub>(m²):</label>
+            <input type="number" id="c48AHX" value="50" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <button onclick="calcLMTDC48()" style="background:#facc15;color:#000;border:none;border-radius:4px;padding:4px 10px;font-size:9px;font-family:'Orbitron',sans-serif;cursor:pointer;">Calculate</button>
+          </div>
+          <div id="c48LMTDResult" style="font-size:11px;color:#00ff88;font-family:'Share Tech Mono',monospace;margin-top:4px;"></div>
+        </div>
+        <!-- CSP Power Output Calculator -->
+        <div style="margin-top:8px;background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.2);border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;">⚡ CSP Power Output</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;">
+            <label style="font-size:8px;color:#9ca3af;">G<sub>DNI</sub>(W/m²):</label>
+            <input type="number" id="c48GDNI" value="900" style="width:55px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">A<sub>coll</sub>(m²):</label>
+            <input type="number" id="c48Acoll" value="50000" style="width:60px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">η<sub>opt</sub>(%):</label>
+            <input type="number" id="c48EtaOpt" value="60" style="width:45px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">η<sub>th</sub>(%):</label>
+            <input type="number" id="c48EtaTh" value="35" style="width:45px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <button onclick="calcCSPC48()" style="background:#facc15;color:#000;border:none;border-radius:4px;padding:4px 10px;font-size:9px;font-family:'Orbitron',sans-serif;cursor:pointer;">Calculate</button>
+          </div>
+          <div id="c48CSPResult" style="font-size:11px;color:#00ff88;font-family:'Share Tech Mono',monospace;margin-top:4px;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4p3-solar" id="c49">
+      <div class="pp-card-accent"></div>
+      <h2 class="pp-section-title">🪞 Heliostats &amp; Solar Tower</h2>
+
+      <div class="pp-definition-box">
+        <strong>Heliostats:</strong> Flat or slightly curved mirrors with 2-axis tracking (azimuth + elevation) that reflect sunlight onto a central tower receiver.<br>
+        <strong>A<sub>heliostat</sub> ≈ 20–150 m².</strong> Large plants use hundreds to thousands of heliostats.<br>
+        <strong>Tower receiver:</strong> 200–300m height, T ≈ 500–1000°C. CR ≈ 300–1500.<br>
+        <strong>1 kW peak power requires 8 m² area</strong> (at G = 1000 W/m², η = 12.5%).
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-row">$$P_{tower} = G_{DNI}\times A_{total}\times\eta_{optical} \qquad \eta_{optical} \approx 50\text{-}70\%$$</div>
+        <div class="pp-formula-row">$$\eta_{tower,Carnot} = 1 - \frac{T_{cold}}{T_{hot}} = 1 - \frac{300}{800} = 0.625$$</div>
+        <div class="pp-formula-row">$$CR_{tower} = \frac{\text{Total heliostat area}}{\text{Receiver area}} \approx 300\text{-}1500$$</div>
+        <div class="pp-formula-row">$$\boxed{1\,\text{kW peak} = 8\,\text{m}^2 \text{ (PV at } \eta=12.5\%\text{)}}$$</div>
+        <div class="pp-formula-row" style="margin-top:6px;"><strong style="color:#ef4444;">Drawbacks of Solar Energy:</strong></div>
+        <div class="pp-formula-row">$$G_{avg} \approx 0.1\text{-}0.3\,\text{kW/m}^2 \text{ (24hr avg)} \quad\text{| Available only sunrise to sunset}$$</div>
+        <div class="pp-formula-row">$$G_{cloudy} \approx 0.1\text{-}0.3 \quad vs \quad G_{clear} \approx 0.8\text{-}1.0\,\text{kW/m}^2$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-49" style="min-height:260px;">
+        <!-- Solar Tower SVG -->
+        <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;margin-bottom:4px;">Solar Tower with Heliostat Field</div>
+        <div class="pp-heliostat-field">
+          <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" id="c49TowerSVG">
+            <!-- Ground -->
+            <rect x="0" y="170" width="500" height="30" fill="rgba(30,30,40,0.8)"></rect>
+            <!-- Tower -->
+            <rect x="238" y="40" width="24" height="130" fill="rgba(150,150,160,0.3)" stroke="#9ca3af" stroke-width="1"></rect>
+            <!-- Receiver -->
+            <rect x="232" y="30" width="36" height="20" rx="4" fill="rgba(239,68,68,0.4)" stroke="#ef4444" stroke-width="1.5">
+              <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2s" repeatCount="indefinite"></animate>
+            </rect>
+            <text x="250" y="44" text-anchor="middle" font-size="7" fill="#ef4444" font-family="Orbitron">Receiver</text>
+            <text x="250" y="26" text-anchor="middle" font-size="6" fill="#ef4444" font-family="Share Tech Mono">500-1000°C</text>
+            <!-- Tower height label -->
+            <text x="270" y="110" font-size="6" fill="#9ca3af" font-family="Share Tech Mono" transform="rotate(90,270,110)">200-300m</text>
+            <!-- Heliostats (left side) -->
+            <rect x="40" y="162" width="18" height="10" rx="1" fill="rgba(229,231,235,0.3)" stroke="#e5e7eb" stroke-width="0.5" transform="rotate(-25,49,167)"></rect>
+            <rect x="80" y="162" width="18" height="10" rx="1" fill="rgba(229,231,235,0.3)" stroke="#e5e7eb" stroke-width="0.5" transform="rotate(-20,89,167)"></rect>
+            <rect x="120" y="162" width="18" height="10" rx="1" fill="rgba(229,231,235,0.3)" stroke="#e5e7eb" stroke-width="0.5" transform="rotate(-12,129,167)"></rect>
+            <rect x="160" y="162" width="18" height="10" rx="1" fill="rgba(229,231,235,0.3)" stroke="#e5e7eb" stroke-width="0.5" transform="rotate(-6,169,167)"></rect>
+            <!-- Heliostats (right side) -->
+            <rect x="320" y="162" width="18" height="10" rx="1" fill="rgba(229,231,235,0.3)" stroke="#e5e7eb" stroke-width="0.5" transform="rotate(6,329,167)"></rect>
+            <rect x="360" y="162" width="18" height="10" rx="1" fill="rgba(229,231,235,0.3)" stroke="#e5e7eb" stroke-width="0.5" transform="rotate(12,369,167)"></rect>
+            <rect x="400" y="162" width="18" height="10" rx="1" fill="rgba(229,231,235,0.3)" stroke="#e5e7eb" stroke-width="0.5" transform="rotate(20,409,167)"></rect>
+            <rect x="440" y="162" width="18" height="10" rx="1" fill="rgba(229,231,235,0.3)" stroke="#e5e7eb" stroke-width="0.5" transform="rotate(25,449,167)"></rect>
+            <!-- Reflected beams -->
+            <line x1="49" y1="162" x2="250" y2="40" stroke="#facc15" stroke-width="0.6" opacity="0.5" stroke-dasharray="3,2"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.5s" repeatCount="indefinite"></animate></line>
+            <line x1="89" y1="162" x2="250" y2="40" stroke="#facc15" stroke-width="0.6" opacity="0.5" stroke-dasharray="3,2"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.8s" repeatCount="indefinite"></animate></line>
+            <line x1="129" y1="162" x2="250" y2="40" stroke="#facc15" stroke-width="0.6" opacity="0.5" stroke-dasharray="3,2"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"></animate></line>
+            <line x1="169" y1="162" x2="250" y2="40" stroke="#facc15" stroke-width="0.6" opacity="0.5" stroke-dasharray="3,2"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.6s" repeatCount="indefinite"></animate></line>
+            <line x1="329" y1="162" x2="250" y2="40" stroke="#facc15" stroke-width="0.6" opacity="0.5" stroke-dasharray="3,2"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.7s" repeatCount="indefinite"></animate></line>
+            <line x1="369" y1="162" x2="250" y2="40" stroke="#facc15" stroke-width="0.6" opacity="0.5" stroke-dasharray="3,2"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.1s" repeatCount="indefinite"></animate></line>
+            <line x1="409" y1="162" x2="250" y2="40" stroke="#facc15" stroke-width="0.6" opacity="0.5" stroke-dasharray="3,2"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.9s" repeatCount="indefinite"></animate></line>
+            <line x1="449" y1="162" x2="250" y2="40" stroke="#facc15" stroke-width="0.6" opacity="0.5" stroke-dasharray="3,2"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.4s" repeatCount="indefinite"></animate></line>
+            <!-- Labels -->
+            <text x="250" y="192" text-anchor="middle" font-size="7" fill="#e5e7eb" font-family="Orbitron">Heliostat Field — 2-axis tracking</text>
+            <rect x="380" y="10" width="110" height="16" rx="4" fill="rgba(250,204,21,0.15)" stroke="#facc15" stroke-width="0.5"></rect>
+            <text x="435" y="22" text-anchor="middle" font-size="7" fill="#facc15" font-family="Share Tech Mono">CR ≈ 300–1500</text>
+          </svg>
+        </div>
+
+        <!-- Drawback Visualizer -->
+        <div style="margin-top:10px;">
+          <div style="font-size:10px;color:#ef4444;font-family:'Orbitron',sans-serif;margin-bottom:4px;">⚠️ Solar Drawbacks</div>
+          <div class="pp-drawback-bars" id="c49Drawbacks"></div>
+        </div>
+
+        <!-- Heliostat Field Calculator -->
+        <div style="margin-top:10px;background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.2);border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;">🪞 Heliostat Field Calculator</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;">
+            <label style="font-size:8px;color:#9ca3af;">P<sub>tower</sub>(MW):</label>
+            <input type="number" id="c49Ptower" value="50" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">G<sub>DNI</sub>(W/m²):</label>
+            <input type="number" id="c49GDNI" value="900" style="width:55px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">η(%):</label>
+            <input type="number" id="c49Eta" value="20" style="width:45px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">A<sub>per mirror</sub>(m²):</label>
+            <input type="number" id="c49Amirror" value="100" style="width:55px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <button onclick="calcHelioC49()" style="background:#facc15;color:#000;border:none;border-radius:4px;padding:4px 10px;font-size:9px;font-family:'Orbitron',sans-serif;cursor:pointer;">Calculate</button>
+          </div>
+          <div id="c49HelioResult" style="font-size:11px;color:#00ff88;font-family:'Share Tech Mono',monospace;margin-top:4px;"></div>
+        </div>
+        <!-- Panel Area Calculator -->
+        <div style="margin-top:8px;background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.2);border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;">☀️ Panel Area Calculator (1kW = 8m²)</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;">
+            <label style="font-size:8px;color:#9ca3af;">P<sub>desired</sub>(kW):</label>
+            <input type="number" id="c49Pdesired" value="5" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <label style="font-size:8px;color:#9ca3af;">η(%):</label>
+            <input type="number" id="c49PanelEta" value="12.5" style="width:50px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:2px;font-size:9px;">
+            <button onclick="calcAreaC49()" style="background:#facc15;color:#000;border:none;border-radius:4px;padding:4px 10px;font-size:9px;font-family:'Orbitron',sans-serif;cursor:pointer;">Calculate</button>
+          </div>
+          <div id="c49AreaResult" style="font-size:11px;color:#00ff88;font-family:'Share Tech Mono',monospace;margin-top:4px;"></div>
+          <div class="pp-area-viz" id="c49AreaViz" style="display:none;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4p3-solar" id="c50">
+      <div class="pp-card-accent"></div>
+      <h2 class="pp-section-title">📋 Solar Remember Points Summary</h2>
+
+      <div class="pp-definition-box">
+        <strong>Key Facts:</strong> η ≈ 15%, 90% Si cells, Mono = octagonal, 1 kW = 8 m², E<sub>g</sub>(Si) = 1.12 eV, S-Q limit = 33.7%, Solar constant = 1367 W/m², E<sub>daily</sub> = 120×10¹⁵ W.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-row">$$\eta_{typical} \approx 15\% \quad|\quad E_g(\text{Si}) = 1.12\,\text{eV} \quad|\quad \text{S-Q limit} = 33.7\%$$</div>
+        <div class="pp-formula-row">$$G_{sc} = 1367\,\text{W/m}^2 \quad|\quad G_{surface} \approx 1000\,\text{W/m}^2 \quad|\quad E_{daily} = 120\times10^{15}\,\text{W}$$</div>
+        <div class="pp-formula-row">$$1\,\text{kW peak} = 8\,\text{m}^2 \quad|\quad 1\,\text{MW} = 8000\,\text{m}^2 = 0.8\,\text{ha}$$</div>
+        <div class="pp-formula-row">$$\text{90\% of cells: Silicon} \quad|\quad \text{Mono shape: Octagonal} \quad|\quad \text{Bypass diode: protection}$$</div>
+      </div>
+
+      <div class="pp-formula-zone" style="margin-top:8px;">
+        <div style="font-size:11px;color:#facc15;font-family:'Orbitron',sans-serif;margin-bottom:6px;">Complete Solar Quick Reference</div>
+        <table class="pp-csp-compare">
+          <tbody><tr><th>Parameter</th><th>Value</th></tr>
+          <tr><td>Solar constant</td><td>1367 W/m²</td></tr>
+          <tr><td>Surface irradiance (peak)</td><td>≈ 1000 W/m²</td></tr>
+          <tr><td>Earth solar energy/day</td><td>120 × 10¹⁵ W</td></tr>
+          <tr><td>Silicon band gap</td><td>1.12 eV</td></tr>
+          <tr><td>S-Q efficiency limit</td><td>33.7%</td></tr>
+          <tr><td>Typical cell η</td><td>15%</td></tr>
+          <tr><td>Mono Si shape</td><td>Octagonal</td></tr>
+          <tr><td>90% material</td><td>Silicon</td></tr>
+          <tr><td>1 kW peak area</td><td>8 m²</td></tr>
+          <tr><td>Area per MW</td><td>8000 m² = 0.8 ha</td></tr>
+          <tr><td>CSP overall η</td><td>15–20%</td></tr>
+          <tr><td>FPC temperature</td><td>&lt; 100°C</td></tr>
+          <tr><td>Parabolic trough temp</td><td>300–550°C</td></tr>
+          <tr><td>Solar tower temp</td><td>500–1000°C</td></tr>
+          <tr><td>Dish Stirling temp</td><td>750–1000°C</td></tr>
+          <tr><td>Best concentration ratio</td><td>Dish (1000–3000)</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-50" style="min-height:260px;">
+        <!-- Flashcard Quiz -->
+        <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;margin-bottom:6px;">🃏 Flashcard Quiz — 10 Key Solar Facts</div>
+        <div class="pp-flashcard-zone" id="c50FlashZone">
+          <div class="pp-flashcard-counter" id="c50Counter">1 / 10</div>
+          <div class="pp-flashcard" id="c50Card" onclick="revealFlashC50()">
+            <div class="pp-flashcard-q" id="c50Q">Loading...</div>
+            <div class="pp-flashcard-a" id="c50A"></div>
+          </div>
+          <div class="pp-flashcard-nav">
+            <button onclick="prevFlashC50()">← Prev</button>
+            <button onclick="nextFlashC50()">Next →</button>
+          </div>
+        </div>
+
+        <!-- Monocrystalline Octagonal Shape -->
+        <div style="margin-top:14px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;margin-bottom:4px;">Cell Shapes</div>
+          <div class="pp-oct-shape">
+            <div>
+              <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="24,4 56,4 76,24 76,56 56,76 24,76 4,56 4,24" fill="rgba(30,64,175,0.3)" stroke="#1e40af" stroke-width="2"></polygon>
+                <text x="40" y="44" text-anchor="middle" font-size="8" fill="#60a5fa" font-family="Orbitron">Mono</text>
+              </svg>
+              <div class="pp-oct-label" style="color:#1e40af;">Octagonal</div>
+            </div>
+            <div>
+              <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="4" width="72" height="72" rx="2" fill="rgba(96,165,250,0.2)" stroke="#60a5fa" stroke-width="2"></rect>
+                <text x="40" y="44" text-anchor="middle" font-size="8" fill="#60a5fa" font-family="Orbitron">Poly</text>
+              </svg>
+              <div class="pp-oct-label" style="color:#60a5fa;">Square</div>
+            </div>
+            <div>
+              <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="16" width="72" height="48" rx="2" fill="rgba(107,114,128,0.2)" stroke="#6b7280" stroke-width="2"></rect>
+                <text x="40" y="44" text-anchor="middle" font-size="8" fill="#9ca3af" font-family="Orbitron">Thin</text>
+              </svg>
+              <div class="pp-oct-label" style="color:#6b7280;">Rectangle</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Temperature Ladder -->
+        <div style="margin-top:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;margin-bottom:4px;">🌡️ Collector Temperature Ladder</div>
+          <div class="pp-temp-ladder" id="c50TempLadder"></div>
+        </div>
+
+        <!-- Area Calculator -->
+        <div style="margin-top:10px;background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.2);border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#facc15;font-family:'Orbitron',sans-serif;">☀️ Area Calculator (1kW = 8m²)</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center;">
+            <label style="font-size:9px;color:#9ca3af;">Power (kW):</label>
+            <input type="number" id="c50Power" value="1000" style="width:70px;background:#0d1117;border:1px solid #facc15;color:#facc15;border-radius:4px;padding:3px;font-size:10px;">
+            <button onclick="calcAreaC50()" style="background:#facc15;color:#000;border:none;border-radius:4px;padding:4px 10px;font-size:10px;font-family:'Orbitron',sans-serif;cursor:pointer;">Calculate</button>
+            <span id="c50AreaResult" style="font-size:11px;color:#00ff88;font-family:'Share Tech Mono',monospace;"></span>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="pp-module-divider">
+      <span class="pp-module-divider-tag" style="color:#00f5ff;border-color:rgba(0,245,255,0.4);background:rgba(0,245,255,0.06);box-shadow:0 0 20px rgba(0,245,255,0.15);">Module 10 — Geothermal &amp; MHD</span>
+    </div>
+</div><div class="topic-bottom-nav">
+        <a href="../solar-energy/index.html" class="topic-btn prev-btn">← Solar Energy</a>
+        <a href="../../index.html" class="topic-btn back-btn">All Topics</a>
+        <a href="../geothermal-mhd/index.html" class="topic-btn next-btn">Geothermal &amp; MHD →</a>
+    </div></main>
+
+  <!-- Scroll to top -->
+  <div class="pp-scroll-top" id="ppScrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="../../../../../../shared/js/hero-bg.js"></script>
+  <script src="../../../../../../shared/js/formulas.js"></script>
+  <script src="../../../../../../shared/js/app.js"></script>
+
+  
+
+  <!-- Bookmark corner buttons -->
+  
+  
+
+
+
+<script src="../../js/powerplant-inline.js"></script><script src="../../../../../../shared/js/topic-nav.js"></script></body></html>

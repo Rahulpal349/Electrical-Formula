@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coal &amp; Fuels — Power Plant Engineering</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;family=Exo+2:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+  
+<link rel="stylesheet" href="../../css/powerplant-inline.css"><link rel="stylesheet" href="../../../../../../shared/css/topic-page.css"></head>
+
+<body data-page-category="powerplant" class="pp-body">
+
+  <!-- Sidebar Toggle -->
+  <button class="pp-sidebar-toggle" id="ppSbToggle" aria-label="Toggle sidebar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <div class="pp-sidebar__overlay" id="ppSbOverlay"></div>
+
+  <!-- Glassmorphism Sidebar -->
+  <aside class="pp-sidebar" id="ppSidebar">
+    <div class="pp-sidebar__header">
+      <div class="pp-sidebar__profile">
+        <div class="pp-sidebar__avatar">⚡</div>
+        <div class="pp-sidebar__info">
+          <span class="pp-sidebar__label">Power Plant</span>
+          <span class="pp-sidebar__name">ENGINEERING</span>
+        </div>
+      </div>
+      <button class="pp-sidebar__close" id="ppSbClose" aria-label="Close sidebar">✕</button>
+    </div>
+    <div class="pp-sidebar__section-label">MODULES</div>
+    <ul class="pp-sidebar__nav">
+      <li><a class="pp-sidebar__link active" data-mod="1" style="--mod-color:#f97316;" href="../power-systems-overview/index.html"><span class="pp-sidebar__icon">⚡</span><span class="pp-sidebar__link-text">Power Systems</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="2" style="--mod-color:#60a5fa;" href="../hydro-power/index.html"><span class="pp-sidebar__icon">💧</span><span class="pp-sidebar__link-text">Hydro Power</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="3" style="--mod-color:#ef4444;" href="../thermal-steam/index.html"><span class="pp-sidebar__icon">🔥</span><span class="pp-sidebar__link-text">Thermal Steam</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="4" style="--mod-color:#f97316;" href="../coal-fuels/index.html"><span class="pp-sidebar__icon">⛏️</span><span class="pp-sidebar__link-text">Coal &amp; Fuels</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="5" style="--mod-color:#a78bfa;" href="../nuclear-power/index.html"><span class="pp-sidebar__icon">☢️</span><span class="pp-sidebar__link-text">Nuclear Power</span><span class="pp-sidebar__link-count">10</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="6" style="--mod-color:#f97316;" href="../diesel-power/index.html"><span class="pp-sidebar__icon">🛢️</span><span class="pp-sidebar__link-text">Diesel Power</span><span class="pp-sidebar__link-count">1</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="7" style="--mod-color:#f97316;" href="../gas-turbine/index.html"><span class="pp-sidebar__icon">🌀</span><span class="pp-sidebar__link-text">Gas Turbine</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="8" style="--mod-color:#facc15;" href="../solar-energy/index.html"><span class="pp-sidebar__icon">☀️</span><span class="pp-sidebar__link-text">Solar Energy</span><span class="pp-sidebar__link-count">9</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="9" style="--mod-color:#facc15;" href="../solar-collectors/index.html"><span class="pp-sidebar__icon">🌡️</span><span class="pp-sidebar__link-text">Solar Collectors</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="10" style="--mod-color:#00f5ff;" href="../geothermal-mhd/index.html"><span class="pp-sidebar__icon">🌋</span><span class="pp-sidebar__link-text">Geothermal &amp; MHD</span><span class="pp-sidebar__link-count">6</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="0" style="--mod-color:#00ff88;" href="../../index.html"><span class="pp-sidebar__icon">📋</span><span class="pp-sidebar__link-text">All Modules</span><span class="pp-sidebar__link-count">56</span></a></li>
+    </ul>
+    <div class="pp-sidebar__footer">
+      <div class="pp-sidebar__footer-text">
+        Chapters: <span>56</span> • Formulas: <span>400+</span><br>
+        Animations: <span>120+</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Unified Navbar -->
+  <nav class="navbar" role="navigation">
+    <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+    <ul class="navbar__links">
+      <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+      <li><a href="../../../machines/index.html">Machines</a></li>
+      <li><a href="../../../measurements/index.html">Measurements</a></li>
+      <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+      <li><a href="../../../power-plant/index.html" class="active">Power Plant</a></li>
+      <li><a href="../../../control/index.html">Control Systems</a></li>
+      <li><a href="../../../electronics/index.html">Electronics</a></li>
+      <li><a href="../../../signals/index.html">Signals</a></li>
+      <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+      <li><a href="../../../estimation/index.html">Estimation</a></li>
+      <li><a href="../../../utilization/index.html">Utilization</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <div class="search-box">
+        <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+          <path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path>
+          <path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path>
+          <path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z"></path>
+          <path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2z"></path>
+          <path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z"></path>
+          <path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z"></path>
+        </svg></span>
+        <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Particles -->
+  <div class="pp-particles" id="pp-particles"></div>
+
+  <!-- Hero Section (measurements-style) -->
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10"></path>
+    </svg>
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style="text-align:center;">
+        Power <span class="pp-neon-text">Plant</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter" data-text="Generation · Thermal · Hydro · Nuclear · Solar · Gas Turbine"></p>
+      <div class="pp-hero-icons">
+        <div class="pp-hero-icon">🏭</div>
+        <div class="pp-hero-icon">💧</div>
+        <div class="pp-hero-icon">☢️</div>
+        <div class="pp-hero-icon">☀️</div>
+      </div>
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#c1" class="pp-hero-cta">⚡ Explore Power Plants</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pp-main"><div class="topic-breadcrumb">
+        <a href="../../../../index.html">EE Hub</a> › 
+        <a href="../../index.html">Power Plant</a> › 
+        <span>Coal &amp; Fuels</span>
+    </div><div class="topic-content"><div class="pp-card m3-coal" id="c22">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#f97316;font-size:14px;">🔥</span>
+        Module 3 · Thermal Plant Continuation: Cooling Water &amp; Fuels
+      </div>
+
+      <div class="pp-definition-box">
+        The steam circuit converts water to superheated steam via the boiler and superheater, drives the turbine, then condenses back via the <strong>cooling water circuit</strong>. Fuels (coal, oil, gas) provide the input thermal energy.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Steam Circuit Recap</div>
+        <div class="pp-formula-row">$$\text{Boiler: water} \rightarrow \text{high-pressure wet steam}$$</div>
+        <div class="pp-formula-row">$$\text{Wet steam} \xrightarrow{\text{Superheater}} \text{Superheated steam}$$</div>
+        <div class="pp-formula-row">$$\text{Superheated steam} \rightarrow \text{Main valve} \rightarrow \text{Turbine}$$</div>
+        <div class="pp-formula-row">$$\text{After turbine: steam} \rightarrow \text{Condenser} \rightarrow \text{Feed water}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Cooling Water Circuit</div>
+        <div class="pp-formula-row">$$Q_{cooling} = \dot{m}_w c_p (T_{out} - T_{in}) = Q_{condenser} = \dot{m}_s(h_2 - h_3)$$</div>
+        <div class="pp-formula-row">$$\text{Sources: River / Canal / Sea / Cooling tower}$$</div>
+        <div class="pp-formula-row">$$\text{Water passed through screens to remove debris}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Fuels Used in Thermal Plants</div>
+        <table class="pp-data-table">
+          <tbody><tr><th>Type</th><th>Examples</th><th>Calorific Value</th></tr>
+          <tr><td>Solid</td><td>Coal, wood, peat</td><td>15,000–35,000 kJ/kg</td></tr>
+          <tr><td>Liquid</td><td>Fuel oil, diesel</td><td>≈ 43,000 kJ/kg</td></tr>
+          <tr><td>Gas</td><td>Natural gas, producer gas</td><td>≈ 55,000 kJ/m³</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-22" style="min-height:260px;">
+        <div class="pp-anim-label">🔥 Cooling Water &amp; Fuel Comparison</div>
+
+        <!-- Cooling Source Selector -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#f97316;letter-spacing:2px;margin-bottom:8px;">COOLING WATER SOURCE</div>
+        <div class="pp-circuit-tabs">
+          <button class="pp-circuit-tab active" data-circuit="air" onclick="switchCoolC22(this,'river')">🌊 River</button>
+          <button class="pp-circuit-tab" data-circuit="air" onclick="switchCoolC22(this,'canal')">🚿 Canal</button>
+          <button class="pp-circuit-tab" data-circuit="cooling" onclick="switchCoolC22(this,'sea')">🌊 Sea</button>
+          <button class="pp-circuit-tab" data-circuit="cooling" onclick="switchCoolC22(this,'tower')">🗼 Cooling Tower</button>
+        </div>
+        <div id="c22CoolInfo" style="padding:8px;background:rgba(0,0,0,0.15);border-radius:6px;font-size:11px;color:var(--pp-muted);margin-bottom:12px;">
+          <strong style="color:#60a5fa">River:</strong> Once-through cooling. Water drawn from river, passed through screens, used in condenser, returned at higher T. Cheapest but limited by river flow &amp; thermal pollution limits.
+        </div>
+
+        <!-- Fuel Type Cards -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#f97316;letter-spacing:2px;margin:12px 0 8px;">FUEL COMPARISON</div>
+        <div class="pp-fuel-cards">
+          <div class="pp-fuel-card" style="border-color:#92400e;" onclick="this.classList.toggle('expanded')">
+            <span class="pp-fuel-icon">⛏️</span>
+            <span class="pp-fuel-name" style="color:#f97316;">Solid (Coal)</span>
+            <span class="pp-fuel-cv" style="color:#facc15;">15–35 MJ/kg</span>
+            <div style="font-size:9px;color:#f97316;margin-top:4px;">🇮🇳 Most used in India</div>
+          </div>
+          <div class="pp-fuel-card" style="border-color:#f97316;">
+            <span class="pp-fuel-icon">🛢️</span>
+            <span class="pp-fuel-name" style="color:#f97316;">Liquid (Oil)</span>
+            <span class="pp-fuel-cv" style="color:#facc15;">≈ 43 MJ/kg</span>
+          </div>
+          <div class="pp-fuel-card" style="border-color:#facc15;">
+            <span class="pp-fuel-icon">🔥</span>
+            <span class="pp-fuel-name" style="color:#facc15;">Gas (NG)</span>
+            <span class="pp-fuel-cv" style="color:#facc15;">≈ 55 MJ/m³</span>
+          </div>
+        </div>
+
+        <!-- Cooling Water Calculator -->
+        <div style="margin-top:12px;padding:12px;background:rgba(0,0,0,0.2);border:1px solid var(--pp-border);border-radius:8px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#f97316;letter-spacing:2px;margin-bottom:8px;">Q COOLING CALCULATOR</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">ṁ<sub>w</sub> (kg/s)
+              <input type="number" class="pp-input-sm" id="c22mw" value="5000" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">T<sub>out</sub> (°C)
+              <input type="number" class="pp-input-sm" id="c22tout" value="35" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">T<sub>in</sub> (°C)
+              <input type="number" class="pp-input-sm" id="c22tin" value="25" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="calcCoolC22()" style="margin-top:8px;width:100%;">Calculate Q<sub>cooling</sub></button>
+          <div id="c22CoolOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m3-coal" id="c23">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#f97316;font-size:14px;">⛏️</span>
+        Module 3 · Classification of Coal
+      </div>
+
+      <div class="pp-definition-box">
+        Coal is classified into grades based on carbon content, moisture, volatile matter, and calorific value. Grades progress from <strong style="color:#78350f">Peat</strong> (lowest) to <strong style="color:#e5e7eb">Super Anthracite</strong> (highest). India mostly uses <strong>Bituminous coal</strong> (Gondwana coal fields).
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Coal Grade Ranking (Worst → Best)</div>
+        <div class="pp-formula-row">$$\text{Peat} &lt; \text{Lignite} &lt; \text{Sub-bituminous} &lt; \text{Bituminous} &lt; \text{Semi-bituminous}$$</div>
+        <div class="pp-formula-row">$$&lt; \text{Semi-anthracite} &lt; \text{Super anthracite}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Enthalpy of Combustion by Grade</div>
+        <div class="pp-formula-row">$$\text{Peat: } 3{,}000\;\text{kJ/kg} \quad (\text{moisture } 60\text{–}90\%)$$</div>
+        <div class="pp-formula-row">$$\text{Lignite: } 13{,}800\text{–}17{,}600\;\text{kJ/kg} \quad (\text{moisture } 30\text{–}50\%)$$</div>
+        <div class="pp-formula-row">$$\text{Sub-bituminous: } 18{,}000\text{–}23{,}000\;\text{kJ/kg} \quad (\text{volatile } 35\text{–}45\%)$$</div>
+        <div class="pp-formula-row">$$\text{Bituminous: } 23{,}000\text{–}34{,}000\;\text{kJ/kg} \quad (\text{low moisture})$$</div>
+        <div class="pp-formula-row">$$\text{Semi-bituminous: } 27{,}000\text{–}35{,}000\;\text{kJ/kg}$$</div>
+        <div class="pp-formula-row">$$\text{Semi-anthracite: } 33{,}500\text{–}34{,}750\;\text{kJ/kg} \quad (\text{highest C\%})$$</div>
+        <div class="pp-formula-row">$$\text{Super anthracite: Very hard, shiny black surface}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Rankings</div>
+        <div class="pp-formula-row">$$\%C:\;\text{Peat} &lt; \text{Lignite} &lt; \text{Sub-bit} &lt; \text{Bituminous} &lt; \text{Anthracite}$$</div>
+        <div class="pp-formula-row">$$\%H_2O:\;\text{Peat}(60\text{–}90\%) &gt; \text{Lignite}(30\text{–}50\%) &gt; \text{Anthracite}(\sim3\%)$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-23" style="min-height:260px;">
+        <div class="pp-anim-label">⛏️ Coal Grade Visualization</div>
+
+        <!-- CV Comparison Bars -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#f97316;letter-spacing:2px;margin-bottom:8px;">CALORIFIC VALUE COMPARISON (kJ/kg)</div>
+        <div class="pp-coal-bars" id="c23CoalBars">
+          <div class="pp-coal-bar-row">
+            <span class="pp-coal-bar-label">Peat</span>
+            <div class="pp-coal-bar-track"><div class="pp-coal-bar-fill" style="width:0%;background:#78350f;" data-target="8.6">3,000</div></div>
+            <span class="pp-coal-bar-val">3,000</span>
+          </div>
+          <div class="pp-coal-bar-row">
+            <span class="pp-coal-bar-label">Lignite</span>
+            <div class="pp-coal-bar-track"><div class="pp-coal-bar-fill" style="width:0%;background:#92400e;" data-target="45.1">15,700</div></div>
+            <span class="pp-coal-bar-val">15,700</span>
+          </div>
+          <div class="pp-coal-bar-row">
+            <span class="pp-coal-bar-label">Sub-bituminous</span>
+            <div class="pp-coal-bar-track"><div class="pp-coal-bar-fill" style="width:0%;background:#57534e;" data-target="58.9">20,500</div></div>
+            <span class="pp-coal-bar-val">20,500</span>
+          </div>
+          <div class="pp-coal-bar-row">
+            <span class="pp-coal-bar-label" style="color:#facc15;">Bituminous 🇮🇳</span>
+            <div class="pp-coal-bar-track"><div class="pp-coal-bar-fill" style="width:0%;background:linear-gradient(90deg,#292524,#facc15);" data-target="81.9">28,500</div></div>
+            <span class="pp-coal-bar-val" style="color:#facc15;">28,500</span>
+          </div>
+          <div class="pp-coal-bar-row">
+            <span class="pp-coal-bar-label">Semi-bituminous</span>
+            <div class="pp-coal-bar-track"><div class="pp-coal-bar-fill" style="width:0%;background:#1c1917;" data-target="89.1">31,000</div></div>
+            <span class="pp-coal-bar-val">31,000</span>
+          </div>
+          <div class="pp-coal-bar-row">
+            <span class="pp-coal-bar-label">Semi-anthracite</span>
+            <div class="pp-coal-bar-track"><div class="pp-coal-bar-fill" style="width:0%;background:#0f172a;" data-target="98.1">34,125</div></div>
+            <span class="pp-coal-bar-val">34,125</span>
+          </div>
+          <div class="pp-coal-bar-row">
+            <span class="pp-coal-bar-label">Super anthracite</span>
+            <div class="pp-coal-bar-track"><div class="pp-coal-bar-fill" style="width:0%;background:linear-gradient(90deg,#1e293b,#e5e7eb);" data-target="100">34,750+</div></div>
+            <span class="pp-coal-bar-val">34,750+</span>
+          </div>
+        </div>
+
+        <!-- Coal Grade Identifier Calculator -->
+        <div style="margin-top:12px;padding:12px;background:rgba(0,0,0,0.2);border:1px solid var(--pp-border);border-radius:8px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#f97316;letter-spacing:2px;margin-bottom:8px;">COAL GRADE IDENTIFIER</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Calorific Value (kJ/kg)
+              <input type="number" class="pp-input-sm" id="c23cv" value="28000" style="width:100%;margin-top:2px;">
+            </label>
+            <label style="font-size:10px;color:var(--pp-muted);">Mass of coal (kg)
+              <input type="number" class="pp-input-sm" id="c23mass" value="1000" style="width:100%;margin-top:2px;">
+            </label>
+          </div>
+          <button class="pp-calc-btn" onclick="identifyCoalC23()" style="margin-top:8px;width:100%;">Identify Grade &amp; Calculate Heat</button>
+          <div id="c23CoalOut" style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#00ff88;min-height:20px;"></div>
+        </div>
+      </div>
+</div>
+</div><div class="topic-bottom-nav">
+        <a href="../thermal-steam/index.html" class="topic-btn prev-btn">← Thermal Steam</a>
+        <a href="../../index.html" class="topic-btn back-btn">All Topics</a>
+        <a href="../nuclear-power/index.html" class="topic-btn next-btn">Nuclear Power →</a>
+    </div></main>
+
+  <!-- Scroll to top -->
+  <div class="pp-scroll-top" id="ppScrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="../../../../../../shared/js/hero-bg.js"></script>
+  <script src="../../../../../../shared/js/formulas.js"></script>
+  <script src="../../../../../../shared/js/app.js"></script>
+
+  
+
+  <!-- Bookmark corner buttons -->
+  
+  
+
+
+
+<script src="../../js/powerplant-inline.js"></script><script src="../../../../../../shared/js/topic-nav.js"></script></body></html>

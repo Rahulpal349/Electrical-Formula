@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurements &amp; Instrumentation Formula Book</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+    <!-- Libraries: GSAP, D3, Chart.js, AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="../../css/measurements.css">
+
+    <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+    <link rel="stylesheet" href="../../../../shared/css/topic-page.css">
+    <title>⚖️ Wattmeter Errors & Polyphase | MEASUREMENTS | EE Hub</title>
+</head>
+<body >
+    <nav class="navbar" role="navigation">
+        <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+            <li><a href="../../../machines/index.html">Machines</a></li>
+            <li><a href="../../../measurements/index.html" class="active">Measurements</a></li>
+            <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+            <li><a href="../../../power-plant/index.html">Power Plant</a></li>
+            <li><a href="../../../control/index.html">Control Systems</a></li>
+            <li><a href="../../../electronics/index.html">Electronics</a></li>
+            <li><a href="../../../signals/index.html">Signals</a></li>
+            <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+            <li><a href="../../../estimation/index.html">Estimation</a></li>
+            <li><a href="../../../utilization/index.html">Utilization</a></li>
+        </ul>
+        <div class="navbar__actions">
+        <div class="search-box">
+            <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+<path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path><path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path><path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z M365.3,278.3c-28.1,8.5-56.8,2.8-84.2-5.8c-13.8-4.3-27.6-9.1-40.7-15.2c-6.8-3.2-13.6-6.7-19.9-10.9c-5.5-3.6-10.5-7.9-15.9-11.7c-1.7-1.2-2.1-2.8-1.8-4.3c-17.7-23.8-31.1-52.7-29-82.9c2.2-31.5,21.9-58.1,46.9-76.2c38.9-28.1,94.6-38.9,137.8-13.8c21.4,12.4,39.2,30.6,53.1,51c13.4,19.8,24.7,42.6,28.6,66.5C448,222.4,408.4,265.3,365.3,278.3z"></path><path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2zM471.5 185.5c-1.3-13.1-5.2-25-11.2-35.9 7.3 23.4 8.9 48.1 0 71.7-16.2 43.3-59.2 75.9-104.7 81.9-29.7 3.9-60.6-4.4-89-12.2-26.6-7.3-52.8-18-75.2-34.4-3.3.9-7.4-1.3-6.3-5.5.2-.8.5-1.6.8-2.3-7.6-8.8-14.4-18.3-19.9-28.5-4.7-8.8-8.7-18-11.6-27.5 0 5 0 10 .3 15 1.1 20.3 5.2 41.3 19 56.9.5-1 1.3-1.8 2.7-2.3 10.2-3.5 19.2 1.8 26.9 8.1 5.3 4.3 8.2 7.9 11.5 13.8 2.2 3.9 11.9 19.9 9.2 27.2 25.7 11.4 52.5 16.5 80.5 18.4 29.3 2 59.3 1.9 85.5-13.2 23.8-13.7 45.1-34.1 61.4-56.1C467.7 238.3 474.2 212.8 471.5 185.5z"></path><path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z M338.3,272.7c-23.4,0.8-47.2-6.9-69.1-14.6c-10.5-3.7-20.7-7.9-30.7-12.8c-9.3-4.7-17.2-10.7-25.5-16.7c-0.1-0.8-0.4-1.6-1-2.4c-15.3-20.3-27.2-43.7-28.4-69.5c-1.2-26.7,12.3-49.8,31.2-67.6c35.4-33.2,92.6-47.4,136.8-23.9c22,11.7,39.7,31,53.4,51.5c13.1,19.6,24.7,43.7,26.1,67.5C434.1,232.5,382.8,271.2,338.3,272.7z"></path><path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z M175.8,101.4c27-39.9,75.8-68.4,123.6-72.9c50.1-4.7,93.1,28.5,121.4,66.9c14.4,19.6,25.6,41.6,32.2,65c6.4,23.1,4.2,46.3-6.5,67.7c-18.2,36.7-57.9,62.5-98.5,65.8c-13.8,1.1-28-1.1-41.6-3.7c-13.3-2.6-26.5-5.9-39.6-9.5c-24.9-6.8-49.8-17.3-70.6-33c0.2-1.1-0.1-2.3-1.1-3.5c-17.1-19.6-30.2-43-34.8-68.9C155.8,149.6,161.1,123.1,175.8,101.4z M137.8,426.1c-7.3,4.7-15.3,8.4-23.9,10.4c-10.6,2.4-22.1,1.5-31.3-4.7c-8.4-5.7-12.9-15-14.6-24.8c-1.9-11.1-0.4-21.9,3.4-32c0.7-0.1,1.4-0.3,2-0.8c8-4.9,20.3-2.7,28.9-1c4.7,0.9,9.3,2.3,13.7,4.1c3.1,1.3,3.5,2.1,5.5,5.2c4.5,7,7.9,14.9,11.1,22.6c1.6,3.8,3,7.6,4.2,11.5c0.4,1.3,0.8,2.7,1,4.1c0,0.1,0,0.3,0.1,0.4C137,422.6,137,424.6,137.8,426.1z M213.9,308.2c-1.6,0.1-3.1,1-3.7,3.1c-9.1,28.8-21.3,57.1-39,81.7c-6.7,9.3-14.6,18.4-23.6,25.9c-1.7-13.6-14.8-36.8-17.3-41c-1.9-3.2-4.1-6.4-7.5-8.2c-5.2-2.9-11.1-4.5-16.9-5.8c-8.8-2.1-19.3-3.4-28.6-1.4c5.5-9.6,12.7-18.5,20.2-26.2c24.4-24.9,54-45,83.4-63.5c0.8-0.5,1.4-1.1,1.7-1.8c5.8-0.4,11.4,4.7,15.7,8.1c3.2,2.6,4.9,4.7,7,8.3c2.3,4,4.4,8.2,6.3,12.4c0.9,1.9,1.7,3.9,2.4,5.9c0.2,0.5,0.3,0.8,0.4,1.2C214.1,307.4,214,307.8,213.9,308.2z M451.4,260.4c-16.3,22.1-37.6,42.4-61.4,56.1c-26.2,15.1-56.1,15.2-85.5,13.2c-28-1.9-54.7-7.1-80.5-18.4c2.7-7.2-7-23.2-9.2-27.2c-3.3-5.9-6.2-9.5-11.5-13.8c-7.8-6.3-16.8-11.6-26.9-8.1c-1.4,0.5-2.2,1.3-2.7,2.3c-13.9-15.6-18-36.6-19-56.9c-0.3-5-0.3-10-0.3-15c2.9,9.5,6.9,18.7,11.6,27.5c5.5,10.2,12.3,19.7,19.9,28.5c-0.3,0.7-0.6,1.5-0.8,2.3c-1.1,4.2,3,6.4,6.3,5.5c22.4,16.5,48.6,27.1,75.2,34.4c28.4,7.8,59.4,16.1,89,12.2c45.6-6,88.6-38.6,104.7-81.9c8.8-23.7,7.3-48.3,0-71.7c6,10.9,9.9,22.9,11.2,35.9C474.2,212.8,467.7,238.3,451.4,260.4z"></path>
+</svg></span>
+            <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+        </div>
+    </div>
+    </nav>
+    
+    <!-- Topic Nav Script (Shared) -->
+    <script src="../../../../shared/js/topic-nav.js"></script>
+
+    <div class="breadcrumb" style="margin-top: 80px;">
+        <span class="home-icon">🏠</span> 
+        <span class="delimiter">/</span> 
+        <a href="../../index.html" style="text-transform: capitalize;">measurements</a> 
+        <span class="delimiter">/</span> 
+        <span class="current-topic">⚖️ Wattmeter Errors & Polyphase</span>
+    </div>
+
+    <main class="topic-main-container">
+        <section id="mod8" class="module-section" style="margin-bottom:2rem;">
+                <div class="module-header" data-aos="fade-right">
+                    <h2 class="module-title">MODULE 8 <span class="module-subtitle">— Wattmeter Errors &amp; Polyphase Power</span></h2>
+                    <div class="module-line" style="background: var(--mod8-color); box-shadow: 0 0 10px var(--mod8-color);"></div>
+                </div>
+
+                <div class="card-grid">
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 8.1: EDM WATTMETER CONNECTIONS        -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m8-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>⚡ 8.1 Equal Error Condition &amp; EDM Wattmeter Connections</h3>
+                            <span class="m8-badge">Connection A · Connection B · R_critical</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:10px; text-align:center;">Equal Error Condition</h4>
+                                <div class="formula text-sm">$$ \boxed{R_L = \sqrt{R_{CC} \times R_{PC}}} $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">At $R_L = R_{crit}$: both connections have equal error</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:10px; text-align:center;">Connection A — MC Short</h4>
+                                <div class="formula text-sm">$$ \boxed{P_m = P_t + I^2 R_{CC}} $$</div>
+                                <div class="formula text-sm">$$ \% \text{Error} = \frac{R_{CC}}{R_L} \times 100 $$</div>
+                                <div class="formula text-xs" style="color:#00f5ff;">Best for: SMALL load current</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:10px; text-align:center;">Connection B — LC Short</h4>
+                                <div class="formula text-sm">$$ \boxed{P_m = P_t + \frac{V^2}{R_{PC}}} $$</div>
+                                <div class="formula text-sm">$$ \% \text{Error} = \frac{R_L}{R_{PC}} \times 100 $$</div>
+                                <div class="formula text-xs" style="color:#f97316;">Best for: LARGE load current</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05); display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:8px; text-align:center;">Coil Construction</h4>
+                                <div class="formula text-sm">$$ \text{CC (Current/Fixed Coil): } N\downarrow,\; A\uparrow $$</div>
+                                <div class="formula text-sm">$$ \text{PC (Pressure/Moving Coil): } N\uparrow,\; A\downarrow $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:8px; text-align:center;">Power Indicated</h4>
+                                <div class="formula text-sm" style="color:#00f5ff;">$$ \text{Conn A: } P_L + \underbrace{I^2 R_{CC}}_{\text{CC loss}} $$</div>
+                                <div class="formula text-sm" style="color:#f97316;">$$ \text{Conn B: } P_L + \underbrace{V^2/R_{PC}}_{\text{PC loss}} $$</div>
+                            </div>
+                        </div>
+
+                        <div class="anim-zone" style="min-height:320px; flex-direction:column; gap:15px;">
+                            <div style="display:flex; gap:10px; justify-content:center;">
+                                <button class="m8-btn active" id="m8-connA-btn">Connection A (MC Short)</button>
+                                <button class="m8-btn" id="m8-connB-btn">Connection B (LC Short)</button>
+                            </div>
+                            <div style="display:flex; width:100%; gap:20px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Wattmeter circuit SVG -->
+                                <svg id="m8-watt-circuit" viewBox="0 0 320 200" width="310" height="195">
+                                    <!-- Supply -->
+                                    <rect x="5" y="40" width="30" height="120" rx="4" fill="rgba(0,255,136,0.05)" stroke="#00ff88" stroke-width="1.5"></rect>
+                                    <text x="20" y="105" fill="#00ff88" font-size="10" text-anchor="middle">AC</text>
+                                    <!-- Supply lines -->
+                                    <line x1="35" y1="60" x2="60" y2="60" stroke="#555" stroke-width="1.5"></line>
+                                    <line x1="35" y1="140" x2="300" y2="140" stroke="#555" stroke-width="1.5"></line>
+
+                                    <!-- CC (Current Coil) -->
+                                    <rect id="m8-cc-box" x="80" y="48" width="50" height="24" rx="4" fill="rgba(250,204,21,0.08)" stroke="#facc15" stroke-width="1.5"></rect>
+                                    <text id="m8-cc-lbl" x="105" y="64" fill="#facc15" font-size="9" text-anchor="middle">CC</text>
+
+                                    <!-- PC (Pressure Coil) -->
+                                    <rect id="m8-pc-box" x="60" y="75" width="40" height="20" rx="4" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5"></rect>
+                                    <text id="m8-pc-lbl" x="80" y="89" fill="#a78bfa" font-size="9" text-anchor="middle">PC</text>
+                                    <!-- PC connection lines -->
+                                    <line id="m8-pc-top" x1="60" y1="60" x2="60" y2="75" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <line id="m8-pc-bot" x1="60" y1="95" x2="60" y2="140" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3 2"></line>
+
+                                    <!-- After CC → Load -->
+                                    <line id="m8-cc-to-load" x1="130" y1="60" x2="230" y2="60" stroke="#555" stroke-width="1.5"></line>
+
+                                    <!-- Load -->
+                                    <rect x="230" y="40" width="50" height="120" rx="6" fill="rgba(0,245,255,0.04)" stroke="#475569" stroke-width="1.5"></rect>
+                                    <text x="255" y="105" fill="#fff" font-size="11" text-anchor="middle">Load</text>
+                                    <text id="m8-rl-text" x="255" y="118" fill="#94a3b8" font-size="8" text-anchor="middle">RL</text>
+
+                                    <!-- Wattmeter reading -->
+                                    <rect x="140" y="90" width="80" height="30" rx="6" fill="rgba(0,255,136,0.06)" stroke="#00ff88" stroke-width="1"></rect>
+                                    <text id="m8-watt-reading" x="180" y="109" fill="#00ff88" font-size="9" text-anchor="middle">Pm = Pt + I²Rcc</text>
+
+                                    <!-- Error bar -->
+                                    <rect id="m8-err-bar" x="150" y="128" width="60" height="8" rx="3" fill="rgba(239,68,68,0.5)"></rect>
+                                    <text id="m8-err-lbl" x="180" y="148" fill="#ef4444" font-size="8" text-anchor="middle">Error: I²RCC</text>
+
+                                    <!-- Badge -->
+                                    <rect id="m8-badge-bg" x="100" y="172" width="130" height="18" rx="9" fill="rgba(0,245,255,0.1)" stroke="#00f5ff" stroke-width="1"></rect>
+                                    <text id="m8-badge-text" x="165" y="184" fill="#00f5ff" font-size="8" text-anchor="middle">Use for small load current</text>
+                                </svg>
+                                <!-- Error comparison chart -->
+                                <div id="m8-conn-error-chart" style="width:280px; height:210px;"></div>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:700px; margin:0 auto; width:100%;">
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>RCC (Ω): <span id="m8-rcc-val">2</span></label>
+                                    <input type="range" id="m8-rcc" min="0.1" max="20" value="2" step="0.1" class="m8-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>RPC (kΩ): <span id="m8-rpc-val">10</span></label>
+                                    <input type="range" id="m8-rpc" min="1" max="100" value="10" step="1" class="m8-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:120px;">
+                                    <label>RL (Ω): <span id="m8-rl-val">100</span></label>
+                                    <input type="range" id="m8-rl" min="1" max="5000" value="100" step="1" class="m8-slider">
+                                </div>
+                            </div>
+                            <div class="m8-calc-result" id="m8-conn-recommend" style="max-width:550px; margin:5px auto;">Rcrit = — Ω | Recommended: —</div>
+                        </div>
+
+                        <div class="m8-calc-zone" id="m8-conn-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">⚡ Wattmeter Connection Error Calculator</h4>
+                            <div class="m8-calc-row">
+                                <label>RL (Ω):</label><input type="number" id="m8-cc-rl" value="100" min="0.1" step="1">
+                                <label>RCC (Ω):</label><input type="number" id="m8-cc-rcc" value="2" min="0.01" step="0.1">
+                                <label>RPC (kΩ):</label><input type="number" id="m8-cc-rpc" value="10" min="0.1" step="1">
+                                <label>V (V):</label><input type="number" id="m8-cc-v" value="230" min="1" step="10">
+                                <label>I (A):</label><input type="number" id="m8-cc-i" value="5" min="0.1" step="0.5">
+                            </div>
+                            <div class="m8-calc-result" id="m8-cc-result">Conn A: —% | Conn B: —% | Recommend: —</div>
+                        </div>
+                        <div class="m8-card-footer">
+                            <button class="m8-footer-btn" onclick="navigator.clipboard.writeText('R_L = \\sqrt{R_{CC} \\times R_{PC}}')">📋 Copy LaTeX</button>
+                            <button class="m8-footer-btn" onclick="document.getElementById('m8-conn-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m8-footer-btn m8-bookmark-btn" data-card="m8-conn">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 8.2: ERRORS IN EDM WATTMETER          -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m8-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>📐 8.2 Errors in EDM Wattmeter</h3>
+                            <span class="m8-badge">PC Inductance · PC Capacitance · Connection Error</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:10px; text-align:center;">1. PC Inductance Error</h4>
+                                <div class="formula text-sm">$$ \boxed{CF = \frac{\cos\phi}{\cos\beta\cos(\phi+\beta)}} $$</div>
+                                <div class="formula text-sm">$$ \beta = \tan^{-1}\!\left(\frac{\omega L_{PC}}{R_{PC}}\right) $$</div>
+                                <div class="formula text-sm">$$ \text{Error} \approx \beta\tan\phi \times P_{true} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#60a5fa; margin-bottom:10px; text-align:center;">2. PC Capacitance Error</h4>
+                                <div class="formula text-sm">$$ \text{Inter-turn capacitance} $$</div>
+                                <div class="formula text-sm">$$ \text{Reads HIGH on lagging PF} $$</div>
+                                <div class="formula text-sm">$$ \text{Fix: } X_C = X_L \;\text{(cancel reactance)} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#ef4444; margin-bottom:10px; text-align:center;">3. Connection Error</h4>
+                                <div class="formula text-sm">$$ \text{A: } \frac{R_{CC}}{R_L}\times 100\% $$</div>
+                                <div class="formula text-sm">$$ \text{B: } \frac{R_L}{R_{PC}}\times 100\% $$</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05); display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:8px; text-align:center;">Inductance Compensation</h4>
+                                <div class="formula text-sm">$$ \boxed{C = 0.4\frac{L_{PC}}{R_{PC}^2}} $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">Connect C in parallel with RPC → Z purely resistive</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:8px; text-align:center;">True Power Correction</h4>
+                                <div class="formula text-sm">$$ P_{true} = CF \times P_{reading} $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">CF ≈ 1 at high PF, CF ≫ 1 at low PF</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#fb7185; margin-bottom:8px; text-align:center;">Error Direction</h4>
+                                <div class="formula text-xs" style="color:#f97316;">Lagging load: reads LOW (−ve error)</div>
+                                <div class="formula text-xs" style="color:#60a5fa;">Leading load: reads HIGH (+ve error)</div>
+                                <div class="formula text-xs" style="color:#ef4444;">Low PF (φ→90°): tan φ → ∞ → LARGE error</div>
+                            </div>
+                        </div>
+
+                        <div class="anim-zone" style="min-height:320px; flex-direction:column; gap:15px;">
+                            <div style="display:flex; width:100%; gap:20px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- CF correction gauge -->
+                                <svg id="m8-cf-gauge" viewBox="0 0 200 140" width="195" height="135">
+                                    <!-- Gauge background arc -->
+                                    <path d="M 30 120 A 80 80 0 0 1 170 120" fill="none" stroke="#1e293b" stroke-width="12" stroke-linecap="round"></path>
+                                    <!-- Green zone (CF near 1) -->
+                                    <path d="M 30 120 A 80 80 0 0 1 80 45" fill="none" stroke="rgba(0,255,136,0.3)" stroke-width="12" stroke-linecap="round"></path>
+                                    <!-- Gold zone (moderate) -->
+                                    <path d="M 80 45 A 80 80 0 0 1 130 45" fill="none" stroke="rgba(250,204,21,0.3)" stroke-width="12" stroke-linecap="round"></path>
+                                    <!-- Red zone (CF large) -->
+                                    <path d="M 130 45 A 80 80 0 0 1 170 120" fill="none" stroke="rgba(239,68,68,0.3)" stroke-width="12" stroke-linecap="round"></path>
+                                    <!-- Needle -->
+                                    <line id="m8-cf-needle" x1="100" y1="120" x2="50" y2="60" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round"></line>
+                                    <circle cx="100" cy="120" r="5" fill="#00ff88"></circle>
+                                    <!-- CF label -->
+                                    <text id="m8-cf-text" x="100" y="18" fill="#facc15" font-size="12" text-anchor="middle">CF = 1.000</text>
+                                    <text x="25" y="135" fill="#00ff88" font-size="8">1.0</text>
+                                    <text x="165" y="135" fill="#ef4444" font-size="8">∞</text>
+                                </svg>
+                                <!-- Error type bar chart -->
+                                <div id="m8-error-bars" style="width:280px; height:210px;"></div>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:600px; margin:0 auto; width:100%;">
+                                <div class="interactive-slider-group" style="flex:1; min-width:140px;">
+                                    <label>φ — Load PF angle (°): <span id="m8-phi-val">30</span></label>
+                                    <input type="range" id="m8-phi" min="0" max="89" value="30" step="1" class="m8-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:140px;">
+                                    <label>β — PC phase angle (°): <span id="m8-beta-val">3</span></label>
+                                    <input type="range" id="m8-beta" min="0" max="15" value="3" step="0.5" class="m8-slider">
+                                </div>
+                            </div>
+                            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                                <span class="m8-app-tag" id="m8-err-pct-badge" style="border-color:#f97316; color:#f97316;">Error ≈ 0%</span>
+                                <span class="m8-app-tag" id="m8-pf-warn-badge" style="border-color:#00ff88; color:#00ff88;">PF OK</span>
+                            </div>
+                        </div>
+
+                        <div class="m8-calc-zone" id="m8-cf-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">📐 PC Inductance Correction Calculator</h4>
+                            <div class="m8-calc-row">
+                                <label>φ (°):</label><input type="number" id="m8-cfc-phi" value="30" min="0" max="89" step="1">
+                                <label>β (°):</label><input type="number" id="m8-cfc-beta" value="3" min="0" max="15" step="0.5">
+                                <label>Reading (W):</label><input type="number" id="m8-cfc-reading" value="500" min="0" step="10">
+                            </div>
+                            <div class="m8-calc-result" id="m8-cfc-result">CF = — | True P = — W | Error ≈ —%</div>
+                        </div>
+                        <div class="m8-calc-zone" id="m8-comp-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">🔧 PC Compensation Calculator</h4>
+                            <div class="m8-calc-row">
+                                <label>LPC (mH):</label><input type="number" id="m8-compc-lpc" value="50" min="0.1" step="1">
+                                <label>RPC (kΩ):</label><input type="number" id="m8-compc-rpc" value="10" min="0.1" step="1">
+                            </div>
+                            <div class="m8-calc-result" id="m8-compc-result">C = — μF</div>
+                        </div>
+                        <div class="m8-card-footer">
+                            <button class="m8-footer-btn" onclick="navigator.clipboard.writeText('CF = \\frac{\\cos\\phi}{\\cos\\beta\\cos(\\phi+\\beta)}')">📋 Copy LaTeX</button>
+                            <button class="m8-footer-btn" onclick="document.getElementById('m8-cf-calc').classList.toggle('open')">🧮 CF Calculator</button>
+                            <button class="m8-footer-btn" onclick="document.getElementById('m8-comp-calc').classList.toggle('open')">🔧 Compensation</button>
+                            <button class="m8-footer-btn m8-bookmark-btn" data-card="m8-errors">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 8.3: LOW POWER FACTOR WATTMETER        -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m8-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>🔵 8.3 Low Power Factor Wattmeter</h3>
+                            <span class="m8-badge">cos φ &lt; 0.5 · Compensating Coil · Iron Loss Test</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#fb7185; margin-bottom:10px; text-align:center;">Why Standard Fails</h4>
+                                <div class="formula text-sm">$$ P = VI\cos\phi $$</div>
+                                <div class="formula text-sm">$$ \cos\phi = 0.1 \Rightarrow P = 0.1 \times VI $$</div>
+                                <div class="formula text-xs" style="color:#ef4444;">Deflection = 10% of FSD → inaccurate</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:10px; text-align:center;">LPF Modifications</h4>
+                                <div class="formula text-sm">$$ \text{1. Compensating coil added} $$</div>
+                                <div class="formula text-sm">$$ \text{2. PC resistance reduced} $$</div>
+                                <div class="formula text-sm">$$ \text{3. Scale: low PF range} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:10px; text-align:center;">Compensating Coil</h4>
+                                <div class="formula text-sm" style="color:#f97316;">$$ \text{Without: } P_m = P_L + \frac{V^2}{R_{PC}} $$</div>
+                                <div class="formula text-sm" style="color:#00ff88;">$$ \text{With: } P_m = P_L \;\text{✓} $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">Compensating coil cancels PC power loss</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <h4 style="color:#facc15; text-align:center; margin-bottom:8px;">Applications</h4>
+                            <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">
+                                <div class="m8-app-tag" style="border-color:#fb7185; color:#fb7185;">Transformer no-load test (PF ≈ 0.1–0.2)</div>
+                                <div class="m8-app-tag" style="border-color:#60a5fa; color:#60a5fa;">Capacitive circuit measurement</div>
+                                <div class="m8-app-tag" style="border-color:#a78bfa; color:#a78bfa;">Synchronous motor no-load power</div>
+                            </div>
+                        </div>
+
+                        <div class="anim-zone" style="min-height:300px; flex-direction:column; gap:15px;">
+                            <div style="display:flex; width:100%; gap:20px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Standard vs LPF deflection comparison -->
+                                <div style="text-align:center;">
+                                    <div style="color:#94a3b8; font-size:0.75rem; font-family:'Orbitron',sans-serif; margin-bottom:5px;">Standard Wattmeter</div>
+                                    <svg id="m8-std-meter" viewBox="0 0 180 100" width="175" height="100">
+                                        <path d="M 20 90 A 80 80 0 0 1 160 90" fill="none" stroke="#1e293b" stroke-width="8" stroke-linecap="round"></path>
+                                        <!-- Full scale arc marker -->
+                                        <path d="M 20 90 A 80 80 0 0 1 160 90" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8" stroke-linecap="round"></path>
+                                        <!-- Deflection arc -->
+                                        <path id="m8-std-defl" d="M 20 90 A 80 80 0 0 0 30 70" fill="none" stroke="#ef4444" stroke-width="8" stroke-linecap="round"></path>
+                                        <!-- Needle -->
+                                        <line id="m8-std-needle" x1="90" y1="90" x2="30" y2="50" stroke="#fff" stroke-width="2"></line>
+                                        <circle cx="90" cy="90" r="4" fill="#fff"></circle>
+                                        <text id="m8-std-reading" x="90" y="15" fill="#ef4444" font-size="9" text-anchor="middle">10% FSD</text>
+                                        <text x="90" y="75" fill="#94a3b8" font-size="7" text-anchor="middle">Scale cramped</text>
+                                    </svg>
+                                </div>
+                                <div style="text-align:center;">
+                                    <div style="color:#00ff88; font-size:0.75rem; font-family:'Orbitron',sans-serif; margin-bottom:5px;">LPF Wattmeter</div>
+                                    <svg id="m8-lpf-meter" viewBox="0 0 180 100" width="175" height="100">
+                                        <path d="M 20 90 A 80 80 0 0 1 160 90" fill="none" stroke="#1e293b" stroke-width="8" stroke-linecap="round"></path>
+                                        <path d="M 20 90 A 80 80 0 0 1 160 90" fill="none" stroke="rgba(0,255,136,0.08)" stroke-width="8" stroke-linecap="round"></path>
+                                        <!-- Deflection arc (expanded) -->
+                                        <path id="m8-lpf-defl" d="" fill="none" stroke="#00ff88" stroke-width="8" stroke-linecap="round"></path>
+                                        <!-- Needle -->
+                                        <line id="m8-lpf-needle" x1="90" y1="90" x2="140" y2="30" stroke="#fff" stroke-width="2"></line>
+                                        <circle cx="90" cy="90" r="4" fill="#fff"></circle>
+                                        <text id="m8-lpf-reading" x="90" y="15" fill="#00ff88" font-size="9" text-anchor="middle">Optimized</text>
+                                        <text x="90" y="75" fill="#00ff88" font-size="7" text-anchor="middle">Full-scale for low PF</text>
+                                    </svg>
+                                </div>
+                                <!-- Iron loss circuit -->
+                                <svg id="m8-iron-loss" viewBox="0 0 220 140" width="215" height="135">
+                                    <text x="110" y="12" fill="#facc15" font-size="9" text-anchor="middle">Transformer No-Load Test</text>
+                                    <!-- Transformer symbol -->
+                                    <rect x="75" y="25" width="70" height="90" rx="6" fill="none" stroke="#475569" stroke-width="2"></rect>
+                                    <!-- Primary winding -->
+                                    <path d="M 75 40 Q 65 48 75 56 Q 85 64 75 72 Q 65 80 75 88 Q 85 96 75 104" fill="none" stroke="#facc15" stroke-width="1.5"></path>
+                                    <!-- Secondary winding (open) -->
+                                    <path d="M 145 40 Q 155 48 145 56 Q 135 64 145 72 Q 155 80 145 88" fill="none" stroke="#94a3b8" stroke-width="1.5"></path>
+                                    <text x="160" y="70" fill="#ef4444" font-size="8">Open</text>
+                                    <!-- Supply -->
+                                    <line x1="10" y1="35" x2="75" y2="35" stroke="#555" stroke-width="1"></line>
+                                    <line x1="10" y1="110" x2="75" y2="110" stroke="#555" stroke-width="1"></line>
+                                    <!-- LPF Wattmeter -->
+                                    <rect x="25" y="55" width="35" height="18" rx="4" fill="rgba(251,113,133,0.08)" stroke="#fb7185" stroke-width="1.5"></rect>
+                                    <text x="42" y="67" fill="#fb7185" font-size="7" text-anchor="middle">LPF W</text>
+                                    <line x1="25" y1="35" x2="25" y2="55" stroke="#fb7185" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <line x1="25" y1="73" x2="25" y2="110" stroke="#fb7185" stroke-width="1" stroke-dasharray="3 2"></line>
+                                    <!-- Readings -->
+                                    <text id="m8-iron-pf" x="110" y="130" fill="#fb7185" font-size="8" text-anchor="middle">cos φ₀ ≈ 0.15</text>
+                                </svg>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:400px; margin:0 auto; width:100%;">
+                                <div class="interactive-slider-group" style="flex:1; min-width:180px;">
+                                    <label>cos φ: <span id="m8-lpf-pf-val">0.20</span></label>
+                                    <input type="range" id="m8-lpf-pf" min="0.05" max="1" value="0.20" step="0.01" class="m8-slider">
+                                </div>
+                            </div>
+                            <div class="m8-calc-result" id="m8-lpf-recommend" style="max-width:450px; margin:5px auto;">Deflection: —% FSD</div>
+                        </div>
+
+                        <div class="m8-calc-zone" id="m8-lpf-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">🔵 LPF Range Checker</h4>
+                            <div class="m8-calc-row">
+                                <label>cos φ:</label><input type="number" id="m8-lpfc-pf" value="0.2" min="0.01" max="1" step="0.01">
+                            </div>
+                            <div class="m8-calc-result" id="m8-lpfc-result">Recommendation: —</div>
+                        </div>
+                        <div class="m8-card-footer">
+                            <button class="m8-footer-btn" onclick="navigator.clipboard.writeText('C = 0.4\\frac{L_{PC}}{R_{PC}^2}')">📋 Copy LaTeX</button>
+                            <button class="m8-footer-btn" onclick="document.getElementById('m8-lpf-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m8-footer-btn m8-bookmark-btn" data-card="m8-lpf">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 8.4: BLONDEL'S THEOREM & POLYPHASE     -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m8-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>🌐 8.4 Blondel's Theorem &amp; Polyphase Power</h3>
+                            <span class="m8-badge">N-Wire · Two Wattmeter · Three Wattmeter</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#a78bfa; margin-bottom:10px; text-align:center;">Blondel's Theorem</h4>
+                                <div class="formula text-sm">$$ \boxed{\text{N wires, no neutral} \Rightarrow (N\!-\!1) \text{ wattmeters}} $$</div>
+                                <div class="formula text-sm">$$ \boxed{\text{N wires, with neutral} \Rightarrow N \text{ wattmeters}} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00f5ff; margin-bottom:10px; text-align:center;">Two Wattmeter Method</h4>
+                                <div class="formula text-sm">$$ W_1 = V_L I_L\cos(30°\!-\!\phi) $$</div>
+                                <div class="formula text-sm">$$ W_2 = V_L I_L\cos(30°\!+\!\phi) $$</div>
+                                <div class="formula text-sm">$$ \boxed{P = W_1 + W_2} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">From Two Wattmeters</h4>
+                                <div class="formula text-sm">$$ \boxed{\tan\phi = \sqrt{3}\cdot\frac{W_1 - W_2}{W_1 + W_2}} $$</div>
+                                <div class="formula text-sm">$$ Q = \sqrt{3}(W_1 - W_2) $$</div>
+                                <div class="formula text-sm">$$ S = \sqrt{P^2 + Q^2} $$</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05); display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:8px; text-align:center;">Special PF Cases</h4>
+                                <div class="formula text-xs" style="color:#00ff88;">$\phi=0°$ (pf=1): $W_1 = W_2 = P/2$</div>
+                                <div class="formula text-xs" style="color:#facc15;">$\phi=60°$ (pf=0.5): $W_2 = 0$</div>
+                                <div class="formula text-xs" style="color:#ef4444;">$\phi=90°$ (pf=0): $W_1 = -W_2$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#fb7185; margin-bottom:8px; text-align:center;">Other Methods</h4>
+                                <div class="formula text-xs" style="color:#94a3b8;">1 Wattmeter (balanced): $P = 3W_1$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">3 Wattmeter (4-wire): $P = W_1+W_2+W_3$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:8px; text-align:center;">W₂ Reversal</h4>
+                                <div class="formula text-xs" style="color:#ef4444;">$\phi &gt; 60°$: $W_2 &lt; 0$ → Reverse PC connections</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">$P = W_1 - |W_2|$ (after reversal)</div>
+                            </div>
+                        </div>
+
+                        <div class="anim-zone" style="min-height:360px; flex-direction:column; gap:15px;">
+                            <!-- Blondel's theorem visualizer -->
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <div style="text-align:center;">
+                                    <div style="color:#a78bfa; font-size:0.75rem; font-family:'Orbitron',sans-serif; margin-bottom:5px;">Blondel's Theorem</div>
+                                    <svg id="m8-blondel-svg" viewBox="0 0 240 160" width="235" height="155">
+                                        <!-- Will be drawn dynamically -->
+                                    </svg>
+                                    <div style="display:flex; gap:8px; justify-content:center; margin-top:5px;">
+                                        <div class="interactive-slider-group" style="min-width:100px;">
+                                            <label>N wires: <span id="m8-nwire-val">3</span></label>
+                                            <input type="range" id="m8-nwire" min="2" max="6" value="3" step="1" class="m8-slider">
+                                        </div>
+                                        <label style="display:flex; align-items:center; gap:5px; color:#94a3b8; font-size:0.75rem;">
+                                            <input type="checkbox" id="m8-neutral-chk"> Neutral
+                                        </label>
+                                    </div>
+                                    <div class="m8-calc-result" id="m8-blondel-result" style="margin-top:5px; font-size:0.8rem;">Use 2 wattmeters</div>
+                                </div>
+                                <!-- W1 W2 chart with PF zones -->
+                                <div id="m8-2w-chart" style="width:320px; height:230px;"></div>
+                            </div>
+                            <!-- φ slider for two wattmeter -->
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:500px; margin:0 auto; width:100%;">
+                                <div class="interactive-slider-group" style="flex:1; min-width:200px;">
+                                    <label>φ (°): <span id="m8-2w-phi-val">30</span></label>
+                                    <input type="range" id="m8-2w-phi" min="0" max="90" value="30" step="1" class="m8-slider">
+                                </div>
+                            </div>
+                            <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+                                <span class="m8-app-tag" id="m8-2w-w1badge" style="border-color:#00f5ff; color:#00f5ff;">W₁ = 0</span>
+                                <span class="m8-app-tag" id="m8-2w-w2badge" style="border-color:#f97316; color:#f97316;">W₂ = 0</span>
+                                <span class="m8-app-tag" id="m8-2w-ptbadge" style="border-color:#00ff88; color:#00ff88;">P = 0</span>
+                                <span class="m8-app-tag" id="m8-2w-pfbadge" style="border-color:#facc15; color:#facc15;">pf = 1</span>
+                                <span class="m8-app-tag" id="m8-2w-revbadge" style="border-color:#00ff88; color:#00ff88; display:none;">⚠️ Reverse W₂</span>
+                            </div>
+                        </div>
+
+                        <div class="m8-calc-zone" id="m8-2w-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">🔌 Two Wattmeter Calculator</h4>
+                            <div class="m8-calc-row">
+                                <label>W₁ (W):</label><input type="number" id="m8-2wc-w1" value="1500" min="-10000" step="10">
+                                <label>W₂ (W):</label><input type="number" id="m8-2wc-w2" value="800" min="-10000" step="10">
+                            </div>
+                            <div class="m8-calc-result" id="m8-2wc-result">P = — | Q = — | S = — | tan φ = — | cos φ = —</div>
+                        </div>
+                        <div class="m8-calc-zone" id="m8-blondel-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">🌐 Blondel's Theorem Calculator</h4>
+                            <div class="m8-calc-row">
+                                <label>N (wires):</label><input type="number" id="m8-bc-n" value="3" min="2" max="10" step="1">
+                                <label style="display:flex; align-items:center; gap:4px;">Neutral: <input type="checkbox" id="m8-bc-neutral"></label>
+                            </div>
+                            <div class="m8-calc-result" id="m8-bc-result">Wattmeters needed: —</div>
+                        </div>
+                        <div class="m8-card-footer">
+                            <button class="m8-footer-btn" onclick="navigator.clipboard.writeText('\\tan\\phi = \\sqrt{3}\\frac{W_1-W_2}{W_1+W_2}')">📋 Copy LaTeX</button>
+                            <button class="m8-footer-btn" onclick="document.getElementById('m8-2w-calc').classList.toggle('open')">🧮 2W Calc</button>
+                            <button class="m8-footer-btn" onclick="document.getElementById('m8-blondel-calc').classList.toggle('open')">🌐 Blondel</button>
+                            <button class="m8-footer-btn m8-bookmark-btn" data-card="m8-blondel">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════ -->
+                    <!-- CARD 8.5: WATTMETER CONNECTION SUMMARY      -->
+                    <!-- ═══════════════════════════════════════════ -->
+                    <div class="machine-card m8-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+                        <div class="card-strip" style="background: #00ff88;"></div>
+                        <div class="card-header">
+                            <h3>📊 8.5 Wattmeter Connection — Summary</h3>
+                            <span class="m8-badge">Quick Reference · All Methods · PF Zones</span>
+                        </div>
+                        <div class="formula-zone" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+                            <div>
+                                <h4 style="color:#facc15; margin-bottom:10px; text-align:center;">Key Formulas</h4>
+                                <div class="formula text-sm">$$ P = W_1 + W_2 $$</div>
+                                <div class="formula text-sm">$$ Q = \sqrt{3}(W_1 - W_2) $$</div>
+                                <div class="formula text-sm">$$ \tan\phi = \sqrt{3}\frac{W_1-W_2}{W_1+W_2} $$</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#00ff88; margin-bottom:10px; text-align:center;">PF Markers</h4>
+                                <div class="formula text-xs" style="color:#00ff88;">pf = 1: $W_1 = W_2$ (equal)</div>
+                                <div class="formula text-xs" style="color:#facc15;">pf = 0.5: $W_2 = 0$ (one zero)</div>
+                                <div class="formula text-xs" style="color:#ef4444;">pf &lt; 0.5: $W_2 &lt; 0$ (reverse)</div>
+                            </div>
+                            <div>
+                                <h4 style="color:#f97316; margin-bottom:10px; text-align:center;">Equal Error</h4>
+                                <div class="formula text-sm">$$ R_{crit} = \sqrt{R_{CC}\cdot R_{PC}} $$</div>
+                                <div class="formula text-xs" style="color:#94a3b8;">$R_L &gt; R_c$: Conn A | $R_L &lt; R_c$: Conn B</div>
+                            </div>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05); overflow-x:auto;">
+                            <table class="m8-comparison-table">
+                                <thead>
+                                    <tr><th>Parameter</th><th style="color:#00f5ff;">Conn A (MC short)</th><th style="color:#f97316;">Conn B (LC short)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>PC connected</td><td>Before CC (supply side)</td><td>After CC (load side)</td></tr>
+                                    <tr><td>Wattmeter reads</td><td>$P_L + I^2 R_{CC}$</td><td>$P_L + V^2/R_{PC}$</td></tr>
+                                    <tr><td>Error type</td><td>CC loss (current error)</td><td>PC loss (voltage error)</td></tr>
+                                    <tr><td>Error formula</td><td>$R_{CC}/R_L \times 100\%$</td><td>$R_L/R_{PC} \times 100\%$</td></tr>
+                                    <tr><td>Best for</td><td style="color:#00f5ff;">Small load current</td><td style="color:#f97316;">Large load current</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05); overflow-x:auto;">
+                            <table class="m8-comparison-table">
+                                <thead>
+                                    <tr><th>Error Source</th><th>Correction / Compensation</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td style="color:#f97316;">PC inductance</td><td>$C = 0.4\,L_{PC}/R_{PC}^2$ in parallel with R</td></tr>
+                                    <tr><td style="color:#60a5fa;">PC capacitance</td><td>$X_C = X_L$ (add L, make total reactance = 0)</td></tr>
+                                    <tr><td style="color:#ef4444;">Connection method</td><td>Choose A or B based on $R_L$ vs $R_{crit}$</td></tr>
+                                    <tr><td style="color:#fb7185;">Low power factor</td><td>Use LPF wattmeter + compensating coil</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="formula-zone" style="border-top:1px solid rgba(255,255,255,0.05); overflow-x:auto;">
+                            <table class="m8-comparison-table">
+                                <thead>
+                                    <tr><th>System</th><th>Wattmeters Required</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1-φ 2-wire</td><td>1 wattmeter</td></tr>
+                                    <tr><td>3-φ 3-wire (no N)</td><td>2 wattmeters</td></tr>
+                                    <tr><td>3-φ 4-wire (with N)</td><td>3 wattmeters (or 4 for unbalanced)</td></tr>
+                                    <tr><td>N-wire, no neutral</td><td>N − 1 wattmeters</td></tr>
+                                    <tr><td>N-wire, with neutral</td><td>N wattmeters</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="anim-zone" style="min-height:280px; flex-direction:column; gap:15px;">
+                            <div style="display:flex; width:100%; gap:15px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+                                <!-- Power triangle from W1,W2 -->
+                                <svg id="m8-sum-triangle" viewBox="0 0 260 200" width="250" height="195">
+                                    <line id="m8-sum-P" x1="30" y1="170" x2="200" y2="170" stroke="#00ff88" stroke-width="2.5"></line>
+                                    <text id="m8-sum-P-lbl" x="115" y="188" fill="#00ff88" font-size="10" text-anchor="middle">P</text>
+                                    <line id="m8-sum-Q" x1="200" y1="170" x2="200" y2="50" stroke="#fb7185" stroke-width="2.5"></line>
+                                    <text id="m8-sum-Q-lbl" x="218" y="115" fill="#fb7185" font-size="10">Q</text>
+                                    <line id="m8-sum-S" x1="30" y1="170" x2="200" y2="50" stroke="#facc15" stroke-width="2.5"></line>
+                                    <text id="m8-sum-S-lbl" x="100" y="100" fill="#facc15" font-size="10">S</text>
+                                    <path id="m8-sum-phi-arc" d="" fill="none" stroke="#fff" stroke-width="1.5"></path>
+                                    <text id="m8-sum-phi-lbl" x="70" y="162" fill="#fff" font-size="10">φ</text>
+                                    <text id="m8-sum-readout" x="130" y="20" fill="#00ff88" font-size="9" text-anchor="middle">—</text>
+                                </svg>
+                                <!-- PF zone bar -->
+                                <div id="m8-pf-zone-chart" style="width:300px; height:200px;"></div>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:600px; margin:0 auto; width:100%;">
+                                <div class="interactive-slider-group" style="flex:1; min-width:130px;">
+                                    <label>W₁ (W): <span id="m8-sum-w1-val">1500</span></label>
+                                    <input type="range" id="m8-sum-w1" min="-2000" max="5000" value="1500" step="50" class="m8-slider">
+                                </div>
+                                <div class="interactive-slider-group" style="flex:1; min-width:130px;">
+                                    <label>W₂ (W): <span id="m8-sum-w2-val">800</span></label>
+                                    <input type="range" id="m8-sum-w2" min="-3000" max="5000" value="800" step="50" class="m8-slider">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="m8-calc-zone" id="m8-sum-calc">
+                            <h4 style="color:#00ff88; margin-bottom:10px;">📊 Summary Power Calculator</h4>
+                            <div class="m8-calc-row">
+                                <label>W₁ (W):</label><input type="number" id="m8-sumc-w1" value="1500" min="-10000" step="10">
+                                <label>W₂ (W):</label><input type="number" id="m8-sumc-w2" value="800" min="-10000" step="10">
+                            </div>
+                            <div class="m8-calc-result" id="m8-sumc-result">P = — | Q = — | S = — | cos φ = —</div>
+                        </div>
+                        <div class="m8-card-footer">
+                            <button class="m8-footer-btn" onclick="navigator.clipboard.writeText('P=W_1+W_2,\\;Q=\\sqrt{3}(W_1-W_2),\\;\\tan\\phi=\\sqrt{3}\\frac{W_1-W_2}{W_1+W_2}')">📋 Copy LaTeX</button>
+                            <button class="m8-footer-btn" onclick="document.getElementById('m8-sum-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m8-footer-btn m8-bookmark-btn" data-card="m8-summary">🔖 Bookmark</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+    </main>
+
+    <div class="topic-nav-footer">
+        <a href="../pt-ct-vs-pt-power/index.html" class="btn-nav btn-prev">← Previous: 📊 PT, CT vs PT & Power</a>
+        <a href="../3-power-energy-meters/index.html" class="btn-nav btn-next">Next: 📟 3-φ Power & Energy Meters →</a>
+    </div>
+
+    
+</body>
+</html>

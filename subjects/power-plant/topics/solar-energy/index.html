@@ -1,0 +1,1092 @@
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Energy — Power Plant Engineering</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;family=Exo+2:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+  
+<link rel="stylesheet" href="../../css/powerplant-inline.css"><link rel="stylesheet" href="../../../../../../shared/css/topic-page.css"></head>
+
+<body data-page-category="powerplant" class="pp-body">
+
+  <!-- Sidebar Toggle -->
+  <button class="pp-sidebar-toggle" id="ppSbToggle" aria-label="Toggle sidebar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <div class="pp-sidebar__overlay" id="ppSbOverlay"></div>
+
+  <!-- Glassmorphism Sidebar -->
+  <aside class="pp-sidebar" id="ppSidebar">
+    <div class="pp-sidebar__header">
+      <div class="pp-sidebar__profile">
+        <div class="pp-sidebar__avatar">⚡</div>
+        <div class="pp-sidebar__info">
+          <span class="pp-sidebar__label">Power Plant</span>
+          <span class="pp-sidebar__name">ENGINEERING</span>
+        </div>
+      </div>
+      <button class="pp-sidebar__close" id="ppSbClose" aria-label="Close sidebar">✕</button>
+    </div>
+    <div class="pp-sidebar__section-label">MODULES</div>
+    <ul class="pp-sidebar__nav">
+      <li><a class="pp-sidebar__link active" data-mod="1" style="--mod-color:#f97316;" href="../power-systems-overview/index.html"><span class="pp-sidebar__icon">⚡</span><span class="pp-sidebar__link-text">Power Systems</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="2" style="--mod-color:#60a5fa;" href="../hydro-power/index.html"><span class="pp-sidebar__icon">💧</span><span class="pp-sidebar__link-text">Hydro Power</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="3" style="--mod-color:#ef4444;" href="../thermal-steam/index.html"><span class="pp-sidebar__icon">🔥</span><span class="pp-sidebar__link-text">Thermal Steam</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="4" style="--mod-color:#f97316;" href="../coal-fuels/index.html"><span class="pp-sidebar__icon">⛏️</span><span class="pp-sidebar__link-text">Coal &amp; Fuels</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="5" style="--mod-color:#a78bfa;" href="../nuclear-power/index.html"><span class="pp-sidebar__icon">☢️</span><span class="pp-sidebar__link-text">Nuclear Power</span><span class="pp-sidebar__link-count">10</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="6" style="--mod-color:#f97316;" href="../diesel-power/index.html"><span class="pp-sidebar__icon">🛢️</span><span class="pp-sidebar__link-text">Diesel Power</span><span class="pp-sidebar__link-count">1</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="7" style="--mod-color:#f97316;" href="../gas-turbine/index.html"><span class="pp-sidebar__icon">🌀</span><span class="pp-sidebar__link-text">Gas Turbine</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="8" style="--mod-color:#facc15;" href="../solar-energy/index.html"><span class="pp-sidebar__icon">☀️</span><span class="pp-sidebar__link-text">Solar Energy</span><span class="pp-sidebar__link-count">9</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="9" style="--mod-color:#facc15;" href="../solar-collectors/index.html"><span class="pp-sidebar__icon">🌡️</span><span class="pp-sidebar__link-text">Solar Collectors</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="10" style="--mod-color:#00f5ff;" href="../geothermal-mhd/index.html"><span class="pp-sidebar__icon">🌋</span><span class="pp-sidebar__link-text">Geothermal &amp; MHD</span><span class="pp-sidebar__link-count">6</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="0" style="--mod-color:#00ff88;" href="../../index.html"><span class="pp-sidebar__icon">📋</span><span class="pp-sidebar__link-text">All Modules</span><span class="pp-sidebar__link-count">56</span></a></li>
+    </ul>
+    <div class="pp-sidebar__footer">
+      <div class="pp-sidebar__footer-text">
+        Chapters: <span>56</span> • Formulas: <span>400+</span><br>
+        Animations: <span>120+</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Unified Navbar -->
+  <nav class="navbar" role="navigation">
+    <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+    <ul class="navbar__links">
+      <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+      <li><a href="../../../machines/index.html">Machines</a></li>
+      <li><a href="../../../measurements/index.html">Measurements</a></li>
+      <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+      <li><a href="../../../power-plant/index.html" class="active">Power Plant</a></li>
+      <li><a href="../../../control/index.html">Control Systems</a></li>
+      <li><a href="../../../electronics/index.html">Electronics</a></li>
+      <li><a href="../../../signals/index.html">Signals</a></li>
+      <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+      <li><a href="../../../estimation/index.html">Estimation</a></li>
+      <li><a href="../../../utilization/index.html">Utilization</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <div class="search-box">
+        <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+          <path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path>
+          <path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path>
+          <path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z"></path>
+          <path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2z"></path>
+          <path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z"></path>
+          <path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z"></path>
+        </svg></span>
+        <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Particles -->
+  <div class="pp-particles" id="pp-particles"></div>
+
+  <!-- Hero Section (measurements-style) -->
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10"></path>
+    </svg>
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style="text-align:center;">
+        Power <span class="pp-neon-text">Plant</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter" data-text="Generation · Thermal · Hydro · Nuclear · Solar · Gas Turbine"></p>
+      <div class="pp-hero-icons">
+        <div class="pp-hero-icon">🏭</div>
+        <div class="pp-hero-icon">💧</div>
+        <div class="pp-hero-icon">☢️</div>
+        <div class="pp-hero-icon">☀️</div>
+      </div>
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#c1" class="pp-hero-cta">⚡ Explore Power Plants</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pp-main"><div class="topic-breadcrumb">
+        <a href="../../../../index.html">EE Hub</a> › 
+        <a href="../../index.html">Power Plant</a> › 
+        <span>Solar Energy</span>
+    </div><div class="topic-content"><div class="pp-card m4-solar" id="c37">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#facc15;font-size:14px;">☀️</span>
+        Module 4 · Solar Energy: Photovoltaic Cells
+      </div>
+
+      <div class="pp-definition-box">
+        A solar (photovoltaic) cell converts light energy directly into electricity via the photovoltaic effect. Photons absorbed by a semiconductor create electron-hole pairs, separated by the p-n junction to produce current. Cells connect in series for voltage, parallel for current.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Solar Energy Overview</div>
+        <div class="pp-formula-row">$$\boxed{E_{solar} = 1.6 \times 10^{18}\;\text{kWh/year (Earth receives)}}$$</div>
+        <div class="pp-formula-row">$$G \approx 1000\;\text{W/m}^2\;\text{(peak, clear sky)} \quad G_{avg} \approx 200\text{–}250\;\text{W/m}^2\;\text{(India avg)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Solar Cell Output</div>
+        <div class="pp-formula-row">$$\boxed{P_{cell} = V_{OC} \times I_{SC} \times FF}$$</div>
+        <div class="pp-formula-row">$$V_{OC} \approx 0.5\text{–}0.7\;\text{V} \quad I_{SC}\;\text{(A)} \quad FF \approx 0.7\text{–}0.85\;\text{(fill factor)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Cell Efficiency</div>
+        <div class="pp-formula-row">$$\eta_{cell} = \frac{P_{max}}{G \times A_{cell}} \quad \eta_{Si} \approx 15\text{–}22\% \quad \eta_{multi\text{-}junction} \approx 40\%+$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">PV Operation Steps</div>
+        <div class="pp-formula-row">$$\text{1. Light absorption} \rightarrow \text{2. e-h pair generation} \rightarrow \text{3. Charge separation}$$</div>
+        <div class="pp-formula-row">$$\rightarrow \text{4. External circuit extraction} \rightarrow \text{5. Battery storage} \rightarrow \text{6. Load (utility)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Panel Scaling</div>
+        <div class="pp-formula-row">$$\text{Cell} \xrightarrow{\text{series}} \text{Module} \xrightarrow{\text{series/parallel}} \text{Panel} \xrightarrow{\text{series/parallel}} \text{Array}$$</div>
+        <div class="pp-formula-row">$$V_{total} = n_s \times V_{cell} \quad I_{total} = n_p \times I_{cell}$$</div>
+        <div class="pp-formula-row">$$\boxed{P_{array} = n_s \times n_p \times V_{cell} \times I_{cell} \times FF}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Temperature Effect</div>
+        <div class="pp-formula-row">$$P_{actual} = P_{rated}[1 - 0.004(T - 25)] \quad \text{STC: } G=1000\;\text{W/m}^2,\;T=25°C$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-37" style="min-height:260px;">
+        <div class="pp-anim-label">☀️ Solar Cell &amp; Panel Scaling</div>
+
+        <!-- Solar Cell Layers -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">SOLAR CELL CROSS-SECTION</div>
+        <div class="pp-solar-layers">
+          <div class="pp-solar-layer" style="background:rgba(250,204,21,0.15);border-color:rgba(250,204,21,0.3);color:#facc15;border-radius:6px 6px 0 0;">☀️ Sunlight (photons) ↓</div>
+          <div class="pp-solar-layer" style="background:rgba(96,165,250,0.08);border-color:rgba(96,165,250,0.3);color:#60a5fa;">Anti-reflection coating</div>
+          <div class="pp-solar-layer" style="background:rgba(0,245,255,0.08);border-color:rgba(0,245,255,0.3);color:#00f5ff;">N-type silicon (e⁻ rich)</div>
+          <div class="pp-solar-layer" style="background:rgba(250,204,21,0.2);border-color:rgba(250,204,21,0.5);color:#facc15;font-weight:bold;">═══ P-N Junction (depletion zone) ═══</div>
+          <div class="pp-solar-layer" style="background:rgba(167,139,250,0.08);border-color:rgba(167,139,250,0.3);color:#a78bfa;">P-type silicon (h⁺ rich)</div>
+          <div class="pp-solar-layer" style="background:rgba(107,114,128,0.15);border-color:rgba(107,114,128,0.3);color:#9ca3af;border-radius:0 0 6px 6px;">Back contact (metal)</div>
+        </div>
+        <div style="text-align:center;font-size:10px;color:#00ff88;margin-top:4px;">e⁻ → N-layer → external circuit → P-layer → current flows!</div>
+
+        <!-- Solar Array Calculator -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">SOLAR ARRAY CALCULATOR</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">ns (series):</label>
+            <input type="number" id="c37ns" value="6" min="1" max="100" style="width:45px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">np (parallel):</label>
+            <input type="number" id="c37np" value="4" min="1" max="100" style="width:45px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Vcell (V):</label>
+            <input type="number" id="c37Vc" value="0.6" min="0.1" max="2" step="0.05" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Icell (A):</label>
+            <input type="number" id="c37Ic" value="9" min="0.1" max="20" step="0.1" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">FF:</label>
+            <input type="number" id="c37FF" value="0.78" min="0.5" max="1" step="0.01" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcSolarC37()" style="background:rgba(250,204,21,0.15);border-color:rgba(250,204,21,0.3);color:#facc15;">Calculate</button>
+          </div>
+          <div id="c37SolarOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#facc15;min-height:18px;line-height:1.6;"></div>
+        </div>
+
+        <!-- Temperature Effect Calculator -->
+        <div style="margin-top:10px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">TEMPERATURE DERATING</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">P_rated (W):</label>
+            <input type="number" id="c37Prated" value="400" min="0" style="width:60px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">T (°C):</label>
+            <input type="number" id="c37Temp" value="45" min="0" max="80" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcTempDerateC37()" style="background:rgba(250,204,21,0.15);border-color:rgba(250,204,21,0.3);color:#facc15;">Derate</button>
+          </div>
+          <div id="c37TempOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#facc15;min-height:18px;line-height:1.6;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4-solar" id="c38">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#facc15;font-size:14px;">☀️</span>
+        Module 4 · Solar Energy: Thermal &amp; Systems
+      </div>
+
+      <div class="pp-definition-box">
+        Concentrated Solar Power (CSP) uses mirrors or lenses to focus sunlight, generating high temperatures for power generation. Types include parabolic trough, solar tower, dish Stirling, and linear Fresnel — complementing PV with thermal storage capability.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Solar Thermal Formulas</div>
+        <div class="pp-formula-row">$$Q_{absorbed} = \alpha G A_{collector} \quad Q_{useful} = \dot{m}c_p(T_{out} - T_{in})$$</div>
+        <div class="pp-formula-row">$$\eta_{collector} = \frac{Q_{useful}}{G \cdot A} = \alpha - \frac{U_L(T_c - T_a)}{G}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Collector Types</div>
+        <div class="pp-formula-row">$$\eta_{FPC} \approx 50\text{–}70\%\;\text{(flat plate, low temp, hot water)}$$</div>
+        <div class="pp-formula-row">$$\eta_{CSP} \approx 15\text{–}25\%\;\text{(concentrating, high temp)} \quad T_{focus} = 200\text{–}1000°C$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">CSP Types</div>
+        <div class="pp-formula-row">$$\text{1. Parabolic Trough (linear focus)} \quad \text{2. Solar Tower (central receiver)}$$</div>
+        <div class="pp-formula-row">$$\text{3. Parabolic Dish (point focus, highest T)} \quad \text{4. Linear Fresnel Reflector}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Solar Power &amp; Capacity Factor</div>
+        <div class="pp-formula-row">$$P_{solar} = G \times A \times \eta_{panel} \quad CF_{solar} \approx 15\text{–}25\%\;\text{(daylight only)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">India Solar Status</div>
+        <div class="pp-formula-row">$$\text{Potential: 748 GW} \quad \text{Installed: } \approx 73\;\text{GW (2024)} \quad \text{Target: 280 GW by 2030}$$</div>
+        <div class="pp-formula-row">$$\text{Irradiance (India avg): } 4\text{–}7\;\text{kWh/m}^2\text{/day — JNNSM}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-38" style="min-height:260px;">
+        <div class="pp-anim-label">☀️ CSP Types &amp; India Solar</div>
+
+        <!-- CSP Type Cards -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">CSP TECHNOLOGIES</div>
+        <div class="pp-csp-grid">
+          <div class="pp-csp-card" onclick="showCSPC38('trough')">
+            <div class="pp-csp-icon">〰️</div>
+            <div class="pp-csp-name">Parabolic Trough</div>
+            <div class="pp-csp-desc">Linear focus · 400°C · Most deployed CSP</div>
+          </div>
+          <div class="pp-csp-card" onclick="showCSPC38('tower')">
+            <div class="pp-csp-icon">🗼</div>
+            <div class="pp-csp-name">Solar Tower</div>
+            <div class="pp-csp-desc">Central receiver · 600°C · Heliostat field</div>
+          </div>
+          <div class="pp-csp-card" onclick="showCSPC38('dish')">
+            <div class="pp-csp-icon">📡</div>
+            <div class="pp-csp-name">Parabolic Dish</div>
+            <div class="pp-csp-desc">Point focus · 1000°C · Highest T · Stirling</div>
+          </div>
+          <div class="pp-csp-card" onclick="showCSPC38('fresnel')">
+            <div class="pp-csp-icon">📐</div>
+            <div class="pp-csp-name">Linear Fresnel</div>
+            <div class="pp-csp-desc">Flat mirrors · 300°C · Lower cost</div>
+          </div>
+        </div>
+        <div id="c38CSPDetail" style="margin-top:8px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);font-size:11px;color:var(--pp-muted);min-height:30px;display:none;"></div>
+
+        <!-- FPC vs CSP comparison -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:6px;">FLAT PLATE vs CONCENTRATING</div>
+          <div class="pp-eff-bars">
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#f97316;">FPC η</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" id="c38barFPC" style="width:70%;background:linear-gradient(90deg,#f97316,#facc15);"><span class="pp-eff-bar-val">50–70%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#a78bfa;">CSP η</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" id="c38barCSP" style="width:25%;background:linear-gradient(90deg,#a78bfa,#facc15);"><span class="pp-eff-bar-val">15–25%</span></div></div></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--pp-muted);margin-top:4px;">
+            <span>FPC: T_max=80°C (hot water only)</span>
+            <span>CSP: T_max=500°C+ (power gen!)</span>
+          </div>
+        </div>
+
+        <!-- India Solar Progress -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">🇮🇳 INDIA SOLAR TARGET</div>
+          <div class="pp-target-bars">
+            <div class="pp-target-row">
+              <div class="pp-target-head"><span style="color:#facc15;">Solar Installed</span><span style="color:#00ff88;">73 / 280 GW (26%)</span></div>
+              <div class="pp-target-track"><div class="pp-target-fill" style="width:26%;background:linear-gradient(90deg,#facc15,#f97316);"></div></div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:4px;font-size:9px;color:var(--pp-muted);">JNNSM — Jawaharlal Nehru National Solar Mission</div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4-solar" id="c39">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#facc15;font-size:14px;">🌿</span>
+        Module 4 · Non-Conventional Energy: Wind, Tidal, Geothermal &amp; Biogas
+      </div>
+
+      <div class="pp-definition-box">
+        Non-conventional (renewable) energy sources — wind, tidal, geothermal, and biogas — provide sustainable alternatives to fossil fuels. Wind power follows the cube law (doubling wind speed = 8× power), constrained by the Betz limit of 59.3% maximum efficiency.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Wind Energy</div>
+        <div class="pp-formula-row">$$\boxed{P_{wind} = \frac{1}{2}\rho_{air} A v^3 C_p} \quad A = \pi R^2 \quad C_{p,max} = \frac{16}{27} \approx 0.593\;\text{(Betz limit)}$$</div>
+        <div class="pp-formula-row">$$v_{cut\text{-}in} \approx 3\text{–}4\;\text{m/s} \quad v_{rated} \approx 12\text{–}15\;\text{m/s} \quad v_{cut\text{-}out} \approx 25\;\text{m/s}$$</div>
+        <div class="pp-formula-row">$$\text{India: Installed } \approx 44\;\text{GW} \quad \text{Potential: 695 GW} \quad \text{Best: TN, Gujarat, Rajasthan}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Tidal Energy</div>
+        <div class="pp-formula-row">$$\boxed{E_{tidal} = \frac{1}{2}\rho g A h^2} \quad \text{per tidal cycle} \quad h = \text{tidal range} \quad h &gt; 5\;\text{m (minimum viable)}$$</div>
+        <div class="pp-formula-row">$$\text{India potential: Gulf of Kutch, Gulf of Khambhat}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Geothermal Energy</div>
+        <div class="pp-formula-row">$$Q_{geo} = \dot{m}c_p(T_{geo} - T_{surface}) \quad T_{geo} = 150\text{–}350°C \quad \text{Gradient: } 25\text{–}30°C/\text{km}$$</div>
+        <div class="pp-formula-row">$$\eta_{geo} \approx 10\text{–}23\% \quad \text{Types: Dry steam} \cdot \text{Flash steam} \cdot \text{Binary cycle}$$</div>
+        <div class="pp-formula-row">$$\text{India: Puga Valley (Ladakh), Tattapani (MP), Manikaran (HP)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Biogas / Biomass</div>
+        <div class="pp-formula-row">$$\text{Biogas: } CH_4 + CO_2 \;\text{(from organic waste)} \quad CV \approx 20\text{–}25\;\text{MJ/m}^3 \quad \eta \approx 20\text{–}25\%$$</div>
+        <div class="pp-formula-row">$$C_6H_{12}O_6 \xrightarrow{\text{anaerobic}} 3CH_4 + 3CO_2$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-39" style="min-height:260px;">
+        <div class="pp-anim-label">🌿 Wind, Tidal &amp; Geothermal</div>
+
+        <!-- Wind Power Calculator -->
+        <div style="padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#00f5ff;letter-spacing:2px;margin-bottom:8px;">💨 WIND POWER CALCULATOR</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">v (m/s):</label>
+            <input type="number" id="c39v" value="12" min="0" max="40" step="0.5" style="width:55px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">D (m):</label>
+            <input type="number" id="c39D" value="80" min="1" max="200" style="width:55px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Cp:</label>
+            <input type="number" id="c39Cp" value="0.4" min="0.1" max="0.593" step="0.01" style="width:55px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcWindC39()" style="background:rgba(0,245,255,0.15);border-color:rgba(0,245,255,0.3);color:#00f5ff;">Calculate</button>
+          </div>
+          <div id="c39WindOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#00f5ff;min-height:18px;line-height:1.6;"></div>
+        </div>
+
+        <!-- Tidal Energy Calculator -->
+        <div style="margin-top:10px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#06b6d4;letter-spacing:2px;margin-bottom:8px;">🌊 TIDAL ENERGY CALCULATOR</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">A (m²):</label>
+            <input type="number" id="c39tA" value="1000000" min="0" style="width:90px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">h (m):</label>
+            <input type="number" id="c39th" value="8" min="0" max="20" step="0.5" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcTidalC39()" style="background:rgba(6,182,212,0.15);border-color:rgba(6,182,212,0.3);color:#06b6d4;">Calculate</button>
+          </div>
+          <div id="c39TidalOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#06b6d4;min-height:18px;line-height:1.6;"></div>
+        </div>
+
+        <!-- Renewable Mini Cards -->
+        <div style="margin-top:14px;font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">RENEWABLE SOURCES AT A GLANCE</div>
+        <div class="pp-renew-grid">
+          <div class="pp-renew-card" style="border-color:rgba(0,245,255,0.2);">
+            <div class="pp-renew-icon">💨</div>
+            <div class="pp-renew-name" style="color:#00f5ff;">Wind</div>
+            <div class="pp-renew-stat">44 GW | CF: 25-35%</div>
+          </div>
+          <div class="pp-renew-card" style="border-color:rgba(250,204,21,0.2);">
+            <div class="pp-renew-icon">☀️</div>
+            <div class="pp-renew-name" style="color:#facc15;">Solar</div>
+            <div class="pp-renew-stat">73 GW | CF: 15-25%</div>
+          </div>
+          <div class="pp-renew-card" style="border-color:rgba(96,165,250,0.2);">
+            <div class="pp-renew-icon">💧</div>
+            <div class="pp-renew-name" style="color:#60a5fa;">Hydro</div>
+            <div class="pp-renew-stat">47 GW | CF: 40-60%</div>
+          </div>
+          <div class="pp-renew-card" style="border-color:rgba(249,115,22,0.2);">
+            <div class="pp-renew-icon">🌋</div>
+            <div class="pp-renew-name" style="color:#f97316;">Geothermal</div>
+            <div class="pp-renew-stat">η: 10-23% | CF: 80-90%</div>
+          </div>
+          <div class="pp-renew-card" style="border-color:rgba(6,182,212,0.2);">
+            <div class="pp-renew-icon">🌊</div>
+            <div class="pp-renew-name" style="color:#06b6d4;">Tidal</div>
+            <div class="pp-renew-stat">h &gt; 5m | Kutch, Khambhat</div>
+          </div>
+          <div class="pp-renew-card" style="border-color:rgba(0,255,136,0.2);">
+            <div class="pp-renew-icon">♻️</div>
+            <div class="pp-renew-name" style="color:#00ff88;">Biogas</div>
+            <div class="pp-renew-stat">20-25 MJ/m³ | η: 20-25%</div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4-solar" id="c40">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#facc15;font-size:14px;">📊</span>
+        Module 4 · Module 4 Complete Reference
+      </div>
+
+      <div class="pp-definition-box">
+        Master reference for Module 4: Diesel cycle, Brayton cycle, solar PV &amp; thermal, wind power, tidal energy, geothermal, and biogas — with complete comparison of all power plant types, India's renewable targets, and interactive quiz.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Diesel &amp; Gas Turbine</div>
+        <div class="pp-formula-row">$$\eta_{Diesel} = 1 - \frac{1}{r^{\gamma-1}} \cdot \frac{r_c^{\gamma}-1}{\gamma(r_c-1)} \quad \eta_{Brayton} = 1 - r_p^{-(\gamma-1)/\gamma}$$</div>
+        <div class="pp-formula-row">$$\eta_{GT,simple} = 32\text{–}38\% \quad BWR = \frac{W_C}{W_T} \approx 40\text{–}80\%$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Solar PV &amp; Thermal</div>
+        <div class="pp-formula-row">$$P_{cell} = V_{OC} \cdot I_{SC} \cdot FF \quad P_{array} = n_s \cdot n_p \cdot P_{cell} \quad \eta_{cell} = \frac{P_{max}}{G \cdot A}$$</div>
+        <div class="pp-formula-row">$$E_{sun} = 1.6 \times 10^{18}\;\text{kWh/yr} \quad \eta_{coll} = \alpha - \frac{U_L(T_c-T_a)}{G}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Wind &amp; Tidal</div>
+        <div class="pp-formula-row">$$P_{wind} = \frac{1}{2}\rho Av^3 C_p \quad C_{p,max} = \frac{16}{27} \quad E_{tidal} = \frac{1}{2}\rho gAh^2$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Non-Conventional Summary Table</div>
+        <div style="overflow-x:auto;">
+          <table class="pp-comp-table" style="margin-top:4px;">
+            <thead><tr><th>Source</th><th>Efficiency</th><th>CF</th><th>Best For</th></tr></thead>
+            <tbody>
+              <tr><td style="color:#facc15;">Solar PV</td><td>15–22%</td><td>15–25%</td><td>Distributed</td></tr>
+              <tr><td style="color:#f97316;">Solar CSP</td><td>15–25%</td><td>25–40%</td><td>Large utility</td></tr>
+              <tr><td style="color:#00f5ff;">Wind</td><td>35–45%</td><td>25–35%</td><td>Open terrain</td></tr>
+              <tr><td style="color:#60a5fa;">Hydro</td><td>85–92%</td><td>40–60%</td><td>Base+Peak</td></tr>
+              <tr><td style="color:#f97316;">Geothermal</td><td>10–23%</td><td>80–90%</td><td>Baseload</td></tr>
+              <tr><td style="color:#00ff88;">Biogas</td><td>20–25%</td><td>60–80%</td><td>Rural waste</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-40" style="min-height:260px;">
+        <div class="pp-anim-label">📊 India Targets &amp; Quiz</div>
+
+        <!-- India 2030 Renewable Targets -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">🇮🇳 INDIA 2030 RENEWABLE TARGETS</div>
+        <div class="pp-target-bars" id="c40Targets">
+          <div class="pp-target-row">
+            <div class="pp-target-head"><span style="color:#facc15;">☀️ Solar</span><span>73 / 280 GW</span></div>
+            <div class="pp-target-track"><div class="pp-target-fill" data-target="26" style="background:linear-gradient(90deg,#facc15,#f97316);width:0;"></div></div>
+          </div>
+          <div class="pp-target-row">
+            <div class="pp-target-head"><span style="color:#00f5ff;">💨 Wind</span><span>44 / 140 GW</span></div>
+            <div class="pp-target-track"><div class="pp-target-fill" data-target="31" style="background:linear-gradient(90deg,#00f5ff,#60a5fa);width:0;"></div></div>
+          </div>
+          <div class="pp-target-row">
+            <div class="pp-target-head"><span style="color:#00ff88;">⚡ Total Renewable</span><span>~180 / 500 GW</span></div>
+            <div class="pp-target-track"><div class="pp-target-fill" data-target="36" style="background:linear-gradient(90deg,#00ff88,#facc15);width:0;"></div></div>
+          </div>
+        </div>
+
+        <!-- Module 4 Quiz -->
+        <div class="pp-quiz-zone" style="margin-top:14px;" id="c40Quiz">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:10px;">MODULE 4 QUICK QUIZ</div>
+          <div class="pp-quiz-q" id="c40qText">Q1: Betz limit for wind turbine Cp_max is?</div>
+          <div class="pp-quiz-opts" id="c40qOpts">
+            <button class="pp-quiz-opt" onclick="answerQuizC40(this,0)">0.40</button>
+            <button class="pp-quiz-opt" onclick="answerQuizC40(this,1)">0.593</button>
+            <button class="pp-quiz-opt" onclick="answerQuizC40(this,2)">0.75</button>
+            <button class="pp-quiz-opt" onclick="answerQuizC40(this,3)">0.85</button>
+          </div>
+          <div id="c40qFeedback" style="margin-top:6px;font-size:11px;min-height:16px;"></div>
+          <button class="pp-calc-btn" onclick="nextQuizC40()" style="margin-top:8px;">Next Question →</button>
+        </div>
+
+        <!-- Power Plant Master Comparison -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#f97316;letter-spacing:2px;margin-bottom:8px;">POWER PLANT MASTER COMPARISON</div>
+          <div class="pp-eff-bars" id="c40MasterBars">
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#60a5fa;">Hydro</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="92" style="background:linear-gradient(90deg,#60a5fa,#00ff88);"><span class="pp-eff-bar-val">85–92%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#f97316;">Diesel</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="80" style="background:linear-gradient(90deg,#f97316,#facc15);"><span class="pp-eff-bar-val">35–45%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#a78bfa;">Nuc FBR</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="76" style="background:linear-gradient(90deg,#a78bfa,#00ff88);"><span class="pp-eff-bar-val">42%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#9ca3af;">Thermal</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="74" style="background:linear-gradient(90deg,#6b7280,#9ca3af);"><span class="pp-eff-bar-val">35–42%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#facc15;">GT</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="66" style="background:linear-gradient(90deg,#facc15,#f97316);"><span class="pp-eff-bar-val">32–38%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#00f5ff;">Wind</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="64" style="background:linear-gradient(90deg,#00f5ff,#60a5fa);"><span class="pp-eff-bar-val">35–45%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#facc15;">Solar</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="36" style="background:linear-gradient(90deg,#facc15,#f97316);"><span class="pp-eff-bar-val">15–22%</span></div></div></div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="pp-module-divider">
+      <span class="pp-module-divider-tag" style="color:#facc15;border-color:rgba(250,204,21,0.4);background:rgba(250,204,21,0.06);box-shadow:0 0 20px rgba(250,204,21,0.15);">Module 4 Part 2 — Solar Energy Deep Dive</span>
+    </div>
+<div class="pp-card m4p2-solar" id="c41">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#facc15;font-size:14px;">☀️</span>
+        Module 4.2 · Solar Constant &amp; Solar Spectrum
+      </div>
+
+      <div class="pp-definition-box">
+        The solar constant is the amount of energy normally falling on a unit area (1 m²) of Earth's atmospheric surface per second when Earth is at its mean distance from the Sun. Most infrared photons (E &lt; 1.12 eV) cannot generate electricity in silicon cells.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Solar Constant</div>
+        <div class="pp-formula-row">$$\boxed{G_{sc} = 1367\;\text{W/m}^2 = 1.36\;\text{kW/m}^2}$$</div>
+        <div class="pp-formula-row">$$\text{Sun radiates: } 3.5 \times 10^{26}\;\text{kW} \quad \text{Earth receives: } 2 \times 10^{17}\;\text{kW}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Solar Spectrum Composition</div>
+        <div class="pp-formula-row">$$\text{Ultraviolet: } 7\% \quad \text{Visible: } 46\% \quad \text{Infrared: } 47\%$$</div>
+        <div class="pp-formula-row">$$G_{surface} = G_{sc} \times \tau_{atm} \approx 800\text{–}1000\;\text{W/m}^2\;\text{(clear sky)}$$</div>
+        <div class="pp-formula-row">$$G_{diffuse} \approx 100\text{–}200\;\text{W/m}^2$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Band Gap &amp; Photon Energy</div>
+        <div class="pp-formula-row">$$\boxed{E_{g,Si} = 1.12\;\text{eV}} \quad E_{photon} = h\nu = \frac{hc}{\lambda} \quad h = 6.626 \times 10^{-34}\;\text{J}{\cdot}\text{s}$$</div>
+        <div class="pp-formula-row">$$E_{photon} &lt; E_g: \text{ NOT absorbed} \quad E_{photon} &gt; E_g: \text{ excess → heat} \quad E_{photon} = E_g: \text{ max η}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Shockley–Queisser Limit</div>
+        <div class="pp-formula-row">$$\boxed{\eta_{SQ} \approx 33.7\%} \quad \text{at } E_g \approx 1.34\;\text{eV (optimal)}$$</div>
+        <div class="pp-formula-row">$$\text{Si: } E_g = 1.12\;\text{eV (near optimal)} \quad \text{Best range: } E_g = 1\text{–}1.5\;\text{eV}$$</div>
+        <div class="pp-formula-row">$$\text{Multi-junction: } \eta &gt; 33.7\% \quad \text{Record: } \eta &gt; 47\%\;\text{(4+ junction, concentrated)}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-41" style="min-height:260px;">
+        <div class="pp-anim-label">☀️ Solar Spectrum &amp; Band Gap</div>
+
+        <!-- Spectrum Bar -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:6px;">SOLAR SPECTRUM</div>
+        <div class="pp-spectrum-bar">
+          <div class="pp-spectrum-seg" style="width:7%;background:linear-gradient(135deg,#7c3aed,#a78bfa);">UV 7%</div>
+          <div class="pp-spectrum-seg" style="width:46%;background:linear-gradient(90deg,#7c3aed,#3b82f6,#10b981,#facc15,#f97316,#ef4444);">Visible 46%</div>
+          <div class="pp-spectrum-seg" style="width:47%;background:linear-gradient(90deg,#ef4444,#991b1b);">IR 47%</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--pp-muted);margin-bottom:10px;">
+          <span>300 nm</span><span style="color:#a78bfa;">UV</span><span style="color:#facc15;">← Visible →</span><span style="color:#ef4444;">Infrared</span><span>2500 nm</span>
+        </div>
+        <div style="text-align:center;font-size:10px;color:#ef4444;margin-bottom:12px;padding:4px;background:rgba(239,68,68,0.08);border-radius:4px;">⚠️ IR below 1.12 eV (λ &gt; 1107 nm) → cannot generate power in Si cells</div>
+
+        <!-- Photon absorption demo -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:6px;">PHOTON ABSORPTION</div>
+        <div class="pp-photon-demo">
+          <div class="pp-photon-card" style="background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.3);">
+            <div style="font-size:18px;">🔴</div>
+            <div style="color:#ef4444;font-weight:bold;">IR Photon</div>
+            <div style="color:#6b7280;">E &lt; 1.12 eV</div>
+            <div style="color:#ef4444;margin-top:4px;">✗ Passes through</div>
+          </div>
+          <div class="pp-photon-card" style="background:rgba(0,255,136,0.08);border-color:rgba(0,255,136,0.3);">
+            <div style="font-size:18px;">🟢</div>
+            <div style="color:#00ff88;font-weight:bold;">Visible Photon</div>
+            <div style="color:#6b7280;">E ≈ E_g</div>
+            <div style="color:#00ff88;margin-top:4px;">✓ Creates e-h pair!</div>
+          </div>
+          <div class="pp-photon-card" style="background:rgba(167,139,250,0.08);border-color:rgba(167,139,250,0.3);">
+            <div style="font-size:18px;">🟣</div>
+            <div style="color:#a78bfa;font-weight:bold;">UV Photon</div>
+            <div style="color:#6b7280;">E &gt;&gt; E_g</div>
+            <div style="color:#f97316;margin-top:4px;">⚡ Excess → heat</div>
+          </div>
+        </div>
+
+        <!-- Band gap energy converter -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">PHOTON ENERGY CALCULATOR</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">λ (nm):</label>
+            <input type="number" id="c41lam" value="550" min="100" max="3000" step="10" style="width:65px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcPhotonC41()">E = hc/λ</button>
+            <label style="font-size:10px;color:var(--pp-muted);margin-left:10px;">τ_atm:</label>
+            <input type="number" id="c41tau" value="0.75" min="0.1" max="1" step="0.01" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcSurfaceIrrC41()">G_surface</button>
+          </div>
+          <div id="c41PhotonOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#facc15;min-height:18px;line-height:1.6;"></div>
+        </div>
+
+        <!-- Shockley-Queisser visual -->
+        <div style="margin-top:12px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:6px;">SHOCKLEY–QUEISSER LIMIT</div>
+          <div class="pp-eff-bars">
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#facc15;">S-Q Limit</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="60" style="background:linear-gradient(90deg,#facc15,#f59e0b);"><span class="pp-eff-bar-val">33.7%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#00f5ff;">Si Best</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="48" style="background:linear-gradient(90deg,#00f5ff,#60a5fa);"><span class="pp-eff-bar-val">26.7%</span></div></div></div>
+            <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#a78bfa;">Multi-J</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="85" style="background:linear-gradient(90deg,#a78bfa,#00ff88);"><span class="pp-eff-bar-val">&gt;47%</span></div></div></div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4p2-solar" id="c42">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#facc15;font-size:14px;">📈</span>
+        Module 4.2 · Solar Cell I-V &amp; P-V Characteristics
+      </div>
+
+      <div class="pp-definition-box">
+        The solar cell I-V curve defines output — from short circuit current (I_sc) at V=0 to open circuit voltage (V_oc) at I=0. The Maximum Power Point (MPP) is where P = V×I is maximized. Fill Factor measures how close to ideal the cell operates. Shadow effects dominate in series configuration.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">I-V Characteristic</div>
+        <div class="pp-formula-row">$$\boxed{I = I_L - I_0\left[\exp\!\left(\frac{qV}{nkT}\right) - 1\right]}$$</div>
+        <div class="pp-formula-row">$$\text{At } V=0:\; I_{sc} = I_L \quad \text{At } I=0:\; V_{oc} = \frac{nkT}{q}\ln\!\left(\frac{I_L}{I_0}+1\right)$$</div>
+        <div class="pp-formula-row">$$V_{oc} \approx 0.5\text{–}0.7\;\text{V (per Si cell)} \quad I_{sc} \propto G \quad V_{oc} \propto \ln(G)$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">P-V &amp; Maximum Power Point</div>
+        <div class="pp-formula-row">$$P = V \times I = V\left[I_L - I_0\!\left(e^{qV/nkT}-1\right)\right]$$</div>
+        <div class="pp-formula-row">$$\frac{dP}{dV} = 0 \Rightarrow \text{Maximum Power Point (MPP)} \quad \boxed{P_{mp} = I_{mp} \times V_{mp}}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Fill Factor &amp; Efficiency</div>
+        <div class="pp-formula-row">$$\boxed{FF = \frac{V_{mp} \times I_{mp}}{V_{oc} \times I_{sc}}} \quad \text{Ideal: } FF=1 \quad \text{Practical: } FF \approx 0.7\text{–}0.85$$</div>
+        <div class="pp-formula-row">$$\boxed{P_{max} = I_{sc} \times V_{oc} \times FF} \quad \boxed{\eta\% = \frac{I_{sc} \cdot V_{oc} \cdot FF}{G \cdot A} \times 100}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Shadow Effects</div>
+        <div class="pp-formula-row">$$\text{Shadow more dominant in SERIES than parallel}$$</div>
+        <div class="pp-formula-row">$$\text{One shaded cell} \rightarrow \text{entire series string limited!}$$</div>
+        <div class="pp-formula-row">$$\text{Without bypass: } P_{lost} = P_{string} \quad \text{With bypass: } P_{lost} = P_{module\;only}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-42" style="min-height:260px;">
+        <div class="pp-anim-label">📈 I-V Curve, Fill Factor &amp; Shadow</div>
+
+        <!-- I-V Curve SVG -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:6px;">I-V CHARACTERISTIC</div>
+        <svg id="c42IVsvg" viewBox="0 0 400 200" style="width:100%;max-width:400px;display:block;margin:0 auto;background:rgba(0,0,0,0.2);border-radius:8px;">
+          <!-- Axes -->
+          <line x1="50" y1="170" x2="380" y2="170" stroke="#4b5563" stroke-width="1"></line>
+          <line x1="50" y1="170" x2="50" y2="20" stroke="#4b5563" stroke-width="1"></line>
+          <text x="215" y="195" text-anchor="middle" fill="#9ca3af" font-size="9" font-family="Share Tech Mono">Voltage (V)</text>
+          <text x="15" y="95" text-anchor="middle" fill="#9ca3af" font-size="9" font-family="Share Tech Mono" transform="rotate(-90,15,95)">Current (A)</text>
+          <!-- I-V curve -->
+          <path id="c42IVpath" d="M50,30 C150,30 250,35 300,60 S350,140 370,170" fill="none" stroke="#facc15" stroke-width="2.5"></path>
+          <!-- Isc point -->
+          <circle cx="50" cy="30" r="5" fill="#00ff88"></circle><text x="62" y="28" fill="#00ff88" font-size="8" font-family="Share Tech Mono">Isc</text>
+          <!-- Voc point -->
+          <circle cx="370" cy="170" r="5" fill="#00f5ff"></circle><text x="352" y="165" fill="#00f5ff" font-size="8" font-family="Share Tech Mono">Voc</text>
+          <!-- MPP -->
+          <rect x="50" y="55" width="220" height="115" fill="rgba(250,204,21,0.08)" stroke="#facc15" stroke-width="1" stroke-dasharray="4"></rect>
+          <circle cx="270" cy="55" r="5" fill="#fb7185"></circle><text x="278" y="50" fill="#fb7185" font-size="8" font-family="Share Tech Mono">MPP</text>
+          <rect x="50" y="55" width="220" height="115" fill="rgba(250,204,21,0.06)"></rect>
+          <text x="160" y="120" text-anchor="middle" fill="#facc15" font-size="9" font-family="Share Tech Mono" opacity="0.7">Pmax = Vmp × Imp</text>
+          <!-- P-V curve (overlay) -->
+          <path d="M50,170 C100,130 180,50 270,55 S340,130 370,170" fill="none" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="5"></path>
+          <text x="290" y="44" fill="#fb7185" font-size="8" font-family="Share Tech Mono">P-V</text>
+        </svg>
+
+        <!-- Fill Factor Calculator -->
+        <div style="margin-top:12px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">FILL FACTOR &amp; EFFICIENCY</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">Vmp (V):</label>
+            <input type="number" id="c42Vmp" value="0.50" min="0" step="0.01" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Imp (A):</label>
+            <input type="number" id="c42Imp" value="8.5" min="0" step="0.1" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Voc (V):</label>
+            <input type="number" id="c42Voc" value="0.62" min="0" step="0.01" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Isc (A):</label>
+            <input type="number" id="c42Isc" value="9.5" min="0" step="0.1" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px;">
+            <label style="font-size:10px;color:var(--pp-muted);">G (W/m²):</label>
+            <input type="number" id="c42G" value="1000" min="1" style="width:60px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">A (m²):</label>
+            <input type="number" id="c42A" value="0.0256" min="0.001" step="0.001" style="width:60px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcFFC42()">Calculate FF &amp; η</button>
+          </div>
+          <div id="c42FFOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#facc15;min-height:18px;line-height:1.6;"></div>
+        </div>
+
+        <!-- Shadow Demo -->
+        <div style="margin-top:12px;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:6px;">SHADOW EFFECT (Click cells to shade)</div>
+          <div class="pp-shadow-demo" id="c42ShadowDemo">
+            <div class="pp-shadow-cell" id="c42cell1" style="background:rgba(0,255,136,0.15);border-color:#00ff88;color:#00ff88;" onclick="toggleShadowC42(1)">Cell 1<br>☀️</div>
+            <span style="color:#facc15;font-size:14px;">→</span>
+            <div class="pp-shadow-cell" id="c42cell2" style="background:rgba(0,255,136,0.15);border-color:#00ff88;color:#00ff88;" onclick="toggleShadowC42(2)">Cell 2<br>☀️</div>
+            <span style="color:#facc15;font-size:14px;">→</span>
+            <div class="pp-shadow-cell" id="c42cell3" style="background:rgba(0,255,136,0.15);border-color:#00ff88;color:#00ff88;" onclick="toggleShadowC42(3)">Cell 3<br>☀️</div>
+            <span style="font-size:14px;color:#facc15;">→⚡</span>
+            <div id="c42ShadowStatus" style="flex:1;min-width:100px;font-size:11px;font-family:'Share Tech Mono',monospace;color:#00ff88;">Series: All lit → Full current ✓</div>
+          </div>
+          <div style="margin-top:6px;display:flex;gap:8px;">
+            <button class="pp-calc-btn" onclick="resetShadowC42()" style="font-size:10px;">Reset All ☀️</button>
+            <button class="pp-calc-btn" onclick="toggleBypassC42()" id="c42BypassBtn" style="font-size:10px;">Add Bypass Diode</button>
+          </div>
+          <div id="c42BypassInfo" style="margin-top:4px;font-size:10px;color:var(--pp-muted);font-family:'Share Tech Mono',monospace;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4p2-solar" id="c43">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#facc15;font-size:14px;">🔬</span>
+        Module 4.2 · Solar Cell Materials
+      </div>
+
+      <div class="pp-definition-box">
+        Thin-film technologies reduce the active material to under 5 μm (vs 180 μm for crystalline Si), cutting costs by up to 90%. Key types include monocrystalline, polycrystalline, thin-film (CdTe, CIGS, a-Si), and bifacial cells — each balancing efficiency, cost, and lifespan.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Efficiency Comparison</div>
+        <div class="pp-formula-row">$$\eta_{mono} \approx 18\text{–}22\% \quad \eta_{poly} \approx 15\text{–}18\% \quad \eta_{thin\,film} \approx 10\text{–}13\%$$</div>
+        <div class="pp-formula-row">$$\eta_{bifacial} \approx 20\text{–}24\% \quad \eta_{CdTe} \approx 10\text{–}12\% \quad \eta_{CIGS} \approx 12\text{–}15\%$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Rankings</div>
+        <div class="pp-formula-row">$$\text{Efficiency: Bifacial} &gt; \text{Mono} &gt; \text{Poly} &gt; \text{Thin film}$$</div>
+        <div class="pp-formula-row">$$\text{Cost (cheapest first): Thin film} &lt; \text{Poly} &lt; \text{Mono} &lt; \text{Bifacial}$$</div>
+        <div class="pp-formula-row">$$\text{Lifespan: Bifacial} \approx \text{Mono (30 yr)} \geq \text{Poly (25 yr)} &gt; \text{Thin (15 yr)}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Thin Film Materials</div>
+        <div class="pp-formula-row">$$\text{1. CdTe (Cadmium Telluride)} \quad \text{2. CIGS (Cu-In-Ga-Se)} \quad \text{3. a-Si (Amorphous Si)}$$</div>
+        <div class="pp-formula-row">$$\text{Thin film thickness: } &lt; 5\;\mu\text{m} \quad \text{vs Si wafer: } \approx 180\;\mu\text{m}$$</div>
+        <div class="pp-formula-row">$$\text{→ 90\% less material than crystalline Silicon}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Applications</div>
+        <div class="pp-formula-row">$$\text{1. Rural electrification} \quad \text{2. Solar lamps} \quad \text{3. Agriculture} \quad \text{4. Water heaters}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-43" style="min-height:260px;">
+        <div class="pp-anim-label">🔬 Solar Cell Materials &amp; Comparison</div>
+
+        <!-- Material Cards Grid -->
+        <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">CELL TYPE COMPARISON</div>
+        <div class="pp-mat-grid">
+          <div class="pp-mat-card" style="border-color:rgba(30,64,175,0.3);">
+            <div class="pp-mat-name" style="color:#1e40af;">MONO-Si</div>
+            <div class="pp-mat-eta">η: 18–22%</div>
+            <div class="pp-mat-life">Life: 25–30 yr</div>
+            <div class="pp-mat-cost" style="color:#f97316;">Cost: ₹₹₹</div>
+          </div>
+          <div class="pp-mat-card" style="border-color:rgba(96,165,250,0.3);">
+            <div class="pp-mat-name" style="color:#60a5fa;">POLY-Si</div>
+            <div class="pp-mat-eta">η: 15–18%</div>
+            <div class="pp-mat-life">Life: 20–25 yr</div>
+            <div class="pp-mat-cost" style="color:#facc15;">Cost: ₹₹</div>
+          </div>
+          <div class="pp-mat-card" style="border-color:rgba(107,114,128,0.3);">
+            <div class="pp-mat-name" style="color:#6b7280;">THIN FILM</div>
+            <div class="pp-mat-eta">η: 10–13%</div>
+            <div class="pp-mat-life">Life: 10–20 yr</div>
+            <div class="pp-mat-cost" style="color:#00ff88;">Cost: ₹</div>
+          </div>
+          <div class="pp-mat-card" style="border-color:rgba(250,204,21,0.3);">
+            <div class="pp-mat-name" style="color:#facc15;">BIFACIAL</div>
+            <div class="pp-mat-eta">η: 20–24%</div>
+            <div class="pp-mat-life">Life: 25–30 yr</div>
+            <div class="pp-mat-cost" style="color:#ef4444;">Cost: ₹₹₹₹</div>
+          </div>
+          <div class="pp-mat-card" style="border-color:rgba(167,139,250,0.3);">
+            <div class="pp-mat-name" style="color:#a78bfa;">CdTe</div>
+            <div class="pp-mat-eta">η: 10–12%</div>
+            <div class="pp-mat-life">Life: 15–20 yr</div>
+            <div class="pp-mat-cost" style="color:#00ff88;">Cost: ₹</div>
+          </div>
+          <div class="pp-mat-card" style="border-color:rgba(249,115,22,0.3);">
+            <div class="pp-mat-name" style="color:#f97316;">CIGS</div>
+            <div class="pp-mat-eta">η: 12–15%</div>
+            <div class="pp-mat-life">Life: 15–20 yr</div>
+            <div class="pp-mat-cost" style="color:#facc15;">Cost: ₹₹</div>
+          </div>
+        </div>
+
+        <!-- Lifespan Bars -->
+        <div style="margin-top:14px;font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:6px;">LIFESPAN COMPARISON</div>
+        <div class="pp-life-bars" id="c43LifeBars">
+          <div class="pp-life-row"><span class="pp-life-label" style="color:#facc15;">Bifacial</span><div class="pp-life-track"><div class="pp-life-fill" data-target="100" style="background:linear-gradient(90deg,#facc15,#f59e0b);">30 yr</div></div></div>
+          <div class="pp-life-row"><span class="pp-life-label" style="color:#1e40af;">Mono-Si</span><div class="pp-life-track"><div class="pp-life-fill" data-target="92" style="background:linear-gradient(90deg,#1e40af,#3b82f6);">28 yr</div></div></div>
+          <div class="pp-life-row"><span class="pp-life-label" style="color:#60a5fa;">Poly-Si</span><div class="pp-life-track"><div class="pp-life-fill" data-target="83" style="background:linear-gradient(90deg,#60a5fa,#93c5fd);">25 yr</div></div></div>
+          <div class="pp-life-row"><span class="pp-life-label" style="color:#6b7280;">Thin Film</span><div class="pp-life-track"><div class="pp-life-fill" data-target="50" style="background:linear-gradient(90deg,#6b7280,#9ca3af);">15 yr</div></div></div>
+        </div>
+
+        <!-- Material Structure -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.15);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:6px;">STRUCTURE CROSS-SECTION</div>
+          <svg viewBox="0 0 420 80" style="width:100%;max-width:420px;display:block;margin:0 auto;">
+            <!-- Mono -->
+            <rect x="5" y="5" width="90" height="60" rx="4" fill="rgba(30,64,175,0.15)" stroke="#1e40af" stroke-width="1.5"></rect>
+            <text x="50" y="25" text-anchor="middle" fill="#1e40af" font-size="8" font-family="Orbitron">MONO</text>
+            <line x1="15" y1="35" x2="85" y2="35" stroke="#1e40af" stroke-width="0.5" stroke-dasharray="2"></line>
+            <line x1="15" y1="45" x2="85" y2="45" stroke="#1e40af" stroke-width="0.5" stroke-dasharray="2"></line>
+            <text x="50" y="58" text-anchor="middle" fill="#9ca3af" font-size="7">Uniform crystal</text>
+            <!-- Poly -->
+            <rect x="110" y="5" width="90" height="60" rx="4" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="1.5"></rect>
+            <text x="155" y="25" text-anchor="middle" fill="#60a5fa" font-size="8" font-family="Orbitron">POLY</text>
+            <path d="M120,35 L140,30 L160,40 L180,32 L190,38" fill="none" stroke="#60a5fa" stroke-width="0.8"></path>
+            <path d="M125,45 L145,42 L165,48 L185,44" fill="none" stroke="#60a5fa" stroke-width="0.8"></path>
+            <text x="155" y="58" text-anchor="middle" fill="#9ca3af" font-size="7">Grain boundaries</text>
+            <!-- Thin Film -->
+            <rect x="215" y="5" width="90" height="60" rx="4" fill="rgba(107,114,128,0.1)" stroke="#6b7280" stroke-width="1.5"></rect>
+            <text x="260" y="25" text-anchor="middle" fill="#6b7280" font-size="8" font-family="Orbitron">THIN FILM</text>
+            <rect x="225" y="33" width="70" height="3" fill="#6b7280" opacity="0.5"></rect>
+            <text x="260" y="50" text-anchor="middle" fill="#9ca3af" font-size="7">&lt;5μm on glass</text>
+            <text x="260" y="62" text-anchor="middle" fill="#00ff88" font-size="6">90% less material</text>
+            <!-- Bifacial -->
+            <rect x="320" y="5" width="90" height="60" rx="4" fill="rgba(250,204,21,0.08)" stroke="#facc15" stroke-width="1.5"></rect>
+            <text x="365" y="25" text-anchor="middle" fill="#facc15" font-size="8" font-family="Orbitron">BIFACIAL</text>
+            <path d="M330,35 L400,35" stroke="#facc15" stroke-width="0.5" stroke-dasharray="3"></path>
+            <text x="365" y="48" text-anchor="middle" fill="#facc15" font-size="7">↑ Front</text>
+            <text x="365" y="58" text-anchor="middle" fill="#f59e0b" font-size="7">↓ Back absorbs</text>
+          </svg>
+        </div>
+
+        <!-- Cell Type Recommender -->
+        <div style="margin-top:12px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">CELL TYPE RECOMMENDER</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">Budget (₹/W):</label>
+            <input type="number" id="c43budget" value="30" min="10" max="80" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">η_min (%):</label>
+            <input type="number" id="c43eta" value="15" min="5" max="25" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="recommendCellC43()">Recommend</button>
+          </div>
+          <div id="c43RecOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#facc15;min-height:18px;line-height:1.6;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4p2-solar" id="c44">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#facc15;font-size:14px;">🏭</span>
+        Module 4.2 · Solar Cell Power Plant
+      </div>
+
+      <div class="pp-definition-box">
+        Solar power plants convert sunlight to electricity at scale. Three system types exist: ON Grid (exports excess to grid, no battery), OFF Grid (fully independent with battery), and Hybrid (battery + grid — best reliability). Panel sizing depends on daily load, peak sun hours, and system efficiency.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">Solar Energy Scale</div>
+        <div class="pp-formula-row">$$\text{Sun radiates: } 3.5 \times 10^{26}\;\text{kW} \quad \text{Earth: } 2 \times 10^{17}\;\text{kW}$$</div>
+        <div class="pp-formula-row">$$\boxed{P_{harness} \approx 2 \times 10^{13}\;\text{kW}} \quad \text{≡ burning 17 million tonnes of coal}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">System Types</div>
+        <div class="pp-formula-row">$$\text{i. ON Grid:} \quad \text{Solar} \rightarrow \text{Inverter} \rightarrow \text{Transformer} \rightarrow \text{Meter} \rightarrow \text{Grid}$$</div>
+        <div class="pp-formula-row">$$P_{export} = P_{generated} - P_{consumed} \quad \text{(net metering, no battery)}$$</div>
+        <div class="pp-formula-row">$$\text{ii. OFF Grid:} \quad \text{Solar} \rightarrow \text{Charge controller} \rightarrow \text{Battery} \rightarrow \text{Inverter} \rightarrow \text{Load}$$</div>
+        <div class="pp-formula-row">$$\text{iii. Hybrid:} \quad \text{ON grid + OFF grid} \quad \text{Priority: Solar} \rightarrow \text{Battery} \rightarrow \text{Grid}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">System Sizing</div>
+        <div class="pp-formula-row">$$\boxed{P_{panel} \geq \frac{E_{daily}}{H_{peak} \times \eta_{system}}} \quad H_{peak} \approx 4\text{–}6\;\text{hrs/day} \quad \eta_{sys} \approx 0.75$$</div>
+        <div class="pp-formula-row">$$\boxed{C_{bat} = \frac{E_{daily} \times \text{Autonomy days}}{DOD \times \eta_{bat} \times V_{bat}}} \quad DOD = 0.5\text{–}0.8$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Components</div>
+        <div class="pp-formula-row">$$\text{1. Solar panel array} \quad \text{2. Charge controller} \quad \text{3. Battery bank}$$</div>
+        <div class="pp-formula-row">$$\text{4. DC/AC Inverter} \quad \text{5. Monitoring system} \quad \text{6. Switchgear/Meter}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-44" style="min-height:260px;">
+        <div class="pp-anim-label">🏭 Solar Power Plant Systems</div>
+
+        <!-- System Type Tabs -->
+        <div class="pp-sys-tabs">
+          <div class="pp-sys-tab active" onclick="showSysTab(0)">☀️ ON GRID</div>
+          <div class="pp-sys-tab" onclick="showSysTab(1)">🔋 OFF GRID</div>
+          <div class="pp-sys-tab" onclick="showSysTab(2)">⚡ HYBRID</div>
+        </div>
+
+        <!-- ON Grid Panel -->
+        <div class="pp-sys-panel active" id="sysPanel0">
+          <svg viewBox="0 0 440 100" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+            <rect x="5" y="20" width="55" height="55" rx="4" fill="rgba(250,204,21,0.1)" stroke="#facc15" stroke-width="1.5"></rect>
+            <text x="33" y="45" text-anchor="middle" fill="#facc15" font-size="7" font-family="Orbitron">SOLAR</text>
+            <text x="33" y="57" text-anchor="middle" fill="#facc15" font-size="7" font-family="Orbitron">ARRAY</text>
+            <path d="M60 48 L85 48" stroke="#facc15" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="85" y="28" width="55" height="38" rx="4" fill="rgba(0,245,255,0.08)" stroke="#00f5ff" stroke-width="1.5"></rect>
+            <text x="113" y="45" text-anchor="middle" fill="#00f5ff" font-size="7" font-family="Orbitron">INVERTER</text>
+            <text x="113" y="55" text-anchor="middle" fill="#9ca3af" font-size="6">DC→AC</text>
+            <path d="M140 48 L165 48" stroke="#00f5ff" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="165" y="28" width="50" height="38" rx="4" fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="1.5"></rect>
+            <text x="190" y="50" text-anchor="middle" fill="#60a5fa" font-size="7" font-family="Orbitron">XFMR</text>
+            <path d="M215 48 L240 48" stroke="#60a5fa" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="240" y="28" width="55" height="38" rx="4" fill="rgba(107,114,128,0.08)" stroke="#9ca3af" stroke-width="1.5"></rect>
+            <text x="268" y="50" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="Orbitron">METER</text>
+            <path d="M295 48 L330 48" stroke="#00ff88" stroke-width="2" fill="none" marker-end="url(#arrM4g)"></path>
+            <path d="M330 48 L295 48" stroke="#60a5fa" stroke-width="1" fill="none" stroke-dasharray="4" transform="translate(0,8)"></path>
+            <rect x="330" y="25" width="55" height="45" rx="4" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="1.5"></rect>
+            <text x="358" y="50" text-anchor="middle" fill="#00ff88" font-size="8" font-family="Orbitron">GRID</text>
+            <text x="215" y="85" text-anchor="middle" fill="#00ff88" font-size="8">Day: export excess →</text>
+            <text x="215" y="95" text-anchor="middle" fill="#60a5fa" font-size="8">Night: ← import from grid</text>
+          </svg>
+          <div style="text-align:center;font-size:10px;color:#00ff88;margin-top:4px;">No battery needed · Net metering · Grid-tied</div>
+        </div>
+
+        <!-- OFF Grid Panel -->
+        <div class="pp-sys-panel" id="sysPanel1">
+          <svg viewBox="0 0 440 100" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+            <rect x="5" y="20" width="55" height="55" rx="4" fill="rgba(250,204,21,0.1)" stroke="#facc15" stroke-width="1.5"></rect>
+            <text x="33" y="45" text-anchor="middle" fill="#facc15" font-size="7" font-family="Orbitron">SOLAR</text>
+            <text x="33" y="57" text-anchor="middle" fill="#facc15" font-size="7" font-family="Orbitron">ARRAY</text>
+            <path d="M60 48 L90 48" stroke="#facc15" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="90" y="25" width="65" height="44" rx="4" fill="rgba(0,245,255,0.08)" stroke="#00f5ff" stroke-width="1.5"></rect>
+            <text x="123" y="45" text-anchor="middle" fill="#00f5ff" font-size="7" font-family="Orbitron">CHARGE</text>
+            <text x="123" y="56" text-anchor="middle" fill="#00f5ff" font-size="7" font-family="Orbitron">CTRL</text>
+            <path d="M155 48 L190 48" stroke="#00f5ff" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="190" y="20" width="60" height="55" rx="4" fill="rgba(251,113,133,0.08)" stroke="#fb7185" stroke-width="1.5"></rect>
+            <text x="220" y="42" text-anchor="middle" fill="#fb7185" font-size="7" font-family="Orbitron">BATTERY</text>
+            <text x="220" y="53" text-anchor="middle" fill="#fb7185" font-size="7" font-family="Orbitron">BANK</text>
+            <rect x="198" y="58" width="44" height="8" rx="2" fill="rgba(0,255,136,0.2)" stroke="#00ff88" stroke-width="0.5"><animate attributeName="width" values="10;44;10" dur="4s" repeatCount="indefinite"></animate></rect>
+            <path d="M250 48 L280 48" stroke="#fb7185" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="280" y="28" width="55" height="38" rx="4" fill="rgba(0,245,255,0.08)" stroke="#00f5ff" stroke-width="1.5"></rect>
+            <text x="308" y="50" text-anchor="middle" fill="#00f5ff" font-size="7" font-family="Orbitron">INVERTER</text>
+            <path d="M335 48 L370 48" stroke="#00f5ff" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="370" y="28" width="50" height="38" rx="4" fill="rgba(229,231,235,0.08)" stroke="#e5e7eb" stroke-width="1.5"></rect>
+            <text x="395" y="50" text-anchor="middle" fill="#e5e7eb" font-size="8" font-family="Orbitron">LOAD</text>
+            <text x="220" y="90" text-anchor="middle" fill="#f97316" font-size="8">No grid connection · Fully independent</text>
+          </svg>
+          <div style="text-align:center;font-size:10px;color:#f97316;margin-top:4px;">Battery essential · Remote areas, islands</div>
+        </div>
+
+        <!-- Hybrid Panel -->
+        <div class="pp-sys-panel" id="sysPanel2">
+          <svg viewBox="0 0 440 120" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+            <rect x="5" y="30" width="55" height="55" rx="4" fill="rgba(250,204,21,0.1)" stroke="#facc15" stroke-width="1.5"></rect>
+            <text x="33" y="55" text-anchor="middle" fill="#facc15" font-size="7" font-family="Orbitron">SOLAR</text>
+            <text x="33" y="67" text-anchor="middle" fill="#facc15" font-size="7" font-family="Orbitron">ARRAY</text>
+            <path d="M60 58 L100 58" stroke="#facc15" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="100" y="25" width="75" height="60" rx="5" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="2"></rect>
+            <text x="138" y="50" text-anchor="middle" fill="#a78bfa" font-size="7" font-family="Orbitron">SMART</text>
+            <text x="138" y="62" text-anchor="middle" fill="#a78bfa" font-size="7" font-family="Orbitron">INVERTER</text>
+            <text x="138" y="75" text-anchor="middle" fill="#9ca3af" font-size="6">Bidirectional</text>
+            <!-- Battery branch -->
+            <path d="M138 85 L138 100 L250 100" stroke="#fb7185" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="250" y="88" width="55" height="25" rx="4" fill="rgba(251,113,133,0.08)" stroke="#fb7185" stroke-width="1.5"></rect>
+            <text x="278" y="104" text-anchor="middle" fill="#fb7185" font-size="7" font-family="Orbitron">BATTERY</text>
+            <!-- Load branch -->
+            <path d="M175 58 L230 58" stroke="#a78bfa" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="230" y="40" width="50" height="35" rx="4" fill="rgba(229,231,235,0.08)" stroke="#e5e7eb" stroke-width="1.5"></rect>
+            <text x="255" y="60" text-anchor="middle" fill="#e5e7eb" font-size="8" font-family="Orbitron">LOAD</text>
+            <!-- Grid branch -->
+            <path d="M280 58 L330 58" stroke="#00ff88" stroke-width="1.5" fill="none" marker-end="url(#arrM4g)"></path>
+            <rect x="330" y="40" width="50" height="35" rx="4" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="1.5"></rect>
+            <text x="355" y="60" text-anchor="middle" fill="#00ff88" font-size="8" font-family="Orbitron">GRID</text>
+            <text x="220" y="18" text-anchor="middle" fill="#a78bfa" font-size="8">Priority: ①Solar → ②Battery → ③Grid</text>
+          </svg>
+          <div style="text-align:center;font-size:10px;color:#a78bfa;margin-top:4px;">Best reliability · Battery + Grid backup</div>
+        </div>
+
+        <!-- System Sizing Calculator -->
+        <div style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">SYSTEM SIZING CALCULATOR</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">E_daily (kWh):</label>
+            <input type="number" id="c44Ed" value="10" min="0.1" style="width:55px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">H_peak (hr):</label>
+            <input type="number" id="c44Hp" value="5" min="1" max="10" step="0.5" style="width:45px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">η_sys:</label>
+            <input type="number" id="c44eta" value="0.75" min="0.3" max="1" step="0.01" style="width:45px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcPanelC44()">Panel Size</button>
+          </div>
+          <div id="c44PanelOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#facc15;min-height:18px;line-height:1.6;"></div>
+        </div>
+
+        <!-- Battery Sizing -->
+        <div style="margin-top:10px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#fb7185;letter-spacing:2px;margin-bottom:8px;">🔋 BATTERY BANK SIZING</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">Autonomy (days):</label>
+            <input type="number" id="c44days" value="2" min="1" max="7" style="width:40px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">DOD:</label>
+            <input type="number" id="c44dod" value="0.5" min="0.2" max="0.9" step="0.05" style="width:43px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">V_bat (V):</label>
+            <input type="number" id="c44vb" value="48" min="12" step="12" style="width:45px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">η_bat:</label>
+            <input type="number" id="c44nb" value="0.85" min="0.5" max="1" step="0.01" style="width:43px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcBatC44()" style="background:rgba(251,113,133,0.12);border-color:rgba(251,113,133,0.3);color:#fb7185;">Battery Size</button>
+          </div>
+          <div id="c44BatOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#fb7185;min-height:18px;line-height:1.6;"></div>
+        </div>
+      </div>
+</div>
+<div class="pp-card m4p2-solar" id="c45">
+      <div class="pp-card-accent"></div>
+      <div class="pp-section-title">
+        <span style="color:#facc15;font-size:14px;">📊</span>
+        Module 4.2 · Solar Complete Reference
+      </div>
+
+      <div class="pp-definition-box">
+        Master reference for Module 4 Part 2: solar constant, photon physics, I-V characteristics, cell materials, and solar power plant systems. All formulas, rankings, and system types consolidated with an interactive quiz.
+      </div>
+
+      <div class="pp-formula-zone">
+        <div class="pp-formula-title">All Solar Formulas</div>
+        <div class="pp-formula-row">$$G_{sc} = 1367\;\text{W/m}^2 \quad E_{photon} = hc/\lambda \quad E_{g,Si} = 1.12\;\text{eV}$$</div>
+        <div class="pp-formula-row">$$\eta_{SQ} = 33.7\%\;(E_g = 1.34\;\text{eV}) \quad I = I_L - I_0[e^{qV/nkT}-1]$$</div>
+        <div class="pp-formula-row">$$V_{oc} = \frac{nkT}{q}\ln(I_L/I_0+1) \quad FF = \frac{V_{mp}I_{mp}}{V_{oc}I_{sc}}$$</div>
+        <div class="pp-formula-row">$$P_{max} = V_{oc} \cdot I_{sc} \cdot FF \quad \eta = \frac{I_{sc} \cdot V_{oc} \cdot FF}{G \cdot A}$$</div>
+        <div class="pp-formula-row">$$P_{panel} \geq \frac{E_{daily}}{H_{peak} \cdot \eta_{sys}} \quad C_{bat} = \frac{E \cdot \text{days}}{DOD \cdot \eta_{bat} \cdot V_{bat}}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">Material Rankings</div>
+        <div class="pp-formula-row">$$\eta:\;\text{Bifacial} &gt; \text{Mono} &gt; \text{Poly} &gt; \text{CIGS} &gt; \text{CdTe} &gt; \text{a-Si}$$</div>
+        <div class="pp-formula-row">$$\text{Cost:}\;\text{Thin film} &lt; \text{Poly} &lt; \text{Mono} &lt; \text{Bifacial}$$</div>
+
+        <div class="pp-formula-title" style="margin-top:14px;">System Types</div>
+        <div class="pp-formula-row">$$\text{ON grid: export/import | No battery} \quad \text{OFF grid: battery essential | Remote}$$</div>
+        <div class="pp-formula-row">$$\text{Hybrid: best reliability | Battery + Grid}$$</div>
+      </div>
+
+      <div class="pp-anim-zone" id="anim-zone-45" style="min-height:260px;">
+        <div class="pp-anim-label">📊 Solar Deep-Dive Quiz &amp; Summary</div>
+
+        <!-- I-V Curve Builder Mini -->
+        <div style="padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid var(--pp-border);">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:8px;">QUICK I-V ANALYSIS</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <label style="font-size:10px;color:var(--pp-muted);">Isc (A):</label>
+            <input type="number" id="c45Isc" value="9.5" min="0" step="0.1" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">Voc (V):</label>
+            <input type="number" id="c45Voc" value="0.62" min="0" step="0.01" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <label style="font-size:10px;color:var(--pp-muted);">FF:</label>
+            <input type="number" id="c45FF" value="0.78" min="0.5" max="1" step="0.01" style="width:50px;padding:4px 6px;background:rgba(0,0,0,0.3);border:1px solid var(--pp-border);border-radius:4px;color:#e5e7eb;font-family:'Share Tech Mono',monospace;font-size:11px;">
+            <button class="pp-calc-btn" onclick="calcQuickIVC45()">Analyze</button>
+          </div>
+          <div id="c45IVOut" style="margin-top:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#facc15;min-height:18px;line-height:1.6;"></div>
+        </div>
+
+        <!-- System Comparison -->
+        <div style="margin-top:12px;overflow-x:auto;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:6px;">SYSTEM COMPARISON</div>
+          <table class="pp-comp-table">
+            <thead><tr><th>Feature</th><th style="color:#00ff88;">ON Grid</th><th style="color:#f97316;">OFF Grid</th><th style="color:#a78bfa;">Hybrid</th></tr></thead>
+            <tbody>
+              <tr><td style="color:#facc15;">Battery</td><td>No</td><td>Yes (essential)</td><td>Yes</td></tr>
+              <tr><td style="color:#facc15;">Grid</td><td>Required</td><td>Not needed</td><td>Optional</td></tr>
+              <tr><td style="color:#facc15;">Cost</td><td>Lowest</td><td>High</td><td>Highest</td></tr>
+              <tr><td style="color:#facc15;">Reliability</td><td>Grid-dependent</td><td>Battery-dependent</td><td style="color:#00ff88;">Best</td></tr>
+              <tr><td style="color:#facc15;">Best For</td><td>Urban rooftop</td><td>Remote areas</td><td>Critical loads</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Solar Quiz -->
+        <div class="pp-quiz-zone" style="margin-top:14px;" id="c45Quiz">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:10px;">SOLAR DEEP-DIVE QUIZ</div>
+          <div class="pp-quiz-q" id="c45qText">Q1: What is the solar constant?</div>
+          <div class="pp-quiz-opts" id="c45qOpts">
+            <button class="pp-quiz-opt" onclick="answerQuizC45(this,0)">1000 W/m²</button>
+            <button class="pp-quiz-opt" onclick="answerQuizC45(this,1)">1367 W/m²</button>
+            <button class="pp-quiz-opt" onclick="answerQuizC45(this,2)">1500 W/m²</button>
+            <button class="pp-quiz-opt" onclick="answerQuizC45(this,3)">800 W/m²</button>
+          </div>
+          <div id="c45qFeedback" style="margin-top:6px;font-size:11px;min-height:16px;"></div>
+          <button class="pp-calc-btn" onclick="nextQuizC45()" style="margin-top:8px;">Next Question →</button>
+        </div>
+
+        <!-- Efficiency master bars -->
+        <div style="margin-top:14px;font-family:'Orbitron',monospace;font-size:10px;color:#facc15;letter-spacing:2px;margin-bottom:6px;">CELL EFFICIENCY RANKING</div>
+        <div class="pp-eff-bars" id="c45MasterBars">
+          <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#facc15;">Bifacial</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="88" style="background:linear-gradient(90deg,#facc15,#f59e0b);"><span class="pp-eff-bar-val">20–24%</span></div></div></div>
+          <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#1e40af;">Mono-Si</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="80" style="background:linear-gradient(90deg,#1e40af,#3b82f6);"><span class="pp-eff-bar-val">18–22%</span></div></div></div>
+          <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#60a5fa;">Poly-Si</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="66" style="background:linear-gradient(90deg,#60a5fa,#93c5fd);"><span class="pp-eff-bar-val">15–18%</span></div></div></div>
+          <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#f97316;">CIGS</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="54" style="background:linear-gradient(90deg,#f97316,#facc15);"><span class="pp-eff-bar-val">12–15%</span></div></div></div>
+          <div class="pp-eff-bar-row"><span class="pp-eff-bar-label" style="color:#6b7280;">Thin film</span><div class="pp-eff-bar-track"><div class="pp-eff-bar-fill" data-target="46" style="background:linear-gradient(90deg,#6b7280,#9ca3af);"><span class="pp-eff-bar-val">10–13%</span></div></div></div>
+        </div>
+      </div>
+</div>
+<div class="pp-module-divider" style="margin:50px 0 30px; text-align:center;">
+      <span style="font-family:'Orbitron',sans-serif; font-size:18px; color:#facc15; text-shadow:0 0 20px rgba(250,204,21,0.4);">☀️ MODULE 4 PART 3 — Solar Collectors, Solar Thermal &amp; Heliostats</span>
+    </div>
+</div><div class="topic-bottom-nav">
+        <a href="../gas-turbine/index.html" class="topic-btn prev-btn">← Gas Turbine</a>
+        <a href="../../index.html" class="topic-btn back-btn">All Topics</a>
+        <a href="../solar-collectors/index.html" class="topic-btn next-btn">Solar Collectors →</a>
+    </div></main>
+
+  <!-- Scroll to top -->
+  <div class="pp-scroll-top" id="ppScrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="../../../../../../shared/js/hero-bg.js"></script>
+  <script src="../../../../../../shared/js/formulas.js"></script>
+  <script src="../../../../../../shared/js/app.js"></script>
+
+  
+
+  <!-- Bookmark corner buttons -->
+  
+  
+
+
+
+<script src="../../js/powerplant-inline.js"></script><script src="../../../../../../shared/js/topic-nav.js"></script></body></html>

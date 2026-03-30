@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geothermal &amp; MHD — Power Plant Engineering</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;family=Exo+2:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+  
+<link rel="stylesheet" href="../../css/powerplant-inline.css"><link rel="stylesheet" href="../../../../../../shared/css/topic-page.css"></head>
+
+<body data-page-category="powerplant" class="pp-body">
+
+  <!-- Sidebar Toggle -->
+  <button class="pp-sidebar-toggle" id="ppSbToggle" aria-label="Toggle sidebar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <div class="pp-sidebar__overlay" id="ppSbOverlay"></div>
+
+  <!-- Glassmorphism Sidebar -->
+  <aside class="pp-sidebar" id="ppSidebar">
+    <div class="pp-sidebar__header">
+      <div class="pp-sidebar__profile">
+        <div class="pp-sidebar__avatar">⚡</div>
+        <div class="pp-sidebar__info">
+          <span class="pp-sidebar__label">Power Plant</span>
+          <span class="pp-sidebar__name">ENGINEERING</span>
+        </div>
+      </div>
+      <button class="pp-sidebar__close" id="ppSbClose" aria-label="Close sidebar">✕</button>
+    </div>
+    <div class="pp-sidebar__section-label">MODULES</div>
+    <ul class="pp-sidebar__nav">
+      <li><a class="pp-sidebar__link active" data-mod="1" style="--mod-color:#f97316;" href="../power-systems-overview/index.html"><span class="pp-sidebar__icon">⚡</span><span class="pp-sidebar__link-text">Power Systems</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="2" style="--mod-color:#60a5fa;" href="../hydro-power/index.html"><span class="pp-sidebar__icon">💧</span><span class="pp-sidebar__link-text">Hydro Power</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="3" style="--mod-color:#ef4444;" href="../thermal-steam/index.html"><span class="pp-sidebar__icon">🔥</span><span class="pp-sidebar__link-text">Thermal Steam</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="4" style="--mod-color:#f97316;" href="../coal-fuels/index.html"><span class="pp-sidebar__icon">⛏️</span><span class="pp-sidebar__link-text">Coal &amp; Fuels</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="5" style="--mod-color:#a78bfa;" href="../nuclear-power/index.html"><span class="pp-sidebar__icon">☢️</span><span class="pp-sidebar__link-text">Nuclear Power</span><span class="pp-sidebar__link-count">10</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="6" style="--mod-color:#f97316;" href="../diesel-power/index.html"><span class="pp-sidebar__icon">🛢️</span><span class="pp-sidebar__link-text">Diesel Power</span><span class="pp-sidebar__link-count">1</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="7" style="--mod-color:#f97316;" href="../gas-turbine/index.html"><span class="pp-sidebar__icon">🌀</span><span class="pp-sidebar__link-text">Gas Turbine</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="8" style="--mod-color:#facc15;" href="../solar-energy/index.html"><span class="pp-sidebar__icon">☀️</span><span class="pp-sidebar__link-text">Solar Energy</span><span class="pp-sidebar__link-count">9</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="9" style="--mod-color:#facc15;" href="../solar-collectors/index.html"><span class="pp-sidebar__icon">🌡️</span><span class="pp-sidebar__link-text">Solar Collectors</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="10" style="--mod-color:#00f5ff;" href="../geothermal-mhd/index.html"><span class="pp-sidebar__icon">🌋</span><span class="pp-sidebar__link-text">Geothermal &amp; MHD</span><span class="pp-sidebar__link-count">6</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="0" style="--mod-color:#00ff88;" href="../../index.html"><span class="pp-sidebar__icon">📋</span><span class="pp-sidebar__link-text">All Modules</span><span class="pp-sidebar__link-count">56</span></a></li>
+    </ul>
+    <div class="pp-sidebar__footer">
+      <div class="pp-sidebar__footer-text">
+        Chapters: <span>56</span> • Formulas: <span>400+</span><br>
+        Animations: <span>120+</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Unified Navbar -->
+  <nav class="navbar" role="navigation">
+    <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+    <ul class="navbar__links">
+      <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+      <li><a href="../../../machines/index.html">Machines</a></li>
+      <li><a href="../../../measurements/index.html">Measurements</a></li>
+      <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+      <li><a href="../../../power-plant/index.html" class="active">Power Plant</a></li>
+      <li><a href="../../../control/index.html">Control Systems</a></li>
+      <li><a href="../../../electronics/index.html">Electronics</a></li>
+      <li><a href="../../../signals/index.html">Signals</a></li>
+      <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+      <li><a href="../../../estimation/index.html">Estimation</a></li>
+      <li><a href="../../../utilization/index.html">Utilization</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <div class="search-box">
+        <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+          <path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path>
+          <path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path>
+          <path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z"></path>
+          <path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2z"></path>
+          <path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z"></path>
+          <path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z"></path>
+        </svg></span>
+        <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Particles -->
+  <div class="pp-particles" id="pp-particles"></div>
+
+  <!-- Hero Section (measurements-style) -->
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10"></path>
+    </svg>
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style="text-align:center;">
+        Power <span class="pp-neon-text">Plant</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter" data-text="Generation · Thermal · Hydro · Nuclear · Solar · Gas Turbine"></p>
+      <div class="pp-hero-icons">
+        <div class="pp-hero-icon">🏭</div>
+        <div class="pp-hero-icon">💧</div>
+        <div class="pp-hero-icon">☢️</div>
+        <div class="pp-hero-icon">☀️</div>
+      </div>
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#c1" class="pp-hero-cta">⚡ Explore Power Plants</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pp-main"><div class="topic-breadcrumb">
+        <a href="../../../../index.html">EE Hub</a> › 
+        <a href="../../index.html">Power Plant</a> › 
+        <span>Geothermal &amp; MHD</span>
+    </div><div class="topic-content"><div class="pp-card" id="c51">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#00f5ff,transparent);"></div>
+      <div class="pp-section-title">🌋 Geothermal Resources &amp; Earth Structure</div>
+      <div class="pp-definition-box" style="border-color:#00f5ff;">
+        "Geothermal energy is the thermal energy generated and stored in the Earth. It originates from radioactive decay and primordial heat from planet formation. Geothermal gradient: 25–30°C/km."
+      </div>
+      <div class="pp-formula-zone">
+        <p style="color:#00f5ff; font-weight:600; margin-bottom:8px;">Temperature Gradient Formula:</p>
+        <div style="text-align:center;">$$ T_d = T_{surface} + G_{geo} \times d \quad (G \approx 25\text{-}30\,°C/km) $$</div>
+      </div>
+      <!-- Resource Types -->
+      <div class="pp-gen-grid" style="margin:12px 0;">
+        <div class="pp-gen-item"><span class="pp-gen-icon">💧</span><div class="pp-gen-label" style="color:#00f5ff;">Hydrothermal</div><div class="pp-gen-sub">Steam/liquid, &lt;250°C</div></div>
+        <div class="pp-gen-item"><span class="pp-gen-icon">⬇️</span><div class="pp-gen-label" style="color:#f97316;">Geopressured</div><div class="pp-gen-sub">High-P brine, methane</div></div>
+        <div class="pp-gen-item"><span class="pp-gen-icon">🔥</span><div class="pp-gen-label" style="color:#ef4444;">Petrothermal</div><div class="pp-gen-sub">Hot dry rock (HDR)</div></div>
+      </div>
+      <div id="animation-geo-resources" class="pp-anim-zone" style="height:260px;"></div>
+      <div class="pp-calculator-box" style="margin-top:10px; background:rgba(0,245,255,0.05); border:1px solid rgba(0,245,255,0.2); border-radius:8px; padding:12px;">
+         <p style="font-size:11px; color:#00f5ff; font-family:'Orbitron',sans-serif; margin-bottom:10px;">🌡️ Depth Temperature Calculator</p>
+         <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+           <label style="font-size:10px; color:#9ca3af;">Surface Temp (°C):</label>
+           <input type="number" id="t-surface-main" value="25" class="pp-input-sm" style="width:60px;">
+           <label style="font-size:10px; color:#9ca3af;">Depth (km):</label>
+           <input type="range" id="depth-slider-main" min="0" max="10" step="0.1" value="3" style="flex:1; min-width:80px;">
+           <span id="t-depth-result-main" style="font-family:'Share Tech Mono',monospace; color:#00f5ff; font-size:12px;">At 3 km: T ≈ 115°C</span>
+         </div>
+      </div>
+    </div>
+<div class="pp-card" id="c52">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#00f5ff,transparent);"></div>
+      <div class="pp-section-title">⚙️ Geothermal Power Plant &amp; Efficiency</div>
+      <div class="pp-formula-zone">
+        <p style="color:#00f5ff; font-weight:600; margin-bottom:8px;">Carnot Efficiency ($\eta$):</p>
+        <div style="text-align:center;">$$ \eta_{\text{max}} = 1 - \frac{T_L}{T_H} $$</div>
+        <p style="font-size:11px; color:#9ca3af; margin-top:8px; text-align:center;">Real geothermal efficiency: 7–10% (much lower due to low source temperature)</p>
+      </div>
+      <div id="animation-geo-plant" class="pp-anim-zone" style="height:240px;"></div>
+      <div class="pp-calculator-box" style="margin-top:10px; background:rgba(0,245,255,0.05); border:1px solid rgba(0,245,255,0.2); padding:12px; border-radius:8px;">
+         <p style="font-size:11px; color:#00f5ff; font-family:'Orbitron',sans-serif; margin-bottom:10px;">📊 Carnot Efficiency Calculator</p>
+         <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+           <label style="font-size:10px; color:#9ca3af;">T_High (°C):</label>
+           <input type="number" id="t-high-main" value="200" class="pp-input-sm" style="width:65px;">
+           <label style="font-size:10px; color:#9ca3af;">T_Low (°C):</label>
+           <input type="number" id="t-low-main" value="40" class="pp-input-sm" style="width:65px;">
+           <span id="eta-result-main" style="font-family:'Share Tech Mono',monospace; color:#00ff88; font-size:12px;">η ≈ 33.8%</span>
+         </div>
+      </div>
+    </div>
+<div class="pp-card" id="c53">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#00f5ff,transparent);"></div>
+      <div class="pp-section-title">⚡ Magneto-Hydrodynamics (MHD) Principles</div>
+      <div class="pp-formula-zone">
+        <p style="color:#00f5ff; font-weight:600; margin-bottom:8px;">Lorentz Force &amp; Induced EMF ($E$):</p>
+        <div style="text-align:center;">$$ \vec{F} = q(\vec{v} \times \vec{B}) \quad \rightarrow \quad E = B v d $$</div>
+      </div>
+      <div id="animation-mhd-channel" class="pp-anim-zone" style="height:240px;"></div>
+      <div class="pp-calculator-box" style="margin-top:10px; background:rgba(0,245,255,0.05); border:1px solid rgba(0,245,255,0.2); padding:12px; border-radius:8px;">
+         <div style="display:flex; gap:10px; align-items:center;">
+           <label style="font-size:9px; color:#9ca3af;">Flux B (T):</label>
+           <input type="range" id="mhd-b-main" min="0" max="5" step="0.1" value="2" style="width:70px;">
+           <label style="font-size:9px; color:#9ca3af;">Vel v (m/s):</label>
+           <input type="range" id="mhd-v-main" min="0" max="2000" step="50" value="1000" style="width:70px;">
+           <span id="mhd-emf-result-main" style="font-family:'Share Tech Mono',monospace; color:#00ff88; font-size:11px;">2000V</span>
+         </div>
+      </div>
+    </div>
+<div class="pp-card" id="c54">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#00f5ff,transparent);"></div>
+      <div class="pp-section-title">🛰️ MHD Combined Cycle &amp; Applications</div>
+      <div id="animation-mhd-combined" class="pp-anim-zone" style="height:220px;"></div>
+      <div class="pp-formula-zone" style="margin-top:10px;">
+        <p style="color:#00f5ff; font-weight:600; margin-bottom:8px;">Combined Cycle Efficiency:</p>
+        <div style="text-align:center;">$$ \eta_{combined} = \eta_{MHD} + (1-\eta_{MHD})\cdot\eta_{steam} $$</div>
+        <div style="text-align:center; margin-top:8px;">$$ \eta_{combined} \approx 58\% \quad \text{vs } 40\% \text{ (steam alone)} $$</div>
+      </div>
+      <!-- Efficiency Comparison -->
+      <div class="pp-gen-grid" style="margin:12px 0; grid-template-columns: repeat(3, 1fr);">
+        <div class="pp-gen-item"><span class="pp-gen-icon">🔥</span><div class="pp-gen-label" style="color:#f97316;">Steam Only</div><div class="pp-gen-sub">η ≈ 40%</div></div>
+        <div class="pp-gen-item"><span class="pp-gen-icon">⚡</span><div class="pp-gen-label" style="color:#00f5ff;">MHD Only</div><div class="pp-gen-sub">η ≈ 30%</div></div>
+        <div class="pp-gen-item" style="border-color:rgba(0,255,136,0.4);"><span class="pp-gen-icon">🚀</span><div class="pp-gen-label" style="color:#00ff88;">Combined</div><div class="pp-gen-sub">η ≈ 58%</div></div>
+      </div>
+    </div>
+<div class="pp-card" id="c55">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#00f5ff,transparent);"></div>
+      <div class="pp-section-title">🌍 Geothermal: India Potential &amp; Global</div>
+      <div id="animation-geo-stats" class="pp-anim-zone" style="height:260px;"></div>
+      <div class="pp-roman-list" style="margin-top:10px;">
+        <li><span class="pp-roman-num">1</span> Total Potential in India: ~10,000 MW</li>
+        <li><span class="pp-roman-num">2</span> Major Sites: Puga Valley (Ladakh), Tattapani (MP)</li>
+        <li><span class="pp-roman-num">3</span> Global Leader: USA (~3,700 MW installed)</li>
+      </div>
+    </div>
+<div class="pp-card" id="c56">
+      <div class="pp-card-accent" style="background:linear-gradient(90deg,transparent,#00f5ff,transparent);"></div>
+      <div class="pp-section-title">🧠 Module 10 Master Quiz</div>
+      <div id="master-quiz-main" style="background:rgba(0,245,255,0.05); border:1px solid rgba(0,245,255,0.2); border-radius:12px; padding:15px; min-height:180px;">
+         <div id="quiz-question-main" style="font-size:14px; color:#e2e8f0; margin-bottom:15px; font-family:'Orbitron',sans-serif; text-align:center;">Ready to test your knowledge?</div>
+         <div id="quiz-options-main" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+           <button class="pp-hero-cta" id="start-quiz-btn-main" style="grid-column: span 2; border-color:#00f5ff; color:#00f5ff; font-size:11px; padding:10px;">Start Quiz</button>
+         </div>
+      </div>
+    </div>
+</div><div class="topic-bottom-nav">
+        <a href="../solar-collectors/index.html" class="topic-btn prev-btn">← Solar Collectors</a>
+        <a href="../../index.html" class="topic-btn back-btn">All Topics</a>
+        <div></div>
+    </div></main>
+
+  <!-- Scroll to top -->
+  <div class="pp-scroll-top" id="ppScrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="../../../../../../shared/js/hero-bg.js"></script>
+  <script src="../../../../../../shared/js/formulas.js"></script>
+  <script src="../../../../../../shared/js/app.js"></script>
+
+  
+
+  <!-- Bookmark corner buttons -->
+  
+  
+
+
+
+<script src="../../js/powerplant-inline.js"></script><script src="../../../../../../shared/js/topic-nav.js"></script></body></html>

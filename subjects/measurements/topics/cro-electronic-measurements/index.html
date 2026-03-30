@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurements &amp; Instrumentation Formula Book</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+    <!-- Libraries: GSAP, D3, Chart.js, AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="../../css/measurements.css">
+
+    <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+
+    <link rel="stylesheet" href="../../../../shared/css/topic-page.css">
+    <title>📺 CRO & Electronic Measurements | MEASUREMENTS | EE Hub</title>
+</head>
+<body >
+    <nav class="navbar" role="navigation">
+        <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        <ul class="navbar__links">
+            <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+            <li><a href="../../../machines/index.html">Machines</a></li>
+            <li><a href="../../../measurements/index.html" class="active">Measurements</a></li>
+            <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+            <li><a href="../../../power-plant/index.html">Power Plant</a></li>
+            <li><a href="../../../control/index.html">Control Systems</a></li>
+            <li><a href="../../../electronics/index.html">Electronics</a></li>
+            <li><a href="../../../signals/index.html">Signals</a></li>
+            <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+            <li><a href="../../../estimation/index.html">Estimation</a></li>
+            <li><a href="../../../utilization/index.html">Utilization</a></li>
+        </ul>
+        <div class="navbar__actions">
+        <div class="search-box">
+            <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" style="vertical-align: middle;">
+<path fill="#127274" d="M214,305.8c-0.7-2-1.5-4-2.4-5.9c-1.9-4.2-4-8.4-6.3-12.4c-2.1-3.6-3.8-5.7-7-8.3c-4.2-3.4-9.8-8.5-15.7-8.1c-0.3,0.7-0.9,1.3-1.7,1.8c-29.4,18.5-59,38.5-83.4,63.5c-7.5,7.7-14.7,16.5-20.2,26.2c9.3-2,19.7-0.7,28.6,1.4c5.8,1.4,11.7,3,16.9,5.8c3.4,1.8,5.5,5,7.5,8.2c2.5,4.2,15.6,27.4,17.3,41c9-7.5,16.8-16.6,23.6-25.9c17.8-24.5,29.9-52.9,39-81.7c0.7-2.1,2.1-3,3.7-3.1c0.1-0.4,0.3-0.8,0.5-1.1C214.2,306.6,214.1,306.3,214,305.8z"></path><path fill="#74CCCF" d="M431.2,184.2c-1.4-23.9-13-47.9-26.1-67.5c-13.7-20.5-31.4-39.8-53.4-51.5c-44.2-23.5-101.4-9.4-136.8,23.9c-18.9,17.8-32.4,41-31.2,67.6c1.2,25.8,13.1,49.2,28.4,69.5c0.6,0.8,0.9,1.6,1,2.4c8.3,6,16.2,12,25.5,16.7c9.9,5,20.2,9.2,30.7,12.8c21.8,7.7,45.6,15.4,69.1,14.6C382.8,271.2,434.1,232.5,431.2,184.2z"></path><path fill="#14B6B9" d="M452.9,160.4c-6.5-23.4-17.8-45.5-32.2-65C392.5,57,349.5,23.8,299.4,28.5c-47.8,4.5-96.6,33-123.6,72.9c-14.7,21.7-20,48.1-15.5,73.9c4.6,25.8,17.7,49.3,34.8,68.9c1,1.2,1.3,2.4,1.1,3.5c20.8,15.7,45.6,26.2,70.6,33c13.1,3.6,26.3,6.9,39.6,9.5c13.6,2.6,27.7,4.9,41.6,3.7c40.6-3.3,80.2-29.1,98.5-65.8C457.1,206.7,459.4,183.5,452.9,160.4z M365.3,278.3c-28.1,8.5-56.8,2.8-84.2-5.8c-13.8-4.3-27.6-9.1-40.7-15.2c-6.8-3.2-13.6-6.7-19.9-10.9c-5.5-3.6-10.5-7.9-15.9-11.7c-1.7-1.2-2.1-2.8-1.8-4.3c-17.7-23.8-31.1-52.7-29-82.9c2.2-31.5,21.9-58.1,46.9-76.2c38.9-28.1,94.6-38.9,137.8-13.8c21.4,12.4,39.2,30.6,53.1,51c13.4,19.8,24.7,42.6,28.6,66.5C448,222.4,408.4,265.3,365.3,278.3z"></path><path fill="#127274" d="M137.8 421.2c0-.1 0-.3-.1-.4-.3-1.4-.6-2.7-1-4.1-1.2-3.9-2.7-7.7-4.2-11.5-3.2-7.7-6.5-15.6-11.1-22.6-2-3.1-2.4-3.9-5.5-5.2-4.4-1.9-9-3.2-13.7-4.1-8.6-1.7-20.9-3.9-28.9 1-.7.4-1.4.7-2 .8-3.8 10.1-5.3 20.9-3.4 32 1.7 9.7 6.3 19.1 14.6 24.8 9.2 6.2 20.7 7.1 31.3 4.7 8.6-2 16.6-5.6 23.9-10.4C137 424.6 137 422.6 137.8 421.2zM471.5 185.5c-1.3-13.1-5.2-25-11.2-35.9 7.3 23.4 8.9 48.1 0 71.7-16.2 43.3-59.2 75.9-104.7 81.9-29.7 3.9-60.6-4.4-89-12.2-26.6-7.3-52.8-18-75.2-34.4-3.3.9-7.4-1.3-6.3-5.5.2-.8.5-1.6.8-2.3-7.6-8.8-14.4-18.3-19.9-28.5-4.7-8.8-8.7-18-11.6-27.5 0 5 0 10 .3 15 1.1 20.3 5.2 41.3 19 56.9.5-1 1.3-1.8 2.7-2.3 10.2-3.5 19.2 1.8 26.9 8.1 5.3 4.3 8.2 7.9 11.5 13.8 2.2 3.9 11.9 19.9 9.2 27.2 25.7 11.4 52.5 16.5 80.5 18.4 29.3 2 59.3 1.9 85.5-13.2 23.8-13.7 45.1-34.1 61.4-56.1C467.7 238.3 474.2 212.8 471.5 185.5z"></path><path d="M440.2,175c-3.9-23.8-15.1-46.7-28.6-66.5c-13.8-20.4-31.7-38.5-53.1-51c-43.2-25.1-98.9-14.3-137.8,13.8c-25,18.1-44.7,44.7-46.9,76.2c-2.1,30.3,11.3,59.2,29,82.9c-0.3,1.5,0.1,3.1,1.8,4.3c5.4,3.8,10.3,8,15.9,11.7c6.3,4.1,13.1,7.6,19.9,10.9c13.1,6.2,26.9,10.9,40.7,15.2c27.4,8.5,56,14.2,84.2,5.8C408.4,265.3,448,222.4,440.2,175z M338.3,272.7c-23.4,0.8-47.2-6.9-69.1-14.6c-10.5-3.7-20.7-7.9-30.7-12.8c-9.3-4.7-17.2-10.7-25.5-16.7c-0.1-0.8-0.4-1.6-1-2.4c-15.3-20.3-27.2-43.7-28.4-69.5c-1.2-26.7,12.3-49.8,31.2-67.6c35.4-33.2,92.6-47.4,136.8-23.9c22,11.7,39.7,31,53.4,51.5c13.1,19.6,24.7,43.7,26.1,67.5C434.1,232.5,382.8,271.2,338.3,272.7z"></path><path d="M474.5,155.5c-6.3-15.9-17-29.4-29.2-41.2c-0.3-0.3-0.6-0.5-0.9-0.7c-5-8.8-10.5-17.1-16.2-25C400.1,50.5,357.8,17.8,308.6,18c-48.1,0.2-97.2,26.9-128.8,62.1c-15.1,16.9-25.9,37-29.6,59.2c-2.2,0.5-4.1,2.2-4.2,5.1c-0.1,42-9.8,91.5,19.8,126.3c-23,14.8-45.3,30.8-65.5,49.4c-20,18.3-37.6,39.3-42.1,66.8c-3.4,20.8,2.8,44.7,22.4,55.4c21.1,11.5,46.3,3.3,64.9-9.2c17.3-11.7,30.9-28.7,41.8-46.3c13.1-21,22.9-43.7,30.7-67.2c27.1,12.3,55.2,17.9,84.7,20c28.7,2.1,58,2.4,84.5-10.3c24.9-11.9,45.5-31.4,63.4-52c17.5-20.1,29.6-43.4,31.2-70.4C482.9,189.4,481,171.7,474.5,155.5z M175.8,101.4c27-39.9,75.8-68.4,123.6-72.9c50.1-4.7,93.1,28.5,121.4,66.9c14.4,19.6,25.6,41.6,32.2,65c6.4,23.1,4.2,46.3-6.5,67.7c-18.2,36.7-57.9,62.5-98.5,65.8c-13.8,1.1-28-1.1-41.6-3.7c-13.3-2.6-26.5-5.9-39.6-9.5c-24.9-6.8-49.8-17.3-70.6-33c0.2-1.1-0.1-2.3-1.1-3.5c-17.1-19.6-30.2-43-34.8-68.9C155.8,149.6,161.1,123.1,175.8,101.4z M137.8,426.1c-7.3,4.7-15.3,8.4-23.9,10.4c-10.6,2.4-22.1,1.5-31.3-4.7c-8.4-5.7-12.9-15-14.6-24.8c-1.9-11.1-0.4-21.9,3.4-32c0.7-0.1,1.4-0.3,2-0.8c8-4.9,20.3-2.7,28.9-1c4.7,0.9,9.3,2.3,13.7,4.1c3.1,1.3,3.5,2.1,5.5,5.2c4.5,7,7.9,14.9,11.1,22.6c1.6,3.8,3,7.6,4.2,11.5c0.4,1.3,0.8,2.7,1,4.1c0,0.1,0,0.3,0.1,0.4C137,422.6,137,424.6,137.8,426.1z M213.9,308.2c-1.6,0.1-3.1,1-3.7,3.1c-9.1,28.8-21.3,57.1-39,81.7c-6.7,9.3-14.6,18.4-23.6,25.9c-1.7-13.6-14.8-36.8-17.3-41c-1.9-3.2-4.1-6.4-7.5-8.2c-5.2-2.9-11.1-4.5-16.9-5.8c-8.8-2.1-19.3-3.4-28.6-1.4c5.5-9.6,12.7-18.5,20.2-26.2c24.4-24.9,54-45,83.4-63.5c0.8-0.5,1.4-1.1,1.7-1.8c5.8-0.4,11.4,4.7,15.7,8.1c3.2,2.6,4.9,4.7,7,8.3c2.3,4,4.4,8.2,6.3,12.4c0.9,1.9,1.7,3.9,2.4,5.9c0.2,0.5,0.3,0.8,0.4,1.2C214.1,307.4,214,307.8,213.9,308.2z M451.4,260.4c-16.3,22.1-37.6,42.4-61.4,56.1c-26.2,15.1-56.1,15.2-85.5,13.2c-28-1.9-54.7-7.1-80.5-18.4c2.7-7.2-7-23.2-9.2-27.2c-3.3-5.9-6.2-9.5-11.5-13.8c-7.8-6.3-16.8-11.6-26.9-8.1c-1.4,0.5-2.2,1.3-2.7,2.3c-13.9-15.6-18-36.6-19-56.9c-0.3-5-0.3-10-0.3-15c2.9,9.5,6.9,18.7,11.6,27.5c5.5,10.2,12.3,19.7,19.9,28.5c-0.3,0.7-0.6,1.5-0.8,2.3c-1.1,4.2,3,6.4,6.3,5.5c22.4,16.5,48.6,27.1,75.2,34.4c28.4,7.8,59.4,16.1,89,12.2c45.6-6,88.6-38.6,104.7-81.9c8.8-23.7,7.3-48.3,0-71.7c6,10.9,9.9,22.9,11.2,35.9C474.2,212.8,467.7,238.3,451.4,260.4z"></path>
+</svg></span>
+            <input type="text" id="page-search" placeholder="Search formulas..." autocomplete="off">
+        </div>
+    </div>
+    </nav>
+    
+    <!-- Topic Nav Script (Shared) -->
+    <script src="../../../../shared/js/topic-nav.js"></script>
+
+    <div class="breadcrumb" style="margin-top: 80px;">
+        <span class="home-icon">🏠</span> 
+        <span class="delimiter">/</span> 
+        <a href="../../index.html" style="text-transform: capitalize;">measurements</a> 
+        <span class="delimiter">/</span> 
+        <span class="current-topic">📺 CRO & Electronic Measurements</span>
+    </div>
+
+    <main class="topic-main-container">
+        <section id="mod10" class="module-section">
+                <h2 class="module-title" style="color:#00f5ff">Module 10 — CRO &amp; Electronic Measurements</h2>
+
+                <!-- ── CARD 10.1 — Energy Meter: Speed & Temperature Compensation ── -->
+                <div class="machine-card" id="m10-card1">
+                    <div class="card-strip" style="background:#00f5ff"></div>
+                    <div class="card-header">
+                        <span class="m10-badge">10.1</span>
+                        <h3>Energy Meter: Speed &amp; Temperature Compensation</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#a78bfa;font-weight:600;font-size:0.8rem;margin:2px 0">6. Temperature Compensation — MUTEMP</p>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">T↑ → disc R↑ → eddy current↓ | MUTEMP: μ↓ → B↓ → braking↓ → net speed constant</p>
+                        <p style="color:#f97316;font-weight:600;font-size:0.8rem;margin:4px 0">7. Speed Adjustment</p>
+                        <div class="katex-render" data-formula="T_b \propto N_\phi^2\,d \quad\Rightarrow\quad N \propto \frac{1}{\phi^2\,d}"></div>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">Position of brake magnet from spindle controls disc speed</p>
+                        <p style="color:#ef4444;font-weight:600;font-size:0.8rem;margin:4px 0">Creeping Error</p>
+                        <div class="katex-render" data-formula="\%\text{Creep} = \frac{\text{Rev due to creeping/hr}}{\text{Rev due to load/hr}} \times 100"></div>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:2px 0">Causes: over-friction compensation, over-voltage, excessive lubrication, vibration, stray fields</p>
+                        <p style="color:#00ff88;font-size:0.75rem;margin:2px 0">Elimination: two holes drilled on opposite sides of disc</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Temperature compensation -->
+                        <p style="color:#a78bfa;font-size:0.78rem;text-align:center;margin:0 0 4px">MUTEMP Temperature Compensation</p>
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center">
+                            <label style="color:#94a3b8;font-size:0.75rem">Temp (°C)</label>
+                            <input type="range" id="m10-temp" class="m10-slider" min="20" max="80" value="25" step="1">
+                            <span id="m10-temp-val" style="color:#00f5ff;font-family:Orbitron;font-size:0.8rem">25</span>
+                        </div>
+                        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m10-no-mutemp" class="m10-app-tag" style="border-color:#ef4444;color:#ef4444">Without MUTEMP: Speed ↑</span>
+                            <span id="m10-with-mutemp" class="m10-app-tag" style="border-color:#00ff88;color:#00ff88">With MUTEMP: Speed OK ✓</span>
+                        </div>
+                        <div id="m10-mutemp-chart" style="width:100%;max-width:280px;margin:6px auto"></div>
+
+                        <!-- Brake magnet position -->
+                        <p style="color:#f97316;font-size:0.78rem;text-align:center;margin:6px 0 4px">Brake Magnet Position</p>
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center">
+                            <label style="color:#94a3b8;font-size:0.75rem">Position</label>
+                            <input type="range" id="m10-brake-pos" class="m10-slider" min="10" max="100" value="50" step="1">
+                            <span id="m10-brake-val" style="color:#00f5ff;font-family:Orbitron;font-size:0.8rem">50</span>%
+                        </div>
+                        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m10-brake-badge" class="m10-app-tag" style="border-color:#60a5fa;color:#60a5fa">Medium braking → Medium speed</span>
+                        </div>
+
+                        <!-- Creeping demo -->
+                        <p style="color:#ef4444;font-size:0.78rem;text-align:center;margin:8px 0 4px">Creeping Demonstration</p>
+                        <svg id="m10-creep-svg" viewBox="0 0 260 70" style="width:100%;max-width:260px;display:block;margin:0 auto">
+                            <ellipse id="m10-creep-disc" cx="70" cy="35" rx="50" ry="14" fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="1.5"></ellipse>
+                            <text x="70" y="39" fill="#ef4444" font-size="8" text-anchor="middle" id="m10-creep-label">Creeping… ✗</text>
+                            <!-- Disc with holes -->
+                            <ellipse cx="190" cy="35" rx="50" ry="14" fill="rgba(96,165,250,0.08)" stroke="#00ff88" stroke-width="1.5"></ellipse>
+                            <circle cx="165" cy="33" r="4" fill="none" stroke="#00ff88" stroke-width="1"></circle>
+                            <circle cx="215" cy="33" r="4" fill="none" stroke="#00ff88" stroke-width="1"></circle>
+                            <text x="190" y="39" fill="#00ff88" font-size="8" text-anchor="middle">Stopped ✓</text>
+                            <text x="70" y="62" fill="#ef4444" font-size="7" text-anchor="middle">No holes</text>
+                            <text x="190" y="62" fill="#00ff88" font-size="7" text-anchor="middle">With holes</text>
+                        </svg>
+                    </div>
+
+                    <div id="m10-creep-calc" class="m10-calc-zone">
+                        <h4 style="color:#00f5ff;margin:0 0 6px">⚙️ Creeping Error Calculator</h4>
+                        <div class="m10-calc-row">
+                            <label>Creep rev/hr:</label><input type="number" id="m10-crp-rev" value="5">
+                            <label>Load rev/hr:</label><input type="number" id="m10-crp-load" value="1200">
+                        </div>
+                        <div id="m10-crp-result" class="m10-calc-result">—</div>
+                    </div>
+
+                    <div class="m10-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m10-footer-btn" onclick="document.getElementById('m10-creep-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m10-footer-btn m10-bookmark-btn" data-card="m10-temp-comp">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 10.2 — CRO Overview ── -->
+                <div class="machine-card" id="m10-card2">
+                    <div class="card-strip" style="background:#00f5ff"></div>
+                    <div class="card-header">
+                        <span class="m10-badge">10.2</span>
+                        <h3>Cathode Ray Oscilloscope (CRO): Overview</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#94a3b8;font-size:0.78rem;margin:2px 0">Electronic instrument for waveform display | Voltage sensitive | Principle: Thermionic emission</p>
+                        <p style="color:#00f5ff;font-weight:600;font-size:0.78rem;margin:4px 0">y-t mode → RMS, Peak, Average, Time period</p>
+                        <p style="color:#facc15;font-weight:600;font-size:0.78rem;margin:2px 0">x-y mode (Lissajous) → Phase, Frequency</p>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:4px 0">CRT Parts: 1. Electron gun (Cathode) | 2. Pre-accelerating &amp; Accelerating anode | 3. Horizontal deflecting plates | 4. Vertical deflecting plates</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- CRT cross-section SVG -->
+                        <svg id="m10-crt-svg" viewBox="0 0 320 160" style="width:100%;max-width:320px;display:block;margin:0 auto">
+                            <!-- CRT outline -->
+                            <path d="M 10 80 L 10 40 L 50 30 L 50 130 L 10 120 Z" fill="rgba(148,163,184,0.05)" stroke="#475569" stroke-width="1.5"></path>
+                            <!-- Cathode -->
+                            <rect x="15" y="65" width="15" height="30" rx="2" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1.5"></rect>
+                            <text x="22" y="83" fill="#ef4444" font-size="6" text-anchor="middle">K</text>
+                            <!-- Heater glow -->
+                            <circle cx="22" cy="80" r="8" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="0.5" stroke-dasharray="2 1"></circle>
+                            <text x="22" y="60" fill="#f97316" font-size="5" text-anchor="middle">Heater</text>
+                            <!-- Pre-accelerating anode -->
+                            <rect x="52" y="55" width="8" height="50" rx="2" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1"></rect>
+                            <text x="56" y="115" fill="#f97316" font-size="5" text-anchor="middle">A₁</text>
+                            <!-- Accelerating anode -->
+                            <rect x="70" y="50" width="8" height="60" rx="2" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="1.5"></rect>
+                            <text x="74" y="120" fill="#f97316" font-size="5" text-anchor="middle">A₂</text>
+                            <!-- Vertical deflecting plates (Y) -->
+                            <rect x="100" y="40" width="4" height="25" rx="1" fill="rgba(0,245,255,0.15)" stroke="#00f5ff" stroke-width="1"></rect>
+                            <rect x="100" y="95" width="4" height="25" rx="1" fill="rgba(0,245,255,0.15)" stroke="#00f5ff" stroke-width="1"></rect>
+                            <text x="102" y="35" fill="#00f5ff" font-size="5" text-anchor="middle">V</text>
+                            <!-- Horizontal deflecting plates (H) -->
+                            <rect x="130" y="55" width="4" height="20" rx="1" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1"></rect>
+                            <rect x="155" y="55" width="4" height="20" rx="1" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1"></rect>
+                            <text x="145" y="50" fill="#60a5fa" font-size="5" text-anchor="middle">H</text>
+                            <!-- Electron beam -->
+                            <line x1="30" y1="80" x2="260" y2="80" stroke="#facc15" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.6"></line>
+                            <!-- Screen -->
+                            <rect x="255" y="30" width="55" height="100" rx="6" fill="rgba(0,26,26,0.8)" stroke="#00f5ff" stroke-width="2"></rect>
+                            <!-- Phosphor spot -->
+                            <circle id="m10-spot" cx="282" cy="80" r="4" fill="#fff" opacity="0.9"></circle>
+                            <circle cx="282" cy="80" r="8" fill="rgba(0,245,255,0.15)"></circle>
+                            <text x="282" y="140" fill="#00f5ff" font-size="6" text-anchor="middle">Screen</text>
+                            <!-- Labels -->
+                            <text x="22" y="105" fill="#94a3b8" font-size="5" text-anchor="middle">Thermionic</text>
+                            <text x="22" y="111" fill="#94a3b8" font-size="5" text-anchor="middle">emission</text>
+                        </svg>
+
+                        <!-- Mode toggle -->
+                        <div style="display:flex;gap:6px;justify-content:center;margin-top:6px">
+                            <button class="m10-btn active" id="m10-mode-yt">y-t Mode</button>
+                            <button class="m10-btn" id="m10-mode-xy">x-y Mode</button>
+                        </div>
+
+                        <!-- CRO screen with waveform -->
+                        <svg id="m10-cro-screen" viewBox="0 0 220 140" style="width:100%;max-width:220px;display:block;margin:6px auto;background:#001a1a;border:2px solid #00f5ff;border-radius:8px">
+                            <!-- Grid -->
+                            <g id="m10-grid" stroke="#0a3d3d" stroke-width="0.5">
+                                <line x1="22" y1="10" x2="22" y2="130"></line><line x1="42" y1="10" x2="42" y2="130"></line>
+                                <line x1="62" y1="10" x2="62" y2="130"></line><line x1="82" y1="10" x2="82" y2="130"></line>
+                                <line x1="102" y1="10" x2="102" y2="130"></line><line x1="122" y1="10" x2="122" y2="130"></line>
+                                <line x1="142" y1="10" x2="142" y2="130"></line><line x1="162" y1="10" x2="162" y2="130"></line>
+                                <line x1="182" y1="10" x2="182" y2="130"></line><line x1="202" y1="10" x2="202" y2="130"></line>
+                                <line x1="2" y1="25" x2="218" y2="25"></line><line x1="2" y1="40" x2="218" y2="40"></line>
+                                <line x1="2" y1="55" x2="218" y2="55"></line><line x1="2" y1="70" x2="218" y2="70"></line>
+                                <line x1="2" y1="85" x2="218" y2="85"></line><line x1="2" y1="100" x2="218" y2="100"></line>
+                                <line x1="2" y1="115" x2="218" y2="115"></line><line x1="2" y1="130" x2="218" y2="130"></line>
+                            </g>
+                            <!-- Center lines -->
+                            <line x1="2" y1="70" x2="218" y2="70" stroke="#0a3d3d" stroke-width="1"></line>
+                            <line x1="110" y1="10" x2="110" y2="130" stroke="#0a3d3d" stroke-width="1"></line>
+                            <!-- Waveform path -->
+                            <path id="m10-waveform" d="" fill="none" stroke="#00ff88" stroke-width="1.5"></path>
+                            <!-- Measurement labels -->
+                            <text id="m10-screen-label" x="110" y="138" fill="#94a3b8" font-size="6" text-anchor="middle"></text>
+                        </svg>
+                        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m10-cro-info" class="m10-app-tag" style="border-color:#00ff88;color:#00ff88">Sine wave | y-t mode</span>
+                        </div>
+                    </div>
+
+                    <div class="m10-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m10-footer-btn m10-bookmark-btn" data-card="m10-cro-overview">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 10.3 — CRO Deflection: Electrostatic vs Magnetic ── -->
+                <div class="machine-card" id="m10-card3">
+                    <div class="card-strip" style="background:#00f5ff"></div>
+                    <div class="card-header">
+                        <span class="m10-badge">10.3</span>
+                        <h3>CRO Deflection: Electrostatic vs Magnetic</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <p style="color:#00f5ff;font-weight:600;font-size:0.78rem;margin:2px 0">Electrostatic Deflection:</p>
+                        <div class="katex-render" data-formula="\boxed{D = \frac{L\,\ell_d\,V_d}{2\,d\,E_a}} \quad S = \frac{L\,\ell_d}{2\,d\,E_a}\;\text{m/V} \quad G = \frac{1}{S}\;\text{V/m}"></div>
+                        <p style="color:#a78bfa;font-weight:600;font-size:0.78rem;margin:4px 0">Magnetic Deflection:</p>
+                        <div class="katex-render" data-formula="S_m \propto \frac{1}{\sqrt{E_a}} \quad D \propto \frac{I_d}{\sqrt{E_a}}"></div>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:4px 0">Electrostatic: S ∝ 1/E<sub>a</sub> | Magnetic: S<sub>m</sub> ∝ 1/√E<sub>a</sub> → Magnetic better at high E<sub>a</sub></p>
+                        <div class="katex-render" data-formula="BW \times t_r = 0.35"></div>
+                    </div>
+
+                    <!-- Comparison table -->
+                    <div style="overflow-x:auto;margin:0.4rem 0">
+                        <table class="m10-comparison-table">
+                            <thead><tr><th>Parameter</th><th>Electrostatic</th><th>Magnetic</th></tr></thead>
+                            <tbody>
+                                <tr><td>Deflection D</td><td style="color:#00f5ff">Lℓ<sub>d</sub>V<sub>d</sub>/(2dE<sub>a</sub>)</td><td style="color:#a78bfa">∝ I<sub>d</sub>/√E<sub>a</sub></td></tr>
+                                <tr><td>Sensitivity S</td><td style="color:#00f5ff">Lℓ<sub>d</sub>/(2dE<sub>a</sub>) m/V</td><td style="color:#a78bfa">∝ 1/√E<sub>a</sub></td></tr>
+                                <tr><td>Best for</td><td style="color:#00f5ff">High freq CRO</td><td style="color:#a78bfa">TV, radar</td></tr>
+                                <tr><td>Freq range</td><td style="color:#00f5ff">DC to GHz</td><td style="color:#a78bfa">DC to few MHz</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Electrostatic deflection SVG -->
+                        <svg id="m10-esd-svg" viewBox="0 0 260 120" style="width:100%;max-width:260px;display:block;margin:0 auto">
+                            <!-- Plates -->
+                            <rect x="80" y="15" width="60" height="6" rx="2" fill="rgba(0,245,255,0.12)" stroke="#00f5ff" stroke-width="1"></rect>
+                            <text x="110" y="12" fill="#00f5ff" font-size="7" text-anchor="middle">+ plate</text>
+                            <rect x="80" y="99" width="60" height="6" rx="2" fill="rgba(0,245,255,0.12)" stroke="#00f5ff" stroke-width="1"></rect>
+                            <text x="110" y="115" fill="#00f5ff" font-size="7" text-anchor="middle">− plate</text>
+                            <!-- Beam -->
+                            <path id="m10-esd-beam" d="M 10 60 Q 110 60 240 40" fill="none" stroke="#facc15" stroke-width="1.5"></path>
+                            <circle id="m10-esd-spot" cx="240" cy="40" r="3" fill="#fff"></circle>
+                            <!-- D arrow -->
+                            <line id="m10-esd-darrow1" x1="245" y1="60" x2="245" y2="40" stroke="#00ff88" stroke-width="1" marker-end="url(#m10arr)"></line>
+                            <text id="m10-esd-dlbl" x="252" y="50" fill="#00ff88" font-size="7">D</text>
+                            <defs><marker id="m10arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#00ff88"></path></marker></defs>
+                        </svg>
+
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:4px">
+                            <label style="color:#94a3b8;font-size:0.75rem">V<sub>d</sub> (V)</label>
+                            <input type="range" id="m10-vd" class="m10-slider" min="-200" max="200" value="80" step="5">
+                            <span id="m10-vd-val" style="color:#00f5ff;font-family:Orbitron;font-size:0.8rem">80</span>
+                        </div>
+                        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m10-defl-badge" class="m10-app-tag" style="border-color:#00ff88;color:#00ff88">D = — mm</span>
+                            <span id="m10-sens-badge" class="m10-app-tag" style="border-color:#00f5ff;color:#00f5ff">S = — mm/V</span>
+                        </div>
+
+                        <!-- S vs Ea comparison chart -->
+                        <div id="m10-s-vs-ea-chart" style="width:100%;max-width:300px;margin:8px auto"></div>
+                    </div>
+
+                    <!-- Electrostatic Deflection Calculator -->
+                    <div id="m10-defl-calc" class="m10-calc-zone">
+                        <h4 style="color:#00f5ff;margin:0 0 6px">📐 Electrostatic Deflection Calculator</h4>
+                        <div class="m10-calc-row">
+                            <label>L (m):</label><input type="number" id="m10-dc-L" value="0.2" step="0.01">
+                            <label>ℓ<sub>d</sub> (m):</label><input type="number" id="m10-dc-ld" value="0.05" step="0.001">
+                            <label>d (m):</label><input type="number" id="m10-dc-d" value="0.01" step="0.001">
+                            <label>E<sub>a</sub> (V):</label><input type="number" id="m10-dc-Ea" value="2000">
+                            <label>V<sub>d</sub> (V):</label><input type="number" id="m10-dc-Vd" value="100">
+                        </div>
+                        <div id="m10-dc-result" class="m10-calc-result">—</div>
+                        <h4 style="color:#00f5ff;margin:8px 0 6px">⏱️ Bandwidth–Rise Time</h4>
+                        <div class="m10-calc-row">
+                            <label>BW (MHz):</label><input type="number" id="m10-bw" value="100" step="1">
+                        </div>
+                        <div id="m10-bw-result" class="m10-calc-result">—</div>
+                    </div>
+
+                    <div class="m10-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m10-footer-btn" onclick="document.getElementById('m10-defl-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m10-footer-btn m10-bookmark-btn" data-card="m10-deflection">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 10.4 — Lissajous Patterns: Frequency Measurement ── -->
+                <div class="machine-card" id="m10-card4">
+                    <div class="card-strip" style="background:#00f5ff"></div>
+                    <div class="card-header">
+                        <span class="m10-badge">10.4</span>
+                        <h3>Lissajous Patterns: Frequency &amp; Phase</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <div class="katex-render" data-formula="\boxed{f_x = f_y \cdot \frac{N_h}{N_v}}"></div>
+                        <div class="katex-render" data-formula="\boxed{\sin\phi = \frac{Y_0}{Y_{max}} = \frac{X_0}{X_{max}}}"></div>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:4px 0">φ=0°: line (I,III) | 0°&lt;φ&lt;90°: ellipse (I,III) | φ=90°: circle | φ=180°: line (II,IV)</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Live Lissajous -->
+                        <svg id="m10-lissajous-screen" viewBox="0 0 200 200" style="width:100%;max-width:200px;display:block;margin:0 auto;background:#001a1a;border:2px solid #00f5ff;border-radius:8px">
+                            <line x1="100" y1="0" x2="100" y2="200" stroke="#0a3d3d" stroke-width="0.5"></line>
+                            <line x1="0" y1="100" x2="200" y2="100" stroke="#0a3d3d" stroke-width="0.5"></line>
+                            <path id="m10-liss-path" d="" fill="none" stroke="#00ff88" stroke-width="1.5"></path>
+                            <!-- Nh/Nv counting lines -->
+                            <line id="m10-liss-hline" x1="0" y1="60" x2="200" y2="60" stroke="#facc15" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.6"></line>
+                            <line id="m10-liss-vline" x1="60" y1="0" x2="60" y2="200" stroke="#f97316" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.6"></line>
+                        </svg>
+
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:6px">
+                            <label style="color:#94a3b8;font-size:0.75rem">f<sub>x</sub>/f<sub>y</sub></label>
+                            <select id="m10-liss-ratio" style="background:#111827;border:1px solid #334155;color:#f8fafc;border-radius:4px;padding:2px 6px;font-size:0.78rem">
+                                <option value="1:1">1:1</option>
+                                <option value="2:1">2:1</option>
+                                <option value="3:1">3:1</option>
+                                <option value="1:2">1:2</option>
+                                <option value="2:3">2:3</option>
+                                <option value="3:2">3:2</option>
+                            </select>
+                            <label style="color:#94a3b8;font-size:0.75rem">φ</label>
+                            <input type="range" id="m10-liss-phi" class="m10-slider" min="0" max="360" value="90" step="1">
+                            <span id="m10-liss-phi-val" style="color:#00f5ff;font-family:Orbitron;font-size:0.8rem">90</span>°
+                        </div>
+
+                        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m10-liss-nh" class="m10-app-tag" style="border-color:#facc15;color:#facc15">N<sub>h</sub> = 1</span>
+                            <span id="m10-liss-nv" class="m10-app-tag" style="border-color:#f97316;color:#f97316">N<sub>v</sub> = 1</span>
+                            <span id="m10-liss-shape" class="m10-app-tag" style="border-color:#00ff88;color:#00ff88">Circle</span>
+                        </div>
+
+                        <!-- Preset gallery -->
+                        <div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+                            <button class="m10-btn m10-liss-preset" data-r="1:1" data-p="0">Line</button>
+                            <button class="m10-btn m10-liss-preset" data-r="1:1" data-p="90">Circle</button>
+                            <button class="m10-btn m10-liss-preset" data-r="1:1" data-p="45">Ellipse</button>
+                            <button class="m10-btn m10-liss-preset" data-r="2:1" data-p="0">Fig-8</button>
+                            <button class="m10-btn m10-liss-preset" data-r="3:1" data-p="0">Trefoil</button>
+                            <button class="m10-btn m10-liss-preset" data-r="2:3" data-p="0">2:3</button>
+                        </div>
+                    </div>
+
+                    <!-- Lissajous Calculators -->
+                    <div id="m10-liss-calc" class="m10-calc-zone">
+                        <h4 style="color:#00f5ff;margin:0 0 6px">🌀 Lissajous Frequency Calculator</h4>
+                        <div class="m10-calc-row">
+                            <label>f<sub>y</sub> (Hz):</label><input type="number" id="m10-lfc-fy" value="1000">
+                            <label>N<sub>h</sub>:</label><input type="number" id="m10-lfc-nh" value="2">
+                            <label>N<sub>v</sub>:</label><input type="number" id="m10-lfc-nv" value="1">
+                        </div>
+                        <div id="m10-lfc-result" class="m10-calc-result">—</div>
+                        <h4 style="color:#00f5ff;margin:8px 0 6px">📐 Phase from Ellipse</h4>
+                        <div class="m10-calc-row">
+                            <label>Y₀:</label><input type="number" id="m10-pec-y0" value="0.7" step="0.01">
+                            <label>Y<sub>max</sub>:</label><input type="number" id="m10-pec-ymax" value="1" step="0.01">
+                        </div>
+                        <div id="m10-pec-result" class="m10-calc-result">—</div>
+                    </div>
+
+                    <div class="m10-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m10-footer-btn" onclick="document.getElementById('m10-liss-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m10-footer-btn m10-bookmark-btn" data-card="m10-lissajous">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 10.5 — CRO Measurements: y-t Mode ── -->
+                <div class="machine-card" id="m10-card5">
+                    <div class="card-strip" style="background:#00f5ff"></div>
+                    <div class="card-header">
+                        <span class="m10-badge">10.5</span>
+                        <h3>CRO Measurements: y-t Mode</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <div class="katex-render" data-formula="V_{pp} = n_{div} \times V/div \quad V_p = V_{pp}/2 \quad V_{rms} = V_p/\sqrt{2}"></div>
+                        <div class="katex-render" data-formula="T = n_{div} \times T/div \quad f = 1/T"></div>
+                        <div class="katex-render" data-formula="t_r = \text{10\% to 90\%} \quad BW = 0.35/t_r"></div>
+                        <div class="katex-render" data-formula="\phi = \frac{\Delta t}{T}\times 360°"></div>
+                        <p style="color:#94a3b8;font-size:0.75rem;margin:4px 0">1× probe: no attenuation, R<sub>in</sub>=1MΩ | 10× probe: V/10, R<sub>in</sub>=10MΩ (less loading)</p>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- y-t CRO screen with dual trace -->
+                        <svg id="m10-yt-screen" viewBox="0 0 240 160" style="width:100%;max-width:240px;display:block;margin:0 auto;background:#001a1a;border:2px solid #00f5ff;border-radius:8px">
+                            <!-- Grid -->
+                            <g stroke="#0a3d3d" stroke-width="0.5">
+                                <line x1="24" y1="10" x2="24" y2="150"></line><line x1="48" y1="10" x2="48" y2="150"></line>
+                                <line x1="72" y1="10" x2="72" y2="150"></line><line x1="96" y1="10" x2="96" y2="150"></line>
+                                <line x1="120" y1="10" x2="120" y2="150"></line><line x1="144" y1="10" x2="144" y2="150"></line>
+                                <line x1="168" y1="10" x2="168" y2="150"></line><line x1="192" y1="10" x2="192" y2="150"></line>
+                                <line x1="216" y1="10" x2="216" y2="150"></line>
+                                <line x1="0" y1="27.5" x2="240" y2="27.5"></line><line x1="0" y1="45" x2="240" y2="45"></line>
+                                <line x1="0" y1="62.5" x2="240" y2="62.5"></line><line x1="0" y1="80" x2="240" y2="80"></line>
+                                <line x1="0" y1="97.5" x2="240" y2="97.5"></line><line x1="0" y1="115" x2="240" y2="115"></line>
+                                <line x1="0" y1="132.5" x2="240" y2="132.5"></line><line x1="0" y1="150" x2="240" y2="150"></line>
+                            </g>
+                            <line x1="0" y1="80" x2="240" y2="80" stroke="#0a3d3d" stroke-width="1"></line>
+                            <!-- Ch1 waveform -->
+                            <path id="m10-yt-ch1" d="" fill="none" stroke="#00f5ff" stroke-width="1.5"></path>
+                            <!-- Ch2 waveform -->
+                            <path id="m10-yt-ch2" d="" fill="none" stroke="#facc15" stroke-width="1.5"></path>
+                            <!-- Vpp arrows -->
+                            <line id="m10-yt-vpp-top" x1="5" y1="30" x2="5" y2="130" stroke="#fb7185" stroke-width="1" marker-start="url(#m10arr2)" marker-end="url(#m10arr2)"></line>
+                            <text id="m10-yt-vpp-lbl" x="12" y="80" fill="#fb7185" font-size="6">Vpp</text>
+                            <!-- T period -->
+                            <line id="m10-yt-T" x1="24" y1="155" x2="168" y2="155" stroke="#00ff88" stroke-width="1" marker-start="url(#m10arr3)" marker-end="url(#m10arr3)"></line>
+                            <text id="m10-yt-T-lbl" x="96" y="160" fill="#00ff88" font-size="6" text-anchor="middle">T</text>
+                            <defs>
+                                <marker id="m10arr2" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#fb7185"></path></marker>
+                                <marker id="m10arr3" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#00ff88"></path></marker>
+                            </defs>
+                        </svg>
+
+                        <!-- Controls -->
+                        <div style="display:flex;align-items:center;gap:6px;justify-content:center;margin-top:6px;flex-wrap:wrap">
+                            <label style="color:#94a3b8;font-size:0.72rem">V/div</label>
+                            <select id="m10-yt-vdiv" style="background:#111827;border:1px solid #334155;color:#f8fafc;border-radius:4px;padding:2px 4px;font-size:0.75rem">
+                                <option value="0.01">10mV</option><option value="0.1">100mV</option>
+                                <option value="1" selected="">1V</option><option value="5">5V</option><option value="10">10V</option>
+                            </select>
+                            <label style="color:#94a3b8;font-size:0.72rem">T/div</label>
+                            <select id="m10-yt-tdiv" style="background:#111827;border:1px solid #334155;color:#f8fafc;border-radius:4px;padding:2px 4px;font-size:0.75rem">
+                                <option value="0.00001">10μs</option><option value="0.0001">100μs</option>
+                                <option value="0.001" selected="">1ms</option><option value="0.01">10ms</option>
+                            </select>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:4px">
+                            <label style="color:#94a3b8;font-size:0.72rem">Phase Δt/T</label>
+                            <input type="range" id="m10-yt-phase" class="m10-slider" min="0" max="100" value="25" step="1">
+                            <span id="m10-yt-phase-val" style="color:#facc15;font-family:Orbitron;font-size:0.75rem">25</span>%
+                        </div>
+
+                        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m10-yt-vpeak" class="m10-app-tag" style="border-color:#fb7185;color:#fb7185">V<sub>p</sub> = —</span>
+                            <span id="m10-yt-vrms" class="m10-app-tag" style="border-color:#00f5ff;color:#00f5ff">V<sub>rms</sub> = —</span>
+                            <span id="m10-yt-freq" class="m10-app-tag" style="border-color:#00ff88;color:#00ff88">f = —</span>
+                            <span id="m10-yt-phi" class="m10-app-tag" style="border-color:#facc15;color:#facc15">φ = —</span>
+                        </div>
+                    </div>
+
+                    <!-- y-t Calculator -->
+                    <div id="m10-yt-calc" class="m10-calc-zone">
+                        <h4 style="color:#00f5ff;margin:0 0 6px">📺 y-t Measurement Calculator</h4>
+                        <div class="m10-calc-row">
+                            <label>n<sub>div</sub> (V):</label><input type="number" id="m10-ytc-ndv" value="4" step="0.1">
+                            <label>V/div:</label><input type="number" id="m10-ytc-vdiv" value="1" step="0.01">
+                            <label>n<sub>div</sub> (T):</label><input type="number" id="m10-ytc-ndt" value="6" step="0.1">
+                            <label>T/div (ms):</label><input type="number" id="m10-ytc-tdiv" value="1" step="0.01">
+                        </div>
+                        <div id="m10-ytc-result" class="m10-calc-result">—</div>
+                        <h4 style="color:#00f5ff;margin:8px 0 6px">📐 Phase Difference (Dual Trace)</h4>
+                        <div class="m10-calc-row">
+                            <label>Δt (ms):</label><input type="number" id="m10-phc-dt" value="1" step="0.01">
+                            <label>T (ms):</label><input type="number" id="m10-phc-T" value="4" step="0.01">
+                        </div>
+                        <div id="m10-phc-result" class="m10-calc-result">—</div>
+                    </div>
+
+                    <div class="m10-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m10-footer-btn" onclick="document.getElementById('m10-yt-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m10-footer-btn m10-bookmark-btn" data-card="m10-yt-mode">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── CARD 10.6 — CRO Complete Reference ── -->
+                <div class="machine-card" id="m10-card6">
+                    <div class="card-strip" style="background:#00f5ff"></div>
+                    <div class="card-header">
+                        <span class="m10-badge">10.6</span>
+                        <h3>CRO: Complete Reference</h3>
+                    </div>
+
+                    <div class="formula-zone">
+                        <div class="katex-render" data-formula="S = \frac{L\ell_d}{2dE_a},\; G = \frac{2dE_a}{L\ell_d},\; D = S \cdot V_d"></div>
+                        <div class="katex-render" data-formula="BW \times t_r = 0.35"></div>
+                        <div class="katex-render" data-formula="f_x = f_y\cdot\frac{N_h}{N_v},\; \phi = \sin^{-1}\!\left(\frac{Y_0}{Y_{max}}\right)"></div>
+                        <div class="katex-render" data-formula="V_{rms} = \frac{n_{div}\times V/div}{2\sqrt{2}},\; f = \frac{1}{n_{div}\times T/div}"></div>
+                    </div>
+
+                    <!-- Summary table -->
+                    <div style="overflow-x:auto;margin:0.4rem 0">
+                        <table class="m10-comparison-table">
+                            <thead><tr><th>Measurement</th><th>Method + Formula</th></tr></thead>
+                            <tbody>
+                                <tr><td style="color:#fb7185">V<sub>peak</sub></td><td>y-t: n<sub>div</sub> × V/div</td></tr>
+                                <tr><td style="color:#00f5ff">V<sub>rms</sub></td><td>V<sub>p</sub>/√2</td></tr>
+                                <tr><td style="color:#00ff88">Frequency</td><td>y-t: 1/(n<sub>div</sub> × T/div)</td></tr>
+                                <tr><td style="color:#facc15">Phase</td><td>x-y: sin⁻¹(Y₀/Y<sub>max</sub>)</td></tr>
+                                <tr><td style="color:#f97316">Freq ratio</td><td>Lissajous: N<sub>h</sub>/N<sub>v</sub></td></tr>
+                                <tr><td style="color:#fb7185">Rise time</td><td>10% to 90% step</td></tr>
+                                <tr><td style="color:#00ff88">Bandwidth</td><td>0.35/t<sub>r</sub></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="anim-zone" style="min-height:260px">
+                        <!-- Master CRO simulator -->
+                        <div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-bottom:6px">
+                            <button class="m10-btn active" data-wave="sine">Sine</button>
+                            <button class="m10-btn" data-wave="square">Square</button>
+                            <button class="m10-btn" data-wave="triangle">Triangle</button>
+                            <button class="m10-btn" data-wave="sawtooth">Sawtooth</button>
+                        </div>
+
+                        <svg id="m10-master-screen" viewBox="0 0 220 140" style="width:100%;max-width:220px;display:block;margin:0 auto;background:#001a1a;border:2px solid #00f5ff;border-radius:8px">
+                            <g stroke="#0a3d3d" stroke-width="0.5">
+                                <line x1="22" y1="10" x2="22" y2="130"></line><line x1="42" y1="10" x2="42" y2="130"></line>
+                                <line x1="62" y1="10" x2="62" y2="130"></line><line x1="82" y1="10" x2="82" y2="130"></line>
+                                <line x1="102" y1="10" x2="102" y2="130"></line><line x1="122" y1="10" x2="122" y2="130"></line>
+                                <line x1="142" y1="10" x2="142" y2="130"></line><line x1="162" y1="10" x2="162" y2="130"></line>
+                                <line x1="182" y1="10" x2="182" y2="130"></line><line x1="202" y1="10" x2="202" y2="130"></line>
+                                <line x1="2" y1="25" x2="218" y2="25"></line><line x1="2" y1="40" x2="218" y2="40"></line>
+                                <line x1="2" y1="55" x2="218" y2="55"></line><line x1="2" y1="70" x2="218" y2="70"></line>
+                                <line x1="2" y1="85" x2="218" y2="85"></line><line x1="2" y1="100" x2="218" y2="100"></line>
+                                <line x1="2" y1="115" x2="218" y2="115"></line><line x1="2" y1="130" x2="218" y2="130"></line>
+                            </g>
+                            <line x1="2" y1="70" x2="218" y2="70" stroke="#0a3d3d" stroke-width="1"></line>
+                            <path id="m10-master-wave" d="" fill="none" stroke="#00ff88" stroke-width="1.5"></path>
+                        </svg>
+
+                        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:4px">
+                            <label style="color:#94a3b8;font-size:0.72rem">Amp</label>
+                            <input type="range" id="m10-master-amp" class="m10-slider" min="10" max="55" value="40" step="1">
+                            <label style="color:#94a3b8;font-size:0.72rem">Freq</label>
+                            <input type="range" id="m10-master-freq" class="m10-slider" min="0.5" max="5" value="2" step="0.1">
+                        </div>
+
+                        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+                            <span id="m10-master-vp" class="m10-app-tag" style="border-color:#fb7185;color:#fb7185">V<sub>p</sub></span>
+                            <span id="m10-master-vrms" class="m10-app-tag" style="border-color:#00f5ff;color:#00f5ff">V<sub>rms</sub></span>
+                            <span id="m10-master-T" class="m10-app-tag" style="border-color:#00ff88;color:#00ff88">T</span>
+                            <span id="m10-master-f" class="m10-app-tag" style="border-color:#facc15;color:#facc15">f</span>
+                        </div>
+                    </div>
+
+                    <!-- All-in-one calculator -->
+                    <div id="m10-master-calc" class="m10-calc-zone">
+                        <h4 style="color:#00f5ff;margin:0 0 6px">📊 CRO Master Calculator</h4>
+                        <div class="m10-calc-row">
+                            <label>n<sub>div</sub>(V):</label><input type="number" id="m10-mc-ndv" value="4" step="0.1">
+                            <label>V/div:</label><input type="number" id="m10-mc-vdiv" value="1" step="0.01">
+                            <label>n<sub>div</sub>(T):</label><input type="number" id="m10-mc-ndt" value="5" step="0.1">
+                            <label>T/div(ms):</label><input type="number" id="m10-mc-tdiv" value="1" step="0.01">
+                        </div>
+                        <div id="m10-mc-result" class="m10-calc-result">—</div>
+                    </div>
+
+                    <div class="m10-card-footer">
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="m10-footer-btn" onclick="document.getElementById('m10-master-calc').classList.toggle('open')">🧮 Calculator</button>
+                            <button class="m10-footer-btn m10-bookmark-btn" data-card="m10-reference">🔖 Bookmark</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+    </main>
+
+    <div class="topic-nav-footer">
+        <a href="../3-power-energy-meters/index.html" class="btn-nav btn-prev">← Previous: 📟 3-φ Power & Energy Meters</a>
+        <a href="../lissajous-phase-dvm-q-meter-sensors/index.html" class="btn-nav btn-next">Next: 📡 Lissajous Phase, DVM, Q-Meter & Sensors →</a>
+    </div>
+
+    
+</body>
+</html>
