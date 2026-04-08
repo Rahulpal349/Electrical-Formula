@@ -1,0 +1,108 @@
+/* power-plant/css/module12.css */
+
+/* Top borders per user prompt */
+.card-wind { border-top: 4px solid #00f5ff; }
+.card-biomass { border-top: 4px solid #00ff88; }
+.card-ocean { border-top: 4px solid #06b6d4; }
+.card-tidal { border-top: 4px solid #06b6d4; } /* using teal for tidal too */
+
+.m12-card {
+    background-color: #111827;
+}
+
+.m12-card .formula-zone {
+    background-color: #0d1117;
+    margin-right: 15px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+}
+
+/* Animations that spin */
+@keyframes spinBlades {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spinDarrieus {
+    0% { transform: scaleX(1); }
+    50% { transform: scaleX(-1); }
+    100% { transform: scaleX(1); }
+}
+
+@keyframes spinSavonius {
+    0% { transform: scaleX(1); }
+    50% { transform: scaleX(-1); }
+    100% { transform: scaleX(1); }
+}
+
+@keyframes spinKaplan {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spinPropeller {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes spinBulb {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hawt-blades {
+    transform-origin: 35px 47px; /* Still absolute for unwrapped HAWT */
+    animation: spinBlades 3s linear infinite;
+}
+
+.vawt-blades-darrieus, .vawt-blades-savonius, .kaplan-blades-group, .propeller-blades-group, .bulb-blades-group {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.vawt-blades-darrieus {
+    animation: spinDarrieus 1.5s linear infinite;
+}
+
+.vawt-blades-savonius {
+    animation: spinSavonius 3s linear infinite;
+}
+
+.kaplan-blades-group {
+    animation: spinKaplan 2s linear infinite;
+}
+
+.propeller-blades-group {
+    animation: spinPropeller 1.5s linear infinite;
+}
+
+.bulb-blades-group {
+    animation: spinBulb 2s linear infinite;
+}
+
+/* Utilities */
+.btn-outline-neon {
+    background: transparent;
+    border: 1px solid #00f5ff;
+    color: #00f5ff;
+    border-radius: 4px;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+}
+
+.btn-outline-neon:hover {
+    background: rgba(0, 245, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+}
+
+.q-btn {
+    padding: 10px;
+}
+

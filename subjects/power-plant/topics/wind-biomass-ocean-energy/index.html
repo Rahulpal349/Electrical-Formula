@@ -1,0 +1,827 @@
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="icon" type="image/svg+xml" href="../../../../../../favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 12: Renewables & Ocean | Power Plant Engineering</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;family=Exo+2:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="../../../../../../shared/css/style.css">
+  <link rel="stylesheet" href="../../css/powerplant-inline.css">
+  <link rel="stylesheet" href="../../../../../../shared/css/topic-page.css">
+  <link rel="stylesheet" href="../../css/module12.css">
+</head>
+
+<body data-page-category="powerplant" class="pp-body">
+
+  <!-- Sidebar Toggle -->
+  <button class="pp-sidebar-toggle" id="ppSbToggle" aria-label="Toggle sidebar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <div class="pp-sidebar__overlay" id="ppSbOverlay"></div>
+
+  <!-- Glassmorphism Sidebar -->
+  <aside class="pp-sidebar" id="ppSidebar">
+    <div class="pp-sidebar__header">
+      <div class="pp-sidebar__profile">
+        <div class="pp-sidebar__avatar">⚡</div>
+        <div class="pp-sidebar__info">
+          <span class="pp-sidebar__label">Power Plant</span>
+          <span class="pp-sidebar__name">ENGINEERING</span>
+        </div>
+      </div>
+      <button class="pp-sidebar__close" id="ppSbClose" aria-label="Close sidebar">✕</button>
+    </div>
+    <div class="pp-sidebar__section-label">MODULES</div>
+    <ul class="pp-sidebar__nav">
+      <li><a class="pp-sidebar__link" data-mod="1" style="--mod-color:#f97316;" href="../power-systems-overview/index.html"><span class="pp-sidebar__icon">⚡</span><span class="pp-sidebar__link-text">Power Systems</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="2" style="--mod-color:#60a5fa;" href="../hydro-power/index.html"><span class="pp-sidebar__icon">💧</span><span class="pp-sidebar__link-text">Hydro Power</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="3" style="--mod-color:#ef4444;" href="../thermal-steam/index.html"><span class="pp-sidebar__icon">🔥</span><span class="pp-sidebar__link-text">Thermal Steam</span><span class="pp-sidebar__link-count">8</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="4" style="--mod-color:#f97316;" href="../coal-fuels/index.html"><span class="pp-sidebar__icon">⛏️</span><span class="pp-sidebar__link-text">Coal &amp; Fuels</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="5" style="--mod-color:#a78bfa;" href="../nuclear-power/index.html"><span class="pp-sidebar__icon">☢️</span><span class="pp-sidebar__link-text">Nuclear Power</span><span class="pp-sidebar__link-count">10</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="6" style="--mod-color:#f97316;" href="../diesel-power/index.html"><span class="pp-sidebar__icon">🛢️</span><span class="pp-sidebar__link-text">Diesel Power</span><span class="pp-sidebar__link-count">1</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="7" style="--mod-color:#f97316;" href="../gas-turbine/index.html"><span class="pp-sidebar__icon">🌀</span><span class="pp-sidebar__link-text">Gas Turbine</span><span class="pp-sidebar__link-count">2</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="8" style="--mod-color:#facc15;" href="../solar-energy/index.html"><span class="pp-sidebar__icon">☀️</span><span class="pp-sidebar__link-text">Solar Energy</span><span class="pp-sidebar__link-count">9</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="9" style="--mod-color:#facc15;" href="../solar-collectors/index.html"><span class="pp-sidebar__icon">🌡️</span><span class="pp-sidebar__link-text">Solar Collectors</span><span class="pp-sidebar__link-count">5</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="10" style="--mod-color:#00f5ff;" href="../geothermal-mhd/index.html"><span class="pp-sidebar__icon">🌋</span><span class="pp-sidebar__link-text">Geothermal &amp; MHD</span><span class="pp-sidebar__link-count">6</span></a></li>
+      <li><a class="pp-sidebar__link active" data-mod="12" style="--mod-color:#00ff88;" href="../wind-biomass-ocean-energy/index.html"><span class="pp-sidebar__icon">🌊</span><span class="pp-sidebar__link-text">Renewables</span><span class="pp-sidebar__link-count">4</span></a></li>
+            <li><a class="pp-sidebar__link" data-mod="13" style="--mod-color:#facc15;" href="../economics-tariffs/index.html"><span class="pp-sidebar__icon">💰</span><span class="pp-sidebar__link-text">Economics &amp; Tariffs</span><span class="pp-sidebar__link-count">5</span></a></li>
+<li><a class="pp-sidebar__link" data-mod="0" style="--mod-color:#00ff88;" href="../../index.html"><span class="pp-sidebar__icon">📋</span><span class="pp-sidebar__link-text">All Modules</span><span class="pp-sidebar__link-count">65</span></a></li>
+    </ul>
+    <div class="pp-sidebar__footer">
+      <div class="pp-sidebar__footer-text">
+        Chapters: <span>60</span> • Formulas: <span>420+</span><br>
+        Animations: <span>130+</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Unified Navbar -->
+  <nav class="navbar" role="navigation">
+    <a href="../../../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+    <ul class="navbar__links">
+      <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+      <li><a href="../../../machines/index.html">Machines</a></li>
+      <li><a href="../../../measurements/index.html">Measurements</a></li>
+      <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+      <li><a href="../../../power-plant/index.html" class="active">Power Plant</a></li>
+      <li><a href="../../../control/index.html">Control Systems</a></li>
+      <li><a href="../../../electronics/index.html">Electronics</a></li>
+      <li><a href="../../../signals/index.html">Signals</a></li>
+      <li><a href="../../../microprocessor/index.html">μP &amp; μC</a></li>
+      <li><a href="../../../estimation/index.html">Estimation</a></li>
+      <li><a href="../../../utilization/index.html">Utilization</a></li>
+    </ul>
+  </nav>
+
+  <!-- Particles & BG -->
+  <div class="pp-particles" id="pp-particles"></div>
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10"></path>
+    </svg>
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style="text-align:center;">
+        Module <span class="pp-neon-text">12</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter" data-text="Wind Energy · Biomass · OTEC · Tidal & Wave"></p>
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#c-m12-1" class="pp-hero-cta">⚡ Explore Renewables</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pp-main">
+    <div class="topic-breadcrumb">
+        <a href="../../../../index.html">EE Hub</a> › 
+        <a href="../../index.html">Power Plant</a> › 
+        <span>Renewables & Ocean</span>
+    </div>
+
+    <div class="topic-content">
+        <!-- CARD 1: WIND -->
+        <div class="card pp-card m12-card card-wind" id="c-m12-1">
+            <h2 class="pp-section-title">Module 12A: Wind Turbine Components & Types</h2>
+            <div class="bookmark" title="Bookmark this module">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3>Remaining Components</h3>
+                    <p><strong>6. Hub:</strong> Central solid part connecting blades to low speed shaft.</p>
+                    <p><strong>7. Propeller:</strong> Revolving shaft with blade. Two types: <i>Up wind</i> & <i>Down wind</i>.</p>
+                    <p><strong>8. Needle:</strong> Assembly consisting of gears, bearing, and generator mounted in housing.</p>
+                    <p><strong>9. Yaw Control:</strong> Orients the axis of the wind turbine to keep rotor facing the wind.</p>
+                    
+                    <h3>Horizontal vs Vertical Axis (HAWT vs VAWT)</h3>
+                    <ul class="comparison-list">
+                        <li><strong>HAWT (Horizontal Axis):</strong> Parallel to wind direction. High efficiency (35-45%), needs yaw control, very tall, used for large utilities.</li>
+                        <li><strong>VAWT (Vertical Axis):</strong> Perpendicular to wind direction. Lower efficiency (15-35%), omnidirectional, lower height, used for small scale.
+                            <br><i>i. Savonius Rotor (15% η, S-shape section, self-starting)</i>
+                            <br><i>ii. Darrieus Rotor (35% η, Troposkein shape, not self-starting)</i>
+                        </li>
+                    </ul>
+
+                    <h3>Site Selection & Wind Shear</h3>
+                    <p>Four suitable sites: Plane land, Hill top, Sea shores, Off shore.</p>
+                    <div class="formula-box">
+                        <div class="formula" style="text-align:center;">$$ P \propto kV, \quad V \propto H^{\alpha} $$</div>
+                        <div class="formula" style="text-align:center;">$$ V_H = V_{ref}\left(\frac{H}{H_{ref}}\right)^\alpha $$</div>
+                        <p class="text-xs text-muted text-center mt-2">Hellmann exponent $\alpha \approx 1/7$</p>
+                    </div>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <div class="tab-controls">
+                        <button class="tab-btn active" data-target="anim-wind-turbines">HAWT vs VAWT</button>
+                        <button class="tab-btn" data-target="anim-wind-shear">Wind Shear Calc</button>
+                    </div>
+
+                    <!-- HAWT vs VAWT Animation -->
+                    <div id="anim-wind-turbines" class="anim-content active">
+                        <div style="display:flex; justify-content:space-around; align-items:flex-end; height: 180px;">
+                            <!-- HAWT -->
+                            <div class="turbine-container" style="text-align:center;">
+                                <svg class="hawt-svg" viewBox="0 0 100 150" width="100" height="150">
+                                    <line x1="50" y1="150" x2="50" y2="50" stroke="#444" stroke-width="6"/> <!-- tower -->
+                                    <rect x="35" y="40" width="30" height="15" fill="#555" rx="2"/> <!-- nacelle -->
+                                    <g class="hawt-blades" transform="translate(35, 47)">
+                                        <circle cx="0" cy="0" r="4" fill="#00f5ff" /> <!-- hub -->
+                                        <!-- Blades -->
+                                        <path d="M0,0 L-5,-40 Q0,-45 5,-40 Z" fill="#00f5ff" opacity="0.8"/>
+                                        <path d="M0,0 L35,20 Q40,25 35,30 Z" fill="#00f5ff" opacity="0.8"/>
+                                        <path d="M0,0 L-35,20 Q-40,25 -35,30 Z" fill="#00f5ff" opacity="0.8"/>
+                                    </g>
+                                </svg>
+                                <div class="badge" style="color:#00f5ff">HAWT (45% η)</div>
+                            </div>
+                            
+                            <!-- Darrieus VAWT -->
+                            <div class="turbine-container" style="text-align:center;">
+                                <svg class="vawt-darrieus-svg" viewBox="0 0 100 150" width="100" height="150">
+                                    <line x1="50" y1="150" x2="50" y2="40" stroke="#444" stroke-width="4"/> <!-- axis -->
+                                    <g class="vawt-blades-darrieus" transform="translate(50, 40)">
+                                        <path d="M0,0 Q-40,40 0,80" fill="none" stroke="#00ff88" stroke-width="3"/>
+                                        <path d="M0,0 Q40,40 0,80" fill="none" stroke="#00ff88" stroke-width="3"/>
+                                    </g>
+                                </svg>
+                                <div class="badge" style="color:#00ff88">Darrieus (35% η)</div>
+                            </div>
+
+                            <!-- Savonius VAWT -->
+                            <div class="turbine-container" style="text-align:center;">
+                                <svg class="vawt-savonius-svg" viewBox="0 0 100 150" width="100" height="150">
+                                    <line x1="50" y1="150" x2="50" y2="60" stroke="#444" stroke-width="4"/> <!-- axis -->
+                                    <g class="vawt-blades-savonius" transform="translate(50, 90)">
+                                        <path d="M0,-30 A20,20 0 0,0 0,30" fill="none" stroke="#f97316" stroke-width="6"/>
+                                        <path d="M0,-30 A20,20 0 0,1 0,30" fill="none" stroke="#facc15" stroke-width="6"/>
+                                    </g>
+                                </svg>
+                                <div class="badge" style="color:#f97316">Savonius (15% η)</div>
+                            </div>
+                        </div>
+                        <div class="wind-arrow-fx" style="text-align:center; color:rgba(0,245,255,0.4); margin-top:5px; animation: windBlow 2s infinite linear;">≈≈≈ Wind Direction ≈≈≈</div>
+                    </div>
+
+                    <!-- Wind Shear Calculator -->
+                    <div id="anim-wind-shear" class="anim-content" style="display:none; padding: 20px;">
+                        <div class="input-group mb-3">
+                            <label>Tower Height H (m): <span id="shear-h-val" style="color:#facc15">100</span></label>
+                            <input type="range" id="shear-h-slider" min="10" max="250" value="100" class="neon-slider">
+                        </div>
+                        <div class="input-group mb-4">
+                            <label>Ref. Wind $V_{ref}$ at 10m (m/s): <span id="shear-vref-val" style="color:#00f5ff">6</span></label>
+                            <input type="range" id="shear-vref-slider" min="3" max="15" value="6" step="0.5" class="neon-slider">
+                        </div>
+                        <div class="result-box" style="background:#0d1117; padding:15px; border-left:3px solid #00f5ff;">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                                <span>$V_H$ (Wind speed at height):</span>
+                                <strong style="color:#00f5ff" id="shear-vh-res">8.33 m/s</strong>
+                            </div>
+                            <div style="display:flex; justify-content:space-between;">
+                                <span>Relative Power factor $P \propto V^3$:</span>
+                                <strong style="color:#facc15" id="shear-ph-res">2.68 x Ref Power</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 2: BIOMASS -->
+        <div class="card pp-card m12-card card-biomass" id="c-m12-2">
+            <h2 class="pp-section-title">Module 12B: Biomass Energy</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3>Biomass Definition & Sources</h3>
+                    <p>Biological material based in carbon, hydrogen, and oxygen. Six direct sources: Garbage, Wood, Plants, Waste, Land fill gases, Alcohol fuels.</p>
+                    
+                    <h3>Three Conversion Processes</h3>
+                    <div class="info-block">
+                        <strong style="color:#ef4444">1. Thermal Conversion:</strong><br>
+                        Combustion ($\eta \approx 20\text{-}25\%$), Pyrolysis (without $O_2 \rightarrow$ Bio-oil), Gasification ($\rightarrow$ Syngas: CO + $H_2$).
+                    </div>
+                    <div class="info-block mt-2">
+                        <strong style="color:#a78bfa">2. Chemical Conversion:</strong><br>
+                        Transesterification (Vegetable oil $\rightarrow$ Biodiesel $C_{17}H_{35}COOCH_3$).
+                    </div>
+                    <div class="info-block mt-2">
+                        <strong style="color:#00ff88">3. Biochemical/Anaerobic Digestion:</strong><br>
+                        <div class="formula" style="font-size:0.9em; margin: 5px 0; text-align:center;">$$ C_6H_{12}O_6 \xrightarrow{\text{bacteria}} 3CH_4 + 3CO_2 $$</div>
+                        Biogas ($\eta \approx 20\text{-}30\%$): $60\%\,CH_4 + 40\%\,CO_2$. CV is $20\text{-}25$ $\text{MJ/m}^3$.
+                    </div>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <div class="tab-controls">
+                        <button class="tab-btn active" data-target="anim-bio-digester" style="border-bottom-color:#00ff88">Biogas Plant</button>
+                        <button class="tab-btn" data-target="anim-carbon-cycle" style="border-bottom-color:#00ff88">Carbon Cycle</button>
+                    </div>
+
+                    <!-- Digester SVG -->
+                    <div id="anim-bio-digester" class="anim-content active" style="text-align:center; padding-top:20px;">
+                        <svg viewBox="0 0 300 200" width="100%" height="200">
+                            <!-- Underground tank -->
+                            <path d="M 50,200 L 50,100 C 50,60 250,60 250,100 L 250,200 Z" fill="#222" stroke="#444" stroke-width="4"/>
+                            <ellipse cx="150" cy="180" rx="100" ry="15" fill="#111"/>
+                            
+                            <!-- Slurry -->
+                            <path class="bio-slurry-wave" d="M 50,130 Q 100,120 150,130 T 250,130 L 250,200 L 50,200 Z" fill="#78350f" opacity="0.8"/>
+                            
+                            <!-- Bubbles -->
+                            <g class="bio-bubbles">
+                                <circle cx="100" cy="140" r="3" fill="#facc15" opacity="0"/>
+                                <circle cx="150" cy="150" r="4" fill="#facc15" opacity="0"/>
+                                <circle cx="200" cy="160" r="2" fill="#facc15" opacity="0"/>
+                                <circle cx="120" cy="170" r="3" fill="#facc15" opacity="0"/>
+                            </g>
+
+                            <!-- Inputs/Outputs -->
+                            <rect x="20" y="40" width="30" height="60" fill="#444" transform="rotate(-30, 20, 40)"/>
+                            <text x="5" y="40" fill="#fff" font-size="10">Waste In</text>
+                            
+                            <rect x="250" y="40" width="30" height="60" fill="#444" transform="rotate(30, 250, 40)"/>
+                            <text x="260" y="40" fill="#fff" font-size="10">Fertilizer Out</text>
+
+                            <!-- Gas Dome & Pipe -->
+                            <path d="M 120,67 C 120,40 180,40 180,67" fill="none" stroke="#facc15" stroke-width="3"/>
+                            <line x1="150" y1="46" x2="150" y2="20" stroke="#facc15" stroke-width="3"/>
+                            <line x1="150" y1="20" x2="280" y2="20" stroke="#facc15" stroke-width="3"/>
+                            <circle cx="280" cy="20" r="10" fill="#facc15"/>
+                            <text x="210" y="10" fill="#facc15" font-size="12" font-weight="bold">60% CH₄</text>
+                        </svg>
+                    </div>
+
+                    <!-- Carbon Cycle -->
+                    <div id="anim-carbon-cycle" class="anim-content" style="display:none; text-align:center; padding-top:20px;">
+                        <svg viewBox="0 0 200 200" width="100%" height="200" class="carbon-cycle-svg">
+                            <circle cx="100" cy="100" r="70" fill="none" stroke="#333" stroke-width="4" stroke-dasharray="10, 10"/>
+                            <g class="carbon-nodes">
+                                <!-- Tree -->
+                                <text x="100" y="20" font-size="30" text-anchor="middle">🌳</text>
+                                <!-- Fuel / Biomass -->
+                                <text x="180" y="110" font-size="30" text-anchor="middle">🪵</text>
+                                <!-- Burning/Factory -->
+                                <text x="100" y="190" font-size="30" text-anchor="middle">🏭</text>
+                                <!-- Atmosphere -->
+                                <text x="20" y="110" font-size="30" text-anchor="middle">☁️</text>
+                            </g>
+                            <!-- Animated Path -->
+                            <circle class="co2-particle" cx="100" cy="100" r="6" fill="#00ff88" style="offset-path: path('M 100,30 A 70,70 0 1,1 99.9,30');" />
+                        </svg>
+                        <div class="mt-2 text-sm text-center" style="color:#00ff88">Carbon Neutral Loop</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3: OTEC -->
+        <div class="card pp-card m12-card card-ocean" id="c-m12-3">
+            <h2 class="pp-section-title">Module 12C: Ocean Thermal Energy (OTEC)</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3>Temperature Gradients</h3>
+                    <p>Uses the thermal gradient between warm surface waters ($26^\circ\text{C}$) and cold deep waters ($4^\circ\text{C}$ at $800\text{-}1000$m).</p>
+                    <div class="formula" style="text-align:center;">$$ \Delta T = T_{warm} - T_{cold} = 26 - 4 = 22^\circ\text{C} $$</div>
+                    
+                    <h3>Efficiency Limit</h3>
+                    <div class="formula" style="text-align:center;">$$ \eta_{Carnot} = 1 - \frac{T_{cold}}{T_{warm}} $$</div>
+                    <div class="formula" style="color:#06b6d4; text-align:center;">$$ = 1 - \frac{277\,\text{K}}{299\,\text{K}} = 7.36\% $$</div>
+                    <p class="text-sm mt-2 text-muted">Actual OTEC efficiency is even lower, around <strong>3-5%</strong>. Requires $\Delta T > 20^\circ\text{C}$ to be viable.</p>
+
+                    <h3>Cycles & Applications</h3>
+                    <p><strong>1. Closed Cycle:</strong> Uses NH$_3$ working fluid. Warm sea $\rightarrow$ Evaporator $\rightarrow$ Turbine $\rightarrow$ Condenser (Cold sea).</p>
+                    <p><strong>2. Open Cycle:</strong> Seawater is flash evaporated. Steam drives turbine, then condensed as <strong>fresh water</strong>.</p>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <!-- OTEC Dashboard -->
+                    <div class="otec-dashboard" style="background:#0d1117; border-radius:8px; padding:15px; height:100%; display:flex; flex-direction:column;">
+                        
+                        <div class="input-group mb-3">
+                            <label>Surface Temperature $T_{warm}$ (°C): <span id="otec-tw-val" style="color:#f97316">26</span></label>
+                            <input type="range" id="otec-tw-slider" min="20" max="32" value="26" class="neon-slider" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Deep Sea Temp $T_{cold}$ (°C): <span id="otec-tc-val" style="color:#60a5fa">4</span></label>
+                            <input type="range" id="otec-tc-slider" min="0" max="10" value="4" class="neon-slider" />
+                        </div>
+
+                        <div style="flex-grow:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                            <div class="gradient-bar-wrapper" style="width:100%; height:30px; background: linear-gradient(to right, #60a5fa, #06b6d4, #f97316); border-radius:15px; position:relative; overflow:hidden; border: 1px solid #333;">
+                                <div id="otec-dt-bar" style="position:absolute; right:0; top:0; height:100%; background:rgba(0,0,0,0.8); width:78%; transition:width 0.3s; display:flex; align-items:center; padding-left:10px; font-size:12px;"></div>
+                            </div>
+                            <h4 id="otec-dt-label" style="color:#06b6d4; margin-top:10px;">$\Delta T = 22^\circ\text{C}$</h4>
+                            
+                            <div style="display:flex; justify-content:space-between; width:100%; margin-top:20px;">
+                                <div style="text-align:center;">
+                                    <span class="text-xs text-muted">Carnot Max $\eta$</span>
+                                    <div id="otec-carnot-res" style="color:#00ff88; font-size:1.5em; font-weight:bold;">7.36%</div>
+                                </div>
+                                <div style="text-align:center;">
+                                    <span class="text-xs text-muted">Est. Actual $\eta$</span>
+                                    <div id="otec-actual-res" style="color:#06b6d4; font-size:1.5em; font-weight:bold;">3.68%</div>
+                                </div>
+                            </div>
+                            
+                            <div id="otec-status" class="badge mt-3" style="background:#00ff88; color:#0e2a1d; padding:5px 15px;">Viable Gradient</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 4: TIDAL AND WAVE -->
+        <div class="card pp-card m12-card card-tidal" id="c-m12-4">
+            <h2 class="pp-section-title">Module 12D: Tidal & Wave Energy</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3>Tidal Generation & Formulas</h3>
+                    <p>705 tidal cycles annually. Minimum head range $h > 5$m needed.</p>
+                    <div class="formula" style="text-align:center;">$$ E_{tidal} = \frac{1}{2}\rho g A h^2 \quad (\text{per cycle}) $$</div>
+                    <ul class="text-sm">
+                        <li>$A$: Area of basin (m$^2$)</li>
+                        <li>$h$: Head range between high & low tide</li>
+                    </ul>
+                    
+                    <h3 class="mt-3">Tidal Stream Generators (TSG)</h3>
+                    <p>Like underwater wind turbines. Water density $\rho \approx 1025$ kg/m$^3$, which is <strong>854×</strong> greater than air, meaning same size rotors yield massively more scale.</p>
+                    <div class="formula" style="text-align:center;">$$ P_{TSG} = \frac{1}{2}\rho_{water} A v^3 C_p $$</div>
+
+                    <h3 class="mt-3">Wave Energy</h3>
+                    <div class="formula" style="text-align:center;">$$ P_{wave} \approx 0.5 \times H_s^2 \times T_e \quad \text{kW/m} $$</div>
+                    <p class="text-xs text-muted">Where $H_s$ = Sig. wave height (m), $T_e$ = Energy period (s).</p>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <div class="tab-controls">
+                        <button class="tab-btn active" data-target="anim-tidal-barrage" style="border-bottom-color:#06b6d4">Barrage SVG</button>
+                        <button class="tab-btn" data-target="anim-tidal-calc" style="border-bottom-color:#06b6d4">Tidal Calc</button>
+                    </div>
+
+                    <div id="anim-tidal-barrage" class="anim-content active text-center">
+                        <svg viewBox="0 0 400 200" width="100%" height="200" class="barrage-svg">
+                            <!-- Sky -->
+                            <rect x="0" y="0" width="400" height="200" fill="#0d1117"/>
+                            
+                            <!-- Dam / Barrage -->
+                            <rect x="180" y="50" width="40" height="150" fill="#374151" stroke="#222"/>
+                            <!-- Sluice Gate -->
+                            <rect class="sluice-gates-anim" x="185" y="100" width="30" height="40" fill="#111"/>
+                            <!-- Turbine tunnel -->
+                            <ellipse cx="200" cy="180" rx="15" ry="10" fill="#000"/>
+                            <g class="tidal-turbine-blades" transform="translate(200, 180)">
+                                <circle class="bulb-blades-group" cx="0" cy="0" r="10" fill="none" stroke="#00f5ff" stroke-dasharray="4,6" stroke-width="4"/>
+                            </g>
+
+                            <!-- Sea side (High Tide) -->
+                            <path class="tidal-sea-wave" d="M 0,80 Q 45,70 90,80 T 180,80 L 180,200 L 0,200 Z" fill="rgba(6, 182, 212, 0.7)"/>
+                            
+                            <!-- Basin side (Low Tide) -->
+                            <path class="tidal-basin-wave" d="M 220,130 Q 285,130 310,130 T 400,130 L 400,200 L 220,200 Z" fill="rgba(30, 64, 175, 0.7)"/>
+
+                            <!-- h measurement -->
+                            <line x1="100" y1="80" x2="160" y2="80" stroke="#facc15" stroke-dasharray="4" />
+                            <line x1="240" y1="130" x2="300" y2="130" stroke="#facc15" stroke-dasharray="4" />
+                            <path d="M 130,80 L 130,130" stroke="#facc15" fill="none" class="h-arrow" marker-end="url(#arrow)"/>
+                            <text x="110" y="110" fill="#facc15" font-weight="bold">h diff</text>
+                            
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#facc15" />
+                                </marker>
+                            </defs>
+                        </svg>
+                        <p class="text-xs text-muted mt-2">Head difference drives turbines beneath the barrage during incoming/outgoing tides.</p>
+                    </div>
+
+                    <!-- Tidal Energy Calculator -->
+                    <div id="anim-tidal-calc" class="anim-content" style="display:none; padding:20px;">
+                        <h4 style="color:#06b6d4; text-align:center;">Tidal Basin Estimator</h4>
+                        <div class="input-group mb-3 mt-3">
+                            <label>Tidal Range 'h' (m): <span id="tidal-h-val" style="color:#facc15">8</span></label>
+                            <input type="range" id="tidal-h-slider" min="2" max="15" value="8" step="0.5" class="neon-slider" />
+                        </div>
+                        <div class="input-group mb-4">
+                            <label>Basin Area 'A' (km²): <span id="tidal-a-val" style="color:#06b6d4">5</span></label>
+                            <input type="range" id="tidal-a-slider" min="1" max="20" value="5" class="neon-slider" />
+                        </div>
+                        <div class="result-box" style="background:#0d1117; padding:15px; border-left:3px solid #06b6d4;">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                                <span>$E_{cycle}$ (MWh per cycle):</span>
+                                <strong style="color:#06b6d4" id="tidal-e-res">445.6 MWh</strong>
+                            </div>
+                            <div style="display:flex; justify-content:space-between;">
+                                <span>Viability check ($h > 5m$):</span>
+                                <strong id="tidal-viable" style="color:#00ff88">Excellent Site</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 5: TIDAL BARRAGE (12E) -->
+        <div class="card pp-card m12-card card-ocean" id="c-m12-5">
+            <h2 class="pp-section-title">Module 12E: Tidal Barrage: Complete Analysis</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3>2. Tidal Barrage</h3>
+                    <div class="formula text-center">$$ \text{Makes use of POTENTIAL energy} $$</div>
+                    <div class="formula text-center">$$ \text{= difference in height (head)} $$</div>
+                    <p>Usually built across an estuary or bay. Consists of turbines, sluice gates, embankments, and ship locks.</p>
+
+                    <h3>Tidal Barrage Energy Formula</h3>
+                    <div class="formula-box" style="border-left: 3px solid #06b6d4;">
+                        <div class="formula text-center" style="font-size: 1.2em;">$$ \boxed{E = \frac{1}{2}\rho g A h^2} $$</div>
+                        <ul class="text-xs text-muted" style="list-style-type:none; padding:10px 0 0 0;">
+                            <li>$\rho$ = Sea water density ($1025\,\text{kg/m}^3$)</li>
+                            <li>$g$ = 9.81 m/s²</li>
+                            <li>$A$ = Area of tidal basin (m²)</li>
+                            <li>$h$ = Tidal range / head height (m)</li>
+                        </ul>
+                    </div>
+                    <div class="formula text-center mt-2">$$ P = \frac{E}{T_{cycle}} = \frac{\rho g A h^2}{2T} $$</div>
+                    <p class="text-xs text-center text-muted">$T_{cycle} \approx 12.4\,\text{hrs}$, $E_{annual} = E_{per\,cycle} \times 705 \times 2$</p>
+
+                    <h3 class="mt-3">Two Types of Systems</h3>
+                    <div style="background:rgba(96,165,250,0.1); padding:8px; border-left:2px solid #60a5fa; margin-bottom:5px;">
+                        <strong style="color:#60a5fa">Single Basin:</strong> One basin. Intermittent power (ebb or flood).
+                    </div>
+                    <div style="background:rgba(0,245,255,0.1); padding:8px; border-left:2px solid #00f5ff;">
+                        <strong style="color:#00f5ff">Double Basin:</strong> Two basins (high & low). Continuous power. Costlier.
+                    </div>
+
+                    <h3 class="mt-3">Barrage vs Tidal Stream (TSG)</h3>
+                    <table class="m12-table" style="width:100%; font-size:11px; text-align:left; border-collapse:collapse; margin-top:10px;">
+                        <tr style="border-bottom:1px solid #444; color:#06b6d4;">
+                            <th style="padding:5px;">Type</th><th style="padding:5px;">Barrage</th><th style="padding:5px;">TSG</th>
+                        </tr>
+                        <tr><td style="padding:5px;">Energy</td><td style="padding:5px;">Potential (½ρgAh²)</td><td style="padding:5px;">Kinetic (½ρAv³Cp)</td></tr>
+                        <tr><td style="padding:5px;">Structure</td><td style="padding:5px;">Dam + gates</td><td style="padding:5px;">Underwater rotors</td></tr>
+                        <tr><td style="padding:5px;">Cost/Impact</td><td style="padding:5px; color:#ef4444;">High / High</td><td style="padding:5px; color:#00ff88;">Moderate / Low</td></tr>
+                    </table>
+                </div>
+
+                <div class="card-panel anim-zone d-flex flex-column">
+                    <div class="tab-controls">
+                        <button class="tab-btn active" data-target="anim-barrage-system">Barrage SVG</button>
+                        <button class="tab-btn" data-target="anim-basins">Single vs Double</button>
+                    </div>
+
+                    <div id="anim-barrage-system" class="anim-content active flex-grow-1">
+                        <div class="text-center" style="position:relative; height:180px;">
+                            <svg viewBox="0 0 400 180" width="100%" height="180">
+                                <!-- Sky -->
+                                <rect x="0" y="0" width="400" height="180" fill="#0d1117"/>
+                                <!-- Embankments / Barrage -->
+                                <rect x="180" y="20" width="40" height="160" fill="#374151" stroke="#222"/>
+                                <rect x="160" y="20" width="80" height="10" fill="#4b5563"/> <!-- Road -->
+                                <!-- Ship lock far side -->
+                                <rect x="180" y="30" width="40" height="30" fill="#4b5563"/>
+                                <!-- Sluice gates -->
+                                <rect class="sluice-gates-anim" x="185" y="70" width="30" height="40" fill="#6b7280"/>
+                                <line x1="185" y1="90" x2="215" y2="90" stroke="#222" stroke-width="2"/>
+                                <!-- Turbine tunnel -->
+                                <path d="M 180,140 L 220,140 L 220,170 L 180,170 Z" fill="#111"/>
+                                <circle cx="200" cy="155" r="10" fill="none" class="turbine-glow pulse-cyan" stroke="#00f5ff" stroke-width="2" stroke-dasharray="2,4"/>
+                                
+                                <!-- Sea & Basin Water levels -->
+                                <path class="sea-level-anim" d="M 0,60 Q 45,55 90,60 T 180,60 L 180,180 L 0,180 Z" fill="rgba(6, 182, 212, 0.6)"/>
+                                <path class="basin-level-anim" d="M 220,110 Q 310,110 400,110 L 400,180 L 220,180 Z" fill="rgba(30, 64, 175, 0.6)"/>
+
+                                <!-- Flow arrow -->
+                                <path d="M 150,155 L 250,155" class="tidal-flow-arrow" stroke="#00f5ff" stroke-width="4" stroke-dasharray="10,5" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="mt-2 text-center text-xs">
+                            <input type="range" id="barrage-h-slider" min="1" max="15" value="8" style="width:150px;" class="neon-slider">
+                            <span style="color:#facc15; font-weight:bold;">h = <span id="barrage-h-val">8</span>m</span>
+                            <div class="mt-1" style="color:#00f5ff" id="barrage-e-live">E = 80kWh <span style="font-size:9px">(scales h²)</span></div>
+                        </div>
+                    </div>
+
+                    <div id="anim-basins" class="anim-content" style="display:none; padding:15px;">
+                        <div class="d-flex justify-content-center gap-3 mb-3">
+                            <button id="btn-single-basin" class="btn-outline-neon" style="border-color:#60a5fa; color:#60a5fa;">Single Basin</button>
+                            <button id="btn-double-basin" class="btn-outline-neon" style="border-color:#00f5ff; color:#00f5ff;">Double Basin</button>
+                        </div>
+                        <div class="graph-container" style="height:120px; background:#111; border-bottom:2px solid #555; position:relative; overflow:hidden;">
+                            <!-- SVG Graph injected via JS -->
+                            <svg id="basin-power-graph" viewBox="0 0 300 100" width="100%" height="100%"></svg>
+                        </div>
+                        <div id="basin-status-badge" class="badge mt-2 text-center w-100" style="background:rgba(96,165,250,0.2); color:#60a5fa;">Intermittent Power (Gaps)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 6: DYNAMIC TIDAL POWER (12F) -->
+        <div class="card pp-card m12-card card-ocean" id="c-m12-6">
+            <h2 class="pp-section-title">Module 12F: Dynamic Tidal Power (DTP) & Challenges</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3>Dynamic Tidal Power (DTP)</h3>
+                    <p>Untried but promising technology. A 30-50 km dam built perpendicular to the coast blocks coast-parallel tidal currents, creating a pressure head.</p>
+                    <div class="formula text-center mt-2" style="color:#a78bfa;">$$ E_{DTP} = E_{potential} + E_{kinetic} $$</div>
+                    <div class="formula text-center">$$ = \frac{1}{2}\rho g A h^2 + \frac{1}{2}\rho A v^2 L $$</div>
+                    <ul class="text-sm">
+                        <li><strong>Advantage:</strong> No estuary enclosed (lower eco impact).</li>
+                        <li><strong>Potential:</strong> 100-300 GW (Yellow Sea/Korea).</li>
+                    </ul>
+
+                    <h3 class="mt-3">7 Challenges of Wave/Tidal Energy</h3>
+                    <div style="display:flex; flex-wrap:wrap; gap:5px; font-size:11px;">
+                        <span class="badge" style="background:#ef4444;">1. High Cost</span>
+                        <span class="badge" style="background:#f97316;">2. Variable Supply</span>
+                        <span class="badge" style="background:#374151;">3. Limited Locations</span>
+                        <span class="badge" style="background:#ef4444;">4. Harsh Marine Env</span>
+                        <span class="badge" style="background:#f97316;">5. Eco Impact (Barrage)</span>
+                        <span class="badge" style="background:#374151;">6. Maturing Tech</span>
+                        <span class="badge" style="background:#ef4444;">7. Storm Damages</span>
+                    </div>
+
+                    <h3 class="mt-3">Marine Corrosion Defense</h3>
+                    <p class="text-xs">Seawater ($35\text{g/kg}$ salinity) is highly corrosive. Equipment relies on <strong>Titanium alloys</strong>, fiber composites, and <strong>Cathodic Protection</strong> (sacrificial anodes like Zn or Mg).</p>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <div class="tab-controls">
+                        <button class="tab-btn active" data-target="anim-dtp-concept">DTP Concept</button>
+                        <button class="tab-btn" data-target="anim-corrosion">Corrosion & Zn</button>
+                    </div>
+
+                    <div id="anim-dtp-concept" class="anim-content active text-center pt-2">
+                        <svg viewBox="0 0 300 180" width="100%" height="180">
+                            <!-- Coastline -->
+                            <rect x="0" y="150" width="300" height="30" fill="#4B5320"/>
+                            <!-- Deep sea -->
+                            <rect x="0" y="0" width="300" height="150" fill="#0d2b45"/>
+                            <!-- Tidal current arrows -->
+                            <path class="wave-flow" d="M -50,50 L 350,50" stroke="#00f5ff" stroke-width="2" stroke-dasharray="10,10" fill="none"/>
+                            <path class="wave-flow" d="M -50,100 L 350,100" stroke="#00f5ff" stroke-width="2" stroke-dasharray="10,10" fill="none"/>
+                            
+                            <!-- DTP Long Dam perpendicular -->
+                            <rect x="145" y="20" width="10" height="130" fill="#a78bfa" />
+                            <!-- Pressure buildup -->
+                            <rect x="125" y="20" width="20" height="130" fill="rgba(6,182,212,0.5)"/>
+                            
+                            <text x="50" y="30" fill="#fff" font-size="10">Flow blocked→</text>
+                            <text x="160" y="80" fill="#facc15" font-size="11" font-weight="bold">Δh buildup</text>
+                            <text x="160" y="140" fill="#00ff88" font-size="10">Turbine Line</text>
+                        </svg>
+                        <p class="text-xs text-muted mt-2">DTP blocks natural flow, forcing water through base turbines.</p>
+                    </div>
+
+                    <div id="anim-corrosion" class="anim-content" style="display:none; text-align:center; padding-top:20px;">
+                        <svg viewBox="0 0 200 150" width="100%" height="150">
+                            <rect x="0" y="50" width="200" height="100" fill="rgba(30,64,175,0.4)"/> <!-- Seawater -->
+                            <!-- Steel structure -->
+                            <rect x="80" y="30" width="40" height="100" fill="#9ca3af" id="steel-part"/>
+                            <!-- Sacrificial anode -->
+                            <rect x="105" y="80" width="15" height="30" fill="#facc15" id="zinc-anode"/>
+                            
+                            <!-- Rust particles -->
+                            <g id="rust-particles"></g>
+                        </svg>
+                        <div class="mt-2 text-sm" style="color:#facc15;" id="corrosion-label">Zn Anode Corroding (Steel protected)</div>
+                        <button class="btn-outline-neon mt-2" onclick="triggerCorrosion()" style="font-size:10px; padding:5px;">Simulate Years</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 7: TURBINES (12G) -->
+        <div class="card pp-card m12-card card-ocean" id="c-m12-7">
+            <h2 class="pp-section-title">Module 12G: Turbines for Tidal Power</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3>Specific Speed & Selection</h3>
+                    <div class="formula text-center">$$ N_s = \frac{N\sqrt{P}}{H^{5/4}} $$</div>
+                    <p class="text-xs text-muted mb-3">Higher $N_s$ → suitable for low head (ideal for tidal).</p>
+
+                    <table class="m12-table" style="width:100%; font-size:11px; text-align:left; border-collapse:collapse;">
+                        <tr style="border-bottom:1px solid #444; color:#06b6d4;">
+                            <th>Turbine</th><th>Head (H)</th><th>η</th><th>Blades</th>
+                        </tr>
+                        <tr>
+                            <td style="color:#facc15; font-weight:bold;">Kaplan</td><td>2-40m</td><td>90%+</td><td style="color:#00ff88;">Adjustable</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#00f5ff; font-weight:bold;">Propeller</td><td>5-30m</td><td>85-92%</td><td style="color:#ef4444;">Fixed</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#06b6d4; font-weight:bold;">Bulb</td><td>2-10m</td><td>88-93%</td><td>Fixed/Adj</td>
+                        </tr>
+                    </table>
+                    
+                    <ul class="text-sm mt-3" style="list-style-type:none; padding-left:0;">
+                        <li><strong style="color:#facc15">Kaplan:</strong> Variable pitch. η remains optimal across varying tides. $N_s = 300\text{-}900$.</li>
+                        <li><strong style="color:#00f5ff">Propeller:</strong> Drops efficiency fast at off-design conditions. Low cost.</li>
+                        <li><strong style="color:#06b6d4">Bulb:</strong> Compact axial flow. Generator inside a waterproof bulb. <strong>Used at La Rance.</strong></li>
+                    </ul>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <div class="tab-controls">
+                        <button class="tab-btn active" data-target="anim-kaplan" style="border-bottom-color:#facc15">Kaplan</button>
+                        <button class="tab-btn" data-target="anim-propeller" style="border-bottom-color:#00f5ff">Propeller</button>
+                        <button class="tab-btn" data-target="anim-bulb" style="border-bottom-color:#06b6d4">Bulb</button>
+                    </div>
+
+                    <!-- Turbine SVG viewer -->
+                    <div id="anim-kaplan" class="anim-content active text-center">
+                        <svg viewBox="0 0 200 150" width="100%" height="150">
+                            <!-- Axial casing -->
+                            <path d="M 20,40 L 180,40 L 180,110 L 20,110 Z" fill="none" stroke="#555" stroke-width="2"/>
+                            <!-- Shaft -->
+                            <rect x="0" y="70" width="100" height="10" fill="#777"/>
+                            <!-- Hub -->
+                            <ellipse cx="100" cy="75" rx="15" ry="30" fill="#facc15"/>
+                            <!-- Adjustable blades (nested for better animation) -->
+                            <g transform="translate(100,75)">
+                                <g class="kaplan-blades-group">
+                                    <path d="M -20,-15 L 0,-40 L 20,-15 Z" fill="#facc15" stroke="#222"/>
+                                    <path d="M -20,15 L 0,40 L 20,15 Z" fill="#facc15" stroke="#222"/>
+                                </g>
+                            </g>
+                            <text x="20" y="135" fill="#00ff88" font-size="10">✓ Variable Pitch (η stable)</text>
+                        </svg>
+                        <div class="d-flex align-items-center gap-2 px-3 mt-1">
+                            <span class="text-xs">Head Fluctuation:</span>
+                            <input type="range" id="m12g-head-slider" class="flex-grow-1 neon-slider" min="10" max="100" value="50">
+                        </div>
+                    </div>
+
+                    <div id="anim-propeller" class="anim-content text-center" style="display:none;">
+                        <svg viewBox="0 0 200 150" width="100%" height="150">
+                            <!-- Axial casing -->
+                            <path d="M 20,40 L 180,40 L 180,110 L 20,110 Z" fill="none" stroke="#555" stroke-width="2"/>
+                            <rect x="0" y="70" width="100" height="10" fill="#777"/>
+                            <ellipse cx="100" cy="75" rx="15" ry="30" fill="#00f5ff"/>
+                            <!-- Fixed blades (nested) -->
+                            <g transform="translate(100,75)">
+                                <g class="propeller-blades-group">
+                                    <path d="M -15,-15 L 0,-40 L 15,-15 Z" fill="#00f5ff" stroke="#222"/>
+                                    <path d="M -15,15 L 0,40 L 15,15 Z" fill="#00f5ff" stroke="#222"/>
+                                </g>
+                            </g>
+                            <text x="20" y="135" fill="#ef4444" font-size="10">⚠ Fixed Pitch (η drops off-design)</text>
+                        </svg>
+                    </div>
+
+                    <div id="anim-bulb" class="anim-content text-center" style="display:none;">
+                        <svg viewBox="0 0 200 150" width="100%" height="150">
+                            <!-- Axial wide casing -->
+                            <path d="M 10,20 Q 100,0 190,20 L 190,130 Q 100,150 10,130 Z" fill="none" stroke="#555" stroke-width="2"/>
+                            <!-- Bulb housing -->
+                            <ellipse cx="80" cy="75" rx="40" ry="25" fill="#374151" stroke="#06b6d4" stroke-width="2"/>
+                            <text x="55" y="78" fill="#a78bfa" font-size="9" font-weight="bold">Generator</text>
+                            <!-- Runner at end of bulb (nested) -->
+                            <g transform="translate(130,75)">
+                                <g class="bulb-blades-group">
+                                    <ellipse cx="0" cy="0" rx="8" ry="20" fill="#00f5ff"/>
+                                    <path d="M -5,-15 L 0,-35 L 10,-10 Z" fill="#00f5ff"/>
+                                    <path d="M -5,15 L 0,35 L 10,10 Z" fill="#00f5ff"/>
+                                </g>
+                            </g>
+                            <!-- Two way flow arrows -->
+                            <path d="M 20,50 L 170,50" stroke="rgba(0,255,136,0.3)" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
+                            <path d="M 170,100 L 20,100" stroke="rgba(0,255,136,0.3)" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
+                            <text x="55" y="145" fill="#06b6d4" font-size="10">Highly Compact · La Rance Built</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 8: REFERENCE (12H) -->
+        <div class="card pp-card m12-card card-ocean" id="c-m12-8">
+            <h2 class="pp-section-title">Module 12H: Complete Tidal Energy Reference</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3 style="color:#06b6d4">Global Reference</h3>
+                    <div style="font-size:11px;">
+                        <div class="d-flex justify-content-between border-bottom border-secondary py-1">
+                            <span>$\rho_{seawater}$</span> <span style="color:#00ff88">1025 kg/m³</span>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom border-secondary py-1">
+                            <span>Tidal cycles/year</span> <span style="color:#00ff88">705</span>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom border-secondary py-1">
+                            <span>Min viable head</span> <span style="color:#ef4444">$h > 5\text{m}$</span>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-3 text-warning">India Tidal Potential</h3>
+                    <ul class="text-xs" style="list-style-type:square; padding-left:15px;">
+                        <li><strong>Gulf of Khambhat:</strong> $h=11\text{m}$, $\approx 7000\,\text{MW}$</li>
+                        <li><strong>Gulf of Kutch:</strong> $h=8\text{m}$, $\approx 900\,\text{MW}$</li>
+                        <li><strong>Sunderbans:</strong> stream currents, small scale</li>
+                        <li><strong>Total India Potential:</strong> $\approx 8000\,\text{MW}$</li>
+                    </ul>
+
+                    <h3 class="mt-3 text-info">World's Operating Plants</h3>
+                    <ul class="text-xs" style="list-style-type:none; padding:0;">
+                        <li><strong style="color:#facc15">Sihwa Lake (Korea):</strong> 254 MW (Largest)</li>
+                        <li><strong style="color:#00f5ff">La Rance (France):</strong> 240 MW (First)</li>
+                        <li><strong style="color:#06b6d4">Annapolis (Canada):</strong> 20 MW</li>
+                        <li><strong style="color:#60a5fa">MeyGen (Scotland):</strong> 6 MW (TSG Stream)</li>
+                    </ul>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <div id="m12-master-quiz" style="background:rgba(6,182,212,0.05); border:1px solid rgba(6,182,212,0.2); border-radius:12px; padding:15px; height:240px; display:flex; flex-direction:column; justify-content:center;">
+                         <div id="tidal-quiz-msg" style="font-size:13px; color:#e2e8f0; margin-bottom:15px; font-family:'Orbitron',sans-serif; text-align:center;">Module 12 Master Refresher</div>
+                         <div id="tidal-quiz-question" style="font-size:16px; font-weight:bold; color:#facc15; text-align:center; min-height:45px; margin-bottom:15px;">What type of energy does a Tidal Barrage utilize?</div>
+                         <div id="tidal-quiz-options" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                           <button class="btn-outline-neon q-btn" onclick="checkTidalQ(this, true)">Potential Energy</button>
+                           <button class="btn-outline-neon q-btn" onclick="checkTidalQ(this, false)">Kinetic Energy</button>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="topic-bottom-nav">
+        <a href="../geothermal-mhd/index.html" class="topic-btn prev-btn">← Geothermal & MHD</a>
+        <a href="../../index.html" class="topic-btn back-btn">All Topics</a>
+        <a href="../economics-tariffs/index.html" class="topic-btn next-btn">Economics & Tariffs →</a>
+    </div>
+  </main>
+
+  <!-- Scroll to top -->
+  <div class="pp-scroll-top" id="ppScrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="../../../../../../shared/js/hero-bg.js"></script>
+  <script src="../../../../../../shared/js/formulas.js"></script>
+  <script src="../../../../../../shared/js/app.js"></script>
+
+  <!-- Scripts specifically for this page/module -->
+  <script src="../../js/powerplant-inline.js"></script>
+  <script src="../../../../../../shared/js/topic-nav.js"></script>
+  <script src="../../js/module12.js"></script>
+
+</body></html>

@@ -14,9 +14,9 @@ const FORMULA_DATA = [
             { sym: "R", label: "Resistance (Ω)", unit: "Ω" }
         ],
         calc: (vars) => {
-            if (vars.I && vars.R) return { result: vars.I * vars.R, unit: "V", label: "Voltage" };
-            if (vars.V && vars.R) return { result: vars.V / vars.R, unit: "A", label: "Current" };
-            if (vars.V && vars.I) return { result: vars.V / vars.I, unit: "Ω", label: "Resistance" };
+            if (vars.I !== undefined && vars.R !== undefined) return { result: vars.I * vars.R, unit: "V", label: "Voltage" };
+            if (vars.V !== undefined && vars.R !== undefined) return { result: vars.V / vars.R, unit: "A", label: "Current" };
+            if (vars.V !== undefined && vars.I !== undefined) return { result: vars.V / vars.I, unit: "Ω", label: "Resistance" };
             return null;
         }
     },
@@ -31,9 +31,9 @@ const FORMULA_DATA = [
             { sym: "I", label: "Current (A)", unit: "A" }
         ],
         calc: (vars) => {
-            if (vars.V && vars.I) return { result: vars.V * vars.I, unit: "W", label: "Power" };
-            if (vars.P && vars.I) return { result: vars.P / vars.I, unit: "V", label: "Voltage" };
-            if (vars.P && vars.V) return { result: vars.P / vars.V, unit: "A", label: "Current" };
+            if (vars.V !== undefined && vars.I !== undefined) return { result: vars.V * vars.I, unit: "W", label: "Power" };
+            if (vars.P !== undefined && vars.I !== undefined) return { result: vars.P / vars.I, unit: "V", label: "Voltage" };
+            if (vars.P !== undefined && vars.V !== undefined) return { result: vars.P / vars.V, unit: "A", label: "Current" };
             return null;
         }
     },
@@ -48,9 +48,9 @@ const FORMULA_DATA = [
             { sym: "R", label: "Resistance (Ω)", unit: "Ω" }
         ],
         calc: (vars) => {
-            if (vars.I && vars.R) return { result: vars.I ** 2 * vars.R, unit: "W", label: "Power" };
-            if (vars.P && vars.R) return { result: Math.sqrt(vars.P / vars.R), unit: "A", label: "Current" };
-            if (vars.P && vars.I) return { result: vars.P / (vars.I ** 2), unit: "Ω", label: "Resistance" };
+            if (vars.I !== undefined && vars.R !== undefined) return { result: vars.I ** 2 * vars.R, unit: "W", label: "Power" };
+            if (vars.P !== undefined && vars.R !== undefined) return { result: Math.sqrt(vars.P / vars.R), unit: "A", label: "Current" };
+            if (vars.P !== undefined && vars.I !== undefined) return { result: vars.P / (vars.I ** 2), unit: "Ω", label: "Resistance" };
             return null;
         }
     },
@@ -153,7 +153,7 @@ const FORMULA_DATA = [
             { sym: "C", label: "Capacitance (F)", unit: "F" }
         ],
         calc: (vars) => {
-            if (vars.R && vars.C) return { result: vars.R * vars.C, unit: "s", label: "τ" };
+            if (vars.R !== undefined && vars.C !== undefined) return { result: vars.R * vars.C, unit: "s", label: "τ" };
             return null;
         }
     },
@@ -167,7 +167,7 @@ const FORMULA_DATA = [
             { sym: "R", label: "Resistance (Ω)", unit: "Ω" }
         ],
         calc: (vars) => {
-            if (vars.L && vars.R) return { result: vars.L / vars.R, unit: "s", label: "τ" };
+            if (vars.L !== undefined && vars.R !== undefined) return { result: vars.L / vars.R, unit: "s", label: "τ" };
             return null;
         }
     },
@@ -266,7 +266,7 @@ const FORMULA_DATA = [
             { sym: "Nr", label: "Rotor Speed (rpm)", unit: "rpm" }
         ],
         calc: (vars) => {
-            if (vars.Ns && vars.Nr) return { result: (vars.Ns - vars.Nr) / vars.Ns, unit: "", label: "Slip (s)" };
+            if (vars.Ns !== undefined && vars.Nr !== undefined) return { result: (vars.Ns - vars.Nr) / vars.Ns, unit: "", label: "Slip (s)" };
             return null;
         }
     },

@@ -1,6 +1,15 @@
 /* Topic Navigation Scripts */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize AOS if loaded on the page
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+    }
+
     // We can add logic here for swiping and interactive elements common to all topic sub-pages.
     
     // Add simple smooth scrolling for module internal hash links

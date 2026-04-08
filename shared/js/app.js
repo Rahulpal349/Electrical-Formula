@@ -83,6 +83,21 @@
     function renderHub(container) {
         const catOrder = ['circuit', 'machines', 'measurements', 'power', 'control', 'electronics', 'signals', 'micro', 'estimation', 'powerplant', 'utilization'];
 
+        /* Map category keys to actual subject folder paths */
+        const catUrls = {
+            circuit: 'subjects/circuit/index.html',
+            machines: 'subjects/machines/index.html',
+            measurements: 'subjects/measurements/index.html',
+            power: 'subjects/power-systems/index.html',
+            control: 'subjects/control/index.html',
+            electronics: 'subjects/electronics/index.html',
+            signals: 'subjects/signals/index.html',
+            micro: 'subjects/microprocessor/index.html',
+            estimation: 'subjects/estimation/index.html',
+            powerplant: 'subjects/power-plant/index.html',
+            utilization: 'subjects/utilization/index.html'
+        };
+
         const section = document.createElement('section');
         section.className = 'section';
         section.id = 'hub-sections';
@@ -91,8 +106,9 @@
         catOrder.forEach(catKey => {
             const cat = CATEGORIES[catKey];
             const desc = getSectionDesc(catKey);
+            const url = catUrls[catKey] || '#';
             cardsHTML += `
-            <a href="${catKey}.html" target="_blank" class="formula-card hub-card" style="text-decoration:none; display:flex; flex-direction:column; align-items:center; text-align:center;" data-cat="${catKey}">
+            <a href="${url}" class="formula-card hub-card" style="text-decoration:none; display:flex; flex-direction:column; align-items:center; text-align:center;" data-cat="${catKey}">
                 <div style="font-size:3rem; margin-bottom:12px;">${cat.icon}</div>
                 <h3 style="color:${cat.color}; font-family:var(--font-head); letter-spacing:1px; margin-bottom:8px;">${cat.name}</h3>
                 <p style="color:var(--text-secondary); font-size:0.9rem;">${desc}</p>

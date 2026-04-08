@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power System Overview | EE Formula Hub</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <!-- Animation Libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../../shared/css/style.css">
+    <link rel="stylesheet" href="../../../../shared/css/topic-page.css">
+    <link rel="stylesheet" href="../../css/powerplant-inline.css">
+    <link rel="stylesheet" href="../../css/module1.css">
+    <style>
+        :root {
+            --ps-cyan: #00f5ff;
+            --ps-gold: #facc15;
+            --ps-purple: #a78bfa;
+            --ps-red: #ef4444;
+            --ps-green: #00ff88;
+        }
+        .ps-body {
+            --pp-accent: var(--ps-cyan);
+            --pp-accent2: var(--ps-gold);
+        }
+        .ps-sidebar-link.active {
+            background: rgba(0, 245, 255, 0.1);
+            border-left: 3px solid var(--ps-cyan);
+        }
+    </style>
+</head>
+<body data-page-category="power" class="ps-body pp-body">
+    <!-- Sidebar Toggle -->
+    <button class="pp-sidebar-toggle" id="ppSbToggle" aria-label="Toggle sidebar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <div class="pp-sidebar__overlay" id="ppSbOverlay"></div>
+
+    <!-- Power Systems Sidebar -->
+    <aside class="pp-sidebar" id="ppSidebar">
+        <div class="pp-sidebar__header">
+            <div class="pp-sidebar__profile">
+                <div class="pp-sidebar__avatar">⚡</div>
+                <div class="pp-sidebar__info">
+                    <span class="pp-sidebar__label">Power Systems</span>
+                    <span class="pp-sidebar__name">ENGINEERING</span>
+                </div>
+            </div>
+            <button class="pp-sidebar__close" id="ppSbClose" aria-label="Close sidebar">✕</button>
+        </div>
+        <div class="pp-sidebar__section-label">MODULES</div>
+        <ul class="pp-sidebar__nav">
+            <li><a class="pp-sidebar__link active" style="--mod-color:var(--ps-cyan);" href="index.html"><span class="pp-sidebar__icon">⚡</span><span class="pp-sidebar__link-text">Overview & Conductors</span></a></li>
+            <li><a class="pp-sidebar__link" style="--mod-color:var(--ps-gold);" href="../basics-of-power-transmission/index.html"><span class="pp-sidebar__icon">🚀</span><span class="pp-sidebar__link-text">Basics of Transmission</span></a></li>
+            <li><a class="pp-sidebar__link" style="--mod-color:var(--ps-purple);" href="../transmission-line-components/index.html"><span class="pp-sidebar__icon">🏗️</span><span class="pp-sidebar__link-text">Line Components</span></a></li>
+            <li style="opacity:0.5; pointer-events:none;"><a class="pp-sidebar__link" style="--mod-color:#fff;"><span class="pp-sidebar__icon">📏</span><span class="pp-sidebar__link-text">Line Parameters (Soon)</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- Navigation (Standard EE Hub) -->
+    <nav class="navbar">
+        <a href="../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+        <div class="navbar__links">
+            <a href="../../../../index.html">Circuit Theory</a>
+            <a href="../../../../subjects/machines/index.html">Machines</a>
+            <a href="../../../../subjects/measurements/index.html">Measurements</a>
+            <a href="../../../../subjects/power-systems/index.html" class="active">Power Systems</a>
+            <a href="../../../../subjects/power-plant/index.html">Power Plant</a>
+            <a href="../../../../subjects/control/index.html">Control</a>
+            <a href="../../../../subjects/electronics/index.html">Electronics</a>
+            <a href="../../../../subjects/signals/index.html">Signals</a>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section matching Power Plant -->
+    <header class="circuit-hero" style="height: 60vh; min-height: 400px;">
+        <canvas id="hero-canvas"></canvas>
+        <div class="circuit-hero__content" data-aos="fade-up">
+            <h1 class="circuit-hero__title">Module <span class="pp-neon-text" style="color:var(--ps-cyan); filter: drop-shadow(0 0 10px var(--ps-cyan));">1</span></h1>
+            <p class="circuit-hero__subtitle" style="color:var(--ps-gold)">Power System Overview & Conductors</p>
+            <div class="circuit-hero__ctas">
+                <a href="#c-ps-1" class="pp-hero-cta" style="border-color:var(--ps-cyan); color:var(--ps-cyan);">⚡ Explore System</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pp-main">
+        <!-- Breadcrumbs -->
+        <div class="topic-breadcrumb">
+            <a href="../../../../index.html">EE Hub</a> › 
+            <a href="../../index.html">Power Systems</a> › 
+            <span>Module 1: Overview & Conductors</span>
+        </div>
+
+        <div class="topic-content">
+
+        <!-- CARD 1: VOLTAGE LEVELS & STRUCTURE -->
+        <div class="card ps-card card-transmission" id="c-ps-1" data-aos="fade-up">
+            <h2 class="card-title">⚡ Card 1 — Power System Structure & Voltage Hierarchy</h2>
+            <div class="bookmark">🔖</div>
+            <div class="ps-badge badge-rose">1200 kV Bina-Nashik Trial</div>
+            
+            <div class="card-grid mt-4">
+                <div class="card-panel formula-zone">
+                    <h3>AC Transmission Hierarchy</h3>
+                    <div class="formula">$$ \text{Gen (11kV)} \rightarrow \text{Step-up} \rightarrow \text{Primary Tx} \rightarrow \text{Step-down} \rightarrow \text{Sec Tx} \rightarrow \text{Dist} $$</div>
+                    
+                    <ul class="text-xs mt-3">
+                        <li style="color:var(--ps-purple)"><strong>Primary Transmission:</strong> 132-765 kV (3-ph, 3-wire)</li>
+                        <li style="color:var(--ps-cyan)"><strong>Secondary Transmission:</strong> 33-66 kV (3-ph, 3-wire)</li>
+                        <li style="color:var(--ps-gold)"><strong>Primary Distribution:</strong> 3.3-11 kV (Industrial)</li>
+                        <li style="color:var(--ps-green)"><strong>Secondary Distribution:</strong> 230V/400V (Home Load)</li>
+                    </ul>
+
+                    <h3 class="mt-4">Voltage Range Classification</h3>
+                    <div class="formula text-sm">
+                        LV: &lt;250V | MV: &lt;650V | HV: 11-33kV<br>
+                        EHV: 66-220kV | UHV: 400-765kV+
+                    </div>
+                    
+                    <h3 class="mt-4">Permissible Frequency & Voltage</h3>
+                    <div class="formula text-sm">
+                        $ \Delta f = \pm 3\% \quad (50 \pm 1.5\,\text{Hz}) $<br>
+                        $ \Delta V_{EHV} = \pm 12.5\% \quad \Delta V_{LV/MV} = \pm 6\% $
+                    </div>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <!-- Voltage Pyramid + Power Flow GSAP -->
+                    <div style="display:flex; width:100%; height:100%;">
+                        <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+                            <svg id="pyramid-svg" viewBox="0 0 300 240" width="160"></svg>
+                            <p class="text-xs text-center text-muted mt-1">Voltage Pyramid</p>
+                        </div>
+                        <div style="flex:1.5;">
+                            <svg viewBox="0 0 400 240" width="100%" height="100%">
+                                <g class="flow-group">
+                                    <path class="flow-path" d="M 20,120 L 380,120" stroke="#222" stroke-width="8" stroke-linecap="round" fill="none"/>
+                                    <!-- Components -->
+                                    <g transform="translate(40,120)">
+                                        <rect x="-15" y="-15" width="30" height="30" fill="#f97316" rx="4"/>
+                                        <text y="30" text-anchor="middle" fill="#f97316" font-size="8">GENERATION</text>
+                                    </g>
+                                    <g transform="translate(140,120)">
+                                        <circle r="15" fill="#ef4444" opacity="0.8"/>
+                                        <text y="30" text-anchor="middle" fill="#ef4444" font-size="8">STEP-UP</text>
+                                    </g>
+                                    <g transform="translate(260,120)">
+                                        <circle r="15" fill="#00f5ff" opacity="0.8"/>
+                                        <text y="30" text-anchor="middle" fill="#00f5ff" font-size="8">STEP-DOWN</text>
+                                    </g>
+                                    <g transform="translate(360,120)">
+                                        <rect x="-10" y="-10" width="20" height="20" fill="#00ff88" rx="2"/>
+                                        <text y="30" text-anchor="middle" fill="#00ff88" font-size="8">CONSUMER</text>
+                                    </g>
+                                </g>
+                            </svg>
+                            <div class="text-xs text-center" style="color:var(--ps-cyan)">Higher V → Lower I → Less Loss</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 2: FEEDERS & DISTRIBUTORS -->
+        <div class="card ps-card card-distribution" id="c-ps-2" data-aos="fade-up">
+            <h2 class="card-title">🔌 Card 2 — Feeders, Distributors & Service Mains</h2>
+            <div class="bookmark">🔖</div>
+            
+            <div class="card-grid mt-4">
+                <div class="card-panel formula-zone">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h3 style="color:var(--ps-cyan)">1. Feeder</h3>
+                            <p class="text-xs">Substation to Serving Area. <strong>No Tapping.</strong> Current remains constant. Designed for <strong>Current Capacity.</strong></p>
+                        </div>
+                        <div>
+                            <h3 style="color:var(--ps-gold)">2. Distributor</h3>
+                            <p class="text-xs">Contains <strong>Tappings</strong> for consumers. Current decreases along length. Designed for <strong>Voltage Drop.</strong></p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-4">Service Mains</h3>
+                    <p class="text-xs">Distributor to consumer terminals. Connects individual homes. Must provide <strong>82% transient protection</strong>.</p>
+                    
+                    <h3 class="mt-4">Voltage Drop Accumulation</h3>
+                    <div class="formula">$$ V_{drop, total} = \sum_{k=1}^n I_k \cdot R_k $$</div>
+                    <div class="formula text-xs">$$ I_x = I_{start} - \sum I_{tapped} $$</div>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <div style="display:flex; flex-direction:column; width:100%; height:100%; padding:10px;">
+                        <!-- SVG Distribution Network -->
+                        <svg viewBox="0 0 300 120" width="100%" height="100">
+                            <!-- Feeder -->
+                            <line x1="20" y1="30" x2="100" y2="30" stroke="#00f5ff" stroke-width="6"/>
+                            <text x="60" y="20" text-anchor="middle" fill="#00f5ff" font-size="8">FEEDER (No Tap)</text>
+                            <!-- Distributor -->
+                            <line x1="100" y1="30" x2="280" y2="30" stroke="#facc15" stroke-width="6"/>
+                            <text x="190" y="20" text-anchor="middle" fill="#facc15" font-size="8">DISTRIBUTOR (Tapping)</text>
+                            <!-- Taps -->
+                            <circle cx="140" cy="30" r="4" fill="#00ff88"/>
+                            <circle cx="180" cy="30" r="4" fill="#00ff88"/>
+                            <circle cx="220" cy="30" r="4" fill="#00ff88"/>
+                            <circle cx="260" cy="30" r="4" fill="#00ff88"/>
+                            <!-- Service Mains -->
+                            <path d="M 140,30 L 140,60" stroke="#00ff88" stroke-dasharray="2"/>
+                            <path d="M 220,30 L 220,60" stroke="#00ff88" stroke-dasharray="2"/>
+                            <text x="140" y="75" text-anchor="middle" fill="#00ff88" font-size="7">Service Main</text>
+                            <text x="220" y="75" text-anchor="middle" fill="#00ff88" font-size="7">Home ✓ 82%</text>
+                        </svg>
+                        <!-- Staircase Current Chart -->
+                        <svg id="dist-chart-svg" viewBox="0 0 280 150" width="100%" height="110"></svg>
+                        <p class="text-xs text-center text-muted">Current Staircase Profile ($I$ vs Distance)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3: POWER LOSS -->
+        <div class="card ps-card card-transmission" id="c-ps-3" data-aos="fade-up">
+            <h2 class="card-title">📉 Card 3 — Power Loss & Conductor Economics</h2>
+            <div class="bookmark">🔖</div>
+            
+            <div class="card-grid mt-4">
+                <div class="card-panel formula-zone">
+                    <h3>The Efficiency Formula</h3>
+                    <div class="formula">$$ W = \frac{P^2 \cdot f}{V^2 \cos^2\phi \cdot A} [Watts] $$</div>
+                    
+                    <div class="grid grid-cols-2 gap-2 text-xs mt-3">
+                        <div class="badge badge-cyan">$W \propto 1/V^2$</div>
+                        <div class="badge badge-cyan">$W \propto 1/\cos^2\phi$</div>
+                        <div class="badge badge-rose">$W \propto P^2$</div>
+                        <div class="badge badge-rose">$W \propto 1/A$</div>
+                    </div>
+
+                    <h3 class="mt-4">Conductor Volume Requirement</h3>
+                    <div class="formula">$$ \text{Vol} = \frac{P^2 \cdot f}{V^2 \cos^2\phi \cdot W} $$</div>
+                    <p class="text-xs text-muted">Higher Voltage → Smaller conductor volume needed (More economic transmission).</p>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <div class="loss-dashboard" style="width:100%; padding:20px; text-align:center;">
+                        <h4 class="text-sm mb-4">Transmission Loss Dashboard ($P=100\text{MW}$)</h4>
+                        <div class="mb-3">
+                            <label class="text-xs">Voltage $V$: <span id="loss-v-val" style="color:var(--ps-cyan)">132 kV</span></label>
+                            <input type="range" id="loss-v-slider" min="33" max="765" value="132" class="neon-slider">
+                        </div>
+                        <div class="mb-4">
+                            <label class="text-xs">Power Factor $\cos\phi$: <span id="loss-cos-val" style="color:var(--ps-gold)">1.0</span></label>
+                            <input type="range" id="loss-cos-slider" min="0.5" max="1.0" step="0.05" value="0.9" class="neon-slider">
+                        </div>
+                        
+                        <div class="res-bubble bg-black p-3 rounded" style="display:inline-block; border:1px solid #444;">
+                            <div id="loss-w-res" style="color:var(--ps-red); font-size:1.2em; font-weight:bold;">0 MW Loss</div>
+                            <div id="loss-vol-res" class="text-xs" style="color:var(--ps-cyan)">0 m³ Cond. Vol</div>
+                        </div>
+
+                        <!-- SVG Visualization of heat -->
+                        <svg width="100%" height="40">
+                             <rect x="10%" y="15" width="80%" height="4" fill="#333"/>
+                             <rect class="heat-loss-glow" x="10%" y="10" width="80%" height="14" rx="7"/>
+                        </svg>
+                        <p class="text-xs text-muted">Red glow represents $I^2R$ heat dissipation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 4: CONDUCTOR COMPARISON -->
+        <div class="card ps-card card-transmission" id="c-ps-4" data-aos="fade-up">
+            <h2 class="card-title">📊 Card 4 — Transmission System Comparison (K-Factor)</h2>
+            <div class="bookmark">🔖</div>
+            
+            <div class="card-grid mt-4">
+                <div class="card-panel formula-zone overflow-y-auto" style="max-height:350px;">
+                    <table class="text-xs w-full text-left" style="border-collapse:collapse;">
+                        <tr style="border-bottom:1px solid #444; color:var(--ps-cyan)">
+                            <th>System</th><th>Volume factor ($K$)</th>
+                        </tr>
+                        <tr><td>DC 2-wire, 1-e</td><td>1.0</td></tr>
+                        <tr style="color:var(--ps-green)"><td>DC 2-wire, mid-e</td><td>0.25 (Best DC)</td></tr>
+                        <tr><td>1-ph, 2-wire</td><td>$2/\cos^2\phi$</td></tr>
+                        <tr style="color:var(--ps-gold)"><td>3-ph, 3-wire</td><td>$0.5/\cos^2\phi$ (Best AC)</td></tr>
+                    </table>
+                    
+                    <h3 class="mt-4">3D Neutral Wire Comparison</h3>
+                    <div style="display:flex; justify-content:space-around; align-items:center; margin-top:10px;">
+                        <div style="text-align:center;">
+                            <svg width="60" height="60" viewBox="0 0 60 60">
+                                <!-- 3D Cylinder representation -->
+                                <ellipse cx="30" cy="15" rx="20" ry="10" fill="#777"/>
+                                <rect x="10" y="15" width="40" height="30" fill="#555"/>
+                                <ellipse cx="30" cy="45" rx="20" ry="10" fill="#444"/>
+                                <text x="30" y="35" text-anchor="middle" fill="#fff" font-size="10">DC 1/2</text>
+                            </svg>
+                            <p class="text-xs">DC Return: $1/2 A_{main}$</p>
+                        </div>
+                        <div style="text-align:center;">
+                            <svg width="60" height="60" viewBox="0 0 60 60">
+                                <ellipse cx="30" cy="15" rx="25" ry="12" fill="#00f5ff" opacity="0.8"/>
+                                <rect x="5" y="15" width="50" height="30" fill="#00c4d1"/>
+                                <ellipse cx="30" cy="45" rx="25" ry="12" fill="#008b94"/>
+                                <text x="30" y="35" text-anchor="middle" fill="#fff" font-size="10">AC √2</text>
+                            </svg>
+                            <p class="text-xs">AC Return: $\sqrt{2} A_{main}$</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <div style="width:100%; padding:15px; display:flex; flex-direction:column;">
+                        <h4 class="text-sm">Conductor Volume Rel. to DC 2-wire</h4>
+                        <div class="mb-3 mt-2">
+                             <label class="text-xs">Adjust AC Load PF ($\cos\phi$):</label>
+                             <input type="range" id="comp-cos-slider" min="0.5" max="1.0" step="0.05" value="0.9" class="neon-slider">
+                        </div>
+                        <div id="comparison-bars" style="flex-grow:1;"></div>
+                        <p class="text-center text-xs text-muted">Delta 3-wire is standard for AC transmission.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 5: MASTER QUIZ -->
+        <div class="card ps-card card-distribution" id="c-ps-5" data-aos="fade-up">
+            <h2 class="card-title">📊 Card 5 — Module 1 Master Quiz & Quick Summary</h2>
+            <div class="bookmark">🔖</div>
+            
+            <div class="card-grid mt-4">
+                <div class="card-panel formula-zone">
+                    <h3 style="color:var(--ps-green)">Quick Reference</h3>
+                    <ul class="text-xs mt-2 space-y-2">
+                        <li><strong>Underground:</strong> Leading Power Factor (Capacitive)</li>
+                        <li><strong>Overhead:</strong> Lagging Power Factor (Inductive)</li>
+                        <li><strong>Economy Check:</strong> $K$ (mid-e DC) &lt; $K$ (3ph AC) &lt; $K$ (2-wire DC)</li>
+                        <li><strong>Route:</strong> 1200kV line starts at Bina (MP).</li>
+                    </ul>
+                    <div class="formula mt-3 text-sm">
+                        $ W \propto 1/(V^2 \cos^2\phi) $<br>
+                        $ A_{neutral} = 0.5 \text{ (DC)} \text{ vs } 1.414 \text{ (AC)} $
+                    </div>
+                </div>
+
+                <div class="card-panel anim-zone">
+                    <div class="quiz-container w-full h-full p-4 flex flex-col items-center justify-center">
+                        <div class="quiz-card-inner ps-card w-full h-40 rounded-lg shadow-xl relative" onclick="toggleQuiz()">
+                            <!-- Front -->
+                            <div class="quiz-front absolute inset-0 flex flex-col items-center justify-center p-4">
+                                <span id="quiz-count" class="absolute top-2 left-2 text-xs text-muted">1/15</span>
+                                <h4 id="quiz-q" class="text-center text-sm font-semibold">Loading...</h4>
+                                <p class="text-xs text-muted mt-2">(Tap to reveal answer)</p>
+                            </div>
+                            <!-- Back -->
+                            <div class="quiz-back absolute inset-0 flex flex-col items-center justify-center p-4 rounded-lg">
+                                <h4 class="text-xs text-white uppercase tracking-widest mb-2">Answer</h4>
+                                <p id="quiz-a" class="text-center text-lg font-bold text-green-400">Loading...</p>
+                            </div>
+                        </div>
+                        <button onclick="nextQuiz()" class="mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded text-xs font-bold transition-colors">NEXT QUESTION →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 EE Formula Hub | Designed for Power Engineers</p>
+    </footer>
+
+    <!-- Page Scripts -->
+    <script src="../../../../shared/js/app.js"></script>
+    <script src="../../../../shared/js/hero-bg.js"></script>
+    <script src="../../js/power.js"></script>
+    <script src="../../js/module1.js"></script>
+</body>
+</html>

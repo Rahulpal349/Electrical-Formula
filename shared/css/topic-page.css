@@ -1,11 +1,19 @@
 /* Topic Page Styles */
 
+.topic-main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px 20px;
+}
+
 /* Breadcrumb Navigation */
-.topic-breadcrumb {
+.topic-breadcrumb, .breadcrumb {
     font-family: 'Share Tech Mono', monospace;
     font-size: 13px;
     color: var(--text-secondary);
-    margin-bottom: 20px;
+    margin: 80px auto 20px auto; 
+    max-width: 1160px; /* 1200px - 40px padding */
+    width: calc(100% - 40px);
     padding: 10px 16px;
     background: rgba(0,0,0,0.3);
     border-radius: 8px;
@@ -15,18 +23,18 @@
     gap: 8px;
 }
 
-.topic-breadcrumb a {
+.topic-breadcrumb a, .breadcrumb a {
     color: var(--neon-cyan, #00f0ff);
     text-decoration: none;
     transition: all 0.2s;
 }
 
-.topic-breadcrumb a:hover {
+.topic-breadcrumb a:hover, .breadcrumb a:hover {
     color: #fff;
     text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
 }
 
-.topic-breadcrumb span {
+.topic-breadcrumb span, .breadcrumb span {
     color: #fff;
     opacity: 0.8;
 }

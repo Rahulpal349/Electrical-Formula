@@ -1,0 +1,454 @@
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="icon" type="image/svg+xml" href="../../../../favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 13: Economics & Tariffs | Power Plant Engineering</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="../../../../shared/css/style.css">
+  <link rel="stylesheet" href="../../css/powerplant-inline.css">
+  <link rel="stylesheet" href="../../../../shared/css/topic-page.css">
+  <link rel="stylesheet" href="../../css/module13.css">
+</head>
+
+<body data-page-category="powerplant" class="pp-body">
+
+  <!-- Sidebar Toggle -->
+  <button class="pp-sidebar-toggle" id="ppSbToggle" aria-label="Toggle sidebar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <div class="pp-sidebar__overlay" id="ppSbOverlay"></div>
+
+  <!-- Glassmorphism Sidebar -->
+  <aside class="pp-sidebar" id="ppSidebar">
+    <div class="pp-sidebar__header">
+      <div class="pp-sidebar__profile">
+        <div class="pp-sidebar__avatar">⚡</div>
+        <div class="pp-sidebar__info">
+          <span class="pp-sidebar__label">Power Plant</span>
+          <span class="pp-sidebar__name">ENGINEERING</span>
+        </div>
+      </div>
+      <button class="pp-sidebar__close" id="ppSbClose" aria-label="Close sidebar">✕</button>
+    </div>
+    <div class="pp-sidebar__section-label">MODULES</div>
+    <ul class="pp-sidebar__nav">
+      <li><a class="pp-sidebar__link" data-mod="1" style="--mod-color:#f97316;" href="../power-systems-overview/index.html"><span class="pp-sidebar__icon">⚡</span><span class="pp-sidebar__link-text">Power Systems</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="2" style="--mod-color:#60a5fa;" href="../hydro-power/index.html"><span class="pp-sidebar__icon">💧</span><span class="pp-sidebar__link-text">Hydro Power</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="3" style="--mod-color:#ef4444;" href="../thermal-steam/index.html"><span class="pp-sidebar__icon">🔥</span><span class="pp-sidebar__link-text">Thermal Steam</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="4" style="--mod-color:#f97316;" href="../coal-fuels/index.html"><span class="pp-sidebar__icon">⛏️</span><span class="pp-sidebar__link-text">Coal & Fuels</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="5" style="--mod-color:#a78bfa;" href="../nuclear-power/index.html"><span class="pp-sidebar__icon">☢️</span><span class="pp-sidebar__link-text">Nuclear Power</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="6" style="--mod-color:#f97316;" href="../diesel-power/index.html"><span class="pp-sidebar__icon">🛢️</span><span class="pp-sidebar__link-text">Diesel Power</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="7" style="--mod-color:#f97316;" href="../gas-turbine/index.html"><span class="pp-sidebar__icon">🌀</span><span class="pp-sidebar__link-text">Gas Turbine</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="8" style="--mod-color:#facc15;" href="../solar-energy/index.html"><span class="pp-sidebar__icon">☀️</span><span class="pp-sidebar__link-text">Solar Energy</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="9" style="--mod-color:#facc15;" href="../solar-collectors/index.html"><span class="pp-sidebar__icon">🌡️</span><span class="pp-sidebar__link-text">Solar Collectors</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="10" style="--mod-color:#00f5ff;" href="../geothermal-mhd/index.html"><span class="pp-sidebar__icon">🌋</span><span class="pp-sidebar__link-text">Geothermal & MHD</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="12" style="--mod-color:#00ff88;" href="../wind-biomass-ocean-energy/index.html"><span class="pp-sidebar__icon">🌊</span><span class="pp-sidebar__link-text">Renewables</span></a></li>
+      <li><a class="pp-sidebar__link active" data-mod="13" style="--mod-color:#facc15;" href="index.html"><span class="pp-sidebar__icon">💰</span><span class="pp-sidebar__link-text">Economics & Tariffs</span></a></li>
+      <li><a class="pp-sidebar__link" data-mod="0" style="--mod-color:#00ff88;" href="../../index.html"><span class="pp-sidebar__icon">📋</span><span class="pp-sidebar__link-text">All Modules</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Unified Navbar -->
+  <nav class="navbar" role="navigation">
+    <a href="../../../../index.html" class="navbar__logo">⚡ EE Hub</a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+    <ul class="navbar__links">
+      <li><a href="../../../circuit/index.html">Circuit Theory</a></li>
+      <li><a href="../../../machines/index.html">Machines</a></li>
+      <li><a href="../../../measurements/index.html">Measurements</a></li>
+      <li><a href="../../../power-systems/index.html">Power Systems</a></li>
+      <li><a href="../../../power-plant/index.html" class="active">Power Plant</a></li>
+      <li><a href="../../../control/index.html">Control Systems</a></li>
+      <li><a href="../../../electronics/index.html">Electronics</a></li>
+      <li><a href="../../../signals/index.html">Signals</a></li>
+      <li><a href="../../../microprocessor/index.html">μP & μC</a></li>
+      <li><a href="../../../estimation/index.html">Estimation</a></li>
+      <li><a href="../../../utilization/index.html">Utilization</a></li>
+    </ul>
+  </nav>
+
+  <!-- Particles & BG -->
+  <div class="pp-particles" id="pp-particles"></div>
+  <header class="circuit-hero">
+    <canvas id="hero-canvas"></canvas>
+    <svg class="lightning-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="bolt-path" d="M0,20 L30,40 L25,60 L60,30 L50,80 L100,10"></path>
+    </svg>
+    <div class="circuit-hero__content" data-aos="fade-up" data-aos-duration="1500">
+      <h1 class="circuit-hero__title" style="text-align:center;">
+        Module <span class="pp-neon-text">13</span>
+      </h1>
+      <p class="circuit-hero__subtitle" id="circuit-typewriter" data-text="Cost Calculation · Depreciation · Tariff Types · Power Factor Correction"></p>
+      <div class="circuit-hero__ctas" data-aos="fade-up" data-aos-delay="1300">
+        <a href="#c-m13-1" class="pp-hero-cta">⚡ Explore Economics</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pp-main">
+    <div class="topic-breadcrumb">
+        <a href="../../../../index.html">EE Hub</a> › 
+        <a href="../../index.html">Power Plant</a> › 
+        <span>Economics & Tariffs</span>
+    </div>
+
+    <div class="topic-content">
+        <!-- CARD 1: COST OF ELECTRICAL ENERGY -->
+        <div class="card pp-card m13-card card-economics" id="c-m13-1">
+            <h2 class="pp-section-title">Module 13A: Cost of Electrical Energy</h2>
+            <div class="bookmark" title="Bookmark this module">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone text-sm">
+                    <h3>Three Types of Cost</h3>
+                    
+                    <div class="mb-3" style="border-left: 2px solid #facc15; padding-left:10px;">
+                        <h4 class="text-gold" style="margin:0;">1. Fixed Cost (a)</h4>
+                        <p class="text-xs text-muted">Does <strong>NOT</strong> depend on Maximum Demand AND Energy Output.</p>
+                        <p class="text-xs">Examples: High grade officer salary, Interest on capital cost of land, Equipment install cost.</p>
+                    </div>
+
+                    <div class="mb-3" style="border-left: 2px solid #00f5ff; padding-left:10px;">
+                        <h4 class="text-cyan" style="margin:0;">2. Semi-Fixed Cost (b·kW)</h4>
+                        <p class="text-xs text-muted">Depends on <strong>Maximum Demand</strong> but NOT Energy Output.</p>
+                        <p class="text-xs">Examples: Interest on machine investment, Management salary, Building depreciation.</p>
+                    </div>
+
+                    <div class="mb-3" style="border-left: 2px solid #f97316; padding-left:10px;">
+                        <h4 class="text-orange" style="margin:0;">3. Running / Operating Cost (c·kWh)</h4>
+                        <p class="text-xs text-muted">Depends on <strong>Maximum Demand AND Energy Output</strong>.</p>
+                        <p class="text-xs">Examples: Fuel cost, Maintenance cost, Operating staff salary.</p>
+                    </div>
+
+                    <h3 class="mt-4">Total Cost Formula</h3>
+                    <div class="formula-box pulse-gold" style="border: 1px solid #facc15;">
+                        <div class="formula text-center" style="font-size: 1.25em;">$$ \boxed{E = a + b(kW) + c(kWh)} $$</div>
+                        <ul class="text-xs text-muted" style="list-style-type:none; padding:10px 0 0 0;">
+                            <li>$a$ = Fixed cost constant (₹)</li>
+                            <li>$b$ = Semi-fixed cost per kW of demand</li>
+                            <li>$c$ = Running cost per kWh of energy</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-center mt-3 text-purple" style="font-weight:bold;">$$ \text{Standing Cost} = a + b(kW) $$</p>
+                    <p class="text-center text-xs text-muted">Fixed + Semi-fixed do NOT depend on energy output.</p>
+                </div>
+
+                <div class="card-panel anim-zone d-flex flex-column">
+                    <div class="tab-controls">
+                        <button class="tab-btn active" data-target="anim-cost-stack" style="border-bottom-color:#facc15">Cost Breakdown</button>
+                        <button class="tab-btn" data-target="anim-cost-pie" style="border-bottom-color:#a78bfa">Standing vs Running</button>
+                    </div>
+
+                    <div id="anim-cost-stack" class="anim-content active flex-grow-1 p-3">
+                        <div class="m13-calc-box">
+                            <h4 class="text-center text-cyan mb-3">Total Cost Bill Calulator</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-xs text-gold">Fixed (a): ₹10,000</span>
+                                <span class="text-xs text-cyan">Max Demand: <span id="val-kw">500</span> kW</span>
+                            </div>
+                            <input type="range" id="slider-kw" min="100" max="1000" step="50" value="500" class="neon-slider">
+                            
+                            <div class="d-flex justify-content-between mt-3 mb-2">
+                                <span class="text-xs text-orange">Running (c): ₹4/kWh</span>
+                                <span class="text-xs text-orange">Energy: <span id="val-kwh">10000</span> kWh</span>
+                            </div>
+                            <input type="range" id="slider-kwh" min="1000" max="50000" step="1000" value="10000" class="neon-slider">
+
+                            <!-- D3 Graph Container -->
+                            <div id="cost-bar-chart" style="height: 120px; width: 100%; margin-top:20px;"></div>
+                            
+                            <div class="result-display text-gold" id="cost-total-display">Total E: ₹150,000</div>
+                        </div>
+                    </div>
+
+                    <div id="anim-cost-pie" class="anim-content" style="display:none; padding:15px; text-align:center;">
+                        <h4 class="text-purple">Standing vs Running Cost</h4>
+                        <div id="cost-pie-chart" style="height: 180px; width: 100%; display:flex; justify-content:center;"></div>
+                        <div class="badge mt-3" style="background:rgba(167, 139, 250, 0.2); color:#a78bfa;">Reduce running cost → more efficient plant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 2: DEPRECIATION METHODS -->
+        <div class="card pp-card m13-card card-economics" id="c-m13-2">
+            <h2 class="pp-section-title">Module 13B: Depreciation Methods</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3>Depreciation & Salvage</h3>
+                    <p class="text-xs"><strong>Depreciation:</strong> Decrease in value of an asset due to use.<br>
+                    <strong>Salvage Value (S):</strong> Value of asset at end of useful life ($n$).</p>
+
+                    <h3 class="mt-3">1. Straight Line Method</h3>
+                    <div class="formula text-center">$$ \boxed{d = \frac{P - S}{n}} $$</div>
+                    <p class="text-xs text-gold">Depreciation is CONSTANT each year.</p>
+
+                    <h3 class="mt-3">2. Declining Balance Method</h3>
+                    <div class="formula text-center">$$ \boxed{x = 1 - \left(\frac{S}{P}\right)^{1/n}} $$</div>
+                    <div class="formula text-center">$$ BV_t = P(1-x)^t $$</div>
+                    <p class="text-xs text-cyan">Depreciation is HIGHER in early years and decreases.</p>
+
+                    <h3 class="mt-3">3. Sinking Fund Method</h3>
+                    <div class="formula text-center">$$ \boxed{q = (P - S)\left[\frac{r}{(1+r)^n - 1}\right]} $$</div>
+                    <p class="text-xs text-orange">Fund grows with compound interest $(r)$. Reaches $P-S$ at year $n$.</p>
+                    
+                    <table class="m13-table">
+                        <tr class="text-gold"><th>Method</th><th>Annual Dep.</th><th>Book Value</th></tr>
+                        <tr><td>Straight Line</td><td>Constant</td><td>Linear decay</td></tr>
+                        <tr><td>Declining Bal.</td><td>Decreasing</td><td>Exponential</td></tr>
+                        <tr><td>Sinking Fund</td><td>Increasing</td><td>Compound Drop</td></tr>
+                    </table>
+                </div>
+
+                <div class="card-panel anim-zone d-flex flex-column">
+                    <h4 class="text-center" style="color:#facc15">Book Value Over Time (n years)</h4>
+                    <div class="d-flex justify-content-center gap-2 mb-2 text-xs">
+                        <span style="color:#facc15">■ Straight Line</span>
+                        <span style="color:#00f5ff">■ Declining</span>
+                        <span style="color:#f97316">■ Sinking Fund</span>
+                    </div>
+                    
+                    <div id="depreciation-line-chart" class="flex-grow-1" style="width:100%; min-height:180px;"></div>
+                    
+                    <div class="mt-3">
+                        <div class="d-flex justify-content-between text-xs mb-1">
+                            <span>Asset Life (n): <span id="val-years" class="text-green">20</span> Yrs</span>
+                            <span>Salvage (S): ₹<span id="val-salvage" class="text-green">500</span>k</span>
+                        </div>
+                        <input type="range" id="slider-n" min="5" max="40" step="1" value="20" class="neon-slider mb-2">
+                        <input type="range" id="slider-s" min="100" max="2000" step="100" value="500" class="neon-slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3: TARIFF TYPES -->
+        <div class="card pp-card m13-card card-tariff" id="c-m13-3">
+            <h2 class="pp-section-title">Module 13C: Tariff Types & Formulas</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3 class="text-green">General Tariff Formula (Three Part)</h3>
+                    <div class="formula-box pulse-green" style="border: 1px solid #00ff88;">
+                        <div class="formula text-center" style="font-size: 1.25em;">$$ \boxed{z = ax + by + c} $$</div>
+                        <ul class="text-xs text-muted" style="list-style-type:none; padding:5px 0 0 0;">
+                            <li>$z$ = Total Bill (₹)</li>
+                            <li>$x$ = Maximum demand (kW)</li>
+                            <li>$y$ = Energy consumed (kWh)</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-3">Key Tariff Types</h3>
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 10px;">
+                        <div class="mb-2"><strong>1. Simple/Uniform:</strong> $z = by$ (High cost, drops other fees).</div>
+                        <div class="mb-2"><strong>2. Flat Rate:</strong> $z = ax$ (Depends on load type: Light vs Power).</div>
+                        <div class="mb-2"><strong>3. Block Rate:</strong> $z = b_1y_1 + b_2y_2 + b_3y_3$ (Tariff reduces on succeeding blocks).</div>
+                        <div class="mb-2"><strong>4. Two Part (Hopkinson):</strong> $z = ax + by$ (For large consumers).</div>
+                        <div class="mb-2"><strong>5. Maximum Demand:</strong> Two part + Max demand meter.</div>
+                        <div class="mb-2"><strong>6. Power Factor:</strong> Based on kVA instead of kW.</div>
+                        <div class="mb-2"><strong>7. Three Part (Doherty Rate):</strong> $z = ax + by + c$ (Most accurate).</div>
+                        <div class="mb-2"><strong>8. Seasonal Rate:</strong> Varies by season.</div>
+                        <div class="mb-2"><strong>9. TOD / TOU / STOD:</strong> Time of Day - peak/off-peak rates.</div>
+                    </div>
+                </div>
+
+                <div class="card-panel anim-zone d-flex flex-column">
+                    <div class="tab-controls">
+                        <button class="tab-btn active" data-target="anim-three-part" style="border-bottom-color:#00ff88">Three Part</button>
+                        <button class="tab-btn" data-target="anim-block-rate" style="border-bottom-color:#f97316">Block Rate</button>
+                        <button class="tab-btn" data-target="anim-tod" style="border-bottom-color:#00f5ff">TOD Clock</button>
+                    </div>
+
+                    <!-- Three Part Builder -->
+                    <div id="anim-three-part" class="anim-content active">
+                        <h4 class="text-center text-green mb-3">Doherty Rate Builder ($z = ax + by + c$)</h4>
+                        
+                        <div id="three-part-bar" style="height:40px; border-radius:8px; display:flex; overflow:hidden; border:1px solid #333;" class="mb-3">
+                            <div id="bar-a" style="background:#facc15; width:33%; transition:width 0.3s;" class="d-flex align-items-center justify-content-center text-dark font-weight-bold text-xs">ax</div>
+                            <div id="bar-b" style="background:#00f5ff; width:33%; transition:width 0.3s;" class="d-flex align-items-center justify-content-center text-dark font-weight-bold text-xs">by</div>
+                            <div id="bar-c" style="background:#f97316; width:34%; transition:width 0.3s;" class="d-flex align-items-center justify-content-center text-dark font-weight-bold text-xs">c</div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-1 text-xs">
+                            <span class="text-gold">Demand (x): <span id="tp-x-val">100</span> kW</span>
+                        </div>
+                        <input type="range" id="tp-x-slider" class="neon-slider mb-2" min="10" max="500" value="100">
+                        
+                        <div class="d-flex justify-content-between mb-1 text-xs">
+                            <span class="text-cyan">Energy (y): <span id="tp-y-val">5000</span> kWh</span>
+                        </div>
+                        <input type="range" id="tp-y-slider" class="neon-slider mb-3" min="1000" max="20000" value="5000" step="500">
+                        
+                        <div class="result-display text-green text-right border-top pt-2">Bill (z): ₹<span id="tp-z-val">70,500</span></div>
+                    </div>
+
+                    <!-- Block Rate -->
+                    <div id="anim-block-rate" class="anim-content" style="display:none; text-align:center;">
+                        <h4 class="text-orange mb-3">Block Rate Tariff ($z = b_1y_1 + b_2y_2 + b_3y_3$)</h4>
+                        <div id="block-rate-chart" style="height:150px; width:100%;"></div>
+                        <div class="badge mt-2" style="background:rgba(249, 115, 22, 0.2); color:#f97316;">More you use, cheaper per unit</div>
+                    </div>
+
+                    <!-- TOD -->
+                    <div id="anim-tod" class="anim-content" style="display:none; text-align:center;">
+                        <h4 class="text-cyan mb-2">Time of Day (TOD / STOD) Tariff</h4>
+                        <div id="tod-clock" style="height: 180px; display:flex; justify-content:center; align-items:center;">
+                            <!-- SVG injected by JS -->
+                        </div>
+                        <div class="badge mt-2 bg-dark border border-secondary text-light">Run heavy loads at night → save money</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 4: ADVANCED TARIFFS & COMPARISON -->
+        <div class="card pp-card m13-card card-tariff" id="c-m13-4">
+            <h2 class="pp-section-title">Module 13D: Power Factor & Tariff Comparison</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone">
+                    <h3>Power Factor Penalty</h3>
+                    <p class="text-xs">Industries pay for <strong>kVA</strong> maximum demand instead of kW.</p>
+                    <div class="formula text-center">$$ kVA = \frac{kW}{\cos\phi} $$</div>
+                    <div class="formula text-center">$$ kVA^2 = kW^2 + kVAR^2 $$</div>
+
+                    <h3 class="mt-3">Power Factor Correction</h3>
+                    <p class="text-xs">To improve $\cos\phi$, consumer adds <strong>Capacitor Banks</strong>.</p>
+                    <div class="formula text-center text-rose">$$ \boxed{Q_c = P(\tan\phi_1 - \tan\phi_2) \text{ kVAR}} $$</div>
+
+                    <h3 class="mt-3">Load Factor (LF) Benefits</h3>
+                    <div class="formula text-center">$$ LF = \frac{\text{Average Demand}}{\text{Maximum Demand}} $$</div>
+                    <p class="text-xs text-green mt-2"><strong>High LF</strong> means less Maximum Demand for the same Energy = lower cost per unit under a <strong>Two Part Tariff (Hopkinson)</strong>.</p>
+                </div>
+
+                <div class="card-panel anim-zone d-flex flex-column">
+                    <div class="tab-controls">
+                        <button class="tab-btn active" data-target="anim-pf-correction" style="border-bottom-color:#fb7185">PF Correction ($Q_c$)</button>
+                        <button class="tab-btn" data-target="anim-lf-impact" style="border-bottom-color:#00ff88">Load Factor</button>
+                    </div>
+
+                    <div id="anim-pf-correction" class="anim-content active p-3 text-center">
+                        <div id="pf-triangle-chart" style="height:120px; width:100%;"></div>
+                        
+                        <div class="mt-3 d-flex flex-column gap-2 text-xs">
+                            <div class="d-flex justify-content-between">
+                                <span>Original PF ($\cos\phi_1$): <span id="val-pf1" class="text-rose">0.60</span></span>
+                                <input type="range" id="slider-pf1" class="neon-slider" style="width:120px;" min="0.4" max="0.95" step="0.01" value="0.60">
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <span>Target PF ($\cos\phi_2$): <span id="val-pf2" class="text-green">0.95</span></span>
+                                <input type="range" id="slider-pf2" class="neon-slider" style="width:120px;" min="0.8" max="1.0" step="0.01" value="0.95">
+                            </div>
+                        </div>
+                        
+                        <div class="result-display text-rose text-right border-top pt-2 mt-2">Capacitor $Q_c$: <span id="val-qc">133.3</span> kVAR</div>
+                    </div>
+
+                    <div id="anim-lf-impact" class="anim-content" style="display:none; text-align:center;">
+                         <h5 class="text-green mb-3 mt-2">Cost/Unit vs Load Factor</h5>
+                         <div id="lf-curve-chart" style="height:160px; width:100%;"></div>
+                         <div class="badge mt-2" style="background:rgba(0, 255, 136, 0.2); color:#00ff88;">High LF = Lower overall cost per unit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 5: COMPLETE REFERENCE QUIZ -->
+        <div class="card pp-card m13-card card-economics" id="c-m13-5">
+            <h2 class="pp-section-title">Module 13E: Complete Reference Flashcards</h2>
+            <div class="bookmark">🔖</div>
+            <div class="card-grid" style="margin-top: 20px;">
+                
+                <div class="card-panel formula-zone text-sm" style="max-height:350px; overflow-y:auto;">
+                    <h3 class="text-gold">Master Formulation Table</h3>
+                    <table class="m13-table text-left">
+                        <tr class="text-gold"><th>Parameter</th><th>Formula / Rule</th></tr>
+                        <tr><td>Standing Cost</td><td>$a + bkW$</td></tr>
+                        <tr><td>Running Cost</td><td>$ckWh$</td></tr>
+                        <tr><td>Energy Conversion</td><td>$1\text{ kWh} = 3.6\times10^6\text{ J}$</td></tr>
+                        <tr><td>Straight Line $d$</td><td>$(P-S)/n$</td></tr>
+                        <tr><td>Declining Balance $x$</td><td>$1 - (S/P)^{1/n}$</td></tr>
+                        <tr><td>Sinking Fund $q$</td><td>$(P-S)[r/((1+r)^n-1)]$</td></tr>
+                        <tr><td>Three Part Tariff</td><td>$z = ax + by + c$</td></tr>
+                        <tr><td>Two Part / Hopkinson</td><td>$z = ax + by$</td></tr>
+                        <tr><td>Capacitor $Q_c$</td><td>$P(\tan\phi_1 - \tan\phi_2)$</td></tr>
+                    </table>
+                </div>
+
+                <div class="card-panel anim-zone" style="display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:300px;">
+                    <h4 class="text-cyan mb-4">Module 13 Flashcards</h4>
+                    
+                    <div id="m13-flashcard" class="m13-flashcard" style="width: 80%;">
+                        <div class="m13-flashcard-inner">
+                            <div class="m13-flashcard-front">
+                                <h4 id="fc-question">What does Fixed Cost (a) depend on?</h4>
+                            </div>
+                            <div class="m13-flashcard-back">
+                                <h4 id="fc-answer">Neither maximum demand nor energy output</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex w-100 justify-content-between px-4 mt-4">
+                        <button id="fc-prev" class="btn-outline-neon px-3 py-1 text-xs">← Prev</button>
+                        <span id="fc-tracker" class="text-xs text-muted" style="line-height:2">1 / 15</span>
+                        <button id="fc-next" class="btn-outline-neon px-3 py-1 text-xs">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="topic-bottom-nav">
+        <a href="../wind-biomass-ocean-energy/index.html" class="topic-btn prev-btn">← Renewables</a>
+        <a href="../../index.html" class="topic-btn back-btn">All Topics</a>
+        <div class="topic-btn next-btn" style="visibility:hidden"></div>
+    </div>
+  </main>
+
+  <!-- Scroll to top -->
+  <div class="pp-scroll-top" id="ppScrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="../../../../shared/js/hero-bg.js"></script>
+  <script src="../../../../shared/js/formulas.js"></script>
+  <script src="../../../../shared/js/app.js"></script>
+
+  <!-- Scripts specifically for this page/module -->
+  <script src="../../js/powerplant-inline.js"></script>
+  <script src="../../../../shared/js/topic-nav.js"></script>
+  <script src="../../js/module13.js"></script>
+
+</body></html>
