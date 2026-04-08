@@ -48,10 +48,18 @@ body {
     overflow-x: hidden;
 }
 
-/* AOS Fallback: Ensure content is visible if JS fails to initialize */
-html:not(.aos-init) [data-aos] {
+/* AOS Fallback & Forced Visibility for Active Sections */
+html:not(.aos-init) [data-aos],
+.aos-init [data-aos].active,
+.aos-init [data-aos].aos-animate {
     opacity: 1 !important;
     transform: none !important;
+    visibility: visible !important;
+}
+
+.module-section.active {
+    display: block !important;
+    opacity: 1 !important;
     visibility: visible !important;
 }
 

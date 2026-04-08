@@ -79,7 +79,7 @@
     </div>
 
     <main class="topic-main-container">
-        <section id="mod2" class="module-section">
+        <section id="mod2" class="module-section active" data-aos="fade-up">
                 <div class="module-header" data-aos="fade-right">
                     <h2 class="module-title">MODULE 2 <span class="module-subtitle">— Measuring Instruments</span></h2>
                     <div class="module-line" style="background: #f97316; box-shadow: 0 0 10px #f97316;"></div>
@@ -148,7 +148,6 @@
                         </div>
                         <!-- Calculator -->
                         <div class="m2-calc-zone" id="m2-swamp-calc">
-                            <h4 style="color:#f97316; margin-bottom:10px;">🧮 Swamp Resistance Calculator</h4>
                             <div class="m2-calc-row">
                                 <label>R<sub>m</sub> (Ω):</label><input type="number" id="m2-sw-rm" value="10" min="0" step="0.1">
                                 <label>m:</label><input type="number" id="m2-sw-m" value="5" min="1.1" step="0.1">
@@ -156,8 +155,6 @@
                             <div class="m2-calc-result" id="m2-sw-result">R<sub>sw</sub> = —</div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('R_{sw} = \\\\frac{R_m + R_{swamp}}{m - 1}')">📋 Copy LaTeX</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-swamp-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-swamp">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -241,7 +238,6 @@
                             </div>
                         </div>
                         <div class="m2-calc-zone" id="m2-shunt-calc">
-                            <h4 style="color:#f97316; margin-bottom:10px;">🧮 Shunt Resistance Calculator</h4>
                             <div class="m2-calc-row">
                                 <label>I<sub>m</sub> (A):</label><input type="number" id="m2-sh-im" value="0.001" min="0" step="0.0001">
                                 <label>R<sub>m</sub> (Ω):</label><input type="number" id="m2-sh-rm" value="100" min="0" step="1">
@@ -250,8 +246,6 @@
                             <div class="m2-calc-result" id="m2-sh-result">m = —, R<sub>sh</sub> = —</div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('R_{sh} = \\\\frac{R_m}{m-1}')">📋 Copy LaTeX</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-shunt-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-shunt">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -334,7 +328,6 @@
                             </div>
                         </div>
                         <div class="m2-calc-zone" id="m2-ayrton-calc">
-                            <h4 style="color:#f97316; margin-bottom:10px;">🧮 Ayrton Shunt Calculator</h4>
                             <div class="m2-calc-row">
                                 <label>R<sub>m</sub>:</label><input type="number" id="m2-ay-rm" value="100" min="0" step="1">
                                 <label>I<sub>m</sub>:</label><input type="number" id="m2-ay-im" value="0.001" min="0" step="0.0001">
@@ -347,8 +340,6 @@
                             <div class="m2-calc-result" id="m2-ay-result">R₁ = —, R₂ = —, R₃ = —</div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('R_1 = \\\\frac{R_m}{m_1 - 1}')">📋 Copy LaTeX</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-ayrton-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-ayrton">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -423,7 +414,6 @@
                             </div>
                         </div>
                         <div class="m2-calc-zone" id="m2-mult-calc">
-                            <h4 style="color:#f97316; margin-bottom:10px;">🧮 Multiplier Calculator</h4>
                             <div class="m2-calc-row">
                                 <label>I<sub>FSD</sub> (A):</label><input type="number" id="m2-mu-im" value="0.001" min="0" step="0.0001">
                                 <label>R<sub>m</sub> (Ω):</label><input type="number" id="m2-mu-rm" value="100" min="0" step="1">
@@ -432,8 +422,6 @@
                             <div class="m2-calc-result" id="m2-mu-result">m = —, R<sub>se</sub> = —, S = — Ω/V</div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('R_{se} = (m-1)R_m')">📋 Copy LaTeX</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-mult-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-mult">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -513,7 +501,6 @@
                             </div>
                         </div>
                         <div class="m2-calc-zone" id="m2-mi-calc">
-                            <h4 style="color:#f97316; margin-bottom:10px;">🧮 MI Frequency Error Calculator</h4>
                             <div class="m2-calc-row">
                                 <label>R<sub>m</sub>:</label><input type="number" id="m2-mi-rm" value="50" min="0" step="1">
                                 <label>R<sub>s</sub>:</label><input type="number" id="m2-mi-rs" value="500" min="0" step="10">
@@ -523,8 +510,6 @@
                             <div class="m2-calc-result" id="m2-mi-result">I<sub>m</sub> = —, C = — F</div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('T_d = \\\\frac{1}{2}I^2\\\\frac{dL}{d\\\\theta}')">📋 Copy LaTeX</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-mi-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-mi">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -620,7 +605,6 @@
                             </div>
                         </div>
                         <div class="m2-calc-zone" id="m2-watt-calc">
-                            <h4 style="color:#f97316; margin-bottom:10px;">🧮 Wattmeter Reading Calculator</h4>
                             <div class="m2-calc-row">
                                 <label>V:</label><input type="number" id="m2-wt-v" value="230" min="0" step="1">
                                 <label>I:</label><input type="number" id="m2-wt-i" value="5" min="0" step="0.1">
@@ -629,8 +613,6 @@
                             <div class="m2-calc-result" id="m2-wt-result">P = — W</div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('T_d = I_1 I_2 \\\\frac{dM}{d\\\\theta}')">📋 Copy LaTeX</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-watt-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-edyn">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -722,7 +704,6 @@
                             </div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('\\\\theta_{PMMC} \\\\propto I, \\\\quad \\\\theta_{MI} \\\\propto I^2, \\\\quad \\\\theta_{Edyn} \\\\propto VI\\\\cos\\\\phi')">📋 Copy LaTeX</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-compare">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -856,7 +837,6 @@
                             </div>
                         </div>
                         <div class="m2-calc-zone" id="m2-edm8-calc">
-                            <h4 style="color:#f97316; margin-bottom:10px;">🧮 EDM Wattmeter Calculator</h4>
                             <div class="m2-calc-row">
                                 <label>V:</label><input type="number" id="m2-e8-v" value="230" min="0" step="1">
                                 <label>I:</label><input type="number" id="m2-e8-i" value="5" min="0" step="0.1">
@@ -875,8 +855,6 @@
                             <div class="m2-calc-result" id="m2-e8-tc-result">τ<sub>shunt</sub> = —, τ<sub>coil</sub> = —</div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('\\\\theta = \\\\frac{I_1 I_2}{k}\\\\cos\\\\phi\\\\frac{dM}{d\\\\theta}')">📋 Copy LaTeX</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-edm8-calc').classList.toggle('open')">🧮 Wattmeter Calc</button>
                             <button class="m2-footer-btn" onclick="document.getElementById('m2-edm8-tc-calc').classList.toggle('open')">⏱️ Time Const.</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-edm8">🔖 Bookmark</button>
                         </div>
@@ -996,7 +974,6 @@
                             </div>
                         </div>
                         <div class="m2-calc-zone" id="m2-thermo-calc">
-                            <h4 style="color:#f97316; margin-bottom:10px;">🧮 Thermocouple RMS Calculator</h4>
                             <div class="m2-calc-row">
                                 <label>Waveform:</label>
                                 <select id="m2-tc-wave" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#f8fafc; padding:5px 8px; border-radius:6px; font-size:0.85rem;">
@@ -1009,8 +986,6 @@
                             <div class="m2-calc-result" id="m2-tc-result">I<sub>rms</sub> = —</div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('\\\\theta \\\\propto I^2_{rms}')">📋 Copy LaTeX</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-thermo-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-thermo">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -1097,7 +1072,6 @@
                             </div>
                         </div>
                         <div class="m2-calc-zone" id="m2-estat-calc">
-                            <h4 style="color:#f97316; margin-bottom:10px;">🧮 Electrostatic Voltmeter Calculator</h4>
                             <div class="m2-calc-row">
                                 <label>V (volts):</label><input type="number" id="m2-es-v" value="100" min="0" step="1">
                                 <label>dC/dθ (pF/rad):</label><input type="number" id="m2-es-dc" value="5" min="0" step="0.1">
@@ -1106,8 +1080,6 @@
                             <div class="m2-calc-result" id="m2-es-result">θ = — rad</div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('T_d = \\\\frac{1}{2}V^2\\\\frac{dC}{d\\\\theta}')">📋 Copy LaTeX</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-estat-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-estat">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -1246,9 +1218,6 @@
                             <div class="m2-calc-result" id="m2-cd-result">V<sub>m</sub> = —, m = —</div>
                         </div>
                         <div class="m2-card-footer">
-                            <button class="m2-footer-btn" onclick="navigator.clipboard.writeText('m_R = \\\\frac{R}{r}, \\\\quad m_C = 1 + \\\\frac{C_v}{C_s}')">📋 Copy LaTeX</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-rdiv-calc').classList.toggle('open')">🧮 R Divider</button>
-                            <button class="m2-footer-btn" onclick="document.getElementById('m2-cdiv-calc').classList.toggle('open')">🧮 C Divider</button>
                             <button class="m2-footer-btn m2-bookmark-btn" data-card="m2-divider">🔖 Bookmark</button>
                         </div>
                     </div>

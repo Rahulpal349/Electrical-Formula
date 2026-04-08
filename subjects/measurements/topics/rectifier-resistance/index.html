@@ -79,7 +79,7 @@
     </div>
 
     <main class="topic-main-container">
-        <section id="mod3" class="module-section">
+        <section id="mod3" class="module-section active" data-aos="fade-up">
                 <div class="module-header" data-aos="fade-right">
                     <h2 class="module-title">MODULE 3 <span class="module-subtitle">— Rectifier Instruments &amp; Resistance Measurement</span></h2>
                     <div class="module-line" style="background: #00ff88; box-shadow: 0 0 10px #00ff88;"></div>
@@ -160,7 +160,6 @@
                             <div id="m3-hw-sens" style="width:100%; max-width:400px; height:80px; margin:0 auto;"></div>
                         </div>
                         <div class="m3-calc-zone" id="m3-hw-calc">
-                            <h4 style="color:#00ff88; margin-bottom:10px;">🧮 HW Rectifier Calculator</h4>
                             <div class="m3-calc-row">
                                 <label>PMMC (V):</label><input type="number" id="m3-hw-pmmc" value="5" min="0" step="0.1">
                                 <label>S<sub>dc</sub> (Ω/V):</label><input type="number" id="m3-hw-sdc" value="20000" min="0" step="100">
@@ -173,8 +172,6 @@
                             <div class="m3-calc-result" id="m3-hw-result">HW reading = —, R_s = —</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('FF_{HW} = \\frac{\\pi}{\\sqrt{2}} \\approx 2.22')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-hw-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-hw">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -299,7 +296,6 @@
                             </div>
                         </div>
                         <div class="m3-calc-zone" id="m3-fw-calc">
-                            <h4 style="color:#00ff88; margin-bottom:10px;">🧮 FW Rectifier Calculator</h4>
                             <div class="m3-calc-row">
                                 <label>PMMC (V):</label><input type="number" id="m3-fw-pmmc" value="5" min="0" step="0.1">
                                 <label>S<sub>dc</sub> (Ω/V):</label><input type="number" id="m3-fw-sdc" value="20000" min="0" step="100">
@@ -312,8 +308,6 @@
                             <div class="m3-calc-result" id="m3-fw-result">FW reading = —, R_s = —</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('FF_{FW} = \\frac{\\pi}{2\\sqrt{2}} \\approx 1.11')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-fw-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-fw">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -368,7 +362,6 @@
                             <div id="m3-rclass-tree" style="width:100%; max-width:700px; height:120px; margin:0 auto;"></div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('R_m = \\frac{V}{I}')">📋 Copy LaTeX</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-rclass">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -503,7 +496,6 @@
                             </div>
                         </div>
                         <div class="m3-calc-zone" id="m3-av-calc">
-                            <h4 style="color:#00ff88; margin-bottom:10px;">🧮 A-V Method Error Calculator</h4>
                             <div class="m3-calc-row">
                                 <label>R<sub>x</sub> (Ω):</label><input type="number" id="m3-avc-rx" value="1000" min="0" step="1">
                                 <label>R<sub>A</sub> (Ω):</label><input type="number" id="m3-avc-ra" value="10" min="0" step="0.1">
@@ -512,8 +504,6 @@
                             <div class="m3-calc-result" id="m3-avc-result">Case I err = —%, Case II err = —%, R_crit = —</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('R_{critical} = \\sqrt{R_A \\times R_V}')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-av-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-av">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -632,7 +622,6 @@
                             </div>
                         </div>
                         <div class="m3-calc-zone" id="m3-wb-calc">
-                            <h4 style="color:#00ff88; margin-bottom:10px;">🧮 Wheatstone Bridge Calculator</h4>
                             <div class="m3-calc-row">
                                 <label>P (Ω):</label><input type="number" id="m3-wbc-p" value="1000" min="0" step="1">
                                 <label>Q (Ω):</label><input type="number" id="m3-wbc-q" value="1000" min="0" step="1">
@@ -641,8 +630,6 @@
                             <div class="m3-calc-result" id="m3-wbc-result">S = QR/P = —, Balance: PS = QR?</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('S = \\frac{QR}{P}, \\quad PS = QR')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-wb-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-wb">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -728,7 +715,6 @@
                             </div>
                         </div>
                         <div class="m3-calc-zone" id="m3-kb-calc">
-                            <h4 style="color:#a78bfa; margin-bottom:10px;">🧮 Kelvin Bridge Calculator</h4>
                             <div class="m3-calc-row">
                                 <label>R (Ω):</label><input type="number" id="m3-kbc-r" value="0.1" min="0" step="0.001">
                                 <label>P (Ω):</label><input type="number" id="m3-kbc-p" value="1000" min="0" step="1">
@@ -737,8 +723,6 @@
                             <div class="m3-calc-result" id="m3-kbc-result">X = R·P/Q = —, Condition: P/Q = p/q?</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('X = R \\cdot \\frac{P}{Q}')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-kb-calc').classList.toggle('open')">🧮 Calculator</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-kb">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -825,8 +809,6 @@
                             <div class="m3-calc-result" id="m3-loc-result">R = —</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('R = \\frac{t}{C \\ln(V_0/V)}')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-loc-calc').classList.toggle('open')">🧮 Loss of Charge</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-sum">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -941,8 +923,6 @@
                             <div class="m3-calc-result" id="m3-thc-result">Vth = — | Rth = — | Ig = —</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('V_{th}=\\frac{V(PS-QR)}{(P+Q)(R+S)},\\;R_{th}=\\frac{PQ}{P+Q}+\\frac{RS}{R+S}')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-thev-calc').classList.toggle('open')">🧮 Thevenin Calc</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-thev">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -1018,8 +998,6 @@
                             <div class="m3-calc-result" id="m3-sc-result">SV = — | SB = — | SBmax = —</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('S_B=\\frac{S_I V}{4(R_g+R_{th})},\\;S_{B_{max}}=\\frac{VS_I}{4}')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-sens-calc').classList.toggle('open')">🧮 Sensitivity Calc</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-sens">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -1138,9 +1116,6 @@
                             <div class="m3-calc-result" id="m3-potc-result">Rx = —</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('R_x=R\\cdot\\frac{P}{Q}+\\frac{r\\cdot pq}{p+q+r}\\left(\\frac{P}{Q}-\\frac{p}{q}\\right)')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-kb2-calc').classList.toggle('open')">🧮 Kelvin Bridge</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-pot-calc').classList.toggle('open')">🧮 Potentiometer</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-kb2">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -1239,8 +1214,6 @@
                             <div class="m3-calc-result" id="m3-medc-result">S = QR/P = —</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('S=\\frac{QR}{P},\\;PS=QR')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-med-calc').classList.toggle('open')">🧮 Bridge Calc</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-med">🔖 Bookmark</button>
                         </div>
                     </div>
@@ -1369,9 +1342,6 @@
                             <div class="m3-calc-result" id="m3-oshc-result">Im = —</div>
                         </div>
                         <div class="m3-card-footer">
-                            <button class="m3-footer-btn" onclick="navigator.clipboard.writeText('I=\\frac{V}{R_1+R_x},\\;R_{mid}=R_1=\\frac{V}{I_{FSD}}')">📋 Copy LaTeX</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-ohm-series-calc').classList.toggle('open')">🧮 Series Calc</button>
-                            <button class="m3-footer-btn" onclick="document.getElementById('m3-ohm-shunt-calc').classList.toggle('open')">🧮 Shunt Calc</button>
                             <button class="m3-footer-btn m3-bookmark-btn" data-card="m3-ohm">🔖 Bookmark</button>
                         </div>
                     </div>
