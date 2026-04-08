@@ -16,7 +16,15 @@
     <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
 
     <!-- AOS (Animate on Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -88,7 +96,7 @@
     </div>
 
     <main class="topic-main-container">
-        <section id="advanced-topics" class="circuit-section">
+        <section id="advanced-topics" class="circuit-section active">
                 <div class="section__header" data-aos="fade-up">
                     <h2 style="color: var(--unit-purple);">Electrical Materials</h2>
                     <p>Crystal structures, magnetic materials, dielectric properties, and insulating materials.</p>
@@ -571,6 +579,9 @@
         <div class="btn-disabled"></div>
     </div>
 
+    <!-- Scripts -->
+    <script src="../../js/circuit.js"></script>
+    <script src="../../js/materials.js"></script>
     
 </body>
 </html>

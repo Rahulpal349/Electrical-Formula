@@ -40,7 +40,8 @@
 }
 
 /* Bottom Nav Buttons */
-.topic-bottom-nav {
+.topic-bottom-nav,
+.topic-nav-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,7 +50,8 @@
     border-top: 1px solid var(--border-color, rgba(255,255,255,0.1));
 }
 
-.topic-btn {
+.topic-btn,
+.btn-nav {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -59,30 +61,35 @@
     border-radius: 8px;
     color: #fff;
     text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-family: 'Share Tech Mono', monospace; /* Redesigned tech font */
+    font-size: 15px;
     font-weight: 500;
     transition: all 0.3s;
     min-width: 120px;
 }
 
-.topic-btn:hover {
+.topic-btn:hover,
+.btn-nav:hover {
     background: rgba(255,255,255,0.1);
     transform: translateY(-2px);
     border-color: rgba(255,255,255,0.2);
+    color: #fff;
 }
 
-.topic-btn.prev-btn:hover {
+.topic-btn.prev-btn:hover,
+.btn-nav.btn-prev:hover {
     box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.topic-btn.next-btn {
+.topic-btn.next-btn,
+.btn-nav.btn-next {
     background: rgba(0, 240, 255, 0.1);
     border-color: rgba(0, 240, 255, 0.3);
     color: #00f0ff;
 }
 
-.topic-btn.next-btn:hover {
+.topic-btn.next-btn:hover,
+.btn-nav.btn-next:hover {
     background: rgba(0, 240, 255, 0.2);
     border-color: #00f0ff;
     box-shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
@@ -169,11 +176,13 @@
 
 /* Responsive */
 @media (max-width: 600px) {
-    .topic-bottom-nav {
+    .topic-bottom-nav,
+    .topic-nav-footer {
         flex-direction: column;
         gap: 15px;
     }
-    .topic-btn {
+    .topic-btn,
+    .btn-nav {
         width: 100%;
     }
 }

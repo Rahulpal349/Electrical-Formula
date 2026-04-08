@@ -16,7 +16,15 @@
     <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
 
     <!-- AOS (Animate on Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -88,7 +96,7 @@
     </div>
 
     <main class="topic-main-container">
-        <section id="two-port-networks" class="circuit-section">
+        <section id="two-port-networks" class="circuit-section active">
             <div class="section__header" data-aos="fade-up">
                 <h2>Two Port Networks</h2>
                 <p>Z, Y, h, g, ABCD parameters, interconnections, symmetry &amp; reciprocity conditions.</p>
@@ -641,6 +649,9 @@
         <a href="../electrical-materials/index.html" class="btn-nav btn-next">Next: 🧲 Electrical Materials →</a>
     </div>
 
+    <!-- Scripts -->
+    <script src="../../js/circuit.js"></script>
+    <script src="../../js/elec-measurements.js"></script>
     
 </body>
 </html>

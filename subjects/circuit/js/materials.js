@@ -1463,7 +1463,7 @@ function initCurieGraph() {
                     <div style="color:red; font-weight:bold;">+++</div>
                     <div style="color:cyan; font-weight:bold;">---</div>
                 </div>
-                <div style="position:relative; top: 60px; color:var(--unit-gold); font-weight:bold;">← 💥 Compression 💥 →</div>
+                <div style="position:relative; top: 110px; color:var(--unit-gold); font-weight:bold;">← 💥 Compression 💥 →</div>
             </div>
             <div style="height: 150px; position: relative;">
                 <b style="color:white;font-size:0.9rem;">Inverse: Voltage → Strain</b>

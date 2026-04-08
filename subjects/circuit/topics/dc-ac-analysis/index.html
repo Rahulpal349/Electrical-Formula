@@ -16,7 +16,15 @@
     <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+          ],
+          throwOnError: false,
+        })
+      "></script>
 
     <!-- AOS (Animate on Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -88,7 +96,7 @@
     </div>
 
     <main class="topic-main-container">
-        <section id="dc-ac-analysis" class="circuit-section" data-aos="fade-up">
+        <section id="dc-ac-analysis" class="circuit-section active" data-aos="fade-up">
             <div class="section__header">
                 <h2>DC &amp; AC Circuit Analysis</h2>
                 <p>Fundamental laws, solving techniques, and alternating current properties.</p>
@@ -643,6 +651,9 @@
         <a href="../network-theorems/index.html" class="btn-nav btn-next">Next: 📐 Network Theorems →</a>
     </div>
 
+    <!-- Scripts -->
+    <script src="../../js/circuit.js"></script>
+    <script src="../../js/ac-analysis.js"></script>
     
 </body>
 </html>
